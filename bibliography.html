@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bibliography — Lululemon AI Strategy | FutureInSites</title>
+  <title>Bibliography: Lululemon AI Strategy | FutureInSites</title>
   <meta name="description" content="Sources and citations for the Lululemon AI Strategy case study by FutureInSites." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --lulu:   #140F0F;
-      --bg:     #FFFFFF;
-      --bg-alt: #F5F3F0;
-      --border: #E2DDD6;
-      --muted:  #6B6560;
-      --font:   Calibre, Helvetica, "Helvetica Neue", Roboto, Arial, sans-serif;
-      /* FutureInSites accent for nav back-link */
-      --fi:     #4F46E5;
+      --lulu:      #140F0F;
+      --lulu-red:  #C8102E;
+      --bg:        #FFFFFF;
+      --bg-alt:    #F9F9F8;
+      --border:    rgba(20,15,15,0.12);
+      --border-solid: #D9D9D7;
+      --muted:     #4A4645;
+      --font:      'DM Sans', Calibre, Helvetica, "Helvetica Neue", Arial, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -39,37 +42,69 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 3rem;
-      height: 64px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      height: 56px;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(20,15,15,0.12);
     }
 
     .nav-logo {
       font-family: var(--font);
-      font-size: 1rem;
+      font-size: 0.875rem;
       font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--lulu);
+      letter-spacing: 0;
+      color: var(--muted);
       text-decoration: none;
-      text-transform: lowercase;
+      text-transform: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
     }
+
+    .nav-logo::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--lulu);
+      flex-shrink: 0;
+      transition: width 0.2s;
+    }
+
+    .nav-logo:hover { color: var(--lulu); }
+    .nav-logo:hover::before { width: 24px; }
 
     .nav-back {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--bg);
-      background: var(--lulu);
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--lulu);
+      background: transparent;
       text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.5rem 1.4rem;
-      border-radius: 100px;
-      transition: opacity 0.2s;
+      letter-spacing: 0;
+      text-transform: none;
+      padding: 0;
+      position: relative;
+      transition: color 0.2s;
     }
 
-    .nav-back:hover { opacity: 0.75; }
+    .nav-back::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--lulu);
+      transition: width 0.22s ease;
+    }
+
+    .nav-back:hover::after { width: 100%; }
+
+    /* ─── PAGE HEADER h1 bold ─── */
+    .page-header h1 {
+      font-weight: 700 !important;
+    }
 
     /* ─── PAGE HEADER ─── */
     .page-header {
@@ -245,7 +280,14 @@
     <p>All sources verified as of April 2026. Citations formatted in APA 7th Edition. Sources listed in order of first citation.</p>
   </div>
 
-  <div class="bib-body">
+  <div class="bib-body" id="bib-body">
+
+    <!-- Search bar -->
+    <form id="bib-search-form" style="max-width:860px;margin:0 auto 1.5rem;padding:0 2rem;display:flex;align-items:center;gap:0;">
+      <input type="text" id="bib-search-input" class="bib-search-input" placeholder="Search bibliography…" autocomplete="off">
+      <button type="submit" class="bib-search-submit">Search</button>
+      <span id="bib-count" class="bib-count"></span>
+    </form>
 
     <div class="bib-intro">
       <strong>Research Scope:</strong> 27 sources spanning company press releases, industry analyst reports, academic capstone projects, trade publications, financial data providers, patent databases, and technology vendor reports. A minimum of 15 credible sources was required per the MBA AI Strategy Capstone guidelines; this research exceeded that threshold with primary sourcing across all major analytical claims.
@@ -499,7 +541,7 @@
       <div class="bib-entry">
         <div class="bib-num">26</div>
         <div class="bib-ref">
-          <strong>Lululemon Corporate / Various.</strong> (2024–2025). Lululemon ambassador program — global and store ambassador tiers, program structure, and community strategy. Multiple company and trade publication sources.
+          <strong>Lululemon Corporate / Various.</strong> (2024–2025). Lululemon ambassador program: global and store ambassador tiers, program structure, and community strategy. Multiple company and trade publication sources.
         </div>
       </div>
 
@@ -522,6 +564,101 @@
     </ul>
     <p class="footer-copy">FutureInSites · AI Strategy & Digital Transformation · futureinsites.com · April 2026</p>
   </footer>
+
+  <style>
+    .bib-search-bar {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+      display: flex;
+      gap: 0;
+      align-items: center;
+    }
+    .bib-search-input {
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--lulu);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-right: none;
+      padding: 0.55rem 1rem;
+      flex: 1;
+      outline: none;
+    }
+    .bib-search-input:focus { border-color: var(--lulu); }
+    .bib-search-submit {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.55rem 1.1rem;
+      background: var(--lulu);
+      color: #FFF;
+      border: 1px solid var(--lulu);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .bib-search-submit:hover { background: #C8102E; border-color: #C8102E; }
+    .bib-count { font-size: 0.75rem; color: var(--muted); margin-left: 1rem; }
+    .bib-hidden { display: none !important; }
+    .bib-highlight { background: rgba(200,16,46,0.13); outline: 1px solid rgba(200,16,46,0.3); border-radius: 2px; }
+  </style>
+
+  <script>
+  (function () {
+    /* Auto-run search if ?q= param is present */
+    function runSearch(q) {
+      var items = document.querySelectorAll('.bib-entry');
+      var lq = q.toLowerCase();
+      var count = 0;
+      items.forEach(function (item) {
+        var text = item.textContent.toLowerCase();
+        if (text.indexOf(lq) !== -1) {
+          item.classList.remove('bib-hidden');
+          count++;
+          // highlight
+          item.querySelectorAll('.bib-highlight').forEach(function (h) {
+            h.outerHTML = h.innerHTML;
+          });
+        } else {
+          item.classList.add('bib-hidden');
+        }
+      });
+      var countEl = document.getElementById('bib-count');
+      if (countEl) countEl.textContent = count + ' result' + (count !== 1 ? 's' : '') + ' for "' + q + '"';
+
+      // also scroll to first match
+      var first = document.querySelector('.bib-entry:not(.bib-hidden)');
+      if (first) setTimeout(function () { first.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get('q');
+      var input = document.getElementById('bib-search-input');
+      if (q && input) {
+        input.value = q;
+        runSearch(q);
+      }
+
+      if (input) {
+        var form = document.getElementById('bib-search-form');
+        form && form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          runSearch(input.value);
+        });
+        input.addEventListener('input', function () {
+          if (this.value.length === 0) {
+            document.querySelectorAll('.bib-entry').forEach(function (i) { i.classList.remove('bib-hidden'); });
+            var c = document.getElementById('bib-count');
+            if (c) c.textContent = '';
+          } else if (this.value.length >= 2) {
+            runSearch(this.value);
+          }
+        });
+      }
+    });
+  })();
+  </script>
 
 </body>
 </html>

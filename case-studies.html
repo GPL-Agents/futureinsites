@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case Studies — FutureInSites</title>
+  <title>Case Studies | FutureInSites</title>
   <meta name="description" content="FutureInSites case studies in AI strategy and digital transformation." />
 
   <style>
@@ -12,8 +12,9 @@
     :root {
       --dark:     #0B0C10;
       --dark2:    #12141A;
-      --accent:   #4F46E5;
-      --accent-lt:#EEF2FF;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
       --bg:       #FFFFFF;
       --bg-alt:   #F8F9FB;
       --border:   #E4E7EE;
@@ -94,12 +95,13 @@
     }
 
     .page-header .eyebrow {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.2rem;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      line-height: 1.05;
     }
 
     .page-header h1 {
@@ -138,24 +140,25 @@
       transition: border-color 0.25s;
     }
 
-    .cs-premier:hover { border-color: rgba(79,70,229,0.35); }
+    .cs-premier:hover { border-color: rgba(37,99,235,0.35); }
 
     .cs-premier-content {
       padding: 3rem;
     }
 
     .cs-tag {
-      display: inline-block;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      display: block;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(79,70,229,0.15);
-      border: 1px solid rgba(79,70,229,0.3);
-      padding: 0.28rem 0.75rem;
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
+      color: var(--cyan);
+      background: none;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
     }
 
     .cs-client {
@@ -304,6 +307,15 @@
       text-align: center;
     }
 
+    .cs-placeholder-logo {
+      display: block;
+      height: 30px;
+      width: auto;
+      max-width: 140px;
+      object-fit: contain;
+      margin: 0 auto 1rem;
+    }
+
     .cs-placeholder .ph-label {
       font-size: 0.62rem;
       font-weight: 600;
@@ -407,7 +419,7 @@
   <div class="page-header">
     <p class="eyebrow">Our Work</p>
     <h1>Case Studies</h1>
-    <p>In-depth AI strategy engagements with leading enterprise brands — from readiness assessment to implementation roadmap.</p>
+    <p>In-depth AI strategy engagements with leading enterprise brands: from readiness assessment to implementation roadmap.</p>
   </div>
 
   <!-- CASE STUDIES LIST -->
@@ -464,22 +476,22 @@
     <div class="cs-placeholder-grid">
 
       <div class="cs-placeholder">
+        <img src="images/rocket_mortgage_logo.svg" alt="Rocket Mortgage" class="cs-placeholder-logo">
         <div class="ph-label">Fintech · Mortgage</div>
-        <h3>Rocket Mortgage</h3>
         <p>AI-powered loan origination, automated underwriting, and borrower experience personalization.</p>
         <span class="cs-coming-soon">In Progress</span>
       </div>
 
       <div class="cs-placeholder">
+        <img src="images/CG_Logo_2025.png" alt="CarGurus" class="cs-placeholder-logo">
         <div class="ph-label">Automotive · Marketplace</div>
-        <h3>CarGurus</h3>
         <p>ML-driven pricing intelligence, inventory demand forecasting, and AI-enhanced search ranking.</p>
         <span class="cs-coming-soon">In Progress</span>
       </div>
 
       <div class="cs-placeholder">
+        <img src="images/Yelp_Logo.svg.png" alt="Yelp" class="cs-placeholder-logo">
         <div class="ph-label">Consumer · Local Discovery</div>
-        <h3>Yelp</h3>
         <p>AI-driven content moderation, personalized recommendation engines, and advertiser intelligence.</p>
         <span class="cs-coming-soon">In Progress</span>
       </div>

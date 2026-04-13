@@ -3,27 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lululemon AI Strategy — From PAVE to Platform | FutureInSites</title>
+  <title>Lululemon AI Strategy: From PAVE to Platform | FutureInSites</title>
   <meta name="description" content="A comprehensive AI strategy for lululemon athletica. Prepared by FutureInSites, AI Strategy & Digital Transformation Consulting." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --lulu:      #140F0F;
-      --lulu-dim:  rgba(20,15,15,0.06);
+      --lulu-dim:  rgba(20,15,15,0.05);
+      --lulu-red:  #C8102E;
       --bg:        #FFFFFF;
-      --bg-alt:    #F5F3F0;
+      --bg-alt:    #F9F9F8;
       --bg-hero:   #140F0F;
-      --border:    #E2DDD6;
-      --muted:     #6B6560;
-      --font:      Calibre, Helvetica, "Helvetica Neue", Roboto, Arial, sans-serif;
+      --border:    rgba(20,15,15,0.1);
+      --border-solid: #D9D9D7;
+      --muted:     #4A4645;
+      --font:      'DM Sans', Calibre, Helvetica, "Helvetica Neue", Arial, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
+      background: var(--bg-alt);
       color: var(--lulu);
       font-family: var(--font);
       font-size: 17px;
@@ -40,55 +46,204 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 3rem;
-      height: 64px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      height: 56px;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(20,15,15,0.12);
     }
 
     .nav-logo {
       font-family: var(--font);
-      font-size: 1.15rem;
+      font-size: 0.875rem;
       font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--lulu);
+      letter-spacing: 0;
+      color: var(--muted);
       text-decoration: none;
-      text-transform: lowercase;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
     }
+
+    .nav-logo:hover { color: var(--lulu); }
+
+    /* small horizontal line before back link */
+    .nav-logo::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--lulu);
+      flex-shrink: 0;
+      transition: width 0.2s;
+    }
+
+    .nav-logo:hover::before { width: 24px; }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--muted);
+      color: var(--lulu);
       text-decoration: none;
-      font-size: 0.78rem;
+      font-size: 0.875rem;
       font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0;
+      text-transform: none;
+      position: relative;
+      padding-bottom: 2px;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--lulu); }
-
-    .nav-bib {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--bg);
+    /* thin underline slide-in on hover */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
       background: var(--lulu);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.5rem 1.4rem;
-      border-radius: 100px;
-      transition: opacity 0.2s;
+      transition: width 0.22s ease;
     }
 
-    .nav-bib:hover { opacity: 0.75; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--lulu); }
+
+    /* ─── NAV SEARCH ─── */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+
+    .nav-search-input {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--lulu);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(20,15,15,0.25);
+      padding: 0.2rem 1.6rem 0.2rem 0;
+      width: 160px;
+      outline: none;
+      transition: border-color 0.2s, width 0.3s;
+    }
+
+    .nav-search-input::placeholder { color: rgba(20,15,15,0.38); }
+    .nav-search-input:focus { border-bottom-color: var(--lulu); width: 200px; }
+
+    .nav-search-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-search-btn svg { width: 14px; height: 14px; }
+
+    /* search results dropdown */
+    .search-results-panel {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 340px;
+      background: #FFFFFF;
+      border: 1px solid rgba(20,15,15,0.12);
+      box-shadow: 0 8px 32px rgba(20,15,15,0.1);
+      z-index: 300;
+      display: none;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .srp-header {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.75rem 1rem 0.5rem;
+      border-bottom: 1px solid rgba(20,15,15,0.08);
+    }
+
+    .srp-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(20,15,15,0.05);
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+
+    .srp-item:hover { background: var(--bg-alt); }
+
+    .srp-item-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--lulu);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .srp-item-excerpt {
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .srp-item-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(20,15,15,0.3);
+    }
+
+    .srp-footer {
+      padding: 0.6rem 1rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(20,15,15,0.08);
+    }
+
+    .srp-footer a {
+      color: var(--lulu-red);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .srp-footer a:hover { text-decoration: underline; }
+
+    .srp-empty {
+      padding: 1.2rem 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* highlight matched text */
+    .search-highlight {
+      background: rgba(200,16,46,0.12);
+      outline: 1px solid rgba(200,16,46,0.3);
+      border-radius: 2px;
+    }
 
     /* ─── HERO ─── */
     .hero {
@@ -139,11 +294,11 @@
 
     .hero-title-main {
       font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 300;
+      font-weight: 700;
       color: #FFFFFF;
       line-height: 1.05;
       display: block;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       margin-bottom: 1rem;
     }
 
@@ -205,11 +360,23 @@
     /* ─── QUOTE STRIP ─── */
     .quote-strip {
       position: relative;
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background: var(--lulu);
+      border-top: none;
+      border-bottom: none;
       padding: 4rem 2rem;
       text-align: center;
+    }
+
+    .quote-strip blockquote {
+      color: rgba(255,255,255,0.88) !important;
+    }
+
+    .quote-strip .open-quote {
+      color: rgba(255,255,255,0.18) !important;
+    }
+
+    .quote-strip cite {
+      color: rgba(255,255,255,0.4) !important;
     }
 
     .quote-strip blockquote {
@@ -252,31 +419,38 @@
     }
 
     .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.26em;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #2DD4FF;
       margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
+      display: block;
+      line-height: 1.05;
     }
 
     .section-label::after {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--border);
+      display: none;
     }
 
     .section-title {
       font-size: clamp(1.9rem, 3.8vw, 2.8rem);
-      font-weight: 300;
+      font-weight: 700;
       color: var(--lulu);
-      margin-bottom: 1rem;
-      line-height: 1.15;
+      margin-bottom: 0;
+      line-height: 1.1;
       letter-spacing: -0.02em;
+    }
+
+    /* red rule after section title, before body text */
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--lulu-red);
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     .section-intro {
@@ -289,12 +463,12 @@
     }
 
     /* ─── EXEC SUMMARY ─── */
-    .exec-summary { background: var(--bg); }
+    .exec-summary { background: var(--bg); border-top: 1px solid var(--border); }
 
     .thesis-block {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--lulu);
+      border-left: 3px solid var(--lulu-red);
       border-radius: 2px;
       padding: 2rem 2.2rem;
       margin-bottom: 3rem;
@@ -313,7 +487,7 @@
     .stat-card {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      border-bottom: 2px solid var(--lulu);
+      border-bottom: 2px solid var(--lulu-red);
       border-radius: 2px;
       padding: 2rem 1.8rem;
       text-align: center;
@@ -525,7 +699,7 @@
     }
 
     .tier-items li::before {
-      content: '—';
+      content: '·';
       position: absolute;
       left: 0;
       color: var(--muted);
@@ -535,7 +709,7 @@
     .gap-callout {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--lulu);
+      border-left: 3px solid var(--lulu-red);
       border-radius: 2px;
       padding: 1.6rem 2rem;
       font-size: 0.95rem;
@@ -561,7 +735,7 @@
       color: var(--muted);
       text-align: left;
       padding: 0.9rem 1rem;
-      border-bottom: 2px solid var(--lulu);
+      border-bottom: 2px solid var(--lulu-red);
       white-space: nowrap;
     }
 
@@ -635,7 +809,7 @@
     .pillar-card {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      border-top: 2px solid var(--lulu);
+      border-top: 2px solid var(--lulu-red);
       border-radius: 2px;
       padding: 2rem 1.8rem;
       transition: transform 0.25s, box-shadow 0.25s;
@@ -694,7 +868,7 @@
     }
 
     .pillar-bullets li::before {
-      content: '—';
+      content: '·';
       position: absolute;
       left: 0;
       color: var(--muted);
@@ -858,7 +1032,7 @@
       color: var(--muted);
       padding: 0.8rem 1rem;
       text-align: left;
-      border-bottom: 2px solid var(--lulu);
+      border-bottom: 2px solid var(--lulu-red);
     }
 
     .horizon-table td {
@@ -979,8 +1153,8 @@
 
     /* ─── FOOTER ─── */
     footer {
-      background: var(--lulu);
-      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #FDFDF8;
+      border-top: 1px solid rgba(20,15,15,0.1);
       padding: 4rem 2rem 2.5rem;
       text-align: center;
     }
@@ -991,13 +1165,11 @@
       margin-bottom: 1rem;
     }
 
-    .footer-lulu-logo svg { fill: rgba(255,255,255,0.4); }
-
     .footer-tagline {
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
+      color: rgba(20,15,15,0.35);
       margin-bottom: 2.5rem;
     }
 
@@ -1011,7 +1183,7 @@
     }
 
     .footer-links a {
-      color: rgba(255,255,255,0.45);
+      color: rgba(20,15,15,0.45);
       text-decoration: none;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
@@ -1019,11 +1191,11 @@
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-links a:hover { color: var(--lulu); }
 
     .footer-copy {
       font-size: 0.68rem;
-      color: rgba(255,255,255,0.18);
+      color: rgba(20,15,15,0.2);
     }
 
     /* ─── RESPONSIVE ─── */
@@ -1055,14 +1227,24 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">← FutureInSites</a>
+    <a href="index.html" class="nav-logo">FutureInSites</a>
     <ul class="nav-links">
       <li><a href="#exec-summary">Overview</a></li>
       <li><a href="#capabilities">Capabilities</a></li>
       <li><a href="#strategy">Strategy</a></li>
       <li><a href="#recommendations">Recommendations</a></li>
+      <li><a href="bibliography.html">Sources</a></li>
     </ul>
-    <a href="bibliography.html" class="nav-bib">Sources →</a>
+    <div class="nav-search" id="nav-search">
+      <input type="text" class="nav-search-input" id="search-input" placeholder="Search this page…" autocomplete="off" aria-label="Search page">
+      <button class="nav-search-btn" id="search-btn" aria-label="Search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="8.5" cy="8.5" r="5.5"/>
+          <line x1="13" y1="13" x2="17" y2="17"/>
+        </svg>
+      </button>
+      <div class="search-results-panel" id="search-results" role="listbox"></div>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -1100,7 +1282,7 @@
     <blockquote>
       <span class="open-quote">"</span>We see an exciting opportunity to further leverage AI and technology to advance our product innovation process, improve our agility and speed to market, and bring more engagement and personalization to our guest experience."
     </blockquote>
-    <cite><strong>Calvin McDonald</strong> &nbsp;—&nbsp; CEO, lululemon athletica &nbsp;·&nbsp; August 2025</cite>
+    <cite><strong>Calvin McDonald</strong> &nbsp;·&nbsp; CEO, lululemon athletica &nbsp;·&nbsp; August 2025</cite>
   </div>
 
   <!-- EXEC SUMMARY -->
@@ -1110,7 +1292,7 @@
       <h2 class="section-title">The Case for an AI Transformation</h2>
 
       <div class="thesis-block">
-        Lululemon has built a <strong>$10B+ premium athleisure brand</strong> on community, product quality, and culture. Yet with U.S. comparable sales declining 4% in Q2 FY2025, stock down ~48% from 2024 highs, and competitors like Alo Yoga and Vuori aggressively targeting its core customer, the company stands at a strategic inflection point. The answer to reigniting growth is not simply more marketing spend — it is a <strong>disciplined, end-to-end AI transformation</strong>.<br><br>
+        Lululemon has built a <strong>$10B+ premium athleisure brand</strong> on community, product quality, and culture. Yet with U.S. comparable sales declining 4% in Q2 FY2025, stock down ~48% from 2024 highs, and competitors like Alo Yoga and Vuori aggressively targeting its core customer, the company stands at a strategic inflection point. The answer to reigniting growth is not simply more marketing spend; it is a <strong>disciplined, end-to-end AI transformation</strong>.<br><br>
         Lululemon has strong foundational assets: 20M+ loyalty members, a proven in-house ML platform (PAVE), a Bengaluru engineering hub, and a newly appointed Chief AI & Technology Officer. These must be organized around a coherent, phased strategy that prioritizes <strong>data unification, product innovation acceleration, and hyper-personalization at scale.</strong>
       </div>
 
@@ -1157,16 +1339,16 @@
   <section class="inflection" id="inflection">
     <div class="section-inner">
       <p class="section-label">The Inflection Point</p>
-      <h2 class="section-title">Why AI — and Why Now</h2>
+      <h2 class="section-title">Why AI, and Why Now</h2>
 
       <div class="inflection-grid">
 
         <div class="inflection-body">
-          <p>Lululemon grew at <strong>42% in FY2022</strong> and <strong>30% in FY2023</strong>. By FY2026, growth has slowed to under 5% — and analyst consensus projects continued single-digit growth through 2031. Management has acknowledged the core cause: product life cycles ran too long, the line became too predictable, and the brand missed opportunities to create new trends.</p>
+          <p>Lululemon grew at <strong>42% in FY2022</strong> and <strong>30% in FY2023</strong>. By FY2026, growth has slowed to under 5%, and analyst consensus projects continued single-digit growth through 2031. Management has acknowledged the core cause: product life cycles ran too long, the line became too predictable, and the brand missed opportunities to create new trends.</p>
 
           <p>Three structural forces are reshaping the competitive environment in ways that pure brand investment cannot solve:</p>
 
-          <p>AI-native fast-fashion competitors (Zara, Shein) are collapsing design cycles from months to weeks. Real-time inventory AI is eliminating the markdowns that erode margin. And hyper-personalized digital experiences are raising customer expectations — making generic experiences feel inadequate.</p>
+          <p>AI-native fast-fashion competitors (Zara, Shein) are collapsing design cycles from months to weeks. Real-time inventory AI is eliminating the markdowns that erode margin. And hyper-personalized digital experiences are raising customer expectations, making generic experiences feel inadequate.</p>
 
           <p>Lululemon's <strong>$500M Mirror write-off</strong> is critical context: bold technology bets can go catastrophically wrong. The new AI strategy must balance ambition with governance discipline.</p>
 
@@ -1193,7 +1375,7 @@
         <div>
           <div class="chart-panel">
             <img src="images/revenue-chart.webp" alt="Lululemon Revenue and Revenue % Change YoY, FY2022–FY2031E" />
-            <p class="chart-caption"><strong>Fig. 1 —</strong> Lululemon Revenue & YoY Growth Rate, FY2022–FY2031E. Revenue growth has decelerated from 42% to under 5%, with analyst consensus projecting continued single-digit growth. Source: TIKR</p>
+            <p class="chart-caption"><strong>Fig. 1:</strong> Lululemon Revenue & YoY Growth Rate, FY2022–FY2031E. Revenue growth has decelerated from 42% to under 5%, with analyst consensus projecting continued single-digit growth. Source: TIKR</p>
           </div>
         </div>
 
@@ -1206,49 +1388,49 @@
     <div class="section-inner">
       <p class="section-label">AI Readiness Assessment</p>
       <h2 class="section-title">What Lululemon Actually Has</h2>
-      <p class="section-intro">Not all "AI" creates equal strategic value. A capability tier framework distinguishes between proprietary IP, licensed platforms, and commodity tools — the distinction that determines competitive moat and investment priority.</p>
+      <p class="section-intro">Not all "AI" creates equal strategic value. A capability tier framework distinguishes between proprietary IP, licensed platforms, and commodity tools: the distinction that determines competitive moat and investment priority.</p>
 
       <div class="tier-grid">
 
         <div class="tier-card">
-          <span class="tier-badge">Tier 1 — Proprietary</span>
+          <span class="tier-badge">Tier 1: Proprietary</span>
           <h3>In-House AI IP</h3>
-          <p>Built, trained, or engineered internally. Genuine competitive moat — cannot be purchased by competitors.</p>
+          <p>Built, trained, or engineered internally. Genuine competitive moat; cannot be purchased by competitors.</p>
           <ul class="tier-items">
-            <li><strong>PAVE</strong> — Propensity & Value Engine. Internal ML platform scoring 20M+ guest profiles for personalized marketing. Production-confirmed at Databricks Summit 2026.</li>
-            <li><strong>Bengaluru Tech Hub</strong> — 250+ technologists building and deploying AI models.</li>
-            <li><strong>RFID Demand Forecasting</strong> — Double-digit stockout reduction in pilot programs.</li>
+            <li><strong>PAVE:</strong> Propensity & Value Engine. Internal ML platform scoring 20M+ guest profiles for personalized marketing. Production-confirmed at Databricks Summit 2026.</li>
+            <li><strong>Bengaluru Tech Hub:</strong> 250+ technologists building and deploying AI models.</li>
+            <li><strong>RFID Demand Forecasting:</strong> Double-digit stockout reduction in pilot programs.</li>
           </ul>
         </div>
 
         <div class="tier-card">
-          <span class="tier-badge t2">Tier 2 — Licensed + Configured</span>
+          <span class="tier-badge t2">Tier 2: Licensed + Configured</span>
           <h3>Operational Platforms</h3>
           <p>Vendor platforms configured and integrated by Lululemon. Replicable, but requires operational expertise.</p>
           <ul class="tier-items">
-            <li>Salesforce Commerce Cloud — DTC e-commerce backbone</li>
-            <li>Quantum Metric — Checkout friction ID; "multi-tens of millions" impact</li>
-            <li>AWS + Databricks — PAVE infrastructure (MLflow, Unity Catalog)</li>
-            <li>GenAI Design Tools — PoC stage, scaling in 2025+</li>
+            <li>Salesforce Commerce Cloud: DTC e-commerce backbone</li>
+            <li>Quantum Metric: Checkout friction ID; "multi-tens of millions" impact</li>
+            <li>AWS + Databricks: PAVE infrastructure (MLflow, Unity Catalog)</li>
+            <li>GenAI Design Tools: PoC stage, scaling in 2025+</li>
           </ul>
         </div>
 
         <div class="tier-card">
-          <span class="tier-badge t3">Tier 3 — Off-the-Shelf</span>
+          <span class="tier-badge t3">Tier 3: Off-the-Shelf</span>
           <h3>Commodity Vendor AI</h3>
           <p>Tools where Lululemon is simply a customer. Value from early adoption, not proprietary capability.</p>
           <ul class="tier-items">
-            <li>Google Performance Max — +8% ROAS, 6%→15% new customer revenue</li>
-            <li>AI-Powered Website Search — conversational product discovery</li>
-            <li>Virtual Try-On — +25% online conversion lift reported</li>
-            <li>Size Recommendations — True Fit or equivalent</li>
+            <li>Google Performance Max: +8% ROAS, 6%→15% new customer revenue</li>
+            <li>AI-Powered Website Search: conversational product discovery</li>
+            <li>Virtual Try-On: +25% online conversion lift reported</li>
+            <li>Size Recommendations: True Fit or equivalent</li>
           </ul>
         </div>
 
       </div>
 
       <div class="gap-callout">
-        <strong>Honest Assessment:</strong> PAVE is the most concrete evidence of proprietary AI. Beyond that, the internal AI capability base is thin and still being built. The CAITO appointment in September 2025 — Ranju Das, former GM of Amazon AI Services — is arguably the starting gun for serious Tier 1 investment. Most competitors can buy the same Tier 2 and Tier 3 tools.
+        <strong>Honest Assessment:</strong> PAVE is the most concrete evidence of proprietary AI. Beyond that, the internal AI capability base is thin and still being built. The CAITO appointment in September 2025 (Ranju Das, former GM of Amazon AI Services) is arguably the starting gun for serious Tier 1 investment. Most competitors can buy the same Tier 2 and Tier 3 tools.
       </div>
 
     </div>
@@ -1332,7 +1514,7 @@
     <div class="section-inner">
       <p class="section-label">AI Strategy Framework</p>
       <h2 class="section-title">Three Strategic Pillars</h2>
-      <p class="section-intro">Lululemon's AI strategy is organized around three pillars that reflect its core business priorities and evidence-based capability gaps. Each pillar generates returns independently — but the full compounding effect emerges when all three operate together.</p>
+      <p class="section-intro">Lululemon's AI strategy is organized around three pillars that reflect its core business priorities and evidence-based capability gaps. Each pillar generates returns independently; the full compounding effect emerges when all three operate together.</p>
 
       <div class="pillar-grid">
 
@@ -1340,9 +1522,9 @@
           <div class="pillar-num">1</div>
           <p class="objective">Protect Margin</p>
           <h3>Intelligent Operations</h3>
-          <p>Use AI to improve efficiency, reduce cost, and protect margin across back-office and store operations. Fastest measurable ROI — primarily BUY or PARTNER decisions using proven vendor tools on Lululemon's proprietary operational data.</p>
+          <p>Use AI to improve efficiency, reduce cost, and protect margin across back-office and store operations. Fastest measurable ROI; primarily BUY or PARTNER decisions using proven vendor tools on Lululemon's proprietary operational data.</p>
           <ul class="pillar-bullets">
-            <li>Inventory & demand planning AI — extending $18M investment</li>
+            <li>Inventory & demand planning AI: extending $18M investment</li>
             <li>Supply chain & sourcing optimization</li>
             <li>AI-powered associate onboarding (UW iSchool PoC)</li>
             <li>Store layout optimization via neural network models</li>
@@ -1353,11 +1535,11 @@
           <div class="pillar-num">2</div>
           <p class="objective">Win on Product</p>
           <h3>AI-Accelerated Product Innovation</h3>
-          <p>Embed AI in the design-to-market lifecycle to close the gap with AI-native fast-fashion competitors. Highest strategic urgency — Zara already compresses design cycles to weeks using these capabilities.</p>
+          <p>Embed AI in the design-to-market lifecycle to close the gap with AI-native fast-fashion competitors. Highest strategic urgency; Zara already compresses design cycles to weeks using these capabilities.</p>
           <ul class="pillar-bullets">
-            <li>Trend Intelligence System — Heuritech / Stylumia + proprietary sales data</li>
-            <li>AI-augmented design workflow — GenAI for concept exploration & colorways</li>
-            <li>Patent intelligence & knockoff detection — post-Nike lawsuit priority</li>
+            <li>Trend Intelligence System: Heuritech / Stylumia + proprietary sales data</li>
+            <li>AI-augmented design workflow: GenAI for concept exploration & colorways</li>
+            <li>Patent intelligence & knockoff detection: post-Nike lawsuit priority</li>
             <li>Freedom-to-operate analysis before every new product launch</li>
           </ul>
         </div>
@@ -1366,12 +1548,12 @@
           <div class="pillar-num">3</div>
           <p class="objective">Deepen Loyalty</p>
           <h3>Customer Intelligence & Hyper-Personalization</h3>
-          <p>Activate 20M+ loyalty members as a unified intelligence asset. Extend PAVE from a marketing-scoring tool to a full customer lifetime value engine across every touchpoint — the only BUILD quadrant initiative.</p>
+          <p>Activate 20M+ loyalty members as a unified intelligence asset. Extend PAVE from a marketing-scoring tool to a full customer lifetime value engine across every touchpoint; the only BUILD quadrant initiative.</p>
           <ul class="pillar-bullets">
-            <li>Customer Intelligence Platform — unified single customer record</li>
+            <li>Customer Intelligence Platform: unified single customer record</li>
             <li>Omnichannel personalization: in-store, DTC, app continuity</li>
-            <li>AI Ambassador Discovery — geo-aware community signal aggregation</li>
-            <li>International loyalty AI — deployed from day one in new markets</li>
+            <li>AI Ambassador Discovery: geo-aware community signal aggregation</li>
+            <li>International loyalty AI: deployed from day one in new markets</li>
           </ul>
         </div>
 
@@ -1385,15 +1567,15 @@
     <div class="section-inner">
       <p class="section-label">AI Use Case Prioritization</p>
       <h2 class="section-title">Value vs. Execution Complexity</h2>
-      <p class="section-intro">Twelve AI initiatives plotted across a value/complexity matrix. Quick Wins — high value, lower complexity — should be funded immediately. Strategic Investments require phased commitment and governance rigor.</p>
+      <p class="section-intro">Twelve AI initiatives plotted across a value/complexity matrix. Quick Wins (high value, lower complexity) should be funded immediately. Strategic Investments require phased commitment and governance rigor.</p>
 
       <div class="matrix-wrap">
-        <img src="images/prioritization-matrix.png" alt="Lululemon AI Use Case Prioritization Matrix — 12 initiatives plotted by business value and execution complexity" />
-        <p class="matrix-caption"><strong>Fig. 2 —</strong> Lululemon AI Use Case Prioritization Matrix. Upper-right quadrant = Quick Wins (fund immediately). Upper-left = Strategic Investments (phased commitment). Source: Original analysis.</p>
+        <img src="images/prioritization-matrix.png" alt="Lululemon AI Use Case Prioritization Matrix: 12 initiatives plotted by business value and execution complexity" />
+        <p class="matrix-caption"><strong>Fig. 2:</strong> Lululemon AI Use Case Prioritization Matrix. Upper-right quadrant = Quick Wins (fund immediately). Upper-left = Strategic Investments (phased commitment). Source: Original analysis.</p>
       </div>
 
       <!-- Quick Wins Callout -->
-      <p class="section-label" style="margin-bottom:1.2rem;">Quick Win Initiatives — Fund Immediately</p>
+      <p class="section-label" style="margin-bottom:1.2rem;">Quick Win Initiatives: Fund Immediately</p>
       <div class="quickwins-grid">
         <div class="qw-card">
           <span class="qw-badge">Quick Win ✓</span>
@@ -1453,7 +1635,7 @@
           <div class="rec-num">01</div>
           <div class="rec-body">
             <h3>Treat Product Innovation as a Defended, AI-Accelerated Moat</h3>
-            <p>CEO Calvin McDonald identified product lifecycle staleness as the primary driver of the Americas decline — "letting product life cycles run too long." Build an AI-powered <strong>Trend Intelligence System</strong> drawing from internal sales signals, social listening, and competitor launches. Management's target of 35% new style penetration in North America requires exactly this capability — trend intelligence must precede product development, not follow it.</p>
+            <p>CEO Calvin McDonald identified product lifecycle staleness as the primary driver of the Americas decline: "letting product life cycles run too long." Build an AI-powered <strong>Trend Intelligence System</strong> drawing from internal sales signals, social listening, and competitor launches. Management's target of 35% new style penetration in North America requires exactly this capability; trend intelligence must precede product development, not follow it.</p>
           </div>
           <div class="rec-meta">
             <div class="rec-priority">Priority</div>
@@ -1467,7 +1649,7 @@
           <div class="rec-num">02</div>
           <div class="rec-body">
             <h3>Activate Data-Driven Personalization & Loyalty Monetization</h3>
-            <p>Lululemon has 20M+ loyalty members and PAVE already scoring profiles. Evolve from using loyalty data for marketing efficiency to using it as a full <strong>customer lifetime value engine</strong> — deepening retention, increasing purchase frequency, and expanding wallet share per member. Extend PAVE scoring into in-store associate recommendations, membership tier optimization, and churn prediction. Loyalty economics are a margin lever, not just a growth lever.</p>
+            <p>Lululemon has 20M+ loyalty members and PAVE already scoring profiles. Evolve from using loyalty data for marketing efficiency to using it as a full <strong>customer lifetime value engine</strong>, deepening retention, increasing purchase frequency, and expanding wallet share per member. Extend PAVE scoring into in-store associate recommendations, membership tier optimization, and churn prediction. Loyalty economics are a margin lever, not just a growth lever.</p>
           </div>
           <div class="rec-meta">
             <div class="rec-priority">Priority</div>
@@ -1495,7 +1677,7 @@
           <div class="rec-num">04</div>
           <div class="rec-body">
             <h3>Build AI-Supported International Expansion Infrastructure</h3>
-            <p>Lululemon's clearest growth engine is international — China at 46% growth, six new markets in 2026, and a franchise model shift. AI must be <strong>embedded in the expansion infrastructure from day one</strong>, not retrofitted later: localized personalization, AI-trained franchise associates for brand consistency, trend intelligence calibrated to WeChat and Xiaohongshu/RED, and store layout optimization for every new opening.</p>
+            <p>Lululemon's clearest growth engine is international (China at 46% growth, six new markets in 2026, and a franchise model shift). AI must be <strong>embedded in the expansion infrastructure from day one</strong>, not retrofitted later: localized personalization, AI-trained franchise associates for brand consistency, trend intelligence calibrated to WeChat and Xiaohongshu/RED, and store layout optimization for every new opening.</p>
           </div>
           <div class="rec-meta">
             <div class="rec-priority">Priority</div>
@@ -1509,7 +1691,7 @@
           <div class="rec-num">05</div>
           <div class="rec-body">
             <h3>Establish AI Governance Before Scaling, Not After</h3>
-            <p>The $500M Mirror write-off is the most important context. Three governance mechanisms must be established in parallel with the first wave of AI investments: <strong>AI Investment Stage Gates</strong> with pre-defined kill criteria; a <strong>Responsible AI Framework</strong> within 90 days (GDPR, CCPA, algorithmic bias); and an <strong>AI Center of Excellence</strong> — a cross-functional team setting standards, reviewing model deployments, and managing the build/buy/partner portfolio systematically.</p>
+            <p>The $500M Mirror write-off is the most important context. Three governance mechanisms must be established in parallel with the first wave of AI investments: <strong>AI Investment Stage Gates</strong> with pre-defined kill criteria; a <strong>Responsible AI Framework</strong> within 90 days (GDPR, CCPA, algorithmic bias); and an <strong>AI Center of Excellence</strong>: a cross-functional team setting standards, reviewing model deployments, and managing the build/buy/partner portfolio systematically.</p>
           </div>
           <div class="rec-meta">
             <div class="rec-priority">Priority</div>
@@ -1590,18 +1772,18 @@
           <div class="fin-card">
             <div class="fin-label">Analyst Price Target vs. Current</div>
             <div class="amount" style="font-size:1.8rem;">$145 → $176</div>
-            <div class="fin-note">+20.8% potential return over ~2.8 years. All three analyst recovery drivers — full-price sell-through, product newness, international expansion — have direct AI enablement paths in this strategy.</div>
+            <div class="fin-note">+20.8% potential return over ~2.8 years. All three analyst recovery drivers (full-price sell-through, product newness, international expansion) have direct AI enablement paths in this strategy.</div>
           </div>
         </div>
 
         <div>
           <div class="fin-chart-panel">
-            <img src="images/valuation-model.webp" alt="Lululemon Guided Valuation Model — current price $145.85 vs analyst target $176.24" />
-            <p class="caption"><strong>Fig. 3 —</strong> Lululemon Guided Valuation Model (early 2026). Current price $145.85 vs. analyst target $176.24, representing +20.8% potential return. Historical 10-year operating margins of 18.3% contrast with near-term compression from tariffs. Source: TIKR</p>
+            <img src="images/valuation-model.webp" alt="Lululemon Guided Valuation Model: current price $145.85 vs analyst target $176.24" />
+            <p class="caption"><strong>Fig. 3:</strong> Lululemon Guided Valuation Model (early 2026). Current price $145.85 vs. analyst target $176.24, representing +20.8% potential return. Historical 10-year operating margins of 18.3% contrast with near-term compression from tariffs. Source: TIKR</p>
           </div>
 
           <div class="proven-roi">
-            <p class="proven-roi-label">Proven AI ROI — Already Achieved</p>
+            <p class="proven-roi-label">Proven AI ROI: Already Achieved</p>
             <div class="roi-row">
               <span class="roi-label">ROAS Improvement (Google Perf. Max)</span>
               <span class="roi-value">+8%</span>
@@ -1632,7 +1814,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-lulu-logo">
-      <img src="images/logo-black-full.svg" alt="lululemon" style="filter: brightness(0) invert(1); height: 20px; width: auto; opacity: 0.35;">
+      <img src="images/logo-black-full.svg" alt="lululemon" style="height: 18px; width: auto; opacity: 0.35;">
     </div>
     <div class="footer-tagline">AI Strategy · From PAVE to Platform</div>
 
@@ -1647,6 +1829,152 @@
 
     <p class="footer-copy">FutureInSites &nbsp;·&nbsp; AI Strategy &amp; Digital Transformation &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; futureinsites.com</p>
   </footer>
+
+  <script>
+  (function () {
+    var input    = document.getElementById('search-input');
+    var panel    = document.getElementById('search-results');
+    var searchEl = document.getElementById('nav-search');
+    var currentHighlights = [];
+    var currentMatchIndex = -1;
+
+    /* ── Build index of searchable elements ── */
+    function buildIndex() {
+      var nodes = [];
+      var els = document.querySelectorAll(
+        'h2, h3, h4, .section-label, .section-title, p, li, td, th, .tier-badge, .gap-callout, blockquote'
+      );
+      els.forEach(function (el) {
+        if (el.closest('nav') || el.closest('footer') || el.closest('.search-results-panel')) return;
+        var text = el.textContent.trim();
+        if (text.length < 5) return;
+        // find nearest section heading for label
+        var heading = '';
+        var prev = el;
+        while (prev && !heading) {
+          prev = prev.previousElementSibling || (prev.parentElement && prev.parentElement.previousElementSibling);
+          if (prev) {
+            var h = prev.querySelector && prev.querySelector('h2, h3, .section-title');
+            if (h) heading = h.textContent.trim().slice(0, 50);
+          }
+        }
+        nodes.push({ el: el, text: text, heading: heading });
+      });
+      return nodes;
+    }
+
+    var INDEX = null;
+
+    /* ── Search ── */
+    function search(q) {
+      if (!INDEX) INDEX = buildIndex();
+      var lq = q.toLowerCase();
+      var seen = new Set();
+      var results = [];
+      INDEX.forEach(function (item) {
+        if (item.text.toLowerCase().indexOf(lq) === -1) return;
+        var key = item.el.tagName + item.text.slice(0, 40);
+        if (seen.has(key)) return;
+        seen.add(key);
+        var idx = item.text.toLowerCase().indexOf(lq);
+        var start = Math.max(0, idx - 30);
+        var excerpt = (start > 0 ? '…' : '') + item.text.slice(start, start + 80) + (item.text.length > start + 80 ? '…' : '');
+        results.push({ el: item.el, excerpt: excerpt, heading: item.heading });
+      });
+      return results.slice(0, 8);
+    }
+
+    /* ── Render results ── */
+    function render(results, q) {
+      if (!q.trim()) { panel.style.display = 'none'; panel.innerHTML = ''; return; }
+      if (results.length === 0) {
+        panel.innerHTML = '<div class="srp-empty">No results for "' + q + '"</div>' +
+          '<div class="srp-footer"><a href="bibliography.html?q=' + encodeURIComponent(q) + '" target="_blank">Search in Bibliography →</a></div>';
+        panel.style.display = 'block';
+        return;
+      }
+      var html = '<div class="srp-header">' + results.length + ' result' + (results.length > 1 ? 's' : '') + ' on this page</div>';
+      results.forEach(function (r, i) {
+        html += '<div class="srp-item" data-index="' + i + '" tabindex="0">' +
+          (r.heading ? '<span class="srp-item-label">' + esc(r.heading) + '</span>' : '') +
+          '<span class="srp-item-excerpt">' + highlight(esc(r.excerpt), q) + '</span>' +
+        '</div>';
+      });
+      html += '<div class="srp-footer"><a href="bibliography.html?q=' + encodeURIComponent(q) + '" target="_blank">Also search in Bibliography →</a></div>';
+      panel.innerHTML = html;
+      panel.style.display = 'block';
+      window.__searchResults = results;
+
+      panel.querySelectorAll('.srp-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          var idx = parseInt(this.getAttribute('data-index'));
+          var r = window.__searchResults[idx];
+          if (r && r.el) {
+            r.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            highlightElement(r.el);
+          }
+          panel.style.display = 'none';
+        });
+      });
+    }
+
+    /* ── Highlight text in results ── */
+    function highlight(str, q) {
+      var lq = q.toLowerCase();
+      var li = str.toLowerCase().indexOf(lq);
+      if (li === -1) return str;
+      return str.slice(0, li) + '<strong>' + str.slice(li, li + q.length) + '</strong>' + str.slice(li + q.length);
+    }
+
+    /* ── Highlight matched element on page ── */
+    function highlightElement(el) {
+      currentHighlights.forEach(function (h) { h.classList.remove('search-highlight'); });
+      currentHighlights = [];
+      el.classList.add('search-highlight');
+      currentHighlights.push(el);
+      setTimeout(function () { el.classList.remove('search-highlight'); }, 2800);
+    }
+
+    function esc(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    /* ── Event listeners ── */
+    input.addEventListener('input', function () {
+      var q = this.value;
+      if (q.length < 2) { panel.style.display = 'none'; return; }
+      render(search(q), q);
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { panel.style.display = 'none'; input.blur(); }
+      if (e.key === 'Enter') {
+        var q = this.value;
+        var results = search(q);
+        if (results.length > 0) {
+          results[0].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          highlightElement(results[0].el);
+          panel.style.display = 'none';
+        }
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!searchEl.contains(e.target)) panel.style.display = 'none';
+    });
+
+    /* ── Handle bibliography search via URL param ── */
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get('q');
+      if (q && document.getElementById('bib-body')) {
+        // bibliography.html: auto-search on load
+        input.value = q;
+        setTimeout(function () { render(search(q), q); }, 400);
+      }
+    })();
+  })();
+  </script>
 
 </body>
 </html>
