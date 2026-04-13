@@ -45,7 +45,7 @@
       z-index: 200;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 0 2.5rem;
       height: 56px;
       background: #FFFFFF;
@@ -63,6 +63,8 @@
       align-items: center;
       gap: 0.6rem;
       transition: color 0.2s;
+      position: absolute;
+      left: 2.5rem;
     }
 
     .nav-logo:hover { color: var(--lulu); }
@@ -84,6 +86,7 @@
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -1313,17 +1316,17 @@
       <li><a href="#strategy">Strategy</a></li>
       <li><a href="#recommendations">Recommendations</a></li>
       <li><a href="bibliography.html">Sources</a></li>
+      <li><div class="nav-search" id="nav-search">
+        <input type="text" class="nav-search-input" id="search-input" placeholder="Search this page…" autocomplete="off" aria-label="Search page">
+        <button class="nav-search-btn" id="search-btn" aria-label="Search">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="8.5" cy="8.5" r="5.5"/>
+            <line x1="13" y1="13" x2="17" y2="17"/>
+          </svg>
+        </button>
+        <div class="search-results-panel" id="search-results" role="listbox"></div>
+      </div></li>
     </ul>
-    <div class="nav-search" id="nav-search">
-      <input type="text" class="nav-search-input" id="search-input" placeholder="Search this page…" autocomplete="off" aria-label="Search page">
-      <button class="nav-search-btn" id="search-btn" aria-label="Search">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <circle cx="8.5" cy="8.5" r="5.5"/>
-          <line x1="13" y1="13" x2="17" y2="17"/>
-        </svg>
-      </button>
-      <div class="search-results-panel" id="search-results" role="listbox"></div>
-    </div>
   </nav>
 
   <!-- HERO -->
