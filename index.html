@@ -14,6 +14,7 @@
       --dark2:    #12141A;
       --accent:   #4F46E5;
       --accent-lt:#EEF2FF;
+      --cyan:     #2DD4FF;
       --bg:       #FFFFFF;
       --bg-alt:   #F8F9FB;
       --border:   #E4E7EE;
@@ -53,9 +54,18 @@
       letter-spacing: -0.02em;
       color: #FFFFFF;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
 
-    .nav-wordmark .wm-in { color: rgba(255,255,255,0.38); }
+    .nav-logo {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .nav-wordmark .wm-in { color: var(--cyan); }
     .nav-wordmark .wm-sites { color: var(--accent); }
 
     .nav-links {
@@ -90,11 +100,11 @@
 
     /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8rem 2rem 6rem;
+      padding: 6rem 2rem 5rem;
       background: var(--dark);
       position: relative;
       overflow: hidden;
@@ -112,16 +122,16 @@
       mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
     }
 
-    /* Indigo glow */
+    /* Cyan glow */
     .hero::after {
       content: '';
       position: absolute;
       top: 20%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(79,70,229,0.18) 0%, transparent 70%);
+      width: 700px;
+      height: 450px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(79,70,229,0.08) 50%, transparent 70%);
       pointer-events: none;
     }
 
@@ -140,26 +150,37 @@
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(79,70,229,0.12);
-      border: 1px solid rgba(79,70,229,0.25);
+      color: var(--cyan);
+      background: rgba(45,212,255,0.08);
+      border: 1px solid rgba(45,212,255,0.2);
       padding: 0.3rem 1rem;
       border-radius: 100px;
       margin-bottom: 2rem;
     }
 
-    .hero-h1 {
-      font-size: clamp(2.6rem, 6vw, 4.8rem);
+    .hero-tagline {
+      font-size: clamp(3rem, 8vw, 6.5rem);
       font-weight: 800;
-      color: #FFFFFF;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
+      color: var(--cyan);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-h1 {
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
     }
 
     .hero-h1 em {
       font-style: normal;
-      color: var(--accent);
+      color: #FFFFFF;
+      font-weight: 600;
     }
 
     .hero-sub {
@@ -409,6 +430,16 @@
       line-height: 1;
     }
 
+    .brand-logo {
+      display: block;
+      height: 32px;
+      width: auto;
+      max-width: 180px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 0.3rem;
+      object-fit: contain;
+    }
+
     .brand-sector {
       font-size: 0.65rem;
       font-weight: 600;
@@ -562,8 +593,11 @@
       text-align: center;
     }
 
-    .cs-lulu-badge svg {
-      fill: rgba(255,255,255,0.85);
+    .cs-lulu-badge img {
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+      height: 30px;
+      width: auto;
     }
 
     .cs-lulu-badge .badge-label {
@@ -669,6 +703,165 @@
       color: rgba(255,255,255,0.12);
     }
 
+    /* ─── FUTURE AI WIDGET ─── */
+    .future-ai-widget {
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      width: 420px;
+      background: #0d0f14;
+      border: 1px solid rgba(45,212,255,0.22);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 50px rgba(45,212,255,0.07);
+      z-index: 9999;
+      font-family: var(--font);
+      overflow: hidden;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .future-ai-widget.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(24px);
+    }
+
+    .future-ai-widget.glitch {
+      animation: fai-glitch 0.45s steps(3) forwards;
+    }
+
+    @keyframes fai-glitch {
+      0%   { filter: none; transform: translateX(0); }
+      20%  { filter: hue-rotate(90deg) saturate(4); transform: translateX(-5px) skewX(2deg); }
+      40%  { filter: hue-rotate(180deg) brightness(3); transform: translateX(5px) skewX(-2deg); }
+      60%  { filter: hue-rotate(270deg) saturate(6); transform: translateX(-3px); }
+      80%  { filter: brightness(4) invert(1); transform: translateX(3px); }
+      100% { filter: none; transform: translateX(0); opacity: 0; }
+    }
+
+    .fai-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(135deg, rgba(45,212,255,0.07) 0%, rgba(95,81,255,0.07) 100%);
+    }
+
+    .fai-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2DD4FF, #7C3AED);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 900;
+      color: #000;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .fai-header-text { flex: 1; }
+
+    .fai-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+
+    .fai-status {
+      font-size: 0.62rem;
+      color: #4ade80;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .fai-status::before { content: '● '; font-size: 0.45rem; vertical-align: middle; }
+
+    .fai-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.25);
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0 0.2rem;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .fai-close:hover { color: rgba(255,255,255,0.7); }
+
+    .fai-body { padding: 1.4rem 1.2rem 1.2rem; }
+
+    .fai-message {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      min-height: 72px;
+    }
+
+    .fai-text {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      display: inline;
+      white-space: pre-wrap;
+    }
+
+    .fai-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.95em;
+      background: #2DD4FF;
+      margin-left: 1px;
+      vertical-align: text-bottom;
+      animation: fai-blink 0.75s step-end infinite;
+    }
+
+    .fai-cursor.hidden { display: none; }
+
+    @keyframes fai-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .fai-countdown {
+      margin-top: 0.9rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: #2DD4FF;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .fai-countdown.show { opacity: 1; }
+
+    .future-ai-flash {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      pointer-events: none;
+      z-index: 99999;
+      opacity: 0;
+    }
+
+    .future-ai-flash.active {
+      animation: fai-flash-anim 0.55s ease-out forwards;
+    }
+
+    @keyframes fai-flash-anim {
+      0%   { opacity: 0.95; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 480px) { .future-ai-widget { display: none; } }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 860px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -690,7 +883,10 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-wordmark">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></a>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fi-logo.svg" class="nav-logo" alt="">
+      Future<span class="wm-in">In</span><span class="wm-sites">Sites</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#solutions">Solutions</a></li>
@@ -704,11 +900,12 @@
   <div class="hero">
     <div class="hero-inner">
 
-      <div class="hero-eyebrow">AI Strategy &amp; Digital Transformation</div>
+      <div class="hero-eyebrow">AI Strategy &amp; Digital Transformation Consultancy</div>
+
+      <div class="hero-tagline">AI Strategy &amp;<br>Digital<br>Transformation</div>
 
       <h1 class="hero-h1">
-        We help enterprise brands<br>
-        navigate the <em>AI inflection point</em>.
+        We help enterprise brands navigate the <em>AI inflection point</em>.
       </h1>
 
       <p class="hero-sub">
@@ -819,7 +1016,7 @@
       <div class="brand-grid">
 
         <div class="brand-card">
-          <div class="brand-name">Rocket Mortgage</div>
+          <img src="https://prod.rockmedialibrary.com/api/public/content/R4M-RocketMortgageLogoStacked?v=81fe94e4" alt="Rocket Mortgage" class="brand-logo">
           <div class="brand-sector">Fintech · Mortgage</div>
           <p>AI-powered loan origination, automated underwriting optimization, and personalized borrower journey design across digital and advisor-assisted channels.</p>
           <div class="brand-tags">
@@ -830,7 +1027,7 @@
         </div>
 
         <div class="brand-card">
-          <div class="brand-name">CarGurus</div>
+          <div class="brand-name" style="font-size: 1.6rem; font-weight: 900; letter-spacing: -0.04em;">Car<span style="color: var(--cyan);">Gurus</span></div>
           <div class="brand-sector">Automotive · Marketplace</div>
           <p>Machine learning-driven vehicle pricing intelligence, inventory demand forecasting, and AI-enhanced search ranking to connect buyers and dealers more effectively.</p>
           <div class="brand-tags">
@@ -841,7 +1038,7 @@
         </div>
 
         <div class="brand-card">
-          <div class="brand-name">Yelp</div>
+          <img src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/7ef71bf77a33/assets/img/brand/logo_desktop.svg" alt="Yelp" class="brand-logo">
           <div class="brand-sector">Consumer · Local Discovery</div>
           <p>AI-driven content moderation at scale, personalized local recommendation engines, and automated business insights to improve advertiser ROI across 200M+ reviews.</p>
           <div class="brand-tags">
@@ -899,9 +1096,7 @@
         <div class="cs-visual">
           <div class="cs-lulu-badge">
             <!-- lululemon logo -->
-            <svg height="30" width="212" fill="none" viewBox="0 0 170 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="lululemon">
-              <path d="M36 .647h4.57v22.821H36zm22.158 22.821h-4.57v-2.224c-1.002 1.47-2.818 2.472-5.008 2.472-3.57 0-5.98-2.316-5.98-5.884V7.22h4.601v9.422c0 1.786 1.097 3.005 2.818 3.005 2.316 0 3.569-1.908 3.569-5.29V7.221h4.57zM60.496.647h4.57v22.821h-4.57zm22.351 22.821h-4.57v-2.224c-1.002 1.47-2.818 2.472-5.008 2.472-3.569 0-5.98-2.316-5.98-5.884V7.22h4.601v9.422c0 1.786 1.097 3.005 2.819 3.005 2.315 0 3.568-1.908 3.568-5.29V7.221h4.57zM85.01.647h4.57v22.821h-4.57zm17.312 12.614c-.125-1.687-1.253-2.879-3.222-2.879-1.725 0-2.913 1.002-3.351 2.88h6.573ZM99.1 6.97c5.694 0 8.17 4.288 8.17 8.047 0 .75-.065 1.531-.065 1.531H95.654c.377 2.16 1.786 3.352 3.884 3.352 1.565 0 2.723-.69 3.066-1.848h4.57c-.502 3.569-3.568 5.664-7.795 5.664-5.538 0-8.262-4.32-8.262-8.387 0-4.037 2.442-8.36 7.983-8.36Zm9.791.25h4.571v2.255c.937-1.504 2.471-2.505 4.6-2.505 2.567 0 4.163 1.035 4.978 2.913.846-1.535 2.784-2.913 5.416-2.913 3.535 0 5.854 2.319 5.854 5.45v11.048h-4.605v-9.704c0-1.817-1.001-2.944-2.689-2.944-2.003 0-3.13-1.127-3.13-1.127v10.775h-4.57V7.221zm22.39 0h4.571v2.225c1.002-1.474 2.819-2.475 5.009-2.475 3.568 0 5.979 2.319 5.979 5.887v10.611h-4.601v-9.422c0-1.786-1.096-3.005-2.818-3.005-2.315 0-3.569 1.908-3.569 5.29v7.137h-4.57V7.221ZM16.693 19.733a3.953 3.953 0 0 1-3.946-3.96c0-.78.283-1.47.55-2.186q.286-.76.566-1.524c.444-1.2.867-2.426 1.064-3.693.156-1.007.136-2.23-.627-3-.583-.59-1.487-.72-2.297-.727-.81.004-1.713.137-2.296.727-.764.77-.78 1.993-.627 3 .197 1.267.62 2.497 1.063 3.693q.281.764.567 1.524c.267.716.55 1.406.55 2.186a3.953 3.953 0 0 1-3.947 3.96 3.95 3.95 0 0 1-3.663-2.486 2.575 2.575 0 0 0 3.77-.307c.553-.7.67-1.657.433-2.507-.26-.93-.82-1.683-1.27-2.546-1.463-2.5-1.403-4.37-1.403-4.37a5.4 5.4 0 0 1 .06-.807q.035-.216.09-.427.055-.199.13-.393a3.3 3.3 0 0 1 .603-.997 3 3 0 0 1 .27-.273 4 4 0 0 1 .63-.467q.176-.104.36-.193a6 6 0 0 1 .8-.317 7 7 0 0 1 .437-.126q.23-.059.46-.107.24-.048.48-.087a14 14 0 0 1 1.02-.117q.268-.019.537-.033c.183-.01.37-.013.553-.016q.33-.005.66-.004.278.005.557.014.27.009.54.03.262.018.523.046.254.027.507.063.248.035.494.08.238.043.474.096.228.051.452.113.217.06.43.13.204.067.403.144.192.075.38.16.18.082.353.174.166.09.326.188.153.095.299.2.14.1.273.21.127.106.246.218.113.109.216.224a3.5 3.5 0 0 1 .52.56 3.5 3.5 0 0 1 .627 1.477 5 5 0 0 1 .08.933s.06 1.87-1.403 4.37c-.45.864-1.014 1.617-1.27 2.547-.237.85-.117 1.807.436 2.507a2.575 2.575 0 0 0 3.77.306 3.97 3.97 0 0 1-3.67 2.48M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0"></path>
-            </svg>
+            <img src="images/logo-black-full.svg" alt="lululemon" />
             <span class="badge-label">Premier Case Study · AI Strategy</span>
           </div>
         </div>
@@ -933,6 +1128,86 @@
     </ul>
     <p class="footer-copy">© 2026 FutureInSites · futureinsites.com</p>
   </footer>
+
+  <!-- FUTURE AI WIDGET -->
+  <div id="future-ai-widget" class="future-ai-widget hidden">
+    <div class="fai-header">
+      <div class="fai-avatar">FI</div>
+      <div class="fai-header-text">
+        <div class="fai-name">Future AI</div>
+        <div class="fai-status">online</div>
+      </div>
+      <button class="fai-close" onclick="document.getElementById('future-ai-widget').classList.add('hidden')" aria-label="Close">×</button>
+    </div>
+    <div class="fai-body">
+      <div class="fai-message">
+        <span id="fai-text" class="fai-text"></span><span id="fai-cursor" class="fai-cursor"></span>
+      </div>
+      <div id="fai-countdown" class="fai-countdown"></div>
+    </div>
+  </div>
+  <div id="future-ai-flash" class="future-ai-flash"></div>
+
+  <script>
+  (function () {
+    if (localStorage.getItem('future-ai-seen')) return;
+
+    var MESSAGE = "AI is already disrupting your industry.\n\nThe question isn't if — it's whether you'll lead the transformation or react to it.\n\nFutureInSites helps enterprise brands build AI strategies that win.";
+
+    window.addEventListener('load', function () {
+      setTimeout(startSequence, 1200);
+    });
+
+    function startSequence() {
+      localStorage.setItem('future-ai-seen', '1');
+      var widget  = document.getElementById('future-ai-widget');
+      var textEl  = document.getElementById('fai-text');
+      var cursor  = document.getElementById('fai-cursor');
+      widget.classList.remove('hidden');
+
+      var i = 0;
+      function typeNext() {
+        if (i >= MESSAGE.length) {
+          cursor.classList.add('hidden');
+          setTimeout(function () { startCountdown(5); }, 600);
+          return;
+        }
+        var ch = MESSAGE[i];
+        textEl.textContent += ch;
+        i++;
+        var next = MESSAGE[i] || '';
+        var delay = (ch === '.' || ch === '!') ? 180 : (ch === ',') ? 80 : (ch === '\n') ? 40 : 22;
+        setTimeout(typeNext, delay);
+      }
+      setTimeout(typeNext, 500);
+    }
+
+    function startCountdown(n) {
+      var cdEl = document.getElementById('fai-countdown');
+      cdEl.classList.add('show');
+      function tick(n) {
+        if (n <= 0) { explode(); return; }
+        cdEl.textContent = 'Self-destructing in ' + n + '...';
+        setTimeout(function () { tick(n - 1); }, 1000);
+      }
+      tick(n);
+    }
+
+    function explode() {
+      var widget = document.getElementById('future-ai-widget');
+      var flash  = document.getElementById('future-ai-flash');
+      widget.classList.add('glitch');
+      setTimeout(function () {
+        flash.classList.add('active');
+        setTimeout(function () {
+          widget.classList.add('hidden');
+          widget.classList.remove('glitch');
+          flash.classList.remove('active');
+        }, 550);
+      }, 450);
+    }
+  })();
+  </script>
 
 </body>
 </html>
