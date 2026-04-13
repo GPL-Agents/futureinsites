@@ -788,29 +788,15 @@
     .m-low     { background: var(--border); color: var(--muted); }
     .m-rising  { background: rgba(20,15,15,0.3); color: var(--lulu); }
 
-    .comp-share-bar {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+    .comp-share-pie {
       margin-top: 2.5rem;
-      padding: 1.5rem 2rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      flex-wrap: wrap;
+      text-align: center;
     }
-
-    .share-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
-
-    .share-track { flex: 1; height: 6px; background: var(--border); border-radius: 4px; position: relative; min-width: 120px; }
-
-    .share-nike { height: 100%; width: 31.6%; background: rgba(20,15,15,0.3); border-radius: 4px 0 0 4px; }
-    .share-lulu { height: 100%; width: 21.2%; background: var(--lulu); border-radius: 0; position: absolute; left: 31.6%; top: 0; }
-
-    .share-pct { font-size: 1.1rem; font-weight: 300; letter-spacing: -0.02em; }
-    .share-pct.nike { color: var(--muted); }
-    .share-pct.lulu { color: var(--lulu); font-weight: 500; }
-    .share-name { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .comp-share-pie img {
+      max-width: 420px;
+      width: 100%;
+      border-radius: 0;
+    }
 
     /* ─── STRATEGY ─── */
     .strategy { background: var(--bg); }
@@ -1503,23 +1489,9 @@
         </table>
       </div>
 
-      <!-- U.S. Market Share Bar -->
-      <div class="comp-share-bar">
-        <div class="share-label">U.S. Athleisure Market Share</div>
-        <div class="share-track">
-          <div class="share-nike"></div>
-          <div class="share-lulu"></div>
-        </div>
-        <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap;">
-          <div style="text-align:center;">
-            <div class="share-pct nike">31.6%</div>
-            <div class="share-name">Nike</div>
-          </div>
-          <div style="text-align:center;">
-            <div class="share-pct lulu">21.2%</div>
-            <div class="share-name">Lululemon</div>
-          </div>
-        </div>
+      <!-- U.S. Market Share Pie -->
+      <div class="comp-share-pie">
+        <img src="images/market-share-pie.png" alt="U.S. Athleisure Market Share: Others 47.2%, Nike 31.6%, Lululemon 21.2%">
       </div>
 
     </div>
