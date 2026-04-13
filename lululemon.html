@@ -957,9 +957,23 @@
     .qw-num.monitor { background: #888888; }
 
     /* Matrix legend key */
+    .matrix-key-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.9rem 1.4rem 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-top: none;
+    }
     .matrix-key {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, auto);
+      grid-auto-flow: column;
       gap: 0.35rem 2rem;
       margin: 1rem 0 0;
       padding: 1rem 1.4rem;
@@ -1627,6 +1641,7 @@
       </div>
 
       <!-- Initiative Legend Key -->
+      <div class="matrix-key-title">AI Initiatives</div>
       <div class="matrix-key">
         <div class="matrix-key-item"><span class="matrix-key-dot" style="background:#1A3A5C;">1</span> Performance Marketing</div>
         <div class="matrix-key-item"><span class="matrix-key-dot" style="background:#1A3A5C;">2</span> Personalization Engine</div>
