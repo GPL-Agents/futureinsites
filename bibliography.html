@@ -75,20 +75,26 @@
     .nav-logo:hover { color: var(--lulu); }
     .nav-logo:hover::before { width: 24px; }
 
-    .nav-back {
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--lulu);
+      text-decoration: none;
       font-size: 0.875rem;
       font-weight: 400;
-      color: var(--lulu);
-      background: transparent;
-      text-decoration: none;
       letter-spacing: 0;
       text-transform: none;
-      padding: 0;
       position: relative;
+      padding-bottom: 2px;
       transition: color 0.2s;
     }
 
-    .nav-back::after {
+    .nav-links a::after {
       content: '';
       position: absolute;
       bottom: -2px;
@@ -99,7 +105,51 @@
       transition: width 0.22s ease;
     }
 
-    .nav-back:hover::after { width: 100%; }
+    .nav-links a:hover::after,
+    .nav-links a.nav-link-active::after { width: 100%; }
+
+    .nav-links a.nav-link-active { color: var(--lulu); font-weight: 500; }
+
+    /* ─── NAV SEARCH ─── */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+
+    .nav-search-input {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--lulu);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(20,15,15,0.25);
+      padding: 0.2rem 1.6rem 0.2rem 0;
+      width: 160px;
+      outline: none;
+      transition: border-color 0.2s, width 0.3s;
+    }
+
+    .nav-search-input::placeholder { color: rgba(20,15,15,0.38); }
+    .nav-search-input:focus { border-bottom-color: var(--lulu); width: 200px; }
+
+    .nav-search-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-search-btn svg { width: 14px; height: 14px; }
 
     /* ─── PAGE HEADER h1 bold ─── */
     .page-header h1 {
@@ -270,8 +320,23 @@
 <body>
 
   <nav>
-    <a href="lululemon.html" class="nav-logo">lululemon · ai strategy</a>
-    <a href="lululemon.html" class="nav-back">← Back to Strategy</a>
+    <a href="lululemon.html" class="nav-logo">FutureInSites</a>
+    <ul class="nav-links">
+      <li><a href="lululemon.html#exec-summary">Overview</a></li>
+      <li><a href="lululemon.html#capabilities">Capabilities</a></li>
+      <li><a href="lululemon.html#strategy">Strategy</a></li>
+      <li><a href="lululemon.html#recommendations">Recommendations</a></li>
+      <li><a href="bibliography.html" class="nav-link-active">Sources</a></li>
+    </ul>
+    <div class="nav-search" id="nav-search">
+      <input type="text" class="nav-search-input" id="search-input" placeholder="Search bibliography…" autocomplete="off" aria-label="Search">
+      <button class="nav-search-btn" id="search-btn" aria-label="Search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="8.5" cy="8.5" r="5.5"/>
+          <line x1="13" y1="13" x2="17" y2="17"/>
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <div class="page-header">
@@ -634,28 +699,50 @@
     document.addEventListener('DOMContentLoaded', function () {
       var params = new URLSearchParams(window.location.search);
       var q = params.get('q');
-      var input = document.getElementById('bib-search-input');
-      if (q && input) {
-        input.value = q;
+
+      // Wire both the inline bar and the nav bar to the same search
+      var inputs = [
+        document.getElementById('bib-search-input'),
+        document.getElementById('search-input')
+      ].filter(Boolean);
+
+      function syncInputs(val) {
+        inputs.forEach(function (inp) { inp.value = val; });
+      }
+
+      if (q) {
+        syncInputs(q);
         runSearch(q);
       }
 
-      if (input) {
-        var form = document.getElementById('bib-search-form');
-        form && form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          runSearch(input.value);
-        });
-        input.addEventListener('input', function () {
-          if (this.value.length === 0) {
+      inputs.forEach(function (inp) {
+        inp.addEventListener('input', function () {
+          var val = this.value;
+          syncInputs(val);
+          if (val.length === 0) {
             document.querySelectorAll('.bib-entry').forEach(function (i) { i.classList.remove('bib-hidden'); });
             var c = document.getElementById('bib-count');
             if (c) c.textContent = '';
-          } else if (this.value.length >= 2) {
-            runSearch(this.value);
+          } else if (val.length >= 2) {
+            runSearch(val);
           }
         });
-      }
+        inp.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') { e.preventDefault(); runSearch(this.value); }
+          if (e.key === 'Escape') {
+            syncInputs('');
+            document.querySelectorAll('.bib-entry').forEach(function (i) { i.classList.remove('bib-hidden'); });
+            var c = document.getElementById('bib-count');
+            if (c) c.textContent = '';
+          }
+        });
+      });
+
+      var form = document.getElementById('bib-search-form');
+      form && form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        runSearch(document.getElementById('bib-search-input').value);
+      });
     });
   })();
   </script>
