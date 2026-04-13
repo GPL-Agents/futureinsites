@@ -125,10 +125,7 @@
       align-items: center;
       justify-content: center;
       padding: 6rem 2rem 4rem;
-      background:
-        radial-gradient(ellipse 45% 80% at 0% 50%, rgba(37,99,235,0.28) 0%, transparent 100%),
-        radial-gradient(ellipse 45% 80% at 100% 50%, rgba(45,212,255,0.18) 0%, transparent 100%),
-        var(--dark);
+      background: var(--dark);
       position: relative;
       overflow: hidden;
     }
@@ -189,6 +186,7 @@
       letter-spacing: -0.04em;
       text-transform: uppercase;
       margin-bottom: 1.8rem;
+      text-wrap: balance;
     }
 
     .hero-h1 {
@@ -198,6 +196,7 @@
       line-height: 1.1;
       letter-spacing: -0.03em;
       margin-bottom: 1.5rem;
+      text-wrap: balance;
     }
 
     .hero-h1 em {
@@ -212,6 +211,7 @@
       max-width: 760px;
       margin: 0 auto 1.2rem;
       line-height: 1.7;
+      text-wrap: pretty;
     }
 
     .hero-actions {
@@ -328,7 +328,7 @@
       align-items: center;
     }
 
-    .about-body p {
+    .about-body p:not(.section-label) {
       font-size: 0.97rem;
       color: var(--muted);
       line-height: 1.85;
@@ -737,8 +737,9 @@
     /* ─── FUTURE AI WIDGET ─── */
     .future-ai-widget {
       position: fixed;
-      right: 28px;
-      bottom: 28px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 420px;
       background: #0d0f14;
       border: 1px solid rgba(45,212,255,0.22);
@@ -755,7 +756,7 @@
     .future-ai-widget.hidden {
       opacity: 0;
       pointer-events: none;
-      transform: translateY(24px);
+      transform: translate(-50%, calc(-50% + 24px));
     }
 
     .future-ai-widget.glitch {
@@ -909,6 +910,8 @@
       .contact-card { padding: 2.5rem 1.5rem; }
     }
   </style>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="images/fi-logo.svg" type="image/svg+xml">
 </head>
 <body>
 
@@ -978,7 +981,7 @@
             <span class="lbl">AI Use Cases Deployed</span>
           </div>
           <div class="about-stat">
-            <span class="num">$B+</span>
+            <span class="num">$8B+</span>
             <span class="lbl">Revenue Under Strategy</span>
           </div>
           <div class="about-stat">
@@ -1182,13 +1185,11 @@
 
   <script>
   (function () {
-    var SEEN_KEY = 'fi-widget-v2';
-    if (localStorage.getItem(SEEN_KEY)) return;
+    /* fires on every visit */
 
     var MESSAGE = "AI is already disrupting your industry.\n\nThe question isn\u2019t if \u2014 it\u2019s whether you\u2019ll lead the transformation or react to it.\n\nFutureInSites helps enterprise brands build AI strategies that win.";
 
     function startSequence() {
-      localStorage.setItem(SEEN_KEY, '1');
       var widget = document.getElementById('future-ai-widget');
       var textEl = document.getElementById('fai-text');
       var cursor = document.getElementById('fai-cursor');
