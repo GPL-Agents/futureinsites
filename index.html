@@ -49,10 +49,6 @@
     }
 
     .nav-wordmark {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #FFFFFF;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -63,6 +59,30 @@
       width: 24px;
       height: 24px;
       flex-shrink: 0;
+    }
+
+    .nav-wordmark-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .nav-wordmark-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.58rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin-top: 2px;
+      white-space: nowrap;
     }
 
     .nav-wordmark .wm-in { color: var(--cyan); }
@@ -138,7 +158,7 @@
     .hero-inner {
       position: relative;
       z-index: 10;
-      max-width: 820px;
+      max-width: 920px;
       text-align: center;
     }
 
@@ -708,7 +728,7 @@
 
     .footer-copy {
       font-size: 0.68rem;
-      color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
     }
 
     /* ─── FUTURE AI WIDGET ─── */
@@ -893,7 +913,10 @@
   <nav>
     <a href="index.html" class="nav-wordmark">
       <img src="images/fi-logo.svg" class="nav-logo" alt="">
-      <span>Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></span>
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></span>
+        <span class="nav-wordmark-tagline">Fuel disruption. Engineer advantage. Drive outcomes.</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -915,7 +938,7 @@
       </h1>
 
       <p class="hero-sub">
-        FutureInSites partners with forward-looking companies to design, prioritize, and execute AI strategies that drive measurable business outcomes, not just technology roadmaps.
+        FutureInSites partners with forward-looking companies to design, prioritize, and execute AI strategies<br>that drive measurable business outcomes, not just technology roadmaps.
       </p>
 
       <div class="hero-actions">
@@ -1117,22 +1140,20 @@
       <div class="contact-card">
         <h2>Ready to build your AI strategy?</h2>
         <p>Whether you're starting from zero or scaling an existing AI program, we'd love to explore how FutureInSites can help your organization move faster with more confidence.</p>
-        <a href="mailto:hello@futureinsites.com" class="contact-email">hello@futureinsites.com</a>
+        <a href="mailto:strategy@futureinsites.com" class="contact-email">strategy@futureinsites.com</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-wordmark"><span>Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></span></div>
-    <div class="footer-tagline">AI Strategy & Digital Transformation</div>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
       <li><a href="#solutions">Solutions</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <p class="footer-copy">© 2026 FutureInSites · futureinsites.com</p>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York USA</p>
   </footer>
 
   <!-- FUTURE AI WIDGET -->
