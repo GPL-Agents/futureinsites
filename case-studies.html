@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies — FutureInSites</title>
+  <meta name="description" content="FutureInSites case studies in AI strategy and digital transformation." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #4F46E5;
+      --accent-lt:#EEF2FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .nav-wordmark .wm-in { color: rgba(255,255,255,0.38); }
+    .nav-wordmark .wm-sites { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      text-align: center;
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── CASE STUDIES LIST ─── */
+    .cs-list {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* Premier case study card */
+    .cs-premier {
+      background: var(--dark);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.25s;
+    }
+
+    .cs-premier:hover { border-color: rgba(79,70,229,0.35); }
+
+    .cs-premier-content {
+      padding: 3rem;
+    }
+
+    .cs-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,70,229,0.15);
+      border: 1px solid rgba(79,70,229,0.3);
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-client {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.5rem;
+    }
+
+    .cs-premier-content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+
+    .cs-premier-content p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .cs-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .cs-pill {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.22rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    .cs-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .cs-cta:hover { opacity: 0.85; }
+
+    .cs-premier-visual {
+      background: #140F0F;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .cs-premier-visual svg { fill: rgba(255,255,255,0.8); }
+
+    .cs-visual-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+    }
+
+    .cs-metrics-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .cs-metric-mini {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 0.9rem;
+    }
+
+    .cs-metric-mini .val {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .cs-metric-mini .lbl {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* Coming Soon placeholder cards */
+    .cs-more-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .cs-more-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .cs-placeholder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .cs-placeholder {
+      background: var(--bg-alt);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .cs-placeholder .ph-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .cs-placeholder h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .cs-placeholder p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cs-coming-soon {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--border);
+      padding: 0.22rem 0.65rem;
+      border-radius: 100px;
+      margin-top: 1rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-wordmark .wm-in { color: rgba(255,255,255,0.2); }
+    .footer-wordmark .wm-sites { color: rgba(79,70,229,0.7); }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.12); }
+
+    @media (max-width: 760px) {
+      .cs-premier { grid-template-columns: 1fr; }
+      .cs-premier-visual { min-height: 200px; }
+      .cs-placeholder-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html" class="active">Case Studies</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="eyebrow">Our Work</p>
+    <h1>Case Studies</h1>
+    <p>In-depth AI strategy engagements with leading enterprise brands — from readiness assessment to implementation roadmap.</p>
+  </div>
+
+  <!-- CASE STUDIES LIST -->
+  <div class="cs-list">
+
+    <!-- Premier Case Study: Lululemon -->
+    <div class="cs-premier">
+      <div class="cs-premier-content">
+        <span class="cs-tag">Premier Case Study</span>
+        <div class="cs-client">lululemon athletica &nbsp;·&nbsp; Retail / Athleisure</div>
+        <h2>From PAVE to Platform: Building the AI Foundation for Lululemon's Next Growth Chapter</h2>
+        <p>A comprehensive AI strategy for a $10B+ premium athleisure brand navigating slowing U.S. growth, intensifying competition, and the appointment of a first-ever Chief AI & Technology Officer. We delivered a three-pillar AI framework, use case prioritization matrix, governance structure, and phased investment roadmap.</p>
+
+        <div class="cs-metrics-mini">
+          <div class="cs-metric-mini">
+            <span class="val">$400–600M</span>
+            <span class="lbl">Projected Revenue Impact</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">3 Pillars</span>
+            <span class="lbl">Strategic Framework</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">12 Cases</span>
+            <span class="lbl">Use Cases Analyzed</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">$85–110M</span>
+            <span class="lbl">3-Year Investment Range</span>
+          </div>
+        </div>
+
+        <div class="cs-pills">
+          <span class="cs-pill">AI Readiness Assessment</span>
+          <span class="cs-pill">Use Case Prioritization</span>
+          <span class="cs-pill">Competitive Benchmarking</span>
+          <span class="cs-pill">Implementation Roadmap</span>
+          <span class="cs-pill">AI Governance</span>
+          <span class="cs-pill">Financial Business Case</span>
+        </div>
+
+        <a href="lululemon.html" class="cs-cta">Read Full Case Study →</a>
+      </div>
+
+      <div class="cs-premier-visual">
+        <svg height="26" width="186" fill="none" viewBox="0 0 170 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="lululemon">
+          <path d="M36 .647h4.57v22.821H36zm22.158 22.821h-4.57v-2.224c-1.002 1.47-2.818 2.472-5.008 2.472-3.57 0-5.98-2.316-5.98-5.884V7.22h4.601v9.422c0 1.786 1.097 3.005 2.818 3.005 2.316 0 3.569-1.908 3.569-5.29V7.221h4.57zM60.496.647h4.57v22.821h-4.57zm22.351 22.821h-4.57v-2.224c-1.002 1.47-2.818 2.472-5.008 2.472-3.569 0-5.98-2.316-5.98-5.884V7.22h4.601v9.422c0 1.786 1.097 3.005 2.819 3.005 2.315 0 3.568-1.908 3.568-5.29V7.221h4.57zM85.01.647h4.57v22.821h-4.57zm17.312 12.614c-.125-1.687-1.253-2.879-3.222-2.879-1.725 0-2.913 1.002-3.351 2.88h6.573ZM99.1 6.97c5.694 0 8.17 4.288 8.17 8.047 0 .75-.065 1.531-.065 1.531H95.654c.377 2.16 1.786 3.352 3.884 3.352 1.565 0 2.723-.69 3.066-1.848h4.57c-.502 3.569-3.568 5.664-7.795 5.664-5.538 0-8.262-4.32-8.262-8.387 0-4.037 2.442-8.36 7.983-8.36Zm9.791.25h4.571v2.255c.937-1.504 2.471-2.505 4.6-2.505 2.567 0 4.163 1.035 4.978 2.913.846-1.535 2.784-2.913 5.416-2.913 3.535 0 5.854 2.319 5.854 5.45v11.048h-4.605v-9.704c0-1.817-1.001-2.944-2.689-2.944-2.003 0-3.13-1.127-3.13-1.127v10.775h-4.57V7.221zm22.39 0h4.571v2.225c1.002-1.474 2.819-2.475 5.009-2.475 3.568 0 5.979 2.319 5.979 5.887v10.611h-4.601v-9.422c0-1.786-1.096-3.005-2.818-3.005-2.315 0-3.569 1.908-3.569 5.29v7.137h-4.57V7.221ZM16.693 19.733a3.953 3.953 0 0 1-3.946-3.96c0-.78.283-1.47.55-2.186q.286-.76.566-1.524c.444-1.2.867-2.426 1.064-3.693.156-1.007.136-2.23-.627-3-.583-.59-1.487-.72-2.297-.727-.81.004-1.713.137-2.296.727-.764.77-.78 1.993-.627 3 .197 1.267.62 2.497 1.063 3.693q.281.764.567 1.524c.267.716.55 1.406.55 2.186a3.953 3.953 0 0 1-3.947 3.96 3.95 3.95 0 0 1-3.663-2.486 2.575 2.575 0 0 0 3.77-.307c.553-.7.67-1.657.433-2.507-.26-.93-.82-1.683-1.27-2.546-1.463-2.5-1.403-4.37-1.403-4.37a5.4 5.4 0 0 1 .06-.807q.035-.216.09-.427.055-.199.13-.393a3.3 3.3 0 0 1 .603-.997 3 3 0 0 1 .27-.273 4 4 0 0 1 .63-.467q.176-.104.36-.193a6 6 0 0 1 .8-.317 7 7 0 0 1 .437-.126q.23-.059.46-.107.24-.048.48-.087a14 14 0 0 1 1.02-.117q.268-.019.537-.033c.183-.01.37-.013.553-.016q.33-.005.66-.004.278.005.557.014.27.009.54.03.262.018.523.046.254.027.507.063.248.035.494.08.238.043.474.096.228.051.452.113.217.06.43.13.204.067.403.144.192.075.38.16.18.082.353.174.166.09.326.188.153.095.299.2.14.1.273.21.127.106.246.218.113.109.216.224a3.5 3.5 0 0 1 .52.56 3.5 3.5 0 0 1 .627 1.477 5 5 0 0 1 .08.933s.06 1.87-1.403 4.37c-.45.864-1.014 1.617-1.27 2.547-.237.85-.117 1.807.436 2.507a2.575 2.575 0 0 0 3.77.306 3.97 3.97 0 0 1-3.67 2.48M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0"></path>
+        </svg>
+        <div class="cs-visual-label">AI Strategy · April 2026<br>Retail / Athleisure</div>
+      </div>
+    </div>
+
+    <!-- More coming soon -->
+    <div class="cs-more-label">More Case Studies</div>
+
+    <div class="cs-placeholder-grid">
+
+      <div class="cs-placeholder">
+        <div class="ph-label">Fintech · Mortgage</div>
+        <h3>Rocket Mortgage</h3>
+        <p>AI-powered loan origination, automated underwriting, and borrower experience personalization.</p>
+        <span class="cs-coming-soon">In Progress</span>
+      </div>
+
+      <div class="cs-placeholder">
+        <div class="ph-label">Automotive · Marketplace</div>
+        <h3>CarGurus</h3>
+        <p>ML-driven pricing intelligence, inventory demand forecasting, and AI-enhanced search ranking.</p>
+        <span class="cs-coming-soon">In Progress</span>
+      </div>
+
+      <div class="cs-placeholder">
+        <div class="ph-label">Consumer · Local Discovery</div>
+        <h3>Yelp</h3>
+        <p>AI-driven content moderation, personalized recommendation engines, and advertiser intelligence.</p>
+        <span class="cs-coming-soon">In Progress</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 FutureInSites · futureinsites.com</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FutureInSites — AI Strategy & Digital Transformation</title>
+  <meta name="description" content="FutureInSites is an AI Strategy and Digital Transformation consultancy helping enterprise brands navigate the AI inflection point." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #4F46E5;
+      --accent-lt:#EEF2FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .nav-wordmark .wm-in { color: rgba(255,255,255,0.38); }
+    .nav-wordmark .wm-sites { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #FFFFFF; }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 6rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    /* Indigo glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(79,70,229,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 820px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,70,229,0.12);
+      border: 1px solid rgba(79,70,229,0.25);
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      max-width: 580px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 100px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-outline {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      background: transparent;
+      text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: rgba(255,255,255,0.4); color: #FFFFFF; }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.56rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── ABOUT STRIP ─── */
+    .about-strip {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-body p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-body p strong { color: var(--dark); }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .about-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.4rem;
+      text-align: center;
+    }
+
+    .about-stat .num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-stat .lbl {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ─── SOLUTIONS ─── */
+    .solutions { background: var(--bg); }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .solution-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .solution-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(79,70,229,0.08);
+    }
+
+    .sol-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-lt);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+    }
+
+    .solution-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .solution-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── AI EXPERIENCE ─── */
+    .experience { background: var(--dark); padding: 5rem 2rem; }
+
+    .experience .section-title { color: #FFFFFF; }
+    .experience .section-intro { color: rgba(255,255,255,0.5); }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .brand-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .brand-card:hover {
+      border-color: rgba(79,70,229,0.4);
+      background: rgba(79,70,229,0.06);
+    }
+
+    .brand-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.3rem;
+      line-height: 1;
+    }
+
+    .brand-sector {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .brand-card p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+    }
+
+    .brand-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.2rem;
+    }
+
+    .brand-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    /* ─── CASE STUDY FEATURE ─── */
+    .case-study-feature { background: var(--bg-alt); border-top: 1px solid var(--border); }
+
+    .cs-card {
+      background: var(--dark);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cs-content {
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cs-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,70,229,0.15);
+      border: 1px solid rgba(79,70,229,0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .cs-brand {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.6rem;
+    }
+
+    .cs-content h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+    }
+
+    .cs-content p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .cs-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-metric {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .cs-metric .val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .cs-metric .desc {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .cs-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+      width: fit-content;
+    }
+
+    .cs-link:hover { opacity: 0.85; }
+
+    .cs-visual {
+      background: #140F0F;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      min-height: 420px;
+    }
+
+    .cs-lulu-badge {
+      text-align: center;
+    }
+
+    .cs-lulu-badge svg {
+      fill: rgba(255,255,255,0.85);
+    }
+
+    .cs-lulu-badge .badge-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 1.5rem;
+      display: block;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+    .contact-card {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 4rem;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .contact-card h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .contact-email {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(79,70,229,0.35);
+      background: rgba(79,70,229,0.1);
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .contact-email:hover { background: rgba(79,70,229,0.2); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-wordmark .wm-in { color: rgba(255,255,255,0.2); }
+    .footer-wordmark .wm-sites { color: rgba(79,70,229,0.7); }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.12);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .solutions-grid { grid-template-columns: 1fr 1fr; }
+      .brand-grid { grid-template-columns: 1fr; }
+      .cs-card { grid-template-columns: 1fr; }
+      .cs-visual { min-height: 280px; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+
+      <div class="hero-eyebrow">AI Strategy &amp; Digital Transformation</div>
+
+      <h1 class="hero-h1">
+        We help enterprise brands<br>
+        navigate the <em>AI inflection point</em>.
+      </h1>
+
+      <p class="hero-sub">
+        FutureInSites partners with forward-looking companies to design, prioritize, and execute AI strategies that drive measurable business outcomes — not just technology roadmaps.
+      </p>
+
+      <div class="hero-actions">
+        <a href="case-studies.html" class="btn-primary">View Case Studies →</a>
+        <a href="#about" class="btn-outline">Learn More</a>
+      </div>
+
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-strip" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+
+        <div class="about-body">
+          <p class="section-label">About FutureInSites</p>
+          <h2 class="section-title">Strategy first.<br>Technology second.</h2>
+          <p>FutureInSites was built on a simple belief: the companies that win with AI aren't the ones who deploy the most tools — they're the ones who ask the right questions first.</p>
+          <p>We bring <strong>enterprise-grade AI strategy</strong> to growth-stage and established brands. Our engagements are grounded in business outcomes, competitive dynamics, and the hard realities of organizational readiness.</p>
+          <p>We've worked with brands across <strong>fintech, automotive, hospitality, and consumer goods</strong> — industries where AI is reshaping customer expectations and competitive advantage simultaneously.</p>
+        </div>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="num">3+</span>
+            <span class="lbl">Enterprise Verticals</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">10+</span>
+            <span class="lbl">AI Use Cases Deployed</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">$B+</span>
+            <span class="lbl">Revenue Under Strategy</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">100%</span>
+            <span class="lbl">Business-Led Approach</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section class="solutions" id="solutions">
+    <div class="section-inner">
+      <p class="section-label">Solutions</p>
+      <h2 class="section-title">What we do</h2>
+      <p class="section-intro">From readiness assessment to full implementation roadmap, our engagements are structured around where you actually are — and where AI can generate the fastest, most defensible returns.</p>
+
+      <div class="solutions-grid">
+
+        <div class="solution-card">
+          <div class="sol-icon">🔍</div>
+          <h3>AI Readiness Assessment</h3>
+          <p>A structured audit of your data infrastructure, talent, culture, and existing AI investments. The foundation every strategy requires before committing resources.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="sol-icon">🗺</div>
+          <h3>AI Strategy & Roadmap</h3>
+          <p>A prioritized, phased AI strategy tied directly to your business objectives — with build/buy/partner decisions, governance frameworks, and investment sizing.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="sol-icon">⚡</div>
+          <h3>Use Case Prioritization</h3>
+          <p>Identify and sequence your highest-value AI initiatives using a value vs. complexity framework. Separate quick wins from multi-year investments.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="sol-icon">🤝</div>
+          <h3>Vendor Selection & Architecture</h3>
+          <p>Navigate the AI vendor landscape. We help you select, configure, and integrate the right platforms without unnecessary complexity or lock-in.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="sol-icon">🏛</div>
+          <h3>AI Governance & Ethics</h3>
+          <p>Establish responsible AI frameworks, stage-gate investment criteria, and Centers of Excellence that scale your AI program without unmanaged risk.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="sol-icon">📈</div>
+          <h3>Executive Advisory</h3>
+          <p>Ongoing strategic counsel for C-suite and Board-level AI decision-making. We translate technical complexity into clear business tradeoffs.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AI BRAND EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="section-inner">
+      <p class="section-label">AI Experience</p>
+      <h2 class="section-title">Brands we've helped navigate AI</h2>
+      <p class="section-intro">FutureInSites brings hands-on AI strategy experience from some of the most data-intensive consumer brands in the country.</p>
+
+      <div class="brand-grid">
+
+        <div class="brand-card">
+          <div class="brand-name">Rocket Mortgage</div>
+          <div class="brand-sector">Fintech · Mortgage</div>
+          <p>AI-powered loan origination, automated underwriting optimization, and personalized borrower journey design across digital and advisor-assisted channels.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">NLP / Document AI</span>
+            <span class="brand-tag">Personalization</span>
+            <span class="brand-tag">Workflow Automation</span>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-name">CarGurus</div>
+          <div class="brand-sector">Automotive · Marketplace</div>
+          <p>Machine learning-driven vehicle pricing intelligence, inventory demand forecasting, and AI-enhanced search ranking to connect buyers and dealers more effectively.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">Pricing AI</span>
+            <span class="brand-tag">Demand Forecasting</span>
+            <span class="brand-tag">Search Ranking</span>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="brand-name">Yelp</div>
+          <div class="brand-sector">Consumer · Local Discovery</div>
+          <p>AI-driven content moderation at scale, personalized local recommendation engines, and automated business insights to improve advertiser ROI across 200M+ reviews.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">Content Moderation</span>
+            <span class="brand-tag">Recommendations</span>
+            <span class="brand-tag">Advertiser AI</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY FEATURE -->
+  <section class="case-study-feature" id="case-studies">
+    <div class="section-inner">
+      <p class="section-label">Case Studies</p>
+      <h2 class="section-title">Our work in depth</h2>
+      <p class="section-intro">A comprehensive AI strategy engagement — from readiness assessment to phased implementation roadmap.</p>
+
+      <div class="cs-card">
+
+        <div class="cs-content">
+          <div>
+            <span class="cs-tag">Premier Case Study</span>
+            <div class="cs-brand">lululemon athletica</div>
+            <h3>From PAVE to Platform: Building the AI Foundation for Lululemon's Next Growth Chapter</h3>
+            <p>A full-scope AI strategy for a $10B+ premium athleisure brand at a strategic inflection point — declining U.S. comps, aggressive new competitors, and a newly appointed Chief AI & Technology Officer. Our analysis covers capability assessment, competitive benchmarking, use case prioritization, and a phased three-pillar implementation roadmap.</p>
+          </div>
+
+          <div>
+            <div class="cs-metrics">
+              <div class="cs-metric">
+                <span class="val">$400–600M</span>
+                <span class="desc">Projected Revenue Impact</span>
+              </div>
+              <div class="cs-metric">
+                <span class="val">$85–110M</span>
+                <span class="desc">3-Year Investment Range</span>
+              </div>
+              <div class="cs-metric">
+                <span class="val">20M+</span>
+                <span class="desc">Loyalty Members to Activate</span>
+              </div>
+              <div class="cs-metric">
+                <span class="val">5</span>
+                <span class="desc">Strategic Recommendations</span>
+              </div>
+            </div>
+
+            <a href="lululemon.html" class="cs-link">View Full Case Study →</a>
+          </div>
+        </div>
+
+        <div class="cs-visual">
+          <div class="cs-lulu-badge">
+            <!-- lululemon logo -->
+            <svg height="30" width="212" fill="none" viewBox="0 0 170 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="lululemon">
+              <path d="M36 .647h4.57v22.821H36zm22.158 22.821h-4.57v-2.224c-1.002 1.47-2.818 2.472-5.008 2.472-3.57 0-5.98-2.316-5.98-5.884V7.22h4.601v9.422c0 1.786 1.097 3.005 2.818 3.005 2.316 0 3.569-1.908 3.569-5.29V7.221h4.57zM60.496.647h4.57v22.821h-4.57zm22.351 22.821h-4.57v-2.224c-1.002 1.47-2.818 2.472-5.008 2.472-3.569 0-5.98-2.316-5.98-5.884V7.22h4.601v9.422c0 1.786 1.097 3.005 2.819 3.005 2.315 0 3.568-1.908 3.568-5.29V7.221h4.57zM85.01.647h4.57v22.821h-4.57zm17.312 12.614c-.125-1.687-1.253-2.879-3.222-2.879-1.725 0-2.913 1.002-3.351 2.88h6.573ZM99.1 6.97c5.694 0 8.17 4.288 8.17 8.047 0 .75-.065 1.531-.065 1.531H95.654c.377 2.16 1.786 3.352 3.884 3.352 1.565 0 2.723-.69 3.066-1.848h4.57c-.502 3.569-3.568 5.664-7.795 5.664-5.538 0-8.262-4.32-8.262-8.387 0-4.037 2.442-8.36 7.983-8.36Zm9.791.25h4.571v2.255c.937-1.504 2.471-2.505 4.6-2.505 2.567 0 4.163 1.035 4.978 2.913.846-1.535 2.784-2.913 5.416-2.913 3.535 0 5.854 2.319 5.854 5.45v11.048h-4.605v-9.704c0-1.817-1.001-2.944-2.689-2.944-2.003 0-3.13-1.127-3.13-1.127v10.775h-4.57V7.221zm22.39 0h4.571v2.225c1.002-1.474 2.819-2.475 5.009-2.475 3.568 0 5.979 2.319 5.979 5.887v10.611h-4.601v-9.422c0-1.786-1.096-3.005-2.818-3.005-2.315 0-3.569 1.908-3.569 5.29v7.137h-4.57V7.221ZM16.693 19.733a3.953 3.953 0 0 1-3.946-3.96c0-.78.283-1.47.55-2.186q.286-.76.566-1.524c.444-1.2.867-2.426 1.064-3.693.156-1.007.136-2.23-.627-3-.583-.59-1.487-.72-2.297-.727-.81.004-1.713.137-2.296.727-.764.77-.78 1.993-.627 3 .197 1.267.62 2.497 1.063 3.693q.281.764.567 1.524c.267.716.55 1.406.55 2.186a3.953 3.953 0 0 1-3.947 3.96 3.95 3.95 0 0 1-3.663-2.486 2.575 2.575 0 0 0 3.77-.307c.553-.7.67-1.657.433-2.507-.26-.93-.82-1.683-1.27-2.546-1.463-2.5-1.403-4.37-1.403-4.37a5.4 5.4 0 0 1 .06-.807q.035-.216.09-.427.055-.199.13-.393a3.3 3.3 0 0 1 .603-.997 3 3 0 0 1 .27-.273 4 4 0 0 1 .63-.467q.176-.104.36-.193a6 6 0 0 1 .8-.317 7 7 0 0 1 .437-.126q.23-.059.46-.107.24-.048.48-.087a14 14 0 0 1 1.02-.117q.268-.019.537-.033c.183-.01.37-.013.553-.016q.33-.005.66-.004.278.005.557.014.27.009.54.03.262.018.523.046.254.027.507.063.248.035.494.08.238.043.474.096.228.051.452.113.217.06.43.13.204.067.403.144.192.075.38.16.18.082.353.174.166.09.326.188.153.095.299.2.14.1.273.21.127.106.246.218.113.109.216.224a3.5 3.5 0 0 1 .52.56 3.5 3.5 0 0 1 .627 1.477 5 5 0 0 1 .08.933s.06 1.87-1.403 4.37c-.45.864-1.014 1.617-1.27 2.547-.237.85-.117 1.807.436 2.507a2.575 2.575 0 0 0 3.77.306 3.97 3.97 0 0 1-3.67 2.48M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0"></path>
+            </svg>
+            <span class="badge-label">Premier Case Study · AI Strategy</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-inner">
+      <div class="contact-card">
+        <h2>Ready to build your AI strategy?</h2>
+        <p>Whether you're starting from zero or scaling an existing AI program, we'd love to explore how FutureInSites can help your organization move faster with more confidence.</p>
+        <a href="mailto:hello@futureinsites.com" class="contact-email">hello@futureinsites.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></div>
+    <div class="footer-tagline">AI Strategy & Digital Transformation</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 FutureInSites · futureinsites.com</p>
+  </footer>
+
+</body>
+</html>
