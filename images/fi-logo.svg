@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+  <defs>
+    <linearGradient id="fi-grad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4FF"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Vertical spine: top-left node down to bottom node -->
+  <line x1="14" y1="14" x2="14" y2="66" stroke="url(#fi-grad)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Top horizontal bar: left to right -->
+  <line x1="14" y1="14" x2="54" y2="14" stroke="url(#fi-grad)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Diagonal from top-right node down-left to mid junction -->
+  <line x1="54" y1="14" x2="34" y2="40" stroke="url(#fi-grad)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Mid horizontal bar: left to right -->
+  <line x1="14" y1="40" x2="52" y2="40" stroke="url(#fi-grad)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Small diagonal kick at bottom -->
+  <line x1="14" y1="66" x2="26" y2="74" stroke="url(#fi-grad)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Nodes -->
+  <!-- Top-left (large, cyan start) -->
+  <circle cx="14" cy="14" r="8" fill="url(#fi-grad)"/>
+  <!-- Top-right -->
+  <circle cx="54" cy="14" r="6" fill="url(#fi-grad)"/>
+  <!-- Mid-right diagonal end -->
+  <circle cx="34" cy="40" r="6" fill="url(#fi-grad)"/>
+  <!-- Mid-left junction -->
+  <circle cx="52" cy="40" r="5.5" fill="url(#fi-grad)"/>
+  <!-- Bottom of spine -->
+  <circle cx="14" cy="66" r="6" fill="url(#fi-grad)"/>
+  <!-- Bottom kick end -->
+  <circle cx="26" cy="74" r="4.5" fill="url(#fi-grad)"/>
+</svg>
