@@ -789,13 +789,16 @@
     .m-rising  { background: rgba(20,15,15,0.3); color: var(--lulu); }
 
     .comp-share-pie {
-      margin-top: 2.5rem;
+      margin-top: 1rem;
+      margin-bottom: 0;
       text-align: center;
     }
     .comp-share-pie img {
-      max-width: 420px;
+      max-width: 380px;
       width: 100%;
       border-radius: 0;
+      display: block;
+      margin: 0 auto;
     }
 
     /* ─── STRATEGY ─── */
@@ -932,6 +935,67 @@
     .qw-badge.strategic {
       background: rgba(20,15,15,0.15);
       color: var(--lulu);
+    }
+
+    /* Number circle on initiative cards */
+    .qw-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      margin-bottom: 0.5rem;
+    }
+    .qw-num.quick   { background: #1A3A5C; }
+    .qw-num.invest  { background: #2D7D46; }
+    .qw-num.reconsider { background: #C8102E; }
+    .qw-num.monitor { background: #888888; }
+
+    /* Matrix legend key */
+    .matrix-key {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.35rem 2rem;
+      margin: 1rem 0 0;
+      padding: 1rem 1.4rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+    .matrix-key-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.73rem;
+      color: #444;
+    }
+    .matrix-key-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-sublabel {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 2rem 0 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
     }
 
     .qw-card h4 {
