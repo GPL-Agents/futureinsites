@@ -264,8 +264,10 @@
     .detail-footer a:hover { color: #fff; }
 
     .nav-search {
-      display: flex; align-items: center; gap: 0;
-      position: absolute; right: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
     }
     .nav-search-input {
       font-family: var(--font); font-size: 0.8rem; color: var(--ink);
@@ -318,16 +320,16 @@
       <li><a href="lululemon.html#recommendations">Recommendations</a></li>
       <li><a href="detail.html" class="nav-link-active">Detail</a></li>
       <li><a href="bibliography.html">Sources</a></li>
+      <li><div class="nav-search" id="nav-search">
+        <input type="text" class="nav-search-input" id="search-input" placeholder="Search" autocomplete="off" aria-label="Search">
+        <button class="nav-search-btn" id="search-btn" aria-label="Search">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="17" y2="17"/>
+          </svg>
+        </button>
+        <div class="search-results-panel" id="search-results" role="listbox"></div>
+      </div></li>
     </ul>
-    <div class="nav-search" id="nav-search">
-      <input type="text" class="nav-search-input" id="search-input" placeholder="Search" autocomplete="off" aria-label="Search">
-      <button class="nav-search-btn" id="search-btn" aria-label="Search">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="17" y2="17"/>
-        </svg>
-      </button>
-      <div class="search-results-panel" id="search-results" role="listbox"></div>
-    </div>
   </nav>
 
   <!-- HERO -->
