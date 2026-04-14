@@ -263,8 +263,46 @@
     .detail-footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
     .detail-footer a:hover { color: #fff; }
 
+    .nav-search {
+      display: flex; align-items: center; gap: 0;
+      position: absolute; right: 2.5rem;
+    }
+    .nav-search-input {
+      font-family: var(--font); font-size: 0.8rem; color: var(--ink);
+      background: transparent; border: none;
+      border-bottom: 1px solid rgba(20,15,15,0.25);
+      padding: 0.2rem 1.6rem 0.2rem 0; width: 140px; outline: none;
+      transition: border-color 0.2s, width 0.3s;
+    }
+    .nav-search-input::placeholder { color: rgba(20,15,15,0.38); }
+    .nav-search-input:focus { border-bottom-color: var(--lulu); width: 200px; }
+    .nav-search-btn {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; padding: 0;
+      color: var(--muted); display: flex; align-items: center;
+    }
+    .nav-search-btn svg { width: 14px; height: 14px; }
+    .search-results-panel {
+      position: absolute; top: calc(100% + 12px); right: 0;
+      width: 340px; background: #FFFFFF;
+      border: 1px solid rgba(20,15,15,0.12);
+      box-shadow: 0 8px 32px rgba(20,15,15,0.1);
+      z-index: 300; display: none; max-height: 420px; overflow-y: auto;
+    }
+    .srp-header { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0.75rem 1rem 0.5rem; border-bottom: 1px solid rgba(20,15,15,0.08); }
+    .srp-item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.65rem 1rem; cursor: pointer; border-bottom: 1px solid rgba(20,15,15,0.05); transition: background 0.15s; }
+    .srp-item:hover { background: var(--bg); }
+    .srp-item-label { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(20,15,15,0.3); }
+    .srp-item-excerpt { font-size: 0.7rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .srp-footer { padding: 0.6rem 1rem; font-size: 0.7rem; color: var(--muted); border-top: 1px solid rgba(20,15,15,0.08); }
+    .srp-footer a { color: var(--lulu); text-decoration: none; font-weight: 500; }
+    .srp-footer a:hover { text-decoration: underline; }
+    .srp-empty { padding: 1.2rem 1rem; font-size: 0.78rem; color: var(--muted); text-align: center; }
+    .search-highlight { background: rgba(204,0,0,0.1); outline: 1px solid rgba(204,0,0,0.3); border-radius: 2px; }
+
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      .nav-search { display: none; }
       .detail-wrap { padding: 2rem 1.2rem 4rem; }
     }
   </style>
@@ -281,6 +319,15 @@
       <li><a href="detail.html" class="nav-link-active">Detail</a></li>
       <li><a href="bibliography.html">Sources</a></li>
     </ul>
+    <div class="nav-search" id="nav-search">
+      <input type="text" class="nav-search-input" id="search-input" placeholder="Search" autocomplete="off" aria-label="Search">
+      <button class="nav-search-btn" id="search-btn" aria-label="Search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="17" y2="17"/>
+        </svg>
+      </button>
+      <div class="search-results-panel" id="search-results" role="listbox"></div>
+    </div>
     <a href="index.html#contact" class="nav-cta">Get in Touch</a>
   </nav>
 
@@ -330,6 +377,100 @@
   <div class="detail-footer">
     <p><a href="index.html">FutureInSites</a> &nbsp;|&nbsp; AI Strategy &amp; Digital Transformation &nbsp;|&nbsp; April 2026</p>
   </div>
+
+  <script>
+  (function () {
+    var input    = document.getElementById('search-input');
+    var panel    = document.getElementById('search-results');
+    var searchEl = document.getElementById('nav-search');
+
+    function buildIndex() {
+      var nodes = [];
+      var els = document.querySelectorAll('h2, h3, p, li, td, th, blockquote');
+      els.forEach(function (el) {
+        if (el.closest('nav') || el.closest('footer') || el.closest('.search-results-panel') || el.closest('.toc-bar')) return;
+        var text = el.textContent.trim();
+        if (text.length < 5) return;
+        var heading = '';
+        var prev = el.previousElementSibling;
+        while (prev) {
+          if (prev.matches && prev.matches('h2, h3')) { heading = prev.textContent.trim().slice(0, 50); break; }
+          prev = prev.previousElementSibling;
+        }
+        nodes.push({ el: el, text: text, heading: heading });
+      });
+      return nodes;
+    }
+
+    var INDEX = null;
+
+    function search(q) {
+      if (!INDEX) INDEX = buildIndex();
+      var lq = q.toLowerCase();
+      var seen = new Set();
+      var results = [];
+      INDEX.forEach(function (item) {
+        if (item.text.toLowerCase().indexOf(lq) === -1) return;
+        var key = item.el.tagName + item.text.slice(0, 40);
+        if (seen.has(key)) return;
+        seen.add(key);
+        var idx = item.text.toLowerCase().indexOf(lq);
+        var start = Math.max(0, idx - 30);
+        var excerpt = (start > 0 ? '…' : '') + item.text.slice(start, start + 80) + (item.text.length > start + 80 ? '…' : '');
+        results.push({ el: item.el, excerpt: excerpt, heading: item.heading });
+      });
+      return results.slice(0, 8);
+    }
+
+    function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function highlight(str, q) {
+      var li = str.toLowerCase().indexOf(q.toLowerCase());
+      if (li === -1) return str;
+      return str.slice(0, li) + '<strong>' + str.slice(li, li + q.length) + '</strong>' + str.slice(li + q.length);
+    }
+
+    function render(results, q) {
+      if (!q.trim()) { panel.style.display = 'none'; panel.innerHTML = ''; return; }
+      if (results.length === 0) {
+        panel.innerHTML = '<div class="srp-empty">No results for "' + esc(q) + '"</div>';
+        panel.style.display = 'block'; return;
+      }
+      var html = '<div class="srp-header">' + results.length + ' result' + (results.length > 1 ? 's' : '') + ' on this page</div>';
+      results.forEach(function (r, i) {
+        html += '<div class="srp-item" data-index="' + i + '" tabindex="0">' +
+          (r.heading ? '<span class="srp-item-label">' + esc(r.heading) + '</span>' : '') +
+          '<span class="srp-item-excerpt">' + highlight(esc(r.excerpt), q) + '</span></div>';
+      });
+      html += '<div class="srp-footer"><a href="bibliography.html">View Sources →</a></div>';
+      panel.innerHTML = html;
+      panel.style.display = 'block';
+      window.__srResults = results;
+      panel.querySelectorAll('.srp-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          var r = window.__srResults[parseInt(this.getAttribute('data-index'))];
+          if (r && r.el) { r.el.scrollIntoView({ behavior: 'smooth', block: 'center' }); r.el.classList.add('search-highlight'); setTimeout(function () { r.el.classList.remove('search-highlight'); }, 2800); }
+          panel.style.display = 'none';
+        });
+      });
+    }
+
+    input.addEventListener('input', function () {
+      if (this.value.length < 2) { panel.style.display = 'none'; return; }
+      render(search(this.value), this.value);
+    });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { panel.style.display = 'none'; input.blur(); }
+      if (e.key === 'Enter') {
+        var r = search(this.value);
+        if (r.length) { r[0].el.scrollIntoView({ behavior: 'smooth', block: 'center' }); panel.style.display = 'none'; }
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (!searchEl.contains(e.target)) panel.style.display = 'none';
+    });
+  })();
+  </script>
 
 </body>
 </html>
