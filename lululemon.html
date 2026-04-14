@@ -90,7 +90,7 @@
     }
 
     .nav-links a {
-      color: var(--lulu);
+      color: var(--ink);
       text-decoration: none;
       font-size: 0.875rem;
       font-weight: 400;
@@ -113,8 +113,10 @@
       transition: width 0.22s ease;
     }
 
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover::after,
+    .nav-links a.nav-link-active::after { width: 100%; }
     .nav-links a:hover { color: var(--lulu); }
+    .nav-links a.nav-link-active { color: var(--lulu); font-weight: 500; }
 
     /* ─── NAV SEARCH ─── */
     .nav-search {
