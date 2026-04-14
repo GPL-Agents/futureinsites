@@ -157,8 +157,28 @@
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 4px;
-      padding: 1.6rem 1.8rem;
       margin-bottom: 3.5rem;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .toc-text {
+      padding: 1.6rem 1.8rem;
+      flex: 1;
+    }
+
+    .toc-img {
+      flex: 0 0 38%;
+      max-width: 38%;
+      overflow: hidden;
+    }
+
+    .toc-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     .toc-bar h4 {
       font-size: 0.68rem;
@@ -498,6 +518,7 @@
 
     <!-- TABLE OF CONTENTS -->
     <div class="toc-bar">
+      <div class="toc-text">
       <p class="toc-title">Contents</p>
       <ol>
         <li><a href="#executive-summary">Executive Summary</a></li>
@@ -512,6 +533,10 @@
         <li><a href="#section-9">Governance, Ethics &amp; Risk</a></li>
         <li><a href="#recommendations">Recommendations</a></li>
       </ol>
+      </div>
+      <div class="toc-img">
+        <img src="images/lulu-store-portrait.webp" alt="Lululemon store" />
+      </div>
     </div>
 
     <!-- DOCUMENT BODY -->
