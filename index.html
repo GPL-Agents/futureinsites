@@ -779,7 +779,6 @@
       font-family: var(--font);
       overflow: hidden;
       opacity: 1;
-      transform: translateY(0);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
@@ -1244,13 +1243,13 @@
     var SELF_DESTRUCT = "\n\nThis message will self-destruct in 5 seconds - ";
 
     function charDelay(ch, next) {
-      if (ch === '.' && next === '.') return 55;   /* inside ellipsis */
-      if (ch === '.') return 200 + Math.random() * 80;
-      if (ch === '!') return 200 + Math.random() * 60;
-      if (ch === ',') return 80 + Math.random() * 30;
-      if (ch === '\n') return 42;
-      if (Math.random() < 0.05) return 90 + Math.random() * 130; /* occasional hesitation */
-      return 14 + Math.random() * 22;
+      if (ch === '.' && next === '.') return 70;   /* inside ellipsis */
+      if (ch === '.') return 260 + Math.random() * 100;
+      if (ch === '!') return 260 + Math.random() * 80;
+      if (ch === ',') return 110 + Math.random() * 40;
+      if (ch === '\n') return 55;
+      if (Math.random() < 0.05) return 120 + Math.random() * 160; /* occasional hesitation */
+      return 22 + Math.random() * 28;
     }
 
     function startSequence() {
@@ -1262,7 +1261,7 @@
       var i = 0;
       function typeMain() {
         if (i >= MESSAGE.length) {
-          setTimeout(typeSelfDestruct, 900);
+          setTimeout(typeSelfDestruct, 2800);
           return;
         }
         var ch = MESSAGE[i];
