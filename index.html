@@ -524,14 +524,14 @@
 
     .cs-tag {
       display: inline-block;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(79,70,229,0.15);
-      border: 1px solid rgba(79,70,229,0.3);
-      padding: 0.3rem 0.8rem;
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      padding: 0.35rem 1rem;
       border-radius: 100px;
       margin-bottom: 1.5rem;
       width: fit-content;
@@ -618,6 +618,29 @@
       justify-content: center;
       padding: 3rem;
       min-height: 420px;
+    }
+
+    .cs-visual-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 1.5rem;
+    }
+
+    .cs-hero-img {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .cs-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
     .cs-lulu-badge {
@@ -863,9 +886,10 @@
     }
 
     .fai-countdown {
-      margin-top: 0.9rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
+      margin-top: 1rem;
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
       color: #2DD4FF;
       text-transform: uppercase;
       opacity: 0;
@@ -1131,10 +1155,17 @@
         </div>
 
         <div class="cs-visual">
-          <div class="cs-lulu-badge">
-            <!-- lululemon logo -->
-            <img src="images/logo-black-full.svg" alt="lululemon" />
-            <span class="badge-label">Premier Case Study · AI Strategy</span>
+          <div class="cs-visual-inner">
+            <div class="cs-hero-img">
+              <img src="images/lululemon-1-1653574674022.webp" alt="lululemon" />
+            </div>
+            <div class="cs-hero-img">
+              <img src="images/Lululemon-p-1080.jpg" alt="lululemon" />
+            </div>
+            <div class="cs-lulu-badge">
+              <img src="images/logo-black-full.svg" alt="lululemon" />
+              <span class="badge-label">Premier Case Study · AI Strategy</span>
+            </div>
           </div>
         </div>
 
@@ -1224,7 +1255,8 @@
         var j = 0;
         function typeSD() {
           if (j >= SELF_DESTRUCT.length) {
-            setTimeout(function () { typeNumber(1); }, 500);
+            cursor.classList.add('hidden');
+            setTimeout(function () { startTimer(5); }, 300);
             return;
           }
           textEl.textContent += SELF_DESTRUCT[j];
@@ -1234,15 +1266,15 @@
         typeSD();
       }
 
-      function typeNumber(n) {
-        if (n > 4) {
-          cursor.classList.add('hidden');
-          setTimeout(explode, 350);
-          return;
+      function startTimer(n) {
+        var cdEl = document.getElementById('fai-countdown');
+        cdEl.classList.add('show');
+        function tick(n) {
+          if (n < 2) { setTimeout(explode, 600); return; }
+          cdEl.textContent = n;
+          setTimeout(function () { tick(n - 1); }, 1000);
         }
-        if (n > 1) textEl.textContent += ', ';
-        textEl.textContent += n;
-        setTimeout(function () { typeNumber(n + 1); }, 1000 + Math.random() * 80);
+        tick(n);
       }
 
       setTimeout(typeMain, 500);
