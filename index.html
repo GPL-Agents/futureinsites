@@ -1187,7 +1187,19 @@
   (function () {
     /* fires on every visit */
 
-    var MESSAGE = "AI is already disrupting your industry.\n\nThe question isn\u2019t if \u2014 it\u2019s whether you\u2019ll lead the transformation or react to it.\n\nFutureInSites helps enterprise brands build AI strategies that win.";
+    var MESSAGE = "Consider this a courtesy transmission...\n\nAI is shifting the ground beneath your feet, transforming the landscape of your industry. What happens next depends entirely on what you do in the next 90 days.\n\nYour competitors are already 18 months into this transformation. Some are further.\n\nYou\u2019re at the inflection point. Right now. This moment.\n\nChoose wisely.";
+
+    var SELF_DESTRUCT = "\n\nThis message will self-destruct in 5 seconds - ";
+
+    function charDelay(ch, next) {
+      if (ch === '.' && next === '.') return 55;   /* inside ellipsis */
+      if (ch === '.') return 200 + Math.random() * 80;
+      if (ch === '!') return 200 + Math.random() * 60;
+      if (ch === ',') return 80 + Math.random() * 30;
+      if (ch === '\n') return 42;
+      if (Math.random() < 0.05) return 90 + Math.random() * 130; /* occasional hesitation */
+      return 14 + Math.random() * 22;
+    }
 
     function startSequence() {
       var widget = document.getElementById('future-ai-widget');
@@ -1196,31 +1208,44 @@
       widget.classList.remove('hidden');
 
       var i = 0;
-      function typeNext() {
+      function typeMain() {
         if (i >= MESSAGE.length) {
-          cursor.classList.add('hidden');
-          setTimeout(function () { startCountdown(5); }, 600);
+          setTimeout(typeSelfDestruct, 900);
           return;
         }
         var ch = MESSAGE[i];
+        var next = MESSAGE[i + 1] || '';
         textEl.textContent += ch;
         i++;
-        var next = MESSAGE[i] || '';
-        var delay = (ch === '.' || ch === '!') ? 180 : (ch === ',') ? 80 : (ch === '\n') ? 40 : 22;
-        setTimeout(typeNext, delay);
+        setTimeout(typeMain, charDelay(ch, next));
       }
-      setTimeout(typeNext, 500);
-    }
 
-    function startCountdown(n) {
-      var cdEl = document.getElementById('fai-countdown');
-      cdEl.classList.add('show');
-      function tick(n) {
-        if (n <= 0) { explode(); return; }
-        cdEl.textContent = 'Self-destructing in ' + n + '\u2026';
-        setTimeout(function () { tick(n - 1); }, 1000);
+      function typeSelfDestruct() {
+        var j = 0;
+        function typeSD() {
+          if (j >= SELF_DESTRUCT.length) {
+            setTimeout(function () { typeNumber(1); }, 500);
+            return;
+          }
+          textEl.textContent += SELF_DESTRUCT[j];
+          j++;
+          setTimeout(typeSD, 14 + Math.random() * 18);
+        }
+        typeSD();
       }
-      tick(n);
+
+      function typeNumber(n) {
+        if (n > 4) {
+          cursor.classList.add('hidden');
+          setTimeout(explode, 350);
+          return;
+        }
+        if (n > 1) textEl.textContent += ', ';
+        textEl.textContent += n;
+        setTimeout(function () { typeNumber(n + 1); }, 1000 + Math.random() * 80);
+      }
+
+      setTimeout(typeMain, 500);
     }
 
     function explode() {
@@ -1237,8 +1262,6 @@
       }, 450);
     }
 
-    /* Script runs at bottom of body — page is likely already loaded.
-       Check readyState so we never miss the load event. */
     if (document.readyState === 'complete') {
       setTimeout(startSequence, 1200);
     } else {
