@@ -618,7 +618,7 @@
     .cs-link:hover { opacity: 0.85; }
 
     .cs-visual {
-      background: #140F0F;
+      background: #0B0C10;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -639,19 +639,19 @@
       text-align: center;
     }
 
-    .cs-img-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+    .cs-img-stack {
+      display: flex;
+      flex-direction: column;
       gap: 0.7rem;
       width: 100%;
     }
 
-    .cs-img-row img {
+    .cs-img-stack img {
       width: 100%;
-      height: 130px;
+      height: auto;
+      display: block;
       object-fit: cover;
       border-radius: 8px;
-      display: block;
     }
 
     .cs-lulu-badge img {
@@ -1167,7 +1167,7 @@
               <img src="images/logo-black-full.svg" alt="lululemon" />
               <span class="badge-label">Premier Case Study · AI Strategy</span>
             </div>
-            <div class="cs-img-row">
+            <div class="cs-img-stack">
               <img src="images/lululemon-1-1653574674022.webp" alt="lululemon" />
               <img src="images/Lululemon-p-1080.jpg" alt="lululemon" />
               <img src="images/maxresdefault.jpg" alt="lululemon" />
