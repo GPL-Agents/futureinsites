@@ -815,7 +815,8 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: linear-gradient(135deg, #2DD4FF, #7C3AED);
+      background: #0B0C10;
+      border: 1px solid rgba(45,212,255,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1290,8 +1291,8 @@
         var cdEl = document.getElementById('fai-countdown');
         cdEl.classList.add('show');
         function tick(n) {
-          if (n < 2) { setTimeout(explode, 600); return; }
           cdEl.textContent = n;
+          if (n === 1) { setTimeout(explode, 700); return; }
           setTimeout(function () { tick(n - 1); }, 1000);
         }
         tick(n);
