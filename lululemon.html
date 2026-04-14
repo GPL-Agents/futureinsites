@@ -794,12 +794,18 @@
     .m-rising  { background: rgba(20,15,15,0.3); color: var(--lulu); }
 
     .comp-share-pie {
-      margin-top: 1rem;
-      margin-bottom: 0;
+      margin: 0;
       text-align: center;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .comp-share-pie img {
-      max-width: 380px;
+      max-width: 320px;
       width: 100%;
       border-radius: 0;
       display: block;
@@ -1202,7 +1208,7 @@
     }
 
     .proven-roi {
-      margin-top: 1.5rem;
+      margin-top: 0;
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 2px;
@@ -1210,10 +1216,11 @@
     }
 
     .proven-roi-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
       margin-bottom: 1rem;
     }
 
@@ -1574,7 +1581,7 @@
       </div>
 
       <!-- Market Share + Proven ROI side by side -->
-      <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap; margin-top: 1rem;">
+      <div style="display: flex; gap: 2.5rem; align-items: stretch; flex-wrap: wrap; margin-top: 1rem;">
         <div class="comp-share-pie" style="margin: 0; flex: 0 0 auto;">
           <img src="images/market-share-pie.png" alt="U.S. Athleisure Market Share: Others 47.2%, Nike 31.6%, Lululemon 21.2%">
         </div>
