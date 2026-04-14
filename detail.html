@@ -328,7 +328,6 @@
       </button>
       <div class="search-results-panel" id="search-results" role="listbox"></div>
     </div>
-    <a href="index.html#contact" class="nav-cta">Get in Touch</a>
   </nav>
 
   <!-- HERO -->
@@ -377,6 +376,18 @@
   <div class="detail-footer">
     <p><a href="index.html">FutureInSites</a> &nbsp;|&nbsp; AI Strategy &amp; Digital Transformation &nbsp;|&nbsp; April 2026</p>
   </div>
+
+  <script>
+  /* Nav active state on click */
+  (function () {
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.querySelectorAll('.nav-links a').forEach(function (l) { l.classList.remove('nav-link-active'); });
+        this.classList.add('nav-link-active');
+      });
+    });
+  })();
+  </script>
 
   <script>
   (function () {

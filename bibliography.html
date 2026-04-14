@@ -753,5 +753,17 @@
   })();
   </script>
 
+  <script>
+  /* Nav active state on click */
+  (function () {
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.querySelectorAll('.nav-links a').forEach(function (l) { l.classList.remove('nav-link-active'); });
+        this.classList.add('nav-link-active');
+      });
+    });
+  })();
+  </script>
+
 </body>
 </html>
