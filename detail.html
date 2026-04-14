@@ -190,6 +190,20 @@
       margin-bottom: 0.3rem;
       color: var(--muted);
     }
+
+    .toc-unnumbered {
+      font-size: 0.875rem;
+      margin: 0 0 0.3rem 0;
+      color: var(--muted);
+    }
+
+    .toc-unnumbered a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .toc-unnumbered a:hover { color: var(--lulu); }
     .toc-bar a {
       color: inherit;
       text-decoration: none;
@@ -514,8 +528,8 @@
     <div class="toc-bar">
       <div class="toc-text">
       <p class="toc-title">Contents</p>
+      <p class="toc-unnumbered"><a href="#executive-summary">Executive Summary</a></p>
       <ol>
-        <li><a href="#executive-summary">Executive Summary</a></li>
         <li><a href="#section-1">Company &amp; Industry Context</a></li>
         <li><a href="#section-2">Lululemon&#8217;s Stated AI Strategy</a></li>
         <li><a href="#section-3">AI Readiness Assessment</a></li>
@@ -525,8 +539,8 @@
         <li><a href="#section-7">Strategic Questions &amp; Framing</a></li>
         <li><a href="#section-8">AI Strategy Framework</a></li>
         <li><a href="#section-9">Governance, Ethics &amp; Risk</a></li>
-        <li><a href="#recommendations">Recommendations</a></li>
       </ol>
+      <p class="toc-unnumbered"><a href="#recommendations">Recommendations</a></p>
       </div>
       <div class="toc-img" aria-hidden="true"></div>
     </div>
