@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alphabet: Search Economics in the Age of Gemini | FutureInSites</title>
+  <meta name="description" content="Forecasting case writeup on Alphabet (GOOGL). AI's impact on Search and Cloud economics, two-engine business architecture, AI Overviews monetization, and Cloud capex modeling. Prepared by FutureInSites." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #140F0F;
+      --ink-dim:    rgba(20,15,15,0.06);
+      --bg:         #FFFFFF;
+      --bg-alt:     #F5F3F0;
+      --bg-hero:    #0E0F12;
+      --border:     #E2DDD6;
+      --muted:      #6B6560;
+      --g-blue:     #4285F4;
+      --g-red:      #EA4335;
+      --g-yellow:   #FBBC04;
+      --g-green:    #34A853;
+      --accent:     #4285F4;
+      --accent-bg:  rgba(66,133,244,0.08);
+      --accent-bd:  rgba(66,133,244,0.28);
+      --pos-bg:     rgba(52,168,83,0.12);
+      --pos-text:   #1F6B45;
+      --neg-text:   #C74634;
+      --font:       Calibre, Helvetica, "Helvetica Neue", Roboto, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--bg);
+      background: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.4rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.75; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6rem 2rem 5rem;
+      background: var(--bg-hero);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 420px;
+      background: radial-gradient(ellipse at center, rgba(66,133,244,0.16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 880px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 3rem;
+    }
+
+    /* Google four-color wordmark */
+    .hero-google-logo {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.9rem;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+    }
+
+    .google-wordmark {
+      font-family: var(--font);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      line-height: 1;
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    .google-wordmark .l1 { color: var(--g-blue); }
+    .google-wordmark .l2 { color: var(--g-red); }
+    .google-wordmark .l3 { color: var(--g-yellow); }
+    .google-wordmark .l4 { color: var(--g-blue); }
+    .google-wordmark .l5 { color: var(--g-green); }
+    .google-wordmark .l6 { color: var(--g-red); }
+
+    .alphabet-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      border-left: 1px solid rgba(255,255,255,0.18);
+      padding-left: 0.9rem;
+      align-self: center;
+    }
+
+    .hero-title-sub {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title-main {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      font-weight: 300;
+      color: #FFFFFF;
+      line-height: 1.05;
+      display: block;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin: 1.5rem auto 2.5rem;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span.sep { color: rgba(255,255,255,0.15); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── RECOMMENDATION STRIP ─── */
+    .rec-strip {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem;
+    }
+
+    .rec-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .rec-cell {
+      background: var(--ink);
+      padding: 1.4rem 1.4rem;
+    }
+
+    .rec-cell .rec-key {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .rec-cell .rec-val {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .rec-cell.flag .rec-val {
+      color: var(--g-green);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .rec-cell .rec-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      padding: 5.5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    .section-body p {
+      color: var(--ink);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+      font-size: 0.97rem;
+    }
+
+    .section-body p strong { font-weight: 600; }
+
+    /* ─── BOTTOM LINE / THESIS ─── */
+    .thesis { background: var(--bg); }
+
+    .thesis-block {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 3rem;
+      font-size: 1.02rem;
+      color: var(--ink);
+      line-height: 1.85;
+    }
+
+    .thesis-block strong { font-weight: 600; }
+
+    /* ─── METRIC TILES ─── */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .metric-tile {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-bottom: 2px solid var(--ink);
+      border-radius: 2px;
+      padding: 1.8rem 1.6rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .metric-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(20,15,15,0.08);
+    }
+
+    .metric-tile.blue { border-bottom-color: var(--g-blue); }
+    .metric-tile.green { border-bottom-color: var(--g-green); }
+    .metric-tile.red { border-bottom-color: var(--g-red); }
+    .metric-tile.yellow { border-bottom-color: var(--g-yellow); }
+
+    .metric-tile .num {
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+      display: block;
+      letter-spacing: -0.02em;
+    }
+
+    .metric-tile.blue .num { color: var(--g-blue); }
+    .metric-tile.green .num { color: var(--g-green); }
+    .metric-tile.red .num { color: var(--g-red); }
+    .metric-tile.yellow .num { color: #B98700; }
+
+    .metric-tile .lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── PILL TAGS ─── */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pill {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.32rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    /* ─── SITUATION ─── */
+    .situation { background: var(--bg-alt); }
+
+    /* ─── TWO-ENGINE ARCHITECTURE ─── */
+    .engines { background: var(--bg); }
+
+    .engine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .engine-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--ink);
+      border-radius: 2px;
+      padding: 2rem 2rem 2.2rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .engine-card.search { border-top-color: var(--g-blue); }
+    .engine-card.cloud { border-top-color: var(--g-green); }
+
+    .engine-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(20,15,15,0.07);
+    }
+
+    .engine-card .engine-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .engine-card.search .engine-tag { color: var(--g-blue); }
+    .engine-card.cloud .engine-tag { color: var(--g-green); }
+
+    .engine-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .engine-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .engine-body p {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .engine-body p strong { font-weight: 600; }
+
+    .engine-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin: 1.4rem 0;
+    }
+
+    .engine-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.9rem 0.9rem;
+    }
+
+    .engine-stat .es-num {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .engine-card.search .engine-stat .es-num { color: var(--g-blue); }
+    .engine-card.cloud .engine-stat .es-num { color: var(--g-green); }
+
+    .engine-stat .es-lbl {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .engine-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .engine-bullets li {
+      font-size: 0.85rem;
+      color: var(--ink);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .engine-bullets li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .other-bets-strip {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--g-yellow);
+      border-radius: 2px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .other-bets-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8E6B00;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .other-bets-strip p {
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* ─── DRIVER TREE / APPROACH ─── */
+    .approach { background: var(--bg-alt); }
+
+    .driver-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .driver-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.6rem 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .driver-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    .driver-card.blue { border-left: 3px solid var(--g-blue); }
+    .driver-card.green { border-left: 3px solid var(--g-green); }
+    .driver-card.red { border-left: 3px solid var(--g-red); }
+    .driver-card.yellow { border-left: 3px solid var(--g-yellow); }
+
+    .driver-card .step {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .driver-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .driver-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .driver-card p strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── KEY FINDINGS (mechanism cards) ─── */
+    .findings { background: var(--bg); }
+
+    .finding-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .finding-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 1.8rem 2.2rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.25s;
+    }
+
+    .finding-card.blue { border-left-color: var(--g-blue); }
+    .finding-card.green { border-left-color: var(--g-green); }
+    .finding-card.red { border-left-color: var(--g-red); }
+    .finding-card.yellow { border-left-color: var(--g-yellow); }
+
+    .finding-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(20,15,15,0.06);
+    }
+
+    .finding-card .tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-bd);
+      padding: 0.22rem 0.7rem;
+      border-radius: 100px;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+
+    .finding-card.blue .tag { color: var(--g-blue); background: rgba(66,133,244,0.08); border-color: rgba(66,133,244,0.28); }
+    .finding-card.green .tag { color: var(--g-green); background: rgba(52,168,83,0.1); border-color: rgba(52,168,83,0.28); }
+    .finding-card.red .tag { color: var(--g-red); background: rgba(234,67,53,0.08); border-color: rgba(234,67,53,0.25); }
+    .finding-card.yellow .tag { color: #8E6B00; background: rgba(251,188,4,0.12); border-color: rgba(251,188,4,0.32); }
+
+    .finding-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .finding-card p {
+      font-size: 0.93rem;
+      color: var(--ink);
+      line-height: 1.78;
+    }
+
+    .finding-card p strong { font-weight: 600; }
+
+    /* ─── FCF TROUGH BLOCK ─── */
+    .fcf { background: var(--bg-alt); }
+
+    .fcf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      align-items: stretch;
+    }
+
+    .fcf-num-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .fcf-num-card .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .fcf-num-card .big {
+      font-size: 2.4rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .fcf-num-card .big.pos { color: var(--g-green); }
+    .fcf-num-card .big.neg { color: var(--g-red); }
+
+    .fcf-num-card .note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .fcf-num-card .note strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── SENSITIVITY ─── */
+    .sensitivity { background: var(--bg); }
+
+    .sens-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .sens-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 2px;
+      padding: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+
+    .sens-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(20,15,15,0.07);
+    }
+
+    .sens-card .num {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .sens-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .sens-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .sens-card p strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── CONTINUING VALUE ─── */
+    .cv { background: var(--bg-alt); }
+
+    .cv-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2rem 2.2rem;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .cv-block strong { font-weight: 600; }
+
+    .cv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .cv-table th {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 1rem 1.4rem;
+      background: var(--bg-alt);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .cv-table th.right, .cv-table td.right { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .cv-table td {
+      padding: 0.95rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .cv-table tr:last-child td { border-bottom: none; }
+
+    /* ─── RECOMMENDATION (bottom) ─── */
+    .recommendation { background: var(--bg); }
+
+    .rec-card-large {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--g-green);
+      border-radius: 2px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .rec-card-large .rec-headline {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--g-green);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .rec-card-large h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .rec-card-large p {
+      font-size: 0.97rem;
+      color: var(--ink);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+
+    .rec-card-large p strong { font-weight: 600; }
+
+    /* ─── WHY THIS MATTERS ─── */
+    .why-matters { background: var(--bg-alt); border-top: 1px solid var(--border); }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .cap-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--g-blue);
+      border-radius: 2px;
+      padding: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+
+    .cap-card:nth-child(2) { border-top-color: var(--g-red); }
+    .cap-card:nth-child(3) { border-top-color: var(--g-yellow); }
+    .cap-card:nth-child(4) { border-top-color: var(--g-green); }
+    .cap-card:nth-child(5) { border-top-color: var(--g-blue); }
+    .cap-card:nth-child(6) { border-top-color: var(--g-red); }
+
+    .cap-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(20,15,15,0.07);
+    }
+
+    .cap-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .cap-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-hero);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-google {
+      display: inline-flex;
+      align-items: baseline;
+      font-family: var(--font);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 1.15rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .footer-google .l1 { color: rgba(66,133,244,0.65); }
+    .footer-google .l2 { color: rgba(234,67,53,0.65); }
+    .footer-google .l3 { color: rgba(251,188,4,0.7); }
+    .footer-google .l4 { color: rgba(66,133,244,0.65); }
+    .footer-google .l5 { color: rgba(52,168,83,0.65); }
+    .footer-google .l6 { color: rgba(234,67,53,0.65); }
+
+    .footer-brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand .wm-in { color: rgba(255,255,255,0.25); }
+    .footer-brand .wm-sites { color: var(--g-blue); }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 2.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.18);
+    }
+
+    .footer-disclaimer {
+      max-width: 720px;
+      margin: 1.4rem auto 0;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.7;
+      padding: 1.4rem 1.2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .rec-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .engine-grid { grid-template-columns: 1fr; }
+      .driver-list { grid-template-columns: 1fr; }
+      .fcf-grid { grid-template-columns: 1fr; }
+      .sens-list { grid-template-columns: 1fr; }
+      .capabilities-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 820px) {
+      nav { padding: 0 1.5rem; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .other-bets-strip { grid-template-columns: 1fr; gap: 0.7rem; }
+    }
+
+    @media (max-width: 580px) {
+      .nav-links { display: none; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .rec-strip-inner { grid-template-columns: 1fr; }
+      .engine-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">← FutureInSites</a>
+    <ul class="nav-links">
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#engines">Two Engines</a></li>
+      <li><a href="#findings">Findings</a></li>
+      <li><a href="#recommendation">Recommendation</a></li>
+    </ul>
+    <a href="case-studies.html" class="nav-cta">All Case Studies →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-inner">
+
+      <p class="hero-eyebrow">AI Investment &amp; Strategic Diligence &nbsp;·&nbsp; Forecasting Case &nbsp;·&nbsp; April 2026</p>
+
+      <!-- Google four-color wordmark -->
+      <div class="hero-google-logo" aria-label="Google (Alphabet)">
+        <span class="google-wordmark">
+          <span class="l1">G</span><span class="l2">o</span><span class="l3">o</span><span class="l4">g</span><span class="l5">l</span><span class="l6">e</span>
+        </span>
+        <span class="alphabet-tag">Alphabet · NASDAQ: GOOGL</span>
+      </div>
+
+      <span class="hero-title-sub">AI Economics for an Incumbent Platform</span>
+      <span class="hero-title-main">Search Economics in the Age of Gemini</span>
+
+      <p class="hero-tagline">
+        Two business engines. One AI capital cycle. Why AI raises Alphabet's continuing value, modestly.
+      </p>
+
+      <p class="hero-meta">
+        FutureInSites
+        <span class="sep">|</span>
+        AI Investment &amp; Strategic Diligence
+        <span class="sep">|</span>
+        Forecasting Case · April 2026
+      </p>
+
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </section>
+
+  <!-- RECOMMENDATION STRIP -->
+  <div class="rec-strip" aria-label="Recommendation summary">
+    <div class="rec-strip-inner">
+      <div class="rec-cell flag">
+        <div class="rec-key">Recommendation</div>
+        <div class="rec-val">Maintain Position</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">Continuing-Value Read</div>
+        <div class="rec-val">AI Raises CV, Modestly</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">Search &amp; Other Print (Q4 2025)</div>
+        <div class="rec-val">+17% YoY to $63.1B</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">Cloud Backlog (Q4 2025)</div>
+        <div class="rec-val">$240B (~3.4× revenue)</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">2026 FCF</div>
+        <div class="rec-val">Trough Year (timing, not terminal)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM LINE / THESIS -->
+  <section class="thesis" id="thesis">
+    <div class="section-inner">
+      <p class="section-label">Bottom Line</p>
+      <h2 class="section-title">Two engines. One capital cycle.</h2>
+
+      <div class="thesis-block">
+        AI raises Alphabet's continuing value, modestly. The <strong>defensive-innovation reading dominates the self-cannibalization reading</strong> because Search monetization is holding up and Cloud's AI-driven growth arrives before most of the new CapEx turns into depreciation. The 2026 cash-flow trough is real but is a <strong>timing, not a terminal, phenomenon</strong>.<br><br>
+        The case rests on two business engines that must be modeled separately. Blending them would conceal the two valuation questions the case actually asks: does Search's terminal value rise or fall, and does Cloud's AI-driven growth cover the associated cost. The KPI spine, driver tree, and Fact Bank keep every forecast knob source-grounded and auditable.
+      </div>
+
+      <!-- Pill tags -->
+      <div class="pill-row">
+        <span class="pill">AI Economics for Incumbents</span>
+        <span class="pill">Two-Engine Architecture</span>
+        <span class="pill">Forecasting &amp; Driver Trees</span>
+        <span class="pill">AI Overviews Monetization</span>
+        <span class="pill">Cloud CapEx Modeling</span>
+        <span class="pill">Continuing Value Analysis</span>
+        <span class="pill">Fact Bank-Traceable Forecast</span>
+      </div>
+
+      <!-- Metric tile grid -->
+      <div class="metric-grid">
+        <div class="metric-tile green">
+          <span class="num">$240B</span>
+          <span class="lbl">Cloud Backlog Modeled (Q4 2025)</span>
+        </div>
+        <div class="metric-tile blue">
+          <span class="num">+17% YoY</span>
+          <span class="lbl">Q4 2025 Search &amp; Other Print ($63.1B)</span>
+        </div>
+        <div class="metric-tile red">
+          <span class="num">40.7% → 38%</span>
+          <span class="lbl">Services Margin Path (Peak to Steady-State)</span>
+        </div>
+        <div class="metric-tile green">
+          <span class="num">30.7%</span>
+          <span class="lbl">2025 Cloud Operating Margin (from 14.1%)</span>
+        </div>
+        <div class="metric-tile yellow">
+          <span class="num">2 Engines</span>
+          <span class="lbl">Architecture Modeled (+ Other Bets)</span>
+        </div>
+        <div class="metric-tile blue">
+          <span class="num">Maintain</span>
+          <span class="lbl">Net Recommendation</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE SITUATION -->
+  <section class="situation" id="situation">
+    <div class="section-inner">
+      <p class="section-label">The Situation</p>
+      <h2 class="section-title">Two valuation calls, hidden inside one ticker</h2>
+
+      <div class="section-body">
+        <p>The investor question on Alphabet has shifted from "is Search durable?" to two finer questions running in parallel. <strong>Does AI raise or lower Search's terminal value?</strong> AI Overviews and Gemini change the cost per query and reshape the monetizable surface. <strong>Does Cloud's AI-driven growth cover the associated CapEx and depreciation?</strong> A $180B 2026 CapEx number is the single hardest valuation fact in the case, and it does not land cleanly in either segment.</p>
+
+        <p>The case approaches both questions through a two-engine business architecture: Search / Services and Google Cloud, with Other Bets (primarily Waymo) treated as optionality. A blended forecast would net an AI-driven margin headwind inside Services against an AI-driven revenue tailwind inside Cloud, hiding both directional calls. Keeping them separate also lets the forecast reflect that <strong>roughly half of 2026 ML compute is allocated to Cloud</strong>, matching CapEx burden to the revenue engine it supports.</p>
+
+        <p>This case study walks through the architecture, the driver tree, the mechanism findings, the 2026 FCF trough, and the continuing-value framework. Every forecast knob is traceable to a specific Fact Bank ID and a specific line in the Forecast Bridge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO-ENGINE ARCHITECTURE -->
+  <section class="engines" id="engines">
+    <div class="section-inner">
+      <p class="section-label">Business Architecture</p>
+      <h2 class="section-title">Why one engine is not enough</h2>
+      <p class="section-intro">Services is a high-margin, auction-based, incumbency-protected engine where AI changes unit economics. Cloud is a capacity-constrained infrastructure engine where AI simultaneously raises demand and raises CapEx and depreciation. Modeling them separately is the single most important methodological decision in the case.</p>
+
+      <div class="engine-grid">
+
+        <!-- Search / Services Engine -->
+        <div class="engine-card search">
+          <div class="engine-tag">Engine 1 · Search / Services</div>
+          <h3>Auction economics. AI changes unit costs.</h3>
+          <p class="engine-sub">Google Search · YouTube · Gmail · Network · YouTube Premium · YouTube TV · Google One · Pixel</p>
+
+          <div class="engine-body">
+            <p>Sells ad impressions and clicks produced by query-driven surfaces, plus a subscription and device tail. Advertisers pay CPC/CPM at auction; consumers pay subscription and device prices. Unit economics rest on <strong>query volume × ad load × CPC, net of Traffic Acquisition Costs</strong>.</p>
+            <p>Margins are driven by auction pricing, TAC share, and serving cost per query, which is where AI inference enters the cost function. Reinvestment has historically been modest but is now rising materially with AI inference compute.</p>
+          </div>
+
+          <div class="engine-stats">
+            <div class="engine-stat">
+              <span class="es-num">40.7%</span>
+              <span class="es-lbl">FY25 Services Operating Margin</span>
+            </div>
+            <div class="engine-stat">
+              <span class="es-num">~38%</span>
+              <span class="es-lbl">Modeled Steady-State Margin</span>
+            </div>
+            <div class="engine-stat">
+              <span class="es-num">+17% YoY</span>
+              <span class="es-lbl">Q4 2025 Search &amp; Other</span>
+            </div>
+            <div class="engine-stat">
+              <span class="es-num">~13%</span>
+              <span class="es-lbl">2026 Services Growth (Base Case)</span>
+            </div>
+          </div>
+
+          <ul class="engine-bullets">
+            <li>AI surfaces expand query breadth (Overviews, AI Mode)</li>
+            <li>Overviews monetize "approximately the same rate" as traditional Search</li>
+            <li>Gemini widens monetizable query surface (long, complex queries)</li>
+            <li>Inference cost per query creates a structural margin floor</li>
+          </ul>
+        </div>
+
+        <!-- Google Cloud Engine -->
+        <div class="engine-card cloud">
+          <div class="engine-tag">Engine 2 · Google Cloud</div>
+          <h3>Supply-limited. AI raises demand and CapEx together.</h3>
+          <p class="engine-sub">GCP infrastructure · Workspace · Vertex AI · Gemini APIs · Agents</p>
+
+          <div class="engine-body">
+            <p>Sells consumption-based infrastructure, per-seat productivity, and AI solutions. Customers are enterprises and developers. Unit economics rest on <strong>consumption × unit price and backlog conversion</strong>, with margins driven by TPU/GPU utilization, pricing discipline, and mix shift to higher-margin Workspace and AI-solutions.</p>
+            <p>Reinvestment is the largest line in Alphabet's capital budget: data centers, accelerators, and sales capacity. The 2024 to 2025 margin step (14.1% to 30.7%) shows what scale absorption looks like once a CapEx wave is in place.</p>
+          </div>
+
+          <div class="engine-stats">
+            <div class="engine-stat">
+              <span class="es-num">30.7%</span>
+              <span class="es-lbl">2025 Cloud Operating Margin</span>
+            </div>
+            <div class="engine-stat">
+              <span class="es-num">14.1%</span>
+              <span class="es-lbl">2024 Cloud Operating Margin</span>
+            </div>
+            <div class="engine-stat">
+              <span class="es-num">$240B</span>
+              <span class="es-lbl">Q4 2025 Backlog (~3.4× rev)</span>
+            </div>
+            <div class="engine-stat">
+              <span class="es-num">+48% YoY</span>
+              <span class="es-lbl">Q4 2025 Cloud Revenue ($17.7B)</span>
+            </div>
+          </div>
+
+          <ul class="engine-bullets">
+            <li>Demand is supply-limited, not demand-limited</li>
+            <li>40% modeled 2026 growth underwritten by backlog</li>
+            <li>2026 margin dip to ~26% on new-capacity D&amp;A</li>
+            <li>Recovery to ~30% by 2028 as utilization absorbs CapEx</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="other-bets-strip">
+        <div class="other-bets-tag">Other Bets · Optionality</div>
+        <p>Primarily Waymo. 2025 segment revenue of <strong>$1.9B</strong> and operating loss of <strong>$8.6B</strong> are too small to move the consolidated story but absorb capital and are worth watching for commercialization milestones. Modeled as optionality, not as a steady-state contributor.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DRIVER TREE / APPROACH -->
+  <section class="approach" id="approach">
+    <div class="section-inner">
+      <p class="section-label">Driver Tree</p>
+      <h2 class="section-title">From Fact Bank to forecast knobs</h2>
+      <p class="section-intro">Each node links one business claim to one KPI or proxy and one line in the Forecast Bridge. The KPI spine has nine variables that actually move the forecast: Services revenue growth, Search &amp; other growth, Services operating margin, Cloud revenue growth, Cloud operating margin, Cloud backlog / RPO, consolidated CapEx, D&amp;A, and free cash flow. AI Overviews monetization rate and AI Search usage uplift sit alongside as proxies given that per-query economics are not disclosed.</p>
+
+      <div class="driver-list">
+
+        <div class="driver-card blue">
+          <div class="step">Driver A · Search Demand</div>
+          <h4>AI surfaces expand query breadth</h4>
+          <p>Two independent data points: AI Overviews is "driving over 10% increase in usage" in the U.S. and India (F02), and AI Mode "is driving incremental total query growth for Search" (F03). This node moves the Services revenue growth knob <strong>before</strong> any monetization call is required.</p>
+        </div>
+
+        <div class="driver-card blue">
+          <div class="step">Driver B · Search Monetization</div>
+          <h4>Overviews monetize at the traditional rate</h4>
+          <p>Two nodes. AI Overviews monetize at "approximately the same rate" as traditional Search (F05), eliminating the near-term cannibalization haircut in the base case. Gemini "increased our ability to deliver ads on longer, more complex searches that were previously challenging to monetize" (F06).</p>
+        </div>
+
+        <div class="driver-card red">
+          <div class="step">Driver C · Search Margin</div>
+          <h4>Inference raises cost per query</h4>
+          <p>AI inference raises cost per query (F08, inference, derived from segment margin disclosures). Creates a structural floor slightly below the pre-AI Services margin, independent of the near-term D&amp;A drag. Knob: Services operating margin, steady state at <strong>~38% vs. 40.7% 2025A peak</strong>.</p>
+        </div>
+
+        <div class="driver-card yellow">
+          <div class="step">Driver D · CapEx &amp; D&amp;A</div>
+          <h4>2024 to 2026 CapEx pulse</h4>
+          <p>Two nodes. The 2024 to 2026 CapEx pulse pins 2026 CapEx at the <strong>$180B guidance midpoint</strong>. The D&amp;A resulting from that pulse creates near-term margin and FCF drag as 2026 D&amp;A "meaningfully increase[s]" (F11). Together these drive the 2026 FCF trough.</p>
+        </div>
+
+        <div class="driver-card green">
+          <div class="step">Driver E · Cloud Demand &amp; Margin</div>
+          <h4>Backlog underwrites 40% growth</h4>
+          <p>Cloud demand is supply-limited, not demand-limited (F14 to F16). <strong>Backlog of $240B at Q4 2025 covers ~3.4× 2025 Cloud revenue.</strong> This underwrites 40% Cloud growth in 2026 without an independent demand forecast. Cloud operating margin recovers from a 26% 2026 dip to 30% by 2028.</p>
+        </div>
+
+        <div class="driver-card yellow">
+          <div class="step">Driver F · Allocation &amp; Tax</div>
+          <h4>Half of 2026 ML compute is tagged to Cloud</h4>
+          <p>Roughly half of 2026 ML compute is tagged to Cloud (F13), which matters for segment margin optics: <strong>Cloud revenue partly funds the D&amp;A burden that would otherwise land entirely in Services</strong>. Effective tax at 17% per the handout simplification, consistent with 16.4% in 2024 and 16.8% in 2025.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY FINDINGS -->
+  <section class="findings" id="findings">
+    <div class="section-inner">
+      <p class="section-label">Key Findings · Mechanism</p>
+      <h2 class="section-title">What's actually moving the picture</h2>
+      <p class="section-intro">Five mechanism findings, each tied to a Fact Bank ID and an empirical cross-check. The empirical cross-checks are the load-bearing parts of the case. Without them, the forecast is just management commentary.</p>
+
+      <div class="finding-list">
+
+        <div class="finding-card blue">
+          <span class="tag">Search Mechanism</span>
+          <h3>AI is expanding the monetizable surface, not compressing per-query monetization</h3>
+          <p>AI Overviews is "driving over 10% increase in usage" in the U.S. and India. AI Mode is "driving incremental total query growth for Search." Gemini "increased our ability to deliver ads on longer, more complex searches that were previously challenging to monetize." Most importantly, AI Overviews monetize at "approximately the same rate" as traditional Search per management. <strong>The Q4 2025 print rebuts the cannibalization thesis empirically: Search &amp; other grew 17% YoY to $63.1B.</strong></p>
+        </div>
+
+        <div class="finding-card green">
+          <span class="tag">Cloud Mechanism</span>
+          <h3>Supply-limited, with 3.4× backlog coverage</h3>
+          <p>Cloud is a supply-limited growth engine. Backlog grew from <strong>$155B in Q3 to $240B at Q4 2025</strong>. Cloud revenue grew 48% YoY to $17.7B. Management "still expect[s] to remain in a tight demand/supply environment in Q4 and 2026." Backlog coverage of approximately <strong>3.4× 2025 Cloud revenue</strong> underwrites the 40% 2026 growth assumption without a separate demand call. Operating margin stepped to 30.7% in 2025 from 14.1% in 2024, and should dip to roughly 26% in 2026 on new-capacity D&amp;A before re-expanding.</p>
+        </div>
+
+        <div class="finding-card red">
+          <span class="tag">Services Margin</span>
+          <h3>Inference creates a structural floor, not a cliff</h3>
+          <p>AI inference raises cost per query, derived from segment margin disclosures. This creates a structural floor slightly below the pre-AI Services margin, independent of the near-term D&amp;A drag. The knob it moves is the Services operating margin: <strong>steady state at approximately 38%, below the 40.7% 2025A peak</strong>. The gap between the peak and the steady-state assumption is the entire question of whether AI leaves Alphabet structurally worse off, and the answer is "modestly worse, not cliff."</p>
+        </div>
+
+        <div class="finding-card yellow">
+          <span class="tag">Allocation</span>
+          <h3>Roughly half of 2026 ML compute is tagged to Cloud</h3>
+          <p>Half of 2026 ML compute is allocated to Cloud (F13). This matters for segment margin optics because Cloud revenue partly funds the D&amp;A burden that would otherwise land entirely in Services. The forecast allocates the CapEx pulse <strong>to the revenue engine it supports</strong>, rather than treating it as a Services-side overhead. Without this allocation, Services margins look worse and Cloud margins look better than the underlying business mechanics suggest.</p>
+        </div>
+
+        <div class="finding-card blue">
+          <span class="tag">Distribution Moat</span>
+          <h3>Distribution advantages AI does not disturb</h3>
+          <p>Android, Chrome, and Search default agreements continue to anchor query share at the entry points where AI matters most. AI is changing what happens <em>after</em> a query, not <em>whether</em> the query reaches Google. The distribution advantage is the reason the cannibalization thesis is structurally weaker than it is for pure-search competitors that lack default-placement economics.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2026 FCF TROUGH -->
+  <section class="fcf" id="fcf">
+    <div class="section-inner">
+      <p class="section-label">Capital Cycle</p>
+      <h2 class="section-title">The 2026 FCF trough is timing, not terminal</h2>
+      <p class="section-intro">The hardest valuation fact in the case is the 2026 FCF trough. With 2026 CapEx at the $180B guidance midpoint and D&amp;A "meaningfully increasing," the proxy FCF drops from $73B in 2025 toward zero in 2026. CapEx plateaus near $190B through 2027 and 2028, revenue outgrows D&amp;A, and the FCF proxy recovers toward $50B by 2028. The capital-cycle compression is real, but it is timing.</p>
+
+      <div class="fcf-grid">
+
+        <div class="fcf-num-card">
+          <div class="label">2025 Proxy FCF</div>
+          <div class="big pos">~$73B</div>
+          <div class="note">Pre-pulse baseline. Built from segment margins, consolidated CapEx, and D&amp;A using the Forecast Bridge.</div>
+        </div>
+
+        <div class="fcf-num-card">
+          <div class="label">2026 Proxy FCF (Trough Year)</div>
+          <div class="big neg">~$0B</div>
+          <div class="note"><strong>$180B CapEx midpoint</strong> + meaningfully higher D&amp;A. Capital-cycle compression, not structural deterioration.</div>
+        </div>
+
+        <div class="fcf-num-card">
+          <div class="label">CapEx Plateau (2027 to 2028)</div>
+          <div class="big">~$190B</div>
+          <div class="note">Approximately flat. Revenue outgrows D&amp;A as backlog converts into Cloud revenue and Search demand expands.</div>
+        </div>
+
+        <div class="fcf-num-card">
+          <div class="label">2028 Proxy FCF (Recovery)</div>
+          <div class="big pos">~$50B</div>
+          <div class="note">Recovery, not return-to-peak. Steady-state CapEx/revenue settles near 15% on the continuing-value glide path.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SENSITIVITY: MOST VALUATION-SENSITIVE ASSUMPTIONS -->
+  <section class="sensitivity" id="sensitivity">
+    <div class="section-inner">
+      <p class="section-label">What Would Change Our View</p>
+      <h2 class="section-title">The two or three most valuation-sensitive assumptions</h2>
+      <p class="section-intro">If any of the following move materially, the recommendation gets revisited. Each is a specific, observable disclosure event tied to a particular Fact Bank ID, not a qualitative shift in narrative.</p>
+
+      <div class="sens-list">
+
+        <div class="sens-card">
+          <div class="num">Sensitivity 01</div>
+          <h4>2026 CapEx at $180B</h4>
+          <p>Sets near-term FCF and the 2026 to 2028 D&amp;A path. <strong>A $20B upward revision</strong> would push the 2026 FCF proxy meaningfully negative and delay recovery by a year. The most directly observable variable in the case.</p>
+        </div>
+
+        <div class="sens-card">
+          <div class="num">Sensitivity 02</div>
+          <h4>Services operating margin floor near 38%</h4>
+          <p>F08 is an inference, not a disclosure. The gap between the <strong>40.7% 2025 peak</strong> and the steady-state assumption is the entire question of whether AI leaves Alphabet structurally worse off. Watch for explicit segment disclosure of inference compute cost.</p>
+        </div>
+
+        <div class="sens-card">
+          <div class="num">Sensitivity 03</div>
+          <h4>Cloud growth durability after 2026</h4>
+          <p>The 40 / 35 / 30% 2026 to 2028 path is defensible on today's backlog but assumes <strong>backlog rebuilds as current contracts convert</strong>. A broader AI-capex pullback in 2027 (driven by hyperscaler peer behavior) would mis-size this line.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTINUING VALUE -->
+  <section class="cv" id="cv">
+    <div class="section-inner">
+      <p class="section-label">Continuing Value</p>
+      <h2 class="section-title">Does AI raise or lower continuing value?</h2>
+
+      <div class="cv-block">
+        We set <strong>mature-state growth at 3%</strong>, blended operating margin at approximately <strong>33%</strong>, and CapEx/revenue at approximately <strong>15%</strong>. AI raises continuing value through (a) a permanently larger monetizable query set (volume uplift and Gemini-enabled long-query monetization), (b) a Cloud segment that is now a credible earnings contributor rather than a growth option, and (c) distribution advantages (Android, Chrome, Search default agreements) that AI does not disturb. AI lowers continuing value through a permanently higher cost floor per query. <strong>In our base case, the volume and Cloud tailwinds dominate the cost headwind.</strong>
+      </div>
+
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th>Continuing-Value Assumption</th>
+            <th class="right">Mature State</th>
+            <th>Direction vs. 2025A</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Revenue growth (g)</td>
+            <td class="right">3%</td>
+            <td>Below 2025 consolidated growth; reflects mix and law-of-large-numbers</td>
+          </tr>
+          <tr>
+            <td>Blended operating margin</td>
+            <td class="right">~33%</td>
+            <td>Below 2025 consolidated margin; reflects Services floor + Cloud equilibrium</td>
+          </tr>
+          <tr>
+            <td>CapEx / revenue</td>
+            <td class="right">~15%</td>
+            <td>Down from 2026 peak intensity; up from pre-AI baseline</td>
+          </tr>
+          <tr>
+            <td>Effective tax rate</td>
+            <td class="right">17%</td>
+            <td>Consistent with 16.4% (2024) and 16.8% (2025)</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section class="recommendation" id="recommendation">
+    <div class="section-inner">
+      <p class="section-label">Recommendation</p>
+      <h2 class="section-title">Maintain Position</h2>
+
+      <div class="rec-card-large">
+        <div class="rec-headline">Net Call</div>
+        <h3>AI raises Alphabet's continuing value, modestly. The 2026 entry point will look worse than fair value.</h3>
+        <p>The defensive-innovation reading dominates the self-cannibalization reading. <strong>Search monetization is holding up</strong>, and Cloud's AI-driven growth arrives before most of the new CapEx turns into depreciation. The 2026 FCF trough will suppress optics in real time, which, if the monetization thesis holds, is the opportunity rather than the risk.</p>
+        <p><strong>What anchors the call:</strong> the empirical Q4 2025 Search &amp; other print of +17% YoY to $63.1B; AI Overviews monetizing "at approximately the same rate" as traditional Search; $240B Cloud backlog covering ~3.4× 2025 revenue; the 14.1% to 30.7% Cloud margin step that demonstrates utilization absorption mechanics.</p>
+        <p><strong>What would reset the call:</strong> $20B+ upward revision to 2026 CapEx, explicit disclosure of compressed Services segment margins driven by inference cost, or a broader AI-capex pullback in 2027 that mis-sizes the Cloud growth assumption.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY THIS MATTERS -->
+  <section class="why-matters" id="why-matters">
+    <div class="section-inner">
+      <p class="section-label">What FutureInSites Brings</p>
+      <h2 class="section-title">AI Investment &amp; Strategic Diligence</h2>
+      <p class="section-intro">Investment-grade analysis of how AI changes the economics of incumbent platforms. The Alphabet case is the proof point for forecasting work where the valuation question is concentrated in continuing-value assumptions and the analytical move is keeping two engines apart instead of blending them.</p>
+
+      <div class="capabilities-grid">
+
+        <div class="cap-card">
+          <h4>Two-Engine Business Architecture</h4>
+          <p>Where AI changes unit economics on one side of the business and raises CapEx on the other, blending segments hides both calls. The Alphabet case rebuilds the architecture from segment disclosures and assigns CapEx burden to the engine it supports.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>AI Impact on Unit Economics</h4>
+          <p>Cost per query, ad density within the SERP, monetization-rate benchmarking against management commentary, and segment-margin path modeling. The cost-side analysis that "AI hype" coverage tends to skip.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>AI-Enabled Monetization Surface</h4>
+          <p>Long-query monetization through Gemini, Overviews monetization parity, and AI Mode usage uplift modeled as a forecast knob, not a press-release narrative. Quantified into the Services revenue growth line.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>CapEx vs. Revenue Timing in AI Build-Outs</h4>
+          <p>The 2026 FCF trough is the case's hardest valuation fact. Capital-cycle compression vs. structural deterioration is a distinction many AI forecasts collapse. We model the trough explicitly and let the recovery path speak for itself.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Driver Tree &amp; Fact Bank Methodology</h4>
+          <p>Every forecast knob ties to a specific Fact Bank ID and a specific line in the Forecast Bridge. KPI spine of nine variables. AI Overviews monetization rate and AI Search usage uplift sit alongside as proxies. Auditable, not discretionary.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Continuing Value Bracketing</h4>
+          <p>Where AI's net effect on terminal value is the actual question, the case explicitly enumerates which AI mechanisms raise CV and which lower it, then makes the net call. Volume and Cloud tailwinds vs. inference cost floor.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-google" aria-hidden="true">
+      <span class="l1">G</span><span class="l2">o</span><span class="l3">o</span><span class="l4">g</span><span class="l5">l</span><span class="l6">e</span>
+    </div>
+    <div class="footer-brand">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></div>
+    <div class="footer-tagline">AI Strategy · AI Investment &amp; Strategic Diligence</div>
+
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="lululemon.html">Lululemon</a></li>
+      <li><a href="oracle.html">Oracle</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <p class="footer-copy">FutureInSites &nbsp;·&nbsp; Forecasting Case · April 2026 &nbsp;·&nbsp; futureinsites.com</p>
+
+    <p class="footer-disclaimer">
+      Sources: Alphabet 2024 10-K, Q4 2025 earnings release, Q4 2025 earnings call, segment disclosures, and Fact Bank IDs F01 to F16 referenced throughout. Source IDs S3, S5, S6, and S8 reference the Q4 2025 earnings release, earnings call commentary, and supplemental disclosures.
+      <br><br>
+      This case study is an educational analytical work product authored by FutureInSites for illustrative purposes. It is not investment advice and was not commissioned by Alphabet or any other named issuer. All figures and quoted commentary trace to public-disclosure exhibits in the accompanying workbook.
+    </p>
+  </footer>
+
+</body>
+</html>

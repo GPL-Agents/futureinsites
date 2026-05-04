@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oracle: Booked, Financed, or Circular? | FutureInSites</title>
+  <meta name="description" content="Investment Committee Memo on Oracle Corporation (ORCL). AI infrastructure economics, two-scenario DCF, customer concentration, and GPU economic obsolescence analysis. Prepared by FutureInSites." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #140F0F;
+      --ink-dim:    rgba(20,15,15,0.06);
+      --bg:         #FFFFFF;
+      --bg-alt:     #F5F3F0;
+      --bg-hero:    #0E0B0B;
+      --border:     #E2DDD6;
+      --muted:      #6B6560;
+      --accent:     #C74634;
+      --accent-bg:  rgba(199,70,52,0.08);
+      --accent-bd:  rgba(199,70,52,0.25);
+      --warn-bg:    #FCE9E5;
+      --warn-text:  #8A2B1F;
+      --pos-text:   #1F6B45;
+      --font:       Calibre, Helvetica, "Helvetica Neue", Roboto, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--bg);
+      background: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.4rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.75; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6rem 2rem 5rem;
+      background: var(--bg-hero);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(199,70,52,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 880px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 3rem;
+    }
+
+    .hero-brand {
+      font-size: clamp(1.4rem, 2.5vw, 1.7rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-brand .ticker {
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      font-size: 0.85em;
+      margin-left: 0.6rem;
+    }
+
+    /* Oracle wordmark (hero + footer) */
+    .hero-oracle-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+    }
+
+    .oracle-wordmark {
+      font-family: var(--font);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: var(--accent);
+      line-height: 1;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 0.05em 0.05em 0.1em;
+    }
+
+    .oracle-ticker {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      border-left: 1px solid rgba(255,255,255,0.18);
+      padding-left: 0.9rem;
+      align-self: center;
+    }
+
+    .hero-title-sub {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title-main {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      font-weight: 300;
+      color: #FFFFFF;
+      line-height: 1.05;
+      display: block;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin: 1.5rem auto 2.5rem;
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span.sep { color: rgba(255,255,255,0.15); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── RECOMMENDATION STRIP ─── */
+    .rec-strip {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem;
+    }
+
+    .rec-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .rec-cell {
+      background: var(--ink);
+      padding: 1.4rem 1.4rem;
+    }
+
+    .rec-cell .rec-key {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .rec-cell .rec-val {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .rec-cell.flag .rec-val {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .rec-cell .rec-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      padding: 5.5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    .section-body p {
+      color: var(--ink);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+      font-size: 0.97rem;
+    }
+
+    .section-body p strong { font-weight: 600; }
+
+    /* ─── BOTTOM LINE / THESIS ─── */
+    .thesis { background: var(--bg); }
+
+    .thesis-block {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 3rem;
+      font-size: 1.02rem;
+      color: var(--ink);
+      line-height: 1.85;
+    }
+
+    .thesis-block strong { font-weight: 600; }
+
+    /* ─── METRIC TILES ─── */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .metric-tile {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-bottom: 2px solid var(--ink);
+      border-radius: 2px;
+      padding: 1.8rem 1.6rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .metric-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(20,15,15,0.08);
+    }
+
+    .metric-tile.warn {
+      border-bottom-color: var(--accent);
+    }
+
+    .metric-tile .num {
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+      display: block;
+      letter-spacing: -0.02em;
+    }
+
+    .metric-tile.warn .num { color: var(--accent); }
+
+    .metric-tile .lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── PILL TAGS ─── */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pill {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.32rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    /* ─── SITUATION ─── */
+    .situation { background: var(--bg-alt); }
+
+    /* ─── APPROACH ─── */
+    .approach { background: var(--bg); }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .approach-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.6rem 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .approach-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    .approach-card .step {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .approach-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .approach-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── EVIDENCE PILLARS ─── */
+    .evidence { background: var(--bg-alt); }
+
+    .pillar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .pillar-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2rem 2.2rem;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.6rem;
+      align-items: start;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.25s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(20,15,15,0.06);
+    }
+
+    .pillar-num {
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-align: center;
+    }
+
+    .pillar-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .pillar-body p {
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    .pillar-body p strong { font-weight: 600; color: var(--ink); }
+
+    .pillar-body .tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-bd);
+      padding: 0.22rem 0.65rem;
+      border-radius: 100px;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+
+    /* ─── DCF SCENARIO TABLE ─── */
+    .dcf { background: var(--bg); }
+
+    .dcf-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .dcf-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .dcf-table th {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 1.1rem 1.4rem;
+      background: var(--bg-alt);
+      border-bottom: 2px solid var(--ink);
+      white-space: nowrap;
+    }
+
+    .dcf-table th.col-conventional,
+    .dcf-table th.col-newnormal {
+      text-align: right;
+    }
+
+    .dcf-table td {
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+      vertical-align: middle;
+    }
+
+    .dcf-table td.metric-name {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .dcf-table td.val {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
+    }
+
+    .dcf-table tr.summary td {
+      font-weight: 600;
+      background: var(--bg-alt);
+      border-top: 2px solid var(--ink);
+      border-bottom: none;
+      font-size: 1rem;
+    }
+
+    .dcf-table tr.summary td.val.pos { color: var(--pos-text); }
+    .dcf-table tr.summary td.val.neg { color: var(--accent); }
+
+    .dcf-note {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--ink);
+      border-radius: 2px;
+      padding: 1.6rem 2rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    .dcf-note strong { font-weight: 600; }
+
+    /* ─── TRIGGERS ─── */
+    .triggers { background: var(--bg-alt); }
+
+    .trigger-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .trigger-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 2px;
+      padding: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+
+    .trigger-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(20,15,15,0.08);
+    }
+
+    .trigger-card .label {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .trigger-card h4 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .trigger-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .trigger-card .horizon {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.7rem;
+      color: var(--ink);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.18rem 0.6rem;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── CHANGE OUR VIEW ─── */
+    .change-view { background: var(--bg); }
+
+    .reverse-list {
+      list-style: none;
+      counter-reset: rev;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .reverse-list li {
+      counter-increment: rev;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.4rem 1.6rem 1.4rem 3.4rem;
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .reverse-list li::before {
+      content: counter(rev, lower-alpha);
+      position: absolute;
+      left: 1.2rem;
+      top: 1.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: lowercase;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-bd);
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+    }
+
+    /* ─── RECOMMENDATION (bottom) ─── */
+    .recommendation { background: var(--bg-alt); }
+
+    .rec-card-large {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .rec-card-large .rec-headline {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .rec-card-large h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .rec-card-large p {
+      font-size: 0.97rem;
+      color: var(--ink);
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+
+    .rec-card-large p strong { font-weight: 600; }
+
+    .rec-zones {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+
+    .rec-zone {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1rem 1.2rem;
+      text-align: center;
+    }
+
+    .rec-zone .zone-action {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .rec-zone .zone-px {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .rec-zone.buy .zone-action { color: var(--pos-text); }
+    .rec-zone.trim .zone-action { color: var(--muted); }
+    .rec-zone.sell .zone-action { color: var(--accent); }
+
+    /* Implementation block */
+    .impl-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .impl-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.6rem 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .impl-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    .impl-card .label {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .impl-card h4 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .impl-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .impl-card p strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── WHY THIS MATTERS ─── */
+    .why-matters { background: var(--bg); border-top: 1px solid var(--border); }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .cap-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--ink);
+      border-radius: 2px;
+      padding: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+
+    .cap-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(20,15,15,0.07);
+    }
+
+    .cap-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .cap-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-hero);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand .wm-in { color: rgba(255,255,255,0.25); }
+    .footer-brand .wm-sites { color: var(--accent); }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 2.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.18);
+    }
+
+    .footer-disclaimer {
+      max-width: 720px;
+      margin: 1.4rem auto 0;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.7;
+      padding: 1.4rem 1.2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .rec-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .approach-grid { grid-template-columns: 1fr; }
+      .trigger-grid { grid-template-columns: 1fr; }
+      .reverse-list { grid-template-columns: 1fr; }
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .impl-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 820px) {
+      nav { padding: 0 1.5rem; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .rec-zones { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .nav-links { display: none; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .rec-strip-inner { grid-template-columns: 1fr; }
+      .pillar-card { grid-template-columns: 1fr; gap: 0.6rem; }
+      .pillar-num { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">← FutureInSites</a>
+    <ul class="nav-links">
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#evidence">Evidence</a></li>
+      <li><a href="#dcf">Valuation</a></li>
+      <li><a href="#recommendation">Recommendation</a></li>
+    </ul>
+    <a href="case-studies.html" class="nav-cta">All Case Studies →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-inner">
+
+      <p class="hero-eyebrow">AI Investment &amp; Strategic Diligence &nbsp;·&nbsp; Investment Committee Memo &nbsp;·&nbsp; April 2026</p>
+
+      <!-- Oracle wordmark + ticker -->
+      <div class="hero-oracle-logo" aria-label="Oracle">
+        <span class="oracle-wordmark">ORACLE</span>
+        <span class="oracle-ticker">NYSE: ORCL</span>
+      </div>
+
+      <span class="hero-title-sub">Investment Thesis</span>
+      <span class="hero-title-main">Booked, Financed, or Circular?</span>
+
+      <p class="hero-tagline">
+        AI infrastructure economics, GPU obsolescence, and the quality-of-revenue question behind a $455B reported backlog.
+      </p>
+
+      <p class="hero-meta">
+        FutureInSites
+        <span class="sep">|</span>
+        AI Investment &amp; Strategic Diligence
+        <span class="sep">|</span>
+        ORCL @ $164.52
+      </p>
+
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </section>
+
+  <!-- RECOMMENDATION STRIP -->
+  <div class="rec-strip" aria-label="Recommendation summary">
+    <div class="rec-strip-inner">
+      <div class="rec-cell flag">
+        <div class="rec-key">Recommendation</div>
+        <div class="rec-val">Strong Underweight / Sell</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">New Normal Fair Value</div>
+        <div class="rec-val">$75 / share</div>
+        <div class="rec-sub">~55% downside from $164.52</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">Sensitivity Range</div>
+        <div class="rec-val">$52 to $120</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">Buy / Trim / Sell Zones</div>
+        <div class="rec-val">&lt; $52 &nbsp;·&nbsp; &gt; $82 &nbsp;·&nbsp; &gt; $130</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-key">Implementation</div>
+        <div class="rec-val">Put spread overlay; SAP / Workday pair trade</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM LINE / THESIS -->
+  <section class="thesis" id="thesis">
+    <div class="section-inner">
+      <p class="section-label">Bottom Line</p>
+      <h2 class="section-title">A real backlog. The wrong cost base.</h2>
+
+      <div class="thesis-block">
+        Oracle's reported AI backlog is real, but the demand is <strong>concentrated, longer-dated, and entangled with incentive economics</strong> that do not look like high-quality durable growth. The cost base is also structurally heavier than reported financials suggest: GPU economic obsolescence runs <strong>3 to 4 years</strong> against a <strong>6-year GAAP useful life</strong>, and Oracle, like its hyperscaler peers, has been extending GAAP lives in ways that flatter reported margins as the empirical refresh cycle has compressed.<br><br>
+        Our preferred scenario, with capex elevated permanently to fund GPU refresh, produces a fair value of <strong>$75 per share</strong> against a current $164.52. A bullish conventional view supports $192 only by accepting that AI capex is a one-time build and margins hold at FY25 levels, which the cross-company evidence does not support. <strong>The $117 gap is the trade.</strong>
+      </div>
+
+      <!-- Pill tags -->
+      <div class="pill-row">
+        <span class="pill">AI Infrastructure Diligence</span>
+        <span class="pill">Two-Scenario DCF</span>
+        <span class="pill">GPU Economic Obsolescence</span>
+        <span class="pill">Customer Concentration Analysis</span>
+        <span class="pill">Cross-Company Useful-Life Audit</span>
+        <span class="pill">Derivatives Implementation</span>
+        <span class="pill">Investment Committee Memo</span>
+      </div>
+
+      <!-- Metric tile grid -->
+      <div class="metric-grid">
+        <div class="metric-tile warn">
+          <span class="num">$75</span>
+          <span class="lbl">New Normal Fair Value (per share)</span>
+        </div>
+        <div class="metric-tile warn">
+          <span class="num">~55%</span>
+          <span class="lbl">Implied Downside from $164.52</span>
+        </div>
+        <div class="metric-tile">
+          <span class="num">$117</span>
+          <span class="lbl">Gap from Conventional View to New Normal</span>
+        </div>
+        <div class="metric-tile">
+          <span class="num">$455B</span>
+          <span class="lbl">RPO Analyzed (Aug 2025)</span>
+        </div>
+        <div class="metric-tile">
+          <span class="num">4</span>
+          <span class="lbl">Independent Evidence Pillars</span>
+        </div>
+        <div class="metric-tile">
+          <span class="num">2 / 18&ndash;24mo</span>
+          <span class="lbl">DCF Scenarios &amp; Derivative Expiry Window</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE SITUATION -->
+  <section class="situation" id="situation">
+    <div class="section-inner">
+      <p class="section-label">The Situation</p>
+      <h2 class="section-title">Why Oracle, why now</h2>
+
+      <div class="section-body">
+        <p>Oracle has become the most aggressive narrative beneficiary of the AI infrastructure build cycle. Between February and August 2025, Oracle's Remaining Performance Obligation (RPO) grew <strong>250% to $455.3B</strong>, anchored by a small number of named hyperscaler and AI-lab contracts. The headline reads as a generational demand event for OCI. Management's preview implies a $32B FY27 OCI revenue print and a multi-year capex commitment to support it.</p>
+
+        <p>The investor question is whether that backlog is the leading edge of durable, diversified cloud demand, or whether it is concentrated, longer-dated, and structurally entangled with the same handful of capital-constrained AI labs that drive revenue at NVIDIA and AMD as well. The answer matters because the AI capital cycle requires Oracle to depreciate hardware that empirically refreshes every 3 to 4 years against a GAAP useful life of 6 years. The accounting and the economics are pulling in opposite directions.</p>
+
+        <p>This memo treats Oracle not as a company in isolation, but as a node in a four-name AI infrastructure system (Oracle, NVIDIA, AMD, OpenAI) where customer concentration and counterparty overlap create correlated risk that does not show up in single-name fundamentals. The thesis is built on four independent pieces of public-disclosure evidence, calibrated against a cross-company useful-life audit, and translated into a two-scenario DCF where continuing value is the entire valuation question.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE APPROACH -->
+  <section class="approach" id="approach">
+    <div class="section-inner">
+      <p class="section-label">The Approach</p>
+      <h2 class="section-title">How the case was built</h2>
+      <p class="section-intro">Every claim in the memo traces to a public filing or audited disclosure, captured in a Fact Bank that links each forecast knob to a specific exhibit. The work product is the workbook: Calibration / Useful_Life_Audit, Fact_Bank, ORCL_DCF, Scenario_Compare, and Continuing_Value_Note.</p>
+
+      <div class="approach-grid">
+
+        <div class="approach-card">
+          <div class="step">Step 01</div>
+          <h4>Backlog and demand-quality decomposition</h4>
+          <p>Oracle 10-K, three sequential 10-Q filings, and the September 2025 8-K parsed for RPO duration, next-12-month conversion, and customer-named contracts. Goal: separate near-term cash optics from longer-dated terminal-value cash flow.</p>
+        </div>
+
+        <div class="approach-card">
+          <div class="step">Step 02</div>
+          <h4>Cross-company customer concentration</h4>
+          <p>NVIDIA FY26 Q2 10-Q, AMD FY25 10-K, AMD October 2025 8-K reviewed for direct customer concentration, accounts receivable concentration, future purchase commitments, and warrant economics. OpenAI mapped as customer (Oracle), indirect customer (NVIDIA), and warrant counterparty (AMD).</p>
+        </div>
+
+        <div class="approach-card">
+          <div class="step">Step 03</div>
+          <h4>Useful-life audit across hyperscalers</h4>
+          <p>Microsoft FY23 10-K, Alphabet 2023 10-K, Meta 2024 10-K, and Oracle FY24 10-K Note 1 read for server useful-life policy changes. Cross-checked against empirical GPU generation cycle (Hopper to Blackwell to Rubin in ~36 months).</p>
+        </div>
+
+        <div class="approach-card">
+          <div class="step">Step 04</div>
+          <h4>Two-scenario DCF with continuing-value bracketing</h4>
+          <p>Conventional view applies consensus assumptions (90% revenue realization, 30% margins, capex fading to 6%). New normal view applies the four evidence pillars (80% realization, 27% margins, 15% steady-state capex, +150 bps WACC concentration premium). Scenarios diverge entirely on continuing-value assumptions.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE PILLARS -->
+  <section class="evidence" id="evidence">
+    <div class="section-inner">
+      <p class="section-label">Key Findings</p>
+      <h2 class="section-title">Four pieces of evidence that matter most</h2>
+      <p class="section-intro">Each pillar is independently sourced from public disclosures. The thesis does not require any single pillar to be correct in isolation; it requires the cross-company picture to be coherent, which it is.</p>
+
+      <div class="pillar-list">
+
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
+          <div class="pillar-body">
+            <span class="tag">RPO Duration Shift</span>
+            <h3>Oracle's RPO grew 250% to $455.3B, but the share expected over the next twelve months collapsed from 31% to 10%.</h3>
+            <p>Between February and August 2025, the longer-dated bucket (months 37+) absorbed nearly all of the increase. Implied next-12-month revenue rose only <strong>$5B</strong> (from $40.3B to $45.5B) even as the backlog expanded by <strong>$325B</strong>. The headline backlog flatters near-term cash optics, and the longer-dated portion is exactly the cash flow that drives terminal value: it is the most important number in the case and the most uncertain.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
+          <div class="pillar-body">
+            <span class="tag">Customer Concentration</span>
+            <h3>NVIDIA's customer base shows the AI demand signal is concentrated, not diversified.</h3>
+            <p>In FY2026 Q2, two direct customers were <strong>39% of NVIDIA revenue</strong> (versus 25% prior year). Three direct customers held <strong>56% of accounts receivable</strong>. NVIDIA carries <strong>$46B</strong> of total future purchase commitments and took a <strong>$4.5B excess-inventory charge</strong> on H20 products after the April 2025 China export controls. A small number of hyperscale buyers fund the entire build-out, and supplier-side write-down risk has been demonstrated in a single fiscal quarter.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
+          <div class="pillar-body">
+            <span class="tag">Counterparty Economics</span>
+            <h3>AMD's October 2025 OpenAI partnership reframes what "booked AI demand" means.</h3>
+            <p>AMD issued OpenAI a warrant for <strong>160 million shares at a $0.01 strike</strong>, roughly <strong>9.8% of AMD's outstanding share count</strong>. At AMD's January 30, 2026 close of $236.73, the underlying market value is approximately <strong>$37.9B against $1.6 million of cash proceeds</strong>. Anchor AI demand is being secured only with substantial economic concessions. OpenAI sits across all three names as customer (Oracle), indirect customer (NVIDIA), and warrant counterparty (AMD); concentration on a single capital-constrained name flows through the entire system.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">04</div>
+          <div class="pillar-body">
+            <span class="tag">Accounting vs. Economics</span>
+            <h3>Hyperscaler accounting is flattering reported margins through useful-life extensions made as the GPU refresh cycle has compressed.</h3>
+            <p>Microsoft extended server useful life from 4 to 6 years in FY23 (~$3.7B/year margin benefit). Google extended to 6 years in 2023 (~$3.9B/year). Meta extended to 5.5 years in 2024. Oracle extended from 5 to 6 years in FY24. The empirical GPU cycle is <strong>3 to 4 years</strong> (Hopper to Blackwell to Rubin in roughly 36 months). The accounting direction is economically inconsistent: GAAP lives lengthened on the books precisely as economic obsolescence accelerated on the GPU subset, so reported margins overstate economic profitability and reported D&amp;A understates the perpetual reinvestment requirement.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DCF / VALUATION -->
+  <section class="dcf" id="dcf">
+    <div class="section-inner">
+      <p class="section-label">Valuation</p>
+      <h2 class="section-title">Two scenarios. Continuing value is the difference.</h2>
+      <p class="section-intro">The conventional view applies consensus assumptions: 90% of management's $190B FY30 revenue trajectory, 30% operating margins, capex fading from 37% of revenue to 6% (Oracle's pre-AI cloud baseline), 8.5% WACC, 2.5% terminal growth. The new normal view (preferred) applies the four evidence pillars and produces a fundamentally different picture.</p>
+
+      <div class="dcf-table-wrap">
+        <table class="dcf-table">
+          <thead>
+            <tr>
+              <th>Driver</th>
+              <th class="col-conventional">Conventional View</th>
+              <th class="col-newnormal">New Normal (Preferred)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="metric-name">FY30 revenue ($B)</td><td class="val">171</td><td class="val">148</td></tr>
+            <tr><td class="metric-name">FY30 EBIT margin</td><td class="val">30%</td><td class="val">27%</td></tr>
+            <tr><td class="metric-name">FY30 capex / revenue (steady state)</td><td class="val">6%</td><td class="val">15%</td></tr>
+            <tr><td class="metric-name">WACC</td><td class="val">8.5%</td><td class="val">10.0%</td></tr>
+            <tr><td class="metric-name">Terminal growth (g)</td><td class="val">2.5%</td><td class="val">2.0%</td></tr>
+            <tr><td class="metric-name">Enterprise value ($B)</td><td class="val">640</td><td class="val">298</td></tr>
+            <tr class="summary"><td>Implied value / share</td><td class="val pos">$192</td><td class="val neg">$75</td></tr>
+            <tr class="summary"><td>vs current $164.52</td><td class="val pos">+17%</td><td class="val neg">(54%)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="dcf-note">
+        <strong>Continuing value is where the scenarios diverge.</strong> The conventional view treats current capex intensity as a transient AI build that fades to legacy cloud baseline. The new normal view treats GPU refresh as a permanent feature: each generation (Hopper, Blackwell, Rubin) is a step-change, not an incremental refresh, so steady-state maintenance capex must equal economic D&amp;A on a 3-to-4-year subset, not GAAP D&amp;A on a 6-year subset. The +150 bps WACC premium captures cross-company counterparty overlap, and 2.0% terminal growth (below Oracle's pre-AI trend) discounts for the share of current demand that may be scarcity-driven reservation rather than sustaining end demand.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DOWNSIDE TRIGGERS -->
+  <section class="triggers" id="triggers">
+    <div class="section-inner">
+      <p class="section-label">Risk &amp; Catalyst Map</p>
+      <h2 class="section-title">Principal downside triggers</h2>
+      <p class="section-intro">Four catalysts that would compress the gap between current price and our preferred fair value, ranked by conviction and time horizon.</p>
+
+      <div class="trigger-grid">
+
+        <div class="trigger-card">
+          <div class="label">Trigger I &nbsp;·&nbsp; Highest Conviction</div>
+          <h4>FY27 OCI conversion shortfall</h4>
+          <p>Management's OCI revenue preview implies $32B in FY27. Realization meaningfully below this level validates the demand-quality discount and accelerates price discovery. This is the highest-conviction catalyst in the memo and the one most likely to reset the multiple.</p>
+          <span class="horizon">12 to 18 month horizon</span>
+        </div>
+
+        <div class="trigger-card">
+          <div class="label">Trigger II</div>
+          <h4>Long-dated RPO renegotiation</h4>
+          <p>If even <strong>10% of long-dated RPO</strong> is renegotiated or scope-reduced as customer financing and AI training economics evolve, FY2028 to FY2030 revenue falls meaningfully below either scenario, with the largest impact in the years where DCF value is most concentrated.</p>
+          <span class="horizon">24 to 36 month horizon</span>
+        </div>
+
+        <div class="trigger-card">
+          <div class="label">Trigger III &nbsp;·&nbsp; Cross-Name</div>
+          <h4>OpenAI funding shock</h4>
+          <p>OpenAI drives revenue at Oracle, NVIDIA, and AMD simultaneously. Any delay or scope-down to OpenAI's spending creates correlated revenue impact across the entire AI infrastructure stack and is not diversifiable within the four-name complex.</p>
+          <span class="horizon">Event-driven</span>
+        </div>
+
+        <div class="trigger-card">
+          <div class="label">Trigger IV</div>
+          <h4>Useful-life policy reversal or audit pressure</h4>
+          <p>A hyperscaler or Oracle reversal of useful-life extensions, or audit-driven impairment of GPU asset balances, forces a step-down in reported margins and validates the economic-depreciation thesis directly. Probability rises with each new GPU generation that empirically obsoletes the preceding one.</p>
+          <span class="horizon">12 to 36 month horizon</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WOULD CHANGE OUR VIEW -->
+  <section class="change-view" id="change-view">
+    <div class="section-inner">
+      <p class="section-label">Disconfirming Evidence</p>
+      <h2 class="section-title">What would change our view</h2>
+      <p class="section-intro">The thesis is bracketed honestly. We would revisit the Underweight call if any of the following four conditions were met. Each is a specific, observable disclosure event, not a qualitative shift in narrative.</p>
+
+      <ol class="reverse-list">
+        <li>Oracle discloses customer-level RPO concentration showing meaningful diversification beyond the named hyperscaler and AI-lab cohort.</li>
+        <li>FY2027 OCI revenue conversion meaningfully exceeds our $26B base (80% of management's $32B preview).</li>
+        <li>Operating margin holds at or above 29% through the FY2027 trough year.</li>
+        <li>Oracle reverses recent useful-life extensions or discloses GPU-specific accelerated schedules.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- RECOMMENDATION & IMPLEMENTATION -->
+  <section class="recommendation" id="recommendation">
+    <div class="section-inner">
+      <p class="section-label">Recommendation</p>
+      <h2 class="section-title">Strong Underweight / Sell</h2>
+
+      <div class="rec-card-large">
+        <div class="rec-headline">Position Sizing &amp; Price Zones</div>
+        <h3>$75 per share, sensitivity range $52 to $120.</h3>
+        <p>At $164.52 the stock trades at roughly <strong>2.2x our preferred fair value</strong>. The risk is asymmetric: upside requires consensus assumptions to hold (full management revenue trajectory, capex fading to legacy baseline, useful-life extensions justified by genuine efficiency gains), while downside requires only the empirical GPU refresh cycle to behave as it has for three generations.</p>
+
+        <div class="rec-zones">
+          <div class="rec-zone buy">
+            <div class="zone-action">Buy</div>
+            <div class="zone-px">&lt; $52</div>
+          </div>
+          <div class="rec-zone trim">
+            <div class="zone-action">Trim</div>
+            <div class="zone-px">&gt; $82</div>
+          </div>
+          <div class="rec-zone sell">
+            <div class="zone-action">Sell Aggressively</div>
+            <div class="zone-px">&gt; $130</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-bottom:1rem;">Implementation by Mandate</p>
+
+      <div class="impl-grid">
+
+        <div class="impl-card">
+          <div class="label">Long-Only Mandates</div>
+          <h4>Trim aggressively to zero or underweight</h4>
+          <p>Position sizing should reflect that the central catalyst (FY27 OCI conversion) is <strong>12 to 18 months out</strong>. Avoid building exposure on intra-quarter strength.</p>
+        </div>
+
+        <div class="impl-card">
+          <div class="label">Derivative-Enabled</div>
+          <h4>Long-dated put spread</h4>
+          <p><strong>Long $130 puts, short $85 puts, 18 to 24 month expiry.</strong> Captures most of the move with defined risk. We do not recommend an outright equity short given squeeze risk in AI mega-caps and multi-quarter catalyst horizons.</p>
+        </div>
+
+        <div class="impl-card">
+          <div class="label">Hedged Accounts</div>
+          <h4>Pair trade vs. SAP or Workday</h4>
+          <p><strong>Short ORCL, long SAP or Workday.</strong> Isolates AI-quality-of-revenue from broad software beta. Best fit for accounts that can carry single-name short exposure and want the thesis stripped of sector beta.</p>
+        </div>
+
+      </div>
+
+      <p style="margin-top:2.5rem;font-size:0.92rem;color:var(--muted);line-height:1.85;">
+        <strong style="color:var(--ink);font-weight:600;">Uncertainty.</strong> The thesis depends on the empirical GPU obsolescence cycle continuing to outpace GAAP useful lives, and on the industry eventually reflecting that in either accounting changes or sustained capex elevation. The central catalyst (FY27 OCI conversion) is 12 to 18 months out; position sizing and derivative expiry should accept that timing risk.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- WHY THIS MATTERS -->
+  <section class="why-matters" id="why-matters">
+    <div class="section-inner">
+      <p class="section-label">What FutureInSites Brings</p>
+      <h2 class="section-title">AI Investment &amp; Strategic Diligence</h2>
+      <p class="section-intro">Investment-grade analysis of AI businesses and AI's impact on incumbent economics. The Oracle case is the proof point for a complementary practice area that sits alongside operator-side AI strategy work: rigorous diligence on AI investment theses, with auditable assumptions and explicit downside bracketing.</p>
+
+      <div class="capabilities-grid">
+
+        <div class="cap-card">
+          <h4>AI Infrastructure Economics</h4>
+          <p>GPU economic obsolescence vs. GAAP useful lives. Capex / D&amp;A trough modeling. Refresh-cycle reinvestment requirements. The cost-side analysis that conventional cloud DCFs miss when they fade capex to legacy baselines.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Customer Concentration &amp; Counterparty Risk</h4>
+          <p>Cross-company concentration analysis when revenue, accounts receivable, and warrant economics overlap on a small number of capital-constrained names. The diligence move that single-name fundamentals don't surface.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Two-Scenario DCF with Bracketed Continuing Value</h4>
+          <p>Where the valuation question is concentrated entirely in continuing-value assumptions, the case is built around making those assumptions explicit. Conventional view, new normal view, and the precise driver list that reconciles the two.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Cross-Company Accounting Audit</h4>
+          <p>Useful-life policy changes, segment margin disclosures, and revenue recognition timing read across hyperscaler peers to surface industry-level inconsistencies that single-company filings normalize away.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Derivatives &amp; Pair-Trade Implementation</h4>
+          <p>Conviction translated into specific, sized positions. Put spread expiry windows aligned to catalyst horizons. Pair-trade construction that isolates the thesis from broad sector beta.</p>
+        </div>
+
+        <div class="cap-card">
+          <h4>Auditable Workbook, Traceable Fact Bank</h4>
+          <p>Every forecast knob ties to a specific 10-K, 10-Q, or 8-K exhibit. The Calibration / Useful_Life_Audit, Fact_Bank, ORCL_DCF, Scenario_Compare, and Continuing_Value_Note worksheets are the work product, not a deliverable summary.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-oracle" aria-hidden="true" style="margin-bottom:1.4rem;">
+      <span style="font-family:var(--font);font-weight:700;letter-spacing:0.08em;font-size:1.1rem;color:rgba(199,70,52,0.85);text-transform:uppercase;">ORACLE</span>
+    </div>
+    <div class="footer-brand">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></div>
+    <div class="footer-tagline">AI Strategy · AI Investment &amp; Strategic Diligence</div>
+
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="lululemon.html">Lululemon</a></li>
+      <li><a href="alphabet.html">Alphabet</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <p class="footer-copy">FutureInSites &nbsp;·&nbsp; Investment Committee Memo &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; futureinsites.com</p>
+
+    <p class="footer-disclaimer">
+      Sources: Oracle FY2025 10-K (Ex. 3); Oracle FY2025 Q4 / full-year earnings release (Ex. 2); Oracle FY2025 Q3 release and 10-Q (Ex. 4 and 5); Oracle FY2026 Q1 release and 10-Q (Ex. 6 and 7); Oracle 8-K dated September 26, 2025 (Ex. 8); NVIDIA FY2026 Q2 10-Q (Ex. 9); AMD FY2025 10-K (Ex. 10); AMD 8-K dated October 6, 2025 (Ex. 11); Microsoft FY2023 10-K, Alphabet 2023 10-K, Meta 2024 10-K, Oracle FY2024 10-K Note 1 (useful-life extensions).
+      <br><br>
+      This case study is an educational analytical work product authored by FutureInSites for illustrative purposes. It is not investment advice and was not commissioned by Oracle Corporation or any other named issuer. All figures trace to public-disclosure exhibits in the accompanying workbook.
+    </p>
+  </footer>
+
+</body>
+</html>
