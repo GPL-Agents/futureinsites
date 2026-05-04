@@ -462,6 +462,58 @@
       border-radius: 100px;
     }
 
+    /* ─── METHODOLOGY ─── */
+    .methodology {
+      background: var(--bg);
+      padding-top: 4rem;
+      padding-bottom: 4.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+
+    .method-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 2px;
+      padding: 1.6rem 1.5rem 1.7rem;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+
+    .method-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(20,15,15,0.06);
+    }
+
+    .method-card .method-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .method-card h4 {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .method-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     /* ─── SITUATION ─── */
     .situation { background: var(--bg-alt); }
 
@@ -981,6 +1033,7 @@
       .reverse-list { grid-template-columns: 1fr; }
       .capabilities-grid { grid-template-columns: 1fr; }
       .impl-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 820px) {
@@ -995,6 +1048,7 @@
       .rec-strip-inner { grid-template-columns: 1fr; }
       .pillar-card { grid-template-columns: 1fr; gap: 0.6rem; }
       .pillar-num { text-align: left; }
+      .method-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1005,6 +1059,7 @@
     <a href="index.html" class="nav-logo">← FutureInSites</a>
     <ul class="nav-links">
       <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#methodology">Methodology</a></li>
       <li><a href="#evidence">Evidence</a></li>
       <li><a href="#dcf">Valuation</a></li>
       <li><a href="#recommendation">Recommendation</a></li>
@@ -1077,8 +1132,9 @@
       <h2 class="section-title">A real backlog. The wrong cost base.</h2>
 
       <div class="thesis-block">
-        Oracle's reported AI backlog is real, but the demand is <strong>concentrated, longer-dated, and entangled with incentive economics</strong> that do not look like high-quality durable growth. The cost base is also structurally heavier than reported financials suggest: GPU economic obsolescence runs <strong>3 to 4 years</strong> against a <strong>6-year GAAP useful life</strong>, and Oracle, like its hyperscaler peers, has been extending GAAP lives in ways that flatter reported margins as the empirical refresh cycle has compressed.<br><br>
-        Our preferred scenario, with capex elevated permanently to fund GPU refresh, produces a fair value of <strong>$75 per share</strong> against a current $164.52. A bullish conventional view supports $192 only by accepting that AI capex is a one-time build and margins hold at FY25 levels, which the cross-company evidence does not support. <strong>The $117 gap is the trade.</strong>
+        Oracle has become the most aggressive narrative beneficiary of the AI infrastructure build cycle. Its reported revenue backlog grew <strong>250% to $455.3B</strong> in six months, anchored by a small number of named hyperscaler and AI-lab contracts. At $164.52 per share, the market is pricing this backlog as if it were durable, diversified, and self-financing.<br><br>
+        This memo argues it is not. The demand is <strong>concentrated, longer-dated, and entangled with incentive economics</strong> across NVIDIA, AMD, and OpenAI. The cost base is also structurally heavier than reported financials suggest: Oracle's GPU hardware empirically refreshes every <strong>3 to 4 years</strong>, but Oracle (like Microsoft, Google, and Meta) has been extending the accounting useful life of that same hardware to 6 years, flattering reported margins precisely as the empirical refresh cycle has compressed.<br><br>
+        A two-scenario discounted cash flow analysis brackets the answer. The conventional view (consensus assumptions) supports <strong>$192 per share</strong>. The new normal view (preferred), with capex permanently elevated to fund GPU refresh, produces <strong>$75 per share, ~55% downside</strong>. <strong>Recommendation: Strong Underweight / Sell.</strong> Long-only mandates trim aggressively. Derivative-enabled accounts use a $130/$85 put spread, 18 to 24 month expiry. Hedged accounts pair short Oracle with long SAP or Workday to isolate the AI-quality-of-revenue thesis from broad software beta.
       </div>
 
       <!-- Pill tags -->
@@ -1123,6 +1179,43 @@
     </div>
   </section>
 
+  <!-- METHODOLOGY -->
+  <section class="methodology" id="methodology">
+    <div class="section-inner">
+      <p class="section-label">Methodology &amp; Sources</p>
+      <h2 class="section-title">How the case was built</h2>
+      <p class="section-intro">The findings below are not management commentary repackaged. The valuation is built from public-disclosure sources read across four companies and structured so every assumption can be re-checked against the document it came from. Four methodology pillars hold the case together.</p>
+
+      <div class="method-grid">
+
+        <div class="method-card">
+          <div class="method-num">01 · Sources</div>
+          <h4>Public-Disclosure Inputs</h4>
+          <p>Oracle's most recent 10-K, three sequential 10-Q filings, and the September 2025 8-K. NVIDIA FY26 Q2 10-Q. AMD FY25 10-K and the October 2025 8-K. Microsoft FY23, Alphabet 2023, Meta 2024, and Oracle FY24 10-Ks for cross-company useful-life policy. No private data, no proprietary surveys.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-num">02 · Framework</div>
+          <h4>Two-Scenario DCF</h4>
+          <p>The valuation is bracketed by two fully specified scenarios. The conventional view applies consensus assumptions (90% revenue realization, 30% margins, capex fading to legacy baseline). The new normal view applies the four evidence pillars (80% realization, 27% margins, 15% steady-state capex, 10% WACC). Continuing value is where the scenarios diverge.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-num">03 · Cross-Company Audit</div>
+          <h4>Useful-Life &amp; GPU Refresh Cycle</h4>
+          <p>Hyperscaler peer accounting (Microsoft, Google, Meta, Oracle) read together, calibrated against the empirical 3-to-4-year GPU generation cycle (Hopper to Blackwell to Rubin). The audit surfaces an industry-wide pattern that single-company filings normalize away.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-num">04 · System View</div>
+          <h4>Customer Concentration Mapping</h4>
+          <p>Oracle, NVIDIA, AMD, and OpenAI mapped as a single AI infrastructure system. Customer concentration, accounts receivable concentration, future purchase commitments, and warrant economics tracked across all four names so single-name fundamentals cannot hide the correlated counterparty risk.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- THE SITUATION -->
   <section class="situation" id="situation">
     <div class="section-inner">
@@ -1135,43 +1228,6 @@
         <p>The investor question is whether that backlog is the leading edge of durable, diversified cloud demand, or whether it is concentrated, longer-dated, and structurally entangled with the same handful of capital-constrained AI labs that drive revenue at NVIDIA and AMD as well. The answer matters because the AI capital cycle requires Oracle to depreciate hardware that empirically refreshes every 3 to 4 years against a GAAP useful life of 6 years. The accounting and the economics are pulling in opposite directions.</p>
 
         <p>This memo treats Oracle not as a company in isolation, but as a node in a four-name AI infrastructure system (Oracle, NVIDIA, AMD, OpenAI) where customer concentration and counterparty overlap create correlated risk that does not show up in single-name fundamentals. The thesis is built on four independent pieces of public-disclosure evidence, calibrated against a cross-company useful-life audit, and translated into a two-scenario DCF where continuing value is the entire valuation question.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE APPROACH -->
-  <section class="approach" id="approach">
-    <div class="section-inner">
-      <p class="section-label">The Approach</p>
-      <h2 class="section-title">How the case was built</h2>
-      <p class="section-intro">Every claim in the memo traces to a public filing or audited disclosure, captured in a Fact Bank that links each forecast knob to a specific exhibit. The work product is the workbook: Calibration / Useful_Life_Audit, Fact_Bank, ORCL_DCF, Scenario_Compare, and Continuing_Value_Note.</p>
-
-      <div class="approach-grid">
-
-        <div class="approach-card">
-          <div class="step">Step 01</div>
-          <h4>Backlog and demand-quality decomposition</h4>
-          <p>Oracle 10-K, three sequential 10-Q filings, and the September 2025 8-K parsed for RPO duration, next-12-month conversion, and customer-named contracts. Goal: separate near-term cash optics from longer-dated terminal-value cash flow.</p>
-        </div>
-
-        <div class="approach-card">
-          <div class="step">Step 02</div>
-          <h4>Cross-company customer concentration</h4>
-          <p>NVIDIA FY26 Q2 10-Q, AMD FY25 10-K, AMD October 2025 8-K reviewed for direct customer concentration, accounts receivable concentration, future purchase commitments, and warrant economics. OpenAI mapped as customer (Oracle), indirect customer (NVIDIA), and warrant counterparty (AMD).</p>
-        </div>
-
-        <div class="approach-card">
-          <div class="step">Step 03</div>
-          <h4>Useful-life audit across hyperscalers</h4>
-          <p>Microsoft FY23 10-K, Alphabet 2023 10-K, Meta 2024 10-K, and Oracle FY24 10-K Note 1 read for server useful-life policy changes. Cross-checked against empirical GPU generation cycle (Hopper to Blackwell to Rubin in ~36 months).</p>
-        </div>
-
-        <div class="approach-card">
-          <div class="step">Step 04</div>
-          <h4>Two-scenario DCF with continuing-value bracketing</h4>
-          <p>Conventional view applies consensus assumptions (90% revenue realization, 30% margins, capex fading to 6%). New normal view applies the four evidence pillars (80% realization, 27% margins, 15% steady-state capex, +150 bps WACC concentration premium). Scenarios diverge entirely on continuing-value assumptions.</p>
-        </div>
-
       </div>
     </div>
   </section>
@@ -1411,8 +1467,8 @@
         </div>
 
         <div class="cap-card">
-          <h4>Auditable Workbook, Traceable Fact Bank</h4>
-          <p>Every forecast knob ties to a specific 10-K, 10-Q, or 8-K exhibit. The Calibration / Useful_Life_Audit, Fact_Bank, ORCL_DCF, Scenario_Compare, and Continuing_Value_Note worksheets are the work product, not a deliverable summary.</p>
+          <h4>Auditable, Source-Grounded Forecasting</h4>
+          <p>Every forecast assumption ties to a specific public-disclosure exhibit: a 10-K, 10-Q, 8-K, or earnings release line item. Two-scenario DCF, cross-company useful-life audit, and continuing-value bracketing are the work product, not a slide-deck summary.</p>
         </div>
 
       </div>
@@ -1440,7 +1496,7 @@
     <p class="footer-disclaimer">
       Sources: Oracle FY2025 10-K (Ex. 3); Oracle FY2025 Q4 / full-year earnings release (Ex. 2); Oracle FY2025 Q3 release and 10-Q (Ex. 4 and 5); Oracle FY2026 Q1 release and 10-Q (Ex. 6 and 7); Oracle 8-K dated September 26, 2025 (Ex. 8); NVIDIA FY2026 Q2 10-Q (Ex. 9); AMD FY2025 10-K (Ex. 10); AMD 8-K dated October 6, 2025 (Ex. 11); Microsoft FY2023 10-K, Alphabet 2023 10-K, Meta 2024 10-K, Oracle FY2024 10-K Note 1 (useful-life extensions).
       <br><br>
-      This case study is an educational analytical work product authored by FutureInSites for illustrative purposes. It is not investment advice and was not commissioned by Oracle Corporation or any other named issuer. All figures trace to public-disclosure exhibits in the accompanying workbook.
+      This case study is an educational analytical work product authored by FutureInSites for illustrative purposes. It is not investment advice and was not commissioned by Oracle Corporation or any other named issuer. All figures and quoted commentary trace to the public-disclosure documents listed above.
     </p>
   </footer>
 
