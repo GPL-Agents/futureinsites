@@ -276,14 +276,16 @@
 
     /* ─── ARTICLE FIGURE / IMAGES ─── */
     .article-figure {
-      margin: 2.6rem 0;
+      margin: 3rem 0;
     }
 
+    /* Full-bleed figures break out of the reading column to display at near
+       viewport width so the underlying image is actually readable. */
     .article-figure.full-bleed {
-      max-width: 980px;
+      width: calc(100vw - 4rem);
+      max-width: 1400px;
       margin-left: 50%;
       transform: translateX(-50%);
-      padding: 0 1rem;
     }
 
     .article-figure img {
@@ -293,15 +295,98 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       background: var(--bg-alt);
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-figure img:hover {
+      box-shadow: 0 14px 40px rgba(11,12,16,0.12);
+      transform: translateY(-2px);
     }
 
     .article-figure figcaption {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--muted);
       line-height: 1.55;
       text-align: center;
-      margin-top: 0.9rem;
+      margin-top: 1rem;
       letter-spacing: 0.01em;
+    }
+
+    .article-figure figcaption .zoom-hint {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,12,16,0.94);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      cursor: zoom-out;
+      animation: lb-fade-in 0.2s ease-out;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: calc(100vh - 5rem);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 720px;
+      padding: 0 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    body.lb-open { overflow: hidden; }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* ─── ARTICLE FOOTER (inside content) ─── */
@@ -456,11 +541,10 @@
       .article-body { padding: 3rem 1.5rem 4rem; }
       .article-cta { padding: 0 1.5rem; }
       .article-figure.full-bleed {
+        width: calc(100vw - 2rem);
         max-width: 100%;
-        margin-left: 0;
-        transform: none;
-        padding: 0;
       }
+      .lightbox-overlay { padding: 1rem; }
     }
   </style>
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -513,7 +597,7 @@
 
     <figure class="article-figure full-bleed">
       <img src="articles/GenAI60years.png" alt="Sixty years of AI research milestones, from early symbolic AI through statistical NLP, deep learning, and today's generative models">
-      <figcaption>Sixty years of stacked advances in symbolic AI, statistical methods, deep learning, and generative models.</figcaption>
+      <figcaption>Sixty years of stacked advances in symbolic AI, statistical methods, deep learning, and generative models.<span class="zoom-hint">Click to enlarge</span></figcaption>
     </figure>
 
     <p>At its core, generative AI is a predictive, probabilistic system. What we are seeing today is the result of years of stacked advances in data science and machine learning. What sets this moment apart is not the underlying ideas, but the speed of innovation and the rapid democratization of these capabilities.</p>
@@ -530,7 +614,7 @@
 
     <figure class="article-figure full-bleed">
       <img src="articles/RoadtoGenAI.png" alt="The road to generative AI: a visual progression from Bag of Words and TF-IDF, through Word2Vec, CNNs, and BERT, to modern large language models">
-      <figcaption>The road to today's LLMs: each step built on the last, each one mostly invisible to anyone outside research.</figcaption>
+      <figcaption>The road to today's LLMs: each step built on the last, each one mostly invisible to anyone outside research.<span class="zoom-hint">Click to enlarge</span></figcaption>
     </figure>
 
     <h2>From understanding to generation</h2>
@@ -582,6 +666,77 @@
     </ul>
     <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York USA</p>
   </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    (function () {
+      var figs = document.querySelectorAll('.article-figure img');
+      if (!figs.length) return;
+
+      function openLightbox(src, alt, caption) {
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Image viewer');
+
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close image viewer');
+        closeBtn.innerHTML = '&times;';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(img);
+
+        if (caption) {
+          var cap = document.createElement('div');
+          cap.className = 'lightbox-caption';
+          cap.textContent = caption;
+          overlay.appendChild(cap);
+        }
+
+        function close() {
+          overlay.remove();
+          document.body.classList.remove('lb-open');
+          document.removeEventListener('keydown', onKey);
+        }
+
+        function onKey(e) {
+          if (e.key === 'Escape') close();
+        }
+
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+
+        // Block clicks on the image itself from closing
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('lb-open');
+        document.addEventListener('keydown', onKey);
+      }
+
+      figs.forEach(function (img) {
+        img.addEventListener('click', function () {
+          var fig = img.closest('figure');
+          var capEl = fig ? fig.querySelector('figcaption') : null;
+          var capText = '';
+          if (capEl) {
+            // Strip the inline "Click to enlarge" hint from the caption shown in the lightbox.
+            var clone = capEl.cloneNode(true);
+            var hint = clone.querySelector('.zoom-hint');
+            if (hint) hint.remove();
+            capText = clone.textContent.trim();
+          }
+          openLightbox(img.src, img.alt, capText);
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
