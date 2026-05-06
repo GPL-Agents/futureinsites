@@ -110,7 +110,7 @@
 
     /* ─── ARTICLE HEADER ─── */
     .article-header {
-      padding: 9rem 2rem 4rem;
+      padding: 9rem 0 4rem;
       background: var(--dark);
       position: relative;
       overflow: hidden;
@@ -144,6 +144,7 @@
       z-index: 10;
       max-width: 960px;
       margin: 0 auto;
+      padding: 0 2rem;
       text-align: left;
     }
 
@@ -193,7 +194,7 @@
       color: rgba(255,255,255,0.55);
       line-height: 1.6;
       margin-bottom: 2rem;
-      max-width: 640px;
+      max-width: 760px;
     }
 
     .article-meta {
@@ -216,7 +217,7 @@
 
     /* ─── ARTICLE BODY ─── */
     .article-body {
-      max-width: 720px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 4.5rem 2rem 5rem;
     }
@@ -407,7 +408,7 @@
 
     /* ─── CTA BLOCK ─── */
     .article-cta {
-      max-width: 720px;
+      max-width: 960px;
       margin: 0 auto 5rem;
       padding: 0 2rem;
     }
@@ -522,7 +523,8 @@
     @media (max-width: 760px) {
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
-      .article-header { padding: 7.5rem 1.5rem 3rem; }
+      .article-header { padding: 7.5rem 0 3rem; }
+      .article-header-inner { padding: 0 1.5rem; }
       .article-body { padding: 3rem 1.5rem 4rem; }
       .article-cta { padding: 0 1.5rem; }
       .lightbox-overlay { padding: 1rem; }
