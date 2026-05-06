@@ -142,7 +142,7 @@
     bar.setAttribute('role', 'dialog');
     bar.setAttribute('aria-label', 'Cookie notice');
     bar.innerHTML =
-      '<div class="fi-cookie-img"><img src="images/cookie-milk.jpg" alt=""></div>' +
+      '<div class="fi-cookie-img"><img src="images/cookie-milk.png" alt=""></div>' +
       '<p class="fi-cookie-text">' +
         "Cookies should only be accepted with milk. As a technology, they're " +
         "outdated and invasive, so we don't use them. We support the edible kind." +
