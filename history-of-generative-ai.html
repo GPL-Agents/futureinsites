@@ -142,7 +142,7 @@
     .article-header-inner {
       position: relative;
       z-index: 10;
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       text-align: left;
     }
@@ -275,17 +275,10 @@
     }
 
     /* ─── ARTICLE FIGURE / IMAGES ─── */
+    /* Figures stay within the reading column so images don't blow out the
+       page rhythm. The lightbox provides the readable, zoomed-in view. */
     .article-figure {
-      margin: 3rem 0;
-    }
-
-    /* Full-bleed figures break out of the reading column to display at near
-       viewport width so the underlying image is actually readable. */
-    .article-figure.full-bleed {
-      width: calc(100vw - 4rem);
-      max-width: 1400px;
-      margin-left: 50%;
-      transform: translateX(-50%);
+      margin: 2.6rem 0;
     }
 
     .article-figure img {
@@ -311,14 +304,6 @@
       text-align: center;
       margin-top: 1rem;
       letter-spacing: 0.01em;
-    }
-
-    .article-figure figcaption .zoom-hint {
-      display: inline-block;
-      margin-left: 0.5rem;
-      font-size: 0.7rem;
-      color: var(--accent);
-      font-weight: 500;
     }
 
     /* ─── LIGHTBOX ─── */
@@ -540,10 +525,6 @@
       .article-header { padding: 7.5rem 1.5rem 3rem; }
       .article-body { padding: 3rem 1.5rem 4rem; }
       .article-cta { padding: 0 1.5rem; }
-      .article-figure.full-bleed {
-        width: calc(100vw - 2rem);
-        max-width: 100%;
-      }
       .lightbox-overlay { padding: 1rem; }
     }
   </style>
@@ -575,13 +556,11 @@
   <div class="article-header">
     <div class="article-header-inner">
       <a href="resources.html" class="back-link">← Back to Resources</a>
-      <span class="article-eyebrow">Article</span>
+      <span class="article-eyebrow">Primer</span>
       <h1>History of Generative AI: How LLMs Got Here</h1>
       <p class="article-deck">Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next.</p>
       <div class="article-meta">
         <span>FutureInSites</span>
-        <span class="dot"></span>
-        <span>May 2026</span>
         <span class="dot"></span>
         <span>5 min read</span>
       </div>
@@ -595,9 +574,9 @@
 
     <p>The blunt truth: what we call "AI" today is not a new invention. It is the scaling of ideas that have existed for decades.</p>
 
-    <figure class="article-figure full-bleed">
-      <img src="articles/GenAI60years.png" alt="Sixty years of AI research milestones, from early symbolic AI through statistical NLP, deep learning, and today's generative models">
-      <figcaption>Sixty years of stacked advances in symbolic AI, statistical methods, deep learning, and generative models.<span class="zoom-hint">Click to enlarge</span></figcaption>
+    <figure class="article-figure">
+      <img src="articles/GenAI60years.png" alt="Sixty years of AI research milestones, from early symbolic AI through statistical NLP, deep learning, and today's generative models" title="Click to enlarge">
+      <figcaption>Sixty years of stacked advances in symbolic AI, statistical methods, deep learning, and generative models.</figcaption>
     </figure>
 
     <p>At its core, generative AI is a predictive, probabilistic system. What we are seeing today is the result of years of stacked advances in data science and machine learning. What sets this moment apart is not the underlying ideas, but the speed of innovation and the rapid democratization of these capabilities.</p>
@@ -612,9 +591,9 @@
 
     <p>Word2Vec, introduced by Google researchers in 2013, turned words into numbers in a way that captured meaning. Words used in similar ways ended up close together in vector space. From there, models like CNNs and the transformer architecture (introduced in the 2017 paper "Attention Is All You Need") helped systems understand structure and context. This led to systems like BERT, which could interpret meaning based on the words around it, not just the words themselves.</p>
 
-    <figure class="article-figure full-bleed">
-      <img src="articles/RoadtoGenAI.png" alt="The road to generative AI: a visual progression from Bag of Words and TF-IDF, through Word2Vec, CNNs, and BERT, to modern large language models">
-      <figcaption>The road to today's LLMs: each step built on the last, each one mostly invisible to anyone outside research.<span class="zoom-hint">Click to enlarge</span></figcaption>
+    <figure class="article-figure">
+      <img src="articles/RoadtoGenAI.png" alt="The road to generative AI: a visual progression from Bag of Words and TF-IDF, through Word2Vec, CNNs, and BERT, to modern large language models" title="Click to enlarge">
+      <figcaption>The road to today's LLMs: each step built on the last, each one mostly invisible to anyone outside research.</figcaption>
     </figure>
 
     <h2>From understanding to generation</h2>
@@ -636,7 +615,7 @@
     <p>For most enterprises, that means the question is no longer "Should we use AI?" It is "Where in our workflows are decisions repetitive enough, and consequences contained enough, to let an AI system actually make them?" The companies that get this right will not be the ones with the biggest models. They will be the ones with the clearest map of which decisions to delegate, which to augment, and which to keep firmly in human hands.</p>
 
     <div class="article-footer">
-      <div class="author">Published by <strong>FutureInSites</strong> &nbsp;·&nbsp; May 2026</div>
+      <div class="author">Published by <strong>FutureInSites</strong></div>
       <a href="resources.html" class="article-footer-link">More resources →</a>
     </div>
 
@@ -724,14 +703,7 @@
         img.addEventListener('click', function () {
           var fig = img.closest('figure');
           var capEl = fig ? fig.querySelector('figcaption') : null;
-          var capText = '';
-          if (capEl) {
-            // Strip the inline "Click to enlarge" hint from the caption shown in the lightbox.
-            var clone = capEl.cloneNode(true);
-            var hint = clone.querySelector('.zoom-hint');
-            if (hint) hint.remove();
-            capText = clone.textContent.trim();
-          }
+          var capText = capEl ? capEl.textContent.trim() : '';
           openLightbox(img.src, img.alt, capText);
         });
       });
