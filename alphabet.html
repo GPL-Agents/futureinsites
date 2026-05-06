@@ -6,6 +6,10 @@
   <title>AI is making Alphabet more valuable, not less | Forecasting Case | FutureInSites</title>
   <meta name="description" content="Forecasting case on Alphabet (GOOGL). A two-engine analysis of how AI reshapes Search and Cloud economics. AI Overviews monetization, Gemini long-query monetization, and the 2026 CapEx / D&A trough. Net call: AI raises continuing value, modestly. Maintain. Prepared by FutureInSites." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,7 +31,7 @@
       --pos-bg:     rgba(52,168,83,0.12);
       --pos-text:   #1F6B45;
       --neg-text:   #C74634;
-      --font:       Calibre, Helvetica, "Helvetica Neue", Roboto, Arial, sans-serif;
+      --font:       'DM Sans', Calibre, Helvetica, "Helvetica Neue", Roboto, Arial, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -58,13 +62,31 @@
     }
 
     .nav-logo {
-      font-size: 1.15rem;
+      font-family: var(--font);
+      font-size: 0.875rem;
       font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--ink);
+      letter-spacing: 0;
+      color: var(--muted);
       text-decoration: none;
-      text-transform: lowercase;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
     }
+
+    .nav-logo:hover { color: var(--ink); }
+
+    .nav-logo::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+      transition: width 0.2s;
+    }
+
+    .nav-logo:hover::before { width: 24px; }
 
     .nav-links {
       display: flex;
@@ -1131,7 +1153,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">← FutureInSites</a>
+    <a href="index.html" class="nav-logo">FutureInSites</a>
     <ul class="nav-links">
       <li><a href="#thesis">Thesis</a></li>
       <li><a href="#methodology">Methodology</a></li>
