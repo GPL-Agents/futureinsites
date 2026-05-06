@@ -8,35 +8,36 @@
     if (sessionStorage.getItem('fi_cookie_dismissed') === 'true') return;
   } catch (e) { /* sessionStorage unavailable, fall through */ }
 
-  /* ─── INLINE SVG: cookie being dunked into a glass of milk ─── */
+  /* ─── INLINE SVG: chocolate chip cookie (golden brown, reads on dark bg) ─── */
   var COOKIE_SVG = [
-    '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
-      /* Glass top rim ellipse */
-      '<ellipse cx="50" cy="22" rx="30" ry="3.5" ',
-        'stroke="rgba(255,255,255,0.55)" stroke-width="1.5" ',
-        'fill="rgba(255,255,255,0.05)"/>',
-      /* Glass walls and bottom */
-      '<path d="M 20 22 L 26 88 Q 26 92 30 92 L 70 92 Q 74 92 74 88 L 80 22" ',
-        'stroke="rgba(255,255,255,0.55)" stroke-width="1.5" ',
-        'fill="rgba(255,255,255,0.05)"/>',
-      /* Milk body */
-      '<path d="M 22 38 L 27 88 Q 27 91 30 91 L 70 91 Q 73 91 73 88 L 78 38 Z" ',
-        'fill="#FAF4E2"/>',
-      /* Milk surface ellipse */
-      '<ellipse cx="50" cy="38" rx="28" ry="3" fill="#FCF7EA"/>',
-      /* Cookie tilted, hovering above the milk surface */
-      '<g transform="rotate(-25 50 30)">',
-        /* Top wafer */
-        '<ellipse cx="50" cy="20" rx="17" ry="3.5" fill="#2A1610"/>',
-        /* Embossing dots */
-        '<circle cx="44" cy="19.5" r="0.8" fill="#150B08"/>',
-        '<circle cx="50" cy="18.8" r="0.8" fill="#150B08"/>',
-        '<circle cx="56" cy="19.5" r="0.8" fill="#150B08"/>',
-        /* Cream filling */
-        '<rect x="33" y="22.8" width="34" height="3" fill="#F2E5BD"/>',
-        /* Bottom wafer */
-        '<ellipse cx="50" cy="28.2" rx="17" ry="3.5" fill="#2A1610"/>',
-      '</g>',
+    '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+      /* Subtle drop shadow under the cookie */
+      '<ellipse cx="50" cy="90" rx="34" ry="3" fill="rgba(0,0,0,0.35)"/>',
+      /* Cookie body (warm golden brown) */
+      '<circle cx="50" cy="50" r="38" fill="#D9A86B"/>',
+      /* Inner highlight to suggest a baked surface */
+      '<circle cx="44" cy="44" r="22" fill="#E6BA82" opacity="0.55"/>',
+      /* Edge ring to add definition against dark backgrounds */
+      '<circle cx="50" cy="50" r="38" fill="none" stroke="#A87740" stroke-width="2"/>',
+      /* Crumb / texture specks */
+      '<circle cx="32" cy="42" r="1" fill="#8B5E2F" opacity="0.5"/>',
+      '<circle cx="68" cy="40" r="1.2" fill="#8B5E2F" opacity="0.5"/>',
+      '<circle cx="58" cy="65" r="1" fill="#8B5E2F" opacity="0.5"/>',
+      '<circle cx="40" cy="60" r="1.1" fill="#8B5E2F" opacity="0.5"/>',
+      '<circle cx="52" cy="32" r="0.8" fill="#8B5E2F" opacity="0.4"/>',
+      /* Chocolate chips, varied sizes, scattered */
+      '<ellipse cx="36" cy="34" rx="5" ry="4.2" fill="#2D1810"/>',
+      '<ellipse cx="62" cy="30" rx="4" ry="3.4" fill="#2D1810"/>',
+      '<ellipse cx="72" cy="52" rx="5" ry="4.5" fill="#2D1810"/>',
+      '<ellipse cx="30" cy="58" rx="4.5" ry="4" fill="#2D1810"/>',
+      '<ellipse cx="52" cy="48" rx="4" ry="3.4" fill="#2D1810"/>',
+      '<ellipse cx="48" cy="70" rx="5" ry="4" fill="#2D1810"/>',
+      '<ellipse cx="66" cy="70" rx="3.5" ry="3" fill="#2D1810"/>',
+      /* Tiny chip highlights for a touch of dimension */
+      '<circle cx="34" cy="32" r="0.9" fill="#5A3520"/>',
+      '<circle cx="60" cy="29" r="0.7" fill="#5A3520"/>',
+      '<circle cx="70" cy="50" r="0.9" fill="#5A3520"/>',
+      '<circle cx="46" cy="68" r="0.9" fill="#5A3520"/>',
     '</svg>'
   ].join('');
 
@@ -65,11 +66,15 @@
       'height: 64px;',
       'flex-shrink: 0;',
       'display: block;',
+      'border-radius: 50%;',
+      'overflow: hidden;',
+      'background: #1A1D24;',
     '}',
+    '.fi-cookie-img img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; }',
     '.fi-cookie-img svg { width: 100%; height: 100%; display: block; }',
     '.fi-cookie-text {',
       'flex: 1;',
-      'max-width: 720px;',
+      'text-align: center;',
       'margin: 0;',
     '}',
     '.fi-cookie-buttons {',
@@ -137,15 +142,25 @@
     bar.setAttribute('role', 'dialog');
     bar.setAttribute('aria-label', 'Cookie notice');
     bar.innerHTML =
-      '<div class="fi-cookie-img">' + COOKIE_SVG + '</div>' +
+      '<div class="fi-cookie-img"><img src="images/cookie-milk.jpg" alt=""></div>' +
       '<p class="fi-cookie-text">' +
         "Cookies should only be accepted with milk. As a technology, they're " +
         "outdated and invasive, so we don't use them. We support the edible kind." +
       '</p>' +
       '<div class="fi-cookie-buttons">' +
         '<button class="fi-cookie-btn fi-cookie-accept" type="button">More milk, please</button>' +
-        '<button class="fi-cookie-btn fi-cookie-reject" type="button">I’m lactose-intolerant</button>' +
+        '<button class="fi-cookie-btn fi-cookie-reject" type="button">I’m full, thank you</button>' +
       '</div>';
+
+    /* If the photo isn't saved yet, fall back to the inline SVG so the
+       banner never shows a broken-image icon. */
+    var imgEl = bar.querySelector('.fi-cookie-img img');
+    if (imgEl) {
+      imgEl.addEventListener('error', function () {
+        var holder = imgEl.parentNode;
+        holder.innerHTML = COOKIE_SVG;
+      });
+    }
     document.body.appendChild(bar);
 
     function dismiss() {
