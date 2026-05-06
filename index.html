@@ -1151,7 +1151,7 @@
           <h2 class="section-title">Strategy first.</h2>
           <p>FutureInSites was built on a simple belief: the companies that win with AI aren't the ones who deploy the most tools; they're the ones who ask the right questions first.</p>
           <p>We do two complementary kinds of work. <strong>Enterprise AI Strategy</strong> for operating companies navigating the AI inflection point, and <strong>AI Investment &amp; Strategic Diligence</strong> for investors and strategic teams evaluating AI businesses and AI's impact on incumbent economics.</p>
-          <p>The case work covers <strong>premium retail, AI infrastructure, and incumbent platform economics</strong>: industries where AI is reshaping customer expectations, capital intensity, and competitive advantage simultaneously.</p>
+          <p>The case work covers <strong>retail, media &amp; technology, finance, healthcare and bio-sciences</strong>: industries where AI is reshaping customer expectations, capital intensity, and competitive advantage simultaneously.</p>
         </div>
 
         <div class="about-stats">
@@ -1535,6 +1535,21 @@
       }, 450);
     }
 
+    /* Cap the popup at twice per browser session.
+       Uses sessionStorage (auto-clears when the tab closes; not a tracking cookie). */
+    var SESSION_KEY = 'fai_run_count';
+    var MAX_RUNS = 2;
+    var runCount = 0;
+    try {
+      runCount = parseInt(sessionStorage.getItem(SESSION_KEY) || '0', 10) || 0;
+    } catch (e) { /* sessionStorage unavailable: fall through and run normally */ }
+
+    if (runCount >= MAX_RUNS) return;
+
+    try {
+      sessionStorage.setItem(SESSION_KEY, String(runCount + 1));
+    } catch (e) {}
+
     if (document.readyState === 'complete') {
       setTimeout(startSequence, 1200);
     } else {
@@ -1565,5 +1580,6 @@
   })();
   </script>
 
+  <script src="cookie-banner.js"></script>
 </body>
 </html>
