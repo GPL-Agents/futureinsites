@@ -77,6 +77,15 @@
       line-height: 1.1;
     }
 
+    .nav-wordmark-img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-img { height: 24px; }
+    }
+
     .nav-wordmark-tagline {
       font-size: 0.72rem;
       font-weight: 400;
@@ -1099,9 +1108,8 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/fi-logo.svg" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-wordmark-name">Future<span class="wm-in">In</span><span class="wm-sites">Sites</span></span>
+        <img src="images/futureinsites-logo.png" srcset="images/futureinsites-logo.png 1x, images/futureinsites-logo@2x.png 2x" class="nav-wordmark-img" alt="FutureInSites">
         <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
       </div>
     </a>
