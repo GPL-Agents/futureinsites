@@ -398,6 +398,71 @@
     /* ─── SOLUTIONS ─── */
     .solutions { background: var(--bg); }
 
+    /* ─── TEAM ─── */
+    .team-section {
+      padding: 5rem 2rem;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .team-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.2rem 1.6rem 2rem;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .team-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(79,70,229,0.08);
+    }
+    .team-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1.4rem;
+      border: 3px solid var(--bg-alt);
+    }
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+    }
+    .team-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .team-vertical {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      letter-spacing: -0.005em;
+    }
+    .team-bio {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 860px) {
+      .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+
     .solutions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1122,6 +1187,7 @@
     </button>
     <ul class="nav-links" id="nav-links-menu">
       <li><a href="#about">Approach</a></li>
+      <li><a href="#team">Team</a></li>
       <li><a href="#solutions">Solutions</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
       <li><a href="resources.html">Resources</a></li>
@@ -1433,6 +1499,43 @@
     </div>
   </section>
 
+  <!-- TEAM -->
+  <section class="team-section" id="team">
+    <div class="section-inner">
+      <p class="section-label">Team</p>
+      <h2 class="section-title">Founding Principals</h2>
+      <p class="section-intro">Three operators with deep industry experience across the verticals where AI is changing the economics fastest.</p>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <img src="images/Randal.jpg" alt="Randal Kenworthy" class="team-photo">
+          <div class="team-name">Randal Kenworthy</div>
+          <div class="team-title">Founding Principal</div>
+          <div class="team-vertical">Industrial &amp; Manufacturing</div>
+          <p class="team-bio">Senior Partner at West Monroe leading the Consumer &amp; Industrial Products practice, and Adjunct Professor at Boston College teaching MBA-level AI strategy. 30+ years of consulting and strategy leadership across Cognizant, Cisco, and Wipro. Yale MBA.</p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/jeff.jpg" alt="Jeff Hoffman" class="team-photo">
+          <div class="team-name">Jeff Hoffman</div>
+          <div class="team-title">Founding Principal</div>
+          <div class="team-vertical">Healthcare &amp; Retail</div>
+          <p class="team-bio">VP, Head of Product at Walgreens leading 200+ product and engineering professionals across enterprise pharmacy, retail, and digital platforms. Prior VP-level digital, analytics, and product leadership at Best Buy and CVS Health. Chicago Booth MBA.</p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
+          <div class="team-name">Greg Loeffelholz</div>
+          <div class="team-title">Founding Principal</div>
+          <div class="team-vertical">Advertising &amp; Media</div>
+          <p class="team-bio">AI product and strategy leader with 20+ years scaling data, ML, and GenAI platforms. Most recently VP of Product &amp; Marketing at MotiveMetrics, where he led LLM-driven optimization for $100MM+ in monthly paid search and held P&amp;L ownership of the managed services business. Boston College MBA in AI &amp; Machine Learning.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <div class="section-inner">
@@ -1448,6 +1551,7 @@
   <footer>
     <ul class="footer-links">
       <li><a href="#about">Approach</a></li>
+      <li><a href="#team">Team</a></li>
       <li><a href="#solutions">Solutions</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
       <li><a href="resources.html">Resources</a></li>
