@@ -87,13 +87,16 @@
     }
 
     .nav-wordmark-tagline {
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       font-weight: 400;
       color: rgba(255,255,255,0.6);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.005em;
       line-height: 1.2;
       margin-top: 3px;
       white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
     }
 
     .nav-wordmark .wm-in { color: var(--cyan); }
@@ -1108,6 +1111,7 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
+      <img src="images/fi-logo.svg" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
         <img src="images/futureinsites-logo.png" srcset="images/futureinsites-logo.png 1x, images/futureinsites-logo@2x.png 2x" class="nav-wordmark-img" alt="FutureInSites">
         <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
