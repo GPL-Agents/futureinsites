@@ -6,6 +6,10 @@
   <title>FutureInSites: AI Strategy & Digital Transformation</title>
   <meta name="description" content="FutureInSites is an AI Strategy and Digital Transformation consultancy helping enterprise brands navigate the AI inflection point." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -70,20 +74,19 @@
     }
 
     .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
       font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #FFFFFF;
+      font-weight: 800;
+      letter-spacing: -0.025em;
       line-height: 1.1;
-    }
-
-    .nav-wordmark-img {
-      height: 26px;
-      width: auto;
-      display: block;
+      background: linear-gradient(90deg, #FFFFFF 20%, #2DD4FF 50%, #2563EB 72%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
     @media (max-width: 640px) {
-      .nav-wordmark-img { height: 20px; }
+      .nav-wordmark-name { font-size: 1.25rem; }
     }
 
     .nav-wordmark-tagline {
@@ -1178,7 +1181,7 @@
     <a href="index.html" class="nav-wordmark">
       <img src="images/fi-logo.svg" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <img src="images/futureinsites-logo.png" srcset="images/futureinsites-logo.png 1x, images/futureinsites-logo@2x.png 2x" class="nav-wordmark-img" alt="FutureInSites">
+        <span class="nav-wordmark-name">FutureInSites</span>
         <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
       </div>
     </a>
