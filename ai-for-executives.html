@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for Executives: A Plain-Language Primer | FutureInSites</title>
+  <meta name="description" content="A short, plain-language guide to what AI actually is, what it can do, and where it creates real value for leaders who don't code. The start-here primer in the FutureInSites series." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo { width: 44px; height: 44px; flex-shrink: 0; }
+
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      background: linear-gradient(90deg, #FFFFFF 20%, #2DD4FF 50%, #2563EB 72%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { display: none; }
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── ARTICLE HEADER ─── */
+    .article-header {
+      padding: 9rem 0 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .article-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(37,99,235,0.06) 50%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .article-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: left;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 1.8rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--cyan); }
+
+    .article-eyebrow {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .article-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .article-deck {
+      font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 760px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      flex-wrap: wrap;
+    }
+
+    .article-meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 5rem;
+    }
+
+    .article-body p {
+      font-size: 1.06rem;
+      color: var(--dark);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body p.lede {
+      font-size: 1.18rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 1.8rem;
+    }
+
+    .article-body p.lede strong { font-weight: 700; }
+
+    .article-body strong { font-weight: 700; }
+    .article-body em { font-style: italic; }
+
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin: 2.6rem 0 1rem;
+      line-height: 1.3;
+    }
+
+    .article-body a.inline-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(37,99,235,0.3);
+      transition: border-color 0.15s;
+    }
+
+    .article-body a.inline-link:hover { border-bottom-color: var(--accent); }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 2.6rem 0;
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-lt);
+      border-radius: 0 8px 8px 0;
+      font-size: 1.18rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+
+    .pull-quote::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    /* ─── ARTICLE FIGURE / IMAGES ─── */
+    .article-figure {
+      margin: 2.6rem 0;
+    }
+
+    .article-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-figure img:hover {
+      box-shadow: 0 14px 40px rgba(11,12,16,0.12);
+      transform: translateY(-2px);
+    }
+
+    .article-figure figcaption {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,12,16,0.94);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      cursor: zoom-out;
+      animation: lb-fade-in 0.2s ease-out;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: calc(100vh - 5rem);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.lb-open { overflow: hidden; }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ─── ARTICLE FOOTER (inside content) ─── */
+    .article-footer {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .article-footer .author {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .article-footer .author strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .article-footer-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .article-footer-link:hover { text-decoration: underline; }
+
+    /* ─── CTA BLOCK ─── */
+    .article-cta {
+      max-width: 960px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .article-cta-inner {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 2.6rem 2.4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(45,212,255,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .article-cta-inner > * { position: relative; z-index: 1; }
+
+    .article-cta-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .article-cta-link {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.7rem 1.7rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .article-cta-link:hover { opacity: 0.88; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(90deg, #FFFFFF 20%, #2DD4FF 50%, #2563EB 72%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.12); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .article-header { padding: 7.5rem 0 3rem; }
+      .article-header-inner { padding: 0 1.5rem; }
+      .article-body { padding: 3rem 1.5rem 4rem; }
+      .article-cta { padding: 0 1.5rem; }
+    }
+  </style>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="images/fi-logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fi-logo.svg" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <div class="article-header">
+    <div class="article-header-inner">
+      <a href="resources.html" class="back-link">← Back to Resources</a>
+      <span class="article-eyebrow">Start Here</span>
+      <h1>AI for Executives: A Plain-Language Primer</h1>
+      <p class="article-deck">What AI actually is, what it can do, and where it creates value for leaders who don't code. Read this before the discovery and build primers.</p>
+      <div class="article-meta">
+        <span>FutureInSites</span>
+        <span class="dot"></span>
+        <span>10 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <div class="article-body">
+
+    <p class="lede">AI is not magic, and it is not science fiction. <strong>It is a powerful new way for an organization to work with language, knowledge, and reasoning at speed</strong> — and the leaders who get this right early will compound advantages quickly.</p>
+
+    <p>This primer is the entry point in the FutureInSites series. It is written for executives, board members, and senior leaders who do not need to become AI experts and do not want a technical lecture, but who will be in conversations about AI for the rest of their careers and need a working mental model.</p>
+
+    <figure class="article-figure">
+      <img src="articles/chiefofstaff.main.png" alt="AI for Executives: a plain-language primer for senior leaders" title="Click to enlarge">
+      <figcaption>The leaders who establish a basic mental model of AI early will have better conversations, make better investments, and waste less time on the wrong questions.</figcaption>
+    </figure>
+
+    <h2>What AI actually is</h2>
+
+    <p>The AI that matters today has been trained on an almost incomprehensibly large amount of text: books, research, legal documents, financial filings, medical literature, news, code, and more. Through that training it developed a working understanding of language, concepts, reasoning, and how ideas connect.</p>
+
+    <p>When you give it a task — write this, summarize that, analyze this, find the flaw in that argument — it draws on that understanding to produce output at a quality and speed no human team can match.</p>
+
+    <p>A few things it is not. It is not a search engine. It is not a robot. It does not think the way humans do. And it is not magic. It is a very powerful tool for working with language, knowledge, and reasoning.</p>
+
+    <div class="pull-quote">
+      Imagine the most well-read, fast-thinking analyst you have ever met, available to you instantly at any hour, across virtually any domain. That is closer to what AI is than anything from a movie.
+    </div>
+
+    <h2>Two modes worth understanding</h2>
+
+    <p>Not all AI does the same thing. For someone thinking about where it creates value, two modes matter most. Understanding the difference makes everything that follows click into place.</p>
+
+    <p><strong>Generative AI</strong> creates something when you give it a task. A draft, a summary, a complex analysis, a first version of a document. You provide the input and direction; it produces the output. Think of it as a brilliant on-demand collaborator who can draft an investor update, summarize a deck, compare two strategic options, or explain an unfamiliar concept in seconds rather than hours.</p>
+
+    <p><strong>Agentic AI</strong> goes further. It does not just answer a question; it takes a sequence of actions on your behalf — searching, compiling, analyzing, monitoring, flagging — autonomously, across multiple steps, while you focus on something else. Think of the difference between an analyst who answers a specific question and a chief of staff who runs the entire process and comes back with a recommendation.</p>
+
+    <p>The distinction matters because the on-ramp is different. Generative AI is available today, requires almost no setup, and lets a leader start building intuition this week. Agentic AI requires more infrastructure but is where the highest-leverage applications live: ongoing monitoring, automated workflows, systems that work overnight. Both are relevant. The right sequence is to start with generative, build intuition for what is possible, then layer in agentic applications where the time savings and insight quality justify it.</p>
+
+    <figure class="article-figure">
+      <img src="articles/chiefofstaff.ref.png" alt="A conceptual desk view of an AI chief of staff: a single dashboard pulling together strategy summary, financial overview, customer insights, risk radar, priorities, and operations snapshot" title="Click to enlarge">
+      <figcaption>An agentic system can act as a "chief of staff" for a leader: continuously pulling, synthesizing, and surfacing what matters across every part of the business.</figcaption>
+    </figure>
+
+    <h2>Where the value lands</h2>
+
+    <p>AI creates value in three places inside an organization. Each lands differently, and the strongest programs invest in all three.</p>
+
+    <p><strong>For the organization.</strong> Cross-team systems and workflows. Portfolio or business-unit monitoring. Executive briefings synthesized from many data sources. Benchmarks across departments. The leverage is at the firm level: information that previously required a team of analysts now arrives on a leader's desk every Monday morning.</p>
+
+    <p><strong>For a function.</strong> A specific business area. Customer support, deal sourcing, revenue cycle, financial reporting, document review. The leverage is operational density: cognitive work that consumed an entire department gets compressed into a smaller footprint with higher consistency.</p>
+
+    <p><strong>For the leader personally.</strong> Preparation that used to take hours. Decision stress-testing. Communications drafts you refine rather than write from scratch. On-demand expertise across any domain. This is often where the value shows up fastest, and it is the area most senior executives are slowest to explore.</p>
+
+    <h2>What AI is good at, and what it is not yet good at</h2>
+
+    <p>It is honest to name both.</p>
+
+    <p>AI is genuinely powerful at synthesizing large volumes of information, drafting first versions of almost any document, analyzing patterns, explaining concepts at the depth you need, and stress-testing your own thinking by arguing the other side of an argument.</p>
+
+    <p>It is not yet reliable for final judgment calls on high-stakes decisions, blind trust on factual claims (these models can be confidently wrong), or running well without clear direction. Quality of output depends heavily on how well you direct it. Like any capable employee, AI does better work with clear context and good instructions.</p>
+
+    <p>The leader's job stays the same: provide judgment at the decision points, verify anything high-stakes, and set direction. The shift is that everything before and around those decisions becomes dramatically faster.</p>
+
+    <h2>Where to start</h2>
+
+    <p>Most senior leaders do not think in terms of "agents" or "prompts" or "models." They think in terms of people. The cleanest way to make AI concrete is to answer one question, and then take the answer seriously:</p>
+
+    <div class="pull-quote">
+      If you had a brilliant chief of staff, someone who knew everything about your business, had read every document you have ever written, been in every meeting you have ever been in, and was available to you at any hour, what would you have them do first?
+    </div>
+
+    <p>Whatever the answer is, that is almost certainly the highest-value first AI use case. The question bypasses the vocabulary problem entirely and goes straight to outcomes. It also produces something concrete enough to build a working demonstration around, not just a presentation.</p>
+
+    <h2>From here</h2>
+
+    <p>Once a basic mental model is in place, the natural next read is <a class="inline-link" href="building-ai-agents.html">Building AI Agents: An 8-Step Framework</a>. It is the technical companion to this primer, walking through the eight decisions that shape every production AI agent. Read it when the conversation moves from "where AI fits" to "how to build it."</p>
+
+    <div class="article-footer">
+      <div class="author">Published by <strong>FutureInSites</strong></div>
+      <a href="resources.html" class="article-footer-link">More resources →</a>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <div class="article-cta-inner">
+      <div class="article-cta-eyebrow">Work with us</div>
+      <h3>Want to talk through where AI fits for your business?</h3>
+      <p>FutureInSites helps leadership teams build a working mental model, identify the right first use case, and demonstrate value on real data before committing to a full build.</p>
+      <a href="index.html#contact" class="article-cta-link">Get in touch →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">FutureInSites</div>
+    <div class="footer-tagline">AI Strategy &amp; Digital Transformation</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Cambridge, MA</p>
+  </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    (function () {
+      var figs = document.querySelectorAll('.article-figure img');
+      if (!figs.length) return;
+
+      function openLightbox(src, alt) {
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Image viewer');
+
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close image viewer');
+        closeBtn.innerHTML = '&times;';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(img);
+
+        function close() {
+          overlay.remove();
+          document.body.classList.remove('lb-open');
+          document.removeEventListener('keydown', onKey);
+        }
+        function onKey(e) { if (e.key === 'Escape') close(); }
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('lb-open');
+        document.addEventListener('keydown', onKey);
+      }
+
+      figs.forEach(function (img) {
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt);
+        });
+      });
+    })();
+  </script>
+
+  <script src="cookie-banner.js"></script>
+</body>
+</html>
