@@ -62,8 +62,8 @@
     }
 
     .nav-logo {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       flex-shrink: 0;
     }
 
@@ -79,20 +79,24 @@
       font-weight: 800;
       letter-spacing: -0.025em;
       line-height: 1.1;
-      background: linear-gradient(90deg, #FFFFFF 20%, #2DD4FF 50%, #2563EB 72%, #2563EB 100%);
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
-      width: fit-content;
-      align-self: flex-start;
     }
     @media (max-width: 640px) {
       .nav-wordmark-name { font-size: 1.25rem; }
     }
 
     .nav-wordmark-tagline {
-      font-size: 0.88rem;
+      font-size: 0.72rem;
       font-weight: 400;
       color: #FFFFFF;
       letter-spacing: 0.005em;
@@ -618,12 +622,16 @@
       letter-spacing: -0.025em;
       line-height: 1.1;
       margin-bottom: 0.4rem;
-      background: linear-gradient(90deg, #FFFFFF 20%, #2DD4FF 50%, #2563EB 72%, #2563EB 100%);
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
-      display: inline-block;
     }
 
     .footer-tagline {
@@ -674,7 +682,7 @@
     <a href="index.html" class="nav-wordmark">
       <img src="images/fis-logo-160.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-wordmark-name">FutureInSites</span>
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
         <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
       </div>
     </a>
@@ -2319,4 +2327,3 @@
 
         <a href="https://www.abridge.com" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/abridge.png" alt="" class="vendor-logo" loading="lazy">
-         
