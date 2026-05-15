@@ -263,6 +263,53 @@
       color: var(--muted);
     }
 
+    /* ─── VENDOR SEARCH ─── */
+    .vendor-search {
+      max-width: 720px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+      position: relative;
+    }
+    .vendor-search input {
+      width: 100%;
+      padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .vendor-search input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .vendor-search::before {
+      content: '';
+      position: absolute;
+      left: 3rem;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>");
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+    .vendor-search-empty {
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: none;
+    }
+    .vendor-search-empty.show { display: block; }
+
     /* ─── CATEGORY NAV ─── */
     .cat-nav {
       position: sticky;
@@ -673,6 +720,12 @@
     <img src="images/ai-vendor-cloud-large.png" alt="Word cloud of AI vendors covered in this landscape, colored by category and sized by relative scale" style="display:block; width:100%; height:auto; border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
     <p style="font-size:0.75rem; color:rgba(255,255,255,0.45); text-align:center; margin-top:0.85rem; letter-spacing:0.04em;">Vendors colored by category, sized by relative scale (revenue and user base). <a href="#submit-ai" style="color:var(--cyan); text-decoration:none; border-bottom:1px solid rgba(45,212,255,0.4); padding-bottom:1px;">Submit AI for Review →</a></p>
   </div>
+
+  <!-- VENDOR SEARCH -->
+  <div class="vendor-search">
+    <input type="search" id="vendor-search-input" placeholder="Search vendors by name, domain, or capability..." aria-label="Search AI vendors">
+  </div>
+  <p class="vendor-search-empty" id="vendor-search-empty">No vendors match your search. Try a different term, or <a href="#submit-ai" style="color:var(--accent);">submit one we should add</a>.</p>
 
   <!-- CATEGORY NAV -->
   <div class="cat-nav">
@@ -2134,7 +2187,7 @@
           <img src="images/vendor-logos/motivemap-ai.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">MotiveMap.ai</div><div class="vendor-domain">motivemap.ai</div></div>
-            <p>A control layer for modern paid search from MotiveMetrics, giving you the power to decide what traffic enters your account, how it's interpreted, and how publisher AI like Smart Bidding and Performance Max behaves.</p>
+            <p>AI control layer for paid search optimization. From MotiveMetrics.</p>
           </div>
         </a>
 
@@ -2296,4 +2349,169 @@
         <span class="category-label">14</span>
         <h2 class="category-title">Robotics &amp; Embodied AI</h2>
       </div>
-      <p class="category-desc">Foundation-model-era 
+      <p class="category-desc">Foundation-model-era robotics: humanoids, manipulation, and embodied AI. The longest-cycle but highest-stakes frontier of AI deployment.</p>
+
+      <div class="vendor-grid">
+
+        <a href="https://www.figure.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/figure.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Figure</div><div class="vendor-domain">figure.ai</div></div>
+            <p>Humanoid robot company (Figure 02 / 03) with high-profile commercial pilots in logistics and manufacturing.</p>
+          </div>
+        </a>
+
+        <a href="https://www.bostondynamics.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/boston-dynamics.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Boston Dynamics</div><div class="vendor-domain">bostondynamics.com</div></div>
+            <p>Maker of the Atlas humanoid and Spot quadruped. Now part of Hyundai's robotics push.</p>
+          </div>
+        </a>
+
+        <a href="https://www.1x.tech" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/1x-technologies.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">1X Technologies</div><div class="vendor-domain">1x.tech</div></div>
+            <p>Norwegian-American humanoid company building Eve and Neo for home and commercial settings.</p>
+          </div>
+        </a>
+
+        <a href="https://agilityrobotics.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/agility-robotics.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Agility Robotics</div><div class="vendor-domain">agilityrobotics.com</div></div>
+            <p>Maker of Digit, a humanoid robot with deployments in warehousing and logistics for customers including GXO.</p>
+          </div>
+        </a>
+
+        <a href="https://www.apptronik.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/apptronik.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Apptronik</div><div class="vendor-domain">apptronik.com</div></div>
+            <p>Humanoid robotics company developing Apollo for industrial and logistics environments.</p>
+          </div>
+        </a>
+
+        <a href="https://sanctuary.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/sanctuary-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Sanctuary AI</div><div class="vendor-domain">sanctuary.ai</div></div>
+            <p>Canadian humanoid robotics company building general-purpose humanoid systems with the Phoenix platform.</p>
+          </div>
+        </a>
+
+        <a href="https://www.skild.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/skild-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Skild AI</div><div class="vendor-domain">skild.ai</div></div>
+            <p>Robotics foundation model company building a general-purpose brain across robot embodiments.</p>
+          </div>
+        </a>
+
+        <a href="https://physicalintelligence.company" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/physical-intelligence.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Physical Intelligence</div><div class="vendor-domain">physicalintelligence.company</div></div>
+            <p>Foundation-model lab for robotics. Notable for its π0 model targeting general-purpose robot manipulation.</p>
+          </div>
+        </a>
+
+        <a href="https://covariant.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/covariant.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Covariant</div><div class="vendor-domain">covariant.ai</div></div>
+            <p>Industrial robotic manipulation foundation models. Founding team largely joined Amazon in 2024.</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ─── SUBMIT AI FOR REVIEW ─── -->
+  <section class="submit-section" id="submit-ai">
+    <h2>Submit AI for Review</h2>
+    <p class="submit-lead">Know an AI app, tool, service, or website that should be in the landscape? Submit it below and we'll evaluate it for inclusion in the next refresh.</p>
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <input type="hidden" name="_subject" value="AI Vendor Submission for Landscape Review">
+      <div class="submit-form-grid">
+        <div>
+          <label for="sub-name">AI tool / company name</label>
+          <input id="sub-name" name="tool_name" type="text" required>
+        </div>
+        <div>
+          <label for="sub-url">Website URL</label>
+          <input id="sub-url" name="tool_url" type="url" required>
+        </div>
+        <div>
+          <label for="sub-category">Suggested category (optional)</label>
+          <input id="sub-category" name="tool_category" type="text">
+        </div>
+        <div>
+          <label for="sub-email">Your email (optional)</label>
+          <input id="sub-email" name="submitter_email" type="email">
+        </div>
+        <div class="submit-form-field-full">
+          <label for="sub-context">Why should it be included? (optional)</label>
+          <textarea id="sub-context" name="context" placeholder="A line or two on what the tool does and why it matters."></textarea>
+        </div>
+      </div>
+      <button type="submit">Submit for Review</button>
+    </form>
+  </section>
+
+  <!-- ─── DISCLAIMER ─── -->
+  <div class="disclaimer">
+    <strong>Methodology &amp; disclaimer.</strong> This list is curated for orientation, not endorsement. Categories overlap (most vendors fit more than one); placement reflects each company's primary commercial wedge. Vendor mentions do not imply a recommendation, partnership, engagement, or fitness for any particular use case. Always conduct independent diligence before procurement, integration, or investment decisions. The landscape moves quickly; companies may have repositioned, been acquired, or wound down since publication.
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-wordmark">FutureInSites</div>
+    <div class="footer-tagline">AI Strategy &amp; Digital Transformation</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Cambridge, MA</p>
+  </footer>
+
+  <script>
+  /* Vendor search: filter cards by text, hide empty categories */
+  (function () {
+    var input = document.getElementById('vendor-search-input');
+    var empty = document.getElementById('vendor-search-empty');
+    if (!input) return;
+
+    function filter(q) {
+      q = (q || '').trim().toLowerCase();
+      var anyVisible = false;
+      document.querySelectorAll('section.category').forEach(function (sec) {
+        var matched = 0;
+        sec.querySelectorAll('a.vendor-card').forEach(function (card) {
+          var text = card.textContent.toLowerCase();
+          var hit = q === '' || text.indexOf(q) !== -1;
+          card.style.display = hit ? '' : 'none';
+          if (hit) matched++;
+        });
+        var show = q === '' || matched > 0;
+        sec.style.display = show ? '' : 'none';
+        if (matched > 0 || q === '') anyVisible = true;
+      });
+      if (empty) empty.classList.toggle('show', q !== '' && !anyVisible);
+    }
+
+    input.addEventListener('input', function (e) { filter(e.target.value); });
+  })();
+  </script>
+
+  <script src="cookie-banner.js"></script>
+</body>
+</html>
