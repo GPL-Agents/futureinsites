@@ -116,6 +116,23 @@
     .nav-links a:hover { color: var(--tesla-red); }
     .nav-links a.nav-link-active { color: var(--tesla-red); font-weight: 500; }
 
+    .nav-cta {
+      position: absolute;
+      right: 2.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--tesla-red);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.4rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
     /* ─── HERO ─── */
     .hero {
       position: relative;
@@ -727,10 +744,13 @@
   <nav>
     <a href="index.html" class="nav-logo">FutureInSites</a>
     <ul class="nav-links">
-      <li><a href="index.html">FutureInSites</a></li>
-      <li><a href="case-studies.html" class="nav-link-active">Case Studies</a></li>
-      <li><a href="resources.html">Resources</a></li>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#findings">Findings</a></li>
+      <li><a href="#models">Models</a></li>
+      <li><a href="#implications">Implications</a></li>
     </ul>
+    <a href="case-studies.html" class="nav-cta">All Case Studies →</a>
   </nav>
 
   <!-- HERO -->
@@ -761,7 +781,7 @@
   </div>
 
   <!-- EXEC SUMMARY -->
-  <section class="exec-summary">
+  <section class="exec-summary" id="summary">
     <div class="section-inner">
       <p class="section-label">Executive Summary</p>
       <h2 class="section-title">A 2.4M-tweet view of Tesla's brand</h2>
@@ -813,7 +833,7 @@
   </section>
 
   <!-- METHODOLOGY -->
-  <section class="methodology">
+  <section class="methodology" id="methodology">
     <div class="section-inner">
       <p class="section-label">How We Did It</p>
       <h2 class="section-title">Five steps from raw tweets to comparable sentiment</h2>
@@ -897,7 +917,7 @@
   </section>
 
   <!-- PART A FINDINGS: VADER + ENGAGEMENT -->
-  <section class="findings">
+  <section class="findings" id="findings">
     <div class="section-inner">
       <p class="section-label">Part A</p>
       <h2 class="section-title">VADER sentiment over time, with and without engagement</h2>
@@ -924,7 +944,7 @@
   </section>
 
   <!-- PART B: MODEL COMPARISON -->
-  <section class="model-comparison">
+  <section class="model-comparison" id="models">
     <div class="section-inner">
       <p class="section-label">Part B</p>
       <h2 class="section-title">Three models, three answers, one architectural lesson</h2>
@@ -999,7 +1019,7 @@
   </section>
 
   <!-- BUSINESS IMPLICATIONS -->
-  <section class="implications">
+  <section class="implications" id="implications">
     <div class="section-inner">
       <p class="section-label">Implications</p>
       <h2 class="section-title">What a corporate communications team should take from this</h2>
