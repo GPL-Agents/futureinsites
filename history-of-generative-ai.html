@@ -56,7 +56,8 @@
       left: 3rem;
       text-decoration: none;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      padding-top: 4px;
       gap: 0.6rem;
     }
 
@@ -66,7 +67,7 @@
 
     .nav-wordmark-name {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.025em;
       line-height: 1.1;
@@ -547,14 +548,14 @@
     }
   </style>
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="images/fi-logo.svg" type="image/svg+xml">
+  <link rel="icon" href="images/fis-logo-64.png" type="image/png">
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/fi-logo.svg" class="nav-logo" alt="">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
         <span class="nav-wordmark-name">FutureInSites</span>
         <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
@@ -707,29 +708,4 @@
           if (e.key === 'Escape') close();
         }
 
-        overlay.addEventListener('click', function (e) {
-          if (e.target === overlay || e.target === closeBtn) close();
-        });
-
-        // Block clicks on the image itself from closing
-        img.addEventListener('click', function (e) { e.stopPropagation(); });
-
-        document.body.appendChild(overlay);
-        document.body.classList.add('lb-open');
-        document.addEventListener('keydown', onKey);
-      }
-
-      figs.forEach(function (img) {
-        img.addEventListener('click', function () {
-          var fig = img.closest('figure');
-          var capEl = fig ? fig.querySelector('figcaption') : null;
-          var capText = capEl ? capEl.textContent.trim() : '';
-          openLightbox(img.src, img.alt, capText);
-        });
-      });
-    })();
-  </script>
-
-  <script src="cookie-banner.js"></script>
-</body>
-</html>
+        overlay.addEventListener('click',
