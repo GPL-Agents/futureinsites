@@ -405,6 +405,189 @@
       line-height: 1.2;
     }
 
+    /* ─── SIGNATURE ENGAGEMENT (AI Transformation Session) ─── */
+    .signature-block {
+      background: var(--dark);
+      color: #FFFFFF;
+      border-radius: 12px;
+      padding: 2.5rem 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .signature-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--cyan);
+    }
+    .signature-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .signature-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--cyan);
+      display: inline-block;
+    }
+    .signature-title {
+      font-size: clamp(1.6rem, 2.4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.85rem;
+      color: #FFFFFF;
+    }
+    .signature-lead {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+    .signature-days {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .signature-day {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+    }
+    .signature-day-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.4rem;
+    }
+    .signature-day-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.6rem;
+    }
+    .signature-day-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+    .signature-leave {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .signature-leave strong { color: #FFFFFF; font-weight: 600; }
+    .signature-cta {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 1.6rem;
+      border-radius: 100px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .signature-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .signature-form {
+      display: none;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .signature-form.open { display: block; }
+    .signature-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .signature-form label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.4rem;
+    }
+    .signature-form input,
+    .signature-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .signature-form input:focus,
+    .signature-form textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .signature-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .signature-form-field-full { grid-column: 1 / -1; }
+    .signature-form-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    .signature-form-actions button {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .signature-form-actions button:hover { opacity: 0.9; }
+    .signature-form-note {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+    @media (max-width: 720px) {
+      .signature-days { grid-template-columns: 1fr; }
+      .signature-form-grid { grid-template-columns: 1fr; }
+      .signature-block { padding: 1.75rem 1.5rem; }
+    }
+
     /* ─── SOLUTIONS ─── */
     .solutions { background: var(--bg); }
 
@@ -1244,9 +1427,9 @@
         <div class="about-body">
           <p class="section-label">Approach</p>
           <h2 class="section-title">Strategy first.</h2>
-          <p>FutureInSites was built on a simple belief: the companies that win with AI aren't the ones who deploy the most tools; they're the ones who ask the right questions first.</p>
+          <p>FutureInSites was built on a simple belief: the companies that win with AI aren't the ones who deploy the most tools; they're the ones who <strong>ask the right questions</strong> first.</p>
           <p>We do two complementary kinds of work. <strong>Enterprise AI Strategy &amp; Development</strong> for operating companies navigating the AI inflection point, and <strong>AI Investment &amp; Strategic Diligence</strong> for investors and management teams evaluating AI businesses and AI's impact on incumbent economics.</p>
-          <p>The case work covers <strong>retail, media &amp; technology, finance, healthcare &amp; bio-sciences</strong>: industries where AI is reshaping customer expectations, capital intensity, and competitive advantage simultaneously.</p>
+          <p>The case work covers <strong>retail, manufacturing, media, finance, healthcare &amp; bio-sciences</strong>: industries where AI is reshaping customer expectations, capital intensity, and competitive advantage simultaneously.</p>
         </div>
 
         <div class="about-stats">
@@ -1286,6 +1469,61 @@
       <p class="section-label">Solutions</p>
       <h2 class="section-title">What we do</h2>
       <p class="section-intro">From readiness assessment to full implementation roadmap, our engagements are structured around where you actually are, and where AI can generate the fastest, most defensible returns.</p>
+
+      <!-- ─── SIGNATURE ENGAGEMENT: AI TRANSFORMATION SESSION ─── -->
+      <div class="signature-block">
+        <div class="signature-eyebrow">Signature Engagement</div>
+        <h3 class="signature-title">AI Transformation Session</h3>
+        <p class="signature-lead">A 2-day onsite intensive that takes your leadership team from "we should do something with AI" to a prioritized roadmap and live development. We come onsite with pre-researched analysis of your business; you leave with both clarity and motion.</p>
+
+        <div class="signature-days">
+          <div class="signature-day">
+            <div class="signature-day-label">Day 1</div>
+            <div class="signature-day-title">Grounding</div>
+            <p class="signature-day-desc">AI history, fundamentals, and the current vendor landscape. Frameworks for thinking about AI ROI and risk. Where your industry sits on the inflection curve.</p>
+          </div>
+          <div class="signature-day">
+            <div class="signature-day-label">Day 2</div>
+            <div class="signature-day-title">Customized Work</div>
+            <p class="signature-day-desc">Readiness assessment of your organization. Prioritized AI application analysis. Buy-vs-build evaluation. Roadmap with sequenced timelines. Design spec and starter code for the highest-priority agent.</p>
+          </div>
+        </div>
+
+        <p class="signature-leave"><strong>You leave with:</strong> a custom AI strategy roadmap, use case prioritization matrix, buy/build/partner framework applied to your situation, and a design spec plus starter code for your top-priority AI agent. Optional follow-on engagement available for development resources or ongoing retainer to help implement the recommendations.</p>
+
+        <button class="signature-cta" id="signature-cta-btn" type="button">Inquire about scheduling →</button>
+
+        <!-- ─── INLINE INQUIRY FORM ─── -->
+        <form class="signature-form" id="signature-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <input type="hidden" name="_subject" value="AI Transformation Session Inquiry">
+          <div class="signature-form-grid">
+            <div>
+              <label for="sf-name">Name</label>
+              <input id="sf-name" name="name" type="text" required>
+            </div>
+            <div>
+              <label for="sf-email">Work email</label>
+              <input id="sf-email" name="email" type="email" required>
+            </div>
+            <div>
+              <label for="sf-company">Company</label>
+              <input id="sf-company" name="company" type="text" required>
+            </div>
+            <div>
+              <label for="sf-role">Role / Title</label>
+              <input id="sf-role" name="role" type="text" required>
+            </div>
+            <div class="signature-form-field-full">
+              <label for="sf-context">What's your team's current AI context? (optional)</label>
+              <textarea id="sf-context" name="context"></textarea>
+            </div>
+          </div>
+          <div class="signature-form-actions">
+            <button type="submit">Send inquiry</button>
+            <span class="signature-form-note">We'll reply within 1 business day.</span>
+          </div>
+        </form>
+      </div>
 
       <div class="solutions-grid">
 
@@ -1361,7 +1599,7 @@
             <div class="sol-rule"></div>
           </div>
           <h3>AI Governance &amp; Ethics</h3>
-          <p>Establish responsible AI frameworks, stage-gate investment criteria, and Centers of Excellence that scale your AI program without unmanaged risk. Policy guardrails, model risk management, and the operating cadence that keeps Board oversight honest as deployments multiply.</p>
+          <p>Responsible AI frameworks, stage-gate investment criteria, and Centers of Excellence that scale your AI program without unmanaged risk. Policy guardrails and model risk management that keep Board oversight honest as deployments multiply.</p>
         </div>
 
         <div class="solution-card">
@@ -1378,7 +1616,7 @@
             <div class="sol-rule"></div>
           </div>
           <h3>Strategic Advisory</h3>
-          <p>Strategic counsel for both operating leaders and investors. For C-suite and Boards: quarterly reviews, scenario planning around frontier model and capital allocation choices, and a thinking partner for the calls that don't fit on a slide. For M&amp;A and capital decisions: DCF modeling, GPU economic depreciation, customer concentration analysis, and forecast frameworks traceable to source disclosures.</p>
+          <p>Strategic counsel for operators and investors. Quarterly reviews, scenario planning, and a thinking partner for the calls that don't fit on a slide. DCF modeling, GPU economic depreciation, and forecast frameworks for M&amp;A and capital decisions.</p>
         </div>
 
         <div class="solution-card">
@@ -1400,7 +1638,7 @@
             <div class="sol-rule"></div>
           </div>
           <h3>AI Build &amp; Integration</h3>
-          <p>Build and integrate AI capability across your business. Custom AI agent development for specific workflows, orchestration of multi-step AI workflows across internal systems and external partners, and configuration and integration of third-party AI platforms (OpenAI, Anthropic, vertical SaaS) into your existing stack.</p>
+          <p>Build and integrate AI capability across your business. Custom agent development for specific workflows, multi-step workflow orchestration across internal and external systems, and third-party AI platform integration (OpenAI, Anthropic, vertical SaaS).</p>
         </div>
 
       </div>
@@ -1577,7 +1815,7 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>
-    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;–&nbsp; Cambridge, MA</p>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Cambridge, MA</p>
   </footer>
 
   <!-- FUTURE AI WIDGET -->
@@ -1701,6 +1939,20 @@
         setTimeout(startSequence, 1200);
       });
     }
+  })();
+
+  /* AI Transformation Session form toggle */
+  (function () {
+    var ctaBtn = document.getElementById('signature-cta-btn');
+    var form   = document.getElementById('signature-form');
+    if (!ctaBtn || !form) return;
+    ctaBtn.addEventListener('click', function () {
+      form.classList.add('open');
+      ctaBtn.style.display = 'none';
+      var firstInput = form.querySelector('input[type="text"]');
+      if (firstInput) firstInput.focus();
+      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
   })();
 
   /* Hamburger toggle */
