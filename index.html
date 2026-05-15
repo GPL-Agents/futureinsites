@@ -353,7 +353,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
-      align-items: center;
+      align-items: stretch;
     }
 
     .about-body p:not(.section-label) {
@@ -368,14 +368,18 @@
     .about-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
+      grid-auto-rows: 1fr;
+      gap: 1rem;
+      background: var(--cyan);
+      padding: 1.5rem;
+      border-radius: 12px;
     }
 
     .about-stat {
-      background: #F0FAFE;
+      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.5rem 1.4rem;
+      padding: 2rem 1.4rem;
       text-align: center;
       display: flex;
       flex-direction: column;
