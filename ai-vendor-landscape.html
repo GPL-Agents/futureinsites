@@ -228,6 +228,7 @@
       gap: 1.5rem;
       flex-wrap: wrap;
       justify-content: center;
+      position: relative;
     }
 
     .intro-stat {
@@ -421,35 +422,49 @@
 
     /* ─── SUBMIT AI PILL ─── */
     .submit-ai-pill {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
-      padding: 0.85rem 1.25rem;
-      background: rgba(45,212,255,0.08);
-      border: 1px solid rgba(45,212,255,0.25);
-      border-radius: 12px;
+      gap: 0.15rem;
+      padding: 0.7rem 1.15rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      border-radius: 8px;
       text-decoration: none;
-      margin-left: auto;
       transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
     .submit-ai-pill:hover {
-      background: rgba(45,212,255,0.14);
-      border-color: rgba(45,212,255,0.5);
-      transform: translateY(-1px);
+      background: rgba(45,212,255,0.06);
+      border-color: rgba(45,212,255,0.4);
+      border-left-color: var(--cyan);
+      transform: translateY(-50%) translateX(-2px);
     }
     .submit-ai-pill-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 0.02em;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
     .submit-ai-pill-cta {
       font-size: 0.92rem;
       font-weight: 700;
-      color: var(--cyan);
+      color: var(--accent);
       letter-spacing: -0.01em;
     }
-    @media (max-width: 720px) {
-      .submit-ai-pill { margin-left: 0; margin-top: 0.5rem; width: 100%; align-items: center; }
+    @media (max-width: 860px) {
+      .submit-ai-pill {
+        position: static;
+        transform: none;
+        margin-top: 1rem;
+        align-items: center;
+        text-align: center;
+      }
+      .submit-ai-pill:hover { transform: translateY(-1px); }
     }
 
     /* ─── SUBMIT AI FORM ─── */
