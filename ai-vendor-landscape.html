@@ -349,13 +349,42 @@
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       text-decoration: none;
       color: inherit;
-      display: block;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
     .vendor-card:hover {
       border-color: var(--accent);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(37,99,235,0.08);
+    }
+
+    .vendor-logo {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      object-fit: contain;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .vendor-logo-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--bg);
+      padding: 0;
+    }
+
+    .vendor-content {
+      flex: 1;
+      min-width: 0;
     }
 
     .vendor-head {
@@ -555,53 +584,83 @@
       <div class="vendor-grid">
 
         <a href="https://openai.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">OpenAI</div><div class="vendor-domain">openai.com</div></div>
-          <p>Maker of the GPT and o-series models, ChatGPT, Sora, and the OpenAI API. Anchored by a deep partnership with Microsoft.</p>
+          <img src="images/vendor-logos/openai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">OpenAI</div><div class="vendor-domain">openai.com</div></div>
+            <p>Maker of the GPT and o-series models, ChatGPT, Sora, and the OpenAI API. Anchored by a deep partnership with Microsoft.</p>
+          </div>
         </a>
 
         <a href="https://www.anthropic.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Anthropic</div><div class="vendor-domain">anthropic.com</div></div>
-          <p>Creator of Claude, with a research focus on AI safety, interpretability, and building steerable models for high-stakes enterprise work.</p>
+          <img src="images/vendor-logos/anthropic.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Anthropic</div><div class="vendor-domain">anthropic.com</div></div>
+            <p>Creator of Claude, with a research focus on AI safety, interpretability, and building steerable models for high-stakes enterprise work.</p>
+          </div>
         </a>
 
         <a href="https://deepmind.google" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Google DeepMind</div><div class="vendor-domain">deepmind.google</div></div>
-          <p>Google's combined AI research division behind Gemini, AlphaFold, and Veo. Deeply integrated into Search, Workspace, and Google Cloud.</p>
+          <img src="images/vendor-logos/google-deepmind.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Google DeepMind</div><div class="vendor-domain">deepmind.google</div></div>
+            <p>Google's combined AI research division behind Gemini, AlphaFold, and Veo. Deeply integrated into Search, Workspace, and Google Cloud.</p>
+          </div>
         </a>
 
         <a href="https://ai.meta.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Meta AI</div><div class="vendor-domain">ai.meta.com</div></div>
-          <p>Meta's research arm and home of the Llama family of open-weight models. The reference open-source ecosystem for enterprise self-hosting.</p>
+          <img src="images/vendor-logos/meta-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Meta AI</div><div class="vendor-domain">ai.meta.com</div></div>
+            <p>Meta's research arm and home of the Llama family of open-weight models. The reference open-source ecosystem for enterprise self-hosting.</p>
+          </div>
         </a>
 
         <a href="https://x.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">xAI</div><div class="vendor-domain">x.ai</div></div>
-          <p>Elon Musk's AI lab behind the Grok model family, integrated across X (formerly Twitter) and exposed via its own API.</p>
+          <img src="images/vendor-logos/xai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">xAI</div><div class="vendor-domain">x.ai</div></div>
+            <p>Elon Musk's AI lab behind the Grok model family, integrated across X (formerly Twitter) and exposed via its own API.</p>
+          </div>
         </a>
 
         <a href="https://mistral.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Mistral AI</div><div class="vendor-domain">mistral.ai</div></div>
-          <p>Paris-based lab producing both open-weight and frontier-tier models with a strong focus on European data sovereignty.</p>
+          <img src="images/vendor-logos/mistral-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Mistral AI</div><div class="vendor-domain">mistral.ai</div></div>
+            <p>Paris-based lab producing both open-weight and frontier-tier models with a strong focus on European data sovereignty.</p>
+          </div>
         </a>
 
         <a href="https://cohere.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Cohere</div><div class="vendor-domain">cohere.com</div></div>
-          <p>Enterprise-focused foundation models (Command, Embed, Rerank) optimized for retrieval-augmented generation in regulated industries.</p>
+          <img src="images/vendor-logos/cohere.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Cohere</div><div class="vendor-domain">cohere.com</div></div>
+            <p>Enterprise-focused foundation models (Command, Embed, Rerank) optimized for retrieval-augmented generation in regulated industries.</p>
+          </div>
         </a>
 
         <a href="https://www.ai21.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">AI21 Labs</div><div class="vendor-domain">ai21.com</div></div>
-          <p>Israeli lab behind the Jamba family of hybrid Mamba/Transformer models, focused on long-context enterprise use cases.</p>
+          <img src="images/vendor-logos/ai21-labs.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">AI21 Labs</div><div class="vendor-domain">ai21.com</div></div>
+            <p>Israeli lab behind the Jamba family of hybrid Mamba/Transformer models, focused on long-context enterprise use cases.</p>
+          </div>
         </a>
 
         <a href="https://www.reka.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Reka AI</div><div class="vendor-domain">reka.ai</div></div>
-          <p>Multimodal foundation model lab (Reka Core, Flash, Edge) targeting on-prem and edge deployment for enterprise.</p>
+          <img src="images/vendor-logos/reka-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Reka AI</div><div class="vendor-domain">reka.ai</div></div>
+            <p>Multimodal foundation model lab (Reka Core, Flash, Edge) targeting on-prem and edge deployment for enterprise.</p>
+          </div>
         </a>
 
         <a href="https://www.inflection.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Inflection AI</div><div class="vendor-domain">inflection.ai</div></div>
-          <p>Pivoted to enterprise after its commercial team joined Microsoft. Now offers Inflection-tuned models for regulated workloads.</p>
+          <img src="images/vendor-logos/inflection-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Inflection AI</div><div class="vendor-domain">inflection.ai</div></div>
+            <p>Pivoted to enterprise after its commercial team joined Microsoft. Now offers Inflection-tuned models for regulated workloads.</p>
+          </div>
         </a>
 
       </div>
@@ -618,53 +677,83 @@
       <div class="vendor-grid">
 
         <a href="https://huggingface.co" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Hugging Face</div><div class="vendor-domain">huggingface.co</div></div>
-          <p>The default hub for open-source model weights, datasets, and training tooling. Effectively the GitHub of machine learning.</p>
+          <img src="images/vendor-logos/hugging-face.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Hugging Face</div><div class="vendor-domain">huggingface.co</div></div>
+            <p>The default hub for open-source model weights, datasets, and training tooling. Effectively the GitHub of machine learning.</p>
+          </div>
         </a>
 
         <a href="https://www.databricks.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Databricks (Mosaic)</div><div class="vendor-domain">databricks.com</div></div>
-          <p>Data and AI platform with the DBRX open model and Mosaic AI training stack. Strong story for fine-tuning on proprietary data.</p>
+          <img src="images/vendor-logos/databricks-mosaic.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Databricks (Mosaic)</div><div class="vendor-domain">databricks.com</div></div>
+            <p>Data and AI platform with the DBRX open model and Mosaic AI training stack. Strong story for fine-tuning on proprietary data.</p>
+          </div>
         </a>
 
         <a href="https://stability.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Stability AI</div><div class="vendor-domain">stability.ai</div></div>
-          <p>Open-source generative media (Stable Diffusion, Stable Audio, Stable Video). The reference open image-generation lineage.</p>
+          <img src="images/vendor-logos/stability-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Stability AI</div><div class="vendor-domain">stability.ai</div></div>
+            <p>Open-source generative media (Stable Diffusion, Stable Audio, Stable Video). The reference open image-generation lineage.</p>
+          </div>
         </a>
 
         <a href="https://blackforestlabs.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Black Forest Labs</div><div class="vendor-domain">blackforestlabs.ai</div></div>
-          <p>Founded by ex-Stability researchers; the FLUX family is a current state-of-the-art open image-generation lineage.</p>
+          <img src="images/vendor-logos/black-forest-labs.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Black Forest Labs</div><div class="vendor-domain">blackforestlabs.ai</div></div>
+            <p>Founded by ex-Stability researchers; the FLUX family is a current state-of-the-art open image-generation lineage.</p>
+          </div>
         </a>
 
         <a href="https://aleph-alpha.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Aleph Alpha</div><div class="vendor-domain">aleph-alpha.com</div></div>
-          <p>German foundation model company focused on sovereign AI deployments for European government and regulated enterprise.</p>
+          <img src="images/vendor-logos/aleph-alpha.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Aleph Alpha</div><div class="vendor-domain">aleph-alpha.com</div></div>
+            <p>German foundation model company focused on sovereign AI deployments for European government and regulated enterprise.</p>
+          </div>
         </a>
 
         <a href="https://www.deepseek.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">DeepSeek</div><div class="vendor-domain">deepseek.com</div></div>
-          <p>Chinese lab whose efficient reasoning models reset assumptions on training cost and open-weight performance.</p>
+          <img src="images/vendor-logos/deepseek.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">DeepSeek</div><div class="vendor-domain">deepseek.com</div></div>
+            <p>Chinese lab whose efficient reasoning models reset assumptions on training cost and open-weight performance.</p>
+          </div>
         </a>
 
         <a href="https://qwen.aliyun.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Alibaba Qwen</div><div class="vendor-domain">qwenlm.ai</div></div>
-          <p>Alibaba's open-weight Qwen model family, a major non-Western foundation model series with strong multilingual coverage.</p>
+          <img src="images/vendor-logos/alibaba-qwen.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Alibaba Qwen</div><div class="vendor-domain">qwenlm.ai</div></div>
+            <p>Alibaba's open-weight Qwen model family, a major non-Western foundation model series with strong multilingual coverage.</p>
+          </div>
         </a>
 
         <a href="https://www.moonshot.cn" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Moonshot AI</div><div class="vendor-domain">moonshot.cn</div></div>
-          <p>Maker of the Kimi long-context model family. Notable for strong long-document and reasoning benchmarks.</p>
+          <img src="images/vendor-logos/moonshot-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Moonshot AI</div><div class="vendor-domain">moonshot.cn</div></div>
+            <p>Maker of the Kimi long-context model family. Notable for strong long-document and reasoning benchmarks.</p>
+          </div>
         </a>
 
         <a href="https://01.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">01.AI</div><div class="vendor-domain">01.ai</div></div>
-          <p>Founded by Kai-Fu Lee. Maker of the Yi family of open-weight bilingual models targeting English and Chinese workloads.</p>
+          <img src="images/vendor-logos/01-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">01.AI</div><div class="vendor-domain">01.ai</div></div>
+            <p>Founded by Kai-Fu Lee. Maker of the Yi family of open-weight bilingual models targeting English and Chinese workloads.</p>
+          </div>
         </a>
 
         <a href="https://www.adept.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Adept AI</div><div class="vendor-domain">adept.ai</div></div>
-          <p>Action-oriented multimodal models for browser and desktop automation. Now operating largely as part of Amazon.</p>
+          <img src="images/vendor-logos/adept-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Adept AI</div><div class="vendor-domain">adept.ai</div></div>
+            <p>Action-oriented multimodal models for browser and desktop automation. Now operating largely as part of Amazon.</p>
+          </div>
         </a>
 
       </div>
@@ -681,33 +770,51 @@
       <div class="vendor-grid">
 
         <a href="https://aws.amazon.com/bedrock" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">AWS Bedrock &amp; SageMaker</div><div class="vendor-domain">aws.amazon.com</div></div>
-          <p>Amazon's managed model garden (Anthropic, Meta, Mistral, Amazon Nova, Titan) plus the SageMaker training and serving stack.</p>
+          <img src="images/vendor-logos/aws-bedrock-amp-sagemaker.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">AWS Bedrock &amp; SageMaker</div><div class="vendor-domain">aws.amazon.com</div></div>
+            <p>Amazon's managed model garden (Anthropic, Meta, Mistral, Amazon Nova, Titan) plus the SageMaker training and serving stack.</p>
+          </div>
         </a>
 
         <a href="https://azure.microsoft.com/products/ai-services" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Microsoft Azure AI</div><div class="vendor-domain">azure.microsoft.com</div></div>
-          <p>Azure OpenAI Service, Azure AI Foundry, and Copilot Studio. The default enterprise on-ramp for OpenAI models.</p>
+          <img src="images/vendor-logos/microsoft-azure-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Microsoft Azure AI</div><div class="vendor-domain">azure.microsoft.com</div></div>
+            <p>Azure OpenAI Service, Azure AI Foundry, and Copilot Studio. The default enterprise on-ramp for OpenAI models.</p>
+          </div>
         </a>
 
         <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Google Vertex AI</div><div class="vendor-domain">cloud.google.com</div></div>
-          <p>Google Cloud's AI platform: Gemini, Imagen, Veo, Model Garden, and managed training, all wired into BigQuery and TPU v5/Trillium.</p>
+          <img src="images/vendor-logos/google-vertex-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Google Vertex AI</div><div class="vendor-domain">cloud.google.com</div></div>
+            <p>Google Cloud's AI platform: Gemini, Imagen, Veo, Model Garden, and managed training, all wired into BigQuery and TPU v5/Trillium.</p>
+          </div>
         </a>
 
         <a href="https://www.ibm.com/watsonx" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">IBM watsonx</div><div class="vendor-domain">ibm.com</div></div>
-          <p>IBM's enterprise AI platform built around the Granite model family, governance tooling, and hybrid-cloud deployment.</p>
+          <img src="images/vendor-logos/ibm-watsonx.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">IBM watsonx</div><div class="vendor-domain">ibm.com</div></div>
+            <p>IBM's enterprise AI platform built around the Granite model family, governance tooling, and hybrid-cloud deployment.</p>
+          </div>
         </a>
 
         <a href="https://www.oracle.com/artificial-intelligence" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Oracle Cloud AI (OCI)</div><div class="vendor-domain">oracle.com</div></div>
-          <p>OCI Generative AI Service plus Oracle's high-density GPU clusters underpinning much of its AI infrastructure backlog.</p>
+          <img src="images/vendor-logos/oracle-cloud-ai-oci.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Oracle Cloud AI (OCI)</div><div class="vendor-domain">oracle.com</div></div>
+            <p>OCI Generative AI Service plus Oracle's high-density GPU clusters underpinning much of its AI infrastructure backlog.</p>
+          </div>
         </a>
 
         <a href="https://www.alibabacloud.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Alibaba Cloud</div><div class="vendor-domain">alibabacloud.com</div></div>
-          <p>The leading non-US hyperscaler in many APAC markets, with deep integration into the Qwen model family.</p>
+          <img src="images/vendor-logos/alibaba-cloud.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Alibaba Cloud</div><div class="vendor-domain">alibabacloud.com</div></div>
+            <p>The leading non-US hyperscaler in many APAC markets, with deep integration into the Qwen model family.</p>
+          </div>
         </a>
 
       </div>
@@ -724,83 +831,131 @@
       <div class="vendor-grid">
 
         <a href="https://www.nvidia.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">NVIDIA</div><div class="vendor-domain">nvidia.com</div></div>
-          <p>The dominant AI accelerator vendor. CUDA, H100/H200/Blackwell, NIM microservices, and the broader Omniverse / DGX stack.</p>
+          <img src="images/vendor-logos/nvidia.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">NVIDIA</div><div class="vendor-domain">nvidia.com</div></div>
+            <p>The dominant AI accelerator vendor. CUDA, H100/H200/Blackwell, NIM microservices, and the broader Omniverse / DGX stack.</p>
+          </div>
         </a>
 
         <a href="https://www.amd.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">AMD</div><div class="vendor-domain">amd.com</div></div>
-          <p>The Instinct MI300/MI350/MI400 GPU line plus ROCm software. The credible second source named in most major AI build-outs.</p>
+          <div class="vendor-logo vendor-logo-fallback">A</div>
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">AMD</div><div class="vendor-domain">amd.com</div></div>
+            <p>The Instinct MI300/MI350/MI400 GPU line plus ROCm software. The credible second source named in most major AI build-outs.</p>
+          </div>
         </a>
 
         <a href="https://www.intel.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Intel (Gaudi)</div><div class="vendor-domain">intel.com</div></div>
-          <p>Intel's Gaudi accelerator line plus Xeon AI extensions. A challenger position with selective enterprise traction.</p>
+          <img src="images/vendor-logos/intel-gaudi.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Intel (Gaudi)</div><div class="vendor-domain">intel.com</div></div>
+            <p>Intel's Gaudi accelerator line plus Xeon AI extensions. A challenger position with selective enterprise traction.</p>
+          </div>
         </a>
 
         <a href="https://www.cerebras.net" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Cerebras</div><div class="vendor-domain">cerebras.net</div></div>
-          <p>Wafer-scale AI engines targeting the largest single-system training and ultra-fast inference workloads.</p>
+          <img src="images/vendor-logos/cerebras.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Cerebras</div><div class="vendor-domain">cerebras.net</div></div>
+            <p>Wafer-scale AI engines targeting the largest single-system training and ultra-fast inference workloads.</p>
+          </div>
         </a>
 
         <a href="https://groq.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Groq</div><div class="vendor-domain">groq.com</div></div>
-          <p>Custom LPU inference silicon delivering very high tokens-per-second economics for production LLM serving.</p>
+          <img src="images/vendor-logos/groq.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Groq</div><div class="vendor-domain">groq.com</div></div>
+            <p>Custom LPU inference silicon delivering very high tokens-per-second economics for production LLM serving.</p>
+          </div>
         </a>
 
         <a href="https://sambanova.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">SambaNova</div><div class="vendor-domain">sambanova.ai</div></div>
-          <p>Reconfigurable dataflow accelerators packaged as a full enterprise AI stack, often deployed on-prem.</p>
+          <img src="images/vendor-logos/sambanova.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">SambaNova</div><div class="vendor-domain">sambanova.ai</div></div>
+            <p>Reconfigurable dataflow accelerators packaged as a full enterprise AI stack, often deployed on-prem.</p>
+          </div>
         </a>
 
         <a href="https://tenstorrent.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Tenstorrent</div><div class="vendor-domain">tenstorrent.com</div></div>
-          <p>Open-architecture AI silicon (Wormhole, Blackhole) with a RISC-V CPU strategy led by Jim Keller.</p>
+          <img src="images/vendor-logos/tenstorrent.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Tenstorrent</div><div class="vendor-domain">tenstorrent.com</div></div>
+            <p>Open-architecture AI silicon (Wormhole, Blackhole) with a RISC-V CPU strategy led by Jim Keller.</p>
+          </div>
         </a>
 
         <a href="https://www.graphcore.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Graphcore</div><div class="vendor-domain">graphcore.ai</div></div>
-          <p>UK-based IPU silicon vendor, now part of SoftBank. Refocused on next-generation AI compute architectures.</p>
+          <img src="images/vendor-logos/graphcore.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Graphcore</div><div class="vendor-domain">graphcore.ai</div></div>
+            <p>UK-based IPU silicon vendor, now part of SoftBank. Refocused on next-generation AI compute architectures.</p>
+          </div>
         </a>
 
         <a href="https://www.coreweave.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">CoreWeave</div><div class="vendor-domain">coreweave.com</div></div>
-          <p>Pure-play GPU hyperscaler. The reference example of NVIDIA-aligned, AI-native cloud capacity at scale.</p>
+          <img src="images/vendor-logos/coreweave.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">CoreWeave</div><div class="vendor-domain">coreweave.com</div></div>
+            <p>Pure-play GPU hyperscaler. The reference example of NVIDIA-aligned, AI-native cloud capacity at scale.</p>
+          </div>
         </a>
 
         <a href="https://lambdalabs.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Lambda Labs</div><div class="vendor-domain">lambdalabs.com</div></div>
-          <p>GPU cloud and on-prem AI infrastructure. Popular with research labs and mid-market AI-native companies.</p>
+          <img src="images/vendor-logos/lambda-labs.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Lambda Labs</div><div class="vendor-domain">lambdalabs.com</div></div>
+            <p>GPU cloud and on-prem AI infrastructure. Popular with research labs and mid-market AI-native companies.</p>
+          </div>
         </a>
 
         <a href="https://crusoe.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Crusoe</div><div class="vendor-domain">crusoe.ai</div></div>
-          <p>Vertically integrated AI cloud building dedicated power and data centers, including stranded-energy and gas-to-AI sites.</p>
+          <img src="images/vendor-logos/crusoe.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Crusoe</div><div class="vendor-domain">crusoe.ai</div></div>
+            <p>Vertically integrated AI cloud building dedicated power and data centers, including stranded-energy and gas-to-AI sites.</p>
+          </div>
         </a>
 
         <a href="https://www.together.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Together AI</div><div class="vendor-domain">together.ai</div></div>
-          <p>Inference and fine-tuning cloud for open-source models. Often the cheapest production path for Llama-class workloads.</p>
+          <img src="images/vendor-logos/together-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Together AI</div><div class="vendor-domain">together.ai</div></div>
+            <p>Inference and fine-tuning cloud for open-source models. Often the cheapest production path for Llama-class workloads.</p>
+          </div>
         </a>
 
         <a href="https://fireworks.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Fireworks AI</div><div class="vendor-domain">fireworks.ai</div></div>
-          <p>High-performance inference platform with strong throughput on open-weight LLMs and multimodal models.</p>
+          <img src="images/vendor-logos/fireworks-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Fireworks AI</div><div class="vendor-domain">fireworks.ai</div></div>
+            <p>High-performance inference platform with strong throughput on open-weight LLMs and multimodal models.</p>
+          </div>
         </a>
 
         <a href="https://www.modal.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Modal</div><div class="vendor-domain">modal.com</div></div>
-          <p>Serverless GPU compute with a Python-first developer experience. Popular for batch inference and fine-tuning jobs.</p>
+          <img src="images/vendor-logos/modal.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Modal</div><div class="vendor-domain">modal.com</div></div>
+            <p>Serverless GPU compute with a Python-first developer experience. Popular for batch inference and fine-tuning jobs.</p>
+          </div>
         </a>
 
         <a href="https://www.runpod.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">RunPod</div><div class="vendor-domain">runpod.io</div></div>
-          <p>On-demand and spot GPU rental targeted at developers, hobbyists, and AI-native startups.</p>
+          <img src="images/vendor-logos/runpod.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">RunPod</div><div class="vendor-domain">runpod.io</div></div>
+            <p>On-demand and spot GPU rental targeted at developers, hobbyists, and AI-native startups.</p>
+          </div>
         </a>
 
         <a href="https://www.anyscale.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Anyscale</div><div class="vendor-domain">anyscale.com</div></div>
-          <p>Commercial Ray distribution. The reference framework for distributed training, RL, and large-scale inference workloads.</p>
+          <img src="images/vendor-logos/anyscale.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Anyscale</div><div class="vendor-domain">anyscale.com</div></div>
+            <p>Commercial Ray distribution. The reference framework for distributed training, RL, and large-scale inference workloads.</p>
+          </div>
         </a>
 
       </div>
@@ -817,83 +972,131 @@
       <div class="vendor-grid">
 
         <a href="https://www.pinecone.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Pinecone</div><div class="vendor-domain">pinecone.io</div></div>
-          <p>Managed vector database widely used for RAG. The reference enterprise serverless vector store.</p>
+          <img src="images/vendor-logos/pinecone.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Pinecone</div><div class="vendor-domain">pinecone.io</div></div>
+            <p>Managed vector database widely used for RAG. The reference enterprise serverless vector store.</p>
+          </div>
         </a>
 
         <a href="https://weaviate.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Weaviate</div><div class="vendor-domain">weaviate.io</div></div>
-          <p>Open-source vector database with strong hybrid search and graph features for retrieval-augmented applications.</p>
+          <img src="images/vendor-logos/weaviate.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Weaviate</div><div class="vendor-domain">weaviate.io</div></div>
+            <p>Open-source vector database with strong hybrid search and graph features for retrieval-augmented applications.</p>
+          </div>
         </a>
 
         <a href="https://qdrant.tech" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Qdrant</div><div class="vendor-domain">qdrant.tech</div></div>
-          <p>High-performance open-source vector database written in Rust, popular for self-hosted and on-prem RAG.</p>
+          <img src="images/vendor-logos/qdrant.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Qdrant</div><div class="vendor-domain">qdrant.tech</div></div>
+            <p>High-performance open-source vector database written in Rust, popular for self-hosted and on-prem RAG.</p>
+          </div>
         </a>
 
         <a href="https://www.trychroma.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Chroma</div><div class="vendor-domain">trychroma.com</div></div>
-          <p>Developer-friendly embeddings database; the default choice for prototype RAG pipelines and notebooks.</p>
+          <img src="images/vendor-logos/chroma.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Chroma</div><div class="vendor-domain">trychroma.com</div></div>
+            <p>Developer-friendly embeddings database; the default choice for prototype RAG pipelines and notebooks.</p>
+          </div>
         </a>
 
         <a href="https://zilliz.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Zilliz / Milvus</div><div class="vendor-domain">zilliz.com</div></div>
-          <p>Commercial offering and steward of Milvus, the large-scale open-source vector database used heavily in APAC.</p>
+          <img src="images/vendor-logos/zilliz-milvus.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Zilliz / Milvus</div><div class="vendor-domain">zilliz.com</div></div>
+            <p>Commercial offering and steward of Milvus, the large-scale open-source vector database used heavily in APAC.</p>
+          </div>
         </a>
 
         <a href="https://lancedb.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">LanceDB</div><div class="vendor-domain">lancedb.com</div></div>
-          <p>Embedded vector database built on the Lance columnar format. Often used inside multimodal data pipelines.</p>
+          <img src="images/vendor-logos/lancedb.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">LanceDB</div><div class="vendor-domain">lancedb.com</div></div>
+            <p>Embedded vector database built on the Lance columnar format. Often used inside multimodal data pipelines.</p>
+          </div>
         </a>
 
         <a href="https://www.langchain.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">LangChain &amp; LangSmith</div><div class="vendor-domain">langchain.com</div></div>
-          <p>Open-source orchestration framework plus a hosted observability and evaluation product (LangSmith) for LLM applications.</p>
+          <img src="images/vendor-logos/langchain-amp-langsmith.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">LangChain &amp; LangSmith</div><div class="vendor-domain">langchain.com</div></div>
+            <p>Open-source orchestration framework plus a hosted observability and evaluation product (LangSmith) for LLM applications.</p>
+          </div>
         </a>
 
         <a href="https://www.llamaindex.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">LlamaIndex</div><div class="vendor-domain">llamaindex.ai</div></div>
-          <p>Data framework specialized in RAG and agentic document workflows. The other dominant open-source orchestration choice.</p>
+          <img src="images/vendor-logos/llamaindex.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">LlamaIndex</div><div class="vendor-domain">llamaindex.ai</div></div>
+            <p>Data framework specialized in RAG and agentic document workflows. The other dominant open-source orchestration choice.</p>
+          </div>
         </a>
 
         <a href="https://wandb.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Weights &amp; Biases</div><div class="vendor-domain">wandb.ai</div></div>
-          <p>The dominant ML experiment-tracking and observability platform. Widely used inside frontier labs and enterprise ML teams.</p>
+          <img src="images/vendor-logos/weights-amp-biases.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Weights &amp; Biases</div><div class="vendor-domain">wandb.ai</div></div>
+            <p>The dominant ML experiment-tracking and observability platform. Widely used inside frontier labs and enterprise ML teams.</p>
+          </div>
         </a>
 
         <a href="https://www.comet.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Comet ML</div><div class="vendor-domain">comet.com</div></div>
-          <p>End-to-end ML and LLM experiment management with a strong story around model registry and production monitoring.</p>
+          <img src="images/vendor-logos/comet-ml.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Comet ML</div><div class="vendor-domain">comet.com</div></div>
+            <p>End-to-end ML and LLM experiment management with a strong story around model registry and production monitoring.</p>
+          </div>
         </a>
 
         <a href="https://arize.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Arize AI</div><div class="vendor-domain">arize.com</div></div>
-          <p>Production ML and LLM observability, with the open-source Phoenix tooling and a hosted enterprise monitoring product.</p>
+          <img src="images/vendor-logos/arize-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Arize AI</div><div class="vendor-domain">arize.com</div></div>
+            <p>Production ML and LLM observability, with the open-source Phoenix tooling and a hosted enterprise monitoring product.</p>
+          </div>
         </a>
 
         <a href="https://www.fiddler.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Fiddler</div><div class="vendor-domain">fiddler.ai</div></div>
-          <p>Model observability and explainability for regulated industries. Strong story around bias, drift, and audit.</p>
+          <img src="images/vendor-logos/fiddler.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Fiddler</div><div class="vendor-domain">fiddler.ai</div></div>
+            <p>Model observability and explainability for regulated industries. Strong story around bias, drift, and audit.</p>
+          </div>
         </a>
 
         <a href="https://www.galileo.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Galileo</div><div class="vendor-domain">galileo.ai</div></div>
-          <p>LLM evaluation, hallucination detection, and guardrails specifically designed for production GenAI applications.</p>
+          <img src="images/vendor-logos/galileo.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Galileo</div><div class="vendor-domain">galileo.ai</div></div>
+            <p>LLM evaluation, hallucination detection, and guardrails specifically designed for production GenAI applications.</p>
+          </div>
         </a>
 
         <a href="https://humanloop.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Humanloop</div><div class="vendor-domain">humanloop.com</div></div>
-          <p>LLM evaluation and prompt management platform. Targets product teams shipping LLM features at scale.</p>
+          <img src="images/vendor-logos/humanloop.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Humanloop</div><div class="vendor-domain">humanloop.com</div></div>
+            <p>LLM evaluation and prompt management platform. Targets product teams shipping LLM features at scale.</p>
+          </div>
         </a>
 
         <a href="https://snowflake.com/en/data-cloud/cortex" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Snowflake Cortex</div><div class="vendor-domain">snowflake.com</div></div>
-          <p>Snowflake's LLM and ML feature set, bringing model serving to the data warehouse rather than moving data to the model.</p>
+          <img src="images/vendor-logos/snowflake-cortex.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Snowflake Cortex</div><div class="vendor-domain">snowflake.com</div></div>
+            <p>Snowflake's LLM and ML feature set, bringing model serving to the data warehouse rather than moving data to the model.</p>
+          </div>
         </a>
 
         <a href="https://scale.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Scale AI</div><div class="vendor-domain">scale.com</div></div>
-          <p>Data labeling, evaluation, and RLHF infrastructure. A core supplier to frontier labs and the US public sector.</p>
+          <img src="images/vendor-logos/scale-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Scale AI</div><div class="vendor-domain">scale.com</div></div>
+            <p>Data labeling, evaluation, and RLHF infrastructure. A core supplier to frontier labs and the US public sector.</p>
+          </div>
         </a>
 
       </div>
@@ -910,63 +1113,99 @@
       <div class="vendor-grid">
 
         <a href="https://www.palantir.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Palantir (AIP)</div><div class="vendor-domain">palantir.com</div></div>
-          <p>Foundry plus the AI Platform (AIP). Strong enterprise traction in industrial, defense, healthcare, and intelligence work.</p>
+          <img src="images/vendor-logos/palantir-aip.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Palantir (AIP)</div><div class="vendor-domain">palantir.com</div></div>
+            <p>Foundry plus the AI Platform (AIP). Strong enterprise traction in industrial, defense, healthcare, and intelligence work.</p>
+          </div>
         </a>
 
         <a href="https://www.salesforce.com/agentforce" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Salesforce Agentforce</div><div class="vendor-domain">salesforce.com</div></div>
-          <p>Salesforce's agent platform, evolution of Einstein. Tightly coupled to the Data Cloud and CRM workflow surface.</p>
+          <img src="images/vendor-logos/salesforce-agentforce.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Salesforce Agentforce</div><div class="vendor-domain">salesforce.com</div></div>
+            <p>Salesforce's agent platform, evolution of Einstein. Tightly coupled to the Data Cloud and CRM workflow surface.</p>
+          </div>
         </a>
 
         <a href="https://www.servicenow.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">ServiceNow Now Assist</div><div class="vendor-domain">servicenow.com</div></div>
-          <p>AI features layered over ITSM, HR, and customer workflows. Notable for its workflow-anchored, on-platform value capture.</p>
+          <img src="images/vendor-logos/servicenow-now-assist.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">ServiceNow Now Assist</div><div class="vendor-domain">servicenow.com</div></div>
+            <p>AI features layered over ITSM, HR, and customer workflows. Notable for its workflow-anchored, on-platform value capture.</p>
+          </div>
         </a>
 
         <a href="https://www.workday.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Workday AI</div><div class="vendor-domain">workday.com</div></div>
-          <p>Embedded AI across HCM and Finance. Workday Illuminate frames their generative AI strategy on top of customer data.</p>
+          <img src="images/vendor-logos/workday-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Workday AI</div><div class="vendor-domain">workday.com</div></div>
+            <p>Embedded AI across HCM and Finance. Workday Illuminate frames their generative AI strategy on top of customer data.</p>
+          </div>
         </a>
 
         <a href="https://www.sap.com/products/artificial-intelligence" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">SAP Joule</div><div class="vendor-domain">sap.com</div></div>
-          <p>SAP's AI copilot and generative AI hub embedded across S/4HANA, Ariba, and SuccessFactors.</p>
+          <img src="images/vendor-logos/sap-joule.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">SAP Joule</div><div class="vendor-domain">sap.com</div></div>
+            <p>SAP's AI copilot and generative AI hub embedded across S/4HANA, Ariba, and SuccessFactors.</p>
+          </div>
         </a>
 
         <a href="https://c3.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">C3.ai</div><div class="vendor-domain">c3.ai</div></div>
-          <p>Application-layer enterprise AI focused on industrial, energy, defense, and government use cases.</p>
+          <img src="images/vendor-logos/c3-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">C3.ai</div><div class="vendor-domain">c3.ai</div></div>
+            <p>Application-layer enterprise AI focused on industrial, energy, defense, and government use cases.</p>
+          </div>
         </a>
 
         <a href="https://www.datarobot.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">DataRobot</div><div class="vendor-domain">datarobot.com</div></div>
-          <p>End-to-end ML and GenAI platform for governed enterprise model development, deployment, and monitoring.</p>
+          <img src="images/vendor-logos/datarobot.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">DataRobot</div><div class="vendor-domain">datarobot.com</div></div>
+            <p>End-to-end ML and GenAI platform for governed enterprise model development, deployment, and monitoring.</p>
+          </div>
         </a>
 
         <a href="https://h2o.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">H2O.ai</div><div class="vendor-domain">h2o.ai</div></div>
-          <p>AutoML, generative AI, and document intelligence platform with strong adoption in financial services.</p>
+          <img src="images/vendor-logos/h2o-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">H2O.ai</div><div class="vendor-domain">h2o.ai</div></div>
+            <p>AutoML, generative AI, and document intelligence platform with strong adoption in financial services.</p>
+          </div>
         </a>
 
         <a href="https://writer.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Writer</div><div class="vendor-domain">writer.com</div></div>
-          <p>Full-stack generative AI platform with its own Palmyra models, focused on regulated enterprise content workflows.</p>
+          <img src="images/vendor-logos/writer.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Writer</div><div class="vendor-domain">writer.com</div></div>
+            <p>Full-stack generative AI platform with its own Palmyra models, focused on regulated enterprise content workflows.</p>
+          </div>
         </a>
 
         <a href="https://cohere.com/north" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Cohere North</div><div class="vendor-domain">cohere.com</div></div>
-          <p>Cohere's secure enterprise AI workspace, deployable in customer cloud or on-prem for regulated and sovereign workloads.</p>
+          <img src="images/vendor-logos/cohere-north.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Cohere North</div><div class="vendor-domain">cohere.com</div></div>
+            <p>Cohere's secure enterprise AI workspace, deployable in customer cloud or on-prem for regulated and sovereign workloads.</p>
+          </div>
         </a>
 
         <a href="https://glean.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Glean</div><div class="vendor-domain">glean.com</div></div>
-          <p>Enterprise AI search and assistant across Slack, Drive, Confluence, Salesforce, and the rest of the SaaS surface.</p>
+          <img src="images/vendor-logos/glean.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Glean</div><div class="vendor-domain">glean.com</div></div>
+            <p>Enterprise AI search and assistant across Slack, Drive, Confluence, Salesforce, and the rest of the SaaS surface.</p>
+          </div>
         </a>
 
         <a href="https://moveworks.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Moveworks</div><div class="vendor-domain">moveworks.com</div></div>
-          <p>Enterprise AI copilot for IT, HR, and employee support. Acquired by ServiceNow in 2025.</p>
+          <img src="images/vendor-logos/moveworks.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Moveworks</div><div class="vendor-domain">moveworks.com</div></div>
+            <p>Enterprise AI copilot for IT, HR, and employee support. Acquired by ServiceNow in 2025.</p>
+          </div>
         </a>
 
       </div>
@@ -983,78 +1222,123 @@
       <div class="vendor-grid">
 
         <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">GitHub Copilot</div><div class="vendor-domain">github.com</div></div>
-          <p>The original AI coding assistant. Now multi-model, with Copilot Workspace and Spark agents extending it beyond inline completion.</p>
+          <img src="images/vendor-logos/github-copilot.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">GitHub Copilot</div><div class="vendor-domain">github.com</div></div>
+            <p>The original AI coding assistant. Now multi-model, with Copilot Workspace and Spark agents extending it beyond inline completion.</p>
+          </div>
         </a>
 
         <a href="https://cursor.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Cursor</div><div class="vendor-domain">cursor.com</div></div>
-          <p>AI-native fork of VS Code that became the default IDE for many AI-forward engineering teams.</p>
+          <img src="images/vendor-logos/cursor.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Cursor</div><div class="vendor-domain">cursor.com</div></div>
+            <p>AI-native fork of VS Code that became the default IDE for many AI-forward engineering teams.</p>
+          </div>
         </a>
 
         <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Claude Code</div><div class="vendor-domain">anthropic.com</div></div>
-          <p>Anthropic's agentic coding tool. Runs in the terminal, IDE, or CI to drive multi-step engineering tasks.</p>
+          <img src="images/vendor-logos/claude-code.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Claude Code</div><div class="vendor-domain">anthropic.com</div></div>
+            <p>Anthropic's agentic coding tool. Runs in the terminal, IDE, or CI to drive multi-step engineering tasks.</p>
+          </div>
         </a>
 
         <a href="https://windsurf.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Windsurf (Codeium)</div><div class="vendor-domain">windsurf.com</div></div>
-          <p>Agentic AI IDE built by Codeium, with a strong enterprise self-hosting story.</p>
+          <img src="images/vendor-logos/windsurf-codeium.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Windsurf (Codeium)</div><div class="vendor-domain">windsurf.com</div></div>
+            <p>Agentic AI IDE built by Codeium, with a strong enterprise self-hosting story.</p>
+          </div>
         </a>
 
         <a href="https://www.tabnine.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Tabnine</div><div class="vendor-domain">tabnine.com</div></div>
-          <p>Privacy- and compliance-focused AI coding assistant, with a self-hosted enterprise story.</p>
+          <img src="images/vendor-logos/tabnine.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Tabnine</div><div class="vendor-domain">tabnine.com</div></div>
+            <p>Privacy- and compliance-focused AI coding assistant, with a self-hosted enterprise story.</p>
+          </div>
         </a>
 
         <a href="https://sourcegraph.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Sourcegraph (Cody &amp; Amp)</div><div class="vendor-domain">sourcegraph.com</div></div>
-          <p>Code intelligence platform with the Cody assistant and Amp agent, focused on large-scale enterprise codebases.</p>
+          <img src="images/vendor-logos/sourcegraph-cody-amp-amp.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Sourcegraph (Cody &amp; Amp)</div><div class="vendor-domain">sourcegraph.com</div></div>
+            <p>Code intelligence platform with the Cody assistant and Amp agent, focused on large-scale enterprise codebases.</p>
+          </div>
         </a>
 
         <a href="https://replit.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Replit Agent</div><div class="vendor-domain">replit.com</div></div>
-          <p>Browser-native development environment with an autonomous agent that can stand up full applications from a prompt.</p>
+          <img src="images/vendor-logos/replit-agent.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Replit Agent</div><div class="vendor-domain">replit.com</div></div>
+            <p>Browser-native development environment with an autonomous agent that can stand up full applications from a prompt.</p>
+          </div>
         </a>
 
         <a href="https://cognition.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Cognition (Devin)</div><div class="vendor-domain">cognition.ai</div></div>
-          <p>Maker of Devin, a fully autonomous software engineering agent positioned for end-to-end ticket execution.</p>
+          <img src="images/vendor-logos/cognition-devin.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Cognition (Devin)</div><div class="vendor-domain">cognition.ai</div></div>
+            <p>Maker of Devin, a fully autonomous software engineering agent positioned for end-to-end ticket execution.</p>
+          </div>
         </a>
 
         <a href="https://magic.dev" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Magic</div><div class="vendor-domain">magic.dev</div></div>
-          <p>Frontier coding model lab focused on extreme long-context reasoning over very large codebases.</p>
+          <img src="images/vendor-logos/magic.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Magic</div><div class="vendor-domain">magic.dev</div></div>
+            <p>Frontier coding model lab focused on extreme long-context reasoning over very large codebases.</p>
+          </div>
         </a>
 
         <a href="https://poolside.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Poolside</div><div class="vendor-domain">poolside.ai</div></div>
-          <p>Frontier code-specialist lab building proprietary models and an enterprise platform for software development.</p>
+          <img src="images/vendor-logos/poolside.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Poolside</div><div class="vendor-domain">poolside.ai</div></div>
+            <p>Frontier code-specialist lab building proprietary models and an enterprise platform for software development.</p>
+          </div>
         </a>
 
         <a href="https://www.augmentcode.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Augment Code</div><div class="vendor-domain">augmentcode.com</div></div>
-          <p>Enterprise-grade AI coding platform that indexes the full codebase to provide context-aware completions and chat.</p>
+          <img src="images/vendor-logos/augment-code.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Augment Code</div><div class="vendor-domain">augmentcode.com</div></div>
+            <p>Enterprise-grade AI coding platform that indexes the full codebase to provide context-aware completions and chat.</p>
+          </div>
         </a>
 
         <a href="https://www.lovable.dev" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Lovable</div><div class="vendor-domain">lovable.dev</div></div>
-          <p>Prompt-to-app builder for full-stack web applications. A leading no-code GenAI development surface.</p>
+          <img src="images/vendor-logos/lovable.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Lovable</div><div class="vendor-domain">lovable.dev</div></div>
+            <p>Prompt-to-app builder for full-stack web applications. A leading no-code GenAI development surface.</p>
+          </div>
         </a>
 
         <a href="https://v0.dev" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Vercel v0</div><div class="vendor-domain">v0.dev</div></div>
-          <p>Vercel's AI app builder for React and Next.js. The reference design-to-code GenAI tool for frontend teams.</p>
+          <img src="images/vendor-logos/vercel-v0.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Vercel v0</div><div class="vendor-domain">v0.dev</div></div>
+            <p>Vercel's AI app builder for React and Next.js. The reference design-to-code GenAI tool for frontend teams.</p>
+          </div>
         </a>
 
         <a href="https://bolt.new" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Bolt.new (StackBlitz)</div><div class="vendor-domain">bolt.new</div></div>
-          <p>Browser-based AI development environment that ships full-stack apps without a local toolchain.</p>
+          <img src="images/vendor-logos/bolt-new-stackblitz.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Bolt.new (StackBlitz)</div><div class="vendor-domain">bolt.new</div></div>
+            <p>Browser-based AI development environment that ships full-stack apps without a local toolchain.</p>
+          </div>
         </a>
 
         <a href="https://blink.new" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Blink</div><div class="vendor-domain">blink.new</div></div>
-          <p>Browser-based AI app builder for shipping full-stack web applications from natural-language prompts. Aimed at fast prototyping and non-developer founders.</p>
+          <img src="images/vendor-logos/blink.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Blink</div><div class="vendor-domain">blink.new</div></div>
+            <p>Browser-based AI app builder for shipping full-stack web applications from natural-language prompts. Aimed at fast prototyping and non-developer founders.</p>
+          </div>
         </a>
 
       </div>
@@ -1071,53 +1355,83 @@
       <div class="vendor-grid">
 
         <a href="https://www.crewai.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">CrewAI</div><div class="vendor-domain">crewai.com</div></div>
-          <p>Open-source multi-agent framework plus a commercial enterprise platform. Popular for structured agentic workflows.</p>
+          <img src="images/vendor-logos/crewai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">CrewAI</div><div class="vendor-domain">crewai.com</div></div>
+            <p>Open-source multi-agent framework plus a commercial enterprise platform. Popular for structured agentic workflows.</p>
+          </div>
         </a>
 
         <a href="https://lindy.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Lindy</div><div class="vendor-domain">lindy.ai</div></div>
-          <p>Build-your-own AI assistant platform. Strong fit for SMB and ops teams automating repetitive knowledge work.</p>
+          <img src="images/vendor-logos/lindy.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Lindy</div><div class="vendor-domain">lindy.ai</div></div>
+            <p>Build-your-own AI assistant platform. Strong fit for SMB and ops teams automating repetitive knowledge work.</p>
+          </div>
         </a>
 
         <a href="https://zapier.com/agents" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Zapier Agents</div><div class="vendor-domain">zapier.com</div></div>
-          <p>Zapier's no-code agent builder, layered on top of its 7,000+ app integration library.</p>
+          <img src="images/vendor-logos/zapier-agents.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Zapier Agents</div><div class="vendor-domain">zapier.com</div></div>
+            <p>Zapier's no-code agent builder, layered on top of its 7,000+ app integration library.</p>
+          </div>
         </a>
 
         <a href="https://n8n.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">n8n</div><div class="vendor-domain">n8n.io</div></div>
-          <p>Open-source workflow automation platform with first-class AI and agent nodes. Often self-hosted by enterprise IT.</p>
+          <img src="images/vendor-logos/n8n.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">n8n</div><div class="vendor-domain">n8n.io</div></div>
+            <p>Open-source workflow automation platform with first-class AI and agent nodes. Often self-hosted by enterprise IT.</p>
+          </div>
         </a>
 
         <a href="https://www.uipath.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">UiPath</div><div class="vendor-domain">uipath.com</div></div>
-          <p>RPA leader extending into agentic automation, combining classic process automation with LLM-driven decisioning.</p>
+          <img src="images/vendor-logos/uipath.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">UiPath</div><div class="vendor-domain">uipath.com</div></div>
+            <p>RPA leader extending into agentic automation, combining classic process automation with LLM-driven decisioning.</p>
+          </div>
         </a>
 
         <a href="https://multion.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">MultiOn</div><div class="vendor-domain">multion.ai</div></div>
-          <p>Web automation agent platform that operates real browser sessions on the user's behalf.</p>
+          <img src="images/vendor-logos/multion.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">MultiOn</div><div class="vendor-domain">multion.ai</div></div>
+            <p>Web automation agent platform that operates real browser sessions on the user's behalf.</p>
+          </div>
         </a>
 
         <a href="https://www.relevanceai.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Relevance AI</div><div class="vendor-domain">relevanceai.com</div></div>
-          <p>No-code AI workforce builder for sales, marketing, and operations. Strong traction with revenue teams.</p>
+          <img src="images/vendor-logos/relevance-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Relevance AI</div><div class="vendor-domain">relevanceai.com</div></div>
+            <p>No-code AI workforce builder for sales, marketing, and operations. Strong traction with revenue teams.</p>
+          </div>
         </a>
 
         <a href="https://www.langchain.com/langgraph" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">LangGraph</div><div class="vendor-domain">langchain.com</div></div>
-          <p>LangChain's stateful, graph-based framework for building reliable, controllable agent workflows.</p>
+          <img src="images/vendor-logos/langgraph.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">LangGraph</div><div class="vendor-domain">langchain.com</div></div>
+            <p>LangChain's stateful, graph-based framework for building reliable, controllable agent workflows.</p>
+          </div>
         </a>
 
         <a href="https://browserbase.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Browserbase</div><div class="vendor-domain">browserbase.com</div></div>
-          <p>Headless browser infrastructure purpose-built for AI agents. Underpins many production browsing agents.</p>
+          <img src="images/vendor-logos/browserbase.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Browserbase</div><div class="vendor-domain">browserbase.com</div></div>
+            <p>Headless browser infrastructure purpose-built for AI agents. Underpins many production browsing agents.</p>
+          </div>
         </a>
 
         <a href="https://sdsa.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">/dev/agents</div><div class="vendor-domain">sdsa.ai</div></div>
-          <p>OS-layer agent startup founded by senior alumni from Google, OpenAI, and Meta. Targeting an agent-native operating environment.</p>
+          <img src="images/vendor-logos/dev-agents.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">/dev/agents</div><div class="vendor-domain">sdsa.ai</div></div>
+            <p>OS-layer agent startup founded by senior alumni from Google, OpenAI, and Meta. Targeting an agent-native operating environment.</p>
+          </div>
         </a>
 
       </div>
@@ -1134,43 +1448,67 @@
       <div class="vendor-grid">
 
         <a href="https://perplexity.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Perplexity</div><div class="vendor-domain">perplexity.ai</div></div>
-          <p>Answer engine combining real-time web retrieval with cited LLM synthesis. The reference AI search consumer product.</p>
+          <img src="images/vendor-logos/perplexity.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Perplexity</div><div class="vendor-domain">perplexity.ai</div></div>
+            <p>Answer engine combining real-time web retrieval with cited LLM synthesis. The reference AI search consumer product.</p>
+          </div>
         </a>
 
         <a href="https://you.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">You.com</div><div class="vendor-domain">you.com</div></div>
-          <p>AI search with consumer and enterprise products, plus an API for retrieval-grounded generation.</p>
+          <img src="images/vendor-logos/you-com.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">You.com</div><div class="vendor-domain">you.com</div></div>
+            <p>AI search with consumer and enterprise products, plus an API for retrieval-grounded generation.</p>
+          </div>
         </a>
 
         <a href="https://exa.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Exa</div><div class="vendor-domain">exa.ai</div></div>
-          <p>Neural search API designed for AI agents and research workflows. Embeddings-first rather than keyword-first.</p>
+          <img src="images/vendor-logos/exa.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Exa</div><div class="vendor-domain">exa.ai</div></div>
+            <p>Neural search API designed for AI agents and research workflows. Embeddings-first rather than keyword-first.</p>
+          </div>
         </a>
 
         <a href="https://www.consensus.app" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Consensus</div><div class="vendor-domain">consensus.app</div></div>
-          <p>AI search engine over peer-reviewed scientific literature. Used heavily in healthcare, life sciences, and academic research.</p>
+          <img src="images/vendor-logos/consensus.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Consensus</div><div class="vendor-domain">consensus.app</div></div>
+            <p>AI search engine over peer-reviewed scientific literature. Used heavily in healthcare, life sciences, and academic research.</p>
+          </div>
         </a>
 
         <a href="https://www.hebbia.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Hebbia</div><div class="vendor-domain">hebbia.com</div></div>
-          <p>Document intelligence and research copilot for finance, law, and consulting. Strong on reading large document sets.</p>
+          <img src="images/vendor-logos/hebbia.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Hebbia</div><div class="vendor-domain">hebbia.com</div></div>
+            <p>Document intelligence and research copilot for finance, law, and consulting. Strong on reading large document sets.</p>
+          </div>
         </a>
 
         <a href="https://vectara.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Vectara</div><div class="vendor-domain">vectara.com</div></div>
-          <p>RAG-as-a-service platform with built-in retrieval, generation, and hallucination detection.</p>
+          <img src="images/vendor-logos/vectara.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Vectara</div><div class="vendor-domain">vectara.com</div></div>
+            <p>RAG-as-a-service platform with built-in retrieval, generation, and hallucination detection.</p>
+          </div>
         </a>
 
         <a href="https://elicit.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Elicit</div><div class="vendor-domain">elicit.com</div></div>
-          <p>AI research assistant for systematic literature review. Used widely in academia and evidence-based policy work.</p>
+          <img src="images/vendor-logos/elicit.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Elicit</div><div class="vendor-domain">elicit.com</div></div>
+            <p>AI research assistant for systematic literature review. Used widely in academia and evidence-based policy work.</p>
+          </div>
         </a>
 
         <a href="https://typeset.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">SciSpace</div><div class="vendor-domain">scispace.com</div></div>
-          <p>AI assistant for academic and technical paper reading, summarization, and citation tracking.</p>
+          <img src="images/vendor-logos/scispace.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">SciSpace</div><div class="vendor-domain">scispace.com</div></div>
+            <p>AI assistant for academic and technical paper reading, summarization, and citation tracking.</p>
+          </div>
         </a>
 
       </div>
@@ -1187,88 +1525,139 @@
       <div class="vendor-grid">
 
         <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Midjourney</div><div class="vendor-domain">midjourney.com</div></div>
-          <p>The aesthetic benchmark for AI image generation. Closed model, distinctive style, strong creative-pro adoption.</p>
+          <img src="images/vendor-logos/midjourney.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Midjourney</div><div class="vendor-domain">midjourney.com</div></div>
+            <p>The aesthetic benchmark for AI image generation. Closed model, distinctive style, strong creative-pro adoption.</p>
+          </div>
         </a>
 
         <a href="https://ideogram.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Ideogram</div><div class="vendor-domain">ideogram.ai</div></div>
-          <p>AI image generation with a strong reputation for legible in-image text. Popular for marketing and design surfaces.</p>
+          <img src="images/vendor-logos/ideogram.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Ideogram</div><div class="vendor-domain">ideogram.ai</div></div>
+            <p>AI image generation with a strong reputation for legible in-image text. Popular for marketing and design surfaces.</p>
+          </div>
         </a>
 
         <a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Adobe Firefly</div><div class="vendor-domain">adobe.com</div></div>
-          <p>Adobe's commercially safe generative model family, embedded across Photoshop, Illustrator, Premiere, and Express.</p>
+          <img src="images/vendor-logos/adobe-firefly.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Adobe Firefly</div><div class="vendor-domain">adobe.com</div></div>
+            <p>Adobe's commercially safe generative model family, embedded across Photoshop, Illustrator, Premiere, and Express.</p>
+          </div>
         </a>
 
         <a href="https://leonardo.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Leonardo.AI</div><div class="vendor-domain">leonardo.ai</div></div>
-          <p>Generative image platform popular with game studios, e-commerce, and small creative agencies. Now part of Canva.</p>
+          <img src="images/vendor-logos/leonardo-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Leonardo.AI</div><div class="vendor-domain">leonardo.ai</div></div>
+            <p>Generative image platform popular with game studios, e-commerce, and small creative agencies. Now part of Canva.</p>
+          </div>
         </a>
 
         <a href="https://www.recraft.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Recraft</div><div class="vendor-domain">recraft.ai</div></div>
-          <p>Generative design tool focused on brand-consistent vector and raster output for product and marketing teams.</p>
+          <img src="images/vendor-logos/recraft.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Recraft</div><div class="vendor-domain">recraft.ai</div></div>
+            <p>Generative design tool focused on brand-consistent vector and raster output for product and marketing teams.</p>
+          </div>
         </a>
 
         <a href="https://www.krea.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Krea</div><div class="vendor-domain">krea.ai</div></div>
-          <p>Real-time generative image and video tool with strong creative-pro and design-studio adoption.</p>
+          <img src="images/vendor-logos/krea.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Krea</div><div class="vendor-domain">krea.ai</div></div>
+            <p>Real-time generative image and video tool with strong creative-pro and design-studio adoption.</p>
+          </div>
         </a>
 
         <a href="https://runwayml.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Runway</div><div class="vendor-domain">runwayml.com</div></div>
-          <p>Generative video pioneer (Gen-3, Gen-4). Deep integrations into film, advertising, and broadcast pipelines.</p>
+          <img src="images/vendor-logos/runway.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Runway</div><div class="vendor-domain">runwayml.com</div></div>
+            <p>Generative video pioneer (Gen-3, Gen-4). Deep integrations into film, advertising, and broadcast pipelines.</p>
+          </div>
         </a>
 
         <a href="https://pika.art" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Pika</div><div class="vendor-domain">pika.art</div></div>
-          <p>Consumer and prosumer generative video tool with strong viral momentum on social platforms.</p>
+          <img src="images/vendor-logos/pika.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Pika</div><div class="vendor-domain">pika.art</div></div>
+            <p>Consumer and prosumer generative video tool with strong viral momentum on social platforms.</p>
+          </div>
         </a>
 
         <a href="https://lumalabs.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Luma AI</div><div class="vendor-domain">lumalabs.ai</div></div>
-          <p>Maker of the Dream Machine generative video model and Genie 3D capture tools.</p>
+          <img src="images/vendor-logos/luma-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Luma AI</div><div class="vendor-domain">lumalabs.ai</div></div>
+            <p>Maker of the Dream Machine generative video model and Genie 3D capture tools.</p>
+          </div>
         </a>
 
         <a href="https://www.synthesia.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Synthesia</div><div class="vendor-domain">synthesia.io</div></div>
-          <p>AI video generation platform built around realistic AI avatars. Heavy enterprise traction in L&amp;D and corporate comms.</p>
+          <img src="images/vendor-logos/synthesia.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Synthesia</div><div class="vendor-domain">synthesia.io</div></div>
+            <p>AI video generation platform built around realistic AI avatars. Heavy enterprise traction in L&amp;D and corporate comms.</p>
+          </div>
         </a>
 
         <a href="https://www.heygen.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">HeyGen</div><div class="vendor-domain">heygen.com</div></div>
-          <p>AI avatar and translation video platform popular with sales, marketing, and personalized-video use cases.</p>
+          <img src="images/vendor-logos/heygen.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">HeyGen</div><div class="vendor-domain">heygen.com</div></div>
+            <p>AI avatar and translation video platform popular with sales, marketing, and personalized-video use cases.</p>
+          </div>
         </a>
 
         <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">ElevenLabs</div><div class="vendor-domain">elevenlabs.io</div></div>
-          <p>The reference AI voice synthesis platform. Used across audiobooks, dubbing, gaming, and conversational agents.</p>
+          <div class="vendor-logo vendor-logo-fallback">E</div>
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">ElevenLabs</div><div class="vendor-domain">elevenlabs.io</div></div>
+            <p>The reference AI voice synthesis platform. Used across audiobooks, dubbing, gaming, and conversational agents.</p>
+          </div>
         </a>
 
         <a href="https://suno.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Suno</div><div class="vendor-domain">suno.com</div></div>
-          <p>Generative music creation platform producing full songs, including vocals, from text prompts.</p>
+          <img src="images/vendor-logos/suno.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Suno</div><div class="vendor-domain">suno.com</div></div>
+            <p>Generative music creation platform producing full songs, including vocals, from text prompts.</p>
+          </div>
         </a>
 
         <a href="https://www.udio.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Udio</div><div class="vendor-domain">udio.com</div></div>
-          <p>Generative music platform competing with Suno on audio quality and prompt expressiveness.</p>
+          <img src="images/vendor-logos/udio.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Udio</div><div class="vendor-domain">udio.com</div></div>
+            <p>Generative music platform competing with Suno on audio quality and prompt expressiveness.</p>
+          </div>
         </a>
 
         <a href="https://www.descript.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Descript</div><div class="vendor-domain">descript.com</div></div>
-          <p>AI-first audio and video editor with transcription, voice cloning, and overdub. Popular with podcasters and creators.</p>
+          <img src="images/vendor-logos/descript.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Descript</div><div class="vendor-domain">descript.com</div></div>
+            <p>AI-first audio and video editor with transcription, voice cloning, and overdub. Popular with podcasters and creators.</p>
+          </div>
         </a>
 
         <a href="https://www.assemblyai.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">AssemblyAI</div><div class="vendor-domain">assemblyai.com</div></div>
-          <p>Speech AI API for transcription, diarization, and speech understanding. Popular with developer and contact-center workloads.</p>
+          <img src="images/vendor-logos/assemblyai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">AssemblyAI</div><div class="vendor-domain">assemblyai.com</div></div>
+            <p>Speech AI API for transcription, diarization, and speech understanding. Popular with developer and contact-center workloads.</p>
+          </div>
         </a>
 
         <a href="https://deepgram.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Deepgram</div><div class="vendor-domain">deepgram.com</div></div>
-          <p>Real-time speech-to-text and voice AI APIs optimized for low-latency conversational use cases.</p>
+          <img src="images/vendor-logos/deepgram.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Deepgram</div><div class="vendor-domain">deepgram.com</div></div>
+            <p>Real-time speech-to-text and voice AI APIs optimized for low-latency conversational use cases.</p>
+          </div>
         </a>
 
       </div>
@@ -1285,68 +1674,107 @@
       <div class="vendor-grid">
 
         <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Microsoft Copilot</div><div class="vendor-domain">microsoft.com</div></div>
-          <p>The Microsoft 365 Copilot suite across Outlook, Word, Excel, PowerPoint, Teams, and Copilot Studio.</p>
+          <img src="images/vendor-logos/microsoft-copilot.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Microsoft Copilot</div><div class="vendor-domain">microsoft.com</div></div>
+            <p>The Microsoft 365 Copilot suite across Outlook, Word, Excel, PowerPoint, Teams, and Copilot Studio.</p>
+          </div>
         </a>
 
         <a href="https://workspace.google.com/solutions/ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Gemini for Workspace</div><div class="vendor-domain">workspace.google.com</div></div>
-          <p>Gemini features in Gmail, Docs, Sheets, Slides, and Meet. Default AI surface for Google-stack enterprises.</p>
+          <img src="images/vendor-logos/gemini-for-workspace.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Gemini for Workspace</div><div class="vendor-domain">workspace.google.com</div></div>
+            <p>Gemini features in Gmail, Docs, Sheets, Slides, and Meet. Default AI surface for Google-stack enterprises.</p>
+          </div>
         </a>
 
         <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Notion AI</div><div class="vendor-domain">notion.so</div></div>
-          <p>AI features and search inside Notion's docs, projects, and databases. Increasingly used as a horizontal AI layer for SMB.</p>
+          <img src="images/vendor-logos/notion-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Notion AI</div><div class="vendor-domain">notion.so</div></div>
+            <p>AI features and search inside Notion's docs, projects, and databases. Increasingly used as a horizontal AI layer for SMB.</p>
+          </div>
         </a>
 
         <a href="https://www.atlassian.com/software/rovo" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Atlassian Rovo</div><div class="vendor-domain">atlassian.com</div></div>
-          <p>Atlassian's enterprise AI search and agent layer over Jira, Confluence, and connected SaaS tools.</p>
+          <img src="images/vendor-logos/atlassian-rovo.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Atlassian Rovo</div><div class="vendor-domain">atlassian.com</div></div>
+            <p>Atlassian's enterprise AI search and agent layer over Jira, Confluence, and connected SaaS tools.</p>
+          </div>
         </a>
 
         <a href="https://otter.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Otter.ai</div><div class="vendor-domain">otter.ai</div></div>
-          <p>Meeting transcription, summarization, and AI assistant. One of the longest-standing meeting AI products.</p>
+          <img src="images/vendor-logos/otter-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Otter.ai</div><div class="vendor-domain">otter.ai</div></div>
+            <p>Meeting transcription, summarization, and AI assistant. One of the longest-standing meeting AI products.</p>
+          </div>
         </a>
 
         <a href="https://fireflies.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Fireflies.ai</div><div class="vendor-domain">fireflies.ai</div></div>
-          <p>Meeting recorder and AI notetaker with strong CRM and revenue-team integrations.</p>
+          <img src="images/vendor-logos/fireflies-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Fireflies.ai</div><div class="vendor-domain">fireflies.ai</div></div>
+            <p>Meeting recorder and AI notetaker with strong CRM and revenue-team integrations.</p>
+          </div>
         </a>
 
         <a href="https://www.granola.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Granola</div><div class="vendor-domain">granola.ai</div></div>
-          <p>AI notepad for meetings that augments your own notes rather than replacing them. Strong founder and exec adoption.</p>
+          <img src="images/vendor-logos/granola.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Granola</div><div class="vendor-domain">granola.ai</div></div>
+            <p>AI notepad for meetings that augments your own notes rather than replacing them. Strong founder and exec adoption.</p>
+          </div>
         </a>
 
         <a href="https://fathom.video" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Fathom</div><div class="vendor-domain">fathom.video</div></div>
-          <p>Free AI meeting recorder, summarizer, and CRM logger. Heavy SMB and revenue-ops adoption.</p>
+          <img src="images/vendor-logos/fathom.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Fathom</div><div class="vendor-domain">fathom.video</div></div>
+            <p>Free AI meeting recorder, summarizer, and CRM logger. Heavy SMB and revenue-ops adoption.</p>
+          </div>
         </a>
 
         <a href="https://www.read.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Read AI</div><div class="vendor-domain">read.ai</div></div>
-          <p>Meeting analytics, summary, and engagement scoring across Zoom, Meet, Webex, and Teams.</p>
+          <img src="images/vendor-logos/read-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Read AI</div><div class="vendor-domain">read.ai</div></div>
+            <p>Meeting analytics, summary, and engagement scoring across Zoom, Meet, Webex, and Teams.</p>
+          </div>
         </a>
 
         <a href="https://mem.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Mem</div><div class="vendor-domain">mem.ai</div></div>
-          <p>AI-native personal knowledge base that auto-organizes notes, meetings, and personal context.</p>
+          <img src="images/vendor-logos/mem.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Mem</div><div class="vendor-domain">mem.ai</div></div>
+            <p>AI-native personal knowledge base that auto-organizes notes, meetings, and personal context.</p>
+          </div>
         </a>
 
         <a href="https://reflect.app" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Reflect</div><div class="vendor-domain">reflect.app</div></div>
-          <p>Networked notes app with embedded AI for thinking, journaling, and personal CRM.</p>
+          <img src="images/vendor-logos/reflect.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Reflect</div><div class="vendor-domain">reflect.app</div></div>
+            <p>Networked notes app with embedded AI for thinking, journaling, and personal CRM.</p>
+          </div>
         </a>
 
         <a href="https://www.gamma.app" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Gamma</div><div class="vendor-domain">gamma.app</div></div>
-          <p>AI presentation, doc, and webpage builder. The reference fast-iteration alternative to PowerPoint and Google Slides.</p>
+          <img src="images/vendor-logos/gamma.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Gamma</div><div class="vendor-domain">gamma.app</div></div>
+            <p>AI presentation, doc, and webpage builder. The reference fast-iteration alternative to PowerPoint and Google Slides.</p>
+          </div>
         </a>
 
         <a href="https://tome.app" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Tome</div><div class="vendor-domain">tome.app</div></div>
-          <p>AI-native presentation tool, repositioned as a sales-focused account intelligence and outbound platform.</p>
+          <img src="images/vendor-logos/tome.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Tome</div><div class="vendor-domain">tome.app</div></div>
+            <p>AI-native presentation tool, repositioned as a sales-focused account intelligence and outbound platform.</p>
+          </div>
         </a>
 
       </div>
@@ -1363,83 +1791,131 @@
       <div class="vendor-grid">
 
         <a href="https://www.jasper.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Jasper</div><div class="vendor-domain">jasper.ai</div></div>
-          <p>Marketing-focused generative AI platform for brand-aligned content, campaigns, and copy at scale.</p>
+          <img src="images/vendor-logos/jasper.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Jasper</div><div class="vendor-domain">jasper.ai</div></div>
+            <p>Marketing-focused generative AI platform for brand-aligned content, campaigns, and copy at scale.</p>
+          </div>
         </a>
 
         <a href="https://www.copy.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Copy.ai</div><div class="vendor-domain">copy.ai</div></div>
-          <p>GenAI workflow platform for go-to-market teams, with a strong agent and workflow story for revenue ops.</p>
+          <img src="images/vendor-logos/copy-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Copy.ai</div><div class="vendor-domain">copy.ai</div></div>
+            <p>GenAI workflow platform for go-to-market teams, with a strong agent and workflow story for revenue ops.</p>
+          </div>
         </a>
 
         <a href="https://www.hubspot.com/products/breeze" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">HubSpot Breeze</div><div class="vendor-domain">hubspot.com</div></div>
-          <p>HubSpot's AI brand: copilots, agents, and intelligence layered across the marketing, sales, and service hubs.</p>
+          <img src="images/vendor-logos/hubspot-breeze.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">HubSpot Breeze</div><div class="vendor-domain">hubspot.com</div></div>
+            <p>HubSpot's AI brand: copilots, agents, and intelligence layered across the marketing, sales, and service hubs.</p>
+          </div>
         </a>
 
         <a href="https://www.gong.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Gong</div><div class="vendor-domain">gong.io</div></div>
-          <p>Revenue intelligence platform analyzing sales calls, emails, and pipeline data for forecasting and coaching.</p>
+          <img src="images/vendor-logos/gong.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Gong</div><div class="vendor-domain">gong.io</div></div>
+            <p>Revenue intelligence platform analyzing sales calls, emails, and pipeline data for forecasting and coaching.</p>
+          </div>
         </a>
 
         <a href="https://www.clari.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Clari</div><div class="vendor-domain">clari.com</div></div>
-          <p>AI-powered revenue platform for forecasting, pipeline, and rep productivity. Heavy enterprise traction.</p>
+          <img src="images/vendor-logos/clari.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Clari</div><div class="vendor-domain">clari.com</div></div>
+            <p>AI-powered revenue platform for forecasting, pipeline, and rep productivity. Heavy enterprise traction.</p>
+          </div>
         </a>
 
         <a href="https://www.6sense.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">6sense</div><div class="vendor-domain">6sense.com</div></div>
-          <p>AI-driven account-based marketing and sales intelligence. Strong story on intent data and predictive scoring.</p>
+          <img src="images/vendor-logos/6sense.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">6sense</div><div class="vendor-domain">6sense.com</div></div>
+            <p>AI-driven account-based marketing and sales intelligence. Strong story on intent data and predictive scoring.</p>
+          </div>
         </a>
 
         <a href="https://www.intercom.com/fin" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Intercom Fin</div><div class="vendor-domain">intercom.com</div></div>
-          <p>AI customer support agent embedded in Intercom. Highly visible deployment in front-line CX.</p>
+          <img src="images/vendor-logos/intercom-fin.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Intercom Fin</div><div class="vendor-domain">intercom.com</div></div>
+            <p>AI customer support agent embedded in Intercom. Highly visible deployment in front-line CX.</p>
+          </div>
         </a>
 
         <a href="https://www.zendesk.com/ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Zendesk AI</div><div class="vendor-domain">zendesk.com</div></div>
-          <p>AI agents, copilots, and intelligence layered across the Zendesk customer service suite.</p>
+          <img src="images/vendor-logos/zendesk-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Zendesk AI</div><div class="vendor-domain">zendesk.com</div></div>
+            <p>AI agents, copilots, and intelligence layered across the Zendesk customer service suite.</p>
+          </div>
         </a>
 
         <a href="https://sierra.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Sierra</div><div class="vendor-domain">sierra.ai</div></div>
-          <p>Voice and chat AI agents for customer experience, founded by Bret Taylor and Clay Bavor. Strong enterprise CX traction.</p>
+          <img src="images/vendor-logos/sierra.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Sierra</div><div class="vendor-domain">sierra.ai</div></div>
+            <p>Voice and chat AI agents for customer experience, founded by Bret Taylor and Clay Bavor. Strong enterprise CX traction.</p>
+          </div>
         </a>
 
         <a href="https://decagon.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Decagon</div><div class="vendor-domain">decagon.ai</div></div>
-          <p>AI customer support agents built specifically for high-volume contact centers in fintech, e-commerce, and travel.</p>
+          <img src="images/vendor-logos/decagon.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Decagon</div><div class="vendor-domain">decagon.ai</div></div>
+            <p>AI customer support agents built specifically for high-volume contact centers in fintech, e-commerce, and travel.</p>
+          </div>
         </a>
 
         <a href="https://www.ada.cx" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Ada</div><div class="vendor-domain">ada.cx</div></div>
-          <p>AI customer service automation platform with strong large-enterprise deployments.</p>
+          <img src="images/vendor-logos/ada.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Ada</div><div class="vendor-domain">ada.cx</div></div>
+            <p>AI customer service automation platform with strong large-enterprise deployments.</p>
+          </div>
         </a>
 
         <a href="https://forethought.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Forethought</div><div class="vendor-domain">forethought.ai</div></div>
-          <p>AI agents and assist for support teams, with deep integrations into existing CX platforms.</p>
+          <img src="images/vendor-logos/forethought.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Forethought</div><div class="vendor-domain">forethought.ai</div></div>
+            <p>AI agents and assist for support teams, with deep integrations into existing CX platforms.</p>
+          </div>
         </a>
 
         <a href="https://cresta.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Cresta</div><div class="vendor-domain">cresta.com</div></div>
-          <p>Real-time agent assist and conversation intelligence for sales and contact-center teams.</p>
+          <img src="images/vendor-logos/cresta.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Cresta</div><div class="vendor-domain">cresta.com</div></div>
+            <p>Real-time agent assist and conversation intelligence for sales and contact-center teams.</p>
+          </div>
         </a>
 
         <a href="https://observe.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Observe.AI</div><div class="vendor-domain">observe.ai</div></div>
-          <p>Conversation intelligence and AI coaching for contact centers, with strong analytics and QA workflows.</p>
+          <img src="images/vendor-logos/observe-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Observe.AI</div><div class="vendor-domain">observe.ai</div></div>
+            <p>Conversation intelligence and AI coaching for contact centers, with strong analytics and QA workflows.</p>
+          </div>
         </a>
 
         <a href="https://www.regie.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Regie.ai</div><div class="vendor-domain">regie.ai</div></div>
-          <p>AI sales agents for prospecting, sequencing, and personalized outbound at scale.</p>
+          <img src="images/vendor-logos/regie-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Regie.ai</div><div class="vendor-domain">regie.ai</div></div>
+            <p>AI sales agents for prospecting, sequencing, and personalized outbound at scale.</p>
+          </div>
         </a>
 
         <a href="https://11x.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">11x.ai</div><div class="vendor-domain">11x.ai</div></div>
-          <p>Autonomous digital workers (Alice, Jordan) for sales prospecting and SDR-style work.</p>
+          <img src="images/vendor-logos/11x-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">11x.ai</div><div class="vendor-domain">11x.ai</div></div>
+            <p>Autonomous digital workers (Alice, Jordan) for sales prospecting and SDR-style work.</p>
+          </div>
         </a>
 
       </div>
@@ -1456,88 +1932,139 @@
       <div class="vendor-grid">
 
         <a href="https://harvey.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Harvey</div><div class="vendor-domain">harvey.ai</div></div>
-          <p>Generative AI platform purpose-built for elite law firms and corporate legal teams. The reference legal AI win.</p>
+          <img src="images/vendor-logos/harvey.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Harvey</div><div class="vendor-domain">harvey.ai</div></div>
+            <p>Generative AI platform purpose-built for elite law firms and corporate legal teams. The reference legal AI win.</p>
+          </div>
         </a>
 
         <a href="https://www.spellbook.legal" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Spellbook</div><div class="vendor-domain">spellbook.legal</div></div>
-          <p>Generative AI contract drafting and review for transactional lawyers, embedded in Microsoft Word.</p>
+          <img src="images/vendor-logos/spellbook.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Spellbook</div><div class="vendor-domain">spellbook.legal</div></div>
+            <p>Generative AI contract drafting and review for transactional lawyers, embedded in Microsoft Word.</p>
+          </div>
         </a>
 
         <a href="https://www.lexisnexis.com/en-us/products/lexis-plus-ai.page" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Lexis+ AI</div><div class="vendor-domain">lexisnexis.com</div></div>
-          <p>LexisNexis's generative AI legal research and drafting product, layered on top of its citation graph.</p>
+          <img src="images/vendor-logos/lexis-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Lexis+ AI</div><div class="vendor-domain">lexisnexis.com</div></div>
+            <p>LexisNexis's generative AI legal research and drafting product, layered on top of its citation graph.</p>
+          </div>
         </a>
 
         <a href="https://www.thomsonreuters.com/en/artificial-intelligence" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Thomson Reuters CoCounsel</div><div class="vendor-domain">thomsonreuters.com</div></div>
-          <p>CoCounsel (originally Casetext) plus broader AI features across Westlaw, Practical Law, and tax workflows.</p>
+          <img src="images/vendor-logos/thomson-reuters-cocounsel.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Thomson Reuters CoCounsel</div><div class="vendor-domain">thomsonreuters.com</div></div>
+            <p>CoCounsel (originally Casetext) plus broader AI features across Westlaw, Practical Law, and tax workflows.</p>
+          </div>
         </a>
 
         <a href="https://www.tempus.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Tempus AI</div><div class="vendor-domain">tempus.com</div></div>
-          <p>Precision medicine and clinical AI built on a large library of multimodal patient data.</p>
+          <img src="images/vendor-logos/tempus-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Tempus AI</div><div class="vendor-domain">tempus.com</div></div>
+            <p>Precision medicine and clinical AI built on a large library of multimodal patient data.</p>
+          </div>
         </a>
 
         <a href="https://www.recursion.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Recursion</div><div class="vendor-domain">recursion.com</div></div>
-          <p>AI-native drug discovery platform built around large-scale phenomic and molecular datasets.</p>
+          <img src="images/vendor-logos/recursion.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Recursion</div><div class="vendor-domain">recursion.com</div></div>
+            <p>AI-native drug discovery platform built around large-scale phenomic and molecular datasets.</p>
+          </div>
         </a>
 
         <a href="https://insitro.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Insitro</div><div class="vendor-domain">insitro.com</div></div>
-          <p>Machine learning-driven drug discovery focused on human biology data and induced pluripotent stem cells.</p>
+          <img src="images/vendor-logos/insitro.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Insitro</div><div class="vendor-domain">insitro.com</div></div>
+            <p>Machine learning-driven drug discovery focused on human biology data and induced pluripotent stem cells.</p>
+          </div>
         </a>
 
         <a href="https://www.isomorphiclabs.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Isomorphic Labs</div><div class="vendor-domain">isomorphiclabs.com</div></div>
-          <p>Alphabet drug discovery spinout building on AlphaFold, with major partnerships with Eli Lilly and Novartis.</p>
+          <img src="images/vendor-logos/isomorphic-labs.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Isomorphic Labs</div><div class="vendor-domain">isomorphiclabs.com</div></div>
+            <p>Alphabet drug discovery spinout building on AlphaFold, with major partnerships with Eli Lilly and Novartis.</p>
+          </div>
         </a>
 
         <a href="https://www.hippocraticai.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Hippocratic AI</div><div class="vendor-domain">hippocraticai.com</div></div>
-          <p>Generative AI healthcare staffing agency operating non-diagnostic, patient-facing AI agents.</p>
+          <img src="images/vendor-logos/hippocratic-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Hippocratic AI</div><div class="vendor-domain">hippocraticai.com</div></div>
+            <p>Generative AI healthcare staffing agency operating non-diagnostic, patient-facing AI agents.</p>
+          </div>
         </a>
 
         <a href="https://www.abridge.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Abridge</div><div class="vendor-domain">abridge.com</div></div>
-          <p>AI clinical documentation that converts patient-clinician conversations into structured medical notes.</p>
+          <img src="images/vendor-logos/abridge.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Abridge</div><div class="vendor-domain">abridge.com</div></div>
+            <p>AI clinical documentation that converts patient-clinician conversations into structured medical notes.</p>
+          </div>
         </a>
 
         <a href="https://www.ambiencehealthcare.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Ambience Healthcare</div><div class="vendor-domain">ambiencehealthcare.com</div></div>
-          <p>Generative AI scribe and operational platform for physicians and large health systems.</p>
+          <img src="images/vendor-logos/ambience-healthcare.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Ambience Healthcare</div><div class="vendor-domain">ambiencehealthcare.com</div></div>
+            <p>Generative AI scribe and operational platform for physicians and large health systems.</p>
+          </div>
         </a>
 
         <a href="https://www.suki.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Suki</div><div class="vendor-domain">suki.ai</div></div>
-          <p>Voice-enabled AI clinical assistant for documentation, coding, and Q&amp;A inside the EHR.</p>
+          <img src="images/vendor-logos/suki.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Suki</div><div class="vendor-domain">suki.ai</div></div>
+            <p>Voice-enabled AI clinical assistant for documentation, coding, and Q&amp;A inside the EHR.</p>
+          </div>
         </a>
 
         <a href="https://www.eightfold.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Eightfold AI</div><div class="vendor-domain">eightfold.ai</div></div>
-          <p>Talent intelligence platform applying AI to recruiting, talent management, and workforce planning.</p>
+          <img src="images/vendor-logos/eightfold-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Eightfold AI</div><div class="vendor-domain">eightfold.ai</div></div>
+            <p>Talent intelligence platform applying AI to recruiting, talent management, and workforce planning.</p>
+          </div>
         </a>
 
         <a href="https://www.hirevue.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">HireVue</div><div class="vendor-domain">hirevue.com</div></div>
-          <p>AI-driven hiring assessments, video interviews, and conversational chat for high-volume recruiting.</p>
+          <img src="images/vendor-logos/hirevue.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">HireVue</div><div class="vendor-domain">hirevue.com</div></div>
+            <p>AI-driven hiring assessments, video interviews, and conversational chat for high-volume recruiting.</p>
+          </div>
         </a>
 
         <a href="https://www.paradox.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Paradox (Olivia)</div><div class="vendor-domain">paradox.ai</div></div>
-          <p>Conversational AI assistant Olivia, used heavily for high-volume hourly recruiting in retail and food service.</p>
+          <img src="images/vendor-logos/paradox-olivia.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Paradox (Olivia)</div><div class="vendor-domain">paradox.ai</div></div>
+            <p>Conversational AI assistant Olivia, used heavily for high-volume hourly recruiting in retail and food service.</p>
+          </div>
         </a>
 
         <a href="https://kensho.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Kensho (S&amp;P Global)</div><div class="vendor-domain">kensho.com</div></div>
-          <p>S&amp;P Global's AI research division, building NLP and ML tools for capital markets and financial documents.</p>
+          <img src="images/vendor-logos/kensho-s-amp-p-global.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Kensho (S&amp;P Global)</div><div class="vendor-domain">kensho.com</div></div>
+            <p>S&amp;P Global's AI research division, building NLP and ML tools for capital markets and financial documents.</p>
+          </div>
         </a>
 
         <a href="https://alphasense.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">AlphaSense</div><div class="vendor-domain">alphasense.com</div></div>
-          <p>AI-powered market intelligence search across filings, transcripts, expert calls, and news for finance and corporate strategy.</p>
+          <img src="images/vendor-logos/alphasense.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">AlphaSense</div><div class="vendor-domain">alphasense.com</div></div>
+            <p>AI-powered market intelligence search across filings, transcripts, expert calls, and news for finance and corporate strategy.</p>
+          </div>
         </a>
 
       </div>
@@ -1554,76 +2081,68 @@
       <div class="vendor-grid">
 
         <a href="https://www.figure.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Figure</div><div class="vendor-domain">figure.ai</div></div>
-          <p>Humanoid robot company (Figure 02 / 03) with high-profile commercial pilots in logistics and manufacturing.</p>
+          <img src="images/vendor-logos/figure.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Figure</div><div class="vendor-domain">figure.ai</div></div>
+            <p>Humanoid robot company (Figure 02 / 03) with high-profile commercial pilots in logistics and manufacturing.</p>
+          </div>
         </a>
 
         <a href="https://www.bostondynamics.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Boston Dynamics</div><div class="vendor-domain">bostondynamics.com</div></div>
-          <p>Maker of the Atlas humanoid and Spot quadruped. Now part of Hyundai's robotics push.</p>
+          <img src="images/vendor-logos/boston-dynamics.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Boston Dynamics</div><div class="vendor-domain">bostondynamics.com</div></div>
+            <p>Maker of the Atlas humanoid and Spot quadruped. Now part of Hyundai's robotics push.</p>
+          </div>
         </a>
 
         <a href="https://www.1x.tech" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">1X Technologies</div><div class="vendor-domain">1x.tech</div></div>
-          <p>Norwegian-American humanoid company building Eve and Neo for home and commercial settings.</p>
+          <img src="images/vendor-logos/1x-technologies.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">1X Technologies</div><div class="vendor-domain">1x.tech</div></div>
+            <p>Norwegian-American humanoid company building Eve and Neo for home and commercial settings.</p>
+          </div>
         </a>
 
         <a href="https://agilityrobotics.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Agility Robotics</div><div class="vendor-domain">agilityrobotics.com</div></div>
-          <p>Maker of Digit, a humanoid robot with deployments in warehousing and logistics for customers including GXO.</p>
+          <img src="images/vendor-logos/agility-robotics.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Agility Robotics</div><div class="vendor-domain">agilityrobotics.com</div></div>
+            <p>Maker of Digit, a humanoid robot with deployments in warehousing and logistics for customers including GXO.</p>
+          </div>
         </a>
 
         <a href="https://www.apptronik.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Apptronik</div><div class="vendor-domain">apptronik.com</div></div>
-          <p>Humanoid robotics company developing Apollo for industrial and logistics environments.</p>
+          <img src="images/vendor-logos/apptronik.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Apptronik</div><div class="vendor-domain">apptronik.com</div></div>
+            <p>Humanoid robotics company developing Apollo for industrial and logistics environments.</p>
+          </div>
         </a>
 
         <a href="https://sanctuary.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Sanctuary AI</div><div class="vendor-domain">sanctuary.ai</div></div>
-          <p>Canadian humanoid robotics company building general-purpose humanoid systems with the Phoenix platform.</p>
+          <img src="images/vendor-logos/sanctuary-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Sanctuary AI</div><div class="vendor-domain">sanctuary.ai</div></div>
+            <p>Canadian humanoid robotics company building general-purpose humanoid systems with the Phoenix platform.</p>
+          </div>
         </a>
 
         <a href="https://www.skild.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Skild AI</div><div class="vendor-domain">skild.ai</div></div>
-          <p>Robotics foundation model company building a general-purpose brain across robot embodiments.</p>
+          <img src="images/vendor-logos/skild-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Skild AI</div><div class="vendor-domain">skild.ai</div></div>
+            <p>Robotics foundation model company building a general-purpose brain across robot embodiments.</p>
+          </div>
         </a>
 
         <a href="https://physicalintelligence.company" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Physical Intelligence</div><div class="vendor-domain">physicalintelligence.company</div></div>
-          <p>Foundation-model lab for robotics. Notable for its π0 model targeting general-purpose robot manipulation.</p>
+          <img src="images/vendor-logos/physical-intelligence.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Physical Intelligence</div><div class="vendor-domain">physicalintelligence.company</div></div>
+            <p>Foundation-model lab for robotics. Notable for its π0 model targeting general-purpose robot manipulation.</p>
+          </div>
         </a>
 
         <a href="https://covariant.ai" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-head"><div class="vendor-name">Covariant</div><div class="vendor-domain">covariant.ai</div></div>
-          <p>Industrial robotic manipulation foundation models. Founding team largely joined Amazon in 2024.</p>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- ─── DISCLAIMER ─── -->
-    <div class="disclaimer">
-      <strong>Methodology &amp; disclaimer.</strong> This list is curated for orientation, not endorsement. Categories overlap (most vendors fit more than one); placement reflects each company's primary commercial wedge. Vendor mentions do not imply a recommendation, partnership, engagement, or fitness for any particular use case. Always conduct independent diligence before procurement, integration, or investment decisions. The landscape moves quickly; companies may have repositioned, been acquired, or wound down since publication.
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-wordmark">FutureInSites</div>
-    <div class="footer-tagline">AI Strategy &amp; Digital Transformation</div>
-    <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#about">Approach</a></li>
-      <li><a href="index.html#solutions">Solutions</a></li>
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="index.html#team">Team</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-      <li><a href="resources.html">Resources</a></li>
-    </ul>
-    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Cambridge, MA</p>
-  </footer>
-
-  <script src="cookie-banner.js"></script>
-</body>
-</html>
+          <div class="vendor-head"><div class="vendor-name">Covariant</div><div class="vendor-domain">co
