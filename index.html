@@ -1103,15 +1103,23 @@
     }
 
     .footer-wordmark {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #FFFFFF;
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
       margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
     }
 
-    .footer-wordmark .wm-in { color: #2DD4FF; }
-    .footer-wordmark .wm-sites { color: #2563EB; }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
 
     .footer-tagline {
       font-size: 0.72rem;
@@ -1831,6 +1839,7 @@
 
   <!-- FOOTER -->
   <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
     <ul class="footer-links">
       <li><a href="#about">Approach</a></li>
       <li><a href="#solutions">Solutions</a></li>

@@ -672,12 +672,15 @@
       letter-spacing: -0.025em;
       line-height: 1.1;
       margin-bottom: 0.4rem;
-      background: linear-gradient(90deg, #FFFFFF 20%, #2DD4FF 50%, #2563EB 72%, #2563EB 100%);
+      color: #FFFFFF;
+      display: inline-block;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
-      display: inline-block;
     }
 
     .footer-tagline {
@@ -1057,7 +1060,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-wordmark">FutureInSites</span>
+    <span class="footer-wordmark">Future<span class="wm-gradient">InSites</span></span>
     <div class="footer-tagline">AI Strategy &amp; Digital Transformation</div>
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
