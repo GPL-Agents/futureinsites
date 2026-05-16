@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tech Landscape 2026 | FutureInSites</title>
+  <meta name="description" content="An interactive treemap of 210 AI vendors across 14 categories, sized by company-wide valuation. Download as PDF or zoom for detail." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/x-icon" href="images/fis-favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --cyan:     #2DD4FF;
+      --font:     'Manrope', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: #FFFFFF;
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 3rem; height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      position: absolute; left: 3rem; text-decoration: none;
+      display: flex; align-items: flex-start; padding-top: 4px; gap: 0.6rem;
+    }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-size: 1.6rem; font-weight: 800; letter-spacing: -0.025em;
+      line-height: 1.1; color: #FFFFFF; width: fit-content;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.72rem; font-weight: 400; color: #FFFFFF;
+      letter-spacing: 0.005em; line-height: 1.2; margin-top: 3px; white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+      .nav-wordmark-tagline { display: none; }
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute; right: 3rem; font-size: 0.8rem; font-weight: 600;
+      color: #FFFFFF; background: var(--accent); text-decoration: none;
+      padding: 0.5rem 1.3rem; border-radius: 100px; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* Page header */
+    .page-header {
+      padding: 8rem 2rem 2rem;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .back-link {
+      display: inline-block; color: rgba(255,255,255,0.5);
+      text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #FFFFFF; }
+    .eyebrow {
+      font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.05;
+      margin-bottom: 1.1rem;
+    }
+    .page-header p {
+      font-size: 1.05rem; color: rgba(255,255,255,0.65);
+      max-width: 760px; margin: 0 auto 2rem;
+    }
+    .actions {
+      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.4rem; border-radius: 100px;
+      font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: #FFFFFF; }
+    .btn-secondary {
+      background: rgba(255,255,255,0.06); color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* Landscape figure */
+    .landscape-wrap {
+      max-width: 100%;
+      padding: 1rem 1rem 2rem;
+      overflow-x: auto;
+    }
+    .landscape-figure {
+      width: 100%;
+      max-width: 2000px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0B0C10;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .landscape-figure img,
+    .landscape-figure object,
+    .landscape-figure svg {
+      width: 100%; height: auto; display: block;
+    }
+    figcaption {
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+      margin-top: 0.8rem;
+    }
+
+    /* Lightbox for maximized view */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(5,6,10,0.96);
+      z-index: 500;
+      display: none;
+      padding: 1rem;
+      overflow: auto;
+    }
+    .lightbox.open { display: block; }
+    .lightbox-inner {
+      max-width: none;
+      min-width: 2400px;
+      width: 100%;
+    }
+    .lightbox-inner img {
+      width: 100%;
+      max-width: none;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      width: 44px; height: 44px; border-radius: 50%;
+      font-size: 1.4rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 501;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-hint {
+      position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      padding: 0.4rem 1rem; border-radius: 100px;
+      font-size: 0.72rem; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      z-index: 501;
+    }
+
+    /* Methodology */
+    .methodology {
+      max-width: 920px; margin: 3rem auto 4rem; padding: 0 2rem;
+    }
+    .methodology h2 {
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .methodology p {
+      color: rgba(255,255,255,0.72); margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+    .methodology .small {
+      font-size: 0.78rem; color: rgba(255,255,255,0.45);
+      margin-top: 1.4rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark2);
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-wordmark {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.025em;
+      line-height: 1.1; margin-bottom: 0.4rem;
+      color: #FFFFFF; display: inline-block;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.72rem; color: rgba(255,255,255,0.2);
+      margin-bottom: 2rem; letter-spacing: 0.06em;
+    }
+    .footer-links {
+      display: flex; gap: 2.5rem; justify-content: center; list-style: none;
+      margin: 1.5rem 0; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.3); text-decoration: none;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .footer-links a:hover { color: #FFFFFF; }
+    .footer-copy {
+      font-size: 0.7rem; color: rgba(255,255,255,0.18);
+      margin-top: 1.5rem; letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Digital Transformation</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <div class="page-header">
+    <a href="ai-vendor-landscape.html" class="back-link">← Back to AI Vendor Landscape</a>
+    <p class="eyebrow">Visual Reference</p>
+    <h1>AI Tech Landscape 2026</h1>
+    <p>210 vendors across 14 categories, sized by company-wide valuation or market cap. Click the chart to maximize, or download the high-resolution PDF.</p>
+    <div class="actions">
+      <a href="landscape-ai.pdf" class="btn btn-primary" download>Download PDF</a>
+      <a href="ai-vendor-landscape.html" class="btn btn-secondary">Vendor Directory</a>
+    </div>
+  </div>
+
+  <div class="landscape-wrap">
+    <figure class="landscape-figure" id="landscape-figure" role="button" tabindex="0" aria-label="Open the landscape at full size">
+      <img src="landscape-ai.svg" alt="AI Tech Landscape 2026 treemap of 210 vendors across 14 categories" loading="eager">
+    </figure>
+    <figcaption>Click the landscape to expand. Color-coded by category. Rectangle area = log of company-wide valuation.</figcaption>
+  </div>
+
+  <section class="methodology">
+    <h2>How to read this chart</h2>
+    <p>Each of the 14 outer rectangles is a category from the AI Vendor Landscape. Categories are sized by the combined weight of the vendors inside them, so larger categories with bigger players occupy more area.</p>
+    <p>Inside each category, every vendor is sized by company-wide market capitalization (for public companies) or last reported private valuation (for private companies). To keep the chart readable across a range that spans more than four orders of magnitude (from sub-$0.1B startups to $3.5T megacaps), areas scale with the logarithm of valuation rather than the raw number. The relative ordering is preserved, but megacap vendors do not crush smaller players visually.</p>
+    <p>A vendor may appear in more than one category when its presence is meaningful in each (for example, Microsoft Copilot in Productivity and GitHub Copilot in Developer & Coding). This mirrors how the underlying AI Vendor Landscape categorizes products rather than companies.</p>
+    <p class="small">Valuations sourced from public market data and reported funding rounds as of May 2026. Estimates are directional and intended for relative comparison only. Source data and full vendor list: <a href="ai-vendor-landscape.html" style="color: var(--cyan);">AI Vendor Landscape</a>.</p>
+  </section>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="AI Tech Landscape maximized view">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close maximized view">×</button>
+    <div class="lightbox-inner">
+      <img src="landscape-ai.svg" alt="AI Tech Landscape 2026, maximized view">
+    </div>
+    <div class="lightbox-hint">Scroll to pan • Esc to close</div>
+  </div>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Digital Transformation</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="ai-vendor-landscape.html">Vendor Directory</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Cambridge, MA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var fig = document.getElementById('landscape-figure');
+      var lb = document.getElementById('lightbox');
+      var close = document.getElementById('lightbox-close');
+
+      function open() { lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      function shut() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+
+      fig.addEventListener('click', open);
+      fig.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+      });
+      close.addEventListener('click', shut);
+      lb.addEventListener('click', function (e) { if (e.target === lb) shut(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) shut();
+      });
+    })();
+  </script>
+
+  <script src="cookie-banner.js"></script>
+</body>
+</html>
