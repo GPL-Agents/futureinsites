@@ -1,0 +1,18 @@
+# FUSE filesystem artifacts (created by the Cowork mount when a file is
+# deleted while still held open by a Windows process; safe to ignore)
+.fuse_hidden*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temp/swap files
+*.swp
+*~
+*.bak
+.vscode/
+.idea/
+
+# Logs
+*.log
