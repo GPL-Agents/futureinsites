@@ -693,8 +693,8 @@
     }
 
     .sol-icon {
-      width: 36px;
-      height: 36px;
+      width: 72px;
+      height: 72px;
       color: var(--accent);
       flex-shrink: 0;
       display: flex;
@@ -702,10 +702,12 @@
       justify-content: center;
     }
 
-    .sol-icon svg {
+    .sol-icon svg,
+    .sol-icon img {
       width: 100%;
       height: 100%;
       display: block;
+      object-fit: contain;
     }
 
     .sol-rule {
@@ -1433,14 +1435,14 @@
       <div class="hero-tagline">AI Strategy &amp;<br>Digital Transformation</div>
 
       <h1 class="hero-h1">
-        We help enterprise brands navigate<br><em>the AI inflection point</em><span style="color:#FFFFFF;">.</span>
+        Proven expertise to help you navigate<br><em>the AI inflection point</em><span style="color:#FFFFFF;">.</span>
       </h1>
 
       <p class="hero-sub">
-        We partner with enterprises to design and execute AI strategies that drive measurable outcomes, not just technology roadmaps.
+        We partner with operators, investors, and professionals to design and execute AI strategies that drive measurable outcomes, not just technology roadmaps.
       </p>
 
-      <p class="hero-sub" style="margin-top:1rem; font-style:italic; color:#FFFFFF; font-size:clamp(1.1rem,2vw,1.5rem); font-weight:500; letter-spacing:0.01em;">Fuel disruption. Engineer advantage. Drive ROI.</p>
+      <p class="hero-sub" style="margin-top:1rem; font-style:italic; color:#FFFFFF; font-size:clamp(1.1rem,2vw,1.5rem); font-weight:500; letter-spacing:0.01em;">Build momentum. Fuel disruption. Drive ROI.</p>
 
       <div class="hero-actions">
         <a href="case-studies.html" class="btn-primary">View Case Studies →</a>
@@ -1457,10 +1459,12 @@
 
         <div class="about-body">
           <p class="section-label">Approach</p>
-          <h2 class="section-title">Strategy first.</h2>
-          <p>FutureInSites was built on a simple belief: the companies that win with AI aren't the ones who deploy the most tools; they're the ones who <strong>ask the right questions</strong> first.</p>
-          <p>We do two complementary kinds of work. <strong>Enterprise AI Strategy &amp; Development</strong> for operating companies navigating the AI inflection point, and <strong>AI Investment &amp; Strategic Diligence</strong> for investors and management teams evaluating AI businesses and AI's impact on incumbent economics.</p>
-          <p>The case work covers <strong>retail, manufacturing, media, finance, healthcare &amp; bio-sciences</strong>: industries where AI is reshaping customer expectations, capital intensity, and competitive advantage simultaneously.</p>
+          <h2 class="section-title">Plan. Execute. Measure.</h2>
+          <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT. That's activity, but not real progress.</p>
+          <p>FutureInSites helps clients move from experimentation to execution. We assess where you are, identify the opportunities most likely to save time, improve productivity, or create new value, and build the strategy and foundation to deploy them.</p>
+          <p>We work with <strong>professionals, businesses, and investors</strong>: from personal OpenClaw agent buildouts, to enterprise strategy and workflow deployment, to AI market intelligence and strategic diligence.</p>
+          <p>Our work spans <strong>retail, manufacturing, media, finance, healthcare, and bio-sciences</strong>: industries where AI is reshaping productivity, capital intensity, customer expectations, and competitive advantage.</p>
+          <p>The goal is not more AI activity. It is measurable business impact.</p>
         </div>
 
         <div class="about-stats">
@@ -1506,50 +1510,33 @@
         <a href="solutions.html#personal" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
           <div class="sol-header">
             <div class="sol-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="11" r="4"/>
-                <path d="M4 27 Q 4 19, 12 19 Q 20 19, 20 27"/>
-                <circle cx="24" cy="9" r="3.5" fill="currentColor" stroke="none"/>
-                <line x1="17" y1="10" x2="20.7" y2="9.5"/>
-              </svg>
+              <img src="images/fis-icon-professionals.png" alt="">
             </div>
             <div class="sol-rule"></div>
           </div>
-          <h3>Personal</h3>
+          <h3>Professional</h3>
           <p>Done-for-you personal AI agent setups for executives and high-output professionals. Configured to your workflow, your tools, and your data, on hardware you own.</p>
         </a>
 
         <a href="solutions.html#business" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
           <div class="sol-header">
             <div class="sol-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="21" width="24" height="6" rx="1"/>
-                <rect x="6" y="13" width="20" height="6" rx="1"/>
-                <rect x="9" y="5" width="14" height="6" rx="1"/>
-                <line x1="11" y1="24" x2="13" y2="24"/>
-                <line x1="13" y1="16" x2="15" y2="16"/>
-              </svg>
+              <img src="images/fis-icon-businesses.png" alt="">
             </div>
             <div class="sol-rule"></div>
           </div>
-          <h3>Business</h3>
+          <h3>Businesses</h3>
           <p>AI strategy and transformation for SMB through enterprise. Readiness, roadmap, vendor selection, governance, and build, delivered under a Build-Operate-Transfer model your team can own.</p>
         </a>
 
         <a href="solutions.html#investor" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
           <div class="sol-header">
             <div class="sol-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="18" width="4" height="9"/>
-                <rect x="12" y="13" width="4" height="14"/>
-                <rect x="19" y="8" width="4" height="19"/>
-                <circle cx="23.5" cy="11.5" r="4"/>
-                <line x1="26.4" y1="14.4" x2="29" y2="17"/>
-              </svg>
+              <img src="images/fis-icon-investors.png" alt="">
             </div>
             <div class="sol-rule"></div>
           </div>
-          <h3>Investor</h3>
+          <h3>Investors</h3>
           <p>Strategic counsel and AI market intelligence for fund partners, family offices, and corporate development teams. Vendor due diligence, thesis development, and quarterly briefings.</p>
         </a>
 
