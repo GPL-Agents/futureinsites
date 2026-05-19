@@ -105,7 +105,7 @@
       white-space: nowrap;
     }
     @media (max-width: 640px) {
-      .nav-wordmark-tagline { display: none; }
+      .nav-wordmark-tagline { font-size: 0.68rem; }
     }
 
     .nav-wordmark .wm-in { color: var(--cyan); }
@@ -587,6 +587,23 @@
       margin-top: 1.25rem;
     }
     .submit-section button[type="submit"]:hover { opacity: 0.9; }
+    .submit-cta-button {
+      display: inline-block;
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.95rem 1.9rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 0.6rem;
+    }
+    .submit-cta-button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
     @media (max-width: 720px) {
       .submit-form-grid { grid-template-columns: 1fr; }
       .submit-section { padding: 1.75rem 1.5rem; }
@@ -2786,33 +2803,8 @@
   <!-- ─── SUBMIT AI FOR REVIEW ─── -->
   <section class="submit-section" id="submit-ai">
     <h2>Submit AI for Review</h2>
-    <p class="submit-lead">Know an AI app, tool, service, or website that should be in the landscape? Submit it below and we'll evaluate it for inclusion in the next refresh.</p>
-    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-      <input type="hidden" name="_subject" value="AI Vendor Submission for Landscape Review">
-      <div class="submit-form-grid">
-        <div>
-          <label for="sub-name">AI tool / company name</label>
-          <input id="sub-name" name="tool_name" type="text" required>
-        </div>
-        <div>
-          <label for="sub-url">Website URL</label>
-          <input id="sub-url" name="tool_url" type="url" required>
-        </div>
-        <div>
-          <label for="sub-category">Suggested category (optional)</label>
-          <input id="sub-category" name="tool_category" type="text">
-        </div>
-        <div>
-          <label for="sub-email">Your email (optional)</label>
-          <input id="sub-email" name="submitter_email" type="email">
-        </div>
-        <div class="submit-form-field-full">
-          <label for="sub-context">Why should it be included? (optional)</label>
-          <textarea id="sub-context" name="context" placeholder="A line or two on what the tool does and why it matters."></textarea>
-        </div>
-      </div>
-      <button type="submit">Submit for Review</button>
-    </form>
+    <p class="submit-lead">Know an AI app, tool, service, or website that should be in the landscape? Submit it for review and we'll evaluate it for inclusion in the next monthly refresh.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF8EOLcyxUJp6Fkj3jTQxyDte_bp28kGCBquCIFw6WisY0jQ/viewform" target="_blank" rel="noopener" class="submit-cta-button">Open Submission Form →</a>
   </section>
 
   <!-- ─── DISCLAIMER ─── -->
