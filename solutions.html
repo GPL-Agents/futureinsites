@@ -88,22 +88,34 @@
 
     /* ─── HERO ─── */
     .page-header {
+      padding: 9rem 2rem 5rem;
       background: var(--dark);
       color: #FFFFFF;
-      padding: 8rem 2rem 4rem;
       text-align: center;
     }
     .page-header .eyebrow {
-      font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.18em;
-      text-transform: uppercase; font-weight: 700; margin-bottom: 1rem;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      line-height: 1.05;
     }
     .page-header h1 {
-      font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800;
-      letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 1.1rem;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
     }
     .page-header p {
-      font-size: 1.05rem; color: rgba(255,255,255,0.65);
-      max-width: 760px; margin: 0 auto;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
 
     /* ─── SEGMENT SECTIONS ─── */
@@ -265,7 +277,7 @@
 
   <!-- HERO -->
   <header class="page-header">
-    <div class="eyebrow">Solutions</div>
+    <p class="eyebrow">Solutions</p>
     <h1>How we work with you</h1>
     <p>FutureInSites delivers AI strategy, transformation, and tooling across three audiences: individuals who want a personal AI agent of their own, businesses scaling from SMB through enterprise, and investors building a thesis around the AI ecosystem.</p>
   </header>
@@ -294,6 +306,10 @@
         <h3>Personal AI Agent Setup</h3>
         <p>A fully configured AI agent running on dedicated hardware behind your own VPN. Custom personality tuned to your workflow, with native integration to Telegram, Gmail, Google Calendar, and your existing tools. Includes hardware sourcing guidance, secure remote access via Tailscale, agent personality tuning, and a workflow training session so you can extend the agent yourself. Built on OpenClaw, an open architecture designed for personal AI assistants.</p>
         <div class="sol-meta">Engagement from $2,500</div>
+      </div>
+
+      <div class="personal-feature-image" style="grid-column: span 2; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;">
+        <img src="images/openclawsetup.png" alt="Personal AI Agent setup: dedicated hardware, private VPN, integrated with Telegram, Gmail, and Google Calendar." style="width: 100%; height: auto; display: block;">
       </div>
 
     </div>
