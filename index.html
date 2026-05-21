@@ -664,6 +664,27 @@
       .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
     }
 
+    /* Two-tier team layout: Founder up top, Advisors below */
+    .team-tier-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin: 0 0 1rem 0;
+    }
+    .team-tier-label.team-tier-second { margin-top: 3rem; }
+    .team-founder-row {
+      display: flex;
+      justify-content: center;
+    }
+    .team-founder-row .team-card {
+      width: 100%;
+      max-width: 360px;
+    }
+    .team-section .team-grid { margin-top: 0; }
+
     .solutions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1761,7 +1782,7 @@
 
         <div style="text-align: center; margin-top: 2rem;">
           <button type="button" class="signature-cta" data-open-inquiry>Inquire about scheduling →</button>
-          <p class="signature-form-note" style="margin-top:0.8rem;">We'll reply within 1 business day.</p>
+          <p class="signature-form-note" style="margin-top:0.8rem;">We'll be in touch promptly.</p>
         </div>
       </div>
 
@@ -1885,8 +1906,22 @@
     <div class="section-inner">
       <p class="section-label">Team</p>
       <h2 class="section-title">Enterprise Expertise</h2>
-      <p class="section-intro">Operators with deep industry experience across the verticals where AI is changing the economics fastest.</p>
+      <p class="section-intro">Operator-led, with a deep advisory bench across industry and research.</p>
 
+      <p class="team-tier-label">Founder</p>
+      <div class="team-founder-row">
+
+        <div class="team-card">
+          <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
+          <div class="team-name">Greg Loeffelholz</div>
+          <div class="team-title">Founding Principal</div>
+          <div class="team-vertical">Advertising &amp; Media</div>
+          <p class="team-bio">20+ years scaling data, ML, and GenAI platforms as a strategic leader. Led engineering and data science at MotiveMetrics' AI SaaS platform optimizing $100MM+ in paid search, with P&amp;L and SOC 2 governance. MarTech DSP &amp; CDP leadership at Inmar Intelligence and GM of a $35MM P&amp;L at Nelnet. Vanderbilt BA, Boston College MBA in AI &amp; Machine Learning.</p>
+        </div>
+
+      </div>
+
+      <p class="team-tier-label team-tier-second">Advisors</p>
       <div class="team-grid">
 
         <div class="team-card">
@@ -1906,11 +1941,11 @@
         </div>
 
         <div class="team-card">
-          <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
-          <div class="team-name">Greg Loeffelholz</div>
-          <div class="team-title">Founding Principal</div>
-          <div class="team-vertical">Advertising &amp; Media</div>
-          <p class="team-bio">20+ years scaling data, ML, and GenAI platforms as a strategic leader. Led engineering and data science at MotiveMetrics' AI SaaS platform optimizing $100MM+ in paid search, with P&amp;L and SOC 2 governance. MarTech DSP &amp; CDP leadership at Inmar Intelligence and GM of a $35MM P&amp;L at Nelnet. Vanderbilt BA, Boston College MBA in AI &amp; Machine Learning.</p>
+          <img src="images/miao.liu.jpg" alt="Miao Liu" class="team-photo">
+          <div class="team-name">Miao Liu</div>
+          <div class="team-title">Research Advisor</div>
+          <div class="team-vertical">Investment &amp; Finance</div>
+          <p class="team-bio">Assistant Professor of Accounting at Boston College's Carroll School, with research at the intersection of accounting and AI. Builds RAG systems applied to financial disclosure and earnings calls, plus published research on human-AI collaboration in corporate valuation and autonomous research agents for hypothesis discovery. Teaches an AI Applications in Business course for undergraduates and MBAs. Wuhan University BA, University of Chicago PhD.</p>
         </div>
 
       </div>
@@ -2091,9 +2126,11 @@
     <div class="fis-modal-card" role="document">
       <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
 
-      <div class="fis-modal-eyebrow">AI Transformation Session</div>
-      <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
-      <p class="fis-modal-lead">A few details so we can come prepared. We reply within 1 business day.</p>
+      <div id="fis-inquiry-header">
+        <div class="fis-modal-eyebrow">AI Transformation Session</div>
+        <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
+        <p class="fis-modal-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
+      </div>
 
       <form class="fis-form" id="fis-inquiry-form" novalidate>
         <div class="fis-form-grid">
@@ -2131,7 +2168,7 @@
 
         <div class="fis-form-actions">
           <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send inquiry</button>
-          <p class="fis-form-note">We'll reply within 1 business day. No newsletters, no sharing.</p>
+          <p class="fis-form-note">No newsletters, no sharing.</p>
         </div>
 
         <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
@@ -2140,7 +2177,7 @@
       <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
         <div class="fis-form-success-icon">✓</div>
         <div class="fis-form-success-title">Thanks, your inquiry is in.</div>
-        <div class="fis-form-success-body">We'll be in touch within 1 business day at the email you provided.</div>
+        <div class="fis-form-success-body">We'll be in touch as soon as possible at the email you provided.</div>
       </div>
     </div>
   </div>
@@ -2151,6 +2188,7 @@
     var modal    = document.getElementById('fis-inquiry-modal');
     var form     = document.getElementById('fis-inquiry-form');
     var success  = document.getElementById('fis-inquiry-success');
+    var header   = document.getElementById('fis-inquiry-header');
     var errorEl  = document.getElementById('fis-inquiry-error');
     var submitEl = document.getElementById('fis-inquiry-submit');
     if (!modal || !form) return;
@@ -2160,6 +2198,7 @@
     function openModal() {
       lastFocus = document.activeElement;
       // Reset state every open
+      if (header) header.style.display = '';
       form.style.display = '';
       success.classList.remove('show');
       errorEl.classList.remove('show');
@@ -2244,6 +2283,7 @@
         })
         .then(function (result) {
           if (result.ok && result.json && result.json.ok) {
+            if (header) header.style.display = 'none';
             form.style.display = 'none';
             success.classList.add('show');
             form.reset();
