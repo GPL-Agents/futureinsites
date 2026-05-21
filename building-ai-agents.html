@@ -791,3 +791,22 @@
         function onKey(e) { if (e.key === 'Escape') close(); }
 
         overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('lb-open');
+        document.addEventListener('keydown', onKey);
+      }
+
+      figs.forEach(function (img) {
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt);
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
