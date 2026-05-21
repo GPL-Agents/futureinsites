@@ -44,6 +44,7 @@ module.exports = async function handler(req, res) {
   const role    = (body.role    || '').toString().trim().slice(0, 200);
   const phone   = (body.phone   || '').toString().trim().slice(0, 80);
   const message = (body.message || '').toString().trim().slice(0, 4000);
+  const context = (body.context || 'session').toString().trim().toLowerCase();
 
   if (!name)         return res.status(400).json({ ok: false, error: 'Name is required.' });
   if (!isEmail(email)) return res.status(400).json({ ok: false, error: 'A valid email is required.' });
@@ -57,7 +58,11 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ ok: false, error: 'Server is not configured to send mail yet.' });
   }
 
-  const subject = `New AI Transformation Session inquiry from ${name}${company ? ` (${company})` : ''}`;
+  const SUBJECTS = {
+    session:  `AI Transformation Session inquiry from ${name}${company ? ` (${company})` : ''}`,
+    strategy: `AI strategy inquiry from ${name}${company ? ` (${company})` : ''}`,
+  };
+  const subject = SUBJECTS[context] || SUBJECTS.session;
   const lines = [
     ['Name',    name],
     ['Email',   email],

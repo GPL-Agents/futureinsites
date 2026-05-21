@@ -24,13 +24,14 @@ In Resend → **API Keys → Create API Key**, give it a name (e.g. `futureinsit
 
 In the Vercel dashboard → **FutureInSites project → Settings → Environment Variables**, add the following for **Production** (and Preview if you want it to work on preview deploys):
 
-| Name             | Value                                            |
-| ---------------- | ------------------------------------------------ |
-| `RESEND_API_KEY` | the `re_…` key from step 3                       |
-| `INQUIRY_TO`     | `strategy@futureinsites.com`                     |
-| `INQUIRY_FROM`   | `FutureInSites <forms@futureinsites.com>`        |
+| Name              | Value                                            | Used by                          |
+| ----------------- | ------------------------------------------------ | -------------------------------- |
+| `RESEND_API_KEY`  | the `re_…` key from step 3                       | both forms                       |
+| `INQUIRY_TO`      | `strategy@futureinsites.com`                     | `/api/inquire` (homepage modal)  |
+| `INQUIRY_FROM`    | `FutureInSites <forms@futureinsites.com>`        | both forms (sender address)      |
+| `SUBMISSIONS_TO`  | `submissions@futureinsites.com`                  | `/api/submit-ai` (landscape page)|
 
-After adding env vars, **redeploy** (Deployments → latest → ⋯ → Redeploy) so the function picks them up.
+After adding env vars, **redeploy** (Deployments → latest → ⋯ → Redeploy) so the functions pick them up.
 
 > Note: the `INQUIRY_FROM` mailbox doesn't need to exist as a real inbox. Resend only requires that the sending domain (`futureinsites.com`) is verified. Replies go to the submitter's email via the `Reply-To` header, so anyone who clicks Reply in your strategy@ inbox will reply directly to the prospect.
 

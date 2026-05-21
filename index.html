@@ -1113,6 +1113,8 @@
       padding: 0.75rem 2rem;
       border-radius: 100px;
       display: inline-block;
+      cursor: pointer;
+      font-family: inherit;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
@@ -1120,6 +1122,24 @@
       background: rgba(45,212,255,0.25);
       border-color: rgba(45,212,255,0.7);
       color: #FFFFFF;
+    }
+
+    .contact-options {
+      margin-top: 0.25rem;
+      margin-bottom: 1.5rem !important;
+      font-size: 0.92rem !important;
+      color: rgba(255,255,255,0.6) !important;
+    }
+    .contact-inline-email {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(45,212,255,0.35);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .contact-inline-email:hover {
+      color: #FFFFFF;
+      border-color: rgba(255,255,255,0.6);
     }
 
     /* ─── FOOTER ─── */
@@ -1952,7 +1972,8 @@
       <div class="contact-card">
         <h2>Ready to build your AI strategy?</h2>
         <p>Whether you're starting from zero or scaling an existing AI program, we'd love to explore how FutureInSites can help your organization move faster with more confidence.</p>
-        <a href="mailto:strategy@futureinsites.com" class="contact-email">strategy@futureinsites.com</a>
+        <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
+        <button type="button" class="contact-email" data-open-inquiry data-inquiry-context="strategy">Send us a Message</button>
       </div>
     </div>
   </section>
@@ -2121,9 +2142,9 @@
       <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
 
       <div id="fis-inquiry-header">
-        <div class="fis-modal-eyebrow">AI Transformation Session</div>
+        <div class="fis-modal-eyebrow" id="fis-inquiry-eyebrow">AI Transformation Session</div>
         <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
-        <p class="fis-modal-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
+        <p class="fis-modal-lead" id="fis-inquiry-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
       </div>
 
       <form class="fis-form" id="fis-inquiry-form" novalidate>
@@ -2170,8 +2191,8 @@
 
       <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
         <div class="fis-form-success-icon">✓</div>
-        <div class="fis-form-success-title">Thanks, your inquiry is in.</div>
-        <div class="fis-form-success-body">We'll be in touch as soon as possible at the email you provided.</div>
+        <div class="fis-form-success-title" id="fis-inquiry-success-title">Thanks, your inquiry is in.</div>
+        <div class="fis-form-success-body" id="fis-inquiry-success-body">We'll be in touch as soon as possible at the email you provided.</div>
       </div>
     </div>
   </div>
@@ -2183,14 +2204,49 @@
     var form     = document.getElementById('fis-inquiry-form');
     var success  = document.getElementById('fis-inquiry-success');
     var header   = document.getElementById('fis-inquiry-header');
+    var eyebrowEl     = document.getElementById('fis-inquiry-eyebrow');
+    var titleEl       = document.getElementById('fis-inquiry-title');
+    var leadEl        = document.getElementById('fis-inquiry-lead');
+    var successTitleEl = document.getElementById('fis-inquiry-success-title');
+    var successBodyEl  = document.getElementById('fis-inquiry-success-body');
+
+    /* Per-context modal copy. Keyed by data-inquiry-context attr on the open button. */
+    var CONTEXTS = {
+      session: {
+        eyebrow: 'AI Transformation Session',
+        title: 'Tell us about your team.',
+        lead: "A few details so we can come prepared. We'll respond as soon as possible.",
+        successTitle: 'Thanks, your inquiry is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      strategy: {
+        eyebrow: "Let's Talk",
+        title: 'Tell us about your AI work.',
+        lead: "Whether you're starting from zero or scaling an existing program, share a few details and we'll respond as soon as possible.",
+        successTitle: 'Thanks, your note is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      }
+    };
+    var currentContext = 'session';
     var errorEl  = document.getElementById('fis-inquiry-error');
     var submitEl = document.getElementById('fis-inquiry-submit');
     if (!modal || !form) return;
 
     var lastFocus = null;
 
-    function openModal() {
+    function applyContext(ctx) {
+      var c = CONTEXTS[ctx] || CONTEXTS.session;
+      currentContext = CONTEXTS[ctx] ? ctx : 'session';
+      if (eyebrowEl)      eyebrowEl.textContent      = c.eyebrow;
+      if (titleEl)        titleEl.textContent        = c.title;
+      if (leadEl)         leadEl.textContent         = c.lead;
+      if (successTitleEl) successTitleEl.textContent = c.successTitle;
+      if (successBodyEl)  successBodyEl.textContent  = c.successBody;
+    }
+
+    function openModal(ctx) {
       lastFocus = document.activeElement;
+      applyContext(ctx || 'session');
       // Reset state every open
       if (header) header.style.display = '';
       form.style.display = '';
@@ -2219,7 +2275,8 @@
     document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
       el.addEventListener('click', function (e) {
         e.preventDefault();
-        openModal();
+        var ctx = el.getAttribute('data-inquiry-context') || 'session';
+        openModal(ctx);
       });
     });
 
@@ -2247,6 +2304,7 @@
         role:    form.role.value.trim(),
         phone:   form.phone.value.trim(),
         message: form.message.value.trim(),
+        context: currentContext,
         website: form.website.value, // honeypot
         fax:     form.fax.value,     // honeypot
       };

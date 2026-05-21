@@ -688,6 +688,207 @@
       .intro-stat { border-right: none; padding: 0.4rem 0; }
       .cat-nav { padding: 0.6rem 1rem; }
     }
+
+    /* ─── SUBMISSION MODAL ─── */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea,
+    .fis-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.55) 50%), linear-gradient(135deg, rgba(255,255,255,0.55) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 2.2rem;
+    }
+    .fis-form select option { background: #12141A; color: #FFFFFF; }
+    .fis-form input:focus,
+    .fis-form textarea:focus,
+    .fis-form select:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/x-icon" href="images/fis-favicon.ico">
@@ -2804,7 +3005,7 @@
   <section class="submit-section" id="submit-ai">
     <h2>Submit AI for Review</h2>
     <p class="submit-lead">Know an AI app, tool, service, or website that should be in the landscape? Submit it for review and we'll evaluate it for inclusion in the next monthly refresh.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF8EOLcyxUJp6Fkj3jTQxyDte_bp28kGCBquCIFw6WisY0jQ/viewform" target="_blank" rel="noopener" class="submit-cta-button">Open Submission Form →</a>
+    <button type="button" class="submit-cta-button" data-open-submit>Submit AI for Review →</button>
   </section>
 
   <!-- ─── DISCLAIMER ─── -->
@@ -2854,6 +3055,205 @@
     }
 
     input.addEventListener('input', function (e) { filter(e.target.value); });
+  })();
+  </script>
+
+  <!-- ─── SUBMISSION MODAL ─── -->
+  <div class="fis-modal" id="fis-submit-modal" role="dialog" aria-modal="true" aria-labelledby="fis-submit-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close submission form" data-close-submit>×</button>
+
+      <div id="fis-submit-header">
+        <div class="fis-modal-eyebrow">AI Landscape</div>
+        <h3 class="fis-modal-title" id="fis-submit-title">Submit AI for Review</h3>
+        <p class="fis-modal-lead">Know a tool, app, or service that belongs in the next refresh? Tell us about it.</p>
+      </div>
+
+      <form class="fis-form" id="fis-submit-form" novalidate>
+        <div class="fis-form-grid">
+          <div class="fis-form-field-full">
+            <label for="fis-submit-tool">AI Tool / Company Name <span class="req">*</span></label>
+            <input type="text" id="fis-submit-tool" name="toolName" required maxlength="200">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-url">Website URL <span class="req">*</span></label>
+            <input type="url" id="fis-submit-url" name="url" placeholder="https://example.com" required maxlength="500">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-category">Category</label>
+            <select id="fis-submit-category" name="category">
+              <option value="">Choose a category (or leave blank if unsure)</option>
+              <option>Frontier Model Labs</option>
+              <option>Open-Source &amp; Specialist Models</option>
+              <option>Hyperscaler &amp; Cloud AI Platforms</option>
+              <option>Compute, Silicon &amp; Inference</option>
+              <option>Data, Vector Stores &amp; ML Ops</option>
+              <option>Enterprise AI &amp; SaaS Platforms</option>
+              <option>Developer &amp; Coding AI</option>
+              <option>Agents &amp; Workflow Automation</option>
+              <option>Search, Research &amp; Knowledge</option>
+              <option>Image, Video &amp; Audio Generation</option>
+              <option>Productivity &amp; Knowledge Work</option>
+              <option>Sales, Marketing &amp; Customer Experience</option>
+              <option>Vertical AI: Healthcare, Legal, Finance &amp; HR</option>
+              <option>Robotics &amp; Embodied AI</option>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-description">Why include it? What makes it unique and useful?</label>
+            <textarea id="fis-submit-description" name="description" placeholder="A short note: what it does, who it's for, what sets it apart." maxlength="4000"></textarea>
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-email">Your Email <span class="req">*</span></label>
+            <input type="email" id="fis-submit-email" name="email" autocomplete="email" required maxlength="200">
+          </div>
+        </div>
+
+        <!-- Honeypot -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-submit-submit">Submit for Review</button>
+          <p class="fis-form-note">Reviewed each month for inclusion in the next refresh.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-submit-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-submit-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title">Thanks, submission received.</div>
+        <div class="fis-form-success-body">We'll review it for inclusion in the next monthly refresh.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Submission modal: open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-submit-modal');
+    var form     = document.getElementById('fis-submit-form');
+    var success  = document.getElementById('fis-submit-success');
+    var errorEl  = document.getElementById('fis-submit-error');
+    var submitEl = document.getElementById('fis-submit-submit');
+    var header   = document.getElementById('fis-submit-header');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Submit for Review';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-submit-tool');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    document.querySelectorAll('[data-open-submit]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    modal.querySelectorAll('[data-close-submit]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        toolName:    form.toolName.value.trim(),
+        url:         form.url.value.trim(),
+        category:    form.category.value,
+        description: form.description.value.trim(),
+        email:       form.email.value.trim(),
+        website_hp:  form.website_hp.value,
+        fax:         form.fax.value,
+      };
+
+      if (!data.toolName) {
+        errorEl.textContent = 'Please enter the tool or company name.';
+        errorEl.classList.add('show');
+        form.toolName.focus();
+        return;
+      }
+      if (!/^https?:\/\/[^\s.]+\.[^\s]+/i.test(data.url)) {
+        errorEl.textContent = 'Please enter a valid website URL (include https://).';
+        errorEl.classList.add('show');
+        form.url.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/submit-ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (header) header.style.display = 'none';
+            form.style.display = 'none';
+            success.classList.add('show');
+            form.reset();
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please try again, or email submissions@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Submit for Review';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please try again, or email submissions@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Submit for Review';
+        });
+    });
   })();
   </script>
 
