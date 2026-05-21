@@ -1403,6 +1403,195 @@
         top: 44%;
       }
     }
+
+    /* ─── INQUIRY MODAL ─── */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form input:focus,
+    .fis-form textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/x-icon" href="images/fis-favicon.ico">
@@ -1571,7 +1760,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
-          <a class="signature-cta" href="mailto:strategy@futureinsites.com?subject=AI%20Transformation%20Session%20Inquiry&body=Hi%20FutureInSites%20team%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20scheduling%20an%20AI%20Transformation%20Session.%0A%0AName%3A%20%0ACompany%3A%20%0ARole%2FTitle%3A%20%0AContext%20on%20your%20team%27s%20current%20AI%20work%3A%20%0A%0AThanks%2C">Inquire about scheduling →</a>
+          <button type="button" class="signature-cta" data-open-inquiry>Inquire about scheduling →</button>
           <p class="signature-form-note" style="margin-top:0.8rem;">We'll reply within 1 business day.</p>
         </div>
       </div>
@@ -1893,6 +2082,186 @@
       a.addEventListener('click', function () {
         menu.classList.remove('open');
       });
+    });
+  })();
+  </script>
+
+  <!-- ─── INQUIRY MODAL ─── -->
+  <div class="fis-modal" id="fis-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="fis-inquiry-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
+
+      <div class="fis-modal-eyebrow">AI Transformation Session</div>
+      <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
+      <p class="fis-modal-lead">A few details so we can come prepared. We reply within 1 business day.</p>
+
+      <form class="fis-form" id="fis-inquiry-form" novalidate>
+        <div class="fis-form-grid">
+          <div>
+            <label for="fis-name">Name <span class="req">*</span></label>
+            <input type="text" id="fis-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="fis-email">Email <span class="req">*</span></label>
+            <input type="email" id="fis-email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fis-company">Company</label>
+            <input type="text" id="fis-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="fis-role">Role / Title</label>
+            <input type="text" id="fis-role" name="role" autocomplete="organization-title">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-phone">Phone (optional)</label>
+            <input type="tel" id="fis-phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-message">What would you like to discuss?</label>
+            <textarea id="fis-message" name="message" placeholder="A quick note on your team, where AI fits, and any timing you have in mind."></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot — hidden from humans, often filled by bots -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send inquiry</button>
+          <p class="fis-form-note">We'll reply within 1 business day. No newsletters, no sharing.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title">Thanks, your inquiry is in.</div>
+        <div class="fis-form-success-body">We'll be in touch within 1 business day at the email you provided.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Inquiry modal — open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-inquiry-modal');
+    var form     = document.getElementById('fis-inquiry-form');
+    var success  = document.getElementById('fis-inquiry-success');
+    var errorEl  = document.getElementById('fis-inquiry-error');
+    var submitEl = document.getElementById('fis-inquiry-submit');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      // Reset state every open
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Send inquiry';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-name');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Close triggers — × button, backdrop click, Escape key
+    modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Submit handler
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        name:    form.name.value.trim(),
+        email:   form.email.value.trim(),
+        company: form.company.value.trim(),
+        role:    form.role.value.trim(),
+        phone:   form.phone.value.trim(),
+        message: form.message.value.trim(),
+        website: form.website.value, // honeypot
+        fax:     form.fax.value,     // honeypot
+      };
+
+      if (!data.name) {
+        errorEl.textContent = 'Please enter your name.';
+        errorEl.classList.add('show');
+        form.name.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/inquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            form.style.display = 'none';
+            success.classList.add('show');
+            form.reset();
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please email strategy@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please email strategy@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        });
     });
   })();
   </script>
