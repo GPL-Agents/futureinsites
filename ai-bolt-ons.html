@@ -896,53 +896,7 @@
   <!-- DIAGRAM STRIP -->
   <div class="diagram-strip">
     <div class="diagram-frame">
-      <svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: a central AI platform surrounded by three bolt-on types: plugins, skills, and MCP servers.">
-        <defs>
-          <pattern id="boltGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-          </pattern>
-          <radialGradient id="boltGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="rgba(45,212,255,0.28)"/>
-            <stop offset="100%" stop-color="rgba(45,212,255,0)"/>
-          </radialGradient>
-          <linearGradient id="hubBorder" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#2DD4FF"/>
-            <stop offset="100%" stop-color="#2563EB"/>
-          </linearGradient>
-        </defs>
-
-        <!-- background -->
-        <rect width="720" height="340" fill="#0B0C10"/>
-        <rect width="720" height="340" fill="url(#boltGrid)"/>
-        <ellipse cx="360" cy="170" rx="280" ry="150" fill="url(#boltGlow)"/>
-
-        <!-- connectors: three spokes to plugins (TL), skills (TR), mcp servers (bottom-center) -->
-        <line x1="305" y1="150" x2="195" y2="110" stroke="#2DD4FF" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
-        <line x1="415" y1="150" x2="525" y2="110" stroke="#2DD4FF" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
-        <line x1="360" y1="205" x2="360" y2="254" stroke="#2DD4FF" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
-
-        <!-- central platform -->
-        <rect x="298" y="140" width="124" height="60" rx="10" fill="#12141A" stroke="url(#hubBorder)" stroke-width="2"/>
-        <text x="360" y="166" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="0.5">YOUR AI</text>
-        <text x="360" y="184" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="10" text-anchor="middle">Claude  ·  ChatGPT  ·  Gemini</text>
-
-        <!-- bolt-on badges: 3 categories -->
-        <g>
-          <rect x="120" y="84" width="150" height="52" rx="6" fill="#12141A" stroke="rgba(45,212,255,0.45)" stroke-width="1"/>
-          <text x="195" y="108" fill="#2DD4FF" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="1.4">PLUGINS</text>
-          <text x="195" y="125" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="9" text-anchor="middle">Bundles of skills &amp; tools</text>
-        </g>
-        <g>
-          <rect x="450" y="84" width="150" height="52" rx="6" fill="#12141A" stroke="rgba(45,212,255,0.45)" stroke-width="1"/>
-          <text x="525" y="108" fill="#2DD4FF" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="1.4">SKILLS</text>
-          <text x="525" y="125" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="9" text-anchor="middle">Reusable know-how</text>
-        </g>
-        <g>
-          <rect x="285" y="254" width="150" height="52" rx="6" fill="#12141A" stroke="rgba(45,212,255,0.45)" stroke-width="1"/>
-          <text x="360" y="278" fill="#2DD4FF" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="1.4">MCP SERVERS</text>
-          <text x="360" y="295" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="9" text-anchor="middle">Connectors to your apps</text>
-        </g>
-      </svg>
+      <img src="images/bolt-ons-image.png" alt="Diagram: a central AI platform connected to plugins, skills, MCP servers, the user, and external platforms." style="display:block; width:100%; height:auto;">
     </div>
 
     <div class="diagram-context">
