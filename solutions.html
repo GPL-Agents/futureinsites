@@ -50,15 +50,14 @@
     }
     .nav-wordmark {
       text-decoration: none;
-      display: flex; align-items: flex-start; gap: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
       position: absolute; left: 3rem;
     }
     .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
     .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
     .nav-wordmark-name {
       font-size: 1.6rem; font-weight: 800; letter-spacing: -0.025em;
-      line-height: 1; color: #FFFFFF;
-      margin-top: -2px;
+      line-height: 1.1; color: #FFFFFF;
     }
     .nav-wordmark-name .wm-gradient {
       background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
@@ -66,7 +65,7 @@
       color: transparent; -webkit-text-fill-color: transparent;
     }
     .nav-wordmark-tagline {
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       font-weight: 400;
       color: #FFFFFF;
       letter-spacing: 0.005em;
@@ -76,7 +75,6 @@
     }
     @media (max-width: 640px) {
       .nav-wordmark-name { font-size: 1.25rem;
-      margin-top: -2px;
     }
       .nav-wordmark-tagline { font-size: 0.68rem; }
       .nav-links { display: none; }
