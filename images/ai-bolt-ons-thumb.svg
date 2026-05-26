@@ -1,0 +1,46 @@
+<svg viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="AI Bolt-Ons diagram: a central AI platform connected to three categories: plugins, skills, and MCP servers.">
+  <defs>
+    <pattern id="boltGridThumb" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="boltGlowThumb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(45,212,255,0.3)"/>
+      <stop offset="100%" stop-color="rgba(45,212,255,0)"/>
+    </radialGradient>
+    <linearGradient id="hubBorderThumb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4FF"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="560" height="440" fill="#0B0C10"/>
+  <rect width="560" height="440" fill="url(#boltGridThumb)"/>
+  <ellipse cx="280" cy="220" rx="240" ry="180" fill="url(#boltGlowThumb)"/>
+
+  <!-- connectors -->
+  <line x1="225" y1="200" x2="120" y2="140" stroke="#2DD4FF" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
+  <line x1="335" y1="200" x2="440" y2="140" stroke="#2DD4FF" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
+  <line x1="280" y1="255" x2="280" y2="320" stroke="#2DD4FF" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.55"/>
+
+  <!-- central hub -->
+  <rect x="218" y="190" width="124" height="60" rx="10" fill="#12141A" stroke="url(#hubBorderThumb)" stroke-width="2"/>
+  <text x="280" y="216" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="0.5">YOUR AI</text>
+  <text x="280" y="234" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="10" text-anchor="middle">Claude · ChatGPT · Gemini</text>
+
+  <!-- bolt-on badges -->
+  <g>
+    <rect x="40" y="112" width="160" height="56" rx="6" fill="#12141A" stroke="rgba(45,212,255,0.45)" stroke-width="1"/>
+    <text x="120" y="138" fill="#2DD4FF" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1.4">PLUGINS</text>
+    <text x="120" y="156" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="9" text-anchor="middle">Bundles of skills &amp; tools</text>
+  </g>
+  <g>
+    <rect x="360" y="112" width="160" height="56" rx="6" fill="#12141A" stroke="rgba(45,212,255,0.45)" stroke-width="1"/>
+    <text x="440" y="138" fill="#2DD4FF" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1.4">SKILLS</text>
+    <text x="440" y="156" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="9" text-anchor="middle">Reusable know-how</text>
+  </g>
+  <g>
+    <rect x="200" y="320" width="160" height="56" rx="6" fill="#12141A" stroke="rgba(45,212,255,0.45)" stroke-width="1"/>
+    <text x="280" y="346" fill="#2DD4FF" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1.4">MCP SERVERS</text>
+    <text x="280" y="364" fill="rgba(255,255,255,0.5)" font-family="Inter, system-ui, sans-serif" font-size="9" text-anchor="middle">Connectors to your apps</text>
+  </g>
+</svg>
