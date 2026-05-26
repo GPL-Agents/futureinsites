@@ -56,7 +56,7 @@
       left: 3rem;
       text-decoration: none;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.6rem;
     }
 
@@ -77,10 +77,11 @@
       font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.025em;
-      line-height: 1.1;
+      line-height: 1;
       color: #FFFFFF;
       width: fit-content;
       align-self: flex-start;
+      margin-top: -2px;
     }
 
     .nav-wordmark-name .wm-gradient {
@@ -91,17 +92,21 @@
       -webkit-text-fill-color: transparent;
     }
     @media (max-width: 640px) {
-      .nav-wordmark-name { font-size: 1.25rem; }
+      .nav-wordmark-name { font-size: 1.25rem;
+      margin-top: -2px;
+    }
     }
 
     .nav-wordmark-tagline {
-      font-size: 0.72rem;
+      display: block;
+      font-size: 0.82rem;
       font-weight: 400;
-      color: #FFFFFF;
+      color: rgba(255,255,255,0.88);
       letter-spacing: 0.005em;
       line-height: 1.2;
-      margin-top: 3px;
-      white-space: nowrap;
+      margin-top: 5px;
+      text-align: justify;
+      text-align-last: justify;
     }
     @media (max-width: 640px) {
       .nav-wordmark-tagline { font-size: 0.68rem; }

@@ -8,34 +8,16 @@
       <stop offset="65%" stop-color="rgba(45,212,255,0.04)"/>
       <stop offset="100%" stop-color="rgba(45,212,255,0)"/>
     </radialGradient>
-    <linearGradient id="bWord" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2DD4FF"/>
+    <linearGradient id="bWord" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="43%" stop-color="#FFFFFF"/>
+      <stop offset="43%" stop-color="#2DD4FF"/>
       <stop offset="100%" stop-color="#2563EB"/>
     </linearGradient>
   </defs>
-
-  <!-- canvas -->
   <rect width="1128" height="191" fill="#0B0C10"/>
   <rect width="1128" height="191" fill="url(#bGrid)"/>
   <ellipse cx="564" cy="100" rx="520" ry="130" fill="url(#bGlow)"/>
-
-  <!-- wordmark -->
-  <text x="564" y="90"
-        font-family="Manrope, system-ui, sans-serif"
-        font-size="58" font-weight="800"
-        text-anchor="middle" letter-spacing="-1.5">
-    <tspan fill="#FFFFFF">Future</tspan><tspan fill="url(#bWord)">InSites</tspan>
-  </text>
-
-  <!-- tagline -->
-  <text x="564" y="138"
-        font-family="Inter, system-ui, sans-serif"
-        font-size="13" font-weight="500"
-        text-anchor="middle" letter-spacing="7"
-        fill="rgba(255,255,255,0.7)">AI STRATEGY  &amp;  ENGINEERING</text>
-
-  <!-- hairline accents flanking the tagline -->
-  <line x1="320" y1="134" x2="392" y2="134" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-  <line x1="736" y1="134" x2="808" y2="134" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+  <text x="564" y="90" font-family="Manrope, DejaVu Sans, sans-serif" font-size="58" font-weight="800" text-anchor="middle" letter-spacing="-1.5" fill="url(#bWord)">FutureInSites</text>
+  <text x="564" y="145" font-family="Inter, DejaVu Sans, sans-serif" font-size="36" font-weight="500" text-anchor="middle" letter-spacing="1.4" fill="rgba(255,255,255,0.8)">AI Strategy &amp; Engineering</text>
 </svg>
->
