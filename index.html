@@ -1803,7 +1803,6 @@
 
         <div style="text-align: center; margin-top: 2rem;">
           <button type="button" class="signature-cta" data-open-inquiry>Inquire about scheduling →</button>
-          <p class="signature-form-note" style="margin-top:0.8rem;">We'll be in touch promptly.</p>
         </div>
       </div>
 
@@ -2356,4 +2355,14 @@
         })
         .catch(function () {
           errorEl.textContent = 'Network error. Please email strategy@futureinsites.com directly.';
-          errorEl.classList.add('
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        });
+    });
+  })();
+  </script>
+
+  <script src="cookie-banner.js"></script>
+</body>
+</html>
