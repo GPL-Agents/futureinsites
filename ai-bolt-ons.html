@@ -491,6 +491,89 @@
     }
     .dot.filled { background: var(--accent); }
 
+    /* BOLT-ON BUCKETS (sub-sections within a category) */
+    .bolton-bucket { margin-bottom: 2.6rem; }
+    .bolton-bucket:last-child { margin-bottom: 0; }
+    .bucket-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .bucket-label {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .bucket-label-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .bucket-dot-native { background: #10B981; }
+    .bucket-dot-specialized { background: #F59E0B; }
+    .bucket-dot-platform { background: #8B5CF6; }
+    .bucket-tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
+      flex: 1 1 240px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .bucket-header { gap: 0.45rem; }
+      .bucket-tagline { font-size: 0.78rem; flex-basis: 100%; }
+    }
+
+    /* AGGREGATOR CARD (full-width variant for integration platforms) */
+    .bolton-card.bolton-aggregator {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #F8F9FB 0%, #EFF6FF 100%);
+      border-color: rgba(37,99,235,0.18);
+      min-height: 0;
+    }
+    .bolton-aggregator .bolton-name { font-size: 1.2rem; }
+    .bolton-aggregator p { max-width: 760px; }
+    .bolton-aggregator-apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin: 0 0 1rem 0;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(37,99,235,0.12);
+    }
+    .bolton-apps-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 0.25rem;
+    }
+    .bolton-app-chip {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.28rem 0.6rem;
+      border-radius: 100px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .bolton-app-more {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-left: 0.15rem;
+    }
+
     /* SUBMIT AI BUTTON (pill in intro strip) */
     .submit-ai-pill {
       display: inline-flex;
@@ -1211,132 +1294,180 @@
         <span class="category-label">03</span>
         <h2 class="category-title">MCP Servers</h2>
       </div>
-      <p class="category-desc">Connectors that let your AI read and act on the rest of your stack: Slack, Notion, Zapier, browsers, and more. MCP (Model Context Protocol) is the open standard that finally makes "Claude can use my tools" a normal sentence instead of a custom build.</p>
+      <p class="category-desc">Connectors that let your AI read and act on the rest of your stack. MCP (Model Context Protocol) is the open standard that finally makes "your AI can use my tools" a normal sentence instead of a custom build. Three flavors below: direct hooks into apps you already use, specialized tools that bring their own AI capability, and integration platforms that bundle thousands of services behind one endpoint.</p>
 
-      <div class="bolton-grid">
+      <!-- BUCKET 1: NATIVE MCP -->
+      <div class="bolton-bucket">
+        <div class="bucket-header">
+          <span class="bucket-label-dot bucket-dot-native" aria-hidden="true"></span>
+          <span class="bucket-label">Native MCP</span>
+          <span class="bucket-tagline">No extra cost beyond Claude and the underlying app. Best place to start.</span>
+        </div>
 
-        <a href="https://granola.ai" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">granola</div>
-              <div class="bolton-meta">granola.ai</div>
+        <div class="bolton-grid">
+
+          <a href="https://granola.ai" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">granola</div>
+                <div class="bolton-meta">granola.ai</div>
+              </div>
+              <span class="bolton-type">MCP</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Feeds every meeting note to Claude. Granola already records and summarizes your calls; the MCP lets Claude pull those notes into any later workflow without manual copy-paste.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/slack" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">slack</div>
-              <div class="bolton-meta">modelcontextprotocol.io</div>
+            <p>Feeds every meeting note to Claude. Granola already records and summarizes your calls; the MCP lets Claude pull those notes into any later workflow without manual copy-paste.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Posts updates and reads channel history on your behalf. Workflows finally get real workplace context instead of you pasting threads in. The single most useful MCP for most teams.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
+          </a>
 
-        <a href="https://www.notion.so/help/mcp" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">notion</div>
-              <div class="bolton-meta">notion.so</div>
+          <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/slack" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">slack</div>
+                <div class="bolton-meta">modelcontextprotocol.io</div>
+              </div>
+              <span class="bolton-type">MCP</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Reads and writes your databases and docs. Claude can query Notion as a knowledge base, then update pages from a conversation. Best paired with operators who already live in Notion.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
-
-        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">kondo</div>
-              <div class="bolton-meta">claude.ai/plugins</div>
+            <p>Posts updates and reads channel history on your behalf. Workflows finally get real workplace context instead of you pasting threads in. The single most useful MCP for most teams.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Flags which LinkedIn DMs actually need a reply. The first useful AI take on relationship inbox triage: skips the noise, surfaces the conversations that move work forward.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
+          </a>
 
-        <a href="https://zapier.com/mcp" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">zapier</div>
-              <div class="bolton-meta">zapier.com</div>
+          <a href="https://www.notion.so/help/mcp" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">notion</div>
+                <div class="bolton-meta">notion.so</div>
+              </div>
+              <span class="bolton-type">MCP</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>9,000+ apps, 40,000+ actions, one wire. Zapier's MCP server is the lazy-but-correct way to connect Claude to everything else you already use, from CRMs to billing tools to your calendar.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
-
-        <a href="https://higgsfield.ai" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">higgsfield</div>
-              <div class="bolton-meta">higgsfield.ai</div>
+            <p>Reads and writes your databases and docs. Claude can query Notion as a knowledge base, then update pages from a conversation. Best paired with operators who already live in Notion.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Cinematic video from a single prompt. The MCP exposes Higgsfield's model to Claude so you can describe a clip in conversation and get a usable rough cut without leaving the chat.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
+          </a>
 
-        <a href="https://perplexity.ai" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">perplexity</div>
-              <div class="bolton-meta">perplexity.ai</div>
+          <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">kondo</div>
+                <div class="bolton-meta">claude.ai/plugins</div>
+              </div>
+              <span class="bolton-type">MCP</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Real-time web search inside Claude. Drops Perplexity's grounded, citation-first search behavior into any Claude session so research questions don't require swapping tools.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
-
-        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
-          <div class="bolton-head">
-            <div class="bolton-head-text">
-              <div class="bolton-name">agent-browser</div>
-              <div class="bolton-meta">claude.ai/plugins</div>
+            <p>Flags which LinkedIn DMs actually need a reply. The first useful AI take on relationship inbox triage: skips the noise, surfaces the conversations that move work forward.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
             </div>
-            <span class="bolton-type">MCP</span>
-          </div>
-          <p>Token-efficient browser automation. A sandboxed browser the AI controls so it can fill forms and pull info from pages without a public API, without burning your context window on raw HTML.</p>
-          <div class="bolton-badges">
-            <span class="badge">Claude</span>
-            <span class="badge">22k ★</span>
-            <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
-          </div>
-        </a>
+          </a>
 
+          <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">agent-browser</div>
+                <div class="bolton-meta">claude.ai/plugins</div>
+              </div>
+              <span class="bolton-type">MCP</span>
+            </div>
+            <p>Token-efficient browser automation. A sandboxed browser the AI controls so it can fill forms and pull info from pages without a public API, without burning your context window on raw HTML.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge">22k ★</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
+            </div>
+          </a>
+
+        </div>
       </div>
+
+      <!-- BUCKET 2: SPECIALIZED -->
+      <div class="bolton-bucket">
+        <div class="bucket-header">
+          <span class="bucket-label-dot bucket-dot-specialized" aria-hidden="true"></span>
+          <span class="bucket-label">Specialized</span>
+          <span class="bucket-tagline">Standalone AI tools that expose their own capability via MCP. Each has its own pricing.</span>
+        </div>
+
+        <div class="bolton-grid">
+
+          <a href="https://perplexity.ai" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">perplexity</div>
+                <div class="bolton-meta">perplexity.ai</div>
+              </div>
+              <span class="bolton-type">MCP</span>
+            </div>
+            <p>Real-time web search inside Claude. Drops Perplexity's grounded, citation-first search behavior into any Claude session so research questions don't require swapping tools.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
+            </div>
+          </a>
+
+          <a href="https://higgsfield.ai" target="_blank" rel="noopener" class="bolton-card">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">higgsfield</div>
+                <div class="bolton-meta">higgsfield.ai</div>
+              </div>
+              <span class="bolton-type">MCP</span>
+            </div>
+            <p>Cinematic video from a single prompt. The MCP exposes Higgsfield's model to Claude so you can describe a clip in conversation and get a usable rough cut without leaving the chat.</p>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- BUCKET 3: INTEGRATION PLATFORMS -->
+      <div class="bolton-bucket">
+        <div class="bucket-header">
+          <span class="bucket-label-dot bucket-dot-platform" aria-hidden="true"></span>
+          <span class="bucket-label">Integration Platforms</span>
+          <span class="bucket-tagline">One endpoint, thousands of apps. Usually metered by call volume. More of these will emerge.</span>
+        </div>
+
+        <div class="bolton-grid">
+
+          <a href="https://zapier.com/mcp" target="_blank" rel="noopener" class="bolton-card bolton-aggregator">
+            <div class="bolton-head">
+              <div class="bolton-head-text">
+                <div class="bolton-name">zapier</div>
+                <div class="bolton-meta">zapier.com</div>
+              </div>
+              <span class="bolton-type">Aggregator</span>
+            </div>
+            <p>9,000+ apps behind one MCP endpoint. The lazy-but-correct way to bridge Claude to everything else in your stack: CRMs, billing tools, calendars, spreadsheets. Free tier covers 100 tasks per month (each MCP call counts as two), then paid plans scale from there.</p>
+            <div class="bolton-aggregator-apps">
+              <span class="bolton-apps-label">Includes:</span>
+              <span class="bolton-app-chip">Salesforce</span>
+              <span class="bolton-app-chip">HubSpot</span>
+              <span class="bolton-app-chip">Stripe</span>
+              <span class="bolton-app-chip">Shopify</span>
+              <span class="bolton-app-chip">Mailchimp</span>
+              <span class="bolton-app-chip">Google Sheets</span>
+              <span class="bolton-app-chip">Airtable</span>
+              <span class="bolton-app-chip">Calendly</span>
+              <span class="bolton-app-more">+ 9,000 more</span>
+            </div>
+            <div class="bolton-badges">
+              <span class="badge">Claude</span>
+              <span class="badge badge-setup"><span class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Setup</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
     </section>
 
   </div>
@@ -1386,6 +1517,13 @@
           var hit = q === '' || text.indexOf(q) !== -1;
           card.style.display = hit ? '' : 'none';
           if (hit) matched++;
+        });
+        sec.querySelectorAll('.bolton-bucket').forEach(function (bucket) {
+          var bucketHits = 0;
+          bucket.querySelectorAll('a.bolton-card').forEach(function (c) {
+            if (c.style.display !== 'none') bucketHits++;
+          });
+          bucket.style.display = (q === '' || bucketHits > 0) ? '' : 'none';
         });
         var show = q === '' || matched > 0;
         sec.style.display = show ? '' : 'none';
