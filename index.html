@@ -1688,48 +1688,216 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <!-- ABOUT / APPROACH -->
+  <style>
+    .approach-narrative { max-width: 760px; margin-bottom: 2rem; }
+    .journey-cycle { margin-top: 1rem; }
+    .journey-cards {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-bottom: 0.4rem;
+    }
+    .journey-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.1rem;
+      border-top: 3px solid var(--cyan);
+    }
+    .journey-card-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .journey-card-titlewrap { margin: 0 0 0.4rem; }
+    .journey-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: inline;
+      margin: 0;
+    }
+    .journey-card-repeat {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-left: 0.4rem;
+    }
+    .journey-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 0.75rem;
+    }
+    .journey-card-divider {
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+    .journey-card-bullets {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.82rem;
+      color: var(--dark);
+      line-height: 1.8;
+    }
+    .journey-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+    .journey-loop { width: 100%; height: 70px; display: block; }
+    .journey-tail {
+      margin-top: 0.3rem;
+      padding: 0.8rem 1.1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .approach-stats-strip {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+    .stat-mini {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 0.7rem;
+      text-align: center;
+    }
+    .stat-mini .num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      display: block;
+    }
+    .stat-mini .lbl {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      line-height: 1.3;
+      display: block;
+    }
+    @media (max-width: 720px) {
+      .journey-cards { grid-template-columns: 1fr; gap: 0.75rem; }
+      .journey-arrow { display: none; }
+      .journey-loop { display: none; }
+      .approach-stats-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
   <section class="about-strip" id="about">
     <div class="section-inner">
-      <div class="about-grid">
+      <p class="section-label">Approach</p>
+      <h2 class="section-title">Assess. Plan. Build. Repeat.</h2>
 
-        <div class="about-body">
-          <p class="section-label">Approach</p>
-          <h2 class="section-title">Plan. Execute. Measure.</h2>
-          <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT. That's activity, but not real progress.</p>
-          <p>FutureInSites helps clients move from experimentation to execution. We assess where you are, identify the opportunities most likely to save time, improve productivity, or create new value, and build the strategy and foundation to deploy them.</p>
-          <p>We work with <strong>professionals, businesses, and investors</strong>: from personal OpenClaw agent buildouts, to enterprise strategy and workflow deployment, to AI market intelligence and strategic diligence.</p>
-          <p>Our work spans <strong>retail, manufacturing, media, finance, healthcare, and bio-sciences</strong>: industries where AI is reshaping productivity, capital intensity, customer expectations, and competitive advantage.</p>
-          <p>The goal is not more AI activity. It is measurable business impact.</p>
+      <div class="about-body approach-narrative">
+        <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT. That's activity, but not real progress.</p>
+        <p>FutureInSites helps clients move from experimentation to execution. We assess where you are, identify the opportunities most likely to save time, improve productivity, or create new value, and build the strategy and foundation to deploy them.</p>
+        <p>We work with <strong>professionals, businesses, and investors</strong>: from personal OpenClaw agent buildouts, to enterprise strategy and workflow deployment, to AI market intelligence and strategic diligence.</p>
+        <p>Our work spans <strong>retail, manufacturing, media, finance, healthcare, and bio-sciences</strong>: industries where AI is reshaping productivity, capital intensity, customer expectations, and competitive advantage.</p>
+        <p>The goal is not more AI activity. It is measurable business impact.</p>
+      </div>
+
+      <div class="journey-cycle">
+        <div class="journey-cards">
+
+          <div class="journey-card">
+            <div class="journey-card-eyebrow">Stage 1</div>
+            <div class="journey-card-titlewrap">
+              <h3>Assess</h3><span class="journey-card-repeat">&#8635; Measure on repeat</span>
+            </div>
+            <p class="journey-card-desc">Audit your data, talent, culture, and current AI investments. On subsequent passes, measure what is running.</p>
+            <div class="journey-card-divider">
+              <ul class="journey-card-bullets">
+                <li>Capability Heatmap</li>
+                <li>Gap Analysis</li>
+                <li>Current State Audit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="journey-arrow">&rarr;</div>
+
+          <div class="journey-card">
+            <div class="journey-card-eyebrow">Stage 2</div>
+            <div class="journey-card-titlewrap">
+              <h3>Plan</h3>
+            </div>
+            <p class="journey-card-desc">Translate findings into a prioritized roadmap, an architecture that protects optionality, and a clear next move.</p>
+            <div class="journey-card-divider">
+              <ul class="journey-card-bullets">
+                <li>Defining Architecture</li>
+                <li>Buy vs Build Decisioning</li>
+                <li>Use Case Prioritization</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="journey-arrow">&rarr;</div>
+
+          <div class="journey-card">
+            <div class="journey-card-eyebrow">Stage 3</div>
+            <div class="journey-card-titlewrap">
+              <h3>Build</h3><span class="journey-card-repeat">&#8635; Optimize on repeat</span>
+            </div>
+            <p class="journey-card-desc">Build and integrate under Build-Operate-Transfer. On subsequent passes, refine and upgrade what is running.</p>
+            <div class="journey-card-divider">
+              <ul class="journey-card-bullets">
+                <li>Custom Agent Development</li>
+                <li>Workflow Orchestration</li>
+                <li>Platform Integration</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
-        <div class="about-stats">
-          <div class="about-stat">
-            <span class="num">2</span>
-            <span class="lbl">Complementary Practice Areas</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">$2T+</span>
-            <span class="lbl">Market Cap Under Analysis</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">120+</span>
-            <span class="lbl">AI Use Cases Analyzed</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">100%</span>
-            <span class="lbl">ROI-Focused Approach</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">14</span>
-            <span class="lbl">AI Markets Mapped</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">200+</span>
-            <span class="lbl">AI Vendor Profiles</span>
-          </div>
-        </div>
+        <svg class="journey-loop" viewBox="0 0 680 70" aria-hidden="true">
+          <defs>
+            <marker id="journeyarrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+              <path d="M0,0 L9,4.5 L0,9 z" fill="#2DD4FF"/>
+            </marker>
+          </defs>
+          <path d="M 610 4 Q 720 60 340 60 Q -40 60 70 4" stroke="#2DD4FF" stroke-width="1.5" fill="none" stroke-dasharray="5 5" marker-end="url(#journeyarrow)"/>
+          <text x="340" y="50" text-anchor="middle" font-size="11" fill="#64748B" letter-spacing="0.08em" style="text-transform: uppercase; font-weight: 600;">Repeat: Measure &middot; Plan &middot; Optimize</text>
+        </svg>
 
+        <div class="journey-tail">You operate what gets built. Embedded AI Engineering is available for ongoing support and upgrades.</div>
+      </div>
+
+      <div class="approach-stats-strip">
+        <div class="stat-mini">
+          <span class="num">$2T+</span>
+          <span class="lbl">Market Cap Under Analysis</span>
+        </div>
+        <div class="stat-mini">
+          <span class="num">120+</span>
+          <span class="lbl">AI Use Cases Analyzed</span>
+        </div>
+        <div class="stat-mini">
+          <span class="num">14</span>
+          <span class="lbl">AI Markets Mapped</span>
+        </div>
+        <div class="stat-mini">
+          <span class="num">200+</span>
+          <span class="lbl">AI Vendor Profiles</span>
+        </div>
       </div>
     </div>
   </section>
