@@ -1809,6 +1809,128 @@
     </div>
   </section>
 
+  <!-- WHY US (COMPARISON) -->
+  <style>
+    .why-us {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .why-table-wrap {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .why-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    .why-table thead tr { background: var(--bg-alt); }
+    .why-table th {
+      padding: 1.1rem 1rem;
+      text-align: left;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+      border-bottom: 1px solid var(--border);
+      vertical-align: bottom;
+    }
+    .why-table th.why-corner { width: 18%; }
+    .why-table th:not(.why-corner) { width: 27.33%; }
+    .why-table th.why-fis-col {
+      border-top: 3px solid var(--cyan);
+      background: var(--accent-lt);
+    }
+    .why-table td {
+      padding: 1.15rem 1rem;
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .why-table tbody tr:last-child td { border-bottom: none; }
+    .why-table td.why-row-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .why-table td.why-fis-col {
+      background: var(--accent-lt);
+      color: var(--dark);
+      font-weight: 600;
+    }
+    @media (max-width: 720px) {
+      .why-table-wrap { overflow-x: auto; }
+      .why-table { min-width: 640px; }
+      .why-table th, .why-table td { font-size: 0.82rem; padding: 0.9rem 0.7rem; }
+    }
+  </style>
+  <section class="why-us" id="why-us">
+    <div class="section-inner">
+      <p class="section-label">Why Us</p>
+      <h2 class="section-title">Strategy plus execution, without the trade-off</h2>
+      <p class="section-intro">Most firms force you to pick between thinking and building. We do both.</p>
+
+      <div class="why-table-wrap">
+        <table class="why-table">
+          <thead>
+            <tr>
+              <th class="why-corner"></th>
+              <th>Traditional<br>Consultancies</th>
+              <th>Outsourced<br>Engineering</th>
+              <th class="why-fis-col">FutureInSites</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="why-row-label">What you get</td>
+              <td>A deck and a roadmap</td>
+              <td>A finished build to your spec</td>
+              <td class="why-fis-col">A working asset you own, plus the playbook to run it</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">AI depth</td>
+              <td>Generalists ramping on AI</td>
+              <td>Builders without strategic context</td>
+              <td class="why-fis-col">Practitioners tracking the AI landscape weekly</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">Engagement shape</td>
+              <td>Large team, months of discovery</td>
+              <td>Fixed scope, contractor handoff</td>
+              <td class="why-fis-col">Small team, Build-Operate-Transfer</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">Speed to first value</td>
+              <td>Quarters to a recommendation</td>
+              <td>Weeks to a build</td>
+              <td class="why-fis-col">Weeks to a pilot, with you trained alongside</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">After delivery</td>
+              <td>Recommendations, then exit</td>
+              <td>Project ends at delivery</td>
+              <td class="why-fis-col">Co-operate while you grow into ownership</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">Cost shape</td>
+              <td>Premium fees, large overhead</td>
+              <td>Hourly billing, scope creep risk</td>
+              <td class="why-fis-col">Defined offerings, priced by outcome</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- SELECTED CASE WORK -->
   <section class="experience" id="experience">
     <div class="section-inner">
