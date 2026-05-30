@@ -16,3 +16,10 @@ desktop.ini
 
 # Logs
 *.log
+
+# Secrets / API keys (never commit these)
+keys.txt
+api/keys.txt
+*.key
+.env
+.env.*
