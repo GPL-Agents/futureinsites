@@ -35,6 +35,27 @@ Verified: char cap, no personal-data leaks in public files, all file refs resolv
 
 NEXT (Greg): commit + push via GitHub Desktop so Vercel deploys. Then review the live page. Note: the runtime copy boxes fetch same-origin files, so they populate on the deployed site (not via file://). Privacy-policy page still needed only if we later publish a hosted public GPT.
 
+## LAUNCH DECISION (2026-06-01)
+
+- SHIP NOW = **Option A: proven Vercel build** (GPT → Vercel proxy → Apps Script → Sheet). It's what Greg validated over many hours. Repo restored to this after a Google-only detour. Kept today's good additions: "Why it helps" benefits section, DRAFT conversation starter, cover-letter capability, intro rework.
+- Principle (Greg): dogfood with rigor before releasing changes.
+
+## Option B (Google-only, no Vercel) — DEFERRED to Greg's personal validation
+
+Plan: Greg implements Option B on his PERSONAL setup first (backups exist), validates live, and only then do we update the PUBLIC files.
+
+Validated so far (2026-06-01, via PowerShell against Greg's live Apps Script):
+- GET read with `?api_key=` works directly. 
+- Single POST write with `?api_key=` (flat body) works — row landed in Sheet. Redirect preserves POST for a redirect-following client.
+- NOT yet tested: update-existing (dedup match), and bulk.
+
+What Option B needs (tomorrow):
+1. Schema → servers `https://script.google.com`, path `/macros/s/YOUR_DEPLOYMENT_ID/exec`, GET+POST, `api_key` as required query param (default placeholder), FLAT Opportunity POST body (no `{opportunity}` wrapper — Apps Script reads body fields at top level).
+2. GPT Action auth = **None** (key rides in the query param).
+3. **Port bulk into the Apps Script**: add a `doPost` branch that accepts `{items:[...]}` and loops writing each (this replaces the Vercel `proxy-bulk` fan-out — the one real capability lost without Vercel). Greg flagged this.
+4. Minor: schema types `id` as string (proxy used to coerce id→String); keep instruction "send id as a string".
+5. Validation gate before public update: single write, update-to-existing (confirms update not duplicate), and a 2-3 item bulk write.
+
 ## Materials received (current optimized version)
 
 - 2026-06-01: `google_apps_script.txt` — sheet-bound webhook API. Sheet name "Job Search Command Center - Opportunities". API-key auth (script property `API_KEY`, via `x-api-key` header or `?api_key=`/`?key=`). `doGet` returns/filters opportunities (id, company, company_slug, status, limit, `summaries`, `include_jd`); `doPost` upserts by `id`. `normalizeRecord_` parses JSON fields (`unknowns`, `score_snapshot`) and coerces booleans (`score_locked`, `location_compatible`, `warm_intro_available`). Self-contained and per-user deployable → fits the DIY public model cleanly.
