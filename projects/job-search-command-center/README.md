@@ -56,6 +56,17 @@ What Option B needs (tomorrow):
 4. Minor: schema types `id` as string (proxy used to coerce id→String); keep instruction "send id as a string".
 5. Validation gate before public update: single write, update-to-existing (confirms update not duplicate), and a 2-3 item bulk write.
 
+## PLANNED UX: setup selector at top of page
+
+Once there are 2+ setups, add buttons at the top of job-search-command-center.html so the user picks their path (e.g., OpenAI + Vercel / OpenAI + Google-only / Claude) and the guide customizes: steps, code boxes, downloads, and the architecture diagram all swap to match the chosen setup. Build this only after Option B is validated, so the selector has real, working branches (a selector with one option is pointless). Likely implementation: data-attributes on each path's content + a small JS toggle, remembering the choice in localStorage.
+
+## NEXT AFTER OPTION B: Claude version ("Claude GPT option")
+
+Once Option B is validated and public, build a Claude equivalent of the Command Center.
+- Likely shape: a Claude Project holding the same instructions + scoring methodology, plus a way to reach the same Google Sheet.
+- Open design question: how Claude reads/writes the Sheet. Options: an MCP connector (custom MCP wrapping the Apps Script `/exec`, or a Google Sheets connector), reusing the same key auth. Scope when we get there.
+- Reuse: the GPT instructions, the scoring model, the Sheet, and (if kept) the proxy can all be shared; only the "agent + tool wiring" layer changes.
+
 ## Materials received (current optimized version)
 
 - 2026-06-01: `google_apps_script.txt` — sheet-bound webhook API. Sheet name "Job Search Command Center - Opportunities". API-key auth (script property `API_KEY`, via `x-api-key` header or `?api_key=`/`?key=`). `doGet` returns/filters opportunities (id, company, company_slug, status, limit, `summaries`, `include_jd`); `doPost` upserts by `id`. `normalizeRecord_` parses JSON fields (`unknowns`, `score_snapshot`) and coerces booleans (`score_locked`, `location_compatible`, `warm_intro_available`). Self-contained and per-user deployable → fits the DIY public model cleanly.
