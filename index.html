@@ -179,6 +179,18 @@
       height: 450px;
       background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(79,70,229,0.08) 50%, transparent 70%);
       pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Animated node-network background */
+    #fis-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .hero-inner {
@@ -1668,6 +1680,7 @@
 
   <!-- HERO -->
   <div class="hero">
+    <canvas id="fis-hero-bg" aria-hidden="true"></canvas>
     <div class="hero-inner">
 
       <div class="hero-tagline">AI Strategy &amp; Engineering</div>
@@ -2669,5 +2682,101 @@
   </script>
 
   <script src="cookie-banner.js"></script>
+
+  <!-- Animated hero node-network background -->
+  <script>
+  (function(){
+    var MODE = 'network';            // 'network' | 'aurora' | 'streaks' | 'mesh'
+    var CYAN = '45,212,255';         // --cyan  #2DD4FF
+    var BLUE = '37,99,235';          // --accent #2563EB
+    var INK  = '#0B0C10';            // --dark
+
+    var canvas = document.getElementById('fis-hero-bg');
+    if(!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W=0,H=0,DPR=1,raf=null,running=false,t=0;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize(){
+      var r = canvas.parentElement.getBoundingClientRect();
+      DPR = Math.min(window.devicePixelRatio||1, 2);
+      W=r.width; H=r.height;
+      canvas.width=W*DPR; canvas.height=H*DPR;
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      if(MODE==='network') seedNet();
+      if(MODE==='streaks') seedStreaks();
+      if(reduce) drawStatic();
+    }
+
+    var pts=[];
+    function seedNet(){ pts=[]; var n=Math.max(28, Math.round(W/34));
+      for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.28,vy:(Math.random()-.5)*0.28}); }
+    function drawNet(){
+      ctx.fillStyle=INK; ctx.fillRect(0,0,W,H);
+      var LINK=Math.min(150, W*0.13);
+      for(var i=0;i<pts.length;i++){ var p=pts[i]; p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1; }
+      for(var a=0;a<pts.length;a++){ for(var b=a+1;b<pts.length;b++){
+        var dx=pts[a].x-pts[b].x, dy=pts[a].y-pts[b].y, d=Math.hypot(dx,dy);
+        if(d<LINK){ var al=(1-d/LINK)*0.45; ctx.strokeStyle='rgba('+BLUE+','+al+')'; ctx.lineWidth=0.7;
+          ctx.beginPath(); ctx.moveTo(pts[a].x,pts[a].y); ctx.lineTo(pts[b].x,pts[b].y); ctx.stroke(); } }}
+      for(var k=0;k<pts.length;k++){ ctx.fillStyle='rgba('+CYAN+',0.9)';
+        ctx.beginPath(); ctx.arc(pts[k].x,pts[k].y,1.7,0,7); ctx.fill(); }
+    }
+
+    var blobs=[[0.2,0.5,CYAN],[0.55,0.4,BLUE],[0.82,0.62,CYAN],[0.4,0.72,BLUE]];
+    function drawAurora(){ ctx.fillStyle=INK; ctx.fillRect(0,0,W,H);
+      ctx.globalCompositeOperation='lighter'; t+=0.005;
+      for(var i=0;i<blobs.length;i++){ var bl=blobs[i];
+        var cx=(bl[0]+Math.sin(t+i)*0.12)*W, cy=(bl[1]+Math.cos(t*0.8+i)*0.14)*H, rad=Math.max(W,H)*0.5;
+        var g=ctx.createRadialGradient(cx,cy,0,cx,cy,rad);
+        g.addColorStop(0,'rgba('+bl[2]+',0.30)'); g.addColorStop(1,'rgba('+bl[2]+',0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,rad,0,7); ctx.fill(); }
+      ctx.globalCompositeOperation='source-over';
+    }
+
+    var lines=[];
+    function seedStreaks(){ lines=[];
+      for(var i=0;i<26;i++) lines.push({p:Math.random(),y:Math.random(),len:0.08+Math.random()*0.18,sp:0.0008+Math.random()*0.0022,c:Math.random()>.5?CYAN:BLUE}); }
+    function drawStreaks(){ ctx.fillStyle=INK; ctx.fillRect(0,0,W,H); ctx.globalCompositeOperation='lighter';
+      for(var i=0;i<lines.length;i++){ var l=lines[i]; l.p+=l.sp; if(l.p>1.2){l.p=-0.2;l.y=Math.random();}
+        var x1=l.p*W*1.2-W*0.1, y1=l.y*H, x2=x1+l.len*W, y2=y1-l.len*H*0.5;
+        var g=ctx.createLinearGradient(x1,y1,x2,y2);
+        g.addColorStop(0,'rgba('+l.c+',0)'); g.addColorStop(.5,'rgba('+l.c+',0.55)'); g.addColorStop(1,'rgba('+l.c+',0)');
+        ctx.strokeStyle=g; ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); }
+      ctx.globalCompositeOperation='source-over';
+    }
+
+    function drawMesh(){ t+=0.006;
+      var ax=(0.3+Math.sin(t)*0.3)*W, ay=(0.3+Math.cos(t*0.7)*0.3)*H, bx=(0.7+Math.cos(t*0.9)*0.3)*W, by=(0.7+Math.sin(t*0.6)*0.3)*H;
+      var base=ctx.createLinearGradient(ax,ay,bx,by);
+      base.addColorStop(0,'#0b2740'); base.addColorStop(.5,'#13204a'); base.addColorStop(1,'#1b1438');
+      ctx.fillStyle=base; ctx.fillRect(0,0,W,H);
+      var g1=ctx.createRadialGradient(ax,ay,0,ax,ay,W*0.6);
+      g1.addColorStop(0,'rgba('+CYAN+',0.22)'); g1.addColorStop(1,'rgba('+CYAN+',0)'); ctx.fillStyle=g1; ctx.fillRect(0,0,W,H);
+      var g2=ctx.createRadialGradient(bx,by,0,bx,by,W*0.6);
+      g2.addColorStop(0,'rgba('+BLUE+',0.25)'); g2.addColorStop(1,'rgba('+BLUE+',0)'); ctx.fillStyle=g2; ctx.fillRect(0,0,W,H);
+    }
+
+    function frame(){ if(!running) return;
+      if(MODE==='network') drawNet(); else if(MODE==='aurora') drawAurora();
+      else if(MODE==='streaks') drawStreaks(); else drawMesh();
+      raf=requestAnimationFrame(frame);
+    }
+    function drawStatic(){ if(MODE==='network'){seedNet();drawNet();}
+      else if(MODE==='aurora'){drawAurora();} else if(MODE==='streaks'){seedStreaks();drawStreaks();} else {drawMesh();} }
+    function start(){ if(running||reduce) return; running=true; frame(); }
+    function stop(){ running=false; if(raf) cancelAnimationFrame(raf); }
+
+    window.addEventListener('resize', resize);
+    resize();
+    if(reduce){ drawStatic(); }
+    else { start();
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){ es[0].isIntersecting ? start() : stop(); },{threshold:0}).observe(canvas.parentElement);
+      }
+    }
+  })();
+  </script>
 </body>
 </html>
