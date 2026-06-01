@@ -1,0 +1,13 @@
+Google Sheet header row for the "Job Search Command Center - Opportunities" tab.
+
+Paste these as the column headers in row 1, left to right. The Apps Script
+matches columns by header NAME, not position, so the order can differ, but the
+names must match exactly. Keep them lowercase with underscores as shown.
+
+id	company	company_slug	role	link	status	waiting_reason	status_reason	date_added	date_applied	comp_base_min	comp_base_max	comp_range_text	location_compatible	warm_intro_available	recruiter_contact	unknowns	why_deprioritized	last_action_date	next_action	score_locked	score_snapshot	notes	jd_text	jd_source	jd_captured_at
+
+Notes:
+- Required on every write: id, company, company_slug, role, status, date_added.
+- location_compatible, warm_intro_available, score_locked are booleans (TRUE/FALSE).
+- unknowns and score_snapshot hold JSON text (the GPT writes them; the API parses them on read).
+- jd_text can be large (the full job description); it is omitted from reads unless include_jd=1.

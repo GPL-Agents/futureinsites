@@ -1,0 +1,6 @@
+{
+  "name": "job-command-center-proxy",
+  "version": "1.0.3",
+  "private": true,
+  "type": "module"
+}

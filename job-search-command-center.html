@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Search Command Center | FutureInSites</title>
+  <meta name="description" content="A free, build-your-own custom GPT that triages, scores, tracks, and plans your job search against a single source of truth. Full instructions, code, and a step-by-step setup guide." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) { .nav-wordmark-name { font-size: 1.25rem; } }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) { .nav-wordmark-tagline { display: none; } }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── ARTICLE HEADER ─── */
+    .article-header {
+      padding: 9rem 0 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .article-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+    .article-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(37,99,235,0.06) 50%, transparent 75%);
+      pointer-events: none;
+    }
+    .article-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: left;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 1.8rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cyan); }
+    .article-eyebrow {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .article-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+    .article-deck {
+      font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 760px;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      flex-wrap: wrap;
+    }
+    .article-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+
+    /* Header action buttons */
+    .header-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-primary, .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.84rem; font-weight: 600; text-decoration: none;
+      padding: 0.7rem 1.5rem; border-radius: 100px; transition: opacity 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .btn-primary { color: #FFFFFF; background: var(--accent); }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-ghost { color: #FFFFFF; background: transparent; border: 1px solid rgba(255,255,255,0.25); }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 3rem;
+    }
+    .article-body p {
+      font-size: 1.06rem;
+      color: var(--dark);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .article-body p.lede {
+      font-size: 1.18rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 1.8rem;
+    }
+    .article-body strong { font-weight: 700; }
+    .article-body em { font-style: italic; }
+    .article-body ul { margin: 0 0 1.5rem 1.3rem; }
+    .article-body li { font-size: 1.04rem; line-height: 1.8; margin-bottom: 0.5rem; }
+
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin: 2.8rem 0 1rem;
+      line-height: 1.3;
+    }
+    .article-body h2 .step-num {
+      display: inline-block;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.85rem; font-weight: 800;
+      text-align: center; line-height: 30px;
+      margin-right: 0.7rem; vertical-align: 2px; letter-spacing: 0;
+    }
+    .article-body h3 {
+      font-size: 1.05rem; font-weight: 700; color: var(--dark);
+      margin: 1.6rem 0 0.6rem; letter-spacing: -0.01em;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 2.6rem 0;
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-lt);
+      border-radius: 0 8px 8px 0;
+      font-size: 1.12rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.55;
+    }
+    .pull-quote::before {
+      content: ''; display: block; width: 24px; height: 2px;
+      background: var(--accent); margin-bottom: 0.9rem;
+    }
+
+    /* Callout */
+    .callout {
+      margin: 1.8rem 0;
+      padding: 1.1rem 1.4rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--dark); }
+
+    /* Architecture diagram */
+    .article-figure { margin: 2.6rem 0; }
+    .article-figure .diagram {
+      width: 100%; height: auto; display: block;
+      border: 1px solid var(--border); border-radius: 10px;
+      background: var(--bg-alt); padding: 1rem;
+    }
+    .article-figure figcaption {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.55;
+      text-align: center; margin-top: 1rem;
+    }
+
+    /* Code boxes */
+    .code-block { margin: 1.4rem 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #0E1320; }
+    .code-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.55rem 0.9rem; background: #141A28; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .code-name {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .copy-btn {
+      font-family: var(--font); font-size: 0.72rem; font-weight: 600;
+      color: var(--cyan); background: rgba(45,212,255,0.08);
+      border: 1px solid rgba(45,212,255,0.3); border-radius: 6px;
+      padding: 0.3rem 0.7rem; cursor: pointer; transition: background 0.15s;
+    }
+    .copy-btn:hover { background: rgba(45,212,255,0.16); }
+    .code-block pre {
+      margin: 0; padding: 1rem 1.1rem; overflow-x: auto;
+      max-height: 360px; overflow-y: auto;
+    }
+    .code-block code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem; line-height: 1.6; color: #D7E0EE; white-space: pre;
+    }
+    .code-block code.loading { color: rgba(255,255,255,0.4); font-style: italic; }
+    .code-inline-note { font-size: 0.82rem; color: var(--muted); margin: 0.4rem 0 0; }
+
+    /* Env var table */
+    .env-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0 1.6rem; font-size: 0.92rem; }
+    .env-table th, .env-table td {
+      text-align: left; padding: 0.7rem 0.9rem; border: 1px solid var(--border); vertical-align: top;
+    }
+    .env-table th { background: var(--bg-alt); font-weight: 700; font-size: 0.8rem; }
+    .env-table code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem;
+      background: var(--accent-lt); color: var(--accent); padding: 0.1rem 0.35rem; border-radius: 4px;
+    }
+
+    /* Kit download grid */
+    .kit-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.8rem; margin: 1.4rem 0 0.5rem;
+    }
+    .kit-item {
+      display: flex; flex-direction: column; gap: 0.2rem;
+      padding: 0.9rem 1.1rem; border: 1px solid var(--border); border-radius: 10px;
+      background: var(--bg-alt); text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s;
+    }
+    .kit-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .kit-item .kit-file {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; font-weight: 700; color: var(--accent);
+    }
+    .kit-item .kit-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    /* ─── ARTICLE FOOTER ─── */
+    .article-footer {
+      margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .article-footer .author { font-size: 0.82rem; color: var(--muted); }
+    .article-footer .author strong { color: var(--dark); font-weight: 600; }
+    .article-footer-link { font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .article-footer-link:hover { text-decoration: underline; }
+
+    /* ─── CTA BLOCK ─── */
+    .article-cta { max-width: 960px; margin: 0 auto 5rem; padding: 0 2rem; }
+    .article-cta-inner {
+      background: var(--dark); border-radius: 12px; padding: 2.6rem 2.4rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .article-cta-inner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(45,212,255,0.14) 0%, transparent 60%); pointer-events: none;
+    }
+    .article-cta-inner > * { position: relative; z-index: 1; }
+    .article-cta-eyebrow {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 0.8rem;
+    }
+    .article-cta-inner h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 700; color: #FFFFFF;
+      letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 0.8rem;
+    }
+    .article-cta-inner p { font-size: 0.92rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; line-height: 1.7; }
+    .article-cta-link {
+      display: inline-block; font-size: 0.84rem; font-weight: 600; color: #FFFFFF;
+      background: var(--accent); text-decoration: none; padding: 0.7rem 1.7rem; border-radius: 100px; transition: opacity 0.2s;
+    }
+    .article-cta-link:hover { opacity: 0.88; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 2rem 2rem; text-align: center; }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif; font-size: 1.1rem; font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.4rem; color: #FFFFFF; display: inline-block;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; letter-spacing: 0.06em; }
+    .footer-links { display: flex; gap: 2.5rem; justify-content: center; list-style: none; margin: 1.5rem 0; flex-wrap: wrap; }
+    .footer-links a {
+      color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.75rem;
+      letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .article-header { padding: 7.5rem 0 3rem; }
+      .article-header-inner { padding: 0 1.5rem; }
+      .article-body { padding: 3rem 1.5rem 2rem; }
+      .article-cta { padding: 0 1.5rem; }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <div class="article-header">
+    <div class="article-header-inner">
+      <a href="resources.html" class="back-link">← Back to Resources</a>
+      <span class="article-eyebrow">Open Source Tool</span>
+      <h1>Job Search Command Center</h1>
+      <p class="article-deck">A free, build-your-own custom GPT that triages, scores, tracks, and plans your job search against a single source of truth. Everything you need is here: the instructions, the code, and a step-by-step guide. About 20 minutes to stand up your own private copy.</p>
+      <div class="header-actions">
+        <a href="#build" class="btn-primary">Build your own →</a>
+        <a href="#how" class="btn-ghost">How it works</a>
+      </div>
+      <div class="article-meta">
+        <span>FutureInSites</span>
+        <span class="dot"></span>
+        <span>Open Source Tools &amp; Guides</span>
+        <span class="dot"></span>
+        <span>~20 min setup</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <div class="article-body">
+
+    <p class="lede">A modern job search is a pipeline problem. Roles arrive faster than you can evaluate them, every one needs a consistent read on fit, and the moment you stop tracking is the moment things slip. The <strong>Job Search Command Center</strong> is a custom GPT that runs that pipeline for you, scoring each role the same way every time and persisting it to a single source of truth you own.</p>
+
+    <p>This is the same tool we run internally, released as a build-your-own kit. It is private by design: you deploy your own copy, your data lives in your own Google Sheet, and nothing routes through us. The guide below walks you through every step.</p>
+
+    <h2>What it does</h2>
+
+    <p>The GPT operates in two modes and infers which one you need automatically. <strong>TRIAGE</strong> evaluates a new role: paste a job description or a link and it scores the opportunity on three dimensions, assigns a verdict, flags risks and gaps, and saves it. <strong>TRACK</strong> updates a role already in your pipeline: tell it "I applied today" or "recruiter replied, set to waiting on them" and it finds the right record and updates it without creating a duplicate.</p>
+
+    <p>Two more starters round it out. <strong>DAILY PLAN</strong> builds today's job-search plan from the current state of your pipeline. <strong>REFRESH ALL</strong> runs diagnostics: stale follow-ups, applications with no response, and records missing key information.</p>
+
+    <h3>The scoring methodology</h3>
+
+    <p>Every role is scored 0 to 100 on three dimensions, then combined into one weighted number so roles are always comparable:</p>
+
+    <ul>
+      <li><strong>Background Fit (50%)</strong> — how well your profile matches the role's stated and implied requirements.</li>
+      <li><strong>Likelihood of Interview (30%)</strong> — your probability of advancing given the role's filters: seniority, geography, internal-candidate risk, recency of relevant experience.</li>
+      <li><strong>Compensation Reality (20%)</strong> — alignment between the role's likely band and your target. If comp is undisclosed it is scored as neutral rather than penalized.</li>
+    </ul>
+
+    <p>The weighted score maps to a verdict: <strong>Strong Yes</strong> (85+), <strong>Apply</strong> (70 to 84), <strong>Investigate</strong> (55 to 69), or <strong>Pass</strong> (below 55). Anything scoring 55 or above is automatically saved to your pipeline.</p>
+
+    <!-- HOW IT WORKS -->
+    <h2 id="how">How it works</h2>
+
+    <p>The Command Center is four small pieces wired together. Your custom GPT is the brain. It talks to a lightweight proxy on Vercel, which forwards requests to a Google Apps Script web app, which reads and writes your Google Sheet. The proxy exists so the key to your spreadsheet is never exposed to the GPT.</p>
+
+    <figure class="article-figure">
+      <svg class="diagram" viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture: custom GPT to Vercel proxy to Google Apps Script to Google Sheet">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0B0C10"/>
+          </marker>
+        </defs>
+        <!-- boxes -->
+        <rect x="20"  y="90" width="170" height="70" rx="12" fill="#EEF9FE" stroke="#2DD4FF" stroke-width="1.5"/>
+        <text x="105" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0B0C10">Custom GPT</text>
+        <text x="105" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748B">OpenAI</text>
+
+        <rect x="255" y="90" width="170" height="70" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+        <text x="340" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0B0C10">Proxy</text>
+        <text x="340" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748B">Vercel</text>
+
+        <rect x="490" y="90" width="170" height="70" rx="12" fill="#EEF9FE" stroke="#2DD4FF" stroke-width="1.5"/>
+        <text x="575" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0B0C10">Apps Script</text>
+        <text x="575" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748B">Google</text>
+
+        <rect x="725" y="90" width="155" height="70" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+        <text x="802" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#0B0C10">Google Sheet</text>
+        <text x="802" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748B">your data</text>
+
+        <!-- arrows -->
+        <line x1="190" y1="125" x2="253" y2="125" stroke="#0B0C10" stroke-width="1.6" marker-end="url(#arr)"/>
+        <line x1="425" y1="125" x2="488" y2="125" stroke="#0B0C10" stroke-width="1.6" marker-end="url(#arr)"/>
+        <line x1="660" y1="125" x2="723" y2="125" stroke="#0B0C10" stroke-width="1.6" marker-end="url(#arr)"/>
+
+        <!-- auth labels -->
+        <text x="221" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#2563EB">x-api-key</text>
+        <text x="456" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#2563EB">api_key</text>
+        <text x="691" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#2563EB">read / write</text>
+      </svg>
+      <figcaption>Four pieces. You own all of them. Each user deploys their own stack, so every pipeline is fully private.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <strong>What you'll need:</strong> a Google account, a Vercel account (the free Hobby tier is plenty), and a ChatGPT account that can create custom GPTs (Plus, Team, or Enterprise). No coding experience required, just careful copying and pasting.
+    </div>
+
+    <!-- BUILD GUIDE -->
+    <h2 id="build">Build your own</h2>
+
+    <p>Five steps, roughly 20 minutes. Work top to bottom. Every file referenced here is in <a href="#kit">the kit</a> at the bottom of the page, and the long ones are shown inline with a copy button.</p>
+
+    <h2><span class="step-num">1</span>Create your Google Sheet</h2>
+
+    <p>Create a new Google Sheet. Rename the first tab to exactly <strong>Job Search Command Center - Opportunities</strong>. Paste the header row below into row 1, starting in cell A1. These column names are the contract between the Sheet and everything else, so keep them exactly as written.</p>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">sheet-headers.txt — paste into row 1</span>
+        <button class="copy-btn" data-copy="hdr">Copy</button>
+      </div>
+      <pre><code id="hdr" data-src="tools/job-search-command-center/sheet-headers.txt" class="loading">Loading…</code></pre>
+    </div>
+    <p class="code-inline-note">The header row is the single tab-separated line in the file. Columns are matched by name, not position.</p>
+
+    <h2><span class="step-num">2</span>Deploy the Apps Script</h2>
+
+    <p>In your Sheet, open <strong>Extensions → Apps Script</strong>. Delete any starter code, paste the script below, and save. Then open <strong>Project Settings</strong> (the gear) and under <strong>Script Properties</strong> add a property named <code>API_KEY</code> with a long random string as its value. Keep that value handy.</p>
+
+    <p>Finally, <strong>Deploy → New deployment → Web app</strong>. Set <em>Execute as</em> to <strong>Me</strong> and <em>Who has access</em> to <strong>Anyone</strong>, then deploy and copy the resulting web app URL (it ends in <code>/exec</code>). That URL is your <code>APPS_SCRIPT_URL</code>.</p>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">apps-script.gs</span>
+        <button class="copy-btn" data-copy="gs">Copy</button>
+      </div>
+      <pre><code id="gs" data-src="tools/job-search-command-center/apps-script.gs" class="loading">Loading…</code></pre>
+    </div>
+
+    <h2><span class="step-num">3</span>Deploy the Vercel proxy</h2>
+
+    <p>The proxy is two small serverless functions plus a <code>package.json</code>. The simplest path: download the three files from <a href="#kit">the kit</a>, put them in a folder with <code>proxy.js</code> and <code>proxy-bulk.js</code> inside an <code>api/</code> subfolder and <code>package.json</code> at the top, push it to a new GitHub repo, and import that repo into Vercel as a new project. No build settings to change.</p>
+
+    <p>Before your first successful call, add three Environment Variables in <strong>Vercel → Project → Settings → Environment Variables</strong>, then redeploy:</p>
+
+    <table class="env-table">
+      <thead><tr><th>Name</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td><code>PROXY_TOKEN</code></td><td>A long random string you invent. Your GPT will send this as its API key.</td></tr>
+        <tr><td><code>APPS_SCRIPT_URL</code></td><td>The Apps Script web app URL from step 2 (ends in <code>/exec</code>).</td></tr>
+        <tr><td><code>APPS_SCRIPT_KEY</code></td><td>The <code>API_KEY</code> value you set on the Apps Script in step 2.</td></tr>
+      </tbody>
+    </table>
+
+    <p>Your three endpoints become <code>/api/proxy</code> (GET to read, POST to write one) and <code>/api/proxy-bulk</code> (POST to write many). Here are both functions:</p>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">api/proxy.js</span>
+        <button class="copy-btn" data-copy="px">Copy</button>
+      </div>
+      <pre><code id="px" data-src="tools/job-search-command-center/vercel-proxy/api/proxy.js" class="loading">Loading…</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">api/proxy-bulk.js</span>
+        <button class="copy-btn" data-copy="pxb">Copy</button>
+      </div>
+      <pre><code id="pxb" data-src="tools/job-search-command-center/vercel-proxy/api/proxy-bulk.js" class="loading">Loading…</code></pre>
+    </div>
+
+    <div class="callout">
+      <strong>Quick test:</strong> once env vars are set and you've redeployed, run this in a terminal (swap in your values). A <code>200</code> with <code>{ "opportunities": [] }</code> means the whole chain works.
+      <div class="code-block" style="margin-top:0.8rem;">
+        <div class="code-head"><span class="code-name">terminal</span><button class="copy-btn" data-copy="curl">Copy</button></div>
+        <pre><code id="curl">curl -H "x-api-key: YOUR_PROXY_TOKEN" "https://YOUR-PROJECT.vercel.app/api/proxy?limit=1"</code></pre>
+      </div>
+    </div>
+
+    <h2><span class="step-num">4</span>Create the custom GPT</h2>
+
+    <p>In ChatGPT, go to <strong>Explore GPTs → Create</strong>, then open the <strong>Configure</strong> tab. Fill it in:</p>
+
+    <ul>
+      <li><strong>Name:</strong> Job Search Command Center</li>
+      <li><strong>Description:</strong> Triage, track, and plan daily job search execution using a canonical opportunity record.</li>
+      <li><strong>Instructions:</strong> paste the full instructions below.</li>
+      <li><strong>Conversation starters:</strong> the four shown below.</li>
+      <li><strong>Capabilities:</strong> turn on Web Search and Canvas. Code Interpreter is not needed.</li>
+    </ul>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">gpt-instructions.txt — paste into Instructions</span>
+        <button class="copy-btn" data-copy="ins">Copy</button>
+      </div>
+      <pre><code id="ins" data-src="tools/job-search-command-center/gpt-instructions.txt" class="loading">Loading…</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">conversation starters</span>
+        <button class="copy-btn" data-copy="cs">Copy</button>
+      </div>
+      <pre><code id="cs">TRIAGE: Evaluate and prioritize a new role (Paste a job description or link)
+TRACK: Update the status of an existing opportunity (e.g., "I applied today" or "Recruiter replied, set to waiting on them")
+DAILY PLAN: Create today's job-search plan (Assume follow-ups later today unless I say otherwise)
+REFRESH ALL: Run diagnostics on my pipeline (Flag stale follow-ups, no-response applications, and missing info)</code></pre>
+    </div>
+
+    <h3>Add the Action</h3>
+
+    <p>Scroll to <strong>Actions → Create new action</strong>. Set <strong>Authentication</strong> to <strong>API Key</strong>, auth type <strong>Custom</strong>, with custom header name <code>x-api-key</code>, and paste your <code>PROXY_TOKEN</code> as the key. Then paste the schema below into the <strong>Schema</strong> box and change the one <code>servers</code> URL near the top to your own Vercel project URL.</p>
+
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-name">openapi-schema.json — paste into Schema</span>
+        <button class="copy-btn" data-copy="schema">Copy</button>
+      </div>
+      <pre><code id="schema" data-src="tools/job-search-command-center/openapi-schema.json" class="loading">Loading…</code></pre>
+    </div>
+
+    <div class="callout">
+      Use the <strong>Test</strong> button next to each action in the builder to confirm the GPT can reach your proxy before you rely on it. If you later want to share your GPT beyond "Only me," OpenAI requires a valid privacy policy URL on any GPT that uses Actions.
+    </div>
+
+    <h2><span class="step-num">5</span>Personalize it, then test</h2>
+
+    <p>The published instructions ship with a placeholder where your background goes, because OpenAI caps instructions at 8,000 characters and a full resume would not fit. The GPT solves this for you. Open your new GPT and type <strong>setup</strong>. It will ask for your resume, then return a tight <strong>CANDIDATE PROFILE</strong> block sized to fit. Copy that block, open <strong>Configure → Instructions</strong>, replace the placeholder block with it, and save.</p>
+
+    <p>Now test the real thing. Start a TRIAGE: paste any job description and confirm the GPT scores it and writes a row to your Sheet. Then test TRACK by updating that same role. If both land in the Sheet, you're done.</p>
+
+    <div class="pull-quote">
+      Once it's personalized, the workflow is simple: paste roles in, let it score and save, and ask for a daily plan. Your pipeline stays current without you maintaining a spreadsheet by hand.
+    </div>
+
+    <!-- KIT -->
+    <h2 id="kit">The kit</h2>
+    <p>Every file, ready to download. Right-click and save, or open and copy.</p>
+
+    <div class="kit-grid">
+      <a class="kit-item" href="tools/job-search-command-center/gpt-instructions.txt" download>
+        <span class="kit-file">gpt-instructions.txt</span>
+        <span class="kit-desc">The full GPT system prompt, with SETUP MODE built in.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/openapi-schema.json" download>
+        <span class="kit-file">openapi-schema.json</span>
+        <span class="kit-desc">The Action schema. Paste into the GPT, set your Vercel URL.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/apps-script.gs" download>
+        <span class="kit-file">apps-script.gs</span>
+        <span class="kit-desc">The Google Apps Script web app that reads and writes your Sheet.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/sheet-headers.txt" download>
+        <span class="kit-file">sheet-headers.txt</span>
+        <span class="kit-desc">The exact header row for your Sheet's first tab.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/vercel-proxy/api/proxy.js" download>
+        <span class="kit-file">api/proxy.js</span>
+        <span class="kit-desc">Vercel function: read one or all, write one.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/vercel-proxy/api/proxy-bulk.js" download>
+        <span class="kit-file">api/proxy-bulk.js</span>
+        <span class="kit-desc">Vercel function: write many opportunities at once.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/vercel-proxy/package.json" download>
+        <span class="kit-file">package.json</span>
+        <span class="kit-desc">Marks the proxy project as ES modules.</span>
+      </a>
+      <a class="kit-item" href="tools/job-search-command-center/vercel-proxy/README.md" download>
+        <span class="kit-file">proxy README.md</span>
+        <span class="kit-desc">Deploy notes and the environment variable reference.</span>
+      </a>
+    </div>
+
+    <div class="article-footer">
+      <div class="author">Published by <strong>FutureInSites</strong></div>
+      <a href="resources.html" class="article-footer-link">More resources →</a>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <div class="article-cta-inner">
+      <div class="article-cta-eyebrow">Work with us</div>
+      <h3>Want a tool like this for your team?</h3>
+      <p>The Command Center is one example of how FutureInSites turns a repetitive workflow into a private, dependable AI agent. If your organization has a process worth automating, we scope, build, and hand it over.</p>
+      <a href="index.html#contact" class="article-cta-link">Get in touch →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Palo Alto, CA &nbsp;·&nbsp; Cambridge, MA</p>
+  </footer>
+
+  <!-- SCRIPT: load kit files into code boxes + copy buttons -->
+  <script>
+    (function () {
+      // Load file contents into code boxes that declare a data-src.
+      document.querySelectorAll('code[data-src]').forEach(function (el) {
+        fetch(el.getAttribute('data-src'))
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+          .then(function (txt) { el.classList.remove('loading'); el.textContent = txt; })
+          .catch(function () { el.classList.remove('loading'); el.textContent = 'Could not load this file. Use the download link in The kit below.'; });
+      });
+
+      // Copy buttons.
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = document.getElementById(btn.getAttribute('data-copy'));
+          if (!target) return;
+          var text = target.textContent || '';
+          navigator.clipboard.writeText(text).then(function () {
+            var original = btn.textContent;
+            btn.textContent = 'Copied';
+            setTimeout(function () { btn.textContent = original; }, 1500);
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

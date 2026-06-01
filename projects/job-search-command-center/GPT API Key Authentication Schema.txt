@@ -1,0 +1,172 @@
+GPT API Key Authentication Schema
+
+{
+  "openapi": "3.1.0",
+  "info": { "title": "JSCC Proxy", "version": "1.0.3" },
+  "servers": [
+    { "url": "https://job-command-center-proxy-git-main-gregs-projects-0fa32ddf.vercel.app" }
+  ],
+  "paths": {
+    "/api/proxy": {
+      "get": {
+        "operationId": "getOpportunities",
+        "security": [{ "ApiKeyAuth": [] }],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Optional filter by status (e.g., prospective, applied, interviewing, offer, closed)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "minimum": 1, "maximum": 200 },
+            "description": "Optional limit on number of returned opportunities"
+          },
+          {
+            "name": "summaries",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "boolean" },
+            "description": "If true, server may return lighter-weight summary objects"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GetOpportunitiesResponse" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "upsertOpportunity",
+        "security": [{ "ApiKeyAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpsertOpportunityRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UpsertOpportunityResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/proxy-bulk": {
+      "post": {
+        "operationId": "upsertOpportunitiesBulk",
+        "security": [{ "ApiKeyAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["items"],
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "$ref": "#/components/schemas/Opportunity" }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": { "type": "apiKey", "in": "header", "name": "x-api-key" }
+    },
+    "schemas": {
+      "Opportunity": {
+        "type": "object",
+        "required": ["id", "company", "company_slug", "role", "status", "date_added"],
+        "properties": {
+          "id": { "type": "string" },
+          "company": { "type": "string" },
+          "company_slug": { "type": "string" },
+          "role": { "type": "string" },
+          "link": { "type": "string" },
+          "status": { "type": "string" },
+          "waiting_reason": { "type": "string" },
+          "status_reason": { "type": "string" },
+          "date_added": { "type": "string" },
+          "date_applied": { "type": "string" },
+          "comp_base_min": { "type": "string" },
+          "comp_base_max": { "type": "string" },
+          "comp_range_text": { "type": "string" },
+          "location_compatible": { "type": "boolean" },
+          "warm_intro_available": { "type": "boolean" },
+          "recruiter_contact": { "type": "string" },
+          "unknowns": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "why_deprioritized": { "type": "string" },
+          "last_action_date": { "type": "string" },
+          "next_action": { "type": "string" },
+          "score_locked": { "type": "boolean" },
+          "score_snapshot": { "type": "string" },
+          "notes": { "type": "string" },
+          "jd_text": { "type": "string" },
+          "jd_source": { "type": "string" },
+          "jd_captured_at": { "type": "string" }
+        },
+        "additionalProperties": true
+      },
+      "UpsertOpportunityRequest": {
+        "type": "object",
+        "required": ["opportunity"],
+        "properties": {
+          "opportunity": { "$ref": "#/components/schemas/Opportunity" }
+        },
+        "additionalProperties": false
+      },
+      "UpsertOpportunityResponse": {
+        "type": "object",
+        "required": ["ok"],
+        "properties": {
+          "ok": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      },
+      "GetOpportunitiesResponse": {
+        "type": "object",
+        "required": ["opportunities"],
+        "properties": {
+          "opportunities": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Opportunity" }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}
