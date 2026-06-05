@@ -389,6 +389,220 @@
 
     .jb-apply:hover { opacity: 0.85; }
 
+    button.jb-apply {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* APPLICATION MODAL */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form input:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form input[type="file"] {
+      padding: 0.55rem 0.65rem;
+      cursor: pointer;
+    }
+    .fis-form input[type="file"]::file-selector-button {
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      color: var(--cyan);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      cursor: pointer;
+      margin-right: 0.75rem;
+    }
+    .fis-form-hint {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.35rem;
+    }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
+
     /* Intro blurb */
     .careers-intro {
       background: var(--dark);
@@ -579,7 +793,7 @@
             <p>AI strategy is one of the most in-demand services in the market right now -- and FutureInSites sells it from a position of genuine technical depth and real client outcomes. You will be joining at the ground floor of a growing practice, working directly alongside the principals who built it, with real influence over how the sales function is structured and scaled.</p>
           </div>
 
-          <a href="index.html#contact" class="jb-apply">Apply for this role &rarr;</a>
+          <button type="button" class="jb-apply" data-open-apply>Apply for this role &rarr;</button>
 
         </div>
       </div>
@@ -652,7 +866,7 @@
             <p>This is not a back-office engineering job. You will work at the frontier of what AI can do in production, across more industries and company types than you would encounter in any single-company role. AI is advancing fast -- new integrations, plugins, and model capabilities emerge constantly -- and you will be implementing them for real businesses before most practitioners have heard of them. And because our client relationships are built for the long term, you will see what happens after launch: the refinements, the expansions, the moment when AI becomes genuinely central to how a business runs.</p>
           </div>
 
-          <a href="index.html#contact" class="jb-apply">Apply for this role &rarr;</a>
+          <button type="button" class="jb-apply" data-open-apply>Apply for this role &rarr;</button>
 
         </div>
       </div>
@@ -720,7 +934,7 @@
             <p>There are very few jobs where you get to watch someone's work life change because of something you built in a week -- and then stay involved as they grow into it. You will work with more different kinds of people, in more different kinds of businesses, than almost any other AI role in the market. And because AI keeps evolving, the work never plateaus -- there is always a new integration to roll out, a new model capability to adopt, a new workflow to optimize for a client who is counting on you to keep them current.</p>
           </div>
 
-          <a href="index.html#contact" class="jb-apply">Apply for this role &rarr;</a>
+          <button type="button" class="jb-apply" data-open-apply>Apply for this role &rarr;</button>
 
         </div>
       </div>
@@ -752,6 +966,199 @@
       const card = headerEl.closest('.job-card');
       card.classList.toggle('open');
     }
+  </script>
+
+  <!-- APPLICATION MODAL -->
+  <div class="fis-modal" id="fis-apply-modal" role="dialog" aria-modal="true" aria-labelledby="fis-apply-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close application form" data-close-apply>&times;</button>
+
+      <div id="fis-apply-header">
+        <div class="fis-modal-eyebrow" id="fis-apply-eyebrow">Apply</div>
+        <h3 class="fis-modal-title" id="fis-apply-title">Apply for this role.</h3>
+        <p class="fis-modal-lead">A few details and your resume. We review every application and respond to each one.</p>
+      </div>
+
+      <form class="fis-form" id="fis-apply-form" novalidate>
+        <div class="fis-form-grid">
+          <div>
+            <label for="fis-apply-name">Name <span class="req">*</span></label>
+            <input type="text" id="fis-apply-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="fis-apply-email">Email <span class="req">*</span></label>
+            <input type="email" id="fis-apply-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-apply-linkedin">LinkedIn URL <span class="req">*</span></label>
+            <input type="url" id="fis-apply-linkedin" name="linkedin" autocomplete="url" placeholder="https://www.linkedin.com/in/yourname" required>
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-apply-resume">Resume <span class="req">*</span></label>
+            <input type="file" id="fis-apply-resume" name="resume" accept=".pdf,.doc,.docx" required>
+            <div class="fis-form-hint">PDF or Word, up to 3 MB.</div>
+          </div>
+        </div>
+
+        <!-- Honeypot — hidden from humans, often filled by bots -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-apply-submit">Submit application</button>
+          <p class="fis-form-note">Your information goes only to our hiring team.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-apply-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-apply-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">&check;</div>
+        <div class="fis-form-success-title">Application received.</div>
+        <div class="fis-form-success-body">Thanks for applying. We'll be in touch at the email you provided.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Application modal — open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-apply-modal');
+    var form     = document.getElementById('fis-apply-form');
+    var header   = document.getElementById('fis-apply-header');
+    var success  = document.getElementById('fis-apply-success');
+    var errorEl  = document.getElementById('fis-apply-error');
+    var submitEl = document.getElementById('fis-apply-submit');
+    var eyebrowEl = document.getElementById('fis-apply-eyebrow');
+    var titleEl   = document.getElementById('fis-apply-title');
+    if (!modal || !form) return;
+
+    var MAX_BYTES = 3 * 1024 * 1024; // 3 MB
+    var ALLOWED   = /\.(pdf|doc|docx)$/i;
+    var currentJob = '';
+    var lastFocus = null;
+
+    function openModal(jobTitle) {
+      lastFocus = document.activeElement;
+      currentJob = jobTitle || 'General application';
+      if (titleEl) titleEl.textContent = currentJob;
+      if (eyebrowEl) eyebrowEl.textContent = 'Apply';
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Submit application';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-apply-name');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    // Open triggers — job title read from the surrounding card
+    document.querySelectorAll('[data-open-apply]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var card  = el.closest('.job-card');
+        var title = card ? card.querySelector('.job-title') : null;
+        openModal(title ? title.textContent.trim() : '');
+      });
+    });
+
+    // Close triggers — x button, backdrop click, Escape key
+    modal.querySelectorAll('[data-close-apply]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    function showError(msg, focusEl) {
+      errorEl.textContent = msg;
+      errorEl.classList.add('show');
+      if (focusEl) focusEl.focus();
+      submitEl.disabled = false;
+      submitEl.textContent = 'Submit application';
+    }
+
+    // Submit handler — resume is sent base64-encoded as JSON to /api/apply
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var name     = form.name.value.trim();
+      var email    = form.email.value.trim();
+      var linkedin = form.linkedin.value.trim();
+      var file     = form.resume.files[0];
+
+      if (!name) return showError('Please enter your name.', form.name);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address.', form.email);
+      if (!linkedin) return showError('Please enter your LinkedIn URL.', form.linkedin);
+      if (!/linkedin\.com\//i.test(linkedin)) return showError('That does not look like a LinkedIn URL. It should contain linkedin.com.', form.linkedin);
+      if (!/^https?:\/\//i.test(linkedin)) linkedin = 'https://' + linkedin;
+      if (!file) return showError('Please attach your resume.', form.resume);
+      if (!ALLOWED.test(file.name)) return showError('Resume must be a PDF or Word document (.pdf, .doc, .docx).', form.resume);
+      if (file.size > MAX_BYTES) return showError('Resume must be under 3 MB.', form.resume);
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Submitting…';
+
+      var reader = new FileReader();
+      reader.onerror = function () { showError('Could not read the file. Please try again.'); };
+      reader.onload = function () {
+        var base64 = String(reader.result).split(',')[1] || '';
+        fetch('/api/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            linkedin: linkedin,
+            job: currentJob,
+            resume: { filename: file.name, contentType: file.type || 'application/octet-stream', data: base64 },
+            website: form.website.value, // honeypot
+            fax: form.fax.value          // honeypot
+          })
+        })
+          .then(function (res) {
+            return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+          })
+          .then(function (result) {
+            if (result.ok && result.json && result.json.ok) {
+              if (header) header.style.display = 'none';
+              form.style.display = 'none';
+              success.classList.add('show');
+              form.reset();
+              return;
+            }
+            var msg = (result.json && result.json.error)
+              || 'Something went wrong. Please email careers@futureinsites.com with your resume attached.';
+            showError(msg);
+          })
+          .catch(function () {
+            showError('Network error. Please email careers@futureinsites.com with your resume attached.');
+          });
+      };
+      reader.readAsDataURL(file);
+    });
+  })();
   </script>
 
 </body>
