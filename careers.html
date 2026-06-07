@@ -389,220 +389,6 @@
 
     .jb-apply:hover { opacity: 0.85; }
 
-    button.jb-apply {
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    /* APPLICATION MODAL */
-    .fis-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      background: rgba(11, 12, 16, 0.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .fis-modal.open { display: flex; }
-    .fis-modal-card {
-      position: relative;
-      width: 100%;
-      max-width: 560px;
-      max-height: calc(100vh - 3rem);
-      overflow-y: auto;
-      background: #12141A;
-      color: #FFFFFF;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 2rem 2rem 1.75rem;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      animation: fisModalIn 0.18s ease-out;
-    }
-    @keyframes fisModalIn {
-      from { opacity: 0; transform: translateY(8px) scale(0.985); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .fis-modal-close {
-      position: absolute;
-      top: 0.85rem;
-      right: 0.85rem;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1rem;
-      line-height: 1;
-      transition: background 0.15s, color 0.15s;
-    }
-    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
-    .fis-modal-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.6rem;
-    }
-    .fis-modal-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 0 0 0.4rem 0;
-      color: #FFFFFF;
-    }
-    .fis-modal-lead {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      margin: 0 0 1.5rem 0;
-      line-height: 1.55;
-    }
-    .fis-form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem 1rem;
-      margin-bottom: 1rem;
-    }
-    .fis-form-field-full { grid-column: 1 / -1; }
-    .fis-form label {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 0.35rem;
-    }
-    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
-    .fis-form input {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 0.7rem 0.85rem;
-      color: #FFFFFF;
-      font-size: 0.92rem;
-      font-family: inherit;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .fis-form input:focus {
-      outline: none;
-      border-color: var(--cyan);
-      background: rgba(255,255,255,0.07);
-    }
-    .fis-form input[type="file"] {
-      padding: 0.55rem 0.65rem;
-      cursor: pointer;
-    }
-    .fis-form input[type="file"]::file-selector-button {
-      background: rgba(45, 212, 255, 0.12);
-      border: 1px solid rgba(45, 212, 255, 0.35);
-      color: var(--cyan);
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.35rem 0.9rem;
-      border-radius: 100px;
-      cursor: pointer;
-      margin-right: 0.75rem;
-    }
-    .fis-form-hint {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
-      margin-top: 0.35rem;
-    }
-    .fis-form-honeypot {
-      position: absolute !important;
-      left: -10000px !important;
-      width: 1px !important;
-      height: 1px !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-    .fis-form-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      margin-top: 1.25rem;
-    }
-    .fis-form-submit {
-      background: var(--cyan);
-      color: var(--dark);
-      font-size: 0.92rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 0.9rem 1.8rem;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      transition: opacity 0.2s, transform 0.15s;
-      width: 100%;
-    }
-    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
-    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
-    .fis-form-note {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
-      text-align: center;
-    }
-    .fis-form-error {
-      display: none;
-      margin-top: 0.85rem;
-      padding: 0.7rem 0.85rem;
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      border-radius: 6px;
-      color: #FCA5A5;
-      font-size: 0.85rem;
-    }
-    .fis-form-error.show { display: block; }
-    .fis-form-success {
-      display: none;
-      text-align: center;
-      padding: 1.5rem 0.5rem 0.5rem;
-    }
-    .fis-form-success.show { display: block; }
-    .fis-form-success-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 1rem;
-      border-radius: 50%;
-      background: rgba(45, 212, 255, 0.12);
-      border: 1px solid rgba(45, 212, 255, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cyan);
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-    .fis-form-success-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.4rem;
-    }
-    .fis-form-success-body {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-    @media (max-width: 560px) {
-      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
-      .fis-form-grid { grid-template-columns: 1fr; }
-    }
-
     /* Intro blurb */
     .careers-intro {
       background: var(--dark);
@@ -716,7 +502,7 @@
     <div class="page-header-inner">
       <p class="eyebrow">Careers</p>
       <h1>Join us at the forefront of AI strategy, execution, and optimization.</h1>
-      <p>AI moves fast and it never stands still. New models, integrations, and capabilities emerge constantly -- and businesses of every size need a trusted partner who knows how to implement them and keep improving. FutureInSites works across the full AI lifecycle with clients ranging from solo professionals to large enterprises. If you want to develop deep expertise across AI strategy, execution, and ongoing optimization, you will find no better place to do it.</p>
+      <p>AI moves fast and it never stands still. New models, integrations, and capabilities emerge constantly, and businesses of every size need a trusted partner who knows how to implement them and keep improving. FutureInSites works across the full AI lifecycle with clients ranging from solo professionals to large enterprises. If you want to develop deep expertise across AI strategy, execution, and ongoing optimization, you will find no better place to do it.</p>
     </div>
   </div>
 
@@ -724,7 +510,7 @@
   <div class="careers-wrap">
 
     <div class="careers-intro">
-      <strong>How we work:</strong> FutureInSites is a lean, senior team working at the intersection of AI strategy, execution, and ongoing optimization. We help clients understand where AI creates value, implement it across their workflows, and keep improving as AI itself evolves -- because AI adoption is not a one-time project, it is a continuous practice. Our clients range from solo professionals getting their first AI agent to growing businesses deploying AI across departments to large enterprises transforming how they operate. The people on our team see more use cases, more industries, and more AI implementations than almost anyone else in the market -- and they develop expertise that spans the full lifecycle, from strategy through deployment through long-term growth.
+      <strong>How we work:</strong> FutureInSites is a lean, senior team working at the intersection of AI strategy, execution, and ongoing optimization. We help clients understand where AI creates value, implement it across their workflows, and keep improving as AI itself evolves, because AI adoption is not a one-time project, it is a continuous practice. Our clients range from solo professionals getting their first AI agent to growing businesses deploying AI across departments to large enterprises transforming how they operate. The people on our team see more use cases, more industries, and more AI implementations than almost anyone else in the market, and they develop expertise that spans the full lifecycle, from strategy through deployment through long-term growth.
     </div>
 
     <!-- SECTION: BUSINESS DEVELOPMENT -->
@@ -756,8 +542,8 @@
 
           <div class="jb-section">
             <h4>The Role</h4>
-            <p>FutureInSites is building out its go-to-market function, and this is the first dedicated sales hire. You will own the full new business cycle: sourcing, qualifying, running discovery, proposing, and closing. Our engagements range from focused workshop offerings (the BCT Workshop, AI Transformation Session) to full strategy and implementation contracts -- and critically, to ongoing optimization and advisory retainers that keep clients current as AI continues to evolve. Growing initial engagements into long-term partnerships is central to the FIS model, and a meaningful part of what this role is responsible for developing.</p>
-            <p>This is a consultative, relationship-first role. You are not selling software licenses. You are helping business leaders understand what AI can do for their specific organization and earning the right to help them do it. The buyer is typically the CEO, COO, or CIO of a mid-size company -- someone who is AI-curious, has budget authority, and wants a trusted partner, not a vendor.</p>
+            <p>FutureInSites is building out its go-to-market function, and this is the first dedicated sales hire. You will own the full new business cycle: sourcing, qualifying, running discovery, proposing, and closing. Our engagements range from focused workshop offerings (the BCT Workshop, AI Transformation Session) to full strategy and implementation contracts, and critically, to ongoing optimization and advisory retainers that keep clients current as AI continues to evolve. Growing initial engagements into long-term partnerships is central to the FIS model, and a meaningful part of what this role is responsible for developing.</p>
+            <p>This is a consultative, relationship-first role. You are not selling software licenses. You are helping business leaders understand what AI can do for their specific organization and earning the right to help them do it. The buyer is typically the CEO, COO, or CIO of a mid-size company, someone who is AI-curious, has budget authority, and wants a trusted partner, not a vendor.</p>
           </div>
 
           <div class="jb-section">
@@ -778,9 +564,9 @@
             <h4>What We Are Looking For</h4>
             <ul>
               <li>5+ years of B2B sales experience, with at least 2 years selling professional services, consulting, or technology strategy</li>
-              <li>Demonstrated track record closing mid-market deals ($50K--$500K+ contract value)</li>
+              <li>Demonstrated track record closing mid-market deals ($50K to $500K+ contract value)</li>
               <li>Comfortable navigating C-suite conversations about strategy, risk, and organizational change</li>
-              <li>Working knowledge of AI, LLMs, and the current vendor landscape -- you do not need to build models, but you need to talk about them credibly</li>
+              <li>Working knowledge of AI, LLMs, and the current vendor landscape; you do not need to build models, but you need to talk about them credibly</li>
               <li>Excellent written and verbal communication; ability to distill complex concepts into clear business value</li>
               <li>Self-directed and organized; able to manage multiple deals and deadlines without hand-holding</li>
               <li>Experience with CRM tools (HubSpot, Salesforce, or equivalent); proposal and pipeline hygiene is non-negotiable</li>
@@ -790,10 +576,10 @@
 
           <div class="jb-section">
             <h4>Why This Role</h4>
-            <p>AI strategy is one of the most in-demand services in the market right now -- and FutureInSites sells it from a position of genuine technical depth and real client outcomes. You will be joining at the ground floor of a growing practice, working directly alongside the principals who built it, with real influence over how the sales function is structured and scaled.</p>
+            <p>AI strategy is one of the most in-demand services in the market right now, and FutureInSites sells it from a position of genuine technical depth and real client outcomes. You will be joining at the ground floor of a growing practice, working directly alongside the principals who built it, with real influence over how the sales function is structured and scaled.</p>
           </div>
 
-          <button type="button" class="jb-apply" data-open-apply>Apply for this role &rarr;</button>
+          <a href="index.html#contact" class="jb-apply">Apply for this role &rarr;</a>
 
         </div>
       </div>
@@ -828,8 +614,8 @@
 
           <div class="jb-section">
             <h4>The Role</h4>
-            <p>Forward Deployed Engineers at FutureInSites are the practitioners who turn AI strategy into working systems -- and keep them growing. This enterprise-track role is for experienced engineers who can operate with autonomy inside complex organizations: navigating technical debt, managing stakeholders, building from prototype to production, and enabling client teams to operate and expand what gets built. Client relationships are built to last; you will be involved well beyond initial launch, returning to optimize, scale, and integrate new capabilities as AI continues to evolve.</p>
-            <p>You will work across the full FIS engagement lifecycle -- from the technical scoping in our BCT Workshop through implementation under the Assess-Plan-Build model. This means you move fluidly between strategy conversations and architecture decisions, between stakeholder presentations and pull requests. Enterprise engagements involve organizations with 500+ employees, established (and often legacy) tech stacks, multi-department stakeholders, and genuine enterprise security and governance requirements.</p>
+            <p>Forward Deployed Engineers at FutureInSites are the practitioners who turn AI strategy into working systems, keeping them growing. This enterprise-track role is for experienced engineers who can operate with autonomy inside complex organizations: navigating technical debt, managing stakeholders, building from prototype to production, and enabling client teams to operate and expand what gets built. Client relationships are built to last; you will be involved well beyond initial launch, returning to optimize, scale, and integrate new capabilities as AI continues to evolve.</p>
+            <p>You will work across the full FIS engagement lifecycle, from the technical scoping in our BCT Workshop through implementation under the Assess-Plan-Build model. This means you move fluidly between strategy conversations and architecture decisions, between stakeholder presentations and pull requests. Enterprise engagements involve organizations with 500+ employees, established (and often legacy) tech stacks, multi-department stakeholders, and genuine enterprise security and governance requirements.</p>
           </div>
 
           <div class="jb-section">
@@ -840,9 +626,9 @@
               <li>Conduct technical discovery: document client tech stack, data readiness, integration points, and security constraints</li>
               <li>Lead the Build phase of engagements: own architecture decisions, build working prototypes, validate with client users, iterate toward production</li>
               <li>Enable client teams to operate their AI environments confidently: document deployments, write runbooks, train administrators, and remain engaged as the ongoing technical partner for optimization, scaling, and new integrations</li>
-              <li>Facilitate hands-on enablement sessions for client teams -- explain AI concepts, demonstrate workflows, build internal AI literacy</li>
+              <li>Facilitate hands-on enablement sessions for client teams: explain AI concepts, demonstrate workflows, build internal AI literacy</li>
               <li>Surface implementation insights back to FIS principals to refine methodology and service offerings</li>
-              <li>Travel onsite to client locations as needed for kick-offs, workshops, and critical delivery milestones (25--40% of time)</li>
+              <li>Travel onsite to client locations as needed for kick-offs, workshops, and critical delivery milestones (25 to 40% of time)</li>
             </ul>
           </div>
 
@@ -855,7 +641,7 @@
               <li>Strong working knowledge of the Anthropic/Claude ecosystem; familiarity with Model Context Protocol (MCP) is a significant plus</li>
               <li>Ability to write and review production-quality code across backend and integration layers (Python strongly preferred; JavaScript/TypeScript a plus)</li>
               <li>Experience navigating enterprise IT environments: SSO, data governance, security reviews, multi-stakeholder decision-making</li>
-              <li>Excellent communication skills -- you can explain an architecture to a CTO and a new workflow to an operations team in the same day</li>
+              <li>Excellent communication skills; you can explain an architecture to a CTO and a new workflow to an operations team in the same day</li>
               <li>Comfortable with ambiguity and fast-moving problem spaces; able to scope, sequence, and deliver without perfect requirements</li>
               <li>Prior experience in management consulting, technical pre-sales, or solutions architecture is a strong plus</li>
             </ul>
@@ -863,10 +649,10 @@
 
           <div class="jb-section">
             <h4>Why This Role</h4>
-            <p>This is not a back-office engineering job. You will work at the frontier of what AI can do in production, across more industries and company types than you would encounter in any single-company role. AI is advancing fast -- new integrations, plugins, and model capabilities emerge constantly -- and you will be implementing them for real businesses before most practitioners have heard of them. And because our client relationships are built for the long term, you will see what happens after launch: the refinements, the expansions, the moment when AI becomes genuinely central to how a business runs.</p>
+            <p>This is not a back-office engineering job. You will work at the frontier of what AI can do in production, across more industries and company types than you would encounter in any single-company role. AI is advancing fast. New integrations, plugins, and model capabilities emerge constantly, and you will be implementing them for real businesses before most practitioners have heard of them. And because our client relationships are built for the long term, you will see what happens after launch: the refinements, the expansions, the moment when AI becomes genuinely central to how a business runs.</p>
           </div>
 
-          <button type="button" class="jb-apply" data-open-apply>Apply for this role &rarr;</button>
+          <a href="index.html#contact" class="jb-apply">Apply for this role &rarr;</a>
 
         </div>
       </div>
@@ -882,7 +668,7 @@
             <span class="job-tag type-dept">Engineering</span>
           </div>
           <div class="job-title">Forward Deployed Engineer &mdash; SMB &amp; Personal</div>
-          <div class="job-summary">Deploy AI for small businesses, professional services firms, and individual executives. Own the full cycle -- from first conversation to a working AI environment -- and stay engaged as their AI practice grows.</div>
+          <div class="job-summary">Deploy AI for small businesses, professional services firms, and individual executives. Own the full cycle from first conversation to a working AI environment, and stay engaged as their AI practice grows.</div>
         </div>
         <div class="job-toggle" aria-label="Expand">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -896,8 +682,8 @@
 
           <div class="jb-section">
             <h4>The Role</h4>
-            <p>The SMB and Personal track at FutureInSites covers two related audiences: small and mid-size businesses (typically 10--200 employees) looking to deploy AI across their operations, and individual executives and professionals who want a personal AI agent configured specifically for how they work.</p>
-            <p>This role is part engineer, part coach, part long-term technical partner. You will configure AI environments, build lightweight automations and agent workflows, and enable clients to operate and grow them over time. The pace is faster, the stacks are simpler, and the relationship is more direct than on the enterprise side. You will often be working with a founder or a small leadership team -- people who make decisions quickly and need a trusted partner who keeps showing up as their AI practice matures.</p>
+            <p>The SMB and Personal track at FutureInSites covers two related audiences: small and mid-size businesses (typically 10 to 200 employees) looking to deploy AI across their operations, and individual executives and professionals who want a personal AI agent configured specifically for how they work.</p>
+            <p>This role is part engineer, part coach, part long-term technical partner. You will configure AI environments, build lightweight automations and agent workflows, and enable clients to operate and grow them over time. The pace is faster, the stacks are simpler, and the relationship is more direct than on the enterprise side. You will often be working with a founder or a small leadership team, people who make decisions quickly and need a trusted partner who keeps showing up as their AI practice matures.</p>
             <p>Personal AI engagements include setting up always-on AI assistants for executives: integrating with their Gmail, Google Calendar, Telegram, and document tools, and configuring the agent to match their workflow, tone, and priorities. This is a growing part of the FIS offering and requires genuine care for the human side of the setup, not just the technical side.</p>
           </div>
 
@@ -918,23 +704,23 @@
           <div class="jb-section">
             <h4>What We Are Looking For</h4>
             <ul>
-              <li>2--4+ years of technical experience -- software engineering, IT implementation, solutions consulting, or a technical support role with a strong automation component</li>
-              <li>Hands-on experience with AI tools: Claude, ChatGPT, Gemini, or similar -- ideally in a deployment or setup context, not just personal use</li>
+              <li>2 to 4+ years of technical experience: software engineering, IT implementation, solutions consulting, or a technical support role with a strong automation component</li>
+              <li>Hands-on experience with AI tools: Claude, ChatGPT, Gemini, or similar, ideally in a deployment or setup context, not just personal use</li>
               <li>Comfort configuring integrations between cloud tools (Google Workspace, Notion, Zapier/Make, REST APIs); you do not need to write complex backend systems, but you need to be comfortable in the wiring layer</li>
-              <li>Excellent teaching and communication skills -- you can explain a concept to a non-technical founder and make them feel confident, not overwhelmed</li>
+              <li>Excellent teaching and communication skills; you can explain a concept to a non-technical founder and make them feel confident, not overwhelmed</li>
               <li>High personal organization and follow-through; clients on this track move fast and expect a responsive, reliable partner</li>
-              <li>Genuine curiosity about AI and how it changes how people work -- you are not just setting up software, you are helping someone change their daily operating model</li>
+              <li>Genuine curiosity about AI and how it changes how people work; you are not just setting up software, you are helping someone change their daily operating model</li>
               <li>Experience working with small business owners, professional services clients (lawyers, accountants, consultants, executives), or individual high-output professionals is a strong plus</li>
-              <li>Familiarity with OpenClaw, MCP, or agentic AI platforms is a plus but not required -- we will train the right person</li>
+              <li>Familiarity with OpenClaw, MCP, or agentic AI platforms is a plus but not required; we will train the right person</li>
             </ul>
           </div>
 
           <div class="jb-section">
             <h4>Why This Role</h4>
-            <p>There are very few jobs where you get to watch someone's work life change because of something you built in a week -- and then stay involved as they grow into it. You will work with more different kinds of people, in more different kinds of businesses, than almost any other AI role in the market. And because AI keeps evolving, the work never plateaus -- there is always a new integration to roll out, a new model capability to adopt, a new workflow to optimize for a client who is counting on you to keep them current.</p>
+            <p>There are very few jobs where you get to watch someone's work life change because of something you built in a week, and then stay involved as they grow into it. You will work with more different kinds of people, in more different kinds of businesses, than almost any other AI role in the market. And because AI keeps evolving, the work never plateaus; there is always a new integration to roll out, a new model capability to adopt, a new workflow to optimize for a client who is counting on you to keep them current.</p>
           </div>
 
-          <button type="button" class="jb-apply" data-open-apply>Apply for this role &rarr;</button>
+          <a href="index.html#contact" class="jb-apply">Apply for this role &rarr;</a>
 
         </div>
       </div>
@@ -968,198 +754,6 @@
     }
   </script>
 
-  <!-- APPLICATION MODAL -->
-  <div class="fis-modal" id="fis-apply-modal" role="dialog" aria-modal="true" aria-labelledby="fis-apply-title" aria-hidden="true">
-    <div class="fis-modal-card" role="document">
-      <button type="button" class="fis-modal-close" aria-label="Close application form" data-close-apply>&times;</button>
-
-      <div id="fis-apply-header">
-        <div class="fis-modal-eyebrow" id="fis-apply-eyebrow">Apply</div>
-        <h3 class="fis-modal-title" id="fis-apply-title">Apply for this role.</h3>
-        <p class="fis-modal-lead">A few details and your resume. We review every application and respond to each one.</p>
-      </div>
-
-      <form class="fis-form" id="fis-apply-form" novalidate>
-        <div class="fis-form-grid">
-          <div>
-            <label for="fis-apply-name">Name <span class="req">*</span></label>
-            <input type="text" id="fis-apply-name" name="name" autocomplete="name" required>
-          </div>
-          <div>
-            <label for="fis-apply-email">Email <span class="req">*</span></label>
-            <input type="email" id="fis-apply-email" name="email" autocomplete="email" required>
-          </div>
-          <div class="fis-form-field-full">
-            <label for="fis-apply-linkedin">LinkedIn URL <span class="req">*</span></label>
-            <input type="url" id="fis-apply-linkedin" name="linkedin" autocomplete="url" placeholder="https://www.linkedin.com/in/yourname" required>
-          </div>
-          <div class="fis-form-field-full">
-            <label for="fis-apply-resume">Resume <span class="req">*</span></label>
-            <input type="file" id="fis-apply-resume" name="resume" accept=".pdf,.doc,.docx" required>
-            <div class="fis-form-hint">PDF or Word, up to 3 MB.</div>
-          </div>
-        </div>
-
-        <!-- Honeypot — hidden from humans, often filled by bots -->
-        <div class="fis-form-honeypot" aria-hidden="true">
-          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
-        </div>
-
-        <div class="fis-form-actions">
-          <button type="submit" class="fis-form-submit" id="fis-apply-submit">Submit application</button>
-          <p class="fis-form-note">Your information goes only to our hiring team.</p>
-        </div>
-
-        <div class="fis-form-error" id="fis-apply-error" role="alert"></div>
-      </form>
-
-      <div class="fis-form-success" id="fis-apply-success" role="status" aria-live="polite">
-        <div class="fis-form-success-icon">&check;</div>
-        <div class="fis-form-success-title">Application received.</div>
-        <div class="fis-form-success-body">Thanks for applying. We'll be in touch at the email you provided.</div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-  /* Application modal — open/close + submit handler */
-  (function () {
-    var modal    = document.getElementById('fis-apply-modal');
-    var form     = document.getElementById('fis-apply-form');
-    var header   = document.getElementById('fis-apply-header');
-    var success  = document.getElementById('fis-apply-success');
-    var errorEl  = document.getElementById('fis-apply-error');
-    var submitEl = document.getElementById('fis-apply-submit');
-    var eyebrowEl = document.getElementById('fis-apply-eyebrow');
-    var titleEl   = document.getElementById('fis-apply-title');
-    if (!modal || !form) return;
-
-    var MAX_BYTES = 3 * 1024 * 1024; // 3 MB
-    var ALLOWED   = /\.(pdf|doc|docx)$/i;
-    var currentJob = '';
-    var lastFocus = null;
-
-    function openModal(jobTitle) {
-      lastFocus = document.activeElement;
-      currentJob = jobTitle || 'General application';
-      if (titleEl) titleEl.textContent = currentJob;
-      if (eyebrowEl) eyebrowEl.textContent = 'Apply';
-      if (header) header.style.display = '';
-      form.style.display = '';
-      success.classList.remove('show');
-      errorEl.classList.remove('show');
-      errorEl.textContent = '';
-      submitEl.disabled = false;
-      submitEl.textContent = 'Submit application';
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      setTimeout(function () {
-        var first = document.getElementById('fis-apply-name');
-        if (first) first.focus();
-      }, 50);
-    }
-
-    function closeModal() {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-    }
-
-    // Open triggers — job title read from the surrounding card
-    document.querySelectorAll('[data-open-apply]').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-        var card  = el.closest('.job-card');
-        var title = card ? card.querySelector('.job-title') : null;
-        openModal(title ? title.textContent.trim() : '');
-      });
-    });
-
-    // Close triggers — x button, backdrop click, Escape key
-    modal.querySelectorAll('[data-close-apply]').forEach(function (el) {
-      el.addEventListener('click', closeModal);
-    });
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-    });
-
-    function showError(msg, focusEl) {
-      errorEl.textContent = msg;
-      errorEl.classList.add('show');
-      if (focusEl) focusEl.focus();
-      submitEl.disabled = false;
-      submitEl.textContent = 'Submit application';
-    }
-
-    // Submit handler — resume is sent base64-encoded as JSON to /api/apply
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      errorEl.classList.remove('show');
-      errorEl.textContent = '';
-
-      var name     = form.name.value.trim();
-      var email    = form.email.value.trim();
-      var linkedin = form.linkedin.value.trim();
-      var file     = form.resume.files[0];
-
-      if (!name) return showError('Please enter your name.', form.name);
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address.', form.email);
-      if (!linkedin) return showError('Please enter your LinkedIn URL.', form.linkedin);
-      if (!/linkedin\.com\//i.test(linkedin)) return showError('That does not look like a LinkedIn URL. It should contain linkedin.com.', form.linkedin);
-      if (!/^https?:\/\//i.test(linkedin)) linkedin = 'https://' + linkedin;
-      if (!file) return showError('Please attach your resume.', form.resume);
-      if (!ALLOWED.test(file.name)) return showError('Resume must be a PDF or Word document (.pdf, .doc, .docx).', form.resume);
-      if (file.size > MAX_BYTES) return showError('Resume must be under 3 MB.', form.resume);
-
-      submitEl.disabled = true;
-      submitEl.textContent = 'Submitting…';
-
-      var reader = new FileReader();
-      reader.onerror = function () { showError('Could not read the file. Please try again.'); };
-      reader.onload = function () {
-        var base64 = String(reader.result).split(',')[1] || '';
-        fetch('/api/apply', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            linkedin: linkedin,
-            job: currentJob,
-            resume: { filename: file.name, contentType: file.type || 'application/octet-stream', data: base64 },
-            website: form.website.value, // honeypot
-            fax: form.fax.value          // honeypot
-          })
-        })
-          .then(function (res) {
-            return res.json().then(function (json) { return { ok: res.ok, json: json }; });
-          })
-          .then(function (result) {
-            if (result.ok && result.json && result.json.ok) {
-              if (header) header.style.display = 'none';
-              form.style.display = 'none';
-              success.classList.add('show');
-              form.reset();
-              return;
-            }
-            var msg = (result.json && result.json.error)
-              || 'Something went wrong. Please email careers@futureinsites.com with your resume attached.';
-            showError(msg);
-          })
-          .catch(function () {
-            showError('Network error. Please email careers@futureinsites.com with your resume attached.');
-          });
-      };
-      reader.readAsDataURL(file);
-    });
-  })();
-  </script>
-
 </body>
 </html>
+
