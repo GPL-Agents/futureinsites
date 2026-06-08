@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windows OpenClaw Setup: 10 Steps to Your Own AI Agent | FutureInSites</title>
+  <meta name="description" content="Set up your own personal AI agent on a repurposed Windows laptop with OpenClaw. A 10-step guide covering hardware prep, installation, cost hardening, and remote access." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem;
+    }
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { display: none; }
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ARTICLE HEADER */
+    .article-header {
+      padding: 9rem 0 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .article-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(37,99,235,0.06) 50%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .article-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: left;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 1.8rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--cyan); }
+
+    .article-eyebrow {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .article-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .article-deck {
+      font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 760px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      flex-wrap: wrap;
+    }
+
+    .article-meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 5rem;
+    }
+
+    .article-body p {
+      font-size: 1.06rem;
+      color: var(--dark);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body p.lede {
+      font-size: 1.18rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 1.8rem;
+    }
+
+    .article-body p.lede strong { font-weight: 700; }
+
+    .article-body strong { font-weight: 700; }
+    .article-body em { font-style: italic; }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 2.6rem 0;
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-lt);
+      border-radius: 0 8px 8px 0;
+      font-size: 1.18rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+
+    .pull-quote::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    /* Section heading inside article */
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin: 2.6rem 0 1rem;
+      line-height: 1.3;
+    }
+
+    .article-body h2 .step-num {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 30px;
+      margin-right: 0.7rem;
+      vertical-align: 2px;
+      letter-spacing: 0;
+    }
+
+    /* Code blocks */
+    .article-body code {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.9em;
+      background: var(--bg-alt);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .article-body pre {
+      background: var(--dark2);
+      color: #EEEEEE;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .article-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    /* Checkbox list */
+    .checklist {
+      list-style: none;
+      margin: 1.2rem 0;
+    }
+
+    .checklist li {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      padding-left: 1.8rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    .checklist li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.35em;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--muted);
+      border-radius: 3px;
+    }
+
+    /* ARTICLE FIGURE / IMAGES */
+    .article-figure {
+      margin: 2.6rem 0;
+    }
+
+    .article-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-figure img:hover {
+      box-shadow: 0 14px 40px rgba(11,12,16,0.12);
+      transform: translateY(-2px);
+    }
+
+    .article-figure figcaption {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,12,16,0.94);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      cursor: zoom-out;
+      animation: lb-fade-in 0.2s ease-out;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: calc(100vh - 5rem);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    body.lb-open { overflow: hidden; }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ARTICLE FOOTER */
+    .article-footer {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .article-footer .author {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .article-footer .author strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .article-footer-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .article-footer-link:hover { text-decoration: underline; }
+
+    /* CTA BLOCK */
+    .article-cta {
+      max-width: 960px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .article-cta-inner {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 2.6rem 2.4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(45,212,255,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .article-cta-inner > * { position: relative; z-index: 1; }
+
+    .article-cta-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .article-cta-link {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.7rem 1.7rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .article-cta-link:hover { opacity: 0.88; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .article-header { padding: 7.5rem 0 3rem; }
+      .article-header-inner { padding: 0 1.5rem; }
+      .article-body { padding: 3rem 1.5rem 4rem; }
+      .article-cta { padding: 0 1.5rem; }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <div class="article-header">
+    <div class="article-header-inner">
+      <a href="resources.html" class="back-link"> Back to Resources</a>
+      <span class="article-eyebrow">Guide</span>
+      <h1>Windows OpenClaw Setup: 10 Steps to Your Own AI Agent</h1>
+      <p class="article-deck">Set up a personal AI agent on a repurposed Windows laptop using OpenClaw. These 10 steps cover the essentials: hardware prep, installation, cost hardening, and remote access. If you already have technical legs, this is enough to get you running.</p>
+      <div class="article-meta">
+        <span>FutureInSites</span>
+        <span class="dot"></span>
+        <span>10 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <div class="article-body">
+
+    <p class="lede">A personal AI agent running 24/7 on dedicated hardware is a step change in what an AI assistant can do for you. It manages your email, calendar, and files. It browses the web, runs commands, and builds custom tools. And it is always there, reachable from your phone.</p>
+
+    <p>The open-source agent framework <strong>OpenClaw</strong> makes this possible on a repurposed Windows laptop that would otherwise sit in a closet. This guide covers the ten essential steps to get a production-grade personal agent online. It is not a full reference manual -- it assumes you can fill in the gaps and reach for the error log when something goes sideways.</p>
+
+    <p>You will need: a Windows 11-capable laptop (even an 8th-gen i5 with 8 GB RAM works), about three hours of focused time, and $20 to seed your Anthropic account for the first month of operation.</p>
+
+    <div class="pull-quote">
+      The traps in this setup are invisible until you hit them. This guide calls out the worst ones by name. The rest of the full reference is available on request.
+    </div>
+
+    <h2><span class="step-num">1</span>Pre-Flight Prep (Do This on Your Current Machine)</h2>
+
+    <p>Before touching the laptop you are about to wipe, set these up on your current computer and save every credential to a password manager:</p>
+
+    <p><strong>Two Google accounts.</strong> One personal (infrastructure logins: Microsoft account, Anthropic, Brave, Tailscale). One work (the agent's OAuth target for Gmail and Calendar). Both must have 2FA enabled and backup codes saved.</p>
+
+    <p><strong>Anthropic API key.</strong> At <code>console.anthropic.com</code>, create a key and set a monthly spending limit ($20-50). A runaway loop burns through credits fast.</p>
+
+    <p><strong>Brave Search API key.</strong> Free tier from <code>brave.com/search/api</code>. About 1,000 searches per month included.</p>
+
+    <p><strong>Telegram bot.</strong> Talk to <code>@BotFather</code>, create a new bot, save the token. Give it a name you can live with -- this becomes your agent's identity.</p>
+
+    <h2><span class="step-num">2</span>Validate the Device Encryption Key (Critical)</h2>
+
+    <p>Windows 11 Home silently enables Device Encryption on most modern hardware. During the wipe, after you clear the TPM, the drive will demand a 48-digit recovery key. If you cannot produce it, the wipe stalls.</p>
+
+    <p>Before you reset: on the laptop, run <code>manage-bde -protectors -get C:</code> in PowerShell as Admin to find the Key ID. Then go to <code>account.microsoft.com/devices/recoverykey</code>, sign into every Microsoft account that has ever touched this laptop, and match the Key ID. Save the 48-digit number somewhere accessible from another device. Not on the laptop you are about to wipe.</p>
+
+    <div class="pull-quote">
+      Validate the recovery key before you start the wipe. Nothing stalls a setup day faster than a 48-digit code you cannot find.
+    </div>
+
+    <h2><span class="step-num">3</span>Wipe and Reinstall Windows</h2>
+
+    <p>Settings > System > Recovery > Reset PC. Choose Remove everything, Cloud download, and turn on Clean data. Plug into AC power. The process takes 30-60 minutes.</p>
+
+    <p>During the reset, press F12 if prompted to clear the TPM. Have that recovery key ready for the next screen.</p>
+
+    <p>At OOBE, sign in with your Microsoft account. Decline the bloat: diagnostic data set to Required Only, no personalization, no ad ID. Watch for the "Restore from backup" screen -- the option to start fresh is a small text link at the bottom, not the big Restore button. If you accidentally restore, just re-wipe.</p>
+
+    <p>After Windows is up: run Windows Update, restart, repeat until clean. Remove trial antivirus and manufacturer bloat. Keep OEM driver updaters if they exist.</p>
+
+    <p><strong>Critical power tweak:</strong> Settings > System > Power & battery. Set sleep when plugged in to Never. Power mode: Best performance. In Control Panel > Power Options, set closing the lid to Do nothing. Disable hibernation: <code>powercfg /hibernate off</code> as Admin.</p>
+
+    <h2><span class="step-num">4</span>Install Node.js -- Use v22, Not the Latest</h2>
+
+    <p>This is the most common gotcha in the entire setup. Node 24, 25, and 26 break OpenClaw's AbortController, causing 30+ second command hangs and gateway instability. Go to <code>nodejs.org/en/download</code>, switch the version dropdown to v22, download the Windows Installer.</p>
+
+    <p>During install, check "Automatically install the necessary tools." Reboot after it finishes. Verify:</p>
+
+    <pre><code>node --version    # expect v22.x.x
+npm --version     # expect 10.x or 11.x</code></pre>
+
+    <h2><span class="step-num">5</span>Install OpenClaw and Run the Onboarding Wizard</h2>
+
+    <p>As Administrator in PowerShell:</p>
+
+    <pre><code>npm install -g openclaw
+openclaw --version
+openclaw onboard</code></pre>
+
+    <p>The wizard walks through: provider (Anthropic), paste your API key, channel (Telegram, paste bot token), web search (Brave, paste API key). When it hits the skill selection list: use <strong>SPACE</strong> to toggle items on, <strong>Enter</strong> to confirm. This is easy to miss and the most common multi-select mistake.</p>
+
+    <p>Enable: ClawHub, file/shell operations, web browse/fetch, memory/notes. Skip anything you lack API keys for.</p>
+
+    <p>For memory search: unless you have an OpenAI, Voyage, or Gemini embedding key, disable it. The agent still has plain-text memory through workspace files. You can enable vector recall later.</p>
+
+    <p>When the wizard finishes, <strong>immediately re-check the power settings.</strong> The installer has been observed to silently flip sleep back to a timed value.</p>
+
+    <p>Confirm the gateway is up: visit <code>http://localhost:18789</code> on the laptop. The Control UI should load.</p>
+
+    <h2><span class="step-num">6</span>Pair Telegram and Set Up Commands</h2>
+
+    <p>Three things need to line up before Telegram works properly:</p>
+
+    <p><strong>Config structure.</strong> Telegram must sit under <code>channels.telegram</code> in your config file, <em>not</em> under <code>plugins.entries</code>. If it ends up in plugins, the gateway logs "plugin not found: telegram" and the bot never connects.</p>
+
+    <p><strong>Pairing.</strong> Send any message to your bot from your phone. It will reply "access not configured." On the laptop:</p>
+
+    <pre><code>openclaw pairing list telegram
+openclaw pairing approve telegram &lt;code&gt;</code></pre>
+
+    <p><strong>Command permissions.</strong> Your Telegram user ID must be in <code>commands.ownerAllowFrom</code> with the <code>telegram:</code> prefix, or the bot chats happily but ignores all /-commands:</p>
+
+    <pre><code>"commands": {
+  "ownerAllowFrom": ["telegram:123456789"]
+}</code></pre>
+
+    <p>Find your Telegram user ID by messaging @userinfobot. Restart the gateway after adding it.</p>
+
+    <h2><span class="step-num">7</span>Cost and Rate-Limit Hardening (Do This Before You Chat)</h2>
+
+    <p>OpenClaw defaults are tuned for capability, not budget. On a stock install, a chatty afternoon can burn $20+ and hit Anthropic's Tier 1 rate limit of 30,000 input tokens per minute. Once a session passes ~30K tokens, every request fails forever -- waiting does not help, retrying stacks cooldowns, and switching to Opus masks the problem at 5x the cost.</p>
+
+    <p>Run these before the first real conversation:</p>
+
+    <pre><code>openclaw config set agents.defaults.contextInjection continuation-skip
+openclaw config set agents.defaults.compaction.reserveTokensFloor 20000
+openclaw config set agents.defaults.contextTokens 50000
+openclaw config set agents.defaults.bootstrapTotalMaxChars 50000
+openclaw config set agents.defaults.bootstrapMaxPerFile 15000
+openclaw config set agents.defaults.compaction.mode safeguard
+openclaw config set agents.defaults.heartbeat.enabled false</code></pre>
+
+    <p>Then <code>openclaw gateway restart</code>.</p>
+
+    <p>If you ever see <code>rate_limit_error</code> return mid-conversation, your session has grown too large. Start a fresh one with <code>/new</code>. Living in one infinite session is what causes the wall.</p>
+
+    <h2><span class="step-num">8</span>Configure Web Search and the Agent Workspace</h2>
+
+    <p>Web search needs both of these blocks in your config file, or it fails silently (no error, just empty results):</p>
+
+    <pre><code>"plugins": {
+  "entries": {
+    "brave": {
+      "enabled": true,
+      "config": { "webSearch": { "apiKey": "your-brave-api-key" } }
+    }
+  }
+},
+"tools": {
+  "web": {
+    "search": { "enabled": true, "provider": "brave" }
+  }
+}</code></pre>
+
+    <p>Set up the workspace files in your profile's <code>workspace\</code> directory. These inject context into every agent turn, so keep them lean:</p>
+
+    <ul class="checklist">
+      <li><strong>IDENTITY.md</strong> -- who the agent is, its name and purpose</li>
+      <li><strong>USER.md</strong> -- who it serves: your name, role, contact info</li>
+      <li><strong>SOUL.md</strong> -- personality, tone, working preferences</li>
+      <li><strong>MEMORY.md</strong> -- long-term curated memory you build over time</li>
+      <li><strong>TOOLS.md</strong> -- environment notes: hosts, API keys, preferences</li>
+    </ul>
+
+    <h2><span class="step-num">9</span>Set Up Remote Access with Tailscale</h2>
+
+    <p>Tailscale creates a private encrypted network so you can reach your agent from anywhere without exposing it to the public internet.</p>
+
+    <p>On the laptop: install from <code>tailscale.com/download/windows</code>, sign in with your infrastructure Google account, note the laptop's Tailscale IP (100.x.y.z). On your phone and main computer: install Tailscale, sign in with the same account.</p>
+
+    <p>From your main computer, open <code>http://&lt;laptop-tailscale-ip&gt;:18789</code> and bookmark it. For HTTPS support, run <code>openclaw gateway --tailscale serve</code> on the laptop.</p>
+
+    <h2><span class="step-num">10</span>Verify Everything</h2>
+
+    <p>Run the checks, then run them again after a reboot:</p>
+
+    <p><strong>Health check:</strong> <code>openclaw doctor</code> -- fix anything flagged critical. <code>openclaw models status</code> -- confirm your Anthropic key is valid.</p>
+
+    <p><strong>Test from Telegram:</strong></p>
+    <p>Any question -- "What is the weather in Boston today?"<br>
+    Web search -- "Search for recent news about AI in education"<br>
+    File operation -- "Create a file called test.md in the workspace"<br>
+    Memory recall -- "What do you remember about me?"</p>
+
+    <p><strong>Reboot test:</strong> restart the laptop. After it boots, wait a minute, then check <code>http://localhost:18789</code>. The gateway should start automatically through its Windows scheduled task. If it does not, re-verify the Task Scheduler entry: it should have a startup trigger and restart-on-failure configured.</p>
+
+    <p><strong>Power settings re-check:</strong> Settings > System > Power & battery. Confirm sleep when plugged in is still Never. Windows Update can revert this on major updates.</p>
+
+    <div class="article-footer">
+      <div class="author">Published by <strong>FutureInSites</strong></div>
+      <a href="resources.html" class="article-footer-link">More resources </a>
+    </div>
+
+  </div>
+
+  <!-- CTA: Setup Offering -->
+  <div class="article-cta">
+    <div class="article-cta-inner">
+      <div class="article-cta-eyebrow">Need it done right?</div>
+      <h3>Fully supported AI agent setup from FutureInSites</h3>
+      <p>This guide covers the essentials, but a production-grade 24/7 agent involves more: hardware selection and provisioning, advanced cost tuning, custom skills and integrations, Tailscale networking, and ongoing support. If you run into issues or want a turnkey setup, we handle the entire deployment and train you on how to get the most out of your personal agent.</p>
+      <a href="index.html#contact" class="article-cta-link">Get started </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+    </ul>
+    <p class="footer-copy">c 2026 &nbsp;&#183;&nbsp; FutureInSites LLC &nbsp;&#183;&nbsp; New York, NY &nbsp;&#183;&nbsp; Palo Alto, CA &nbsp;&#183;&nbsp; Cambridge, MA</p>
+  </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    (function () {
+      var figs = document.querySelectorAll('.article-figure img');
+      if (!figs.length) return;
+
+      function openLightbox(src, alt) {
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Image viewer');
+
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close image viewer');
+        closeBtn.innerHTML = '&times;';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(img);
+
+        function close() {
+          overlay.remove();
+          document.body.classList.remove('lb-open');
+          document.removeEventListener('keydown', onKey);
+        }
+
+        function onKey(e) { if (e.key === 'Escape') close(); }
+
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('lb-open');
+        document.addEventListener('keydown', onKey);
+      }
+
+      figs.forEach(function (img) {
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt);
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
