@@ -7,22 +7,24 @@
   <title>AI Strategy Discovery | TRACE Services Co.</title>
   <meta name="description" content="Private client presentation." />
 
-  <link rel="icon" href="/clients/trace/TraceFavicon.webp" type="image/webp">
+  <link rel="icon" id="favicon" href="/clients/trace/TraceFavicon.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Single source of truth for this client (name, logos, access code) -->
+  <script src="/clients/trace/client.js"></script>
+
   <!-- ============================================================= -->
-  <!--  TRACE - DISCOVERY  -  access code: Trace-Discovery-2026      -->
+  <!--  TRACE - DISCOVERY  -  access code: Trace-Discovery-2026
+       slug + access code live in client.js. Deck content below.       -->
   <!-- ============================================================= -->
   <script>
     const DECK = {
-      slug: "trace",
-      client:   "TRACE Services Co.",
+      slug: CLIENT.slug,
+      passwordHash: CLIENT.passwordHash,
       title:    "AI Strategy Discovery",
       subtitle: "Prepared for TRACE Services Co. · June 10, 2026",
-      // hash of "trace" + ":" + "Trace-Discovery-2026"
-      passwordHash: "99180b864ad3d681c0f5f2a18c25a45e74aba5b67bbc091431999383ef1c9eb6",
       slidesDir: "/clients/trace/discovery/slides/",
       slideCount: 11,
       pdfFile: "/clients/trace/trace-ai-strategy-discovery.pdf",
@@ -103,14 +105,14 @@
       </div>
     </a>
     <span class="nav-client">
-      <span class="nav-client-label">Client</span>
-      <img src="/clients/trace/TraceFavicon.webp" alt="TRACE" onerror="this.closest('.nav-client').style.display='none'">
+      <span class="nav-client-label" data-client-name></span>
+      <img data-client-icon alt="">
     </span>
   </nav>
 
   <section id="lock">
     <div class="lock-card">
-      <img class="lock-client-logo" src="/clients/trace/TraceFavicon.webp" alt="TRACE" onerror="this.style.display='none'">
+      <img class="lock-client-logo" data-client-icon alt="">
       <h1>Private Presentation</h1>
       <p class="sub">Enter the access code provided to you.</p>
       <form class="lock-form" id="lockForm">
@@ -143,6 +145,7 @@
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
+    window.CLIENT.applyBranding();
 
     async function sha256(text) {
       const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
@@ -152,7 +155,7 @@
     function reveal() {
       document.getElementById('deckTitle').textContent = DECK.title;
       document.getElementById('deckSub').textContent = DECK.subtitle;
-      document.getElementById('deckEyebrow').textContent = 'Prepared for ' + DECK.client;
+      document.getElementById('deckEyebrow').textContent = 'Prepared for ' + window.CLIENT.name;
       document.getElementById('backLink').href = DECK.portalUrl;
 
       const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';

@@ -18,10 +18,9 @@
   <!-- ============================================================= -->
   <!--  TRACE - CLIENT DASHBOARD  -  access code: Trace-Discovery-2026
        Everything below the CONFIG line is data you can edit:
-       - ENGAGEMENT: header + status
+       - ENGAGEMENT: status pills + Current Engagement card (details)
        - DELIVERABLES: progress checklist  (state: done | active | todo)
-       - ACTIVITY: recent activity bullets
-       - LIBRARY: document groups. Give an item an href to make it live;
+       - LIBRARY: Knowledge Base groups. Give an item an href to make it live;
                   leave href null to show it grayed as "Coming soon".      -->
   <!-- ============================================================= -->
   <script>
@@ -30,7 +29,14 @@
 
     const ENGAGEMENT = {
       status: "Active",
-      phase:  "Discovery"
+      phase:  "Discovery",
+      // Current Engagement card (left dashboard)
+      details: [
+        { label: "Phase",          value: "Discovery" },
+        { label: "Status",         value: "In Progress" },
+        { label: "Next Milestone", value: "Discovery Report Delivery" },
+        { label: "Target Date",    value: "June 18, 2026" }
+      ]
     };
 
     const DELIVERABLES = [
@@ -40,12 +46,6 @@
       { label: "Technical Specifications",  state: "todo" },
       { label: "User Training",             state: "todo" },
       { label: "Production Rollout",        state: "todo" }
-    ];
-
-    const ACTIVITY = [
-      "Discovery workshop completed",
-      "Stakeholder interview notes added",
-      "Draft recommendations published"
     ];
 
     const KEY_DOCS = [
@@ -159,12 +159,9 @@
     .progress .active .ptxt { color: var(--dark); font-weight: 600; }
     .pnote { color: var(--accent); font-weight: 600; font-size: 0.82rem; margin-left: 0.35rem; }
 
-    .activity { list-style: none; }
-    .activity li { position: relative; padding: 0 0 0.9rem 1.1rem; font-size: 0.9rem; color: var(--muted); }
-    .activity li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
-    .activity li::after { content: ""; position: absolute; left: 3px; top: 15px; bottom: -2px; width: 1px; background: var(--border); }
-    .activity li:last-child { padding-bottom: 0; }
-    .activity li:last-child::after { display: none; }
+    .engagement-grid { display: flex; flex-direction: column; gap: 0.95rem; }
+    .eng-row dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.12rem; }
+    .eng-row dd { font-size: 0.98rem; font-weight: 600; color: var(--dark); }
 
     .keydocs { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .keydoc { display: flex; align-items: center; gap: 0.55rem; font-size: 0.9rem; text-decoration: none; color: var(--dark); }
@@ -235,8 +232,8 @@
           <ul class="progress" id="progress"></ul>
         </div>
         <div class="card dash-block">
-          <h3>Recent Activity</h3>
-          <ul class="activity" id="activity"></ul>
+          <h3>Current Engagement</h3>
+          <dl class="engagement-grid" id="engagementGrid"></dl>
         </div>
         <div class="card dash-block">
           <h3>Key Documents</h3>
@@ -245,7 +242,7 @@
       </aside>
 
       <main class="library">
-        <h2>Documents</h2>
+        <h2>Knowledge Base</h2>
         <div id="libGroups"></div>
       </main>
     </div>
@@ -269,7 +266,6 @@
 
     function reveal() {
       // Header
-      document.getElementById('dashClient').textContent = ENGAGEMENT.client;
       document.getElementById('dashMeta').innerHTML =
         '<span class="pill pill-active"><span class="dot"></span>' + ENGAGEMENT.status + '</span>' +
         '<span class="pill pill-phase">Phase: ' + ENGAGEMENT.phase + '</span>';
@@ -281,9 +277,9 @@
         return '<li class="' + d.state + '">' + ico + '<span class="ptxt">' + d.label + note + '</span></li>';
       }).join('');
 
-      // Activity
-      document.getElementById('activity').innerHTML = ACTIVITY.map(function (a) {
-        return '<li>' + a + '</li>';
+      // Current engagement
+      document.getElementById('engagementGrid').innerHTML = ENGAGEMENT.details.map(function (d) {
+        return '<div class="eng-row"><dt>' + d.label + '</dt><dd>' + d.value + '</dd></div>';
       }).join('');
 
       // Key documents
