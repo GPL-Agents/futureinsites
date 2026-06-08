@@ -186,6 +186,13 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
+    // Resolve a file in THIS client folder, whether or not the URL has a trailing slash.
+    function fileUrl(name) {
+      let base = location.pathname.replace(/\/index\.html?$/i, '/');
+      if (!base.endsWith('/')) base += '/';
+      return new URL(name, location.origin + base).href;
+    }
+
     function reveal() {
       document.getElementById('deckTitle').textContent = CLIENT.title || 'Presentation';
       document.getElementById('deckSub').textContent = CLIENT.subtitle || '';
@@ -194,11 +201,11 @@
 
       const actions = document.getElementById('deckActions');
       const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
-      if (CLIENT.pdfFile) actions.innerHTML += '<a class="deck-btn primary" href="' + CLIENT.pdfFile + '" download>' + dlIcon + 'Download PDF</a>';
-      if (CLIENT.pptFile) actions.innerHTML += '<a class="deck-btn" href="' + CLIENT.pptFile + '" download>' + dlIcon + 'Download PowerPoint</a>';
+      if (CLIENT.pdfFile) actions.innerHTML += '<a class="deck-btn primary" href="' + fileUrl(CLIENT.pdfFile) + '" download>' + dlIcon + 'Download PDF</a>';
+      if (CLIENT.pptFile) actions.innerHTML += '<a class="deck-btn" href="' + fileUrl(CLIENT.pptFile) + '" download>' + dlIcon + 'Download PowerPoint</a>';
 
       const viewer = document.getElementById('deckViewer');
-      if (CLIENT.viewerFile) viewer.innerHTML = '<iframe src="' + CLIENT.viewerFile + '#view=FitH" title="Presentation"></iframe>';
+      if (CLIENT.viewerFile) viewer.innerHTML = '<iframe src="' + fileUrl(CLIENT.viewerFile) + '#view=FitH" title="Presentation"></iframe>';
       else viewer.innerHTML = '<div class="deck-noviewer">Use the download button above to open the presentation.</div>';
 
       document.getElementById('lock').style.display = 'none';

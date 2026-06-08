@@ -186,6 +186,13 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
+    // Resolve a file in THIS client folder, whether or not the URL has a trailing slash.
+    function fileUrl(name) {
+      let base = location.pathname.replace(/\/index\.html?$/i, '/');
+      if (!base.endsWith('/')) base += '/';
+      return new URL(name, location.origin + base).href;
+    }
+
     function reveal() {
       document.getElementById('deckTitle').textContent = CLIENT.title || 'Presentation';
       document.getElementById('deckSub').textContent = CLIENT.subtitle || '';
