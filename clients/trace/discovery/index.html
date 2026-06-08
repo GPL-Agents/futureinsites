@@ -75,9 +75,10 @@
     /* DECK */
     #deck { flex: 1; display: none; flex-direction: column; }
     #deck.show { display: flex; }
-    .deck-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2.5rem; flex-wrap: wrap; padding: 1.1rem 2rem; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 10; }
-    .deck-headtext { min-width: 0; }
-    .deck-back { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; color: var(--muted); text-decoration: none; margin-bottom: 0.3rem; }
+    .deck-header { padding: 0.85rem 2rem 1.05rem; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 10; }
+    .deck-toprow { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
+    .deck-headtext { text-align: center; }
+    .deck-back { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; color: var(--muted); text-decoration: none; }
     .deck-back:hover { color: var(--accent); }
     .deck-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
     .deck-header h1 { font-family: 'Manrope', sans-serif; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.15rem; }
@@ -132,13 +133,14 @@
 
   <section id="deck">
     <div class="deck-header">
-      <div class="deck-headtext">
+      <div class="deck-toprow">
         <a class="deck-back" href="/clients/trace/" id="backLink">&larr; Client portal</a>
-        <div class="deck-eyebrow" id="deckEyebrow">Prepared for</div>
+        <div class="deck-actions" id="deckActions"></div>
+      </div>
+      <div class="deck-headtext">
         <h1 id="deckTitle"></h1>
         <div class="deck-sub" id="deckSub"></div>
       </div>
-      <div class="deck-actions" id="deckActions"></div>
     </div>
     <div class="slides">
       <div class="slides-inner" id="slides"></div>
@@ -164,7 +166,6 @@
     function reveal() {
       document.getElementById('deckTitle').textContent = DECK.title;
       document.getElementById('deckSub').textContent = DECK.subtitle;
-      document.getElementById('deckEyebrow').textContent = 'Prepared for ' + window.CLIENT.name;
       document.getElementById('backLink').href = DECK.portalUrl;
 
       const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
