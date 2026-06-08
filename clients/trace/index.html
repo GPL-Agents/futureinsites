@@ -4,132 +4,189 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Client Presentation | FutureInSites</title>
-  <meta name="description" content="Private client presentation." />
+  <title>Client Portal | TRACE Services Co.</title>
+  <meta name="description" content="Private client portal." />
 
-  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- ============================================================= -->
-  <!--  TRACE  -  access code is: Trace-Discovery-2026               -->
+  <!--  TRACE - CLIENT DASHBOARD  -  access code: Trace-Discovery-2026
+       Everything below the CONFIG line is data you can edit:
+       - ENGAGEMENT: header + status
+       - DELIVERABLES: progress checklist  (state: done | active | todo)
+       - ACTIVITY: recent activity bullets
+       - LIBRARY: document groups. Give an item an href to make it live;
+                  leave href null to show it grayed as "Coming soon".      -->
   <!-- ============================================================= -->
   <script>
-    const CLIENT = {
+    const PORTAL = {
       slug: "trace",
-      client:   "TRACE Services Co.",
-      title:    "AI Strategy Discovery",
-      subtitle: "Prepared for TRACE Services Co. · June 10, 2026",
       // hash of "trace" + ":" + "Trace-Discovery-2026"
-      passwordHash: "99180b864ad3d681c0f5f2a18c25a45e74aba5b67bbc091431999383ef1c9eb6",
-      viewerFile: "trace-ai-strategy-discovery.pdf",
-      pdfFile: "trace-ai-strategy-discovery.pdf",
-      pptFile: null
+      passwordHash: "99180b864ad3d681c0f5f2a18c25a45e74aba5b67bbc091431999383ef1c9eb6"
     };
+
+    const ENGAGEMENT = {
+      client: "TRACE",
+      name:   "AI Discovery Engagement",
+      status: "Active",
+      phase:  "Discovery"
+    };
+
+    const DELIVERABLES = [
+      { label: "Kickoff Complete",          state: "done" },
+      { label: "Discovery Interviews",      state: "done" },
+      { label: "Discovery Report",          state: "active", note: "In Progress" },
+      { label: "Technical Specifications",  state: "todo" },
+      { label: "User Training",             state: "todo" },
+      { label: "Production Rollout",        state: "todo" }
+    ];
+
+    const ACTIVITY = [
+      "Discovery workshop completed",
+      "Stakeholder interview notes added",
+      "Draft recommendations published"
+    ];
+
+    const KEY_DOCS = [
+      { title: "Discovery Deck", href: "/clients/trace/discovery/" },
+      { title: "Meeting Notes",  href: null },
+      { title: "Contract",       href: null }
+    ];
+
+    const LIBRARY = [
+      { group: "Strategy", items: [
+        { title: "Discovery",                href: "/clients/trace/discovery/" },
+        { title: "Current State Assessment", href: null },
+        { title: "Opportunity Assessment",   href: null },
+        { title: "AI Roadmap",               href: null }
+      ]},
+      { group: "Engineering", items: [
+        { title: "Architecture",        href: null },
+        { title: "Technical Specs",     href: null },
+        { title: "Agent Documentation", href: null },
+        { title: "Integrations",        href: null },
+        { title: "Testing",             href: null }
+      ]},
+      { group: "Adoption", items: [
+        { title: "Training",             href: null },
+        { title: "User Guides",          href: null },
+        { title: "Governance",           href: null },
+        { title: "Operating Procedures", href: null }
+      ]},
+      { group: "Project", items: [
+        { title: "Meeting Notes",      href: null },
+        { title: "Decisions Log",      href: null },
+        { title: "Timeline",           href: null },
+        { title: "Contract Documents", href: null }
+      ]}
+    ];
   </script>
   <!-- ============================================================= -->
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --dark:     #0B0C10;
-      --dark2:    #12141A;
-      --accent:   #2563EB;
-      --accent-lt:#EFF6FF;
-      --cyan:     #2DD4FF;
-      --bg:       #FFFFFF;
-      --bg-alt:   #F8F9FB;
-      --border:   #E4E7EE;
-      --muted:    #64748B;
-      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --dark:#0B0C10; --accent:#2563EB; --accent-lt:#EFF6FF; --cyan:#2DD4FF;
+      --bg:#FFFFFF; --bg-alt:#F8F9FB; --border:#E4E7EE; --muted:#64748B;
+      --green:#16A34A;
+      --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--dark);
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    body { background: var(--bg-alt); color: var(--dark); font-family: var(--font); font-size: 16px; line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
 
-    nav {
-      display: flex; align-items: center; padding: 0 2rem; height: 64px;
-      background: rgba(11,12,16,0.96); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
-    }
+    nav { display: flex; align-items: center; padding: 0 2rem; height: 64px; background: rgba(11,12,16,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
     .nav-wordmark { text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
     .nav-logo { width: 44px; height: 44px; flex-shrink: 0; }
     .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
-    .nav-wordmark-name {
-      font-family: 'Manrope', system-ui, sans-serif; font-size: 1.4rem; font-weight: 800;
-      letter-spacing: -0.025em; line-height: 1.1; color: #FFFFFF;
-    }
-    .nav-wordmark-name .wm-gradient {
-      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
-      background-clip: text; -webkit-background-clip: text;
-      color: transparent; -webkit-text-fill-color: transparent;
-    }
+    .nav-wordmark-name { font-family: 'Manrope', system-ui, sans-serif; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: #FFFFFF; }
+    .nav-wordmark-name .wm-gradient { background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
     .nav-wordmark-tagline { font-size: 0.8rem; font-weight: 400; color: #FFFFFF; line-height: 1.2; margin-top: 2px; }
+    .nav-client { margin-left: auto; display: flex; align-items: center; gap: 0.55rem; }
+    .nav-client img { height: 38px; width: 38px; border-radius: 8px; object-fit: contain; }
+    .nav-client .nav-client-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .lock-client-logo { width: 64px; height: 64px; border-radius: 14px; display: block; margin: 0 auto 1.1rem; object-fit: contain; }
+    .dash-logo { width: 52px; height: 52px; border-radius: 12px; display: block; margin-bottom: 0.9rem; object-fit: contain; }
 
-    #lock {
-      flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;
-      background:
-        radial-gradient(900px 500px at 80% -10%, rgba(45,212,255,0.10), transparent 60%),
-        radial-gradient(800px 500px at 10% 110%, rgba(37,99,235,0.10), transparent 60%),
-        var(--bg-alt);
-    }
-    .lock-card {
-      width: 100%; max-width: 420px; background: #fff; border: 1px solid var(--border);
-      border-radius: 18px; padding: 2.6rem 2.4rem;
-      box-shadow: 0 20px 50px -24px rgba(11,12,16,0.25); text-align: center;
-    }
-    .lock-icon {
-      width: 54px; height: 54px; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center;
-      border-radius: 14px; background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff;
-    }
+    /* LOCK */
+    #lock { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;
+      background: radial-gradient(900px 500px at 80% -10%, rgba(45,212,255,0.10), transparent 60%), radial-gradient(800px 500px at 10% 110%, rgba(37,99,235,0.10), transparent 60%), var(--bg-alt); }
+    .lock-card { width: 100%; max-width: 420px; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 2.6rem 2.4rem; box-shadow: 0 20px 50px -24px rgba(11,12,16,0.25); text-align: center; }
+    .lock-icon { width: 54px; height: 54px; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff; }
     .lock-card h1 { font-family: 'Manrope', sans-serif; font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .lock-card p.sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
     .lock-form { display: flex; flex-direction: column; gap: 0.8rem; }
-    .lock-form input {
-      width: 100%; padding: 0.85rem 1rem; font-size: 1rem; font-family: var(--font); color: var(--dark);
-      border: 1px solid var(--border); border-radius: 10px; background: var(--bg-alt);
-    }
+    .lock-form input { width: 100%; padding: 0.85rem 1rem; font-size: 1rem; font-family: var(--font); color: var(--dark); border: 1px solid var(--border); border-radius: 10px; background: var(--bg-alt); }
     .lock-form input:focus { outline: none; border-color: var(--accent); background: #fff; }
-    .lock-form button {
-      width: 100%; padding: 0.85rem 1rem; font-size: 1rem; font-weight: 600; font-family: var(--font); color: #fff;
-      cursor: pointer; border: none; border-radius: 10px; background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+    .lock-form button { width: 100%; padding: 0.85rem 1rem; font-size: 1rem; font-weight: 600; font-family: var(--font); color: #fff; cursor: pointer; border: none; border-radius: 10px; background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); transition: transform 0.15s ease, box-shadow 0.15s ease; }
     .lock-form button:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px rgba(37,99,235,0.6); }
     .lock-error { color: #DC2626; font-size: 0.9rem; min-height: 1.2rem; margin-top: 0.2rem; visibility: hidden; }
     .lock-error.show { visibility: visible; }
     .lock-foot { margin-top: 1.6rem; font-size: 0.82rem; color: var(--muted); }
     .lock-foot a { color: var(--accent); text-decoration: none; }
 
-    #presentation { flex: 1; display: none; flex-direction: column; }
-    #presentation.show { display: flex; }
-    .deck-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2.5rem; flex-wrap: wrap; padding: 1.1rem 2rem; border-bottom: 1px solid var(--border); background: var(--bg); }
-    .deck-headtext { min-width: 0; }
-    .deck-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
-    .deck-header h1 { font-family: 'Manrope', sans-serif; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.15rem; }
-    .deck-header .deck-sub { color: var(--muted); font-size: 0.95rem; }
-    .deck-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0; flex-shrink: 0; }
-    .deck-btn {
-      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; font-size: 0.92rem; font-weight: 600;
-      border-radius: 10px; text-decoration: none; cursor: pointer; border: 1px solid var(--border); background: #fff; color: var(--dark);
-      transition: border-color 0.15s ease, transform 0.15s ease;
-    }
-    .deck-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .deck-btn.primary { background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff; border: none; }
-    .deck-viewer { flex: 1; min-height: 70vh; background: var(--bg-alt); }
-    .deck-viewer iframe { width: 100%; height: 100%; min-height: 70vh; border: 0; display: block; }
-    .deck-noviewer { padding: 3rem 2rem; text-align: center; color: var(--muted); }
+    /* PORTAL / DASHBOARD */
+    #portal { flex: 1; display: none; }
+    #portal.show { display: block; }
+    .portal-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 2.4rem 2rem 3.5rem;
+      display: grid; grid-template-columns: minmax(300px, 350px) 1fr; gap: 1.8rem; align-items: start; }
+    @media (max-width: 880px) { .portal-inner { grid-template-columns: 1fr; } }
+
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 16px; }
+
+    /* Left dashboard */
+    .dash { display: flex; flex-direction: column; gap: 1.2rem; }
+    .dash-head { padding: 1.6rem 1.6rem 1.5rem; }
+    .dash-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .dash-client { font-family: 'Manrope', sans-serif; font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+    .dash-engagement { color: var(--muted); font-size: 0.98rem; margin-top: 0.25rem; }
+    .dash-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.1rem; }
+    .pill { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; padding: 0.32rem 0.7rem; border-radius: 999px; }
+    .pill-active { background: #E9F8EF; color: var(--green); }
+    .pill-phase { background: var(--accent-lt); color: var(--accent); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+    .dash-block { padding: 1.4rem 1.6rem; }
+    .dash-block h3 { font-family: 'Manrope', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
+
+    .progress { list-style: none; }
+    .progress li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.32rem 0; font-size: 0.92rem; }
+    .pico { flex-shrink: 0; width: 20px; height: 20px; margin-top: 1px; }
+    .progress .done .ptxt { color: var(--dark); }
+    .progress .todo .ptxt { color: var(--muted); }
+    .progress .active .ptxt { color: var(--dark); font-weight: 600; }
+    .pnote { color: var(--accent); font-weight: 600; font-size: 0.82rem; margin-left: 0.35rem; }
+
+    .activity { list-style: none; }
+    .activity li { position: relative; padding: 0 0 0.9rem 1.1rem; font-size: 0.9rem; color: var(--muted); }
+    .activity li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
+    .activity li::after { content: ""; position: absolute; left: 3px; top: 15px; bottom: -2px; width: 1px; background: var(--border); }
+    .activity li:last-child { padding-bottom: 0; }
+    .activity li:last-child::after { display: none; }
+
+    .keydocs { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .keydoc { display: flex; align-items: center; gap: 0.55rem; font-size: 0.9rem; text-decoration: none; color: var(--dark); }
+    a.keydoc:hover { color: var(--accent); }
+    .keydoc.soon { color: var(--muted); cursor: not-allowed; }
+    .keydoc svg { flex-shrink: 0; color: var(--muted); }
+    a.keydoc svg { color: var(--accent); }
+
+    /* Right library */
+    .library { display: flex; flex-direction: column; }
+    .library > h2 { font-family: 'Manrope', sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.3rem; }
+    .lib-group { margin-bottom: 1.7rem; }
+    .lib-group h3 { font-family: 'Manrope', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-bottom: 0.55rem; border-bottom: 1px solid var(--border); margin-bottom: 0.9rem; }
+    .lib-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.65rem; }
+    .lib-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.8rem 0.95rem; border: 1px solid var(--border); border-radius: 11px; background: #fff; text-decoration: none; color: var(--dark); font-size: 0.92rem; font-weight: 500; }
+    a.lib-item { transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease; }
+    a.lib-item:hover { border-color: var(--accent); background: var(--accent-lt); transform: translateY(-1px); }
+    .lib-item.soon { opacity: 0.6; background: var(--bg-alt); cursor: not-allowed; }
+    .lib-ico { flex-shrink: 0; color: var(--muted); display: flex; }
+    a.lib-item .lib-ico { color: var(--accent); }
+    .lib-item .lib-title { flex: 1; }
+    .lib-arrow { color: var(--accent); flex-shrink: 0; }
 
     footer { padding: 1.2rem 2rem; text-align: center; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
     footer a { color: var(--accent); text-decoration: none; }
@@ -138,20 +195,22 @@
 <body>
   <nav>
     <a href="https://futureinsites.com" class="nav-wordmark">
-      <img src="../../images/fis-logo-160.png" class="nav-logo" alt="">
+      <img src="/images/fis-logo-160.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
         <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
         <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
       </div>
     </a>
+    <span class="nav-client">
+      <span class="nav-client-label">Client</span>
+      <img src="/clients/trace/trace-logo.png" alt="TRACE" onerror="this.closest('.nav-client').style.display='none'">
+    </span>
   </nav>
 
   <section id="lock">
     <div class="lock-card">
-      <div class="lock-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <h1>Private Presentation</h1>
+      <img class="lock-client-logo" src="/clients/trace/trace-logo.png" alt="TRACE" onerror="this.style.display='none'">
+      <h1>Client Portal</h1>
       <p class="sub">Enter the access code provided to you.</p>
       <form class="lock-form" id="lockForm">
         <input type="password" id="pw" placeholder="Access code" autocomplete="off" autofocus />
@@ -162,16 +221,35 @@
     </div>
   </section>
 
-  <section id="presentation">
-    <div class="deck-header">
-      <div class="deck-headtext">
-        <div class="deck-eyebrow" id="deckEyebrow">Prepared for</div>
-        <h1 id="deckTitle"></h1>
-        <div class="deck-sub" id="deckSub"></div>
-      </div>
-      <div class="deck-actions" id="deckActions"></div>
+  <section id="portal">
+    <div class="portal-inner">
+      <aside class="dash">
+        <div class="card dash-head">
+          <img class="dash-logo" src="/clients/trace/trace-logo.png" alt="TRACE" onerror="this.style.display='none'">
+          <div class="dash-eyebrow">Client Portal</div>
+          <div class="dash-client" id="dashClient"></div>
+          <div class="dash-engagement" id="dashEngagement"></div>
+          <div class="dash-meta" id="dashMeta"></div>
+        </div>
+        <div class="card dash-block">
+          <h3>Deliverables</h3>
+          <ul class="progress" id="progress"></ul>
+        </div>
+        <div class="card dash-block">
+          <h3>Recent Activity</h3>
+          <ul class="activity" id="activity"></ul>
+        </div>
+        <div class="card dash-block">
+          <h3>Key Documents</h3>
+          <ul class="keydocs" id="keydocs"></ul>
+        </div>
+      </aside>
+
+      <main class="library">
+        <h2>Documents</h2>
+        <div id="libGroups"></div>
+      </main>
     </div>
-    <div class="deck-viewer" id="deckViewer"></div>
   </section>
 
   <footer>
@@ -181,38 +259,67 @@
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
 
+    const I = {
+      doc:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+      arrow: '<svg class="lib-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+      check: '<svg class="pico" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#16A34A"/><path d="M8 12.5l2.5 2.5 5-5.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      active:'<svg class="pico" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="none" stroke="#2563EB" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="#2563EB"/></svg>',
+      todo:  '<svg class="pico" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#CBD2DD" stroke-width="2"/></svg>'
+    };
+
+    function reveal() {
+      // Header
+      document.getElementById('dashClient').textContent = ENGAGEMENT.client;
+      document.getElementById('dashEngagement').textContent = ENGAGEMENT.name;
+      document.getElementById('dashMeta').innerHTML =
+        '<span class="pill pill-active"><span class="dot"></span>' + ENGAGEMENT.status + '</span>' +
+        '<span class="pill pill-phase">Phase: ' + ENGAGEMENT.phase + '</span>';
+
+      // Deliverables progress
+      document.getElementById('progress').innerHTML = DELIVERABLES.map(function (d) {
+        const ico = d.state === 'done' ? I.check : (d.state === 'active' ? I.active : I.todo);
+        const note = d.note ? '<span class="pnote">' + d.note + '</span>' : '';
+        return '<li class="' + d.state + '">' + ico + '<span class="ptxt">' + d.label + note + '</span></li>';
+      }).join('');
+
+      // Activity
+      document.getElementById('activity').innerHTML = ACTIVITY.map(function (a) {
+        return '<li>' + a + '</li>';
+      }).join('');
+
+      // Key documents
+      document.getElementById('keydocs').innerHTML = KEY_DOCS.map(function (k) {
+        if (k.href) return '<li><a class="keydoc" href="' + k.href + '">' + I.doc + k.title + '</a></li>';
+        return '<li><span class="keydoc soon">' + I.doc + k.title + '</span></li>';
+      }).join('');
+
+      // Document library
+      document.getElementById('libGroups').innerHTML = LIBRARY.map(function (g) {
+        const items = g.items.map(function (it) {
+          if (it.href) {
+            return '<a class="lib-item" href="' + it.href + '"><span class="lib-ico">' + I.doc + '</span><span class="lib-title">' + it.title + '</span>' + I.arrow + '</a>';
+          }
+          return '<div class="lib-item soon" aria-disabled="true"><span class="lib-ico">' + I.doc + '</span><span class="lib-title">' + it.title + '</span></div>';
+        }).join('');
+        return '<div class="lib-group"><h3>' + g.group + '</h3><div class="lib-items">' + items + '</div></div>';
+      }).join('');
+
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('portal').classList.add('show');
+    }
+
     async function sha256(text) {
       const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    function reveal() {
-      document.getElementById('deckTitle').textContent = CLIENT.title || 'Presentation';
-      document.getElementById('deckSub').textContent = CLIENT.subtitle || '';
-      document.getElementById('deckEyebrow').textContent = CLIENT.client ? 'Prepared for ' + CLIENT.client : 'Presentation';
-      document.title = (CLIENT.client ? CLIENT.client + ' · ' : '') + (CLIENT.title || 'Presentation') + ' | FutureInSites';
-
-      const actions = document.getElementById('deckActions');
-      const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
-      if (CLIENT.pdfFile) actions.innerHTML += '<a class="deck-btn primary" href="' + CLIENT.pdfFile + '" download>' + dlIcon + 'Download PDF</a>';
-      if (CLIENT.pptFile) actions.innerHTML += '<a class="deck-btn" href="' + CLIENT.pptFile + '" download>' + dlIcon + 'Download PowerPoint</a>';
-
-      const viewer = document.getElementById('deckViewer');
-      if (CLIENT.viewerFile) viewer.innerHTML = '<iframe src="' + CLIENT.viewerFile + '#view=FitH" title="Presentation"></iframe>';
-      else viewer.innerHTML = '<div class="deck-noviewer">Use the download button above to open the presentation.</div>';
-
-      document.getElementById('lock').style.display = 'none';
-      document.getElementById('presentation').classList.add('show');
-    }
-
-    if (sessionStorage.getItem('fis-unlocked-' + CLIENT.slug) === '1') reveal();
+    if (sessionStorage.getItem('fis-unlocked-' + PORTAL.slug) === '1') reveal();
 
     document.getElementById('lockForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      const entered = document.getElementById('pw').value;
-      const hash = await sha256(CLIENT.slug + ':' + entered);
-      if (hash === CLIENT.passwordHash) {
-        sessionStorage.setItem('fis-unlocked-' + CLIENT.slug, '1');
+      const hash = await sha256(PORTAL.slug + ':' + document.getElementById('pw').value);
+      if (hash === PORTAL.passwordHash) {
+        sessionStorage.setItem('fis-unlocked-' + PORTAL.slug, '1');
         reveal();
       } else {
         document.getElementById('err').classList.add('show');
