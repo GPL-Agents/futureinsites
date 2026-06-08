@@ -29,7 +29,7 @@
     };
 
     const ENGAGEMENT = {
-      client: "TRACE",
+      client: "Trace Services",
       name:   "AI Discovery Engagement",
       status: "Active",
       phase:  "Discovery"
@@ -97,7 +97,9 @@
     html { scroll-behavior: smooth; }
     body { background: var(--bg-alt); color: var(--dark); font-family: var(--font); font-size: 16px; line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
 
-    nav { display: flex; align-items: center; padding: 0 2rem; height: 64px; background: rgba(11,12,16,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+    nav { position: relative; display: flex; align-items: center; padding: 0 2rem; height: 64px; background: rgba(11,12,16,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+    .nav-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em; color: #FFFFFF; }
+    @media (max-width: 680px) { .nav-center { display: none; } }
     .nav-wordmark { text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
     .nav-logo { width: 44px; height: 44px; flex-shrink: 0; }
     .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
@@ -108,7 +110,7 @@
     .nav-client img { height: 38px; width: 38px; border-radius: 8px; object-fit: contain; }
     .nav-client .nav-client-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
     .lock-client-logo { width: 64px; height: 64px; border-radius: 14px; display: block; margin: 0 auto 1.1rem; object-fit: contain; }
-    .dash-logo { width: 52px; height: 52px; border-radius: 12px; display: block; margin-bottom: 0.9rem; object-fit: contain; }
+    .dash-logo { height: 42px; width: auto; max-width: 240px; display: block; margin-bottom: 0.8rem; object-fit: contain; }
 
     /* LOCK */
     #lock { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;
@@ -140,7 +142,7 @@
     .dash { display: flex; flex-direction: column; gap: 1.2rem; }
     .dash-head { padding: 1.6rem 1.6rem 1.5rem; }
     .dash-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-    .dash-client { font-family: 'Manrope', sans-serif; font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+    .dash-client { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
     .dash-engagement { color: var(--muted); font-size: 0.98rem; margin-top: 0.25rem; }
     .dash-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.1rem; }
     .pill { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; padding: 0.32rem 0.7rem; border-radius: 999px; }
@@ -201,9 +203,10 @@
         <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
       </div>
     </a>
+    <span class="nav-center">Client Portal</span>
     <span class="nav-client">
-      <span class="nav-client-label">Client</span>
-      <img src="/clients/trace/TraceFavicon.webp" alt="TRACE" onerror="this.closest('.nav-client').style.display='none'">
+      <span class="nav-client-label">Trace Services</span>
+      <img src="/clients/trace/TraceFavicon.webp" alt="Trace Services" onerror="this.closest('.nav-client').style.display='none'">
     </span>
   </nav>
 
@@ -225,10 +228,8 @@
     <div class="portal-inner">
       <aside class="dash">
         <div class="card dash-head">
-          <img class="dash-logo" src="/clients/trace/TraceFavicon.webp" alt="TRACE" onerror="this.style.display='none'">
-          <div class="dash-eyebrow">Client Portal</div>
+          <img class="dash-logo" src="/clients/trace/TraceServicesLogo.webp" alt="Trace Services" onerror="this.style.display='none'">
           <div class="dash-client" id="dashClient"></div>
-          <div class="dash-engagement" id="dashEngagement"></div>
           <div class="dash-meta" id="dashMeta"></div>
         </div>
         <div class="card dash-block">
@@ -270,7 +271,6 @@
     function reveal() {
       // Header
       document.getElementById('dashClient').textContent = ENGAGEMENT.client;
-      document.getElementById('dashEngagement').textContent = ENGAGEMENT.name;
       document.getElementById('dashMeta').innerHTML =
         '<span class="pill pill-active"><span class="dot"></span>' + ENGAGEMENT.status + '</span>' +
         '<span class="pill pill-phase">Phase: ' + ENGAGEMENT.phase + '</span>';
