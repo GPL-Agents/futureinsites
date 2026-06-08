@@ -41,10 +41,9 @@
 
     const DELIVERABLES = [
       { label: "Introduction Call",         state: "active", note: "Jun 10" },
-      { label: "Information Request List",   state: "todo" },
-      { label: "Diligence Follow-ups",       state: "todo" },
-      { label: "Onsite Diligence",           state: "todo" },
-      { label: "Recommendations & Roadmap",  state: "todo" }
+      { label: "Discovery",                 state: "todo" },
+      { label: "BCT Workshop",              state: "todo" },
+      { label: "Recommendations & Roadmap", state: "todo" }
     ];
 
     const KEY_DOCS = [
@@ -56,6 +55,8 @@
     const LIBRARY = [
       { group: "Strategy", items: [
         { title: "Introduction",             href: "/clients/trace/discovery/" },
+        { title: "Discovery",                href: null },
+        { title: "Information Request List", href: null },
         { title: "Current State Assessment", href: null },
         { title: "Opportunity Assessment",   href: null },
         { title: "AI Roadmap",               href: null }
@@ -107,7 +108,7 @@
     .nav-client img { height: 38px; width: 38px; border-radius: 8px; object-fit: contain; }
     .nav-client .nav-client-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
     .lock-client-logo { width: 64px; height: 64px; border-radius: 14px; display: block; margin: 0 auto 1.1rem; object-fit: contain; }
-    .dash-logo { height: 42px; width: auto; max-width: 240px; display: block; margin-bottom: 0.8rem; object-fit: contain; }
+    .dash-logo { height: 40px; width: auto; max-width: 230px; display: inline-block; margin-bottom: 0.9rem; object-fit: contain; background: #12141A; padding: 0.6rem 0.9rem; border-radius: 10px; box-sizing: content-box; }
 
     /* LOCK */
     #lock { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;
