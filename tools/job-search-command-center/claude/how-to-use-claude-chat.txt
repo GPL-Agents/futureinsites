@@ -1,0 +1,43 @@
+JOB SEARCH COMMAND CENTER — Claude Chat: how to use it
+
+This version runs in a Claude Project. Open the Project and type one of the
+prompts below. It reads and writes your Google Sheet pipeline through the
+connected tools. There are no buttons here — you just paste a prompt and send it.
+(Type "menu" any time to see this list.)
+
+------------------------------------------------------------------------
+TRIAGE — score and save a new role
+What it does: scores the role on background fit, interview odds, and comp against
+your profile, gives a verdict (Strong Yes / Apply / Investigate / Pass), and saves
+it to your pipeline if it scores 55 or higher.
+Prompt:
+    Triage this role: [paste the job description or link]
+
+TRACK — update a role you already have
+What it does: finds the matching role and updates its status in place (no duplicate).
+Prompt:
+    Track update: [Company] — [what changed, e.g. "I applied today" or
+    "recruiter replied, move to waiting"]
+
+DRAFT — write outreach
+What it does: writes a tailored draft grounded in your resume and that role.
+Prompt:
+    Draft a [cover letter / follow-up email / LinkedIn note] for the [Company] [role] role.
+
+DAILY PLAN — today's plan
+What it does: builds today's prioritized follow-ups and next actions from your pipeline.
+Prompt:
+    Build today's daily plan from my pipeline.
+
+REFRESH ALL — pipeline diagnostics
+What it does: flags stale follow-ups, applications with no response, and records
+missing key information.
+Prompt:
+    Refresh all: flag stale follow-ups, no-response applications, and records missing info.
+------------------------------------------------------------------------
+
+Setup reminder (one time):
+- Create a Claude Project named "Job Search Command Center".
+- Paste project-instructions.txt into the Project's instructions.
+- Enable the "Job Search Command Center" connector for the Project.
+- Optionally add this file to the Project so the commands are always handy.

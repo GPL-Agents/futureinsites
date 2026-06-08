@@ -1,0 +1,1 @@
+id	company	company_slug	role	link	status	waiting_reason	status_reason	date_added	date_applied	comp_base_min	comp_base_max	comp_range_text	location_compatible	warm_intro_available	recruiter_contact	unknowns	why_deprioritized	last_action_date	next_action	score_locked	score_snapshot	notes	jd_text	jd_source	jd_captured_at

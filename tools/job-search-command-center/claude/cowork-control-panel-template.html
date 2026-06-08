@@ -1,0 +1,168 @@
+<!--
+  COWORK CONTROL PANEL TEMPLATE
+  Before using: replace every YOUR_CONNECTOR_ID below with your own connector's
+  server id. After you add the 'Job Search Command Center' connector in Claude,
+  its tool names look like  mcp__<id>__get_opportunities . Copy that <id> and
+  paste it in place of YOUR_CONNECTOR_ID (3 occurrences).
+  This panel runs the model-free modes only: live counts, Daily Plan, Refresh,
+  and Track. Triage and Draft need the model, so type those in the Cowork chat.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Search Command Center</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#f7f8fa; color:#14181f; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif; line-height:1.45; padding:20px; }
+  .wrap { max-width:780px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 2px; }
+  .sub { color:#5b6472; font-size:13px; margin:0 0 16px; }
+  .summary { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
+  .stat { background:#fff; border:1px solid #e6e9ee; border-radius:12px; padding:12px 16px; min-width:92px; flex:1; }
+  .stat .n { font-size:24px; font-weight:700; }
+  .stat .l { font-size:12px; color:#5b6472; }
+  .stat.accent .n { background:linear-gradient(90deg,#06b6d4,#4f46e5); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .card { background:#fff; border:1px solid #e6e9ee; border-radius:14px; padding:16px; margin-bottom:14px; }
+  .card h3 { margin:0 0 4px; font-size:15px; }
+  .card p { margin:0 0 10px; font-size:12.5px; color:#5b6472; }
+  input { width:100%; border:1px solid #d7dce3; border-radius:9px; padding:9px 11px; font:inherit; font-size:13px; background:#fff; color:#14181f; }
+  button { border:0; border-radius:9px; padding:9px 15px; font:inherit; font-weight:600; font-size:13px; cursor:pointer; background:#fff; color:#1f2733; border:1px solid #d7dce3; }
+  button:disabled { opacity:.55; cursor:default; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:600px){ .two { grid-template-columns:1fr; } }
+  .note { background:#eef2ff; border:1px solid #dfe4ff; color:#33407a; border-radius:12px; padding:12px 14px; font-size:12.5px; margin-bottom:14px; }
+  .note code { background:#fff; border:1px solid #dfe4ff; border-radius:5px; padding:1px 5px; }
+  .foot { color:#8a93a2; font-size:11px; text-align:center; margin-top:16px; }
+  .err { color:#b4232a; font-size:12px; }
+  #result { background:#0f172a; color:#e7edf5; border-radius:14px; padding:16px 18px; margin-top:6px; }
+  #result h4 { margin:0 0 10px; font-size:14px; color:#9fd2ff; }
+  #result .body { font-size:13px; line-height:1.55; }
+  #result .body h5 { margin:12px 0 4px; font-size:12px; color:#9fd2ff; text-transform:uppercase; letter-spacing:.04em; }
+  #result .body ul { margin:4px 0; padding-left:18px; } #result .body li { margin:2px 0; }
+  .hidden { display:none; }
+  .spin { display:inline-block; width:13px; height:13px; border:2px solid #9fb0c7; border-top-color:transparent; border-radius:50%; animation:s .8s linear infinite; vertical-align:-2px; margin-right:6px; }
+  @keyframes s { to { transform:rotate(360deg); } }
+  .muted { color:#9fb0c7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Job Search Command Center</h1>
+  <p class="sub">Live view of your pipeline. The three buttons below run instantly. Reload (top) to refresh counts.</p>
+
+  <div class="summary">
+    <div class="stat accent"><div class="n" id="s-active">…</div><div class="l">Active</div></div>
+    <div class="stat"><div class="n" id="s-applied">…</div><div class="l">Applied</div></div>
+    <div class="stat"><div class="n" id="s-prospective">…</div><div class="l">Prospective</div></div>
+    <div class="stat"><div class="n" id="s-interviewing">…</div><div class="l">Interviewing</div></div>
+    <div class="stat"><div class="n" id="s-waiting">…</div><div class="l">Waiting</div></div>
+  </div>
+  <div class="err" id="summary-err"></div>
+
+  <div class="note">To <strong>triage a new role</strong> or <strong>draft outreach</strong>, type it in the chat (those need the full model): e.g. <code>triage this:</code> then paste a job, or <code>draft a cover letter for the Acme role</code>.</div>
+
+  <div class="two">
+    <div class="card">
+      <h3>Daily plan</h3>
+      <p>Today's prioritized actions from your pipeline.</p>
+      <button id="b-plan" onclick="runPlan()">Build today's plan</button>
+    </div>
+    <div class="card">
+      <h3>Refresh all</h3>
+      <p>Diagnostics: stale follow-ups, no-response apps, missing info.</p>
+      <button id="b-refresh" onclick="runRefresh()">Run diagnostics</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Track an update</h3>
+    <p>Plain-language status change. Mention the company.</p>
+    <input id="track-in" placeholder='e.g. "Acme — I applied today"'>
+    <div style="margin-top:10px"><button id="b-track" onclick="runTrack()">Update pipeline</button></div>
+  </div>
+
+  <div id="result" class="hidden"><h4 id="result-title"></h4><div class="body" id="result-body"></div></div>
+  <div class="foot">Built with FutureInSites · runs on your Google Sheet pipeline</div>
+</div>
+
+<script>
+  const GET="mcp__YOUR_CONNECTOR_ID__get_opportunities";
+  const UPDATE="mcp__YOUR_CONNECTOR_ID__update_opportunity";
+  const $=id=>document.getElementById(id);
+  function showResult(t,h){ $("result").classList.remove("hidden"); $("result-title").innerHTML=t; $("result-body").innerHTML=h; $("result").scrollIntoView({behavior:"smooth",block:"nearest"}); }
+  function loading(t){ showResult(t,'<span class="spin"></span>Working…'); }
+  function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function today(){ return new Date().toISOString().slice(0,10); }
+  function daysSince(d){ if(!d) return null; const t=Date.parse(d); return isNaN(t)?null:Math.floor((Date.now()-t)/86400000); }
+  function statusOf(o){ return String(o.status||"").toLowerCase(); }
+  function withTimeout(p,ms,label){ return Promise.race([Promise.resolve(p), new Promise((_,rej)=>setTimeout(()=>rej(new Error((label||"Request")+" timed out ("+(ms/1000)+"s). Try again.")),ms))]); }
+  function parseResult(res){ if(!res) return null; if(res.opportunities) return res; if(res.content&&res.content[0]&&res.content[0].text){try{return JSON.parse(res.content[0].text);}catch(e){}} if(typeof res==="string"){try{return JSON.parse(res);}catch(e){}} if(res.result) return parseResult(res.result); return null; }
+  async function getOps(){ const raw=await withTimeout(window.cowork.callMcpTool(GET,{}),30000,"Reading pipeline"); const d=parseResult(raw); return (d&&d.opportunities)||[]; }
+  function dis(id,on){ const b=$(id); if(b) b.disabled=on; }
+
+  async function runPlan(){
+    dis("b-plan",true); loading("Daily plan");
+    try{
+      const ops=await getOps();
+      const active=ops.filter(o=>["applied","prospective","interviewing","waiting"].includes(statusOf(o)));
+      const interviewing=active.filter(o=>statusOf(o)==="interviewing");
+      const followups=active.filter(o=>statusOf(o)==="waiting"||o.next_action);
+      const awaiting=active.filter(o=>statusOf(o)==="applied").sort((a,b)=>(daysSince(b.date_applied)||0)-(daysSince(a.date_applied)||0));
+      const prospects=active.filter(o=>statusOf(o)==="prospective").slice(0,6);
+      const li=o=>`<li><strong>${esc(o.company)}</strong> — ${esc(o.role)}${o.next_action?` · ${esc(o.next_action)}`:""}</li>`;
+      let h=`<div class="muted">${active.length} active roles. Today's focus:</div>`;
+      if(interviewing.length) h+=`<h5>Interviewing — prep</h5><ul>${interviewing.map(li).join("")}</ul>`;
+      h+=`<h5>Follow up</h5>`+(followups.length?`<ul>${followups.slice(0,8).map(o=>`<li><strong>${esc(o.company)}</strong> — ${esc(o.role)}${o.last_action_date?` · last touch ${daysSince(o.last_action_date)??"?"}d ago`:""}</li>`).join("")}</ul>`:`<div class="muted">Nothing waiting.</div>`);
+      h+=`<h5>Awaiting response</h5>`+(awaiting.length?`<ul>${awaiting.slice(0,8).map(o=>`<li><strong>${esc(o.company)}</strong> — ${esc(o.role)}${o.date_applied?` · applied ${daysSince(o.date_applied)??"?"}d ago`:""}</li>`).join("")}</ul>`:`<div class="muted">None.</div>`);
+      h+=`<h5>New to pursue</h5>`+(prospects.length?`<ul>${prospects.map(li).join("")}</ul>`:`<div class="muted">None queued.</div>`);
+      showResult("Daily plan",h);
+    }catch(e){ showResult("Daily plan","Error: "+esc(e&&e.message?e.message:e)); } finally{ dis("b-plan",false); }
+  }
+  async function runRefresh(){
+    dis("b-refresh",true); loading("Refresh all");
+    try{
+      const ops=await getOps();
+      const active=ops.filter(o=>["applied","prospective","interviewing","waiting"].includes(statusOf(o)));
+      const stale=active.filter(o=>statusOf(o)==="waiting"&&(!o.next_action||(daysSince(o.last_action_date)||0)>7));
+      const noResp=active.filter(o=>statusOf(o)==="applied"&&(daysSince(o.date_applied)||0)>14);
+      const missing=active.filter(o=>!o.next_action||!o.company_slug||!o.recruiter_contact);
+      const li=o=>`<li><strong>${esc(o.company)}</strong> — ${esc(o.role)}</li>`;
+      let h="";
+      h+=`<h5>Stale follow-ups (${stale.length})</h5>`+(stale.length?`<ul>${stale.slice(0,12).map(li).join("")}</ul>`:`<div class="muted">None.</div>`);
+      h+=`<h5>Applied, no response 14d+ (${noResp.length})</h5>`+(noResp.length?`<ul>${noResp.slice(0,12).map(o=>`<li><strong>${esc(o.company)}</strong> — ${esc(o.role)} · ${daysSince(o.date_applied)??"?"}d</li>`).join("")}</ul>`:`<div class="muted">None.</div>`);
+      h+=`<h5>Missing key info (${missing.length})</h5>`+(missing.length?`<ul>${missing.slice(0,12).map(li).join("")}</ul>`:`<div class="muted">None.</div>`);
+      showResult("Refresh all",h);
+    }catch(e){ showResult("Refresh all","Error: "+esc(e&&e.message?e.message:e)); } finally{ dis("b-refresh",false); }
+  }
+  async function runTrack(){
+    const upd=$("track-in").value.trim(); if(!upd){ $("track-in").focus(); return; }
+    dis("b-track",true); loading("Track");
+    try{
+      const ops=await getOps(); const lc=upd.toLowerCase();
+      let best=null,bestLen=0;
+      ops.forEach(o=>{ const c=String(o.company||"").toLowerCase(); if(c&&lc.includes(c)&&c.length>bestLen){best=o;bestLen=c.length;} });
+      if(!best){ showResult("Track","Could not find a matching role. Mention the company name as it appears in your pipeline."); return; }
+      let status=null, extra={};
+      if(/\bapplied\b|\bsubmitted\b|\bapply\b/.test(lc)){ status="Applied"; extra.date_applied=today(); }
+      else if(/interview/.test(lc)) status="Interviewing";
+      else if(/reject|declined|turned down|no longer|closed|withdrew|withdrawn/.test(lc)) status="Closed";
+      else if(/waiting|heard back|replied|reached out|recruiter|response|follow/.test(lc)) status="Waiting";
+      const rec={id:best.id,status_reason:upd,last_action_date:today()}; if(status) rec.status=status; Object.assign(rec,extra);
+      await withTimeout(window.cowork.callMcpTool(UPDATE,{record:rec}),30000,"Updating");
+      showResult("Track",`Updated <strong>${esc(best.company)}</strong> — ${esc(best.role)}${status?` → <strong>${esc(status)}</strong>`:""}.<br><span class="muted">${esc(upd)}</span>`);
+      loadSummary();
+    }catch(e){ showResult("Track","Error: "+esc(e&&e.message?e.message:e)); } finally{ dis("b-track",false); }
+  }
+  async function loadSummary(){
+    try{ const ops=await getOps(); const c={}; ops.forEach(o=>{const s=statusOf(o); c[s]=(c[s]||0)+1;});
+      const a=c.applied||0,p=c.prospective||0,i=c.interviewing||0,w=c.waiting||0;
+      $("s-applied").textContent=a; $("s-prospective").textContent=p; $("s-interviewing").textContent=i; $("s-waiting").textContent=w; $("s-active").textContent=a+p+i+w;
+    }catch(e){ $("summary-err").textContent="Could not load summary: "+(e&&e.message?e.message:e); ["s-active","s-applied","s-prospective","s-interviewing","s-waiting"].forEach(id=>$(id).textContent="–"); }
+  }
+  loadSummary();
+</script>
+</body>
+</html>

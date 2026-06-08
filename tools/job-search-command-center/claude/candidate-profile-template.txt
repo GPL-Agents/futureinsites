@@ -1,0 +1,18 @@
+CANDIDATE PROFILE: [Your Name]
+
+Targeting: [locations; remote/hybrid/on-site; relocation?; target level; target comp base]
+Levels & Functions: [titles you target; functions you cover]
+Domains: [industries / markets you fit]
+Seniority & Scope: [years; P&L; team size; notable scale and outcomes]
+Core Skills: [hard skills, tools, methods that roles screen for]
+Roles:
+- [Company] | [Title] | [years] | [one signal/achievement]
+- [Company] | [Title] | [years] | [one signal/achievement]
+- [Company] | [Title] | [years] | [one signal/achievement]
+Education & Credentials: [degrees, certs]
+Fit Signals:
+- Strong: [where you clearly win]
+- Weak/absent: [where you should pass]
+
+Keep it under ~2,500 characters, factual, telegraphic. This block is the ONLY
+source of background the agent uses to score roles.
