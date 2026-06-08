@@ -91,8 +91,14 @@
     .slides-inner { max-width: 1000px; margin: 0 auto; }
     .slides img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 30px -16px rgba(11,12,16,0.35); margin-bottom: 1.4rem; background: #fff; }
 
-    footer { padding: 1.2rem 2rem; text-align: center; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
-    footer a { color: var(--accent); text-decoration: none; }
+    footer { background: #12141A; border-top: 1px solid rgba(255,255,255,0.05); padding: 2.6rem 2rem 2rem; text-align: center; flex-shrink: 0; }
+    .footer-wordmark { font-family: 'Manrope', system-ui, sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.4rem; color: #FFFFFF; display: inline-block; }
+    .footer-wordmark .wm-gradient { background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .footer-tagline { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-bottom: 1.4rem; letter-spacing: 0.06em; }
+    .footer-contact { margin-bottom: 1.3rem; }
+    .footer-contact a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.78rem; }
+    .footer-contact a:hover { color: rgba(255,255,255,0.9); }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.85); }
   </style>
 </head>
 <body>
@@ -120,7 +126,7 @@
         <button type="submit">Unlock</button>
         <div class="lock-error" id="err">Incorrect code. Please try again.</div>
       </form>
-      <div class="lock-foot">Questions? <a href="mailto:strategy@futureinsites.com">strategy@futureinsites.com</a></div>
+      <div class="lock-foot">Questions? <a href="mailto:help@futureinsites.com">help@futureinsites.com</a></div>
     </div>
   </section>
 
@@ -140,7 +146,10 @@
   </section>
 
   <footer>
-    &copy; <span id="yr"></span> FutureInSites &middot; <a href="https://futureinsites.com">futureinsites.com</a>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <div class="footer-contact"><a href="mailto:help@futureinsites.com">help@futureinsites.com</a></div>
+    <p class="footer-copy">&copy; <span id="yr"></span> &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
   </footer>
 
   <script>
