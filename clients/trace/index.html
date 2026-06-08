@@ -42,14 +42,14 @@
     const DELIVERABLES = [
       { label: "Introduction Call",         state: "active", note: "Jun 10" },
       { label: "Discovery",                 state: "todo" },
-      { label: "BCT Workshop",              state: "todo" },
-      { label: "Recommendations & Roadmap", state: "todo" }
+      { label: "Recommendations & Roadmap", state: "todo" },
+      { label: "BCT Workshop",              state: "todo" }
     ];
 
     const KEY_DOCS = [
-      { title: "Introduction Deck", href: "/clients/trace/discovery/" },
-      { title: "Meeting Notes",  href: null },
-      { title: "Contract",       href: null }
+      { title: "Information Request List", href: null },
+      { title: "Meeting Notes",            href: null },
+      { title: "Contract",                 href: null }
     ];
 
     const LIBRARY = [
@@ -230,16 +230,15 @@
       <aside class="dash">
         <div class="card dash-head">
           <img class="dash-logo" data-client-wordmark alt="">
-          <div class="dash-client" data-client-name></div>
           <div class="dash-meta" id="dashMeta"></div>
-        </div>
-        <div class="card dash-block">
-          <h3>Deliverables</h3>
-          <ul class="progress" id="progress"></ul>
         </div>
         <div class="card dash-block">
           <h3>Current Engagement</h3>
           <dl class="engagement-grid" id="engagementGrid"></dl>
+        </div>
+        <div class="card dash-block">
+          <h3>Deliverables</h3>
+          <ul class="progress" id="progress"></ul>
         </div>
         <div class="card dash-block">
           <h3>Key Documents</h3>
