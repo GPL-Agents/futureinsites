@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Client Presentation | FutureInSites</title>
+  <meta name="description" content="Private client presentation." />
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ============================================================= -->
+  <!--  TRACE  -  access code is: Trace-Discovery-2026               -->
+  <!-- ============================================================= -->
+  <script>
+    const CLIENT = {
+      slug: "trace",
+      client:   "TRACE Services Co.",
+      title:    "AI Strategy Discovery",
+      subtitle: "Prepared for TRACE Services Co. · June 10, 2026",
+      // hash of "trace" + ":" + "Trace-Discovery-2026"
+      passwordHash: "99180b864ad3d681c0f5f2a18c25a45e74aba5b67bbc091431999383ef1c9eb6",
+      viewerFile: "trace-ai-strategy-discovery.pdf",
+      pdfFile: "trace-ai-strategy-discovery.pdf",
+      pptFile: null
+    };
+  </script>
+  <!-- ============================================================= -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      display: flex; align-items: center; padding: 0 2rem; height: 64px;
+      background: rgba(11,12,16,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
+    }
+    .nav-wordmark { text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+    .nav-logo { width: 44px; height: 44px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif; font-size: 1.4rem; font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.1; color: #FFFFFF;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline { font-size: 0.8rem; font-weight: 400; color: #FFFFFF; line-height: 1.2; margin-top: 2px; }
+
+    #lock {
+      flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem;
+      background:
+        radial-gradient(900px 500px at 80% -10%, rgba(45,212,255,0.10), transparent 60%),
+        radial-gradient(800px 500px at 10% 110%, rgba(37,99,235,0.10), transparent 60%),
+        var(--bg-alt);
+    }
+    .lock-card {
+      width: 100%; max-width: 420px; background: #fff; border: 1px solid var(--border);
+      border-radius: 18px; padding: 2.6rem 2.4rem;
+      box-shadow: 0 20px 50px -24px rgba(11,12,16,0.25); text-align: center;
+    }
+    .lock-icon {
+      width: 54px; height: 54px; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center;
+      border-radius: 14px; background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff;
+    }
+    .lock-card h1 { font-family: 'Manrope', sans-serif; font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+    .lock-card p.sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
+    .lock-form { display: flex; flex-direction: column; gap: 0.8rem; }
+    .lock-form input {
+      width: 100%; padding: 0.85rem 1rem; font-size: 1rem; font-family: var(--font); color: var(--dark);
+      border: 1px solid var(--border); border-radius: 10px; background: var(--bg-alt);
+    }
+    .lock-form input:focus { outline: none; border-color: var(--accent); background: #fff; }
+    .lock-form button {
+      width: 100%; padding: 0.85rem 1rem; font-size: 1rem; font-weight: 600; font-family: var(--font); color: #fff;
+      cursor: pointer; border: none; border-radius: 10px; background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .lock-form button:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px rgba(37,99,235,0.6); }
+    .lock-error { color: #DC2626; font-size: 0.9rem; min-height: 1.2rem; margin-top: 0.2rem; visibility: hidden; }
+    .lock-error.show { visibility: visible; }
+    .lock-foot { margin-top: 1.6rem; font-size: 0.82rem; color: var(--muted); }
+    .lock-foot a { color: var(--accent); text-decoration: none; }
+
+    #presentation { flex: 1; display: none; flex-direction: column; }
+    #presentation.show { display: flex; }
+    .deck-header { padding: 2rem 2rem 1.4rem; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .deck-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .deck-header h1 { font-family: 'Manrope', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.3rem; }
+    .deck-header .deck-sub { color: var(--muted); font-size: 0.98rem; }
+    .deck-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+    .deck-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; font-size: 0.92rem; font-weight: 600;
+      border-radius: 10px; text-decoration: none; cursor: pointer; border: 1px solid var(--border); background: #fff; color: var(--dark);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .deck-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .deck-btn.primary { background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff; border: none; }
+    .deck-viewer { flex: 1; min-height: 70vh; background: var(--bg-alt); }
+    .deck-viewer iframe { width: 100%; height: 100%; min-height: 70vh; border: 0; display: block; }
+    .deck-noviewer { padding: 3rem 2rem; text-align: center; color: var(--muted); }
+
+    footer { padding: 1.2rem 2rem; text-align: center; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://futureinsites.com" class="nav-wordmark">
+      <img src="../../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+  </nav>
+
+  <section id="lock">
+    <div class="lock-card">
+      <div class="lock-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h1>Private Presentation</h1>
+      <p class="sub">Enter the access code provided to you.</p>
+      <form class="lock-form" id="lockForm">
+        <input type="password" id="pw" placeholder="Access code" autocomplete="off" autofocus />
+        <button type="submit">Unlock</button>
+        <div class="lock-error" id="err">Incorrect code. Please try again.</div>
+      </form>
+      <div class="lock-foot">Questions? <a href="mailto:strategy@futureinsites.com">strategy@futureinsites.com</a></div>
+    </div>
+  </section>
+
+  <section id="presentation">
+    <div class="deck-header">
+      <div class="deck-eyebrow" id="deckEyebrow">Prepared for</div>
+      <h1 id="deckTitle"></h1>
+      <div class="deck-sub" id="deckSub"></div>
+      <div class="deck-actions" id="deckActions"></div>
+    </div>
+    <div class="deck-viewer" id="deckViewer"></div>
+  </section>
+
+  <footer>
+    &copy; <span id="yr"></span> FutureInSites &middot; <a href="https://futureinsites.com">futureinsites.com</a>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    async function sha256(text) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function reveal() {
+      document.getElementById('deckTitle').textContent = CLIENT.title || 'Presentation';
+      document.getElementById('deckSub').textContent = CLIENT.subtitle || '';
+      document.getElementById('deckEyebrow').textContent = CLIENT.client ? 'Prepared for ' + CLIENT.client : 'Presentation';
+      document.title = (CLIENT.client ? CLIENT.client + ' · ' : '') + (CLIENT.title || 'Presentation') + ' | FutureInSites';
+
+      const actions = document.getElementById('deckActions');
+      const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+      if (CLIENT.pdfFile) actions.innerHTML += '<a class="deck-btn primary" href="' + CLIENT.pdfFile + '" download>' + dlIcon + 'Download PDF</a>';
+      if (CLIENT.pptFile) actions.innerHTML += '<a class="deck-btn" href="' + CLIENT.pptFile + '" download>' + dlIcon + 'Download PowerPoint</a>';
+
+      const viewer = document.getElementById('deckViewer');
+      if (CLIENT.viewerFile) viewer.innerHTML = '<iframe src="' + CLIENT.viewerFile + '#view=FitH" title="Presentation"></iframe>';
+      else viewer.innerHTML = '<div class="deck-noviewer">Use the download button above to open the presentation.</div>';
+
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('presentation').classList.add('show');
+    }
+
+    if (sessionStorage.getItem('fis-unlocked-' + CLIENT.slug) === '1') reveal();
+
+    document.getElementById('lockForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const entered = document.getElementById('pw').value;
+      const hash = await sha256(CLIENT.slug + ':' + entered);
+      if (hash === CLIENT.passwordHash) {
+        sessionStorage.setItem('fis-unlocked-' + CLIENT.slug, '1');
+        reveal();
+      } else {
+        document.getElementById('err').classList.add('show');
+        document.getElementById('pw').value = '';
+        document.getElementById('pw').focus();
+      }
+    });
+  </script>
+</body>
+</html>
