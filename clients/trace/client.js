@@ -9,7 +9,8 @@ window.CLIENT = {
   name: "Trace Services",
 
   // SHA-256 of  slug + ":" + access code   (generate with /clients/password-tool.html)
-  passwordHash: "99180b864ad3d681c0f5f2a18c25a45e74aba5b67bbc091431999383ef1c9eb6",
+  // Keep the plain access code OUT of all source files; only this hash belongs here.
+  passwordHash: "2ff2cb78f2c4abb3dad19fe60e0a75aaf0a4b9bb8f48d4911d978935ef454da4",
 
   // Small square icon: browser tab, nav bar (top right), and the sign-in card.
   favicon:  "/clients/trace/TraceFavicon.webp",
