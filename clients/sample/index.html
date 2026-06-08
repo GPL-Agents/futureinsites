@@ -114,11 +114,12 @@
 
     #presentation { flex: 1; display: none; flex-direction: column; }
     #presentation.show { display: flex; }
-    .deck-header { padding: 2rem 2rem 1.4rem; border-bottom: 1px solid var(--border); background: var(--bg); }
-    .deck-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
-    .deck-header h1 { font-family: 'Manrope', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.3rem; }
-    .deck-header .deck-sub { color: var(--muted); font-size: 0.98rem; }
-    .deck-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+    .deck-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2.5rem; flex-wrap: wrap; padding: 1.1rem 2rem; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .deck-headtext { min-width: 0; }
+    .deck-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
+    .deck-header h1 { font-family: 'Manrope', sans-serif; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.15rem; }
+    .deck-header .deck-sub { color: var(--muted); font-size: 0.95rem; }
+    .deck-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0; flex-shrink: 0; }
     .deck-btn {
       display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; font-size: 0.92rem; font-weight: 600;
       border-radius: 10px; text-decoration: none; cursor: pointer; border: 1px solid var(--border); background: #fff; color: var(--dark);
@@ -163,9 +164,11 @@
 
   <section id="presentation">
     <div class="deck-header">
-      <div class="deck-eyebrow" id="deckEyebrow">Prepared for</div>
-      <h1 id="deckTitle"></h1>
-      <div class="deck-sub" id="deckSub"></div>
+      <div class="deck-headtext">
+        <div class="deck-eyebrow" id="deckEyebrow">Prepared for</div>
+        <h1 id="deckTitle"></h1>
+        <div class="deck-sub" id="deckSub"></div>
+      </div>
       <div class="deck-actions" id="deckActions"></div>
     </div>
     <div class="deck-viewer" id="deckViewer"></div>
