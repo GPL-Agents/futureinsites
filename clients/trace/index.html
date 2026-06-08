@@ -7,10 +7,13 @@
   <title>Client Portal | TRACE Services Co.</title>
   <meta name="description" content="Private client portal." />
 
-  <link rel="icon" href="/clients/trace/TraceFavicon.webp" type="image/webp">
+  <link rel="icon" id="favicon" href="/clients/trace/TraceFavicon.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Single source of truth for this client (name, logos, access code) -->
+  <script src="/clients/trace/client.js"></script>
 
   <!-- ============================================================= -->
   <!--  TRACE - CLIENT DASHBOARD  -  access code: Trace-Discovery-2026
@@ -22,15 +25,10 @@
                   leave href null to show it grayed as "Coming soon".      -->
   <!-- ============================================================= -->
   <script>
-    const PORTAL = {
-      slug: "trace",
-      // hash of "trace" + ":" + "Trace-Discovery-2026"
-      passwordHash: "99180b864ad3d681c0f5f2a18c25a45e74aba5b67bbc091431999383ef1c9eb6"
-    };
+    // slug + access code live in client.js (single source of truth)
+    const PORTAL = { slug: CLIENT.slug, passwordHash: CLIENT.passwordHash };
 
     const ENGAGEMENT = {
-      client: "Trace Services",
-      name:   "AI Discovery Engagement",
       status: "Active",
       phase:  "Discovery"
     };
@@ -205,14 +203,14 @@
     </a>
     <span class="nav-center">Client Portal</span>
     <span class="nav-client">
-      <span class="nav-client-label">Trace Services</span>
-      <img src="/clients/trace/TraceFavicon.webp" alt="Trace Services" onerror="this.closest('.nav-client').style.display='none'">
+      <span class="nav-client-label" data-client-name></span>
+      <img data-client-icon alt="">
     </span>
   </nav>
 
   <section id="lock">
     <div class="lock-card">
-      <img class="lock-client-logo" src="/clients/trace/TraceFavicon.webp" alt="TRACE" onerror="this.style.display='none'">
+      <img class="lock-client-logo" data-client-icon alt="">
       <h1>Client Portal</h1>
       <p class="sub">Enter the access code provided to you.</p>
       <form class="lock-form" id="lockForm">
@@ -228,8 +226,8 @@
     <div class="portal-inner">
       <aside class="dash">
         <div class="card dash-head">
-          <img class="dash-logo" src="/clients/trace/TraceServicesLogo.webp" alt="Trace Services" onerror="this.style.display='none'">
-          <div class="dash-client" id="dashClient"></div>
+          <img class="dash-logo" data-client-wordmark alt="">
+          <div class="dash-client" data-client-name></div>
           <div class="dash-meta" id="dashMeta"></div>
         </div>
         <div class="card dash-block">
@@ -259,6 +257,7 @@
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
+    window.CLIENT.applyBranding();
 
     const I = {
       doc:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
