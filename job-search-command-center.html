@@ -955,10 +955,22 @@ REFRESH ALL: Run diagnostics on my pipeline (Flag stale follow-ups, no-response 
         <li>Create a Claude Project named <strong>Job Search Command Center</strong>.</li>
         <li>Paste your finished <code>project-instructions-template.txt</code> into the Project's instructions.</li>
         <li>Enable the <strong>Job Search Command Center</strong> connector for the Project.</li>
-        <li>Add the cheat-sheet below as a Project file (or paste its commands at the top of the instructions) so the commands are always handy. Typing <strong>menu</strong> also makes the agent list its modes.</li>
+        <li>Add the cheat-sheet below as a Project file (or paste its commands at the top of the instructions) so the commands travel with the agent.</li>
       </ul>
 
-      <p>Then use it: open the Project and type a command, for example <code>Triage this role:</code> then paste a job, <code>Build today's daily plan</code>, or <code>Track update: Acme - I applied today</code>.</p>
+      <h3>The five commands</h3>
+
+      <p>Claude Chat has no buttons, so these are what you type. Keep the cheat-sheet just below in your Project, or type <code>menu</code> any time and the agent lists them for you.</p>
+
+      <div class="benefit-grid">
+        <div class="benefit"><h4>Triage</h4><p>Score and save a new role. Type <code>Triage this role:</code> then paste a job description or link.</p></div>
+        <div class="benefit"><h4>Track</h4><p>Update a role you already have. Type <code>Track update: Acme - I applied today</code>.</p></div>
+        <div class="benefit"><h4>Draft</h4><p>Write tailored outreach. Type <code>Draft a cover letter for the Acme role</code>.</p></div>
+        <div class="benefit"><h4>Daily plan</h4><p>Build today's prioritized actions. Type <code>Build today's daily plan</code>.</p></div>
+        <div class="benefit"><h4>Refresh all</h4><p>Run pipeline diagnostics. Type <code>Refresh all: flag stale follow-ups and records missing info</code>.</p></div>
+      </div>
+
+      <p>The full cheat-sheet is below. Add it as a file in your Project so the list is always one click away.</p>
 
       <div class="code-block">
         <div class="code-head">
