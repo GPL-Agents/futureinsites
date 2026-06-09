@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Anthropic's Stainless Acquisition Matters | FutureInSites Blog</title>
+  <meta name="description" content="Anthropic acquired Stainless, the developer tools company behind every official Anthropic SDK since the early API days. This is an agent infrastructure play, not a model improvement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 750px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .post-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content .featured-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .post-content .featured-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .post-content .featured-image .caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">June 9, 2026</div>
+      <h1>Why Anthropic's Stainless Acquisition Matters (And What Competitors Do Next)</h1>
+      <p class="post-excerpt">This was not an acquisition to make Claude smarter. It was an acquisition to make Claude easier to connect, deploy, and use everywhere. The AI race is shifting from model intelligence to system integration.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p>Anthropic announced that it has acquired Stainless, a developer tools company that builds SDK and MCP server infrastructure. Stainless has already been central to Anthropic's developer ecosystem, generating every official Anthropic SDK since the early days of the Anthropic API.</p>
+
+      <p>This is not mainly about making Claude smarter. It is about making Claude easier to connect, deploy, and use across the software world. That makes this an agent infrastructure acquisition.</p>
+
+      <h2>What Stainless Actually Does</h2>
+
+      <p>Stainless helps turn APIs into SDKs, documentation, and MCP servers. In plain English, it makes software systems easier for developers and AI agents to access. That matters because the next phase of AI will not be defined only by model performance. It will also be defined by how easily agents can connect to real tools, real data, and real workflows.</p>
+
+      <p>Every official Anthropic SDK -- Python, TypeScript, Java, Go -- has been generated by Stainless infrastructure since the API launched. The acquisition formalizes a relationship that was already foundational to Anthropic's developer experience.</p>
+
+      <div class="featured-image">
+        <img src="../images/stainless-acquisition.jpg" alt="Stainless competitive landscape: SDK generation, API developer experience, and agent-ready MCP infrastructure" />
+        <div class="caption">The competitive landscape for SDK generation, API DX, and agent-ready infrastructure. Stainless (acquired by Anthropic) and Fern + liblab (acquired by Postman) are the three recent acquisition moves in this space.</div>
+      </div>
+
+      <h2>Why This Matters for AI Democratization</h2>
+
+      <p>If agent infrastructure becomes easier to generate and maintain, more companies can move beyond AI demos and into practical deployment. They will not need every integration to be custom-built from scratch. Their APIs, tools, and systems can become more agent-ready by default.</p>
+
+      <p>Anthropic is trying to control more of the connective tissue between Claude and the software world: SDKs, connectors, MCP servers, and API usability. That could make AI agents more accessible, more reliable, and more ubiquitous.</p>
+
+      <div class="callout">
+        <strong>The bigger signal:</strong> the AI race is shifting from model intelligence alone to system integration. The winners will not only build better models. They will make those models easier to connect, govern, and use everywhere.
+      </div>
+
+      <h2>The Competitive Landscape</h2>
+
+      <p>Stainless did not exist in a vacuum. The SDK and MCP infrastructure space has seen rapid consolidation, and three key moves have already happened:</p>
+
+      <ul>
+        <li><strong>Anthropic acquired Stainless</strong> -- Formalizing the infrastructure behind every Anthropic SDK and signaling that developer tooling is a strategic priority, not just an operational convenience.</li>
+        <li><strong>Postman acquired Fern</strong> -- Postman, already the dominant API lifecycle platform, added Fern's SDK generation capabilities to its existing toolkit, strengthening its position as the end-to-end API platform.</li>
+        <li><strong>Postman also acquired liblab</strong> -- Further deepening its SDK generation play. Postman now owns two separate SDK generation tools, signaling a clear bet that API DX is a core platform capability.</li>
+      </ul>
+
+      <p>That leaves two notable independents still on the board: <strong>APIMatic</strong>, a mature platform for SDKs and documentation (a potential target for SmartBear or another API lifecycle player), and <strong>Speakeasy</strong>, a strong independent challenger focused on AI-ready APIs and MCP governance (a natural target for OpenAI, Google, or Cloudflare).</p>
+
+      <h2>What This Means for Your AI Strategy</h2>
+
+      <p>If you are building AI systems today, the SDK and integration layer matters more than you might think. The ease with which your agents can connect to your tools, databases, and third-party services directly determines whether your AI initiative stays in demo mode or reaches production.</p>
+
+      <p>The consolidation of SDK generation and MCP infrastructure means that the major AI platforms are competing not just on model quality, but on how easily their models plug into the rest of your stack. That is good news for enterprises -- it means the integration burden is shifting from you to your AI providers.</p>
+
+      <p>But it also means that choosing an AI platform is increasingly a bet on its ecosystem, not just its model. If you build deeply on Claude's MCP infrastructure, you are betting that Anthropic's approach to agent connectivity becomes the standard. If you route through Postman's API platform, you are betting on their approach. These bets are not mutually exclusive -- and the smartest strategy is to keep your integration layer abstracted enough that you can switch, compose, and adapt as the landscape continues to consolidate.</p>
+
+      <hr />
+
+      <p><em>FutureInSites helps companies design AI architectures that stay flexible as the ecosystem evolves. We assess your integration dependencies, identify lock-in risks, and build the abstraction layers that keep your options open. <a href="../index.html#contact">Get in touch</a> if you want to stress-test your current architecture against the shifting landscape.</em></p>
+
+      <p style="margin-top: 2rem;"><a href="index.html" class="post-back">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="index.html">Blog</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+  </footer>
+
+</body>
+</html>
