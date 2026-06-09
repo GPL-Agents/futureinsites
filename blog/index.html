@@ -124,9 +124,22 @@
     /* Hero */
     .blog-hero {
       margin-top: 64px;
-      padding: 6rem 2rem 3rem;
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      padding: 8rem 2rem 3rem;
+      background: linear-gradient(180deg, rgba(11,12,16,0.3) 0%, rgba(11,12,16,0.6) 60%, var(--dark) 100%), url('../images/fis.blog.hero.final.png') center center / cover no-repeat;
       text-align: center;
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    @media (max-width: 640px) {
+      .blog-hero {
+        padding: 6rem 1.5rem 2rem;
+        min-height: 400px;
+        background: linear-gradient(180deg, rgba(11,12,16,0.3) 0%, rgba(11,12,16,0.6) 60%, var(--dark) 100%), url('../images/fis.blog.hero.final.png') center center / cover no-repeat;
+      }
     }
     .blog-hero h1 {
       font-family: 'Manrope', system-ui, sans-serif;
