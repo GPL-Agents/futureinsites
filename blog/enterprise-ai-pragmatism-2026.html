@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Hype to Pragmatism: What Enterprise AI Looks Like in 2026 | FutureInSites Blog</title>
+  <meta name="description" content="The 'bigger is better' era is over. 2026 marks the shift from brute-force scaling to targeted, measurable AI deployments. Here is what that means for your strategy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 700px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .post-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">January 2026</div>
+      <h1>From Hype to Pragmatism: What Enterprise AI Looks Like in 2026</h1>
+      <p class="post-excerpt">If 2024 was the year of "look what AI can do" and 2025 was the year of "we should probably use this," 2026 is shaping up to be the year of "does it actually move the needle?"</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p>At the start of 2026, every major tech publication ran a version of the same prediction: the era of brute-force AI scaling is over. TechCrunch called it "from hype to pragmatism." MIT Technology Review called reasoning models the new paradigm. Euronews warned about "AI slop" fatigue and the bubble risks of chasing model size for its own sake.</p>
+
+      <p>They were all right. The trend lines converged on a single insight that enterprise leaders need to internalize: <strong>bigger models are no longer the winning strategy.</strong> The winners in 2026 will be the teams that match model capability to task complexity, measure outcomes in business terms, and treat AI as infrastructure rather than magic.</p>
+
+      <h2>The Three Shifts Defining 2026</h2>
+
+      <h3>1. From Model Performance to System Performance</h3>
+      <p>For the last two years, the benchmark race dominated every conversation. GPT-5 beats Claude 4, which beats Gemini 2.5, which beats Llama 4 -- and then the cycle repeats. In 2026, the question has shifted from "which model scores highest on MMLU?" to "which model delivers the best end-to-end outcome for this specific workflow?" The difference is subtle but critical: a smaller, cheaper, faster model that integrates cleanly into your existing systems beats a frontier model that requires extensive middleware, prompt engineering, and human oversight.</p>
+
+      <h3>2. From Autonomous Agents to Bounded Automation</h3>
+      <p>The agent hype of late 2025 promised fully autonomous systems that would plan, execute, and self-correct without human intervention. What enterprises actually need is <strong>bounded automation</strong>: systems that handle well-defined tasks within clear guardrails, escalate when uncertain, and produce auditable outputs. The most successful AI deployments we see are not the ones with the most autonomy -- they are the ones with the most clearly defined boundaries.</p>
+
+      <h3>3. From Build to Compose</h3>
+      <p>In 2026, building an AI capability from scratch is rarely the right call. The ecosystem has matured enough that most enterprise use cases can be composed from existing APIs, open-weight models, and retrieval-augmented generation pipelines. The skill is no longer training models -- it is <strong>architecting systems</strong> that combine the right components: a small fine-tuned model for classification, a frontier API for complex reasoning, a vector store for domain knowledge, and a lightweight orchestration layer to tie them together.</p>
+
+      <h2>What This Means for Enterprise Buyers</h2>
+
+      <p>If you are evaluating AI vendors or building internal capabilities, here is what the pragmatism shift demands:</p>
+
+      <ul>
+        <li><strong>Demand business metrics, not benchmark scores.</strong> A vendor that tells you their model scores 92% on some benchmark is selling you a story, not a solution. Ask for pilot results, error rates in your domain, and total cost per completed task.</li>
+        <li><strong>Prioritize integration over capability.</strong> The best model in the world is worthless if it cannot access your data, respect your security boundaries, or fit into your existing compliance workflows.</li>
+        <li><strong>Plan for model churn.</strong> The model that wins today will be supplanted in months. Build abstraction layers that let you swap models without rewriting your application.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Bottom line:</strong> 2026 is the year AI stops being an experiment and starts being an engineering discipline. The teams that treat it that way will build lasting advantage.
+      </div>
+
+      <hr />
+
+      <p><em>FutureInSites helps enterprises design, build, and operate AI systems that deliver measurable business outcomes -- not benchmark scores. If you are building for the pragmatism era, let us talk.</em></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="../careers.html">Careers</a></li>
+      <li><a href="index.html">Blog</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+  </footer>
+
+</body>
+</html>

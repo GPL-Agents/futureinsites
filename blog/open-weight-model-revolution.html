@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Open-Weight Model Revolution: When to Build vs. Rent Your AI Brain | FutureInSites Blog</title>
+  <meta name="description" content="Google released Gemma 4 under Apache 2.0 in April 2026. Here is a framework for deciding when to use open-weight models vs. API-based frontier models." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 700px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .post-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">April 2026</div>
+      <h1>The Open-Weight Model Revolution: When to Build vs. Rent Your AI Brain</h1>
+      <p class="post-excerpt">Google released Gemma 4 under Apache 2.0 in April 2026. Combined with Qwen 3, Llama 4, and Mistral's latest, the open-weight ecosystem has matured to the point where enterprises have a real choice. Here is the framework.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p>In April 2026, Google released Gemma 4 -- a family of open-weight models under the Apache 2.0 license -- as a direct competitor to the leading open-source AI systems from Meta, Alibaba, and Mistral. It was a defining moment for the open-weight ecosystem: the clearest signal yet that the major labs view open models as a strategic imperative, not a side project.</p>
+
+      <p>For enterprise technology leaders, this creates a genuine fork in the road. The old question was "which API provider should we use?" The new question is "should we use an API at all, or deploy our own model?"</p>
+
+      <p>The answer depends on three factors: <strong>data gravity, latency requirements, and total cost of operation.</strong></p>
+
+      <h2>When to Use Open-Weight Models</h2>
+
+      <h3>Data Gravity Wins</h3>
+      <p>If your AI workload processes large volumes of sensitive data -- customer PII, financial records, proprietary research -- keeping the model on your infrastructure eliminates data transit risk. With open-weight models like Gemma 4, Llama 4, or Qwen 3.7 Max, you can run inference entirely within your VPC or on-prem environment. No data ever leaves your control. For regulated industries (healthcare, finance, defense), this alone can be the deciding factor.</p>
+
+      <h3>Latency-Critical Workloads</h3>
+      <p>API-based models have inherent round-trip latency: network time, queue time, inference time. For real-time applications -- fraud detection, moderation, assistive UI -- even 500ms can be too slow. Running a local model eliminates the network variable. With on-premise hardware or dedicated cloud instances, you can achieve consistent sub-100ms inference for models in the 7-70B parameter range.</p>
+
+      <h3>High-Volume, Predictable Workloads</h3>
+      <p>At scale, the per-token cost of API models can exceed the amortized cost of self-hosted inference. The breakeven point varies by model size and hardware, but for workloads exceeding tens of millions of tokens per day, open-weight models can be substantially cheaper.</p>
+
+      <h2>When to Use API-Based Frontier Models</h2>
+
+      <h3>Capability Matters Most</h3>
+      <p>Open-weight models have improved dramatically. But for tasks requiring cutting-edge reasoning, multi-step planning, or broad world knowledge, the frontier API models (Claude Opus 4.6, GPT-5, Gemini 3.1) still lead. If your task requires the absolute best output quality and you are willing to pay for it, API models remain the right choice.</p>
+
+      <h3>Variable or Unpredictable Workloads</h3>
+      <p>If your inference volume fluctuates wildly -- bursty traffic, seasonal spikes -- the pay-per-token model of APIs is more cost-effective than provisioning infrastructure for peak load.</p>
+
+      <h3>Rapid Experimentation</h3>
+      <p>When you are prototyping and iterating quickly, the zero-ops nature of APIs is hard to beat. Spin up, test, discard, repeat. No GPU provisioning, no model serving infrastructure, no scaling concerns.</p>
+
+      <h2>The Hybrid Default</h2>
+
+      <p>In practice, most enterprises end up with a hybrid architecture: an open-weight model for high-volume, latency-sensitive, data-resident workloads, and an API-based frontier model for complex reasoning, experimentation, and low-volume high-value tasks. The key is building the abstraction layer that makes this choice operational -- routing requests to the right model based on task characteristics, cost budgets, and data sensitivity.</p>
+
+      <p>The open-weight revolution does not mean APIs are dead. It means you have a real choice for the first time. And in a fast-moving ecosystem, the ability to choose -- and change your mind -- is the only durable strategy.</p>
+
+      <div class="callout">
+        <strong>Bottom line:</strong> The build vs. rent decision for AI models is now a real choice with real trade-offs. The right architecture hedges between both, not one or the other.
+      </div>
+
+      <hr />
+
+      <p><em>FutureInSites helps enterprises design hybrid AI architectures that balance cost, capability, and compliance. If you are evaluating open-weight vs. API models, we can help you model the trade-offs for your specific workload profile.</em></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="../careers.html">Careers</a></li>
+      <li><a href="index.html">Blog</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The EU AI Act Is Here: What It Means for Your AI Stack | FutureInSites Blog</title>
+  <meta name="description" content="The EU AI Act entered force in December 2025. Here's how US-based enterprises should adjust their AI stacks, vendor evaluations, and compliance workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 700px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .post-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">December 2025</div>
+      <h1>The EU AI Act Is Here: What It Means for Your AI Stack</h1>
+      <p class="post-excerpt">Europe's comprehensive AI regulation entered force last month, and it has teeth. Here is how US-based enterprises should adjust their AI stacks, vendor evaluations, and internal compliance workflows.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p>The EU AI Act officially entered force in December 2025, and it is not the watered-down version some observers expected. With risk-tiered obligations, significant fines, and extraterritorial scope, this regulation affects any organization that deploys AI systems affecting EU residents -- regardless of where the organization is headquartered.</p>
+
+      <p>For US-based enterprises, the natural reaction is "we are not based in Europe." That misses the point. If your AI system processes EU citizen data, generates outputs used in EU markets, or is accessed by EU-based employees or customers, the Act applies. The question is not <em>if</em> you need to comply, but <em>how much</em> of your stack triggers which tier.</p>
+
+      <div class="callout">
+        <strong>Bottom line:</strong> Every enterprise with international operations needs an AI risk classification framework right now. Not next quarter. Right now.
+      </div>
+
+      <h2>The Four Tiers and What Triggers Them</h2>
+
+      <p>The Act classifies AI systems into four categories: <strong>Minimal risk</strong> (no obligations), <strong>Limited risk</strong> (transparency requirements), <strong>High risk</strong> (conformity assessments, human oversight, documentation), and <strong>Unacceptable risk</strong> (banned outright).</p>
+
+      <p>Most enterprise AI deployments -- chatbots, internal knowledge tools, content generation -- fall into Limited or High risk depending on context. The critical distinction hinges on <strong>use case</strong>, not model size. A GPT-5 instance answering HR questions about promotion eligibility is High risk. The same model summarizing public earnings calls is Limited risk.</p>
+
+      <h2>What Changes in Your AI Stack</h2>
+
+      <p>Three things shift for enterprises that ship AI features to EU-adjacent users:</p>
+
+      <ul>
+        <li><strong>Vendor tiering.</strong> Your model provider's data processing location and training data provenance now carry legal weight. AWS, Azure, and GCP all offer EU-sovereign AI regions, but not all foundation model APIs route through them by default. Audit your API endpoints.</li>
+        <li><strong>Documentation burden.</strong> High-risk systems require technical documentation, risk mitigation plans, and human oversight protocols -- kept current, not one-and-done. This is not an engineering problem; it is an operations problem that needs a dedicated workflow.</li>
+        <li><strong>Monitoring and logging.</strong> The Act mandates incident reporting for systems that cause harm. If you do not have production monitoring that can trace a model output back to a specific inference call, you cannot comply with a post-incident investigation.</li>
+      </ul>
+
+      <h2>The US Regulatory Counterpoint</h2>
+
+      <p>While the EU moved forward, the US took a different path. President Trump's November 2025 executive order aimed to block individual states from crafting their own AI rules. That order faces legal challenges and political opposition, creating an uncertain middle ground where enterprises must juggle potentially conflicting federal, state, and international requirements.</p>
+
+      <p>The pragmatic approach: build compliance capabilities that work under multiple regimes. A transparent AI inventory, documented risk assessments, and auditable deployment logs serve you whether the regulator is in Brussels, Sacramento, or Washington.</p>
+
+      <h2>Where to Start</h2>
+
+      <p>If you are still in the "experimenting with AI" phase, the Act does not demand immediate action. But if you have AI features in production or close to production, December 2025 is the wake-up call. The phased enforcement schedule gives breathing room, but the documentation requirements for High-risk systems take time to implement properly.</p>
+
+      <p>Start with an inventory: what AI systems do you operate, who uses them, and what decisions do they inform or automate? That single spreadsheet is the foundation for everything that follows.</p>
+
+      <hr />
+
+      <p><em>FutureInSites helps enterprises build AI stacks that are both powerful and compliant. If you are navigating the EU AI Act or any regulatory framework, we can help assess your exposure and build the governance infrastructure that keeps you ahead of enforcement timelines.</em></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="../careers.html">Careers</a></li>
+      <li><a href="index.html">Blog</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+  </footer>
+
+</body>
+</html>

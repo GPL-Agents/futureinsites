@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Agent Boundaries Matter More Than Agent Autonomy | FutureInSites Blog</title>
+  <meta name="description" content="The industry is realizing that the value of AI agents lies not in raw autonomy but in the right division of tasks. Here is a practical framework for bounded agent architecture." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 700px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .post-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">February 2026</div>
+      <h1>Why Agent Boundaries Matter More Than Agent Autonomy</h1>
+      <p class="post-excerpt">February 2026 marked a turning point: the conversation shifted from agents as hype to agents with clearly defined boundaries. Here is a practical architecture framework.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p>Something shifted in February 2026. Anthropic launched Claude Opus 4.6 with an explicit emphasis on long-context reasoning and agentic workflows. Google announced the Gemini Enterprise Agent Platform. Microsoft dropped its Agent Governance Toolkit on GitHub. And across the industry, a quieter realization took hold: <strong>the most successful agent deployments are not the ones with the most autonomy.</strong> They are the ones with the best guardrails.</p>
+
+      <p>The Reddit post that circulated widely in February captured it perfectly: "More teams are realizing that the value lies not in autonomy, but in the right division of tasks -- what decisions should be made by the model, what by deterministic logic, and what by a human."</p>
+
+      <p>That one sentence contains a complete architectural philosophy. Let us unpack it.</p>
+
+      <h2>The Three Layers of Bounded Agent Architecture</h2>
+
+      <h3>Layer 1: Deterministic Scaffolding</h3>
+      <p>Every agent needs a hard shell of deterministic logic around its soft intelligence core. This shell defines what the agent can and cannot do, what tools it can access, what data it can read, and what actions it can take. It is not written in prompt language -- it is written in code. Route validation, permission checks, idempotency keys, rate limiting, output sanitization. These are not AI problems. They are software engineering problems that become critical the moment your agent touches production systems.</p>
+
+      <h3>Layer 2: Model Decision Zone</h3>
+      <p>Inside the deterministic shell, the model operates within a bounded decision space. The key design choice is how large that space should be. A customer support agent might need latitude to rephrase responses and suggest products, but it should not (ever) have authority to issue refunds above a threshold or access payment PII. These boundaries should be explicit in the system prompt, enforced by tool-level permissions, and logged for audit.</p>
+
+      <h3>Layer 3: Human Escalation Path</h3>
+      <p>Every bounded agent needs a clean escalation path for cases it cannot handle. The threshold for escalation should be defined in terms of <strong>confidence, not complexity.</strong> The model should escalate when it cannot determine a course of action with high confidence -- not when the problem is "hard" (models handle hard problems well) but when the stakes are high and the signal is ambiguous.</p>
+
+      <h2>Claude Opus 4.6 and the New Agent Baseline</h2>
+      <p>Claude Opus 4.6, released in February 2026, raised the bar for multi-step reasoning within bounded agent frameworks. Its long-context improvements mean it can maintain coherent state across dozens of tool calls without losing track of goals or constraints. For enterprise deployments, this changes the equation: you can define more sophisticated agent behaviors in the prompt layer while keeping the deterministic shell relatively simple. The balance shifts from engineering-heavy scaffolding to smarter orchestration.</p>
+
+      <h2>Tooling That Supports Boundaries</h2>
+      <p>The ecosystem has caught up with the boundary-first philosophy. Microsoft's Agent Governance Toolkit (released April 3, 2026, but previewed in February) provides a declarative framework for defining agent permissions, audit trails, and escalation rules. Anthropic's MCP -- which crossed 97 million installs in March -- standardizes the tool-provisioning layer so agents cannot access tools they were not explicitly given.</p>
+
+      <p>The message is clear: <strong>build boundaries first, then autonomy.</strong> An agent that operates within well-defined constraints is predictable, auditable, and deployable. An agent that operates without boundaries is a demo -- not a product.</p>
+
+      <div class="callout">
+        <strong>Bottom line:</strong> Before you ask "how autonomous can this agent be," ask "what are the boundaries it must never cross." The answer to the second question determines whether the first one matters.
+      </div>
+
+      <hr />
+
+      <p><em>FutureInSites designs and builds bounded agent systems for enterprise production environments. If you are deploying AI agents in regulated or high-stakes workflows, we can help you build the guardrails before you need them.</em></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="../careers.html">Careers</a></li>
+      <li><a href="index.html">Blog</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+  </footer>
+
+</body>
+</html>
