@@ -124,42 +124,14 @@
     /* Hero */
     .blog-hero {
       margin-top: 64px;
-      padding: 8rem 2rem 3rem;
-      background: linear-gradient(180deg, rgba(11,12,16,0.3) 0%, rgba(11,12,16,0.6) 60%, var(--dark) 100%), url('../images/fis.blog.hero.final.png') center center / cover no-repeat;
-      text-align: center;
+      height: 520px;
+      background: url('../images/fis.blog.hero.final.png') center center / cover no-repeat;
       position: relative;
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
     }
     @media (max-width: 640px) {
       .blog-hero {
-        padding: 6rem 1.5rem 2rem;
-        min-height: 400px;
-        background: linear-gradient(180deg, rgba(11,12,16,0.3) 0%, rgba(11,12,16,0.6) 60%, var(--dark) 100%), url('../images/fis.blog.hero.final.png') center center / cover no-repeat;
+        height: 380px;
       }
-    }
-    .blog-hero h1 {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 1rem;
-    }
-    .blog-hero h1 .hl {
-      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
-    .blog-hero p {
-      color: rgba(255,255,255,0.65);
-      font-size: 1.15rem;
-      max-width: 600px;
-      margin: 0 auto;
     }
 
     /* Blog List */
@@ -266,7 +238,7 @@
     }
 
     @media (max-width: 640px) {
-      .blog-hero h1 { font-size: 2rem; }
+
       nav { padding: 0 1rem; justify-content: flex-start; }
       .nav-wordmark { position: static; }
     }
@@ -291,9 +263,7 @@
     <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
   </nav>
 
-  <section class="blog-hero">
-    <h1>Future<span class="hl">InSites</span> Blog</h1>
-    <p>Strategic insights on AI architecture, model selection, deployment strategy, and the technology decisions shaping the next wave of enterprise intelligence.</p>
+  <section class="blog-hero" role="img" aria-label="FutureInSites blog: Next Wave of AI - Strategic insights on architecture, model selection, and deployment.">
   </section>
 
   <div class="blog-container" id="blog-list">
