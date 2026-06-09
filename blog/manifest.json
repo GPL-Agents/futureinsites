@@ -8,6 +8,14 @@
     "tags": ["Anthropic", "IPO", "Enterprise AI", "AI Strategy"]
   },
   {
+    "slug": "stainless-acquisition",
+    "title": "Why Anthropic's Stainless Acquisition Matters (And What Competitors Do Next)",
+    "date": "2026-06-09",
+    "excerpt": "This was not an acquisition to make Claude smarter. It was an acquisition to make Claude easier to connect, deploy, and use everywhere. The AI race is shifting from model intelligence to system integration.",
+    "author": "Greg Loeffelholz",
+    "tags": ["Anthropic", "Stainless", "MCP", "Developer Tools", "AI Strategy"]
+  },
+  {
     "slug": "multi-model-ai-strategy",
     "title": "Multi-Model Strategy Is Table Stakes for AI in 2026",
     "date": "2026-06-09",
