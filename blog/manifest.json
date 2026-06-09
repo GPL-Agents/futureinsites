@@ -1,19 +1,19 @@
 [
   {
-    "slug": "anthropic-ipo-2026",
-    "title": "Anthropic Files for IPO: What It Means for Enterprise AI Strategy",
-    "date": "2026-06-09",
-    "excerpt": "Anthropic's confidential S-1 filing marks a turning point for the AI industry. For enterprises building on Claude, the implications go well beyond the stock price.",
-    "author": "Greg Loeffelholz",
-    "tags": ["Anthropic", "IPO", "Enterprise AI", "AI Strategy"]
-  },
-  {
     "slug": "stainless-acquisition",
     "title": "Why Anthropic's Stainless Acquisition Matters (And What Competitors Do Next)",
-    "date": "2026-06-09",
+    "date": "2026-05-27",
     "excerpt": "This was not an acquisition to make Claude smarter. It was an acquisition to make Claude easier to connect, deploy, and use everywhere. The AI race is shifting from model intelligence to system integration.",
     "author": "Greg Loeffelholz",
     "tags": ["Anthropic", "Stainless", "MCP", "Developer Tools", "AI Strategy"]
+  },
+  {
+    "slug": "anthropic-ipo-2026",
+    "title": "Anthropic Files for IPO: What It Means for Enterprise AI Strategy",
+    "date": "2026-06-03",
+    "excerpt": "Anthropic's confidential S-1 filing marks a turning point for the AI industry. For enterprises building on Claude, the implications go well beyond the stock price.",
+    "author": "Greg Loeffelholz",
+    "tags": ["Anthropic", "IPO", "Enterprise AI", "AI Strategy"]
   },
   {
     "slug": "multi-model-ai-strategy",
