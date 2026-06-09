@@ -448,6 +448,10 @@
     .platform-panel, .surface-panel { display: none; }
     .platform-panel.show, .surface-panel.show { display: block; }
     @media (max-width: 600px) { .select-label { min-width: 0; flex-basis: 100%; } }
+    /* ─── DEMO VIDEO ─── */
+    .demo-video { margin: 1.8rem auto; max-width: 760px; }
+    .demo-video video { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 10px; background: #0E1320; }
+    .demo-video figcaption { font-size: 0.82rem; color: var(--muted); line-height: 1.55; text-align: center; margin-top: 0.8rem; }
   </style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -928,6 +932,11 @@ REFRESH ALL: Run diagnostics on my pipeline (Flag stale follow-ups, no-response 
 
       <h2>Cowork: a dashboard panel</h2>
 
+      <figure class="demo-video">
+        <video src="tools/job-search-command-center/claude/cowork-demo.mp4" controls preload="metadata" playsinline muted></video>
+        <figcaption>The Cowork panel in action: live pipeline counts and one-click Daily Plan, Refresh, and Track.</figcaption>
+      </figure>
+
       <p>Cowork gives you a pinned panel with live pipeline counts and one-click <strong>Daily Plan</strong>, <strong>Refresh</strong>, and <strong>Track</strong>. Add the template below as a pinned live artifact in Cowork, then replace every <code>YOUR_CONNECTOR_ID</code> in it with your connector's id. You can read the id off your connector's tool names, which look like <code>mcp__&lt;id&gt;__get_opportunities</code>.</p>
 
       <div class="callout">
@@ -948,6 +957,11 @@ REFRESH ALL: Run diagnostics on my pipeline (Flag stale follow-ups, no-response 
     <div class="surface-panel" id="surface-chat">
 
       <h2>Claude Chat: works anywhere</h2>
+
+      <figure class="demo-video">
+        <video src="tools/job-search-command-center/claude/chat-demo.mp4" controls preload="metadata" playsinline muted></video>
+        <figcaption>The Claude Chat version in action: type a command and the agent updates your pipeline.</figcaption>
+      </figure>
 
       <p>The Chat option is a Claude Project, so it opens from any browser, the desktop app, or your phone, and every mode runs on the full-quality model. There are no buttons: you drive it by typing commands. Set it up in four steps:</p>
 
