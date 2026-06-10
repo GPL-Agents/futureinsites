@@ -1073,10 +1073,7 @@ document.getElementById('readinessForm').addEventListener('submit', async functi
     emailInput.classList.add('error');
     emailInput.focus();
     emailInput.parentElement.querySelector('label').style.color = '#DC2626';
-    showSection(0);
-    return;
-  }
-  emailInput.classList.remove('error');
+    showSection(SECTIONS.length - 1); return; } emailInput.classList.remove('error');
   emailInput.parentElement.querySelector('label').style.color = '';
 
   // Collect all answers
@@ -1176,6 +1173,9 @@ function showResults(r) {
     recsList.appendChild(li);
   });
 }
+  // Initialize first section on page load
+  showSection(0);
+
 </script>
 
 </body>
