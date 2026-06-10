@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Readiness Assessment | FutureInSites</title>
+  <meta name="description" content="Assess your organization's AI readiness across data, governance, technology, and security. Get an instant score, tier, and personalized recommendations." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --cyan:     #2DD4FF;
+      --bg-alt:   #F5F7FB;
+      --border:   #E5E7EB;
+      --muted:    #6B7280;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #FFFFFF;
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 3rem; height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none; display: flex; align-items: center; gap: 0.6rem;
+      position: absolute; left: 3rem;
+    }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem; font-weight: 800; letter-spacing: -0.025em;
+      line-height: 1.1; color: #FFFFFF; width: fit-content; align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) { .nav-wordmark-name { font-size: 1.25rem; } }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem; font-weight: 400; color: #FFFFFF;
+      letter-spacing: 0.005em; line-height: 1.2; margin-top: 3px; white-space: nowrap;
+    }
+    @media (max-width: 640px) { .nav-wordmark-tagline { font-size: 0.68rem; } }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute; right: 3rem;
+      font-size: 0.8rem; font-weight: 600; color: #FFFFFF;
+      background: var(--accent); text-decoration: none;
+      padding: 0.5rem 1.3rem; border-radius: 100px; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── PAGE ─── */
+    .page-hero {
+      padding: 7rem 2rem 2rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; top: 15%; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.10) 0%, rgba(79,70,229,0.06) 50%, transparent 70%);
+      pointer-events: none; z-index: 2;
+    }
+    .page-hero-inner {
+      position: relative; z-index: 10;
+      max-width: 640px; margin: 0 auto;
+    }
+    .page-hero h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.4rem; font-weight: 800; line-height: 1.15;
+      color: #FFFFFF; margin-bottom: 0.75rem;
+    }
+    .page-hero p {
+      color: rgba(255,255,255,0.55);
+      font-size: 1rem; line-height: 1.6;
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ─── FORM ─── */
+    .form-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      margin-bottom: 2rem;
+    }
+    .progress-bar-bg {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--accent));
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .progress-step {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* Section block */
+    .section-block {
+      display: none;
+    }
+    .section-block.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+    .section-header h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+    .section-header p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .field-group {
+      margin-bottom: 1.25rem;
+    }
+    .field-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .field-group .hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .field-group input[type="text"],
+    .field-group input[type="email"],
+    .field-group input[type="tel"],
+    .field-group select {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.9rem;
+      font-family: var(--font);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: var(--dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .field-group input:focus,
+    .field-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+    .field-group input.error {
+      border-color: #DC2626;
+      box-shadow: 0 0 0 3px rgba(220,38,38,0.10);
+    }
+
+    /* Radio / Checkbox options */
+    .option-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .option-item:hover {
+      border-color: var(--accent);
+      background: #F8FAFF;
+    }
+    .option-item.selected {
+      border-color: var(--accent);
+      background: #EFF6FF;
+    }
+    .option-item input[type="radio"],
+    .option-item input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .option-item .option-text {
+      font-size: 0.88rem;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0.7rem 1.6rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: var(--font);
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Results */
+    .results-wrap {
+      display: none;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .results-wrap.active { display: block; }
+
+    .results-card {
+      background: #F8F9FB;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .results-score {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .results-score span { font-size: 1.2rem; color: var(--muted); font-weight: 400; }
+    .results-tier {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+    .results-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .results-section {
+      margin-bottom: 1.5rem;
+    }
+    .results-section h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .results-section ol {
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .results-section ol li { margin-bottom: 6px; }
+
+    .section-score-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-score-row:last-child { border-bottom: none; }
+    .section-score-name {
+      width: 170px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .section-score-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .section-score-bar {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.6s ease;
+    }
+    .section-score-num {
+      width: 30px;
+      text-align: right;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .results-cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .results-cta a {
+      display: inline-block;
+      background: var(--accent);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+    .results-cta a:hover { opacity: 0.9; }
+    .results-cta .small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* Loading */
+    .loading-wrap {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+    }
+    .loading-wrap.active { display: block; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-wrap p { color: var(--muted); font-size: 0.88rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.4rem; font-weight: 800; letter-spacing: -0.025em;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.82rem; color: var(--muted); margin-top: 4px;
+    }
+    .footer-links {
+      list-style: none; display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 1.5rem; margin-top: 1.2rem;
+    }
+    .footer-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.82rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--dark); }
+    .footer-copy {
+      font-size: 0.75rem; color: var(--muted); margin-top: 1.2rem;
+    }
+
+    /* ─── HONEYPOT ─── */
+    .hp-field { position: absolute; left: -9999px; top: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .nav-cta { right: 1rem; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .form-section { padding: 1.5rem 1rem 2rem; }
+      .section-score-name { width: 120px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="/" class="nav-wordmark" aria-label="FutureInSites home">
+    <img class="nav-logo" src="images/fi-logo.svg" alt="" />
+    <div class="nav-wordmark-text">
+      <div class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></div>
+      <div class="nav-wordmark-tagline">AI Strategy &amp; Engineering</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/solutions.html">Solutions</a></li>
+    <li><a href="/case-studies.html">Case Studies</a></li>
+    <li><a href="/index.html#team">Team</a></li>
+    <li><a href="/index.html#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="/index.html#contact">Get in Touch</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1>AI Readiness Assessment</h1>
+    <p>Answer 28 questions across data, governance, technology, and security. Get an instant score, tier rating, and a personalized PDF report with actionable recommendations.</p>
+  </div>
+</section>
+
+<!-- ═══ FORM ═══ -->
+<form id="readinessForm" novalidate>
+  <div id="formSection" class="form-section">
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-label">
+        <span class="progress-step" id="progressStep">Section 1 of 6</span>
+        <span id="progressPct">0%</span>
+      </div>
+    </div>
+
+    <!-- Section A: Contact -->
+    <div class="section-block active" data-section="A">
+      <div class="section-header">
+        <h2>About You</h2>
+        <p>We'll send your results to this email and keep your information private.</p>
+      </div>
+
+      <div class="field-group">
+        <label for="email">Email address <span style="color:#DC2626;">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email"
+               placeholder="you@company.com" />
+      </div>
+      <div class="field-group">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Doe" />
+      </div>
+      <div class="field-group">
+        <label for="company">Company name</label>
+        <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Corp" />
+      </div>
+      <div class="field-group">
+        <label for="industry">Industry</label>
+        <select id="industry" name="industry">
+          <option value="">Select your industry...</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="financial">Financial Services</option>
+          <option value="manufacturing">Manufacturing</option>
+          <option value="retail">Retail / E-commerce</option>
+          <option value="technology">Technology</option>
+          <option value="professional">Professional Services</option>
+          <option value="construction">Construction / MEP</option>
+          <option value="energy">Energy / Utilities</option>
+          <option value="education">Education</option>
+          <option value="nonprofit">Nonprofit</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field-group" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div>
+          <label for="role">Your role</label>
+          <select id="role" name="role">
+            <option value="">Select...</option>
+            <option value="csuite">C-Suite / Executive</option>
+            <option value="vp">VP / Director</option>
+            <option value="manager">Manager</option>
+            <option value="ic">Individual Contributor</option>
+            <option value="owner">Owner / Founder</option>
+            <option value="consultant">Consultant / Advisor</option>
+          </select>
+        </div>
+        <div>
+          <label for="companySize">Company size</label>
+          <select id="companySize" name="companySize">
+            <option value="">Select...</option>
+            <option value="1-9">1-9</option>
+            <option value="10-49">10-49</option>
+            <option value="50-199">50-199</option>
+            <option value="200-999">200-999</option>
+            <option value="1000+">1,000+</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567" />
+      </div>
+
+      <div class="btn-row" style="justify-content:flex-end;">
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Section B: Data Maturity -->
+    <div class="section-block" data-section="B">
+      <div class="section-header">
+        <h2>Data Maturity</h2>
+        <p>How your organization stores, manages, and accesses data.</p>
+      </div>
+
+      <!-- Q5 -->
+      <div class="field-group">
+        <label>Where is your organization's operational data primarily stored?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q5" value="hybrid" /> <span class="option-text">Hybrid (mix of cloud and on-prem)</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="multicloud" /> <span class="option-text">Multi-cloud</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="singlecloud" /> <span class="option-text">Single cloud (AWS / Azure / GCP)</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="onprem" /> <span class="option-text">On-premises only</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="dontknow" /> <span class="option-text">I don't know</span></label>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="field-group">
+        <label>What types of data does your organization work with? (select all that apply)</label>
+        <div class="hint">Choose all that apply</div>
+        <div class="option-grid">
+          <label class="option-item"><input type="checkbox" name="q6" value="structured" /> <span class="option-text">Structured / tabular data</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="unstructured" /> <span class="option-text">Unstructured documents / PDFs</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="images" /> <span class="option-text">Images / video</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="audio" /> <span class="option-text">Audio / speech</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="timeseries" /> <span class="option-text">Time-series / IoT sensor data</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="text" /> <span class="option-text">Text / natural language</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="geospatial" /> <span class="option-text">Geospatial</span></label>
+          <label class="option-item"><input type="checkbox" name="q6" value="dontknow" /> <span class="option-text">I don't know</span></label>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="field-group">
+        <label>How is your data currently managed?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q7" value="lake" /> <span class="option-text">Data lake / lakehouse</span></label>
+          <label class="option-item"><input type="radio" name="q7" value="dw" /> <span class="option-text">Data warehouse</span></label>
+          <label class="option-item"><input type="radio" name="q7" value="combo" /> <span class="option-text">Combination of databases, warehouses, and tools</span></label>
+          <label class="option-item"><input type="radio" name="q7" value="opdb" /> <span class="option-text">Operational databases</span></label>
+          <label class="option-item"><input type="radio" name="q7" value="shareddrives" /> <span class="option-text">Shared drives (SharePoint / Google Drive)</span></label>
+          <label class="option-item"><input type="radio" name="q7" value="spreadsheets" /> <span class="option-text">Spreadsheets / manual files</span></label>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="field-group">
+        <label>Do you have documented data quality processes?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q8" value="formal" /> <span class="option-text">Yes, formal processes in place</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="adhoc" /> <span class="option-text">Informal / ad hoc</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="needthem" /> <span class="option-text">No, but we know we need them</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="notpriority" /> <span class="option-text">No, and not a priority right now</span></label>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="field-group">
+        <label>Can your teams access the data they need without IT intervention?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q9" value="selfservice" /> <span class="option-text">Yes, self-service BI / data tools</span></label>
+          <label class="option-item"><input type="radio" name="q9" value="somewhat" /> <span class="option-text">Somewhat, with manual requests</span></label>
+          <label class="option-item"><input type="radio" name="q9" value="throughit" /> <span class="option-text">No, everything goes through IT</span></label>
+          <label class="option-item"><input type="radio" name="q9" value="dontknow" /> <span class="option-text">I don't know</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Section C: AI Governance & Risk -->
+    <div class="section-block" data-section="C">
+      <div class="section-header">
+        <h2>AI Governance &amp; Risk</h2>
+        <p>Your AI policy framework, oversight, and risk management practices.</p>
+      </div>
+
+      <!-- Q10 -->
+      <div class="field-group">
+        <label>Does your organization have an AI governance policy or framework?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q10" value="fullyadopted" /> <span class="option-text">Fully adopted and enforced</span></label>
+          <label class="option-item"><input type="radio" name="q10" value="drafted" /> <span class="option-text">Drafted but not yet adopted</span></label>
+          <label class="option-item"><input type="radio" name="q10" value="indev" /> <span class="option-text">In development</span></label>
+          <label class="option-item"><input type="radio" name="q10" value="planned" /> <span class="option-text">No, but planned within 12 months</span></label>
+          <label class="option-item"><input type="radio" name="q10" value="notplanned" /> <span class="option-text">No, and not planned</span></label>
+        </div>
+      </div>
+
+      <!-- Q11 -->
+      <div class="field-group">
+        <label>Who is responsible for AI oversight at your organization?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q11" value="board" /> <span class="option-text">Board-level committee</span></label>
+          <label class="option-item"><input type="radio" name="q11" value="dedicated" /> <span class="option-text">Dedicated AI / Data officer</span></label>
+          <label class="option-item"><input type="radio" name="q11" value="itdept" /> <span class="option-text">IT department</span></label>
+          <label class="option-item"><input type="radio" name="q11" value="teamleads" /> <span class="option-text">Individual team leads</span></label>
+          <label class="option-item"><input type="radio" name="q11" value="nobody" /> <span class="option-text">Nobody specifically</span></label>
+        </div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="field-group">
+        <label>Do you have formal processes for any of the following? (select all that apply)</label>
+        <div class="hint">Choose all that apply</div>
+        <div class="option-grid">
+          <label class="option-item"><input type="checkbox" name="q12" value="ethics" /> <span class="option-text">AI ethics review before deployment</span></label>
+          <label class="option-item"><input type="checkbox" name="q12" value="bias" /> <span class="option-text">Bias / fairness testing of models</span></label>
+          <label class="option-item"><input type="checkbox" name="q12" value="monitoring" /> <span class="option-text">Model monitoring in production</span></label>
+          <label class="option-item"><input type="checkbox" name="q12" value="explainability" /> <span class="option-text">Explainability / transparency documentation</span></label>
+          <label class="option-item"><input type="checkbox" name="q12" value="vendorrisk" /> <span class="option-text">Third-party AI vendor risk assessment</span></label>
+          <label class="option-item"><input type="checkbox" name="q12" value="none" /> <span class="option-text">None of the above</span></label>
+        </div>
+      </div>
+
+      <!-- Q13 -->
+      <div class="field-group">
+        <label>What are your primary concerns about adopting AI? (select up to 3)</label>
+        <div class="hint">Choose up to 3</div>
+        <div class="option-grid">
+          <label class="option-item"><input type="checkbox" name="q13" value="security" /> <span class="option-text">Data security / privacy</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="compliance" /> <span class="option-text">Regulatory compliance</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="accuracy" /> <span class="option-text">Accuracy / reliability</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="cost" /> <span class="option-text">Cost / ROI uncertainty</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="expertise" /> <span class="option-text">Lack of internal expertise</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="resistance" /> <span class="option-text">Employee resistance</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="ethical" /> <span class="option-text">Ethical concerns</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="integration" /> <span class="option-text">Integration with existing systems</span></label>
+          <label class="option-item"><input type="checkbox" name="q13" value="none" /> <span class="option-text">None of the above</span></label>
+        </div>
+      </div>
+
+      <!-- Q14 -->
+      <div class="field-group">
+        <label>Does your organization have an Acceptable Use Policy for employee use of AI tools (ChatGPT, Copilot, etc.)?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q14" value="enforced" /> <span class="option-text">Yes, enforced</span></label>
+          <label class="option-item"><input type="radio" name="q14" value="notenforced" /> <span class="option-text">Yes, but not enforced</span></label>
+          <label class="option-item"><input type="radio" name="q14" value="indev" /> <span class="option-text">In development</span></label>
+          <label class="option-item"><input type="radio" name="q14" value="no" /> <span class="option-text">No</span></label>
+        </div>
+      </div>
+
+      <!-- Q15 -->
+      <div class="field-group">
+        <label>What regulatory frameworks apply to your organization? (select all that apply)</label>
+        <div class="hint">Choose all that apply</div>
+        <div class="option-grid">
+          <label class="option-item"><input type="checkbox" name="q15" value="hipaa" /> <span class="option-text">HIPAA</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="gdpr" /> <span class="option-text">GDPR</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="ccpa" /> <span class="option-text">CCPA / CPRA</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="soc2" /> <span class="option-text">SOC 2</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="pci" /> <span class="option-text">PCI DSS</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="finra" /> <span class="option-text">FINRA / SEC</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="none" /> <span class="option-text">None</span></label>
+          <label class="option-item"><input type="checkbox" name="q15" value="dontknow" /> <span class="option-text">I don't know</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Section D: Technical Readiness -->
+    <div class="section-block" data-section="D">
+      <div class="section-header">
+        <h2>Technical Readiness</h2>
+        <p>Your infrastructure, talent, and integration capabilities.</p>
+      </div>
+
+      <!-- Q16 -->
+      <div class="field-group">
+        <label>What is your organization's current relationship with AI / ML?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q16" value="core" /> <span class="option-text">AI is core to our business</span></label>
+          <label class="option-item"><input type="radio" name="q16" value="someprod" /> <span class="option-text">Some production use cases</span></label>
+          <label class="option-item"><input type="radio" name="q16" value="experimenting" /> <span class="option-text">Experimenting / proof of concept</span></label>
+          <label class="option-item"><input type="radio" name="q16" value="notstarted" /> <span class="option-text">Not yet started</span></label>
+        </div>
+      </div>
+
+      <!-- Q17 -->
+      <div class="field-group">
+        <label>Do you have dedicated data / AI talent in-house?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q17" value="team" /> <span class="option-text">Yes, a full team (engineers + scientists)</span></label>
+          <label class="option-item"><input type="radio" name="q17" value="individuals" /> <span class="option-text">Yes, a few individuals</span></label>
+          <label class="option-item"><input type="radio" name="q17" value="contractors" /> <span class="option-text">We use contractors / consultants</span></label>
+          <label class="option-item"><input type="radio" name="q17" value="none" /> <span class="option-text">No</span></label>
+        </div>
+      </div>
+
+      <!-- Q18 -->
+      <div class="field-group">
+        <label>What is your cloud infrastructure maturity?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q18" value="native" /> <span class="option-text">Fully cloud-native</span></label>
+          <label class="option-item"><input type="radio" name="q18" value="mostlycloud" /> <span class="option-text">Mostly cloud with some on-prem</span></label>
+          <label class="option-item"><input type="radio" name="q18" value="mostlyonprem" /> <span class="option-text">Mostly on-prem with some cloud</span></label>
+          <label class="option-item"><input type="radio" name="q18" value="allonprem" /> <span class="option-text">All on-premises</span></label>
+          <label class="option-item"><input type="radio" name="q18" value="na" /> <span class="option-text">Not applicable</span></label>
+        </div>
+      </div>
+
+      <!-- Q19 -->
+      <div class="field-group">
+        <label>Do you have APIs or integration platforms connecting your business systems?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q19" value="robust" /> <span class="option-text">Yes, robust API architecture</span></label>
+          <label class="option-item"><input type="radio" name="q19" value="some" /> <span class="option-text">Some integrations</span></label>
+          <label class="option-item"><input type="radio" name="q19" value="minimal" /> <span class="option-text">Minimal</span></label>
+          <label class="option-item"><input type="radio" name="q19" value="no" /> <span class="option-text">No, everything is siloed</span></label>
+        </div>
+      </div>
+
+      <!-- Q20 -->
+      <div class="field-group">
+        <label>What enterprise systems are in place? (select all that apply)</label>
+        <div class="hint">Choose all that apply</div>
+        <div class="option-grid">
+          <label class="option-item"><input type="checkbox" name="q20" value="crm" /> <span class="option-text">CRM (Salesforce / HubSpot / etc.)</span></label>
+          <label class="option-item"><input type="checkbox" name="q20" value="erp" /> <span class="option-text">ERP (SAP / NetSuite / etc.)</span></label>
+          <label class="option-item"><input type="checkbox" name="q20" value="hris" /> <span class="option-text">HRIS (Workday / BambooHR / etc.)</span></label>
+          <label class="option-item"><input type="checkbox" name="q20" value="marketing" /> <span class="option-text">Marketing automation (Marketo / HubSpot)</span></label>
+          <label class="option-item"><input type="checkbox" name="q20" value="dwbi" /> <span class="option-text">Data warehouse / BI (Snowflake / Looker / etc.)</span></label>
+          <label class="option-item"><input type="checkbox" name="q20" value="custom" /> <span class="option-text">Custom internal tools</span></label>
+          <label class="option-item"><input type="checkbox" name="q20" value="none" /> <span class="option-text">None of the above</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Section E: Business Readiness -->
+    <div class="section-block" data-section="E">
+      <div class="section-header">
+        <h2>Business Readiness</h2>
+        <p>Your organization's alignment, sponsorship, and commitment to AI.</p>
+      </div>
+
+      <!-- Q21 -->
+      <div class="field-group">
+        <label>What business problems are you hoping AI can solve? (select top 3)</label>
+        <div class="hint">Choose up to 3</div>
+        <div class="option-grid">
+          <label class="option-item"><input type="checkbox" name="q21" value="automation" /> <span class="option-text">Automate repetitive manual work</span></label>
+          <label class="option-item"><input type="checkbox" name="q21" value="cx" /> <span class="option-text">Improve customer experience</span></label>
+          <label class="option-item"><input type="checkbox" name="q21" value="insights" /> <span class="option-text">Generate insights from data</span></label>
+          <label class="option-item"><input type="checkbox" name="q21" value="costs" /> <span class="option-text">Reduce costs</span></label>
+          <label class="option-item"><input type="checkbox" name="q21" value="newproducts" /> <span class="option-text">Create new products / services</span></label>
+          <label class="option-item"><input type="checkbox" name="q21" value="decisions" /> <span class="option-text">Improve decision-making speed</span></label>
+          <label class="option-item"><input type="checkbox" name="q21" value="competitive" /> <span class="option-text">Competitive pressure</span></label>
+        </div>
+      </div>
+
+      <!-- Q22 -->
+      <div class="field-group">
+        <label>Do you have executive sponsorship for AI initiatives?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q22" value="champion" /> <span class="option-text">Yes, C-suite champion actively driving</span></label>
+          <label class="option-item"><input type="radio" name="q22" value="verbalsupport" /> <span class="option-text">Yes, verbal support but no active sponsorship</span></label>
+          <label class="option-item"><input type="radio" name="q22" value="nobuyin" /> <span class="option-text">No executive buy-in</span></label>
+          <label class="option-item"><input type="radio" name="q22" value="tooearly" /> <span class="option-text">Too early to tell</span></label>
+        </div>
+      </div>
+
+      <!-- Q23 -->
+      <div class="field-group">
+        <label>What is your expected timeline for AI adoption?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q23" value="immediately" /> <span class="option-text">Immediately (0-3 months)</span></label>
+          <label class="option-item"><input type="radio" name="q23" value="shortterm" /> <span class="option-text">Short-term (3-6 months)</span></label>
+          <label class="option-item"><input type="radio" name="q23" value="mediumterm" /> <span class="option-text">Medium-term (6-12 months)</span></label>
+          <label class="option-item"><input type="radio" name="q23" value="longterm" /> <span class="option-text">Long-term (12+ months)</span></label>
+          <label class="option-item"><input type="radio" name="q23" value="exploring" /> <span class="option-text">Just exploring, no timeline</span></label>
+        </div>
+      </div>
+
+      <!-- Q24 -->
+      <div class="field-group">
+        <label>Do you have a budget allocated for AI initiatives?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q24" value="dedicated" /> <span class="option-text">Yes, dedicated AI budget</span></label>
+          <label class="option-item"><input type="radio" name="q24" value="partofit" /> <span class="option-text">Yes, but part of general IT budget</span></label>
+          <label class="option-item"><input type="radio" name="q24" value="planned" /> <span class="option-text">Not yet, but planned</span></label>
+          <label class="option-item"><input type="radio" name="q24" value="no" /> <span class="option-text">No budget</span></label>
+        </div>
+      </div>
+
+      <!-- Q25 -->
+      <div class="field-group">
+        <label>Has your organization attempted AI projects before?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q25" value="success" /> <span class="option-text">Yes, with successful deployments</span></label>
+          <label class="option-item"><input type="radio" name="q25" value="stalled" /> <span class="option-text">Yes, but projects stalled or failed</span></label>
+          <label class="option-item"><input type="radio" name="q25" value="evaluated" /> <span class="option-text">We've evaluated but not started</span></label>
+          <label class="option-item"><input type="radio" name="q25" value="no" /> <span class="option-text">No</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Section F: Security & Compliance -->
+    <div class="section-block" data-section="F">
+      <div class="section-header">
+        <h2>Security &amp; Compliance</h2>
+        <p>Data protection, classification, and vendor vetting practices.</p>
+      </div>
+
+      <!-- Q26 -->
+      <div class="field-group">
+        <label>Where is your organization's data physically stored?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q26" value="usonly" /> <span class="option-text">United States only</span></label>
+          <label class="option-item"><input type="radio" name="q26" value="canada" /> <span class="option-text">Canada</span></label>
+          <label class="option-item"><input type="radio" name="q26" value="eu" /> <span class="option-text">EU / EEA</span></label>
+          <label class="option-item"><input type="radio" name="q26" value="global" /> <span class="option-text">Global / multi-region</span></label>
+          <label class="option-item"><input type="radio" name="q26" value="notsure" /> <span class="option-text">Not sure</span></label>
+        </div>
+      </div>
+
+      <!-- Q27 -->
+      <div class="field-group">
+        <label>Do you have data classification standards?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q27" value="fully" /> <span class="option-text">Yes, fully implemented</span></label>
+          <label class="option-item"><input type="radio" name="q27" value="partially" /> <span class="option-text">Partially implemented</span></label>
+          <label class="option-item"><input type="radio" name="q27" value="indev" /> <span class="option-text">In development</span></label>
+          <label class="option-item"><input type="radio" name="q27" value="no" /> <span class="option-text">No</span></label>
+        </div>
+      </div>
+
+      <!-- Q28 -->
+      <div class="field-group">
+        <label>Do you have a process for vetting third-party vendors' AI / security practices?</label>
+        <div class="option-grid">
+          <label class="option-item"><input type="radio" name="q28" value="formal" /> <span class="option-text">Yes, formal vendor risk assessment</span></label>
+          <label class="option-item"><input type="radio" name="q28" value="informal" /> <span class="option-text">Informal review</span></label>
+          <label class="option-item"><input type="radio" name="q28" value="noprocess" /> <span class="option-text">No process</span></label>
+          <label class="option-item"><input type="radio" name="q28" value="dontknow" /> <span class="option-text">I don't know</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Submit Assessment</button>
+      </div>
+    </div>
+
+    <!-- Honeypot -->
+    <div class="hp-field">
+      <input type="text" name="website_hp" tabindex="-1" autocomplete="off" />
+      <input type="text" name="fax" tabindex="-1" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading-wrap" id="loadingWrap">
+    <div class="spinner"></div>
+    <p>Scoring your assessment... One moment.</p>
+  </div>
+</form>
+
+<!-- ═══ RESULTS ═══ -->
+<div class="results-wrap" id="resultsWrap">
+  <div class="results-card">
+    <div class="results-score" id="rScore">0<span>/100</span></div>
+    <div class="results-tier" id="rTier"></div>
+    <p class="results-desc" id="rDesc"></p>
+  </div>
+
+  <div class="results-section">
+    <h3>Section Scores</h3>
+    <div id="rSections"></div>
+  </div>
+
+  <div class="results-section">
+    <h3>Recommendations</h3>
+    <ol id="rRecs"></ol>
+  </div>
+
+  <div class="results-cta">
+    <p style="color:#64748B;font-size:0.88rem;margin-bottom:1rem;">A detailed PDF report has been emailed to you and the FutureInSites team.</p>
+    <a href="/index.html#contact">Schedule a Strategy Call</a>
+    <span class="small">Want to discuss your results? Our team is ready.</span>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+  <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+  <ul class="footer-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/index.html#about">Approach</a></li>
+    <li><a href="/solutions.html">Solutions</a></li>
+    <li><a href="/case-studies.html">Case Studies</a></li>
+    <li><a href="/index.html#team">Team</a></li>
+    <li><a href="/index.html#contact">Contact</a></li>
+    <li><a href="/resources.html">Resources</a></li>
+    <li><a href="/careers.html">Careers</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+</footer>
+
+<!-- ═══ JS ═══ -->
+<script>
+const SECTIONS = ['A', 'B', 'C', 'D', 'E', 'F'];
+let currentIdx = 0;
+
+function getSectionEl(idx) {
+  return document.querySelector(`.section-block[data-section="${SECTIONS[idx]}"]`);
+}
+
+function showSection(idx) {
+  document.querySelectorAll('.section-block').forEach(el => el.classList.remove('active'));
+  getSectionEl(idx).classList.add('active');
+  currentIdx = idx;
+  updateProgress();
+  window.scrollTo({ top: document.querySelector('.form-section').offsetTop - 80, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const pct = Math.round(((currentIdx + 1) / SECTIONS.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressStep').textContent = `Section ${currentIdx + 1} of ${SECTIONS.length}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+function nextSection() {
+  if (currentIdx < SECTIONS.length - 1) {
+    showSection(currentIdx + 1);
+  }
+}
+
+function prevSection() {
+  if (currentIdx > 0) {
+    showSection(currentIdx - 1);
+  }
+}
+
+// Clickable option items
+document.addEventListener('change', function(e) {
+  const li = e.target.closest('.option-item');
+  if (li) {
+    if (e.target.type === 'radio') {
+      // Unselect siblings
+      const parent = li.closest('.option-grid');
+      parent.querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
+      li.classList.add('selected');
+    } else if (e.target.type === 'checkbox') {
+      li.classList.toggle('selected', e.target.checked);
+    }
+  }
+});
+
+// Required email validation
+document.getElementById('readinessForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const emailInput = document.getElementById('email');
+  const email = emailInput.value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailInput.classList.add('error');
+    emailInput.focus();
+    emailInput.parentElement.querySelector('label').style.color = '#DC2626';
+    showSection(0);
+    return;
+  }
+  emailInput.classList.remove('error');
+  emailInput.parentElement.querySelector('label').style.color = '';
+
+  // Collect all answers
+  const form = document.getElementById('readinessForm');
+  const data = {};
+
+  // Text inputs
+  ['email','name','company','industry','role','companySize','phone'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value.trim();
+  });
+
+  // Radio and checkbox groups
+  const questionKeys = ['q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15',
+                        'q16','q17','q18','q19','q20','q21','q22','q23','q24','q25',
+                        'q26','q27','q28'];
+
+  questionKeys.forEach(key => {
+    const radios = form.querySelectorAll(`input[name="${key}"][type="radio"]:checked`);
+    const checkboxes = form.querySelectorAll(`input[name="${key}"][type="checkbox"]:checked`);
+    if (radios.length > 0) {
+      data[key] = radios[0].value;
+    } else if (checkboxes.length > 0) {
+      data[key] = Array.from(checkboxes).map(c => c.value);
+    } else {
+      data[key] = '';
+    }
+  });
+
+  // Show loading, hide form
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('loadingWrap').classList.add('active');
+  document.getElementById('submitBtn').disabled = true;
+
+  try {
+    const resp = await fetch('/api/ai-readiness', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await resp.json();
+
+    document.getElementById('loadingWrap').classList.remove('active');
+
+    if (!result.ok) {
+      document.getElementById('formSection').style.display = 'block';
+      document.getElementById('submitBtn').disabled = false;
+      alert(result.error || 'Something went wrong. Please try again.');
+      return;
+    }
+
+    // Show results
+    showResults(result);
+  } catch (err) {
+    document.getElementById('loadingWrap').classList.remove('active');
+    document.getElementById('formSection').style.display = 'block';
+    document.getElementById('submitBtn').disabled = false;
+    alert('Network error. Please check your connection and try again.');
+  }
+});
+
+function showResults(r) {
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('resultsWrap').classList.add('active');
+
+  document.getElementById('rScore').innerHTML = `${r.score}<span>/100</span>`;
+  document.getElementById('rTier').textContent = r.tier.label;
+  document.getElementById('rTier').style.color = r.tier.color;
+  document.getElementById('rDesc').textContent = r.tier.desc;
+  document.getElementById('resultsWrap').scrollIntoView({ behavior: 'smooth' });
+
+  // Section scores
+  const barColors = { B: '#16A34A', C: '#2563EB', D: '#EAB308', E: '#F97316', F: '#DC2626' };
+  const sDiv = document.getElementById('rSections');
+  sDiv.innerHTML = '';
+  Object.entries(r.sectionNames).forEach(([k, name]) => {
+    const s = r.sectionScores[k];
+    const row = document.createElement('div');
+    row.className = 'section-score-row';
+    row.innerHTML = `
+      <div class="section-score-name">${name}</div>
+      <div class="section-score-bar-wrap">
+        <div class="section-score-bar" style="width:${s * 0.85 + 15}%;background:${barColors[k]};"></div>
+      </div>
+      <div class="section-score-num">${s}</div>
+    `;
+    sDiv.appendChild(row);
+  });
+
+  // Recommendations
+  const recsList = document.getElementById('rRecs');
+  recsList.innerHTML = '';
+  r.recommendations.forEach(rec => {
+    const li = document.createElement('li');
+    li.textContent = rec;
+    recsList.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
