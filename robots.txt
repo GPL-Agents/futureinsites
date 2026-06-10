@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /clients/
+Disallow: /blog/template.html
+Disallow: /gmail-signature.html
+Disallow: /gmail-signature-template.html
+
+Sitemap: https://futureinsites.com/sitemap.xml
