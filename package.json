@@ -2,7 +2,7 @@
   "name": "futureinsites",
   "private": true,
   "dependencies": {
-    "@vercel/blob": "^2.4.0", "resend": "^4.2.0",
+    "@vercel/blob": "^2.4.0",
     "pdf-lib": "^1.17.1"
   }
 }
