@@ -443,13 +443,16 @@
 
     /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ FOOTER ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     footer {
-      text-align: center;
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
       padding: 3rem 2rem 2rem;
-      border-top: 1px solid var(--border);
+      text-align: center;
     }
     .footer-wordmark {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.4rem; font-weight: 800; letter-spacing: -0.025em;
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.025em;
+      line-height: 1.1; margin-bottom: 0.4rem;
+      color: #FFFFFF; display: inline-block;
     }
     .footer-wordmark .wm-gradient {
       background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
@@ -457,19 +460,20 @@
       color: transparent; -webkit-text-fill-color: transparent;
     }
     .footer-tagline {
-      font-size: 0.82rem; color: var(--muted); margin-top: 4px;
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem; letter-spacing: 0.06em;
     }
     .footer-links {
-      list-style: none; display: flex; justify-content: center;
-      flex-wrap: wrap; gap: 1.5rem; margin-top: 1.2rem;
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 1.5rem; list-style: none; margin-bottom: 2rem;
     }
     .footer-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.82rem; transition: color 0.2s;
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      font-size: 0.78rem; transition: color 0.2s;
     }
-    .footer-links a:hover { color: var(--dark); }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
     .footer-copy {
-      font-size: 0.75rem; color: var(--muted); margin-top: 1.2rem;
+      font-size: 0.68rem; color: rgba(255,255,255,0.55);
     }
 
     /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ HONEYPOT ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
@@ -491,7 +495,7 @@
 <!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É NAV ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <nav>
   <a href="/" class="nav-wordmark" aria-label="FutureInSites home">
-    <img class="nav-logo" src="images/fi-logo.svg" alt="" />
+    <img class="nav-logo" src="images/fis-logo-160.png" alt="" />
     <div class="nav-wordmark-text">
       <div class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></div>
       <div class="nav-wordmark-tagline">AI Strategy &amp; Engineering</div>
