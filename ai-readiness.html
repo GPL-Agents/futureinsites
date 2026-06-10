@@ -42,7 +42,7 @@
 
     a { color: var(--accent); }
 
-    /* â”€â”€â”€ NAV â”€â”€â”€ */
+    /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ NAV ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: center;
@@ -87,7 +87,7 @@
     }
     .nav-cta:hover { opacity: 0.85; }
 
-    /* â”€â”€â”€ PAGE â”€â”€â”€ */
+    /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ PAGE ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     .page-hero {
       padding: 7rem 2rem 2rem;
       background: var(--dark);
@@ -127,7 +127,7 @@
       max-width: 520px; margin: 0 auto;
     }
 
-    /* â”€â”€â”€ FORM â”€â”€â”€ */
+    /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ FORM ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     .form-section {
       max-width: 720px;
       margin: 0 auto;
@@ -429,7 +429,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-wrap p { color: var(--muted); font-size: 0.88rem; }
 
-    /* â”€â”€â”€ FOOTER â”€â”€â”€ */
+    /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ FOOTER ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     footer {
       text-align: center;
       padding: 3rem 2rem 2rem;
@@ -460,10 +460,10 @@
       font-size: 0.75rem; color: var(--muted); margin-top: 1.2rem;
     }
 
-    /* â”€â”€â”€ HONEYPOT â”€â”€â”€ */
+    /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ HONEYPOT ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     .hp-field { position: absolute; left: -9999px; top: -9999px; opacity: 0; height: 0; overflow: hidden; }
 
-    /* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
+    /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ RESPONSIVE ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
     @media (max-width: 640px) {
       nav { padding: 0 1rem; }
       .nav-links { display: none; }
@@ -476,7 +476,7 @@
 </head>
 <body>
 
-<!-- â•â•â• NAV â•â•â• -->
+<!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É NAV ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <nav>
   <a href="/" class="nav-wordmark" aria-label="FutureInSites home">
     <img class="nav-logo" src="images/fi-logo.svg" alt="" />
@@ -495,7 +495,7 @@
   <a class="nav-cta" href="/index.html#contact">Get in Touch</a>
 </nav>
 
-<!-- â•â•â• HERO â•â•â• -->
+<!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É HERO ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <section class="page-hero">
   <div class="page-hero-inner">
     <h1>AI Readiness Assessment</h1>
@@ -503,7 +503,7 @@
   </div>
 </section>
 
-<!-- â•â•â• FORM â•â•â• -->
+<!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É FORM ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <form id="readinessForm" novalidate>
   <div id="formSection" class="form-section">
 
@@ -515,78 +515,6 @@
       <div class="progress-label">
         <span class="progress-step" id="progressStep">Section 1 of 6</span>
         <span id="progressPct">0%</span>
-      </div>
-    </div>
-
-    <!-- Section A: Contact -->
-    <div class="section-block active" data-section="A">
-      <div class="section-header">
-        <h2>About You</h2>
-        <p>We'll send your results to this email and keep your information private.</p>
-      </div>
-
-      <div class="field-group">
-        <label for="email">Email address <span style="color:#DC2626;">*</span></label>
-        <input type="email" id="email" name="email" required autocomplete="email"
-               placeholder="you@company.com" />
-      </div>
-      <div class="field-group">
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Doe" />
-      </div>
-      <div class="field-group">
-        <label for="company">Company name</label>
-        <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Corp" />
-      </div>
-      <div class="field-group">
-        <label for="industry">Industry</label>
-        <select id="industry" name="industry">
-          <option value="">Select your industry...</option>
-          <option value="healthcare">Healthcare</option>
-          <option value="financial">Financial Services</option>
-          <option value="manufacturing">Manufacturing</option>
-          <option value="retail">Retail / E-commerce</option>
-          <option value="technology">Technology</option>
-          <option value="professional">Professional Services</option>
-          <option value="construction">Construction / MEP</option>
-          <option value="energy">Energy / Utilities</option>
-          <option value="education">Education</option>
-          <option value="nonprofit">Nonprofit</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="field-group" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div>
-          <label for="role">Your role</label>
-          <select id="role" name="role">
-            <option value="">Select...</option>
-            <option value="csuite">C-Suite / Executive</option>
-            <option value="vp">VP / Director</option>
-            <option value="manager">Manager</option>
-            <option value="ic">Individual Contributor</option>
-            <option value="owner">Owner / Founder</option>
-            <option value="consultant">Consultant / Advisor</option>
-          </select>
-        </div>
-        <div>
-          <label for="companySize">Company size</label>
-          <select id="companySize" name="companySize">
-            <option value="">Select...</option>
-            <option value="1-9">1-9</option>
-            <option value="10-49">10-49</option>
-            <option value="50-199">50-199</option>
-            <option value="200-999">200-999</option>
-            <option value="1000+">1,000+</option>
-          </select>
-        </div>
-      </div>
-      <div class="field-group">
-        <label for="phone">Phone (optional)</label>
-        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567" />
-      </div>
-
-      <div class="btn-row" style="justify-content:flex-end;">
-        <button type="button" class="btn btn-primary" onclick="nextSection()">Next &rarr;</button>
       </div>
     </div>
 
@@ -954,7 +882,7 @@
       </div>
     </div>
 
-        <!-- â”€â”€â”€ Section G: Get Your Results â”€â”€â”€ -->
+        <!-- ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ Section G: Get Your Results ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ -->
     <div class="section-block" data-section="G">
       <div class="section-header">
         <h2>Get Your Results</h2>
@@ -1041,7 +969,7 @@
   </div>
 </form>
 
-<!-- â•â•â• RESULTS â•â•â• -->
+<!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É RESULTS ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <div class="results-wrap" id="resultsWrap">
   <div class="results-card">
     <div class="results-score" id="rScore">0<span>/100</span></div>
@@ -1066,7 +994,7 @@
   </div>
 </div>
 
-<!-- â•â•â• FOOTER â•â•â• -->
+<!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É FOOTER ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <footer>
   <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
   <div class="footer-tagline">AI Strategy &amp; Engineering</div>
@@ -1084,7 +1012,7 @@
   <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
 </footer>
 
-<!-- â•â•â• JS â•â•â• -->
+<!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É JS ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <script>
 const SECTIONS = ['B', 'C', 'D', 'E', 'F', 'G'];
 let currentIdx = 0;
