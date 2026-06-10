@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Introduction | TRACE Services Co.</title>
-  <meta name="description" content="Private client presentation." />
+  <meta name="description" content="AI Strategy Discovery Deck for TRACE Services Co." />
 
   <link rel="icon" id="favicon" href="/clients/trace/TraceFavicon.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +33,7 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --dark:#0B0C10; --accent:#2563EB; --accent-lt:#EFF6FF; --cyan:#2DD4FF;
       --bg:#FFFFFF; --bg-alt:#F8F9FB; --border:#E4E7EE; --muted:#64748B;
@@ -70,25 +71,95 @@
     .lock-foot { margin-top: 1.6rem; font-size: 0.82rem; color: var(--muted); }
     .lock-foot a { color: var(--accent); text-decoration: none; }
 
-    /* DECK */
+    /* DECK CONTENT */
     #deck { flex: 1; display: none; flex-direction: column; }
     #deck.show { display: flex; }
-    .deck-header { padding: 0.85rem 2rem 1.05rem; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 10; }
-    .deck-toprow { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
-    .deck-headtext { text-align: center; }
-    .deck-back { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; color: var(--muted); text-decoration: none; }
-    .deck-back:hover { color: var(--accent); }
-    .deck-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
-    .deck-header h1 { font-family: 'Manrope', sans-serif; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.15rem; }
-    .deck-header .deck-sub { color: var(--muted); font-size: 0.95rem; }
-    .deck-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0; flex-shrink: 0; }
-    .deck-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; font-size: 0.92rem; font-weight: 600; border-radius: 10px; text-decoration: none; cursor: pointer; border: 1px solid var(--border); background: #fff; color: var(--dark); transition: border-color 0.15s ease, transform 0.15s ease; }
-    .deck-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .deck-btn.primary { background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff; border: none; }
 
-    .slides { background: var(--bg-alt); padding: 2rem 1rem 3rem; flex: 1; }
-    .slides-inner { max-width: 1000px; margin: 0 auto; }
-    .slides iframe { width: 100%; height: 80vh; border: 1px solid var(--border); border-radius: 12px; background: #fff; box-shadow: 0 10px 30px -16px rgba(11,12,16,0.35); display: block; }
+    .deck-header {
+      padding: 2.4rem 2rem 1.8rem; text-align: center;
+      background: linear-gradient(135deg, #0B0C10 0%, #1a1d2e 100%);
+      color: #fff;
+    }
+    .deck-eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 0.5rem;
+    }
+    .deck-header h1 {
+      font-family: 'Manrope', sans-serif; font-size: 2.2rem; font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .deck-header .sub {
+      color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 600px; margin: 0 auto;
+    }
+    .deck-header .date {
+      color: rgba(255,255,255,0.45); font-size: 0.88rem; margin-top: 0.5rem;
+    }
+    .deck-actions {
+      display: flex; gap: 0.8rem; justify-content: center; padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border); background: var(--bg); flex-wrap: wrap;
+    }
+    .deck-actions a {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.2rem; font-size: 0.92rem; font-weight: 600;
+      border-radius: 10px; text-decoration: none;
+      border: 1px solid var(--border); background: #fff; color: var(--dark);
+      transition: all 0.15s ease;
+    }
+    .deck-actions a:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .deck-actions .primary { background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%); color: #fff; border: none; }
+    .deck-actions .primary:hover { box-shadow: 0 10px 24px -10px rgba(37,99,235,0.6); }
+    .deck-actions .back { color: var(--muted); border: none; background: transparent; }
+    .deck-actions .back:hover { color: var(--accent); border: none; background: transparent; transform: none; }
+
+    /* SLIDE CONTENT */
+    .slide-grid { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+    .slide-section {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 2.2rem 2.5rem; margin-bottom: 2rem;
+      box-shadow: 0 4px 20px -12px rgba(11,12,16,0.12);
+      transition: box-shadow 0.2s ease;
+    }
+    .slide-section:hover { box-shadow: 0 8px 30px -16px rgba(11,12,16,0.18); }
+    .slide-section .slide-number {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .slide-section h2 {
+      font-family: 'Manrope', sans-serif; font-size: 1.35rem; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #2563EB 0%, #2DD4FF 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .slide-section .slide-subtitle {
+      font-size: 0.95rem; color: var(--muted); margin-bottom: 1rem;
+    }
+    .slide-section ul { list-style: none; padding: 0; }
+    .slide-section ul li {
+      padding: 0.35rem 0 0.35rem 1.4rem; position: relative;
+    }
+    .slide-section ul li::before {
+      content: ''; position: absolute; left: 0; top: 0.85rem;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: linear-gradient(135deg, #2DD4FF 0%, #2563EB 100%);
+    }
+
+    .slide-cover {
+      background: linear-gradient(135deg, #0B0C10 0%, #1a1d2e 100%);
+      border-color: rgba(255,255,255,0.08); text-align: center;
+    }
+    .slide-cover h2 { -webkit-text-fill-color: #fff; color: #fff; background: none; }
+    .slide-cover p { color: rgba(255,255,255,0.8); }
+
+    .step-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .step-card { background: var(--bg-alt); border-radius: 12px; padding: 1.5rem; text-align: center; border-top: 3px solid var(--accent); }
+    .step-card .step-title { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.3rem; }
+    .step-card .step-num { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    .step-card p { font-size: 0.88rem; color: var(--muted); }
+
+    .deliverable-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; }
+    .deliverable-item { background: var(--bg-alt); padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.92rem; }
 
     footer { background: #12141A; border-top: 1px solid rgba(255,255,255,0.05); padding: 2.6rem 2rem 2rem; text-align: center; flex-shrink: 0; }
     .footer-wordmark { font-family: 'Manrope', system-ui, sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.4rem; color: #FFFFFF; display: inline-block; }
@@ -97,6 +168,12 @@
     .footer-contact { margin-bottom: 1.3rem; }
     .footer-contact a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.78rem; }
     .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.85); }
+
+    @media (max-width: 640px) {
+      .deliverable-grid { grid-template-columns: 1fr; }
+      .deck-header h1 { font-size: 1.6rem; }
+      .slide-section { padding: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -114,6 +191,7 @@
     </span>
   </nav>
 
+  <!-- LOCK SCREEN -->
   <section id="lock">
     <div class="lock-card">
       <img class="lock-client-logo" data-client-icon alt="">
@@ -128,29 +206,239 @@
     </div>
   </section>
 
-  <section id="deck">
-    <div class="deck-header">
-      <div class="deck-toprow">
-        <a class="deck-back" href="/clients/trace/" id="backLink">&larr; Client portal</a>
-        <div class="deck-actions" id="deckActions"></div>
-      </div>
-      <div class="deck-headtext">
-        <div class="deck-eyebrow">Discovery Deck &middot; Prepared for TRACE Services Co.</div>
-        <h1 id="deckTitle"></h1>
-        <div class="deck-sub" id="deckSub"></div>
-      </div>
-    </div>
-    <div class="slides">
-      <div class="slides-inner" id="deckViewer"></div>
-    </div>
-  </section>
+  <!-- DECK CONTENT -->
+  <div id="deck">
 
-  <footer>
-    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
-    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
-    <div class="footer-contact"><a href="mailto:help@futureinsites.com">help@futureinsites.com</a></div>
-    <p class="footer-copy">&copy; <span id="yr"></span> &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
-  </footer>
+    <div class="deck-header">
+      <div class="deck-eyebrow">Discovery Deck &middot; Prepared for TRACE Services Co.</div>
+      <h1>AI Strategy Discovery Deck</h1>
+      <p class="sub">Turning AI uncertainty into business advantage</p>
+      <p class="date">An accelerated Build &middot; Customize &middot; Train approach for practical AI adoption &mdash; June 10, 2026</p>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="deck-actions">
+      <a href="/clients/trace/">&larr; Client portal</a>
+      <a class="primary" href="TRACE-Discovery-Deck-v7.pptx" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PowerPoint
+      </a>
+      <a href="/clients/trace/trace-ai-strategy-discovery.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+    </div>
+
+    <!-- SLIDE CONTENT -->
+    <div class="slide-grid">
+
+      <div class="slide-section slide-cover">
+        <div class="slide-number">Slide 1</div>
+        <h2>TRACE Services x FutureInSites</h2>
+        <p style="color:rgba(255,255,255,0.65);">Turning AI uncertainty into business advantage &mdash; An accelerated Build &middot; Customize &middot; Train approach for practical AI adoption</p>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 2</div>
+        <h2>AI Is Now an Enterprise Imperative</h2>
+        <p class="slide-subtitle">Capability, adoption, and investment in AI are compounding faster than most operating models can adapt</p>
+        <ul>
+          <li>10x capability jumps feel sudden when they arrive</li>
+          <li>Every function in an MEP firm &mdash; estimating, field ops, project management, energy services &mdash; now has AI-native tools</li>
+          <li>The constraint is no longer technology; it is <strong>organizational absorption</strong></li>
+          <li>The AI question has shifted from "Should we try it?" to <strong>"How do we capture value safely and quickly?"</strong></li>
+        </ul>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 3</div>
+        <h2>Most MEP Firms Have AI Activity, Not AI Strategy</h2>
+        <p class="slide-subtitle">The problem is not lack of interest. It is fragmented effort without an operating model.</p>
+        <ul>
+          <li><strong>Scattered pilots</strong> &mdash; Teams test tools independently with little coordination or reuse</li>
+          <li><strong>Tool sprawl</strong> &mdash; New subscriptions appear faster than governance or integration logic</li>
+          <li><strong>Unclear ownership</strong> &mdash; Estimating, field ops, IT, and leadership lack shared decision rights</li>
+          <li><strong>Weak ROI measures</strong> &mdash; Success is described as excitement, not time saved or value created</li>
+          <li><strong>Pilot purgatory</strong> &mdash; Promising ideas fail to scale because workflow change is not designed</li>
+        </ul>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 4</div>
+        <h2>What We Know About TRACE</h2>
+        <ul>
+          <li>Leading MEP contractor: HVAC, Electrical, Plumbing, Process Piping, Design-Build, Energy Services, Controls</li>
+          <li>Memphis and Jackson, TN &mdash; projects spanning Tennessee and Mississippi</li>
+          <li>Leadership team with a collective century of field experience</li>
+          <li>Referred by SitelogIQ (Russ Phillips, Blair Perry) &mdash; trusted partners for program-level MEP delivery</li>
+        </ul>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 5</div>
+        <h2>Our Methodology: Build &middot; Customize &middot; Train</h2>
+        <div class="step-row">
+          <div class="step-card">
+            <div class="step-num">Phase 1</div>
+            <div class="step-title">Build</div>
+            <p>Create the AI opportunity map, business case logic, and initial roadmap. Start with TRACE leadership priorities and business context.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Phase 2</div>
+            <div class="step-title">Customize</div>
+            <p>Tailor use cases, governance, vendors, and workflows. Adapted to TRACE-specific data, project types, and field operations.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Phase 3</div>
+            <div class="step-title">Train</div>
+            <p>Enable leaders and teams with practical tools and playbooks. Transfer ownership so the capability sticks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 6</div>
+        <h2>The Three-Day BCT Workshop</h2>
+        <div class="step-row">
+          <div class="step-card" style="border-top-color: var(--cyan);">
+            <div class="step-num">Pre-work · 1-2 Weeks Before</div>
+            <div class="step-title" style="color: var(--cyan);">Pre-work</div>
+            <p>Leadership interviews, AI usage inventory, business priorities</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Day 1</div>
+            <div class="step-title">Build</div>
+            <p>AI landscape briefing | Use-case ideation | Value hypothesis tied to TRACE operations</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Day 2</div>
+            <div class="step-title">Customize</div>
+            <p>Prioritization matrix | Workflow redesign for MEP | Governance guardrails</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Day 3</div>
+            <div class="step-title">Train</div>
+            <p>Hands-on enablement | 30/60/90-day roadmap | Owner and action alignment</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 7</div>
+        <h2>Where AI Could Create Value for TRACE</h2>
+        <div class="deliverable-grid">
+          <div class="deliverable-item"><strong>Estimating &amp; Bids</strong><br><span style="font-weight:400;font-size:0.85rem;color:var(--muted);">AI-assisted takeoffs, scope analysis, faster bids</span></div>
+          <div class="deliverable-item"><strong>Field Service &amp; Work Orders</strong><br><span style="font-weight:400;font-size:0.85rem;color:var(--muted);">AI-assisted triage, routing, real-time documentation</span></div>
+          <div class="deliverable-item"><strong>Project Documentation</strong><br><span style="font-weight:400;font-size:0.85rem;color:var(--muted);">Auto-generate RFIs, submittals, compliance records</span></div>
+          <div class="deliverable-item"><strong>Energy Services Optimization</strong><br><span style="font-weight:400;font-size:0.85rem;color:var(--muted);">Analysis of building performance data</span></div>
+          <div class="deliverable-item"><strong>Controls &amp; Building Automation</strong><br><span style="font-weight:400;font-size:0.85rem;color:var(--muted);">Intelligent monitoring, predictive maintenance</span></div>
+          <div class="deliverable-item"><strong>Workforce Knowledge Capture</strong><br><span style="font-weight:400;font-size:0.85rem;color:var(--muted);">Technician expertise &rarr; searchable assets</span></div>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 8</div>
+        <h2>What TRACE Walks Away With</h2>
+        <p class="slide-subtitle">The deliverable is not inspiration. It is a decision-ready AI action plan.</p>
+        <div class="deliverable-grid">
+          <div class="deliverable-item">AI Opportunity Map</div>
+          <div class="deliverable-item">Prioritized Use-Case Portfolio</div>
+          <div class="deliverable-item">Governance Guardrails</div>
+          <div class="deliverable-item">Workflow &amp; Tool Playbooks</div>
+          <div class="deliverable-item">30/60/90-Day Roadmap</div>
+          <div class="deliverable-item">Executive Readout</div>
+        </div>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted);">Six concrete deliverables. Not a generic report. Each one decision-ready for TRACE leadership.</p>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 9</div>
+        <h2>Why FutureInSites</h2>
+        <p class="slide-subtitle">Senior operators, strategists, and researchers helping leaders make AI practical.</p>
+        <ul>
+          <li><strong>Operator experience.</strong> We have led real digital, data, product, and transformation teams at scale</li>
+          <li><strong>Industry depth.</strong> MEP/construction, retail, manufacturing, healthcare, energy, and finance context</li>
+          <li><strong>Research rigor.</strong> Academic and market intelligence discipline, not generic AI hype</li>
+          <li><strong>Execution bias.</strong> Engagements produce roadmaps, owners, and next steps, not shelfware</li>
+          <li><strong>Executive fluency.</strong> We translate AI into strategy, risk, economics, and operating model decisions</li>
+          <li><strong>Independent perspective.</strong> We help clients choose the right tools without being tied to one vendor</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted);">Combined: 75+ years of transformation leadership across MEP, healthcare, retail, and manufacturing.</p>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 10</div>
+        <h2>The Path Forward</h2>
+        <p class="slide-subtitle">Start with the right level of commitment, then scale as the opportunity becomes clear.</p>
+        <div class="step-row">
+          <div class="step-card">
+            <div class="step-num">Step 1</div>
+            <div class="step-title">Discovery Call</div>
+            <p>Align on business priorities, constraints, and decision-makers (today)</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Step 2</div>
+            <div class="step-title">Two Discovery Sessions</div>
+            <p>Map current workflows, tools, and bottlenecks in depth</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Step 3</div>
+            <div class="step-title">BCT Workshop</div>
+            <p>Build, Customize, and Train around TRACE's highest-value opportunities</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">Step 4</div>
+            <div class="step-title">Roadmap Readout</div>
+            <p>Align on pilot candidates, owners, governance, and success metrics</p>
+          </div>
+        </div>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted);">BCT workshop moves from uncertainty to an actionable roadmap in days, not months.</p>
+      </div>
+
+      <div class="slide-section">
+        <div class="slide-number">Slide 11</div>
+        <h2>Next Steps</h2>
+        <div class="step-row">
+          <div class="step-card" style="border-top-color: var(--cyan);">
+            <div class="step-num" style="color: var(--cyan);">1</div>
+            <div class="step-title">Today</div>
+            <p>Discovery deck prepared; teams introduced</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-title">June 10</div>
+            <p>Intro call. Introductions, AI briefing, TRACE priorities (4:00-4:30 PM ET)</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-title">Discovery</div>
+            <p>Two dedicated sessions to map workflows and identify AI opportunities</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-title">BCT Workshop</div>
+            <p>Three-day Build · Customize · Train workshop on highest-impact use cases</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-section slide-cover">
+        <div class="slide-number">Slide 12</div>
+        <h2>Ready to explore where AI can make the biggest difference for TRACE?</h2>
+        <p style="margin-top:0.75rem;font-size:1rem;"><a href="mailto:strategy@futureinsites.com" style="color:var(--cyan);text-decoration:none;">strategy@futureinsites.com</a></p>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.6);">AI Strategy &amp; Engineering</p>
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+      <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+      <div class="footer-contact"><a href="mailto:help@futureinsites.com">help@futureinsites.com</a></div>
+      <p class="footer-copy">&copy; <span id="yr"></span> &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Cambridge, MA</p>
+    </footer>
+
+  </div>
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
@@ -162,19 +450,6 @@
     }
 
     function reveal() {
-      document.getElementById('deckTitle').textContent = DECK.title;
-      document.getElementById('deckSub').textContent = DECK.subtitle;
-      document.getElementById('backLink').href = DECK.portalUrl;
-
-      const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
-
-      let actions = '<a class="deck-btn primary" href="' + DECK.pdfFile + '" download>' + dlIcon + 'Download PDF</a>';
-      if (DECK.pptFile) actions += '<a class="deck-btn" href="' + DECK.pptFile + '" download>' + dlIcon + 'Download PowerPoint</a>';
-      document.getElementById('deckActions').innerHTML = actions;
-
-      // Show PDF in an iframe so it renders like slide images
-      document.getElementById('deckViewer').innerHTML = '<iframe src="' + DECK.pdfFile + '#view=FitH" title="Presentation"></iframe>';
-
       document.getElementById('lock').style.display = 'none';
       document.getElementById('deck').classList.add('show');
     }
