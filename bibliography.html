@@ -336,7 +336,15 @@
       <li><a href="lululemon.html#recommendations">Recommendations</a></li>
       <li><a href="detail.html">Detail</a></li>
       <li><a href="bibliography.html" class="nav-link-active">Sources</a></li>
-    </ul>
+          <li class="nav-more">
+        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li></ul>
     <div class="nav-search" id="nav-search">
       <input type="text" class="nav-search-input" id="search-input" placeholder="Search" autocomplete="off" aria-label="Search">
       <button class="nav-search-btn" id="search-btn" aria-label="Search">
@@ -676,7 +684,61 @@
     .bib-count { font-size: 0.75rem; color: var(--muted); margin-left: 1rem; }
     .bib-hidden { display: none !important; }
     .bib-highlight { background: rgba(200,16,46,0.13); outline: 1px solid rgba(200,16,46,0.3); border-radius: 2px; }
-  </style>
+  
+    /* ï¿½ï¿½ï¿½ MORE DROPDOWN ï¿½ï¿½ï¿½ */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    /* Mobile: expand inline */
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }</style>
 
   <script>
   (function () {
