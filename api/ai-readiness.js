@@ -7,7 +7,7 @@
 //   AI_READINESS_TO       gregl@futureinsites.com,randalk@futureinsites.com,jeffh@futureinsites.com
 
 const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
-const fetch = require('node-fetch'); // available natively in Node 18+ via global fetch
+// Using native fetch available in Node 18+
 
 // ─── Scoring Engine ───────────────────────────────────────────────────────────
 
