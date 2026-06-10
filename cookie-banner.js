@@ -1,12 +1,37 @@
-/* FutureInSites cookie banner.
-   This site doesn't actually use cookies, so this banner is a joke that
-   reinforces that. Show once per session, dismiss with either button. */
+/* FutureInSites cookie banner + analytics consent.
+   The site uses Google Analytics, which sets cookies. GA loads ONLY after a
+   visitor accepts. Decline = GA never loads, zero cookies set. The choice is
+   remembered in localStorage so the banner shows once, not every visit. */
 (function () {
 
-  /* ─── BAIL EARLY IF ALREADY DISMISSED THIS SESSION ─── */
-  try {
-    if (sessionStorage.getItem('fi_cookie_dismissed') === 'true') return;
-  } catch (e) { /* sessionStorage unavailable, fall through */ }
+  var GA_ID = 'G-H8Q5T1KH1T';
+  var CONSENT_KEY = 'fi_cookie_consent'; /* 'accepted' | 'declined' */
+
+  function getConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+  }
+  function setConsent(v) {
+    try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
+  }
+
+  /* ─── LOAD GOOGLE ANALYTICS (only ever called after consent) ─── */
+  function enableGA() {
+    if (window.__fiGaLoaded) return;
+    window.__fiGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  /* ─── RETURNING VISITORS: honor the saved choice, no banner ─── */
+  var saved = getConsent();
+  if (saved === 'accepted') { enableGA(); return; }
+  if (saved === 'declined') { return; }
 
   /* ─── INLINE SVG: chocolate chip cookie (golden brown, reads on dark bg) ─── */
   var COOKIE_SVG = [
@@ -75,7 +100,10 @@
     '.fi-cookie-img svg { width: 100%; height: 100%; display: block; }',
     '.fi-cookie-text {',
       'margin: 0;',
+      'max-width: 560px;',
     '}',
+    '.fi-cookie-text a { color: #2DD4FF; text-decoration: none; }',
+    '.fi-cookie-text a:hover { text-decoration: underline; }',
     '.fi-cookie-buttons {',
       'display: flex;',
       'gap: 0.6rem;',
@@ -141,16 +169,18 @@
     var bar = document.createElement('div');
     bar.className = 'fi-cookie-bar';
     bar.setAttribute('role', 'dialog');
-    bar.setAttribute('aria-label', 'Cookie notice');
+    bar.setAttribute('aria-label', 'Cookie consent');
     bar.innerHTML =
-      '<div class="fi-cookie-img"><img src="images/cookie-milk.png" alt=""></div>' +
+      '<div class="fi-cookie-img"><img src="/images/cookie-milk.png" alt=""></div>' +
       '<p class="fi-cookie-text">' +
-        "Cookies should only be accepted with milk. As a technology, they're " +
-        "outdated and invasive, so we don't use them. We support the edible kind." +
+        "Cookies are best accepted with milk. We still believe that, but we " +
+        "now use a few Google Analytics cookies to count visits. Nothing that " +
+        "follows you around the internet, and if you decline we set none at all. " +
+        '<a href="/privacy.html">Privacy policy</a>' +
       '</p>' +
       '<div class="fi-cookie-buttons">' +
-        '<button class="fi-cookie-btn fi-cookie-accept" type="button">More milk, please</button>' +
-        '<button class="fi-cookie-btn fi-cookie-reject" type="button">I’m full, thank you</button>' +
+        '<button class="fi-cookie-btn fi-cookie-accept" type="button">Accept cookies (and milk)</button>' +
+        '<button class="fi-cookie-btn fi-cookie-reject" type="button">Decline (just milk for me)</button>' +
       '</div>';
 
     /* If the photo isn't saved yet, fall back to the inline SVG so the
@@ -168,13 +198,17 @@
       bar.style.opacity = '0';
       bar.style.transform = 'translateY(20px)';
       setTimeout(function () { bar.remove(); }, 320);
-      try { sessionStorage.setItem('fi_cookie_dismissed', 'true'); } catch (e) {}
     }
 
-    var btns = bar.querySelectorAll('button');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click', dismiss);
-    }
+    bar.querySelector('.fi-cookie-accept').addEventListener('click', function () {
+      setConsent('accepted');
+      enableGA();
+      dismiss();
+    });
+    bar.querySelector('.fi-cookie-reject').addEventListener('click', function () {
+      setConsent('declined');
+      dismiss();
+    });
   }
 
   if (document.readyState === 'loading') {
