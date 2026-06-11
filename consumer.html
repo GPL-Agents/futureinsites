@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consumer | FutureInSites</title>
+  <meta name="description" content="Spirantix is the consumer product line from FutureInSites: AI companions for memory support, family photo stories, and photo certification, all on hardware your family owns." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) { .nav-wordmark-tagline { display: none; } }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    /* CONTENT */
+    .consumer-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 7rem;
+    }
+
+    .consumer-intro {
+      max-width: 760px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+
+    .consumer-intro h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .consumer-intro p { color: #374151; }
+
+    .consumer-intro a { color: var(--accent); }
+
+    .section-heading {
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 3.5rem 0 1.6rem;
+    }
+
+    /* BELIEF PILLARS */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .pillar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.6rem 1.5rem;
+    }
+
+    .pillar h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar p { font-size: 0.9rem; color: #374151; }
+
+    @media (max-width: 760px) { .pillars { grid-template-columns: 1fr; } }
+
+    /* AGENT CARDS */
+    .agent-card {
+      display: flex;
+      gap: 1.8rem;
+      align-items: flex-start;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .agent-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .agent-status {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      margin-bottom: 0.5rem;
+    }
+
+    .status-beta { background: var(--accent-lt); color: var(--accent); }
+    .status-soon { background: #F1F5F9; color: var(--muted); }
+
+    .agent-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .agent-role {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .agent-card p {
+      font-size: 0.92rem;
+      color: #374151;
+      margin-bottom: 0.8rem;
+    }
+
+    .agent-card p:last-of-type { margin-bottom: 1rem; }
+
+    .agent-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .agent-link:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .agent-card { flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    /* TESSERA */
+    .tessera {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 2rem 2.4rem;
+      margin-top: 3.5rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .tessera strong { color: #fff; }
+
+    /* CLOSING */
+    .consumer-close {
+      max-width: 760px;
+      margin: 3.5rem auto 0;
+      text-align: center;
+    }
+
+    .consumer-close p { color: #374151; margin-bottom: 1.4rem; }
+
+    .consumer-close .cta-btn {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .consumer-close .cta-btn:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* MORE DROPDOWN */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    /* Mobile: expand inline */
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }</style>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="ai-readiness.html">Assessment</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+          <li class="nav-more">
+        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="consumer.html">Consumer</a></li>
+        </ul>
+      </li></ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow">Consumer</p>
+      <h1>AI that makes life better.</h1>
+      <p>Spirantix is the consumer product line from FutureInSites: AI companions that help people remember the faces they love, stay on top of each day, and preserve the stories behind their photos for the next generation.</p>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="consumer-wrap">
+
+    <div class="consumer-intro">
+      <h2>Why we build for families, not just businesses</h2>
+      <p>Most of our work helps companies put AI into production. <a href="https://www.spirantix.ai" rel="noopener">Spirantix</a> asks a different question: what if the same engineering depth made daily life easier for the people who need it most? The result is a family of agents designed for seniors and for anyone who does not consider themselves technical. No manuals, no menus to memorize. If you can hold a conversation, you can use a Spirantix agent. And everything stays on hardware your family owns.</p>
+    </div>
+
+    <h2 class="section-heading">What we believe</h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Helping people comes first</h3>
+        <p>Most AI is built to make work more efficient. Spirantix is built to make life better: easing the weight of memory loss, keeping families connected, and saving the stories that matter before they slip away.</p>
+      </div>
+      <div class="pillar">
+        <h3>Easy for everyone</h3>
+        <p>Designed for older adults and for people who do not think of themselves as technical. Simple to talk to, quick for family to set up, and private by design. Available first on Claude and ChatGPT, with mobile apps to follow.</p>
+      </div>
+      <div class="pillar">
+        <h3>Made to outlast us</h3>
+        <p>Memories should outlive any company, ours included. Everything is built on open standards, so what you keep and pass down stays readable and verifiable decades from now.</p>
+      </div>
+    </div>
+
+    <h2 class="section-heading">Three roles. One mission.</h2>
+
+    <!-- EMERY -->
+    <div class="agent-card">
+      <img class="agent-avatar" src="https://www.spirantix.ai/assets/emery-avatar.png" alt="Emery, the Companion">
+      <div>
+        <span class="agent-status status-beta">Beta Release</span>
+        <h3>Emery</h3>
+        <div class="agent-role">The Companion &middot; She remembers.</div>
+        <p>For someone living with dementia, Alzheimer's, or short-term memory loss, the real challenge is getting through a normal day. Emery is memory support built for exactly that: she manages the calendar and task list, builds a simple daily plan, and gives gentle reminders so nothing falls through the cracks. Appointments, medications, birthdays, the kettle you put on.</p>
+        <p>She also helps you hold on to people and moments. Take or upload a photo and simply ask, &ldquo;Who is this?&rdquo; Emery recognizes family and friends from a private knowledge base created from your own photo library, and answers warmly and conversationally.</p>
+        <a class="agent-link" href="https://www.spirantix.ai/emery.html" rel="noopener">Meet Emery &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CAPSA -->
+    <div class="agent-card">
+      <img class="agent-avatar" src="https://www.spirantix.ai/assets/capsa-avatar.png" alt="Capsa, the Curator">
+      <div>
+        <span class="agent-status status-soon">Coming Soon</span>
+        <h3>Capsa</h3>
+        <div class="agent-role">The Curator &middot; She keeps the stories.</div>
+        <p>Your photos are scattered across Google Photos, iCloud, Dropbox, old laptops, and external drives. Capsa gathers all of them into one organized collection on hardware you own, sorted by year, event, and the people in them.</p>
+        <p>Then comes the part no shoebox of prints could do: record yourself telling the story behind each album, and the Slideshow feature plays your pictures with your own voice narrating, in your words, for your grandchildren and theirs. Full-resolution photos never leave your machine.</p>
+        <a class="agent-link" href="https://www.spirantix.ai/capsa.html" rel="noopener">Meet Capsa &rarr;</a>
+      </div>
+    </div>
+
+    <!-- ADDIE -->
+    <div class="agent-card">
+      <img class="agent-avatar" src="https://www.spirantix.ai/assets/addie-avatar.png" alt="Addie, the Guardian">
+      <div>
+        <span class="agent-status status-soon">Coming Soon</span>
+        <h3>Addie</h3>
+        <div class="agent-role">The Guardian &middot; She knows what's real.</div>
+        <p>In a world filling up with AI-generated images, Addie certifies what's genuine. Hand her a photo or document and she seals it: a visible code, woven into the picture itself, that proves who created it, when it existed, and that it has not been altered since.</p>
+        <p>Use Addie on her own to certify a single precious photo, or let her quietly certify everything in your Capsa collection, so the pictures you pass down can be proven real by your great-grandchildren.</p>
+        <a class="agent-link" href="https://www.spirantix.ai/addie.html" rel="noopener">Meet Addie &rarr;</a>
+      </div>
+    </div>
+
+    <!-- TESSERA -->
+    <div class="tessera">
+      <strong>The Tessera Protocol.</strong> Every seal Addie creates can be read without us. Tessera is the open, published standard for verifying a sealed file: anyone, with any tool, in any decade, can confirm that a photo is genuine and unchanged. In ancient Rome, a tessera hospitalis was a token split between two families; years later, the matching halves could be rejoined to prove the bond. Tessera works the same way for your photos and stories, and it will keep working long after us.
+    </div>
+
+    <!-- CLOSING -->
+    <div class="consumer-close">
+      <p>Spirantix carries the same conviction that drives our consulting practice: technology should serve people, not the other way around. Explore the full story, meet each agent, and follow what's next as Emery moves through beta and Capsa and Addie come to market. Whether it's for you or someone you love, we would be glad to hear from you at <a href="mailto:hello@spirantix.ai">hello@spirantix.ai</a>.</p>
+      <a class="cta-btn" href="https://www.spirantix.ai" rel="noopener">Visit Spirantix.ai &rarr;</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="consumer.html">Consumer</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Boston, MA</p>
+  </footer>
+
+  <script src="cookie-banner.js"></script>
+
+  <script>
+    document.querySelectorAll('.nav-more-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        btn.closest('.nav-more').classList.toggle('open');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-more')) {
+        document.querySelectorAll('.nav-more.open').forEach(function(el) { el.classList.remove('open'); });
+      }
+    });
+  </script>
+
+</body>
+</html>
