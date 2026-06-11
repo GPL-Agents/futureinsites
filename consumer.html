@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Consumer | FutureInSites</title>
-  <meta name="description" content="Spirantix is the consumer product line from FutureInSites: AI companions for memory support, family photo stories, and photo certification, all on hardware your family owns." />
+  <meta name="description" content="The consumer side of FutureInSites: Spirantix builds AI companions for memory support, family photo stories, and photo certification, and NYCWine.com is our AI-operated guide to wine in New York City." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&family=Caveat:wght@600;700&family=Playfair+Display:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -196,17 +196,18 @@
     }
 
     /* CONTENT */
-    .consumer-wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 4rem 2rem 7rem;
+
+    /* ===== SPIRANTIX BAND ===== */
+    .spx-band {
+      background: #f7fafa;
+      font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+      color: #1f2a44;
+      padding: 4.5rem 2rem 5rem;
     }
 
-    .consumer-intro {
-      max-width: 760px;
-      margin: 0 auto 3.5rem;
-      text-align: center;
-    }
+    .spx-wrap { max-width: 960px; margin: 0 auto; }
+
+    .spx-intro { max-width: 760px; margin: 0 auto 3rem; text-align: center; }
 
     .spx-logo {
       display: inline-flex;
@@ -227,136 +228,236 @@
 
     .spx-logo .spx-word span { color: #2bae9e; }
 
-    .consumer-intro h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.8rem;
-    }
+    .spx-intro h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: 0.01em; color: #1f2a44; margin-bottom: 0.8rem; }
 
-    .consumer-intro p { color: #374151; }
+    .spx-intro p { color: #4a5570; }
 
-    .consumer-intro a { color: var(--accent); }
+    .spx-intro a { color: #1d8f82; text-decoration: none; }
 
-    .section-heading {
+    .spx-heading { text-align: center; font-size: 1.35rem; font-weight: 600; color: #1f2a44; margin: 3rem 0 1.6rem; }
+
+    .spx-script {
+      display: block;
       text-align: center;
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 3.5rem 0 1.6rem;
+      font-family: 'Caveat', cursive;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      color: #2e8fb8;
+      transform: rotate(-2deg);
+      margin: 3rem 0 1.4rem;
+      line-height: 1.2;
     }
 
-    /* BELIEF PILLARS */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
+    .spx-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 
-    .pillar {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+    .spx-pillar {
+      background: #ffffff;
+      border: 1px solid #e2e9ec;
+      border-radius: 14px;
       padding: 1.6rem 1.5rem;
+      box-shadow: 0 2px 10px rgba(31,42,68,0.04);
     }
 
-    .pillar h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
+    .spx-pillar h3 { font-size: 1rem; font-weight: 600; color: #1f2a44; margin-bottom: 0.5rem; }
 
-    .pillar p { font-size: 0.9rem; color: #374151; }
+    .spx-pillar p { font-size: 0.9rem; color: #4a5570; }
 
-    @media (max-width: 760px) { .pillars { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) { .spx-pillars { grid-template-columns: 1fr; } }
 
-    /* AGENT CARDS */
-    .agent-card {
+    .spx-agent {
       display: flex;
       gap: 1.8rem;
       align-items: flex-start;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e9ec;
+      border-radius: 14px;
       padding: 1.8rem;
       margin-bottom: 1.4rem;
+      box-shadow: 0 2px 10px rgba(31,42,68,0.04);
     }
 
-    .agent-avatar {
+    .spx-avatar {
       width: 96px;
       height: 96px;
       border-radius: 50%;
       flex-shrink: 0;
       object-fit: cover;
-      border: 1px solid var(--border);
+      border: 3px solid #e4f5f2;
     }
 
-    .agent-status {
+    .spx-badge {
       display: inline-block;
       font-size: 0.68rem;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.2rem 0.7rem;
-      border-radius: 100px;
+      border-radius: 999px;
       margin-bottom: 0.5rem;
     }
 
-    .status-beta { background: var(--accent-lt); color: var(--accent); }
-    .status-soon { background: #F1F5F9; color: var(--muted); }
+    .spx-badge.beta { background: #e4f5f2; color: #1d8f82; }
+    .spx-badge.soon { background: #fdeadf; color: #d44a18; }
 
-    .agent-card h3 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
+    .spx-agent h3 { font-size: 1.2rem; font-weight: 600; color: #1f2a44; }
+
+    .spx-role { font-size: 0.85rem; font-style: italic; color: #4a5570; margin-bottom: 0.7rem; }
+
+    .spx-agent p { font-size: 0.92rem; color: #4a5570; margin-bottom: 0.8rem; }
+
+    .spx-agent p:last-of-type { margin-bottom: 1rem; }
+
+    .spx-link { font-size: 0.88rem; font-weight: 600; color: #1d8f82; text-decoration: none; }
+
+    .spx-link:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .spx-agent { flex-direction: column; align-items: center; text-align: center; }
     }
 
-    .agent-role {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.7rem;
+    .spx-tessera {
+      background: #1f2a44;
+      border-radius: 14px;
+      padding: 2rem 2.4rem;
+      margin-top: 3rem;
+      color: #c5d0e2;
+      font-size: 0.95rem;
+      line-height: 1.7;
     }
 
-    .agent-card p {
-      font-size: 0.92rem;
-      color: #374151;
-      margin-bottom: 0.8rem;
-    }
+    .spx-tessera strong { color: #8fe0c6; }
 
-    .agent-card p:last-of-type { margin-bottom: 1rem; }
+    .spx-cta { text-align: center; margin-top: 2.6rem; }
 
-    .agent-link {
-      font-size: 0.85rem;
+    .spx-btn {
+      display: inline-block;
+      background: #f15a24;
+      color: #ffffff;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 0.93rem;
       font-weight: 600;
-      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .spx-btn:hover { background: #d44a18; transform: translateY(-1px); }
+
+    /* ===== NYCWINE BAND ===== */
+    .nyw-band {
+      background: #ffffff;
+      border-top: 3px solid #ec407a;
+      border-bottom: 3px solid #ec407a;
+      font-family: 'DM Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      color: #222222;
+      padding: 4.5rem 2rem 0;
+    }
+
+    .nyw-wrap { max-width: 960px; margin: 0 auto; text-align: center; }
+
+    .nyw-logo-frame {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 6px;
+      padding: 12px 22px 10px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04), inset 0 0 0 1.5px #ec407a;
+      margin-bottom: 1.6rem;
       text-decoration: none;
     }
 
-    .agent-link:hover { text-decoration: underline; }
+    .nyw-logo-frame img { height: 44px; width: auto; }
 
-    @media (max-width: 640px) {
-      .agent-card { flex-direction: column; align-items: center; text-align: center; }
+    .nyw-tagline {
+      font-style: italic;
+      font-weight: 700;
+      font-size: 12px;
+      color: #e91e8c;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      white-space: nowrap;
     }
 
-    /* TESSERA */
-    .tessera {
-      background: var(--dark);
-      border-radius: 12px;
-      padding: 2rem 2.4rem;
-      margin-top: 3.5rem;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      border: 1px solid rgba(255,255,255,0.06);
+    .nyw-title {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.25;
+      margin-bottom: 1rem;
     }
 
-    .tessera strong { color: #fff; }
+    .nyw-wrap > p { color: #555555; max-width: 760px; margin: 0 auto 1.1rem; }
+
+    .nyw-wrap a { color: #c2185b; }
+
+    .nyw-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin: 2.4rem 0 2.2rem;
+    }
+
+    .nyw-cell {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid #ec407a;
+      border-radius: 8px;
+      padding: 1.2rem 0.8rem 1.1rem;
+    }
+
+    .nyw-cell img { width: 44px; height: 44px; object-fit: contain; margin-bottom: 0.6rem; }
+
+    .nyw-cell h3 {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .nyw-cell p { font-size: 0.78rem; color: #888888; line-height: 1.5; }
+
+    @media (max-width: 860px) {
+      .nyw-grid { grid-template-columns: repeat(2, 1fr); }
+      .nyw-grid .nyw-cell:last-child { grid-column: 1 / -1; }
+    }
+
+    .nyw-cta { margin-bottom: 2.8rem; }
+
+    .nyw-btn {
+      display: inline-block;
+      background: #ec407a;
+      color: #ffffff;
+      padding: 10px 26px;
+      border-radius: 999px;
+      font-size: 0.93rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nyw-btn:hover { background: #c2185b; }
+
+    .nyw-skyline {
+      display: block;
+      width: 100%;
+      max-height: 90px;
+      object-fit: cover;
+      object-position: center bottom;
+      opacity: 0.5;
+      margin-top: 0.5rem;
+    }
 
     /* CLOSING */
     .consumer-close {
       max-width: 760px;
-      margin: 3.5rem auto 0;
+      margin: 4rem auto;
       text-align: center;
+      padding: 0 2rem;
     }
 
     .consumer-close p { color: #374151; margin-bottom: 1.4rem; }
@@ -528,100 +629,162 @@
     <div class="page-header-inner">
       <p class="eyebrow">Consumer</p>
       <h1>AI that makes life better.</h1>
-      <p>Spirantix is the consumer product line from FutureInSites: AI companions that help people remember the faces they love, stay on top of each day, and preserve the stories behind their photos for the next generation.</p>
+      <p>FutureInSites builds for homes as well as boardrooms. Spirantix is a family of AI companions that help people remember the faces they love and preserve the stories behind their photos. NYCWine.com is our AI-operated guide to wine in New York City, from tonight's tastings to the best bottle shop on the block.</p>
     </div>
   </header>
 
   <!-- CONTENT -->
-  <main class="consumer-wrap">
+  <main>
 
-    <div class="consumer-intro">
-      <a class="spx-logo" href="https://www.spirantix.ai" rel="noopener" aria-label="Spirantix.ai">
-        <svg viewBox="0 0 100 100" aria-hidden="true">
-          <g>
-            <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#8FE0C6"/>
-            <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#4FC9B5" transform="rotate(60 50 50)"/>
-            <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#2BAE9E" transform="rotate(120 50 50)"/>
-            <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#2E8FB8" transform="rotate(180 50 50)"/>
-            <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#2368A8" transform="rotate(240 50 50)"/>
-            <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#1B4E82" transform="rotate(300 50 50)"/>
-            <circle cx="50" cy="50" r="7" fill="#ffffff"/>
-            <circle cx="50" cy="50" r="3.2" fill="#2BAE9E"/>
-          </g>
-        </svg>
-        <span class="spx-word">Spirantix<span>.ai</span></span>
-      </a>
-      <h2>Why we build for families, not just businesses</h2>
-      <p>Most of our work helps companies put AI into production. <a href="https://www.spirantix.ai" rel="noopener">Spirantix</a> asks a different question: what if the same engineering depth made daily life easier for the people who need it most? The result is a family of agents designed for seniors and for anyone who does not consider themselves technical. No manuals, no menus to memorize. If you can hold a conversation, you can use a Spirantix agent. And everything stays on hardware your family owns.</p>
-    </div>
+    <!-- SPIRANTIX -->
+    <section class="spx-band">
+      <div class="spx-wrap">
 
-    <h2 class="section-heading">What we believe</h2>
+        <div class="spx-intro">
+          <a class="spx-logo" href="https://www.spirantix.ai" rel="noopener" aria-label="Spirantix.ai">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <g>
+                <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#8FE0C6"/>
+                <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#4FC9B5" transform="rotate(60 50 50)"/>
+                <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#2BAE9E" transform="rotate(120 50 50)"/>
+                <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#2E8FB8" transform="rotate(180 50 50)"/>
+                <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#2368A8" transform="rotate(240 50 50)"/>
+                <path d="M50,50 C50,25 60,13 83,13 C72,24 73,37 50,50Z" fill="#1B4E82" transform="rotate(300 50 50)"/>
+                <circle cx="50" cy="50" r="7" fill="#ffffff"/>
+                <circle cx="50" cy="50" r="3.2" fill="#2BAE9E"/>
+              </g>
+            </svg>
+            <span class="spx-word">Spirantix<span>.ai</span></span>
+          </a>
+          <h2>Why we build for families, not just businesses</h2>
+          <p>Most of our work helps companies put AI into production. <a href="https://www.spirantix.ai" rel="noopener">Spirantix</a> asks a different question: what if the same engineering depth made daily life easier for the people who need it most? The result is a family of agents designed for seniors and for anyone who does not consider themselves technical. No manuals, no menus to memorize. If you can hold a conversation, you can use a Spirantix agent. And everything stays on hardware your family owns.</p>
+        </div>
 
-    <div class="pillars">
-      <div class="pillar">
-        <h3>Helping people comes first</h3>
-        <p>Most AI is built to make work more efficient. Spirantix is built to make life better: easing the weight of memory loss, keeping families connected, and saving the stories that matter before they slip away.</p>
+        <h2 class="spx-heading">What we believe</h2>
+
+        <div class="spx-pillars">
+          <div class="spx-pillar">
+            <h3>Helping people comes first</h3>
+            <p>Most AI is built to make work more efficient. Spirantix is built to make life better: easing the weight of memory loss, keeping families connected, and saving the stories that matter before they slip away.</p>
+          </div>
+          <div class="spx-pillar">
+            <h3>Easy for everyone</h3>
+            <p>Designed for older adults and for people who do not think of themselves as technical. Simple to talk to, quick for family to set up, and private by design. Available first on Claude and ChatGPT, with mobile apps to follow.</p>
+          </div>
+          <div class="spx-pillar">
+            <h3>Made to outlast us</h3>
+            <p>Memories should outlive any company, ours included. Everything is built on open standards, so what you keep and pass down stays readable and verifiable decades from now.</p>
+          </div>
+        </div>
+
+        <span class="spx-script">Three roles. One mission.</span>
+
+        <!-- EMERY -->
+        <div class="spx-agent">
+          <img class="spx-avatar" src="images/consumer/spx-emery-avatar.png" alt="Emery, the Companion">
+          <div>
+            <span class="spx-badge beta">Beta Release</span>
+            <h3>Emery</h3>
+            <div class="spx-role">The Companion &middot; She remembers.</div>
+            <p>For someone living with dementia, Alzheimer's, or short-term memory loss, the real challenge is getting through a normal day. Emery is memory support built for exactly that: she manages the calendar and task list, builds a simple daily plan, and gives gentle reminders so nothing falls through the cracks. Appointments, medications, birthdays, the kettle you put on.</p>
+            <p>She also helps you hold on to people and moments. Take or upload a photo and simply ask, &ldquo;Who is this?&rdquo; Emery recognizes family and friends from a private knowledge base created from your own photo library, and answers warmly and conversationally.</p>
+            <a class="spx-link" href="https://www.spirantix.ai/emery.html" rel="noopener">Meet Emery &rarr;</a>
+          </div>
+        </div>
+
+        <!-- CAPSA -->
+        <div class="spx-agent">
+          <img class="spx-avatar" src="images/consumer/spx-capsa-avatar.png" alt="Capsa, the Curator">
+          <div>
+            <span class="spx-badge soon">Coming Soon</span>
+            <h3>Capsa</h3>
+            <div class="spx-role">The Curator &middot; She keeps the stories.</div>
+            <p>Your photos are scattered across Google Photos, iCloud, Dropbox, old laptops, and external drives. Capsa gathers all of them into one organized collection on hardware you own, sorted by year, event, and the people in them.</p>
+            <p>Then comes the part no shoebox of prints could do: record yourself telling the story behind each album, and the Slideshow feature plays your pictures with your own voice narrating, in your words, for your grandchildren and theirs. Full-resolution photos never leave your machine.</p>
+            <a class="spx-link" href="https://www.spirantix.ai/capsa.html" rel="noopener">Meet Capsa &rarr;</a>
+          </div>
+        </div>
+
+        <!-- ADDIE -->
+        <div class="spx-agent">
+          <img class="spx-avatar" src="images/consumer/spx-addie-avatar.png" alt="Addie, the Guardian">
+          <div>
+            <span class="spx-badge soon">Coming Soon</span>
+            <h3>Addie</h3>
+            <div class="spx-role">The Guardian &middot; She knows what's real.</div>
+            <p>In a world filling up with AI-generated images, Addie certifies what's genuine. Hand her a photo or document and she seals it: a visible code, woven into the picture itself, that proves who created it, when it existed, and that it has not been altered since.</p>
+            <p>Use Addie on her own to certify a single precious photo, or let her quietly certify everything in your Capsa collection, so the pictures you pass down can be proven real by your great-grandchildren.</p>
+            <a class="spx-link" href="https://www.spirantix.ai/addie.html" rel="noopener">Meet Addie &rarr;</a>
+          </div>
+        </div>
+
+        <!-- TESSERA -->
+        <div class="spx-tessera">
+          <strong>The Tessera Protocol.</strong> Every seal Addie creates can be read without us. Tessera is the open, published standard for verifying a sealed file: anyone, with any tool, in any decade, can confirm that a photo is genuine and unchanged. In ancient Rome, a tessera hospitalis was a token split between two families; years later, the matching halves could be rejoined to prove the bond. Tessera works the same way for your photos and stories, and it will keep working long after us.
+        </div>
+
+        <div class="spx-cta">
+          <a class="spx-btn" href="https://www.spirantix.ai" rel="noopener">Visit Spirantix.ai &rarr;</a>
+        </div>
+
       </div>
-      <div class="pillar">
-        <h3>Easy for everyone</h3>
-        <p>Designed for older adults and for people who do not think of themselves as technical. Simple to talk to, quick for family to set up, and private by design. Available first on Claude and ChatGPT, with mobile apps to follow.</p>
-      </div>
-      <div class="pillar">
-        <h3>Made to outlast us</h3>
-        <p>Memories should outlive any company, ours included. Everything is built on open standards, so what you keep and pass down stays readable and verifiable decades from now.</p>
-      </div>
-    </div>
+    </section>
 
-    <h2 class="section-heading">Three roles. One mission.</h2>
+    <!-- NYCWINE -->
+    <section class="nyw-band">
+      <div class="nyw-wrap">
 
-    <!-- EMERY -->
-    <div class="agent-card">
-      <img class="agent-avatar" src="https://www.spirantix.ai/assets/emery-avatar.png" alt="Emery, the Companion">
-      <div>
-        <span class="agent-status status-beta">Beta Release</span>
-        <h3>Emery</h3>
-        <div class="agent-role">The Companion &middot; She remembers.</div>
-        <p>For someone living with dementia, Alzheimer's, or short-term memory loss, the real challenge is getting through a normal day. Emery is memory support built for exactly that: she manages the calendar and task list, builds a simple daily plan, and gives gentle reminders so nothing falls through the cracks. Appointments, medications, birthdays, the kettle you put on.</p>
-        <p>She also helps you hold on to people and moments. Take or upload a photo and simply ask, &ldquo;Who is this?&rdquo; Emery recognizes family and friends from a private knowledge base created from your own photo library, and answers warmly and conversationally.</p>
-        <a class="agent-link" href="https://www.spirantix.ai/emery.html" rel="noopener">Meet Emery &rarr;</a>
+        <a class="nyw-logo-frame" href="https://www.nycwine.com" rel="noopener" aria-label="NYCWine.com">
+          <img src="images/consumer/nyw-logo.png" alt="NYCWine.com">
+          <span class="nyw-tagline">Uncork the City</span>
+        </a>
+
+        <h2 class="nyw-title">One of the world&rsquo;s great wine cities, in one place</h2>
+
+        <p><a href="https://www.nycwine.com" rel="noopener">NYCWine.com</a> is our guide for the people who drink, collect, and chase wine across the five boroughs: tastings, classes, and dinners updated daily, a directory of 335+ stores and 110+ bars, the latest headlines, and the community conversation in a single feed.</p>
+
+        <p>It is also a working showcase of how we operate a media property with AI. Agents round up events from sources across the city, keep the news desk current, and power a concierge that helps visitors find the right bottle or the right bar. A small editorial team reviews; the agents do the legwork.</p>
+
+        <div class="nyw-grid">
+          <div class="nyw-cell">
+            <img src="images/consumer/nyw-icon-wine-events.png" alt="">
+            <h3>Wine Events</h3>
+            <p>Tastings, classes, dinners, and festivals from sources across NYC.</p>
+          </div>
+          <div class="nyw-cell">
+            <img src="images/consumer/nyw-icon-wine-store.png" alt="">
+            <h3>Wine Stores</h3>
+            <p>335+ shops with addresses, phone numbers, and website links.</p>
+          </div>
+          <div class="nyw-cell">
+            <img src="images/consumer/nyw-icon-wine-bar.png" alt="">
+            <h3>Wine Bars</h3>
+            <p>110+ bars in Manhattan, Brooklyn, and Queens, searchable by borough.</p>
+          </div>
+          <div class="nyw-cell">
+            <img src="images/consumer/nyw-icon-news.png" alt="">
+            <h3>Wine News</h3>
+            <p>Headlines and stories from top wine publications, refreshed automatically.</p>
+          </div>
+          <div class="nyw-cell">
+            <img src="images/consumer/nyw-icon-social.png" alt="">
+            <h3>Community</h3>
+            <p>Conversations from Reddit, Instagram, X, and more in one feed.</p>
+          </div>
+        </div>
+
+        <div class="nyw-cta">
+          <a class="nyw-btn" href="https://www.nycwine.com" rel="noopener">Visit NYCWine.com &rarr;</a>
+        </div>
+
       </div>
-    </div>
-
-    <!-- CAPSA -->
-    <div class="agent-card">
-      <img class="agent-avatar" src="https://www.spirantix.ai/assets/capsa-avatar.png" alt="Capsa, the Curator">
-      <div>
-        <span class="agent-status status-soon">Coming Soon</span>
-        <h3>Capsa</h3>
-        <div class="agent-role">The Curator &middot; She keeps the stories.</div>
-        <p>Your photos are scattered across Google Photos, iCloud, Dropbox, old laptops, and external drives. Capsa gathers all of them into one organized collection on hardware you own, sorted by year, event, and the people in them.</p>
-        <p>Then comes the part no shoebox of prints could do: record yourself telling the story behind each album, and the Slideshow feature plays your pictures with your own voice narrating, in your words, for your grandchildren and theirs. Full-resolution photos never leave your machine.</p>
-        <a class="agent-link" href="https://www.spirantix.ai/capsa.html" rel="noopener">Meet Capsa &rarr;</a>
-      </div>
-    </div>
-
-    <!-- ADDIE -->
-    <div class="agent-card">
-      <img class="agent-avatar" src="https://www.spirantix.ai/assets/addie-avatar.png" alt="Addie, the Guardian">
-      <div>
-        <span class="agent-status status-soon">Coming Soon</span>
-        <h3>Addie</h3>
-        <div class="agent-role">The Guardian &middot; She knows what's real.</div>
-        <p>In a world filling up with AI-generated images, Addie certifies what's genuine. Hand her a photo or document and she seals it: a visible code, woven into the picture itself, that proves who created it, when it existed, and that it has not been altered since.</p>
-        <p>Use Addie on her own to certify a single precious photo, or let her quietly certify everything in your Capsa collection, so the pictures you pass down can be proven real by your great-grandchildren.</p>
-        <a class="agent-link" href="https://www.spirantix.ai/addie.html" rel="noopener">Meet Addie &rarr;</a>
-      </div>
-    </div>
-
-    <!-- TESSERA -->
-    <div class="tessera">
-      <strong>The Tessera Protocol.</strong> Every seal Addie creates can be read without us. Tessera is the open, published standard for verifying a sealed file: anyone, with any tool, in any decade, can confirm that a photo is genuine and unchanged. In ancient Rome, a tessera hospitalis was a token split between two families; years later, the matching halves could be rejoined to prove the bond. Tessera works the same way for your photos and stories, and it will keep working long after us.
-    </div>
+      <img class="nyw-skyline" src="images/consumer/nyw-skyline.jpg" alt="">
+    </section>
 
     <!-- CLOSING -->
     <div class="consumer-close">
-      <p>Spirantix carries the same conviction that drives our consulting practice: technology should serve people, not the other way around. Explore the full story, meet each agent, and follow what's next as Emery moves through beta and Capsa and Addie come to market. Whether it's for you or someone you love, we would be glad to hear from you at <a href="mailto:hello@spirantix.ai">hello@spirantix.ai</a>.</p>
-      <a class="cta-btn" href="https://www.spirantix.ai" rel="noopener">Visit Spirantix.ai &rarr;</a>
+      <p>Both properties carry the same conviction that drives our consulting practice: technology should serve people, not the other way around. Spirantix brings that to families holding on to their memories and stories. NYCWine.com brings it to a city full of wine lovers, with agents handling the daily work behind the scenes. If either one speaks to you, or to someone you love, we would be glad to hear from you.</p>
+      <a class="cta-btn" href="index.html#contact">Get In Touch</a>
     </div>
 
   </main>
