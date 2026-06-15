@@ -2918,10 +2918,11 @@
         })
         .then(function (result) {
           if (result.ok && result.json && result.json.ok) {
-            if (header) header.style.display = 'none';
-            form.style.display = 'none';
-            success.classList.add('show');
+            if (typeof gtag === 'function') {
+              gtag('event', 'generate_lead', { form_id: 'fis-inquiry-form' });
+            }
             form.reset();
+            window.location.href = 'thanks.html';
             return;
           }
           var msg = (result.json && result.json.error)

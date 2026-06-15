@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "futureinsites.com" }],
+      "destination": "https://www.futureinsites.com/$1",
+      "permanent": true
+    }
+  ]
+}
