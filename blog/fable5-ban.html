@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U.S. Government Orders Anthropic to Pull Fable 5 and Mythos 5 | FutureInSites Blog</title>
+  <meta name="description" content="The Commerce Department ordered Anthropic to block foreign access to its newest AI models, citing a jailbreak vulnerability. Fable 5 and Mythos 5 are down indefinitely." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 860px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .post-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content .featured-image {
+      margin: 1.5rem 0 2rem;
+      text-align: center;
+    }
+    .post-content .featured-image img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .post-content .featured-image .caption {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../ai-readiness.html">Assessment</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">June 17, 2026</div>
+      <h1>U.S. Government Orders Anthropic to Pull Fable 5 and Mythos 5</h1>
+      <p class="post-excerpt">The Commerce Department directed Anthropic to block all foreign nationals from accessing its newest frontier models, citing a jailbreak vulnerability. Fable 5 and Mythos 5 are now offline indefinitely.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <div class="featured-image">
+        <img src="fable5-ban.png" alt="Claude Fable 5 app logo on a smartphone" />
+        <div class="caption">Claude Fable 5, launched just over a week ago, is now unavailable worldwide. (Image: Matteo Della Torre/NurPhoto via Getty Images)</div>
+      </div>
+
+      <p>If you fired up Claude over the weekend and saw Fable 5 missing from the model picker, you're not alone. <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Anthropic pulled its two newest models</a> -- Fable 5 and Mythos 5 -- after the U.S. Commerce Department issued an emergency export control directive on Friday, June 12.</p>
+
+      <p>The order, <a href="https://www.axios.com/2026/06/12/anthropic-trump-mythos-fable-national-security" target="_blank" rel="noopener">first reported by Axios</a>, requires Anthropic to block all foreign nationals from accessing the models -- whether inside or outside the United States, including foreign national Anthropic employees. Since the company lacks the technical infrastructure to enforce nationality-based access controls at scale, it pulled access for everyone.</p>
+
+      <h2>What Happened</h2>
+
+      <p>Commerce Secretary Howard Lutnick sent a letter to Anthropic CEO Dario Amodei on Friday afternoon stating that Fable 5 and Mythos 5 would be subject to export controls to any location outside the U.S. According to <a href="https://www.reuters.com/technology/us-blocks-foreign-access-anthropics-most-advanced-ai-models-axios-reports-2026-06-13/" target="_blank" rel="noopener">Reuters</a>, the government cited national security authorities and a reported "jailbreak" technique that bypassed Fable 5's safety guardrails.</p>
+
+      <p>Anthropic's own <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">statement</a> describes the alleged vulnerability as "a potential narrow, non-universal jailbreak, which essentially consists of asking the model to read a specific codebase and fix any software flaws." After reviewing the demonstration, Anthropic found that Fable 5 surfaced only a small number of known, minor vulnerabilities -- and that <a href="https://www.forbes.com/sites/anishasircar/2026/06/16/anthropic-disabled-fable-5-and-mythos-5-after-a-us-export-control-order-heres-what-happened/" target="_blank" rel="noopener">other publicly available models, including OpenAI's GPT-5.5, can also discover those same code issues</a> without any special prompt techniques.</p>
+
+      <h2>The Political Backdrop</h2>
+
+      <p>This isn't a standalone event. In March 2026, <a href="https://www.wired.com/story/anthropic-says-us-government-ordered-it-to-shut-down-mythos-models/" target="_blank" rel="noopener">WIRED reported</a> that the Pentagon labeled Anthropic a "supply chain risk" after the company refused to enable Claude for domestic surveillance and autonomous weapons applications without safety restrictions. The Commerce order can be read as a new front in an ongoing dispute between the government and a company that has staked its brand on responsible AI deployment.</p>
+
+      <p>The move is among the most aggressive uses of export-control powers against a commercially deployed AI model, according to <a href="https://www.forbes.com/sites/anishasircar/2026/06/16/anthropic-disabled-fable-5-and-mythos-5-after-a-us-export-control-order-heres-what-happened/" target="_blank" rel="noopener">Forbes</a>. It raises immediate questions about how the U.S. government intends to regulate frontier AI capabilities on an ongoing basis.</p>
+
+      <h2>What Is a Jailbreak?</h2>
+
+      <p>Taken from the concept of bypassing carrier restrictions on mobile phones, a jailbreak in AI refers to a technique that manipulates a model into bypassing its built-in safety guardrails. In this case, the government claims it found a method that could cause Fable 5 to generate cyber offense capabilities without the safeguards Anthropic had built in.</p>
+
+      <p>Anthropic disputes the severity. The company notes that before launch, Fable 5 was red-teamed for thousands of hours by the U.S. government, the U.K. AI Security Institute, and multiple third-party organizations -- none of which found a universal jailbreak. <a href="https://www.cnet.com/tech/services-and-software/anthropic-claude-fable-mythos-us-export-controls/" target="_blank" rel="noopener">As CNET reported</a>, Anthropic also pointed out that no model provider has yet achieved perfect jailbreak resistance, and that the industry-standard safeguards are vulnerable to non-universal jailbreaks by design.</p>
+
+      <h2>Broader Industry Implications</h2>
+
+      <p>Anthropic's warning to the industry is pointed: if this jailbreak standard were applied across the board, it would effectively halt all new frontier model deployments. This is a direct appeal to OpenAI, Google, and others to treat the Commerce order as a shared problem rather than a competitive opportunity.</p>
+
+      <p>The logic is straightforward. If a narrow, non-universal jailbreak -- one that doesn't work across all contexts -- is sufficient grounds for an emergency export control shutdown, then every new frontier model faces the same risk. Every model has edge cases where safety guardrails can be bypassed in specific circumstances. That's not a bug unique to Fable 5; it's a property of the current state of the art in AI safety.</p>
+
+      <p>As <a href="https://qz.com/anthropic-fable-5-mythos-5-export-control-directive-061226" target="_blank" rel="noopener">Quartz noted</a>, Fable 5's safeguards were described as "substantially more effective than those of any previously deployed model" by Anthropic. The two models -- built on the same underlying architecture -- differ primarily in their output controls: Fable 5 includes classifiers to block high-risk cybersecurity responses, while Mythos 5, available only through the Glasswing program, operates with some constraints removed.</p>
+
+      <h2>What Happens Next</h2>
+
+      <p>Fable 5 and Mythos 5 will remain down indefinitely. Anthropic has stated it does not currently have a method to reliably enforce nationality-based access controls at scale, so a simple "U.S. users only" switch isn't on the table.</p>
+
+      <p>Two likely scenarios going forward:</p>
+
+      <ul>
+        <li><strong>Litigation.</strong> Anthropic challenges the export control order in court. The company has the resources and incentive to fight, and a legal challenge would test the scope of the Commerce Department's authority over AI model deployments.</li>
+        <li><strong>A technical compromise.</strong> Anthropic develops nationality-gating infrastructure -- possibly through IP geolocation, verified credential systems, or employer-based verification -- that satisfies the government's concerns while restoring tiered access for U.S.-based users and organizations.</li>
+      </ul>
+
+      <p>Either path will take weeks or months. In the meantime, Claude users who had adopted Fable 5 for production workflows are falling back to Opus 4.5 or migrating to competing models entirely. For enterprises, this is a real-world stress test of the multi-model strategies we've been advocating since before Fable 5 launched.</p>
+
+      <hr />
+
+      <p><em>FutureInSites helps enterprises build resilient AI stacks that survive vendor disruptions, regulatory changes, and market shifts. If you're reassessing your model strategy in light of this development, <a href="../index.html#contact">get in touch</a>.</em></p>
+
+      <p style="margin-top: 2rem;"><a href="index.html" class="post-back">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy & Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="index.html">Blog</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../privacy.html">Privacy</a></li>
+      <li><a href="../consumer.html">Consumer</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Boston, MA</p>
+  </footer>
+
+  <script src="../cookie-banner.js"></script>
+</body>
+</html>
