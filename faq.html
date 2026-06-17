@@ -651,5 +651,18 @@
   </footer>
 
   <script src="cookie-banner.js"></script>
+  <script>
+    document.querySelectorAll('.nav-more-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        btn.closest('.nav-more').classList.toggle('open');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-more')) {
+        document.querySelectorAll('.nav-more.open').forEach(function(el) { el.classList.remove('open'); });
+      }
+    });
+  </script>
 </body>
 </html>
