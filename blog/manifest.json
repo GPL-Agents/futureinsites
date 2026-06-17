@@ -1,135 +1,135 @@
 [
-  {
-    "slug": "fable5-ban",
-    "title": "U.S. Government Orders Anthropic to Pull Fable 5 and Mythos 5",
-    "date": "2026-06-15",
-    "excerpt": "The Commerce Department ordered Anthropic to block foreign access to its newest AI models, citing a jailbreak vulnerability. Fable 5 and Mythos 5 are down indefinitely -- with major implications for the industry.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "Anthropic",
-      "Fable 5",
-      "AI Regulation",
-      "Export Control",
-      "AI Safety"
-    ],
-    "image": "fable5-ban.png"
-  },
-  {
-    "slug": "anthropic-ipo-2026",
-    "title": "Anthropic Files for IPO: What It Means for Enterprise AI Strategy",
-    "date": "2026-06-03",
-    "excerpt": "Anthropic's confidential S-1 filing marks a turning point for the AI industry. For enterprises building on Claude, the implications go well beyond the stock price.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "Anthropic",
-      "IPO",
-      "Enterprise AI",
-      "AI Strategy"
-    ]
-  },
-  {
-    "slug": "multi-model-ai-strategy",
-    "title": "Multi-Model Strategy Is Table Stakes for AI in 2026",
-    "date": "2026-06-09",
-    "excerpt": "The 'pick one model' era is over. Smart deployments pair models to task complexity and build price-based waterfalls for cost efficiency -- and that's no longer optimization, it's the baseline.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "AI Strategy",
-      "Model Selection",
-      "Multi-Model"
-    ],
-    "image": "multimodel.blog.png"
-  },
-  {
-    "slug": "stainless-acquisition",
-    "title": "Why Anthropic's Stainless Acquisition Matters (And What Competitors Do Next)",
-    "date": "2026-05-27",
-    "excerpt": "This was not an acquisition to make Claude smarter. It was an acquisition to make Claude easier to connect, deploy, and use everywhere. The AI race is shifting from model intelligence to system integration.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "Anthropic",
-      "Stainless",
-      "MCP",
-      "Developer Tools",
-      "AI Strategy"
-    ]
-  },
-  {
-    "slug": "eu-ai-act-enterprise",
-    "title": "The EU AI Act Is Here: What It Means for Your AI Stack",
-    "date": "2025-12-15",
-    "excerpt": "Europe's comprehensive AI regulation entered force last month, and it has teeth. Here is how US-based enterprises should adjust their AI stacks, vendor evaluations, and internal compliance workflows.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "EU AI Act",
-      "AI Regulation",
-      "Compliance",
-      "AI Governance"
-    ]
-  },
-  {
-    "slug": "enterprise-ai-pragmatism-2026",
-    "title": "From Hype to Pragmatism: What Enterprise AI Looks Like in 2026",
-    "date": "2026-01-12",
-    "excerpt": "If 2024 was the year of 'look what AI can do' and 2025 was the year of 'we should probably use this,' 2026 is shaping up to be the year of 'does it actually move the needle?'",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "Enterprise AI",
-      "AI Strategy",
-      "Pragmatism",
-      "Model Selection"
-    ]
-  },
-  {
-    "slug": "agent-boundaries-over-autonomy",
-    "title": "Why Agent Boundaries Matter More Than Agent Autonomy",
-    "date": "2026-02-09",
-    "excerpt": "The industry is realizing that the value of AI agents lies not in raw autonomy but in the right division of tasks. Here is a practical framework for bounded agent architecture.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "AI Agents",
-      "Agent Architecture",
-      "Guardrails",
-      "Enterprise AI"
-    ]
-  },
-  {
-    "slug": "mcp-new-http-of-ai",
-    "title": "MCP Hit 97M Installs: Why the Model Context Protocol Is the New HTTP of AI",
-    "date": "2026-03-16",
-    "excerpt": "Anthropic's Model Context Protocol crossed 97 million installs in March 2026, cementing its role as foundational infrastructure for AI-tool integration.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "MCP",
-      "Model Context Protocol",
-      "AI Infrastructure",
-      "Standards"
-    ]
-  },
-  {
-    "slug": "open-weight-model-revolution",
-    "title": "The Open-Weight Model Revolution: When to Build vs. Rent Your AI Brain",
-    "date": "2026-04-13",
-    "excerpt": "Google released Gemma 4 under Apache 2.0. Here is a framework for deciding when to use open-weight models vs. API-based frontier models for your enterprise AI stack.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "Open-Weight Models",
-      "Gemma 4",
-      "Build vs Buy",
-      "AI Architecture"
-    ]
-  },
-  {
-    "slug": "microsoft-build-2026-ai-platform",
-    "title": "Microsoft Build 2026: The Windows AI Platform Is Here",
-    "date": "2026-06-02",
-    "excerpt": "Microsoft Build 2026 delivered Project Polaris, the Windows Agent Framework, and Microsoft Foundry. Here is what the new AI platform means for enterprise strategy.",
-    "author": "Greg Loeffelholz",
-    "tags": [
-      "Microsoft Build",
-      "Project Polaris",
-      "Windows AI",
-      "AI Platform"
-    ]
-  }
+    {
+        "slug":  "fable5-ban",
+        "title":  "U.S. Government Orders Anthropic to Block Foreign Access to Claude Fable 5",
+        "date":  "2026-06-15",
+        "excerpt":  "The Commerce Department ordered Anthropic to block foreign nationals from accessing Fable 5, citing a jailbreak vulnerability. Anthropic pulled the model rather than attempt nationality-based gating.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "Anthropic",
+                     "Fable 5",
+                     "AI Regulation",
+                     "Export Control",
+                     "AI Safety"
+                 ],
+        "image":  "fable5-ban.png"
+    },
+    {
+        "slug":  "anthropic-ipo-2026",
+        "title":  "Anthropic Files for IPO: What It Means for Enterprise AI Strategy",
+        "date":  "2026-06-03",
+        "excerpt":  "Anthropic\u0027s confidential S-1 filing marks a turning point for the AI industry. For enterprises building on Claude, the implications go well beyond the stock price.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "Anthropic",
+                     "IPO",
+                     "Enterprise AI",
+                     "AI Strategy"
+                 ]
+    },
+    {
+        "slug":  "multi-model-ai-strategy",
+        "title":  "Multi-Model Strategy Is Table Stakes for AI in 2026",
+        "date":  "2026-06-09",
+        "excerpt":  "The \u0027pick one model\u0027 era is over. Smart deployments pair models to task complexity and build price-based waterfalls for cost efficiency -- and that\u0027s no longer optimization, it\u0027s the baseline.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "AI Strategy",
+                     "Model Selection",
+                     "Multi-Model"
+                 ],
+        "image":  "multimodel.blog.png"
+    },
+    {
+        "slug":  "stainless-acquisition",
+        "title":  "Why Anthropic\u0027s Stainless Acquisition Matters (And What Competitors Do Next)",
+        "date":  "2026-05-27",
+        "excerpt":  "This was not an acquisition to make Claude smarter. It was an acquisition to make Claude easier to connect, deploy, and use everywhere. The AI race is shifting from model intelligence to system integration.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "Anthropic",
+                     "Stainless",
+                     "MCP",
+                     "Developer Tools",
+                     "AI Strategy"
+                 ]
+    },
+    {
+        "slug":  "eu-ai-act-enterprise",
+        "title":  "The EU AI Act Is Here: What It Means for Your AI Stack",
+        "date":  "2025-12-15",
+        "excerpt":  "Europe\u0027s comprehensive AI regulation entered force last month, and it has teeth. Here is how US-based enterprises should adjust their AI stacks, vendor evaluations, and internal compliance workflows.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "EU AI Act",
+                     "AI Regulation",
+                     "Compliance",
+                     "AI Governance"
+                 ]
+    },
+    {
+        "slug":  "enterprise-ai-pragmatism-2026",
+        "title":  "From Hype to Pragmatism: What Enterprise AI Looks Like in 2026",
+        "date":  "2026-01-12",
+        "excerpt":  "If 2024 was the year of \u0027look what AI can do\u0027 and 2025 was the year of \u0027we should probably use this,\u0027 2026 is shaping up to be the year of \u0027does it actually move the needle?\u0027",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "Enterprise AI",
+                     "AI Strategy",
+                     "Pragmatism",
+                     "Model Selection"
+                 ]
+    },
+    {
+        "slug":  "agent-boundaries-over-autonomy",
+        "title":  "Why Agent Boundaries Matter More Than Agent Autonomy",
+        "date":  "2026-02-09",
+        "excerpt":  "The industry is realizing that the value of AI agents lies not in raw autonomy but in the right division of tasks. Here is a practical framework for bounded agent architecture.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "AI Agents",
+                     "Agent Architecture",
+                     "Guardrails",
+                     "Enterprise AI"
+                 ]
+    },
+    {
+        "slug":  "mcp-new-http-of-ai",
+        "title":  "MCP Hit 97M Installs: Why the Model Context Protocol Is the New HTTP of AI",
+        "date":  "2026-03-16",
+        "excerpt":  "Anthropic\u0027s Model Context Protocol crossed 97 million installs in March 2026, cementing its role as foundational infrastructure for AI-tool integration.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "MCP",
+                     "Model Context Protocol",
+                     "AI Infrastructure",
+                     "Standards"
+                 ]
+    },
+    {
+        "slug":  "open-weight-model-revolution",
+        "title":  "The Open-Weight Model Revolution: When to Build vs. Rent Your AI Brain",
+        "date":  "2026-04-13",
+        "excerpt":  "Google released Gemma 4 under Apache 2.0. Here is a framework for deciding when to use open-weight models vs. API-based frontier models for your enterprise AI stack.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "Open-Weight Models",
+                     "Gemma 4",
+                     "Build vs Buy",
+                     "AI Architecture"
+                 ]
+    },
+    {
+        "slug":  "microsoft-build-2026-ai-platform",
+        "title":  "Microsoft Build 2026: The Windows AI Platform Is Here",
+        "date":  "2026-06-02",
+        "excerpt":  "Microsoft Build 2026 delivered Project Polaris, the Windows Agent Framework, and Microsoft Foundry. Here is what the new AI platform means for enterprise strategy.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "Microsoft Build",
+                     "Project Polaris",
+                     "Windows AI",
+                     "AI Platform"
+                 ]
+    }
 ]
