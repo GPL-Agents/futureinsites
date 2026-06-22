@@ -709,7 +709,8 @@
       background: #F0FAFE;
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 2rem 1.8rem;
+      overflow: hidden;
+      padding: 0;
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
 
@@ -719,46 +720,23 @@
       box-shadow: 0 8px 30px rgba(79,70,229,0.08);
     }
 
-    /* Solution card header: custom SVG icon + accent rule that fills the empty space */
-    .sol-header {
-      display: flex;
-      align-items: center;
-      gap: 0.95rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .sol-icon {
-      width: 72px;
-      height: 72px;
-      color: var(--accent);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+    .sol-img {
+      width: 100%;
+      height: 200px;
       overflow: hidden;
-      background: #FFFFFF;
-      transition: border-color 0.3s;
     }
 
-    .sol-icon svg,
-    .sol-icon img {
+    .sol-img img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
-      object-fit: contain;
     }
 
-    .sol-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      transition: background 0.3s, height 0.3s;
+    .sol-body {
+      padding: 1.5rem 1.8rem 2rem;
     }
-
-    .solution-card:hover .sol-icon { color: var(--cyan); border-color: var(--accent); }
-    .solution-card:hover .sol-rule { background: var(--accent); height: 1.5px; }
 
     .solution-card h3 {
       font-size: 1rem;
@@ -1956,9 +1934,9 @@
 
         <div class="about-body">
           <h2 class="section-title">Build. Customize. Train.</h2>
-          <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT. That's activity, but not real progress.</p>
-          <p>FutureInSites brings enterprise-grade methodology to businesses that don't have enterprise budgets or technical teams. We work with SMBs, professional offices, and individuals who want AI working for them — not against them.</p>
-          <p>The goal is not more AI activity. It is measurable business impact.</p>
+          <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT.</p>
+          <p>FutureInSites helps small and mid-sized businesses, professional offices, and high net worth individuals move beyond experimentation. We identify high-impact opportunities, implement practical AI solutions, and help clients turn emerging technology into a lasting advantage.</p>
+          <p>The goal is not more AI activity. It is measurable impact.</p>
         </div>
 
         <div class="about-stats">
@@ -2032,7 +2010,7 @@
             <div class="journey-card-titlewrap">
               <h3>Train</h3>
             </div>
-            <p class="journey-card-desc">Enable your team with practical tools, playbooks, and hands-on training. We transfer ownership so the capability sticks — whether your team runs it or we support them.</p>
+            <p class="journey-card-desc">Enable your team with practical tools, playbooks, and hands-on training. We transfer ownership so the capability sticks, whether your team runs it or we support them.</p>
             <div class="journey-card-divider">
               <ul class="journey-card-bullets">
                 <li>Team Enablement</li>
@@ -2060,36 +2038,33 @@
       <div class="solutions-grid">
 
         <a href="solutions.html#smb" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
-          <div class="sol-header">
-            <div class="sol-icon" aria-hidden="true">
-              <img src="images/SMBs.fis.png" alt="">
-            </div>
-            <div class="sol-rule"></div>
+          <div class="sol-img">
+            <img src="images/SMBs.fis.png" alt="Small and medium businesses">
           </div>
-          <h3>SMBs</h3>
-          <p>AI strategy and implementation for small and medium businesses — construction, MEP, industrial services, field trades, and suppliers where worker time is the most valuable asset. Enterprise methodology, SMB scale.</p>
+          <div class="sol-body">
+            <h3>SMBs</h3>
+            <p>AI strategy and implementation for small and medium businesses: construction, MEP, industrial services, field trades, and suppliers where worker time is the most valuable asset. Enterprise methodology, SMB scale.</p>
+          </div>
         </a>
 
         <a href="solutions.html#professional-offices" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
-          <div class="sol-header">
-            <div class="sol-icon" aria-hidden="true">
-              <img src="images/Prof.Offices.fis.png" alt="">
-            </div>
-            <div class="sol-rule"></div>
+          <div class="sol-img">
+            <img src="images/Prof.Offices.fis.png" alt="Professional offices">
           </div>
-          <h3>Professional Offices</h3>
-          <p>Practical AI for dental practices, law firms, chiropractic offices, and similar professional practices. Reduce admin burden, improve patient and client experience, and reclaim time for high-value work.</p>
+          <div class="sol-body">
+            <h3>Professional Offices</h3>
+            <p>Practical AI for dental practices, law firms, chiropractic offices, and similar professional practices. Reduce admin burden, improve patient and client experience, and reclaim time for high-value work.</p>
+          </div>
         </a>
 
         <a href="solutions.html#individuals" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
-          <div class="sol-header">
-            <div class="sol-icon" aria-hidden="true">
-              <img src="images/high.worth.png" alt="">
-            </div>
-            <div class="sol-rule"></div>
+          <div class="sol-img">
+            <img src="images/high.worth.png" alt="Individuals">
           </div>
-          <h3>Individuals</h3>
-          <p>Done-for-you AI admin for individuals who want AI running across their business and personal life. Configured to your tools, your calendar, and your priorities — so you can focus on what only you can do.</p>
+          <div class="sol-body">
+            <h3>Individuals</h3>
+            <p>Done-for-you AI admin for individuals who want AI running across their business and personal life. Configured to your tools, your calendar, and your priorities, so you can focus on what only you can do.</p>
+          </div>
         </a>
 
       </div>
