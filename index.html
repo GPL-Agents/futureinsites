@@ -128,6 +128,7 @@
     }
 
     .nav-links a:hover { color: #FFFFFF; }
+    .nav-links a.active { color: #FFFFFF; font-weight: 700; }
 
     .nav-cta {
       position: absolute;
@@ -661,8 +662,8 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
     .team-vertical {
       font-size: 0.85rem;
@@ -2395,7 +2396,7 @@
     <div class="section-inner">
       <p class="section-label">Team</p>
       <h2 class="section-title">Enterprise Expertise</h2>
-      <p class="section-intro">Industry depth and research rigor across the verticals where AI is changing the economics fastest.</p>
+      <p class="section-intro">Practitioners who have led at scale and know what real AI transformation requires.</p>
 
       <div class="team-grid">
 
@@ -2403,7 +2404,6 @@
           <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
           <div class="team-name">Greg Loeffelholz</div>
           <div class="team-title">Founder &amp; Managing Principal</div>
-          <div class="team-vertical">Advertising &amp; Media</div>
           <p class="team-bio">Over 25 years scaling data, ML, and GenAI platforms as a strategic leader. Led engineering and data science at MotiveMetrics' AI SaaS platform optimizing $100MM+ in paid search, with P&amp;L and SOC 2 governance. MarTech DSP &amp; CDP leadership at Inmar Intelligence and Nelnet. Vanderbilt BA, Boston College MBA in AI &amp; Machine Learning.</p>
         </div>
 
@@ -2411,7 +2411,6 @@
           <img src="images/jeff.jpg" alt="Jeff Hoffman" class="team-photo">
           <div class="team-name">Jeff Hoffman</div>
           <div class="team-title">Principal Consultant</div>
-          <div class="team-vertical">Healthcare &amp; Retail</div>
           <p class="team-bio">Two decades of digital product leadership across pharmacy, retail, and healthcare. VP roles at Walgreens leading 200+ product and engineering professionals, Best Buy heading Digital, Analytics, and Technology, and CVS Health as Chief Digital Officer for Pharmacy overseeing $13B in digital revenue. Tufts BA, Chicago Booth MBA in Strategic Management and Finance.</p>
         </div>
 
@@ -2421,7 +2420,6 @@
           <img src="images/Randal.jpg" alt="Randal Kenworthy" class="team-photo">
           <div class="team-name">Randal Kenworthy</div>
           <div class="team-title">Founding Advisor</div>
-          <div class="team-vertical">Industrial &amp; Manufacturing</div>
           <p class="team-bio">Adjunct Professor at Boston College teaching AI Strategy. 30+ years of consulting and strategy leadership across West Monroe, Cognizant, Cisco, and Wipro, with deep experience in product innovation, transformation, M&amp;A, and Industry 4.0 for Fortune 50 consumer and industrial manufacturing companies. Boston College BS, Yale MBA in Strategy and Finance.</p>
         </div>
         -->
@@ -2431,7 +2429,6 @@
           <img src="images/miao.liu.jpg" alt="Miao Liu" class="team-photo">
           <div class="team-name">Miao Liu</div>
           <div class="team-title">Technical Advisor</div>
-          <div class="team-vertical">Investment &amp; Finance</div>
           <p class="team-bio">Assistant Professor of Accounting at Boston College's Carroll School, researching the intersection of accounting and AI. Builds RAG systems applied to financial disclosure and publishes on human-AI collaboration in corporate valuation. Teaches an AI Applications in Business course at BC. Wuhan University BA, University of Chicago PhD.</p>
         </div>
 
@@ -2942,6 +2939,17 @@
   })();
   </script>
   <script src="cookie-banner.js"></script>
+  <script>
+  (function(){
+    var links = document.querySelectorAll('.nav-links a');
+    links.forEach(function(a){
+      a.addEventListener('click', function(){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+  })();
+  </script>
 
   <!-- Animated hero node-network background -->
   <script>
