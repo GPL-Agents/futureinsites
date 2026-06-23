@@ -327,7 +327,7 @@
     }
 
     /* ─── SECTIONS ─── */
-    section { padding: 5rem 2rem; }
+    section { padding: 3.5rem 2rem; }
 
     .section-inner {
       max-width: 960px;
@@ -371,8 +371,8 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
+      gap: 3rem;
+      align-items: stretch;
     }
 
     .about-body p:not(.section-label) {
@@ -383,6 +383,7 @@
     }
 
     .about-body p strong { color: var(--dark); }
+    .about-body .section-title { font-size: clamp(1.6rem, 2.8vw, 2rem); white-space: nowrap; }
 
     .about-stats {
       display: grid;
@@ -392,6 +393,7 @@
       background: var(--cyan);
       padding: 0.8rem;
       border-radius: 12px;
+      height: 100%;
     }
 
     .about-stat {
