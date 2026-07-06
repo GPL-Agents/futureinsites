@@ -1,5 +1,18 @@
 [
     {
+        "slug":  "classical-ai-never-ai",
+        "title":  "Classical AI Was Never Artificial Intelligence",
+        "date":  "2026-07-06",
+        "excerpt":  "Expert systems, rule engines, and classical planners were labeled AI for decades. By the correct definition of artificial intelligence, they were not. Here is the test that separates automation from intelligence.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "AI Definition",
+                     "Machine Learning",
+                     "AI Strategy",
+                     "Expert Systems"
+                 ]
+    },
+    {
         "slug":  "fable5-ban",
         "title":  "U.S. Government Orders Anthropic to Block Foreign Access to Claude Fable 5",
         "date":  "2026-06-15",

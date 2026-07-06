@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classical AI Was Never Artificial Intelligence | FutureInSites Blog</title>
+  <meta name="description" content="The systems historically labeled 'AI' -- expert systems, rule engines, classical planners -- were never artificial intelligence by the correct definition. Here is the test that separates automation from intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* Post Layout */
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 700px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Content */
+    .post-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* Code blocks */
+    .post-content pre {
+      background: #0f1117;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0 1.5rem;
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .post-content pre code {
+      font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+    .post-content code {
+      font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', monospace;
+      font-size: 0.88em;
+      background: #f0f4f8;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      color: #2563EB;
+    }
+    .post-content pre code {
+      background: none;
+      padding: 0;
+      color: #e2e8f0;
+    }
+    .code-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Comparison table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .ai-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: var(--bg);
+    }
+    .ai-table th {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .ai-table td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: #333;
+      vertical-align: top;
+    }
+    .ai-table tr:last-child td { border-bottom: none; }
+    .ai-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .ai-table tr:hover td { background: #EFF6FF; }
+    .tag-yes {
+      display: inline-block;
+      background: #DCFCE7;
+      color: #166534;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .tag-no {
+      display: inline-block;
+      background: #FEE2E2;
+      color: #991B1B;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .tag-borderline {
+      display: inline-block;
+      background: #FEF9C3;
+      color: #713F12;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Landscape image */
+    .landscape-wrap {
+      margin: 2rem 0;
+    }
+    .landscape-wrap img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      border: 1px solid var(--border);
+    }
+    .landscape-caption {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    /* Author bio */
+    .author-bio {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 640px) {
+      .post-header h1 { font-size: 1.75rem; }
+      .post-content { font-size: 16px; }
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+      .nav-cta { display: none; }
+      .ai-table th, .ai-table td { font-size: 0.8rem; padding: 0.5rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../ai-readiness.html">Assessment</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+          <li><a href="index.html">Blog</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../consumer.html">Consumer</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">July 6, 2026</div>
+      <h1>Classical AI Was Never Artificial Intelligence</h1>
+      <p class="post-excerpt">The test that separates automation from intelligence</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <h2>Move 37</h2>
+
+      <p>In March 2016, AlphaGo faced Lee Sedol, one of the world's strongest Go players, in a five-game match in Seoul. Game two. Move 37. AlphaGo placed a stone on the fifth line of the board, well outside the established positions of play. Every expert watching the broadcast assumed it was a mistake. Professional commentators paused. Lee Sedol left the room to collect himself.</p>
+
+      <p>It was not a mistake. Move 37 is now considered one of the most creative moves in the recorded history of the game. No human player had ever attempted it in that context. AlphaGo had not been programmed to play it. The move emerged from the system's own analysis, derived from millions of self-played games, not from any rule a programmer ever wrote.</p>
+
+      <p>That is what AI does. It derives expertise. And that distinction matters enormously when evaluating what qualifies as artificial intelligence and what does not.</p>
+
+      <h2>The Definition</h2>
+
+      <p>Merriam-Webster defines artificial intelligence as "the capability of computer systems or algorithms to imitate intelligent human behavior." That is a useful starting point, but it does not draw a clear boundary between systems that mimic the outputs of intelligence and systems that genuinely develop intelligence from data.</p>
+
+      <p>The conventional picture of AI depicts a nested hierarchy: artificial intelligence as the broad category, machine learning as a subset within it, and deep learning as a further specialization. This taxonomy appears in textbooks, vendor presentations, and most introductory explanations of the field. It is not wrong exactly, but it is incomplete in a way that creates real confusion.</p>
+
+      <p>The problem is what the taxonomy groups together. Under this framing, MYCIN, a 1970s medical diagnosis program that applied if-then rules written by physicians, and a modern large language model trained on hundreds of billions of tokens, occupy the same category. They do not belong there together. One is an elaborate lookup table with a medical vocabulary. The other derives an understanding of language and reasoning from data at a scale no human could have encoded. Calling both "AI" conflates the filing cabinet with the analyst.</p>
+
+      <p>A more precise definition: <strong>Artificial Intelligence is a computational system whose expertise is primarily machine-derived rather than explicitly authored by humans.</strong></p>
+
+      <p>The word "computational" removes any implication that the form of the system matters. Code is the implementation, not the defining characteristic. An engine is an engine whether it runs on gasoline, diesel, or hydrogen. What defines it is what it does, not how it is built. Similarly, what defines AI is how its expertise is acquired, not the language it was written in or the hardware it runs on.</p>
+
+      <h2>The Test</h2>
+
+      <p>That definition produces a single, clear test.</p>
+
+      <blockquote>Was the expertise in this system written by a human, or derived by a machine?</blockquote>
+
+      <p>If a human engineer wrote the rules, conditions, thresholds, and logic that govern the system's behavior, the system is software. It is automation. It may be impressive and useful, but it is not AI.</p>
+
+      <p>If the system derived those patterns from exposure to data, and its behavior reflects knowledge that no programmer explicitly encoded, it is AI.</p>
+
+      <p>This is not a question of how complex the system is. A rule engine with ten thousand conditions is still a rule engine. Complexity does not produce intelligence. The source of the expertise is what determines the classification.</p>
+
+      <h2>Why Classical Systems Do Not Pass</h2>
+
+      <p>With that test in hand, the historical record of systems labeled "AI" tells a different story than the one usually told.</p>
+
+      <div class="table-wrap">
+        <table class="ai-table">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Human-authored knowledge?</th>
+              <th>Learns / derives knowledge?</th>
+              <th>Decisions beyond explicit programming?</th>
+              <th>AI?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Traditional algorithm</td>
+              <td>100%</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>Business rule engine</td>
+              <td>100%</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>Decision tree (hand-written)</td>
+              <td>100%</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>Expert system</td>
+              <td>100% (domain experts)</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>MYCIN</td>
+              <td>100% (medical rules from physicians)</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>SHRDLU</td>
+              <td>100% (grammar, blocks world, planning rules)</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>STRIPS planner</td>
+              <td>100% (operators, goals, search rules)</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>Chess engine (classical)</td>
+              <td>Rules, evaluation function, and heuristics are human-authored</td>
+              <td>No</td>
+              <td>Searches possibilities</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>IBM Deep Blue</td>
+              <td>Human evaluation + brute-force search</td>
+              <td>No</td>
+              <td>No</td>
+              <td><span class="tag-no">No</span></td>
+            </tr>
+            <tr>
+              <td>Theorem prover</td>
+              <td>Axioms and inference rules are human-authored</td>
+              <td>Derives logical consequences, but no new external knowledge</td>
+              <td>Borderline</td>
+              <td><span class="tag-borderline">Borderline</span></td>
+            </tr>
+            <tr>
+              <td>Recommendation model (ML)</td>
+              <td>Objective is human-authored</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Fraud detection model</td>
+              <td>Objective is human-authored</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Image classifier</td>
+              <td>Objective is human-authored</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Large language model</td>
+              <td>Training objective is human-authored</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Diffusion model</td>
+              <td>Training objective is human-authored</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>AI Copilot</td>
+              <td>Uses learned models</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Agentic AI (e.g. OpenClaw)</td>
+              <td>Uses learned models plus planning</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Autonomous rover using AI</td>
+              <td>Same as above with physical actuators</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="tag-yes">Yes</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The pattern is consistent. Every system in the No column shares one characteristic: a human wrote the expertise. The rules, the evaluation functions, the inference logic, the clinical decision trees -- all of it was authored by domain experts and encoded by engineers. These systems execute knowledge. They do not develop it.</p>
+
+      <p>The systems in the Yes column share the opposite characteristic. The objective may have been specified by a human (minimize loss, maximize reward, predict the next token), but the expertise that emerges from training was not. A recommendation model does not apply rules about what users enjoy. It derives patterns of preference from behavior at scale. A large language model does not execute a grammar. It has derived an internal representation of language that produces coherent, contextually appropriate text across an essentially unbounded range of topics.</p>
+
+      <p>The Borderline case is instructive. A theorem prover operates on axioms and inference rules that are human-authored, but it derives consequences from those axioms that no human specified. It surfaces an important nuance: the distinction is not always binary. There is a spectrum, and the question is where a given system sits on it. But for most of what has historically been called "AI," the answer is unambiguous.</p>
+
+      <h2>The Business Example</h2>
+
+      <p>Consider how this distinction plays out in a concrete business context. A company wants to improve how it sets prices for customers.</p>
+
+      <p class="code-label">Classical approach: rule-based pricing</p>
+      <pre><code>if customer_tier == "premium" and days_since_purchase &lt; 30:
+    discount = 0.15
+elif customer_tier == "standard" and cart_value &gt; 100:
+    discount = 0.10
+else:
+    discount = 0.00</code></pre>
+
+      <p>Every condition in this block was written by a pricing analyst. The system executes the analyst's judgment. Change the market, and someone has to update the rules. The expertise lives in the code, authored by a human.</p>
+
+      <p class="code-label">Machine learning approach: derived pricing</p>
+      <pre><code>model = PricingModel.load("pricing_v4")
+discount = model.predict(customer_features, context_features)</code></pre>
+
+      <p>The model was trained on millions of historical transactions and their outcomes. It has derived a pricing function that accounts for day of week, browsing session behavior, device type, regional patterns, time since last purchase, and hundreds of other signals. No analyst wrote those relationships. They emerged from the data. The expertise is machine-derived.</p>
+
+      <p>Both systems automate a pricing decision. Only one developed its own expertise. That is the difference this definition is designed to make precise.</p>
+
+      <h2>A Better Map</h2>
+
+      <p>The AI field has produced a wide and growing set of systems that pass this test. The diagram below maps the modern landscape of AI tools and systems, organized by function and capability.</p>
+
+      <div class="landscape-wrap">
+        <img src="../images/AI.Evolution.Diagram.png" alt="The Modern AI Landscape: a comprehensive map of AI tools and systems organized by category and function">
+        <p class="landscape-caption">The Modern AI Landscape, organized by category and capability. All systems shown derive their expertise from data rather than from explicitly authored rules.</p>
+      </div>
+
+      <p>Understanding which systems belong on this map matters for anyone building or evaluating AI implementations. The distinction is not academic. Deploying a rule engine and calling it AI creates a false expectation that the system will improve over time, adapt to new patterns, and handle situations its designers did not anticipate. It will do none of those things. Rules do not learn.</p>
+
+      <h2>Robots Are Not AI</h2>
+
+      <p>One of the most durable misconceptions in public discourse about AI is the identification of AI with robots. The image of AI, in films, journalism, and common usage, is often a humanoid machine. That image is almost always wrong.</p>
+
+      <p>Whether a robot is AI depends entirely on how it works, not on the fact that it moves.</p>
+
+      <p>A robot in an automotive factory executing a precisely programmed sequence of welds is not AI. Every movement was scripted by engineers. It performs the same sequence in the same order for every unit on the line. It does not adapt. It does not learn. It is sophisticated automation.</p>
+
+      <p>A robot whose movements are governed by a policy derived through reinforcement learning, one that has learned to navigate novel environments, grasp irregular objects, or compensate for unexpected physical conditions, is AI. Its competence was derived from experience, not authored by a programmer.</p>
+
+      <p>The robot is hardware. The intelligence, when it exists, is in how the system acquired its behavior.</p>
+
+      <h2>Conclusion</h2>
+
+      <p>Eight of the eighteen systems in the table above pass the test. Nine do not. One sits at the borderline. Those nine, including some of the most celebrated programs in the history of computer science, were never AI by this definition. They were software: very sophisticated software, built by talented engineers, solving real problems. But software.</p>
+
+      <p>Move 37 could not have been authored. No human player would have made it because no human's expertise would have produced it in that position. It emerged from a system that derived its knowledge through a fundamentally different process. That is the difference the conventional taxonomy fails to capture, and that this definition is built to make precise.</p>
+
+      <p>Classical AI was never artificial intelligence. It was automation with an ambitious name.</p>
+
+      <hr>
+
+      <p class="author-bio">Greg Loeffelholz is the Founder and Principal Consultant at FutureInSites.</p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="index.html">Blog</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../privacy.html">Privacy</a></li>
+      <li><a href="../consumer.html">Consumer</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY  &nbsp;&middot;&nbsp; Boston, MA</p>
+  </footer>
+
+  <script>
+  /* More dropdown toggle */
+  (function () {
+    var more = document.querySelector('.nav-more');
+    if (!more) return;
+    var btn = more.querySelector('.nav-more-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      more.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!more.contains(e.target)) more.classList.remove('open');
+    });
+    more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+      a.addEventListener('click', function () { more.classList.remove('open'); });
+    });
+  })();
+  </script>
+  <script src="../cookie-banner.js"></script>
+</body>
+</html>
