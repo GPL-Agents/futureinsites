@@ -2920,6 +2920,7 @@
         if (thumb) {
           if (p.image) {
             thumb.style.backgroundImage = "url('blog/" + p.image + "')";
+            thumb.style.backgroundPosition = p.imagePosition || 'top';
           } else {
             /* no image for this post: dark branded banner instead */
             thumb.style.backgroundImage = 'none';
