@@ -613,95 +613,6 @@
     /* ─── SOLUTIONS ─── */
     .solutions { background: #FFFFFF; }
 
-    /* ─── TEAM ─── */
-    .team-section {
-      padding: 5rem 2rem;
-      background: #FFFFFF;
-      border-top: 1px solid var(--border);
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.4rem;
-      margin-top: 3rem;
-    }
-    .team-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2.2rem 1.6rem 2rem;
-      text-align: center;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-      display: flex;
-      flex-direction: column;
-    }
-    .team-bio { flex: 1; }
-    .team-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(79,70,229,0.08);
-    }
-    .team-photo {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 1.4rem;
-      border: 3px solid var(--bg-alt);
-    }
-    .team-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.25rem;
-      letter-spacing: -0.01em;
-    }
-    .team-title {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .team-vertical {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      letter-spacing: -0.005em;
-    }
-    .team-bio {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    @media (max-width: 860px) {
-      .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-    }
-
-    /* Two-tier team layout: Founder up top, Advisors below */
-    .team-tier-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-align: center;
-      margin: 0 0 1rem 0;
-    }
-    .team-tier-label.team-tier-second { margin-top: 3rem; }
-    .team-founder-row {
-      display: flex;
-      justify-content: center;
-    }
-    .team-founder-row .team-card {
-      width: 100%;
-      max-width: 360px;
-    }
-    .team-section .team-grid { margin-top: 0; }
-
     .solutions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1777,7 +1688,7 @@
       <li><a href="solutions.html">Solutions</a></li>
       <li><a href="ai-readiness.html">Assessment</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="#team">Team</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="#contact">Contact</a></li>
           <li class="nav-more">
         <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
@@ -2391,51 +2302,6 @@
     </div>
   </section>
 
-  <!-- TEAM -->
-  <section class="team-section" id="team">
-    <div class="section-inner">
-      <p class="section-label">Team</p>
-      <h2 class="section-title">Enterprise Expertise</h2>
-      <p class="section-intro">Practitioners who have led at scale and know what real AI transformation requires.</p>
-
-      <div class="team-grid">
-
-        <div class="team-card">
-          <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
-          <div class="team-name">Greg Loeffelholz</div>
-          <div class="team-title">Founder &amp; Managing Principal</div>
-          <p class="team-bio">Over 25 years scaling data, ML, and GenAI platforms as a strategic leader. Led engineering and data science at MotiveMetrics' AI SaaS platform optimizing $100MM+ in paid search, with P&amp;L and SOC 2 governance. MarTech DSP &amp; CDP leadership at Inmar Intelligence and Nelnet. Vanderbilt BA, Boston College MBA in AI &amp; Machine Learning.</p>
-        </div>
-
-        <div class="team-card">
-          <img src="images/jeff.jpg" alt="Jeff Hoffman" class="team-photo">
-          <div class="team-name">Jeff Hoffman</div>
-          <div class="team-title">Principal Consultant</div>
-          <p class="team-bio">Two decades of digital product leadership across pharmacy, retail, and healthcare. VP roles at Walgreens leading 200+ product and engineering professionals, Best Buy heading Digital, Analytics, and Technology, and CVS Health as Chief Digital Officer for Pharmacy overseeing $13B in digital revenue. Tufts BA, Chicago Booth MBA in Strategic Management and Finance.</p>
-        </div>
-
-        <!-- TEMPORARILY HIDDEN: Randal Kenworthy's profile. To reactivate, delete the surrounding comment markers (this line and the matching one below). -->
-        <!--
-        <div class="team-card">
-          <img src="images/Randal.jpg" alt="Randal Kenworthy" class="team-photo">
-          <div class="team-name">Randal Kenworthy</div>
-          <div class="team-title">Founding Advisor</div>
-          <p class="team-bio">Adjunct Professor at Boston College teaching AI Strategy. 30+ years of consulting and strategy leadership across West Monroe, Cognizant, Cisco, and Wipro, with deep experience in product innovation, transformation, M&amp;A, and Industry 4.0 for Fortune 50 consumer and industrial manufacturing companies. Boston College BS, Yale MBA in Strategy and Finance.</p>
-        </div>
-        -->
-        <!-- END TEMPORARILY HIDDEN: Randal Kenworthy -->
-
-        <div class="team-card">
-          <img src="images/miao.liu.jpg" alt="Miao Liu" class="team-photo">
-          <div class="team-name">Miao Liu</div>
-          <div class="team-title">Technical Advisor</div>
-          <p class="team-bio">Assistant Professor of Accounting at Boston College's Carroll School, researching the intersection of accounting and AI. Builds RAG systems applied to financial disclosure and publishes on human-AI collaboration in corporate valuation. Teaches an AI Applications in Business course at BC. Wuhan University BA, University of Chicago PhD.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- LATEST -->
   <section class="latest-section" id="latest">
     <div class="section-inner">
@@ -2500,7 +2366,7 @@
       <li><a href="solutions.html">Solutions</a></li>
       <li><a href="ai-readiness.html">Assessment</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="#team">Team</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="careers.html">Careers</a></li>
