@@ -10,7 +10,8 @@
                      "Machine Learning",
                      "AI Strategy",
                      "Expert Systems"
-                 ]
+                 ],
+        "image":  "../images/what.is.ai.png"
     },
     {
         "slug":  "fable5-ban",
