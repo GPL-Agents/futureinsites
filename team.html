@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team | FutureInSites</title>
-  <meta name="description" content="Meet the FutureInSites team. Practitioners who have led at scale and know what real AI transformation requires." />
+  <meta name="description" content="Meet the FutureInSites team. Practitioners who have led at scale, with deep ML engineering and AI architecture expertise built in production." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,6 +261,38 @@
       .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
     }
 
+    .team-intro {
+      max-width: 740px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+
+    .team-intro p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .team-domains {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.6rem;
+    }
+
+    .team-domain-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.85rem;
+      border-radius: 100px;
+      background: var(--accent-lt);
+      color: var(--accent);
+      border: 1px solid rgba(37,99,235,0.15);
+    }
+
     /* FOOTER */
     footer {
       background: var(--dark2);
@@ -421,12 +453,25 @@
     <div class="page-header-inner">
       <p class="eyebrow">Team</p>
       <h1>Enterprise Expertise</h1>
-      <p>Practitioners who have led at scale and know what real AI transformation requires.</p>
+      <p>Practitioners who have led at scale, grounded in deep ML engineering and real-world AI architecture.</p>
     </div>
   </div>
 
   <!-- TEAM GRID -->
   <div class="team-wrap">
+
+    <div class="team-intro">
+      <p>The FutureInSites team combines decades of enterprise leadership with hands-on ML and AI architecture experience. We have built and scaled production AI platforms, led engineering and product organizations at Fortune 100 companies, and conducted peer-reviewed research on AI applied to real business systems. Strategy and technical depth are not separate tracks here — they are the same practice.</p>
+      <div class="team-domains">
+        <span class="team-domain-tag">ML Systems</span>
+        <span class="team-domain-tag">LLM Architecture</span>
+        <span class="team-domain-tag">Data Platforms</span>
+        <span class="team-domain-tag">Enterprise Product</span>
+        <span class="team-domain-tag">AI Research</span>
+        <span class="team-domain-tag">GenAI Deployment</span>
+      </div>
+    </div>
+
     <div class="team-grid">
 
       <div class="team-card">
