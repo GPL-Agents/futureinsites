@@ -1,5 +1,21 @@
 [
     {
+        "slug":  "nvidia-openShell-nemoclaw",
+        "title":  "NVIDIA OpenShell and NemoClaw: A Sound Architecture, A Narrow Strategy",
+        "date":  "2026-07-13",
+        "excerpt":  "NVIDIA built a genuinely interesting security layer for AI agents at GTC 2026. The architecture addresses a real structural problem. The category strategy raises serious questions about where NVIDIA thinks this market is going.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "AI Security",
+                     "NVIDIA",
+                     "OpenClaw",
+                     "AI Agents",
+                     "Agent Security",
+                     "NemoClaw"
+                 ],
+        "image":  "OpenShell.Name.Meeting.png"
+    },
+    {
         "slug":  "classical-ai-never-ai",
         "title":  "Classical AI Was Never Artificial Intelligence",
         "date":  "2026-07-06",
