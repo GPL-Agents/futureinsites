@@ -34,13 +34,14 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: center;
       padding: 0 3rem; height: 64px;
+      overflow: visible;
       background: #FFFFFF; border-bottom: 1px solid #E2E8F0;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
     .nav-wordmark { text-decoration: none; display: flex; align-items: center; gap: 0.6rem; position: absolute; left: 3rem; }
-    .nav-logo { height: 32px; width: auto; flex-shrink: 0; object-fit: contain; }
-    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; width: 160px; overflow: visible; }
-    .nav-wordmark-img { width: 100%; height: auto; display: block; }
+    .nav-logo { height: 36px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-wordmark-img { height: 22px; width: auto; display: block; flex-shrink: 0; }
     .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; width: 100%; white-space: nowrap; letter-spacing: 0.04em; }
     @media (max-width: 640px) { .nav-logo { height: 30px; } .nav-wordmark-text { width: 168px; } .nav-wordmark-tagline { font-size: 0.6rem; } }
     .nav-links { display: flex; gap: 2rem; list-style: none; }

@@ -47,6 +47,7 @@
       justify-content: center;
       padding: 0 3rem;
       height: 64px;
+      overflow: visible;
       background: #FFFFFF;
       border-bottom: 1px solid #E2E8F0;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -62,7 +63,7 @@
     }
 
     .nav-logo {
-      height: 32px;
+      height: 36px;
       width: auto;
       flex-shrink: 0;
       object-fit: contain;
@@ -72,15 +73,15 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-      width: 160px;
       overflow: visible;
     }
 
+    /* Height-based sizing: predictable rendered size, no width% rounding issues */
     .nav-wordmark-img {
-      width: 100%;
-      height: auto;
+      height: 22px;
+      width: auto;
       display: block;
-      overflow: visible;
+      flex-shrink: 0;
     }
 
     .nav-wordmark-tagline {
@@ -558,6 +559,7 @@
       background: #F1F0ED;
       padding: 2rem 2rem;
       border-top: 1px solid #DDD9D0;
+      border-bottom: 1px solid #DDD9D0;
     }
 
     .bottom-banner-inner {
