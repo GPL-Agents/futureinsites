@@ -153,70 +153,41 @@
       overflow: hidden;
     }
 
-    /* Light dot grid */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     /* Canvas hidden on homepage — kept for R&I page */
     #fis-hero-bg { display: none; }
 
     .hero-inner {
-      max-width: 1120px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      align-items: stretch;
       position: relative;
       z-index: 2;
+      min-height: 480px;
+    }
+
+    .hero-left {
+      padding: 5rem 3rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 580px;
     }
 
     @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-inner { grid-template-columns: 1fr; }
       .hero-right { display: none; }
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-lt);
-      border: 1px solid rgba(37,99,235,0.18);
-      padding: 0.3rem 0.9rem;
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
+      .hero-left { padding: 5rem 2rem 3rem; max-width: 100%; }
     }
 
     .hero-h1 {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      font-size: clamp(2.2rem, 3.6vw, 3.4rem);
       font-weight: 800;
-      color: var(--dark);
-      line-height: 1.1;
+      color: #0F172A;
+      line-height: 1.08;
       letter-spacing: -0.035em;
       margin-bottom: 1.25rem;
       text-wrap: balance;
-    }
-
-    .hero-h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--accent) 0%, #0ea5e9 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     .hero-sub {
@@ -250,17 +221,17 @@
 
     .btn-outline {
       font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--dark);
+      font-weight: 600;
+      color: var(--accent);
       background: transparent;
       text-decoration: none;
       padding: 0.75rem 1.8rem;
       border-radius: 100px;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, color 0.2s;
+      border: 1.5px solid var(--accent);
+      transition: background 0.2s;
       display: inline-block;
     }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: var(--accent-lt); }
 
     .hero-footnote {
       font-size: 0.82rem;
@@ -273,85 +244,109 @@
     }
     .hero-footnote a:hover { text-decoration: underline; }
 
-    /* ─── WORKFLOW DIAGRAM ─── */
-    .workflow-diagram {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
+    /* ─── HERO DESK PANEL ─── */
+    .hero-desk-panel {
+      position: relative;
+      overflow: hidden;
     }
 
-    .wf-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
+    .hero-desk-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+      min-height: 480px;
+    }
+
+    .wf-cards-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding: 2rem 2.5rem;
+    }
+
+    .wf-row {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0;
     }
-    .wf-label::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
+
+    .wf-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 12px;
+      padding: 0.85rem 0.9rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    .wf-card-icon {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      display: inline-block;
-    }
-
-    .wf-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-
-    .wf-step {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1rem 0.85rem;
-      position: relative;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .wf-step:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 14px rgba(37,99,235,0.08);
-    }
-
-    .wf-step-icon { font-size: 1.1rem; margin-bottom: 0.35rem; display: block; }
-    .wf-step-title { font-size: 0.78rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
-    .wf-step-desc { font-size: 0.7rem; color: var(--muted); line-height: 1.45; }
-
-    .wf-step-badge {
-      position: absolute;
-      top: 0.55rem;
-      right: 0.6rem;
-      font-size: 0.56rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       color: #FFFFFF;
-      background: var(--accent);
-      padding: 0.12rem 0.4rem;
-      border-radius: 100px;
     }
-    .wf-step-badge.ai {
-      background: linear-gradient(90deg, var(--accent) 0%, #7C3AED 100%);
+    .wf-card-icon.blue { background: #2563EB; }
+    .wf-card-icon.green { background: #16A34A; }
+
+    .wf-card-title { font-size: 0.78rem; font-weight: 700; color: #0F172A; margin-bottom: 0.18rem; }
+    .wf-card-desc { font-size: 0.65rem; color: #64748B; line-height: 1.4; }
+
+    .wf-h-line {
+      width: 32px;
+      height: 2px;
+      background: #2563EB;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .wf-h-line::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: -3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2563EB;
+    }
+    .wf-h-line::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: -3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2563EB;
     }
 
-    .wf-caption {
-      margin-top: 0.9rem;
-      font-size: 0.68rem;
-      color: var(--muted);
-      text-align: center;
+    .wf-v-wrap {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% - 16px);
+    }
+    .wf-v-line {
+      width: 2px;
+      height: 22px;
+      background: #2563EB;
     }
 
-    /* ─── BENEFIT TILES ─── */
+    /* ─── BENEFIT TILES (LIGHT) ─── */
     .benefit-tiles {
-      background: var(--dark);
-      padding: 2.75rem 2rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      background: #FFFFFF;
+      padding: 0 2rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .benefit-tiles-inner {
@@ -359,29 +354,45 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
+      gap: 0;
     }
 
     @media (max-width: 860px) { .benefit-tiles-inner { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .benefit-tiles-inner { grid-template-columns: 1fr; } }
 
     .benefit-tile {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 1.4rem 1.25rem;
-      transition: border-color 0.2s, background 0.2s;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
     }
-    .benefit-tile:hover { border-color: rgba(45,212,255,0.3); background: rgba(255,255,255,0.06); }
+    .benefit-tile:last-child { border-right: none; }
+    .benefit-tile:hover { background: var(--bg-alt); }
 
-    .benefit-tile-icon { font-size: 1.35rem; margin-bottom: 0.65rem; display: block; }
-    .benefit-tile-title { font-size: 0.9rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.35rem; }
-    .benefit-tile-desc { font-size: 0.78rem; color: rgba(255,255,255,0.48); line-height: 1.6; }
+    .benefit-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .benefit-icon-wrap.blue-lt   { background: #EFF6FF; color: #2563EB; }
+    .benefit-icon-wrap.green-lt  { background: #F0FDF4; color: #16A34A; }
+    .benefit-icon-wrap.orange-lt { background: #FFF7ED; color: #EA580C; }
+    .benefit-icon-wrap.blue-md   { background: #DBEAFE; color: #1D4ED8; }
 
-    /* ─── 3-STEP PROCESS ─── */
+    .benefit-tile-text {}
+    .benefit-tile-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .benefit-tile-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── 3-STEP PROCESS (HORIZONTAL) ─── */
     .process-section {
       background: var(--bg-alt);
-      padding: 5rem 2rem;
+      padding: 4.5rem 2rem;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -391,7 +402,7 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 320px;
-      gap: 4rem;
+      gap: 3.5rem;
       align-items: start;
     }
 
@@ -399,101 +410,174 @@
       .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     }
 
-    .process-eyebrow {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.7rem;
-    }
-
     .process-title {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--dark);
-      margin-bottom: 2.5rem;
-      line-height: 1.15;
+      margin-bottom: 2.25rem;
+      line-height: 1.2;
+    }
+    .process-title em { font-style: normal; font-weight: 800; }
+
+    /* Horizontal steps row */
+    .process-steps {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
     }
 
-    .process-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .process-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
 
-    .process-step { display: flex; gap: 1.2rem; align-items: flex-start; }
+    .process-step-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
 
     .process-step-num {
       width: 34px; height: 34px;
       border-radius: 50%;
       background: var(--accent);
       color: #FFFFFF;
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
     }
 
-    .process-step-body h3 { font-size: 0.97rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
-    .process-step-body p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
-
-    /* R&I Side Card */
-    .process-ri-card {
-      background: var(--dark);
-      border-radius: 12px;
-      padding: 1.9rem 1.75rem;
-      color: #FFFFFF;
-      position: relative;
-      overflow: hidden;
-    }
-    .process-ri-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: var(--cyan);
-    }
-
-    .process-ri-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.65rem;
-    }
-
-    .process-ri-card h3 { font-size: 1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.7rem; line-height: 1.3; }
-    .process-ri-card p { font-size: 0.82rem; color: rgba(255,255,255,0.52); line-height: 1.7; margin-bottom: 1.4rem; }
-
-    .process-ri-links { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.4rem; }
-
-    .process-ri-link {
+    .process-step-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #E8F0FE;
+      color: var(--accent);
       display: flex;
       align-items: center;
-      gap: 0.45rem;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      transition: color 0.2s;
+      justify-content: center;
     }
-    .process-ri-link:hover { color: var(--cyan); }
-    .process-ri-link::before { content: '→'; color: var(--cyan); font-size: 0.72rem; }
+
+    .process-step-body h3 { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; line-height: 1.25; }
+    .process-step-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+    .process-step-arrow {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 8px;
+      color: var(--accent);
+      font-size: 1.2rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 680px) {
+      .process-steps { flex-direction: column; gap: 1.5rem; }
+      .process-step-arrow { display: none; }
+    }
+
+    /* R&I Side Card — white/light style */
+    .process-ri-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .process-ri-card-body {
+      padding: 1.75rem 1.6rem 1.6rem;
+    }
+
+    .process-ri-card h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+    .process-ri-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .process-ri-img {
+      width: 100%;
+      display: block;
+      height: 180px;
+      object-fit: cover;
+      object-position: center 20%;
+    }
 
     .process-ri-cta {
       display: inline-block;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      color: var(--dark);
-      background: var(--cyan);
+      color: #FFFFFF;
+      background: var(--accent);
       text-decoration: none;
-      padding: 0.6rem 1.3rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 100px;
       transition: opacity 0.2s;
     }
     .process-ri-cta:hover { opacity: 0.88; }
+
+    /* ─── BOTTOM BANNER ─── */
+    .bottom-banner {
+      background: #F1F0ED;
+      padding: 2rem 2rem;
+      border-top: 1px solid #DDD9D0;
+    }
+
+    .bottom-banner-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) { .bottom-banner-inner { grid-template-columns: 1fr; } }
+
+    .bottom-banner-col {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .bottom-banner-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #FFFFFF;
+    }
+    .bottom-banner-icon.blue  { background: #2563EB; }
+    .bottom-banner-icon.green { background: #16A34A; }
+
+    .bottom-banner-text {
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+    .bottom-banner-text strong { font-weight: 700; color: #111827; }
 
     /* ─── SECTIONS ─── */
     section { padding: 3.5rem 2rem; }
@@ -1878,44 +1962,67 @@
   <div class="hero">
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-pill">For Small &amp; Growing Businesses</div>
-        <h1 class="hero-h1">Make the work behind<br><em>your business</em> easier.</h1>
-        <p class="hero-sub">We help small and growing businesses use AI to reduce repetitive work, improve customer follow-up, and give their teams more time for what matters.</p>
+        <h1 class="hero-h1">Make the work behind your business easier.</h1>
+        <p class="hero-sub">We help you choose and build practical AI tools that fit the way your team already works.</p>
         <div class="hero-actions">
           <a href="ai-readiness.html" class="btn-primary">See where AI could help &rarr;</a>
-          <a href="case-studies.html" class="btn-outline">Explore practical examples</a>
+          <a href="case-studies.html" class="btn-outline">Explore real examples</a>
         </div>
-        <p class="hero-footnote">Looking for AI research and analysis? <a href="resources.html">Explore Research &amp; Insights.</a></p>
       </div>
       <div class="hero-right">
-        <div class="workflow-diagram">
-          <p class="wf-label">How AI fits into your workflow</p>
-          <div class="wf-grid">
-            <div class="wf-step">
-              <span class="wf-step-icon">📋</span>
-              <div class="wf-step-title">Intake form</div>
-              <div class="wf-step-desc">Customer submits request online</div>
+        <div class="hero-desk-panel">
+          <picture>
+            <source srcset="images/hero-desk.webp" type="image/webp">
+            <img src="images/hero-desk.jpg" alt="A clean workspace with notebook, pen, coffee cup, glasses, and clipboard on a warm wood surface" class="hero-desk-img" loading="eager">
+          </picture>
+          <div class="wf-cards-overlay">
+            <!-- Row 1 -->
+            <div class="wf-row">
+              <div class="wf-card">
+                <div class="wf-card-icon blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
+                </div>
+                <div class="wf-card-content">
+                  <div class="wf-card-title">1. Intake form</div>
+                  <div class="wf-card-desc">Customer submits request online</div>
+                </div>
+              </div>
+              <div class="wf-h-line"></div>
+              <div class="wf-card">
+                <div class="wf-card-icon blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                </div>
+                <div class="wf-card-content">
+                  <div class="wf-card-title">2. Quote request</div>
+                  <div class="wf-card-desc">AI drafts a tailored quote in minutes</div>
+                </div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="wf-step-badge ai">AI</span>
-              <span class="wf-step-icon">💬</span>
-              <div class="wf-step-title">Quote request</div>
-              <div class="wf-step-desc">AI drafts a tailored quote in minutes</div>
-            </div>
-            <div class="wf-step">
-              <span class="wf-step-badge ai">AI</span>
-              <span class="wf-step-icon">📱</span>
-              <div class="wf-step-title">Customer follow-up</div>
-              <div class="wf-step-desc">AI suggests and sends timely follow-ups</div>
-            </div>
-            <div class="wf-step">
-              <span class="wf-step-badge ai">AI</span>
-              <span class="wf-step-icon">📊</span>
-              <div class="wf-step-title">Weekly report</div>
-              <div class="wf-step-desc">Key updates and insights in one place</div>
+            <!-- Vertical connector -->
+            <div class="wf-v-wrap"><div class="wf-v-line"></div></div>
+            <!-- Row 2 -->
+            <div class="wf-row">
+              <div class="wf-card">
+                <div class="wf-card-icon green">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="wf-card-content">
+                  <div class="wf-card-title">3. Customer follow-up</div>
+                  <div class="wf-card-desc">AI suggests and sends timely follow-ups</div>
+                </div>
+              </div>
+              <div class="wf-h-line"></div>
+              <div class="wf-card">
+                <div class="wf-card-icon blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <div class="wf-card-content">
+                  <div class="wf-card-title">4. Weekly report</div>
+                  <div class="wf-card-desc">Key updates and insights in one place</div>
+                </div>
+              </div>
             </div>
           </div>
-          <p class="wf-caption">A practical example of AI in a service business</p>
         </div>
       </div>
     </div>
@@ -1924,70 +2031,132 @@
   <!-- BENEFIT TILES -->
   <div class="benefit-tiles">
     <div class="benefit-tiles-inner">
+
       <div class="benefit-tile">
-        <span class="benefit-tile-icon">⏱️</span>
-        <div class="benefit-tile-title">Faster quotes</div>
-        <div class="benefit-tile-desc">Draft tailored proposals in minutes, not hours</div>
+        <div class="benefit-icon-wrap blue-lt">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="benefit-tile-text">
+          <div class="benefit-tile-title">Faster quotes</div>
+          <div class="benefit-tile-desc">Create accurate, professional quotes in minutes, not hours.</div>
+        </div>
       </div>
+
       <div class="benefit-tile">
-        <span class="benefit-tile-icon">🔔</span>
-        <div class="benefit-tile-title">Better follow-up</div>
-        <div class="benefit-tile-desc">Stay in front of customers without extra manual work</div>
+        <div class="benefit-icon-wrap green-lt">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="benefit-tile-text">
+          <div class="benefit-tile-title">Better follow-up</div>
+          <div class="benefit-tile-desc">Never miss a follow-up. Build stronger customer relationships.</div>
+        </div>
       </div>
+
       <div class="benefit-tile">
-        <span class="benefit-tile-icon">📋</span>
-        <div class="benefit-tile-title">Less admin</div>
-        <div class="benefit-tile-desc">Automate the repetitive tasks that slow your team down</div>
+        <div class="benefit-icon-wrap orange-lt">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>
+        </div>
+        <div class="benefit-tile-text">
+          <div class="benefit-tile-title">Less admin</div>
+          <div class="benefit-tile-desc">Automate routine tasks so your team can focus on high-value work.</div>
+        </div>
       </div>
+
       <div class="benefit-tile">
-        <span class="benefit-tile-icon">📈</span>
-        <div class="benefit-tile-title">Clearer reporting</div>
-        <div class="benefit-tile-desc">Understand what's happening in your business at a glance</div>
+        <div class="benefit-icon-wrap blue-md">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="benefit-tile-text">
+          <div class="benefit-tile-title">Clearer reporting</div>
+          <div class="benefit-tile-desc">See what's happening across your business, week by week.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3-STEP PROCESS (HORIZONTAL) -->
+  <div class="process-section">
+    <div class="process-inner">
+      <div class="process-left">
+        <h2 class="process-title"><em>A practical process,</em> built around you</h2>
+        <div class="process-steps">
+
+          <div class="process-step">
+            <div class="process-step-top">
+              <div class="process-step-num">1</div>
+              <div class="process-step-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="process-step-body">
+              <h3>Find the right first project</h3>
+              <p>We help you identify a high-impact use case that fits your goals and data.</p>
+            </div>
+          </div>
+
+          <div class="process-step-arrow">&rarr;</div>
+
+          <div class="process-step">
+            <div class="process-step-top">
+              <div class="process-step-num">2</div>
+              <div class="process-step-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+            </div>
+            <div class="process-step-body">
+              <h3>Build it the practical way</h3>
+              <p>We build a simple, secure tool that works with your existing workflow.</p>
+            </div>
+          </div>
+
+          <div class="process-step-arrow">&rarr;</div>
+
+          <div class="process-step">
+            <div class="process-step-top">
+              <div class="process-step-num">3</div>
+              <div class="process-step-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+            </div>
+            <div class="process-step-body">
+              <h3>Measure and improve</h3>
+              <p>We track results, refine as needed, and expand what's working.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- R&I Card — white with doorway illustration -->
+      <div class="process-ri-card">
+        <picture>
+          <source srcset="images/doorway.webp" type="image/webp">
+          <img src="images/doorway.jpg" alt="" class="process-ri-img" loading="lazy">
+        </picture>
+        <div class="process-ri-card-body">
+          <h3>Research &amp; Insights</h3>
+          <p>Straightforward perspectives on AI in small and mid-size businesses.</p>
+          <a href="resources.html" class="process-ri-cta">Explore insights</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 3-STEP PROCESS -->
-  <div class="process-section">
-    <div class="process-inner">
-      <div class="process-left">
-        <p class="process-eyebrow">How we work</p>
-        <h2 class="process-title">A practical path to real results</h2>
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="process-step-num">1</div>
-            <div class="process-step-body">
-              <h3>Find the right first project</h3>
-              <p>We start by learning how your business actually operates — where time is lost, where follow-up falls through, and where a well-built system would make the most difference.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">2</div>
-            <div class="process-step-body">
-              <h3>Build it the practical way</h3>
-              <p>We build something your team can understand, use, and trust. No unnecessary complexity. No vendor lock-in. Just a solution that fits your workflow.</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">3</div>
-            <div class="process-step-body">
-              <h3>Measure and improve</h3>
-              <p>We track results, gather feedback, and refine the system. You keep full visibility and control of what you built.</p>
-            </div>
-          </div>
+  <!-- BOTTOM BANNER -->
+  <div class="bottom-banner">
+    <div class="bottom-banner-inner">
+      <div class="bottom-banner-col">
+        <div class="bottom-banner-icon blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
+        <div class="bottom-banner-text">We work with small and mid-size businesses across professional services, construction, manufacturing, health &amp; wellness, and more.</div>
       </div>
-      <div class="process-ri-card">
-        <p class="process-ri-label">Research &amp; Insights</p>
-        <h3>Stay informed on what AI can actually do</h3>
-        <p>We publish practical research on AI tools, vendor options, and real-world use cases — written for people who need clear answers, not technical overviews.</p>
-        <div class="process-ri-links">
-          <a href="ai-vendor-landscape.html" class="process-ri-link">AI Vendor Landscape</a>
-          <a href="ai-bolt-ons.html" class="process-ri-link">AI Bolt-Ons</a>
-          <a href="blog/index.html" class="process-ri-link">Blog</a>
-          <a href="case-studies.html" class="process-ri-link">Case Studies</a>
+      <div class="bottom-banner-col">
+        <div class="bottom-banner-icon green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <a href="resources.html" class="process-ri-cta">Explore insights</a>
+        <div class="bottom-banner-text"><strong>Practical. Approachable. Measurable.</strong> AI that works for your business.</div>
       </div>
     </div>
   </div>
