@@ -62,9 +62,10 @@
     }
 
     .nav-logo {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       flex-shrink: 0;
+      object-fit: contain;
     }
 
     .nav-wordmark-text {
@@ -148,6 +149,7 @@
     /* ─── HERO SPLIT ─── */
     .hero {
       padding: 0;
+      margin-top: 64px;
       background: var(--bg);
       position: relative;
       overflow: hidden;
@@ -166,7 +168,7 @@
     }
 
     .hero-left {
-      padding: calc(64px + 4rem) 2rem 4rem 4rem;
+      padding: 4rem 2rem 4rem 4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -175,7 +177,7 @@
     @media (max-width: 860px) {
       .hero-inner { grid-template-columns: 1fr; min-height: auto; }
       .hero-right { display: block; }
-      .hero-left { padding: calc(64px + 2rem) 2rem 2rem; }
+      .hero-left { padding: 2.5rem 1.5rem 2.5rem; }
     }
 
     .hero-h1 {
@@ -1929,6 +1931,52 @@
       .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
       .fis-form-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── NAV DROPDOWNS ─── */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 170px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 8px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover { color: #FFFFFF; background: rgba(255,255,255,0.06); }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a { padding: 0.5rem 0; font-size: 0.85rem; }
+    }
   </style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -1941,7 +1989,7 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/futureinsites-logo-gradient-outline.png" class="nav-logo" alt="FutureInSites">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="FutureInSites">
       <div class="nav-wordmark-text">
         <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
         <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
