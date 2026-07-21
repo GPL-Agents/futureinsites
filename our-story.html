@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story | FutureInSites</title>
+  <meta name="description" content="FutureInSites was founded by a builder who has spent a career connecting technology to real business problems. Our story, our approach, and the principles behind the work." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) { .nav-wordmark-tagline { display: none; } }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* MORE DROPDOWN */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    /* PROSE SECTIONS */
+    .prose-section {
+      padding: 5rem 2rem;
+    }
+
+    .prose-section.alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prose-section.dark {
+      background: var(--dark);
+      color: #FFFFFF;
+    }
+
+    .prose-inner {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .prose-inner .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .prose-section.dark .prose-inner .section-label {
+      color: var(--cyan);
+    }
+
+    .prose-inner h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1.6rem;
+    }
+
+    .prose-section.dark .prose-inner h2 {
+      color: #FFFFFF;
+    }
+
+    .prose-inner p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .prose-inner p:last-child { margin-bottom: 0; }
+
+    .prose-section.dark .prose-inner p {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--cyan);
+      padding: 0.8rem 0 0.8rem 1.6rem;
+      margin: 2.4rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .prose-section.dark .pull-quote {
+      color: rgba(255,255,255,0.85);
+      border-left-color: var(--accent);
+    }
+
+    /* CAREER TIMELINE */
+    .career-block {
+      margin-bottom: 2.4rem;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .career-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .career-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* PRINCIPLES GRID */
+    .principles-section {
+      padding: 5rem 2rem 5.5rem;
+      background: var(--dark);
+    }
+
+    .principles-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .principles-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .principles-title {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .principles-sub {
+      font-size: 0.96rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 860px) {
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .principles-grid { grid-template-columns: 1fr; }
+    }
+
+    .principle-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.8rem 1.6rem;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .principle-card:hover {
+      border-color: rgba(45,212,255,0.25);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .principle-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.01em;
+    }
+
+    .principle-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+      margin-top: 2.4rem;
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem 1.6rem;
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(37,99,235,0.08);
+    }
+
+    .project-card-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-section h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: opacity 0.2s, transform 0.2s;
+      margin-right: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border: 1.5px solid var(--border);
+      color: var(--dark);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* RESPONSIVE NAV */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="nav-links-menu">
+      <li><a href="solutions.html">For Businesses</a></li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="our-story.html" class="active">Our Story</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow">About</p>
+      <h1>Our Story</h1>
+      <p>A builder who started with framed houses and never stopped. The materials have changed; the instinct has not.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 1: I have always been a builder -->
+  <section class="prose-section">
+    <div class="prose-inner">
+      <p class="section-label">The beginning</p>
+      <h2>I have always been a builder</h2>
+      <p>In high school and college, I framed houses. There was something deeply satisfying about starting with an architect's design and gradually watching it become real. A foundation became a frame. A drawing became rooms, walls, and a roof. Eventually, it became a place where people would live.</p>
+      <p>I loved the physical work, but what stayed with me was the experience of bringing an idea to life and knowing that what we built would be useful to someone.</p>
+      <div class="pull-quote">
+        I still build today. The materials have changed.
+      </div>
+      <p>Instead of lumber and plans, I work with technology, data, products, business processes, and people. I help architect systems, assemble the right capabilities, and guide the work from an initial idea to something operating in the real world.</p>
+      <p>The satisfaction is still the same. It comes from seeing a design become functional, watching people begin to use it, and knowing that something we built has made a meaningful difference.</p>
+      <p>That instinct has shaped my entire career and is the reason I founded FutureInSites.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Helping businesses grow -->
+  <section class="prose-section alt">
+    <div class="prose-inner">
+      <p class="section-label">Our belief</p>
+      <h2>Helping businesses grow through better use of technology</h2>
+      <p>FutureInSites is built on a simple belief: technology is valuable when it solves a real business problem.</p>
+      <p>AI is creating powerful new possibilities, but it is not the first major technology shift businesses have had to navigate, and it will not be the last. The challenge is rarely gaining access to technology. The challenge is understanding where it can create value, choosing the right approach, and making it work inside a real organization.</p>
+      <p>AI may be the answer, part of the answer, or simply one useful tool among several.</p>
+      <div class="pull-quote">
+        The objective is not to use the most advanced technology available. It is to build something that helps the business work better.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Career -->
+  <section class="prose-section">
+    <div class="prose-inner">
+      <p class="section-label">Background</p>
+      <h2>A business builder first</h2>
+
+      <div class="career-block">
+        <h3>Where it started: performance marketing and first business</h3>
+        <p>I began my career in performance marketing, where technology, data, customer behavior, and business results were inseparable. Success depended on understanding what motivated people, measuring what worked, and continually improving the systems behind growth.</p>
+        <p>I later founded FreeScholarshipGuide and built it from the ground up. I managed the operations, team, marketing, product direction, and financial decisions required to turn an idea into a profitable business generating $4 million in annual revenue. The company was acquired, but the more lasting lesson was learning what technology decisions feel like from an owner's perspective. Every investment competes for limited time and capital. Every new system has to earn its place.</p>
+      </div>
+
+      <div class="career-block">
+        <h3>Leading at scale: Nelnet</h3>
+        <p>I carried that perspective into larger organizations. At Nelnet, I ran a $35 million marketing services business and led an organization of more than 50 people. The work required more than technology or marketing expertise. It required financial accountability, team development, operational discipline, and a clear understanding of how each decision affected the broader business.</p>
+      </div>
+
+      <div class="career-block">
+        <h3>Building through periods of change</h3>
+        <p>Much of my career has taken place at moments when technology was changing how businesses operated and competed. At ownerIQ and Inmar Intelligence, I led products across identity resolution, audience targeting, attribution, retail media, commerce data, and real-time advertising. The work included systems operating across more than 20 advertising exchanges, an identity graph covering more than 200 million U.S. consumers, and technology connecting digital activity with offline purchasing behavior.</p>
+        <p>At MotiveMetrics, I led product and marketing for an AI-driven platform supporting more than $100 million in monthly paid-search spending. I worked across machine learning, natural-language processing, retrieval-augmented generation, vector embeddings, LLM workflows, agentic systems, platform integrations, governance, security, and reliability. I also served as acting general manager of the managed services business, where I was accountable for financial performance as well as technology and client outcomes.</p>
+        <p>Across FreeScholarshipGuide, Innovation Ads, and ownerIQ, I helped build the products, teams, and technology platforms behind three successful company exits.</p>
+      </div>
+
+      <div class="career-block">
+        <h3>The consistent pattern</h3>
+        <p>Through each stage, the thread has been stepping into periods of change, learning quickly, and building the products, teams, and operating structures required for the next phase of growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Why FutureInSites -->
+  <section class="prose-section dark">
+    <div class="prose-inner">
+      <p class="section-label">Why we exist</p>
+      <h2>Why FutureInSites</h2>
+      <p>The technologies have changed throughout my career, but the underlying challenge has remained remarkably consistent. Businesses do not struggle because they lack access to tools. They struggle because someone has to connect those tools to the business.</p>
+      <p>That requires understanding the economics of the problem, the workflow surrounding it, the people affected by it, the systems it must connect with, and the changes required to make it genuinely useful.</p>
+      <div class="pull-quote">
+        FutureInSites brings those pieces together.
+      </div>
+      <p>We help clients identify worthwhile opportunities, choose the right tools, build practical solutions, and introduce them in ways their teams can understand and sustain. Sometimes AI is the product being built. Sometimes it improves an existing process or system. Sometimes the right recommendation is to address a more fundamental business or technology issue first.</p>
+      <p>We start with the problem, not the tool.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: How I work -->
+  <section class="prose-section alt">
+    <div class="prose-inner">
+      <p class="section-label">Our approach</p>
+      <h2>How I work</h2>
+      <p>I begin by learning how the business actually operates. What takes too long? Where does information get lost? What frustrates customers or employees? Which processes depend too heavily on one person? Where could better data, automation, or decision support make a meaningful difference?</p>
+      <p>From there, I help separate interesting possibilities from useful ones. The right first project should be valuable enough to matter, focused enough to complete, and practical enough for the organization to adopt. It should create confidence and capability, not dependency.</p>
+      <p>Clients work directly with me throughout the process. I stay involved from the initial business diagnosis through solution design, implementation, training, and improvement.</p>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES GRID -->
+  <section class="principles-section">
+    <div class="principles-inner">
+      <p class="principles-label">How we operate</p>
+      <h2 class="principles-title">Principles behind the work</h2>
+      <p class="principles-sub">These are the operating beliefs that guide every engagement and every recommendation we make.</p>
+
+      <div class="principles-grid">
+
+        <div class="principle-card">
+          <h3>Start with the problem</h3>
+          <p>Technology choices come after we understand the business outcome. The tool follows the need, not the other way around.</p>
+        </div>
+
+        <div class="principle-card">
+          <h3>Make value visible</h3>
+          <p>A project should have a clear reason to exist and a practical way to determine whether it is working. No vague success criteria.</p>
+        </div>
+
+        <div class="principle-card">
+          <h3>Design for the people using it</h3>
+          <p>The best system is not the one with the most features. It is the one people can understand, trust, and use effectively.</p>
+        </div>
+
+        <div class="principle-card">
+          <h3>Use AI deliberately</h3>
+          <p>AI is powerful, but it is not automatically the right solution. We use it when its capabilities genuinely match the problem.</p>
+        </div>
+
+        <div class="principle-card">
+          <h3>Build capability, not dependency</h3>
+          <p>Clients should understand what has been built and retain control over their tools, processes, data, and knowledge.</p>
+        </div>
+
+        <div class="principle-card">
+          <h3>Build for change</h3>
+          <p>A useful system should solve today's problem without creating a dead end. We design with flexibility to adapt as business and technology evolve.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Still building -->
+  <section class="prose-section">
+    <div class="prose-inner">
+      <p class="section-label">Hands-on practice</p>
+      <h2>I still build things myself</h2>
+      <p>My client work is informed by continuous hands-on experimentation. These projects let me evaluate emerging technology in real operating environments. They reveal what works, what breaks, where people need to remain involved, and what it actually takes to turn a promising capability into a useful product.</p>
+    </div>
+
+    <div class="projects-grid" style="max-width:740px;margin:0 auto;">
+      <div class="project-card">
+        <div class="project-card-label">Active project</div>
+        <h3>NYCWine.com</h3>
+        <p>An AI-enabled local wine platform combining event discovery, original content, business directories, maps, commerce, and an interactive wine concierge. A working environment for exploring how AI agents can support research, content, customer experiences, and day-to-day business workflows.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-card-label">Exploratory project</div>
+        <h3>Spirantix</h3>
+        <p>AI tools for seniors and their families. Concepts include helping people remember important faces, manage appointments and daily tasks, preserve the stories behind family photographs, and document meaningful possessions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: Beyond the work -->
+  <section class="prose-section alt">
+    <div class="prose-inner">
+      <p class="section-label">The person behind the work</p>
+      <h2>Beyond the work</h2>
+      <p>Curiosity is a large part of what drives me. I am the author of The FOLD, a psychological thriller that I developed from initial concept through writing, design, production, and publication. Writing a novel is very different from building a technology platform, but both require patience, structure, creativity, and a willingness to keep working through uncertainty until the original idea becomes something real.</p>
+      <p>I am also a longtime wine enthusiast. NYCWine.com grew from that personal interest and my desire to experiment with new ways technology could help people explore New York's wine community.</p>
+      <p>Outside of work, I value time with my family, writing, learning, and pursuing projects that begin with curiosity and sometimes become something much larger.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 8: Our team -->
+  <section class="prose-section">
+    <div class="prose-inner">
+      <p class="section-label">The people</p>
+      <h2>Our team</h2>
+      <p>FutureInSites is intentionally hands-on. Clients work directly with the people responsible for understanding the problem, designing the solution, and delivering the work.</p>
+      <p>Our team combines business judgment, product thinking, technical capability, and clear communication. We believe clients should always understand what is being built, why it matters, and what happens next.</p>
+      <p style="margin-top:1.6rem;">
+        <a href="team.html" style="font-weight:600;color:var(--accent);text-decoration:none;">Meet the team &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" style="background:var(--bg-alt);border-top:1px solid var(--border);">
+    <div class="cta-inner">
+      <p class="cta-label">Start a conversation</p>
+      <h2>See what's possible for your business</h2>
+      <p>You do not need to understand every AI model, platform, or new product. You need a clear view of the problem you are trying to solve and someone who can connect the pieces. That is the role FutureInSites is here to play.</p>
+      <a href="index.html#contact" class="btn-primary">Get in touch</a>
+      <a href="ai-readiness.html" class="btn-outline">See where AI could help</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY  &nbsp;&middot;&nbsp; Boston, MA</p>
+  </footer>
+
+  <script src="cookie-banner.js"></script>
+
+  <script>
+    /* Dropdown toggles (handles multiple .nav-more elements) */
+    (function () {
+      var allMore = document.querySelectorAll('.nav-more');
+      if (!allMore.length) return;
+      allMore.forEach(function (more) {
+        var btn = more.querySelector('.nav-more-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var isOpen = more.classList.contains('open');
+          allMore.forEach(function (m) { m.classList.remove('open'); });
+          if (!isOpen) { more.classList.add('open'); }
+        });
+        more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            more.classList.remove('open');
+          });
+        });
+      });
+      document.addEventListener('click', function (e) {
+        var inAny = false;
+        allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+        if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+      });
+    })();
+  </script>
+
+</body>
+</html>
