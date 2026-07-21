@@ -605,6 +605,61 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
     }
+
+    /* FOUNDER LAYOUT */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .founder-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .founder-photo-col { order: -1; text-align: center; }
+    }
+
+    .founder-headshot {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* FAMILY PHOTO */
+    .family-photo-wrap {
+      float: right;
+      margin: 0 0 1.5rem 2rem;
+      width: 220px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .family-photo-wrap {
+        float: none;
+        margin: 0 0 1.5rem 0;
+        width: 100%;
+      }
+    }
+
+    .family-photo {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+    }
+
+    .family-photo-caption {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+      text-align: center;
+    }
   </style>
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -651,25 +706,42 @@
   <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="page-header-inner">
-      <p class="eyebrow">About</p>
+      <p class="eyebrow">ABOUT</p>
       <h1>Our Story</h1>
-      <p>A builder who started with framed houses and never stopped. The materials have changed; the instinct has not.</p>
+      <p>We connect technology to real business problems, building practical solutions that improve operations, support growth, and create measurable value.</p>
     </div>
   </div>
 
   <!-- SECTION 1: I have always been a builder -->
   <section class="prose-section">
     <div class="prose-inner">
-      <p class="section-label">The beginning</p>
-      <h2>I have always been a builder</h2>
-      <p>In high school and college, I framed houses. There was something deeply satisfying about starting with an architect's design and gradually watching it become real. A foundation became a frame. A drawing became rooms, walls, and a roof. Eventually, it became a place where people would live.</p>
-      <p>I loved the physical work, but what stayed with me was the experience of bringing an idea to life and knowing that what we built would be useful to someone.</p>
-      <div class="pull-quote">
-        I still build today. The materials have changed.
+      <div class="founder-grid">
+        <div class="founder-text-col">
+          <p class="section-label">The beginning</p>
+          <h2>I have always been a builder</h2>
+          <p>In high school and college, I framed houses. There was something deeply satisfying about starting with an architect's design and gradually watching it become real. A foundation became a frame. A drawing became rooms, walls, and a roof. Eventually, it became a place where people would live.</p>
+          <p>I loved the physical work, but what stayed with me was the experience of bringing an idea to life and knowing that what we built would be useful to someone.</p>
+          <div class="pull-quote">
+            I still build today. The materials have changed.
+          </div>
+          <p>Instead of lumber and plans, I work with technology, data, products, business processes, and people. I help architect systems, assemble the right capabilities, and guide the work from an initial idea to something operating in the real world.</p>
+          <p>The satisfaction is still the same. It comes from seeing a design become functional, watching people begin to use it, and knowing that something we built has made a meaningful difference.</p>
+          <p>That instinct has shaped my entire career and is the reason I founded FutureInSites.</p>
+        </div>
+        <div class="founder-photo-col">
+          <picture>
+            <source srcset="images/headshot.greg.webp" type="image/webp">
+            <img
+              src="images/headshot.greg.jpg"
+              alt="Greg Loeffelholz, Founder and Managing Principal of FutureInSites"
+              class="founder-headshot"
+              width="260"
+              height="260"
+              loading="eager"
+            >
+          </picture>
+        </div>
       </div>
-      <p>Instead of lumber and plans, I work with technology, data, products, business processes, and people. I help architect systems, assemble the right capabilities, and guide the work from an initial idea to something operating in the real world.</p>
-      <p>The satisfaction is still the same. It comes from seeing a design become functional, watching people begin to use it, and knowing that something we built has made a meaningful difference.</p>
-      <p>That instinct has shaped my entire career and is the reason I founded FutureInSites.</p>
     </div>
   </section>
 
@@ -814,6 +886,20 @@
     <div class="prose-inner">
       <p class="section-label">The person behind the work</p>
       <h2>Beyond the work</h2>
+      <div class="family-photo-wrap">
+        <picture>
+          <source srcset="images/family-couple.webp" type="image/webp">
+          <img
+            src="images/family-couple.jpg"
+            alt="Greg Loeffelholz and his wife by the waterfront at sunset"
+            class="family-photo"
+            width="220"
+            height="275"
+            loading="lazy"
+          >
+        </picture>
+        <p class="family-photo-caption">Greg and his wife by the waterfront</p>
+      </div>
       <p>Curiosity is a large part of what drives me. I am the author of The FOLD, a psychological thriller that I developed from initial concept through writing, design, production, and publication. Writing a novel is very different from building a technology platform, but both require patience, structure, creativity, and a willingness to keep working through uncertainty until the original idea becomes something real.</p>
       <p>I am also a longtime wine enthusiast. NYCWine.com grew from that personal interest and my desire to experiment with new ways technology could help people explore New York's wine community.</p>
       <p>Outside of work, I value time with my family, writing, learning, and pursuing projects that begin with curiosity and sometimes become something much larger.</p>
