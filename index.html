@@ -62,56 +62,15 @@
     }
 
     .nav-logo {
-      width: 44px;
-      height: 44px;
+      height: 38px;
+      width: auto;
       flex-shrink: 0;
       object-fit: contain;
     }
 
-    .nav-wordmark-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .nav-wordmark-name {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: #0F172A;
-      width: fit-content;
-      align-self: flex-start;
-    }
-
-    .nav-wordmark-name .wm-gradient {
-      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
     @media (max-width: 640px) {
-      .nav-wordmark-name { font-size: 1.25rem;
+      .nav-logo { height: 30px; }
     }
-    }
-
-    .nav-wordmark-tagline {
-      font-size: 0.88rem;
-      font-weight: 400;
-      color: #64748B;
-      letter-spacing: 0.005em;
-      line-height: 1.2;
-      margin-top: 3px;
-      white-space: nowrap;
-    }
-    @media (max-width: 640px) {
-      .nav-wordmark-tagline { font-size: 0.68rem; }
-    }
-
-    .nav-wordmark .wm-in { color: var(--cyan); }
-    .nav-wordmark .wm-sites { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -164,14 +123,14 @@
       align-items: stretch;
       position: relative;
       z-index: 2;
-      min-height: 560px;
+      min-height: 480px;
     }
 
     .hero-left {
-      padding: 4rem 2rem 4rem 4rem;
+      padding: 3.5rem 2rem 3.5rem 4rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     @media (max-width: 860px) {
@@ -1989,17 +1948,12 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="FutureInSites">
-      <div class="nav-wordmark-text">
-        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
-        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
-      </div>
+      <img src="images/futureinsites-logo-gradient-outline.png" class="nav-logo" alt="FutureInSites — AI Strategy &amp; Engineering">
     </a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-links-menu">
-      <li><a href="solutions.html">For Businesses</a></li>
       <li><a href="solutions.html">Solutions</a></li>
       <li><a href="#process">Process</a></li>
       <li class="nav-more">
