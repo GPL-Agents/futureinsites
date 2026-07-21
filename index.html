@@ -62,8 +62,9 @@
     }
 
     .nav-logo {
-      width: 40px;
-      height: 40px;
+      /* height matches combined height of wordmark + tagline block */
+      height: 39px;
+      width: auto;
       flex-shrink: 0;
       object-fit: contain;
     }
@@ -72,28 +73,31 @@
       display: flex;
       flex-direction: column;
       gap: 0;
+      width: 220px; /* fixes wordmark width so tagline can match it */
     }
 
     .nav-wordmark-img {
-      height: 26px;
-      width: auto;
+      width: 100%;
+      height: auto;
       display: block;
     }
 
     .nav-wordmark-tagline {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 400;
       color: #64748B;
-      letter-spacing: 0.005em;
       line-height: 1.2;
       margin-top: 2px;
-      white-space: nowrap;
+      display: block;
+      width: 100%;
+      text-align: justify;
+      text-align-last: justify;
     }
 
     @media (max-width: 640px) {
-      .nav-logo { width: 32px; height: 32px; }
-      .nav-wordmark-img { height: 20px; }
-      .nav-wordmark-tagline { font-size: 0.62rem; }
+      .nav-logo { height: 30px; }
+      .nav-wordmark-text { width: 168px; }
+      .nav-wordmark-tagline { font-size: 0.6rem; }
     }
 
     .nav-links {
@@ -143,20 +147,20 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 2fr 3fr;
+      grid-template-columns: 1fr 1fr;
       align-items: stretch;
       position: relative;
       z-index: 2;
-      min-height: 420px;
-      max-width: 1120px;
+      min-height: 520px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .hero-left {
-      padding: 3.5rem 2rem 3rem 4rem;
+      padding: 2rem 2rem 2rem 4rem;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     @media (max-width: 860px) {
@@ -173,7 +177,7 @@
       line-height: 1.08;
       letter-spacing: -0.035em;
       margin-bottom: 1.25rem;
-      text-wrap: balance;
+      text-wrap: pretty;
     }
 
     .hero-sub {
@@ -340,7 +344,7 @@
     }
 
     .benefit-tiles-inner {
-      max-width: 1120px;
+      max-width: 1300px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -389,10 +393,10 @@
     }
 
     .process-inner {
-      max-width: 1120px;
+      max-width: 1300px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 380px;
       gap: 1.5rem;
       align-items: stretch;
     }
@@ -484,10 +488,10 @@
       .process-step-arrow { display: none; }
     }
 
-    /* R&I Side Card — white/light style */
+    /* R&I Side Card — warm cream matching door image background */
     .process-ri-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
+      background: #F5EDE3;
+      border: 1px solid #E8DDD2;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
@@ -528,10 +532,10 @@
     .process-ri-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center bottom;
       display: block;
-      min-height: 180px;
+      min-height: 200px;
     }
 
     .process-ri-cta {
@@ -555,7 +559,7 @@
     }
 
     .bottom-banner-inner {
-      max-width: 1120px;
+      max-width: 1300px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1352,21 +1356,26 @@
       .latest-grid { grid-template-columns: 1fr; }
     }
 
-    .contact-section { background: #ffffff; border-top: 1px solid var(--border); }
+    .contact-section {
+      background: #FFFFFF;
+      padding: 64px 24px;
+    }
 
     .contact-card {
-      background: var(--dark);
-      border-radius: 12px;
-      padding: 4rem 3rem;
+      background: #F8FBFF;
+      border: 1px solid #D7E3F1;
+      border-radius: 20px;
+      padding: 56px;
       text-align: center;
       max-width: 760px;
       margin: 0 auto;
+      box-shadow: 0 8px 24px rgba(11,42,86,0.08);
     }
 
     .contact-card h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 700;
-      color: #FFFFFF;
+      color: #0B2A56;
       letter-spacing: -0.03em;
       margin-bottom: 1rem;
       text-wrap: balance;
@@ -1374,7 +1383,7 @@
 
     .contact-card p {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.45);
+      color: #4B5563;
       line-height: 1.75;
       margin-bottom: 2rem;
     }
@@ -1382,40 +1391,36 @@
     .contact-email {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--cyan);
+      color: #FFFFFF;
       text-decoration: none;
-      border: 1px solid rgba(45,212,255,0.4);
-      background: rgba(45,212,255,0.1);
+      border: none;
+      background: #1769E0;
       padding: 0.75rem 2rem;
       border-radius: 100px;
       display: inline-block;
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      transition: background 0.2s;
     }
 
-    .contact-email:hover {
-      background: rgba(45,212,255,0.25);
-      border-color: rgba(45,212,255,0.7);
-      color: #FFFFFF;
-    }
+    .contact-email:hover { background: #0F56C5; }
 
     .contact-options {
       margin-top: 0.25rem;
       margin-bottom: 1.5rem !important;
       font-size: 0.92rem !important;
-      color: rgba(255,255,255,0.6) !important;
+      color: #4B5563 !important;
     }
     .contact-inline-email {
-      color: var(--cyan);
+      color: #1769E0;
       text-decoration: none;
       font-weight: 600;
-      border-bottom: 2px solid rgba(37,99,235,0.3);
+      border-bottom: 1px solid rgba(23,105,224,0.3);
       transition: color 0.15s, border-color 0.15s;
     }
     .contact-inline-email:hover {
-      color: #FFFFFF;
-      border-color: rgba(255,255,255,0.6);
+      color: #0F56C5;
+      border-color: rgba(15,86,197,0.6);
     }
 
     /* ─── FOOTER ─── */
@@ -1729,7 +1734,7 @@
       }
       .nav-links.open li:last-child a { border-bottom: none; }
       .solutions-grid { grid-template-columns: 1fr; }
-      .contact-card { padding: 2.5rem 1.5rem; }
+      .contact-card { padding: 2.5rem 1.5rem; border-radius: 12px; }
       .hero-tagline { font-size: clamp(1.4rem, 6.5vw, 2.2rem); }
       .future-ai-widget {
         width: calc(100vw - 2rem);
@@ -1994,8 +1999,13 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-links-menu">
-      <li><a href="solutions.html">Solutions</a></li>
-      <li><a href="#process">Process</a></li>
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Solutions <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="solutions.html">Solutions Overview</a></li>
+          <li><a href="approach.html">Our Approach</a></li>
+        </ul>
+      </li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
@@ -2170,34 +2180,32 @@
   </div>
 
   <!-- ASSESSMENT CTA BLOCK -->
-  <section id="assessment-cta" style="background:var(--dark); padding:4.5rem 2rem; border-top:1px solid rgba(255,255,255,0.06);">
+  <section id="assessment-cta" style="background:#EEF5FC; padding:72px 2rem;">
     <div style="max-width:700px; margin:0 auto; text-align:center;">
-      <p style="font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--cyan); margin-bottom:1.2rem;">Free Assessment</p>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:#FFFFFF; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; text-wrap:balance;">Find Out Where AI Could Help Your Business Most</h2>
-      <p style="font-size:0.97rem; color:rgba(255,255,255,0.55); line-height:1.75; max-width:580px; margin:0 auto 2rem;">Not sure where to start with AI? Take our free 5-minute assessment and leave with three specific opportunity areas, a readiness score, and a recommended first step &#8212; no jargon, no sales pitch.</p>
-      <a href="/ai-readiness.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.92rem; font-weight:700; color:var(--dark); background:var(--cyan); text-decoration:none; padding:0.9rem 2.2rem; border-radius:100px; transition:opacity 0.2s, transform 0.2s;" onmouseover="this.style.opacity='0.9'; this.style.transform='translateY(-1px)';" onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)';">Find your best starting point &rarr;</a>
+      <p style="font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#007FAF; margin-bottom:1.2rem;">Free Assessment</p>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:#0B2A56; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; text-wrap:balance;">Find Out Where AI Could Help Your Business Most</h2>
+      <p style="font-size:0.97rem; color:#4B5563; line-height:1.75; max-width:580px; margin:0 auto 2rem;">Not sure where to start with AI? Take our free 5-minute assessment and leave with three specific opportunity areas, a readiness score, and a recommended first step &#8212; no jargon, no sales pitch.</p>
+      <a href="/ai-readiness.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.92rem; font-weight:700; color:#FFFFFF; background:#1769E0; text-decoration:none; padding:0.9rem 2.2rem; border-radius:100px; transition:background 0.2s, transform 0.2s;" onmouseover="this.style.background='#0F56C5'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='#1769E0'; this.style.transform='translateY(0)';">Find your best starting point &rarr;</a>
     </div>
   </section>
 
   <!-- RESEARCH BRIDGE BLOCK -->
-  <section style="background:var(--bg-alt); padding:2.5rem 2rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <section style="background:#FAF7F0; padding:44px 2rem; border-top:1px solid #E8DED0; border-bottom:1px solid #E8DED0;">
     <div style="max-width:640px; margin:0 auto; text-align:center;">
-      <p style="font-size:1rem; font-weight:700; color:var(--dark); letter-spacing:-0.01em; margin-bottom:0.5rem;">Here for the research?</p>
-      <p style="font-size:0.92rem; color:var(--muted); line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
-      <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(37,99,235,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.7)';" onmouseout="this.style.borderColor='rgba(37,99,235,0.3)';">Explore Research &amp; Insights &rarr;</a>
+      <p style="font-size:1rem; font-weight:700; color:#0B2A56; letter-spacing:-0.01em; margin-bottom:0.5rem;">Here for the research?</p>
+      <p style="font-size:0.92rem; color:#4B5563; line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
+      <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:#1769E0; text-decoration:none; border-bottom:1px solid rgba(23,105,224,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(23,105,224,0.7)';" onmouseout="this.style.borderColor='rgba(23,105,224,0.3)';">Explore Research &amp; Insights &rarr;</a>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
-    <div class="section-inner">
-      <div class="contact-card">
-        <p class="section-label" style="text-align:center; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--cyan); font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 0.8rem; line-height: 1.05;">Contact Us</p>
-        <h2>Not sure where to start? That&#8217;s exactly what we&#8217;re here for.</h2>
-        <p>Tell us what is taking too much time, where work is getting stuck, or what you would like your business to do better. You do not need to know which technology or AI tool you need before reaching out.</p>
-        <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
-        <button type="button" class="contact-email" data-open-inquiry data-inquiry-context="strategy">Send us a Message</button>
-      </div>
+    <div class="contact-card">
+      <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#007FAF; margin-bottom:1rem;">Contact Us</p>
+      <h2>Not sure where to start? That&#8217;s exactly what we&#8217;re here for.</h2>
+      <p>Tell us what is taking too much time, where work is getting stuck, or what you would like your business to do better. You do not need to know which technology or AI tool you need before reaching out.</p>
+      <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
+      <button type="button" class="contact-email" data-open-inquiry data-inquiry-context="strategy">Send us a Message</button>
     </div>
   </section>
 

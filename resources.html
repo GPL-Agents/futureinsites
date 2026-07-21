@@ -46,9 +46,9 @@
       justify-content: center;
       padding: 0 3rem;
       height: 64px;
-      background: rgba(11,12,16,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
     .nav-wordmark {
@@ -60,60 +60,40 @@
       gap: 0.6rem;
     }
 
-    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
-
-    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
-
-    .nav-wordmark-name {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: #FFFFFF;
-      width: fit-content;
-      align-self: flex-start;
-    }
-
-    .nav-wordmark-name .wm-gradient {
-      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
-    @media (max-width: 640px) {
-      .nav-wordmark-name { font-size: 1.25rem;
-    }
-    }
-
+    .nav-logo { height: 39px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; width: 220px; }
+    .nav-wordmark-img { width: 100%; height: auto; display: block; }
     .nav-wordmark-tagline {
-      font-size: 0.88rem;
+      font-size: 0.7rem;
       font-weight: 400;
-      color: #FFFFFF;
-      letter-spacing: 0.005em;
+      color: #64748B;
       line-height: 1.2;
-      margin-top: 3px;
-      white-space: nowrap;
-    }
-    @media (max-width: 640px) {
-      .nav-wordmark-tagline { display: none; }
+      margin-top: 2px;
+      display: block;
+      width: 100%;
+      text-align: justify;
+      text-align-last: justify;
     }
 
-    .nav-wordmark .wm-in { color: var(--cyan); }
-    .nav-wordmark .wm-sites { color: var(--accent); }
+    @media (max-width: 640px) {
+      .nav-logo { height: 30px; }
+      .nav-wordmark-text { width: 168px; }
+      .nav-wordmark-tagline { font-size: 0.6rem; }
+    }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
 
     .nav-links a {
-      color: rgba(255,255,255,0.55);
+      color: #64748B;
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
+      letter-spacing: 0.01em;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+    .nav-links a:hover { color: #0F172A; }
+    .nav-links a.active { color: #0F172A; font-weight: 700; }
 
     .nav-cta {
       position: absolute;
@@ -483,18 +463,25 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
-        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
+        <img src="images/futureinsites-wordmark-gradient-outline.png" class="nav-wordmark-img" alt="FutureInSites">
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
       </div>
     </a>
-        <ul class="nav-links" id="nav-links-menu">
-      <li><a href="solutions.html">For Businesses</a></li>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Solutions <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="solutions.html">Solutions Overview</a></li>
+          <li><a href="approach.html">Our Approach</a></li>
+        </ul>
+      </li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
           <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="resources.html" class="active">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>

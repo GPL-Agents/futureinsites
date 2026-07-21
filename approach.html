@@ -38,24 +38,25 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
     .nav-wordmark { text-decoration: none; display: flex; align-items: center; gap: 0.6rem; position: absolute; left: 3rem; }
-    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
-    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
-    .nav-wordmark-name { font-family: 'Manrope', system-ui, sans-serif; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: #0F172A; }
-    .nav-wordmark-name .wm-gradient { background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
-    .nav-wordmark-tagline { font-size: 0.88rem; font-weight: 400; color: #64748B; letter-spacing: 0.005em; line-height: 1.2; margin-top: 3px; white-space: nowrap; }
+    .nav-logo { height: 39px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; width: 220px; }
+    .nav-wordmark-img { width: 100%; height: auto; display: block; }
+    .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; width: 100%; text-align: justify; text-align-last: justify; }
+    @media (max-width: 640px) { .nav-logo { height: 30px; } .nav-wordmark-text { width: 168px; } .nav-wordmark-tagline { font-size: 0.6rem; } }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: #64748B; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; }
     .nav-links a:hover { color: #0F172A; }
+    .nav-links a.active { color: #0F172A; font-weight: 700; }
     .nav-cta { position: absolute; right: 3rem; font-size: 0.8rem; font-weight: 600; color: #FFFFFF; background: var(--accent); text-decoration: none; padding: 0.5rem 1.3rem; border-radius: 100px; transition: opacity 0.2s; }
     .nav-cta:hover { opacity: 0.85; }
     .nav-more { position: relative; }
     .nav-more-btn { cursor: pointer; user-select: none; }
     .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
     .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
-    .nav-more-dropdown { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: #12141A; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 150px; list-style: none; box-shadow: 0 12px 40px rgba(0,0,0,0.4); z-index: 300; margin-top: 2px; }
+    .nav-more-dropdown { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: #12141A; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 170px; list-style: none; box-shadow: 0 12px 40px rgba(0,0,0,0.4); z-index: 300; margin-top: 8px; }
     .nav-more-dropdown li { margin: 0; padding: 0; }
-    .nav-more-dropdown a { display: block; padding: 0.55rem 1.2rem; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.82rem; font-weight: 500; white-space: nowrap; transition: color 0.2s, background 0.15s; }
-    .nav-more-dropdown a:hover { color: #FFFFFF; background: rgba(255,255,255,0.04); }
+    .nav-more-dropdown a { display: block; padding: 0.55rem 1.2rem; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.82rem; font-weight: 500; white-space: nowrap; transition: color 0.2s, background 0.15s; }
+    .nav-more-dropdown a:hover { color: #FFFFFF; background: rgba(255,255,255,0.06); }
     .nav-more.open .nav-more-dropdown { display: block; }
 
     /* PAGE HERO */
@@ -144,16 +145,20 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/futureinsites-logo-gradient-outline.png" class="nav-logo" alt="FutureInSites">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <img src="images/futureinsites-wordmark-gradient-outline.png" class="nav-wordmark-img" alt="FutureInSites">
         <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
       </div>
     </a>
     <ul class="nav-links" id="nav-links-menu">
-      <li><a href="solutions.html">For Businesses</a></li>
-      <li><a href="solutions.html">Solutions</a></li>
-      <li><a href="index.html#process">Process</a></li>
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Solutions <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="solutions.html">Solutions Overview</a></li>
+          <li><a href="approach.html" class="active">Our Approach</a></li>
+        </ul>
+      </li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
