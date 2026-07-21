@@ -76,9 +76,9 @@
       overflow: visible;
     }
 
-    /* Height-based sizing: predictable rendered size, no width% rounding issues */
+    /* Height accounts for 16px bottom padding in PNG — letters render at ~22px */
     .nav-wordmark-img {
-      height: 22px;
+      height: 27px;
       width: auto;
       display: block;
       flex-shrink: 0;
@@ -335,55 +335,6 @@
       height: 22px;
       background: #2563EB;
     }
-
-    /* ─── BENEFIT TILES (LIGHT) ─── */
-    .benefit-tiles {
-      background: var(--bg-alt);
-      padding: 1.5rem 2rem;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .benefit-tiles-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-
-    @media (max-width: 860px) { .benefit-tiles-inner { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .benefit-tiles-inner { grid-template-columns: 1fr; } }
-
-    .benefit-tile {
-      padding: 1.75rem 1.5rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .benefit-tile:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-1px); }
-
-    .benefit-icon-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .benefit-icon-wrap.blue-lt   { background: #EFF6FF; color: #2563EB; }
-    .benefit-icon-wrap.green-lt  { background: #F0FDF4; color: #16A34A; }
-    .benefit-icon-wrap.orange-lt { background: #FFF7ED; color: #EA580C; }
-    .benefit-icon-wrap.blue-md   { background: #DBEAFE; color: #1D4ED8; }
-
-    .benefit-tile-text {}
-    .benefit-tile-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
-    .benefit-tile-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
     /* ─── 3-STEP PROCESS (HORIZONTAL) ─── */
     .process-section {
@@ -2050,52 +2001,6 @@
   </div>
 
   <!-- BENEFIT TILES -->
-  <div class="benefit-tiles">
-    <div class="benefit-tiles-inner">
-
-      <div class="benefit-tile">
-        <div class="benefit-icon-wrap blue-lt">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="benefit-tile-text">
-          <div class="benefit-tile-title">Faster quotes</div>
-          <div class="benefit-tile-desc">Create accurate, professional quotes in minutes, not hours.</div>
-        </div>
-      </div>
-
-      <div class="benefit-tile">
-        <div class="benefit-icon-wrap green-lt">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <div class="benefit-tile-text">
-          <div class="benefit-tile-title">Better follow-up</div>
-          <div class="benefit-tile-desc">Never miss a follow-up. Build stronger customer relationships.</div>
-        </div>
-      </div>
-
-      <div class="benefit-tile">
-        <div class="benefit-icon-wrap orange-lt">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>
-        </div>
-        <div class="benefit-tile-text">
-          <div class="benefit-tile-title">Less admin</div>
-          <div class="benefit-tile-desc">Automate routine tasks so your team can focus on high-value work.</div>
-        </div>
-      </div>
-
-      <div class="benefit-tile">
-        <div class="benefit-icon-wrap blue-md">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <div class="benefit-tile-text">
-          <div class="benefit-tile-title">Clearer reporting</div>
-          <div class="benefit-tile-desc">See what's happening across your business, week by week.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
   <!-- 3-STEP PROCESS (HORIZONTAL) -->
   <div class="process-section" id="process">
     <div class="process-inner">
