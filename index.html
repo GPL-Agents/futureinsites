@@ -505,6 +505,94 @@
     }
     .process-ri-cta:hover { opacity: 0.88; }
 
+    /* ─── PRACTICAL SOLUTIONS ─── */
+    .solutions-section {
+      background: var(--bg-alt);
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .solutions-inner { max-width: 1200px; margin: 0 auto; }
+    .solutions-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+    }
+    .solutions-title {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 800;
+      color: var(--dark); letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .solutions-sub {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.7;
+      margin-bottom: 2.5rem; max-width: 620px;
+    }
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 960px) { .solutions-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .solutions-grid { grid-template-columns: 1fr; } }
+
+    .solutions-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .solutions-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .solutions-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .solutions-icon--blue  { background: #EFF6FF; color: #2563EB; }
+    .solutions-icon--teal  { background: #ECFEFF; color: #0891B2; }
+    .solutions-icon--green { background: #F0FDF4; color: #16A34A; }
+    .solutions-icon--orange{ background: #FFF7ED; color: #EA580C; }
+
+    .solutions-card-title {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--dark); line-height: 1.3;
+    }
+    .solutions-card-desc {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.65; flex: 1;
+    }
+    .solutions-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto;
+    }
+    .solutions-tag {
+      font-size: 0.72rem; font-weight: 500; color: #4B5563;
+      background: #F1F5F9; border: 1px solid #E2E8F0;
+      border-radius: 100px; padding: 0.2rem 0.65rem;
+      white-space: nowrap;
+    }
+    .solutions-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .solutions-footer-text {
+      font-size: 0.88rem; color: var(--muted);
+    }
+    .solutions-footer-cta {
+      font-size: 0.88rem; font-weight: 600; color: #FFFFFF;
+      background: var(--accent); text-decoration: none;
+      padding: 0.65rem 1.5rem; border-radius: 100px;
+      transition: opacity 0.2s; white-space: nowrap;
+    }
+    .solutions-footer-cta:hover { opacity: 0.88; }
+
     /* ─── BOTTOM BANNER ─── */
     .bottom-banner {
       background: #F1F0ED;
@@ -2064,6 +2152,140 @@
         <picture>
           <img src="images/research-insights-doorway.png" alt="" class="process-ri-img" loading="lazy">
         </picture>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICAL SOLUTIONS -->
+  <div class="solutions-section">
+    <div class="solutions-inner">
+      <p class="solutions-eyebrow">Practical Solutions</p>
+      <h2 class="solutions-title">What we can help you put to work</h2>
+      <p class="solutions-sub">Specific ways FutureInSites can help, matched to the people and work they support.</p>
+
+      <div class="solutions-grid">
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Business AI setup</h3>
+          </div>
+          <p class="solutions-card-desc">Set up secure business accounts, users, permissions, data controls, and approved AI tools.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">SMBs</span>
+            <span class="solutions-tag">Professional offices</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Team AI training</h3>
+          </div>
+          <p class="solutions-card-desc">Train employees to use leading AI applications and create reusable agents, skills, and workflows.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">All business clients</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Knowledge assistants</h3>
+          </div>
+          <p class="solutions-card-desc">Give employees or customers reliable answers from an approved, managed knowledge base.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">SMBs</span>
+            <span class="solutions-tag">Professional offices</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Document intelligence</h3>
+          </div>
+          <p class="solutions-card-desc">Summarize and review notes, contracts, invoices, case files, patient histories, and project documents.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">Legal</span>
+            <span class="solutions-tag">Accounting</span>
+            <span class="solutions-tag">Healthcare</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Intake and communication</h3>
+          </div>
+          <p class="solutions-card-desc">Check incoming information, identify missing items, route requests, and prepare updates.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">Healthcare</span>
+            <span class="solutions-tag">Legal</span>
+            <span class="solutions-tag">Field services</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Documentation automation</h3>
+          </div>
+          <p class="solutions-card-desc">Turn notes and activity into chart notes, work orders, billing forms, and status reports.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">Healthcare</span>
+            <span class="solutions-tag">Construction</span>
+            <span class="solutions-tag">Offices</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Operational analysis</h3>
+          </div>
+          <p class="solutions-card-desc">Identify workload patterns, billing exceptions, appointment trends, and emerging problems.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">SMBs</span>
+            <span class="solutions-tag">Healthcare</span>
+            <span class="solutions-tag">Accounting</span>
+          </div>
+        </div>
+
+        <div class="solutions-card">
+          <div class="solutions-card-top">
+            <div class="solutions-icon solutions-icon--teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="solutions-card-title">Personal and executive AI</h3>
+          </div>
+          <p class="solutions-card-desc">Create daily briefings, priorities, meeting preparation, and scheduling conflict alerts.</p>
+          <div class="solutions-tags">
+            <span class="solutions-tag">Individuals</span>
+            <span class="solutions-tag">Founders</span>
+            <span class="solutions-tag">Executives</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="solutions-footer">
+        <p class="solutions-footer-text">Not sure which applies? The assessment will identify the best starting point.</p>
+        <a href="solutions.html" class="solutions-footer-cta">Explore all solutions →</a>
       </div>
     </div>
   </div>
