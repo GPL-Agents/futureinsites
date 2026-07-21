@@ -90,8 +90,8 @@
       margin-top: 2px;
       display: block;
       width: 100%;
-      text-align: justify;
-      text-align-last: justify;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
     }
 
     @media (max-width: 640px) {
@@ -151,7 +151,6 @@
       align-items: stretch;
       position: relative;
       z-index: 2;
-      min-height: 520px;
       max-width: 1300px;
       margin: 0 auto;
     }
@@ -495,14 +494,7 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-    }
-
-    .process-ri-card-body {
       padding: 1.75rem 1.6rem 1.6rem;
-      flex: 1;
     }
 
     .process-ri-card h3 {
@@ -510,32 +502,36 @@
       font-size: 1.1rem;
       font-weight: 800;
       color: var(--dark);
-      margin-bottom: 0.6rem;
+      margin-bottom: 1rem;
       line-height: 1.25;
+      white-space: nowrap;
     }
+
+    .process-ri-card-body {
+      overflow: auto; /* clearfix for float */
+    }
+
+    /* Door image floats right so text wraps around it */
+    .process-ri-card picture {
+      float: right;
+      width: 52%;
+      display: block;
+      margin: 0 0 0.75rem 1.25rem;
+      background: #F5EDE3; /* match card so no background mismatch */
+    }
+
+    .process-ri-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
     .process-ri-card p {
       font-size: 0.83rem;
       color: var(--muted);
       line-height: 1.65;
       margin-bottom: 1.25rem;
-    }
-
-    /* picture is the direct flex child — width/stretch must go here */
-    .process-ri-card picture {
-      width: 45%;
-      flex-shrink: 0;
-      display: block;
-      overflow: hidden;
-      border-radius: 0 12px 12px 0;
-    }
-
-    .process-ri-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center bottom;
-      display: block;
-      min-height: 200px;
     }
 
     .process-ri-cta {
@@ -2146,17 +2142,17 @@
         </div>
       </div>
 
-      <!-- R&I Card — white with doorway illustration -->
+      <!-- R&I Card — warm cream with doorway illustration -->
       <div class="process-ri-card">
+        <h3>Research &amp; Insights</h3>
         <div class="process-ri-card-body">
-          <h3>Research &amp; Insights</h3>
+          <picture>
+            <source srcset="images/doorway.webp" type="image/webp">
+            <img src="images/doorway.jpg" alt="" class="process-ri-img" loading="lazy">
+          </picture>
           <p>Straightforward perspectives on AI in small and mid-size businesses.</p>
           <a href="resources.html" class="process-ri-cta">Explore insights</a>
         </div>
-        <picture>
-          <source srcset="images/doorway.webp" type="image/webp">
-          <img src="images/doorway.jpg" alt="" class="process-ri-img" loading="lazy">
-        </picture>
       </div>
     </div>
   </div>
