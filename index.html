@@ -62,14 +62,49 @@
     }
 
     .nav-logo {
-      height: 38px;
-      width: auto;
+      width: 40px;
+      height: 40px;
       flex-shrink: 0;
       object-fit: contain;
     }
 
+    .nav-wordmark-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #0F172A;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #64748B;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
     @media (max-width: 640px) {
-      .nav-logo { height: 30px; }
+      .nav-logo { width: 32px; height: 32px; }
+      .nav-wordmark-name { font-size: 1.1rem; }
+      .nav-wordmark-tagline { font-size: 0.62rem; }
     }
 
     .nav-links {
@@ -491,11 +526,12 @@
     }
 
     .process-ri-img {
-      width: 42%;
+      width: 48%;
       flex-shrink: 0;
       display: block;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center center;
+      align-self: stretch;
     }
 
     .process-ri-cta {
@@ -1948,7 +1984,11 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/futureinsites-logo-gradient-outline.png" class="nav-logo" alt="FutureInSites — AI Strategy &amp; Engineering">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="FutureInSites">
+      <div class="nav-wordmark-text">
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
     </a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
       <span></span><span></span><span></span>
@@ -2098,15 +2138,15 @@
 
       <!-- R&I Card — white with doorway illustration -->
       <div class="process-ri-card">
-        <picture>
-          <source srcset="images/doorway.webp" type="image/webp">
-          <img src="images/doorway.jpg" alt="" class="process-ri-img" loading="lazy">
-        </picture>
         <div class="process-ri-card-body">
           <h3>Research &amp; Insights</h3>
           <p>Straightforward perspectives on AI in small and mid-size businesses.</p>
           <a href="resources.html" class="process-ri-cta">Explore insights</a>
         </div>
+        <picture>
+          <source srcset="images/doorway.webp" type="image/webp">
+          <img src="images/doorway.jpg" alt="" class="process-ri-img" loading="lazy">
+        </picture>
       </div>
     </div>
   </div>
