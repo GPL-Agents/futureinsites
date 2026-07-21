@@ -147,7 +147,7 @@
 
     /* ─── HERO SPLIT ─── */
     .hero {
-      padding: 8rem 0 5rem;
+      padding: 0;
       background: var(--bg);
       position: relative;
       overflow: hidden;
@@ -162,20 +162,20 @@
       align-items: stretch;
       position: relative;
       z-index: 2;
-      min-height: 480px;
+      min-height: 560px;
     }
 
     .hero-left {
-      padding: 5rem 1.5rem 4rem 4rem;
+      padding: calc(64px + 4rem) 2rem 4rem 4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
-      .hero-left { padding: 5rem 2rem 3rem; max-width: 100%; }
+      .hero-inner { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { display: block; }
+      .hero-left { padding: calc(64px + 2rem) 2rem 2rem; }
     }
 
     .hero-h1 {
@@ -243,19 +243,23 @@
     }
     .hero-footnote a:hover { text-decoration: underline; }
 
-    /* ─── HERO DESK PANEL ─── */
+    /* ─── HERO COMPOSITE IMAGE ─── */
     .hero-desk-panel {
       position: relative;
       overflow: hidden;
     }
 
-    .hero-desk-img {
+    .hero-composite-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 25%;
+      object-position: center center;
       display: block;
-      min-height: 480px;
+      min-height: 560px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-composite-img { min-height: 300px; object-fit: cover; }
     }
 
     .wf-cards-overlay {
@@ -392,7 +396,7 @@
     /* ─── 3-STEP PROCESS (HORIZONTAL) ─── */
     .process-section {
       background: var(--bg-alt);
-      padding: 4.5rem 2rem;
+      padding: 3rem 2rem;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -402,8 +406,15 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 320px;
-      gap: 3.5rem;
-      align-items: start;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .process-left {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2rem 2rem;
     }
 
     @media (max-width: 860px) {
@@ -1930,7 +1941,7 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/F_logo_high_quality_white_background.png" class="nav-logo" alt="">
+      <img src="images/futureinsites-logo-gradient-outline.png" class="nav-logo" alt="FutureInSites">
       <div class="nav-wordmark-text">
         <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
         <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
@@ -1941,10 +1952,13 @@
     </button>
     <ul class="nav-links" id="nav-links-menu">
       <li><a href="solutions.html">For Businesses</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="#process">Process</a></li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
           <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
@@ -1958,8 +1972,8 @@
           <li><a href="careers.html">Careers</a></li>
         </ul>
       </li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
   </nav>
 
   <!-- HERO -->
@@ -1970,66 +1984,14 @@
         <p class="hero-sub">We help you choose and build practical AI tools that fit the way your team already works.</p>
         <div class="hero-actions">
           <a href="ai-readiness.html" class="btn-primary">See where AI could help &rarr;</a>
-          <a href="case-studies.html" class="btn-outline">Explore real examples</a>
+          <a href="#process" class="btn-outline">See how it works</a>
         </div>
       </div>
       <div class="hero-right">
         <div class="hero-desk-panel">
-          <picture>
-            <source srcset="images/hero-desk.webp" type="image/webp">
-            <img src="images/hero-desk.jpg" alt="A clean workspace with notebook, pen, coffee cup, glasses, and clipboard on a warm wood surface" class="hero-desk-img" loading="eager">
-          </picture>
-          <div class="wf-cards-overlay">
-            <!-- Row 1 -->
-            <div class="wf-row">
-              <div class="wf-card">
-                <div class="wf-card-icon blue">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
-                </div>
-                <div class="wf-card-content">
-                  <div class="wf-card-title">1. Intake form</div>
-                  <div class="wf-card-desc">Customer submits request online</div>
-                </div>
-              </div>
-              <div class="wf-h-line"></div>
-              <div class="wf-card">
-                <div class="wf-card-icon blue">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-                </div>
-                <div class="wf-card-content">
-                  <div class="wf-card-title">2. Quote request</div>
-                  <div class="wf-card-desc">AI drafts a tailored quote in minutes</div>
-                </div>
-              </div>
-            </div>
-            <!-- Vertical connector -->
-            <div class="wf-v-wrap"><div class="wf-v-line"></div></div>
-            <!-- Row 2 -->
-            <div class="wf-row">
-              <div class="wf-card">
-                <div class="wf-card-icon green">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </div>
-                <div class="wf-card-content">
-                  <div class="wf-card-title">3. Customer follow-up</div>
-                  <div class="wf-card-desc">AI suggests and sends timely follow-ups</div>
-                </div>
-              </div>
-              <div class="wf-h-line"></div>
-              <div class="wf-card">
-                <div class="wf-card-icon blue">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                </div>
-                <div class="wf-card-content">
-                  <div class="wf-card-title">4. Weekly report</div>
-                  <div class="wf-card-desc">Key updates and insights in one place</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img src="images/hero-workflow-composite.png" alt="AI workflow over a warm desk workspace showing intake form, quote request, customer follow-up, and weekly report steps" class="hero-composite-img" loading="eager">
         </div>
       </div>
-    </div>
   </div>
 
   <!-- BENEFIT TILES -->
@@ -2080,7 +2042,7 @@
   </div>
 
   <!-- 3-STEP PROCESS (HORIZONTAL) -->
-  <div class="process-section">
+  <div class="process-section" id="process">
     <div class="process-inner">
       <div class="process-left">
         <h2 class="process-title"><em>A practical process,</em> built around you</h2>
@@ -2165,626 +2127,6 @@
     </div>
   </div>
 
-  <!-- SOLUTIONS -->
-  <section class="solutions" id="solutions">
-    <div class="section-inner">
-      <p class="section-label">Solutions</p>
-      <h2 class="section-title">What we do</h2>
-      <p class="section-intro">FutureInSites works with small and medium businesses, professional offices, and individuals who want AI working for them without needing a technical team to make it happen.</p>
-
-      <div class="solutions-grid">
-
-        <a href="solutions.html#smb" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
-          <div class="sol-img">
-            <img src="images/SMBs.fis.png" alt="Small and medium businesses">
-          </div>
-          <div class="sol-body">
-            <h3>SMBs</h3>
-            <p>Enterprise methodology, SMB scale. AI strategy and implementation for construction, MEP, industrial services, and suppliers where worker time is the most valuable asset.</p>
-          </div>
-        </a>
-
-        <a href="solutions.html#professional-offices" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
-          <div class="sol-img">
-            <img src="images/Prof.Offices.fis.png" alt="Professional offices">
-          </div>
-          <div class="sol-body">
-            <h3>Professional Offices</h3>
-            <p>Practical AI for dental, legal, and medical practices. Reduce admin burden, improve patient and client experience, and reclaim time for high-value work.</p>
-          </div>
-        </a>
-
-        <a href="solutions.html#individuals" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
-          <div class="sol-img">
-            <img src="images/high.worth.png" alt="Individuals">
-          </div>
-          <div class="sol-body">
-            <h3>Individuals</h3>
-            <p>Done-for-you AI admin for high net worth individuals. Configured across business, investments, travel, philanthropy, family, and social so you can focus on what only you can do.</p>
-          </div>
-        </a>
-
-      </div>
-
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="solutions.html" style="display:inline-block; background:var(--accent); color:#FFFFFF; font-size:0.85rem; font-weight:700; letter-spacing:0.04em; padding:0.85rem 1.8rem; border-radius:100px; text-decoration:none; transition:opacity 0.2s, transform 0.15s;" onmouseover="this.style.opacity='0.9'; this.style.transform='translateY(-1px)';" onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)';">View all Solutions →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT / APPROACH -->
-  <style>
-    .approach-narrative { margin-bottom: 2rem; }
-    .journey-cycle { margin-top: 1rem; }
-    .journey-cards {
-      display: grid;
-      grid-template-columns: 1fr 28px 1fr 28px 1fr;
-      gap: 0;
-      align-items: stretch;
-      margin-bottom: 0.4rem;
-    }
-    .journey-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.2rem 1.1rem;
-      border-top: 3px solid var(--cyan);
-    }
-    .journey-card-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
-    }
-    .journey-card-titlewrap { margin: 0 0 0.4rem; }
-    .journey-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--dark);
-      display: inline;
-      margin: 0;
-    }
-    .journey-card-repeat {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-left: 0.4rem;
-    }
-    .journey-card-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.55;
-      margin: 0 0 0.75rem;
-    }
-    .journey-card-divider {
-      border-top: 1px solid var(--border);
-      padding-top: 0.75rem;
-    }
-    .journey-card-bullets {
-      margin: 0;
-      padding-left: 1rem;
-      font-size: 0.82rem;
-      color: var(--dark);
-      line-height: 1.8;
-    }
-    .journey-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cyan);
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
-    .journey-loop { width: 100%; height: 70px; display: block; }
-    .journey-tail {
-      margin-top: 0.3rem;
-      padding: 0.8rem 1.1rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-      text-align: center;
-    }
-    .approach-stats-strip {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.65rem;
-    }
-    .stat-mini {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 0.7rem;
-      text-align: center;
-    }
-    .stat-mini .num {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      display: block;
-    }
-    .stat-mini .lbl {
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-      line-height: 1.3;
-      display: block;
-    }
-    @media (max-width: 720px) {
-      .journey-cards { grid-template-columns: 1fr; gap: 0.75rem; }
-      .journey-arrow { display: none; }
-      .journey-loop { display: none; }
-      .approach-stats-strip { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
-  <section class="about-strip" id="about">
-    <div class="section-inner">
-      <p class="section-label">Approach</p>
-
-      <div class="about-grid">
-
-        <div class="about-body">
-          <h2 class="section-title">Build. Customize. Train.</h2>
-          <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT.</p>
-          <p>FutureInSites helps small and mid-sized businesses, professional offices, and high net worth individuals move beyond experimentation. We identify high-impact opportunities, implement practical AI solutions, and help clients turn emerging technology into a lasting advantage.</p>
-          <p>Exploring AI is easy. Embedding it into everyday work is where real value is created.</p>
-        </div>
-
-        <div class="about-stats">
-          <div class="about-stat">
-            <span class="num">3</span>
-            <span class="lbl">Complementary Practice Areas</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">$2T+</span>
-            <span class="lbl">Market Cap Under Analysis</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">120+</span>
-            <span class="lbl">AI Use Cases Analyzed</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">100%</span>
-            <span class="lbl">ROI-Focused Approach</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">14</span>
-            <span class="lbl">AI Markets Mapped</span>
-          </div>
-          <div class="about-stat">
-            <span class="num">200+</span>
-            <span class="lbl">AI Vendor Profiles</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="journey-cycle">
-        <div class="journey-cards">
-
-          <div class="journey-card">
-            <div class="journey-card-eyebrow">Stage 1</div>
-            <div class="journey-card-titlewrap">
-              <h3>Build</h3>
-            </div>
-            <p class="journey-card-desc">Map your AI opportunities, build the business case, and define the roadmap. Grounded in your priorities, your workflows, and your data.</p>
-            <div class="journey-card-divider">
-              <p style="font-size:0.85rem; color:var(--dark); font-weight:600; line-height:1.55; margin-bottom:0.65rem;">You leave with a clear picture of where AI can help and a specific first project to pursue.</p>
-              <ul class="journey-card-bullets">
-                <li>AI Opportunity Map</li>
-                <li>Use Case Prioritization</li>
-                <li>Business Case &amp; Roadmap</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="journey-arrow">&rarr;</div>
-
-          <div class="journey-card">
-            <div class="journey-card-eyebrow">Stage 2</div>
-            <div class="journey-card-titlewrap">
-              <h3>Customize</h3>
-            </div>
-            <p class="journey-card-desc">Tailor tools, workflows, and governance to your specific operations. Vendor selection, agent configuration, and process redesign built for how you work.</p>
-            <div class="journey-card-divider">
-              <p style="font-size:0.85rem; color:var(--dark); font-weight:600; line-height:1.55; margin-bottom:0.65rem;">We fit the solution to the tools, processes, and people already in your business.</p>
-              <ul class="journey-card-bullets">
-                <li>Workflow Redesign</li>
-                <li>Vendor &amp; Tool Selection</li>
-                <li>Governance Guardrails</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="journey-arrow">&rarr;</div>
-
-          <div class="journey-card">
-            <div class="journey-card-eyebrow">Stage 3</div>
-            <div class="journey-card-titlewrap">
-              <h3>Train</h3>
-            </div>
-            <p class="journey-card-desc">Enable your team with practical tools, playbooks, and hands-on training. We transfer ownership so the capability sticks, whether your team runs it or we support them.</p>
-            <div class="journey-card-divider">
-              <p style="font-size:0.85rem; color:var(--dark); font-weight:600; line-height:1.55; margin-bottom:0.65rem;">Your team can use and maintain it confidently without depending on us.</p>
-              <ul class="journey-card-bullets">
-                <li>Team Enablement</li>
-                <li>Playbooks &amp; Prompts</li>
-                <li>30/60/90-Day Roadmap</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="journey-tail">For teams that want ongoing support after Train, Embedded AI Engineering is available — new agents, expanded workflows, tool integrations, and skills development as your needs evolve. Think of it as a part-time AI team that keeps your stack current: adding a scheduling agent, wiring in a new CRM, building out an intake or quoting workflow, or training staff on new capabilities as they come online. For teams with the capacity to run it themselves, we hand off cleanly with documentation, playbooks, and a clear owner for every system we built together.</div>
-      </div>
-
-      <!-- ─── SIGNATURE ENGAGEMENT: AI TRANSFORMATION SESSION ─── -->
-      <div class="signature-block" style="margin-top: 2.5rem; margin-bottom: 0;">
-        <div class="signature-eyebrow">Signature Engagement</div>
-        <h3 class="signature-title">AI Transformation Session</h3>
-        <p class="signature-lead">A 2-day onsite intensive that takes your leadership team from "we should do something with AI" to a prioritized roadmap and live development. We come onsite with pre-researched analysis of your business; you leave with both clarity and momentum.</p>
-
-        <div class="signature-days">
-          <div class="signature-day">
-            <div class="signature-day-label">Day 1</div>
-            <div class="signature-day-title">The AI Landscape</div>
-            <p class="signature-day-desc">Survey the terrain together. AI history, fundamentals, and the current vendor landscape. Frameworks for thinking about AI ROI, risk, and competitive timing. Where your industry sits on the inflection curve.</p>
-          </div>
-          <div class="signature-day">
-            <div class="signature-day-label">Day 2</div>
-            <div class="signature-day-title">Your AI Roadmap</div>
-            <p class="signature-day-desc">Chart your path through the landscape. Readiness assessment, prioritized AI application analysis, buy-vs-build evaluation, and a sequenced roadmap built on pre-researched analysis of your business.</p>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 2rem;">
-          <button type="button" class="signature-cta" data-open-inquiry>Inquire about scheduling →</button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- WHY US (COMPARISON) -->
-  <style>
-    .why-us {
-      background: #ffffff;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .why-table-wrap {
-      background: var(--bg);
-      border: 2px solid rgba(37,99,235,0.3);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 1rem;
-    }
-    .why-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-    .why-table thead tr { background: var(--bg-alt); }
-    .why-table th {
-      padding: 1.1rem 1rem;
-      text-align: left;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.3;
-      border-bottom: 2px solid rgba(37,99,235,0.3);
-      vertical-align: bottom;
-    }
-    .why-table th.why-corner { width: 18%; }
-    .why-table th:not(.why-corner) { width: 27.33%; }
-    .why-table th.why-fis-col {
-      border-top: 3px solid var(--cyan);
-      background: var(--accent-lt);
-    }
-    .why-table td {
-      padding: 1.15rem 1rem;
-      font-size: 0.93rem;
-      color: var(--muted);
-      line-height: 1.6;
-      border-bottom: 2px solid rgba(37,99,235,0.3);
-      vertical-align: top;
-    }
-    .why-table tbody tr:last-child td { border-bottom: none; }
-    .why-table td.why-row-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--dark);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .why-table td.why-fis-col {
-      background: var(--accent-lt);
-      color: var(--dark);
-      font-weight: 600;
-    }
-    @media (max-width: 720px) {
-      .why-table-wrap { overflow-x: auto; }
-      .why-table { min-width: 640px; }
-      .why-table th, .why-table td { font-size: 0.82rem; padding: 0.9rem 0.7rem; }
-    }
-  
-    /* ï¿½ï¿½ï¿½ MORE DROPDOWN ï¿½ï¿½ï¿½ */
-    .nav-more { position: relative; }
-    .nav-more-btn { cursor: pointer; user-select: none; }
-    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
-    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
-    .nav-more-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #12141A;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      padding: 0.4rem 0;
-      min-width: 150px;
-      list-style: none;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-      z-index: 300;
-      margin-top: 2px;
-    }
-    .nav-more-dropdown li { margin: 0; padding: 0; }
-    .nav-more-dropdown a {
-      display: block;
-      padding: 0.55rem 1.2rem;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      white-space: nowrap;
-      transition: color 0.2s, background 0.15s;
-    }
-    .nav-more-dropdown a:hover {
-      color: #FFFFFF;
-      background: rgba(255,255,255,0.04);
-    }
-    .nav-more.open .nav-more-dropdown { display: block; }
-    /* Mobile: expand inline */
-    @media (max-width: 640px) {
-      .nav-more-dropdown {
-        position: static;
-        transform: none;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        padding: 0 0 0 1rem;
-        min-width: auto;
-        margin-top: 0;
-      }
-      .nav-more-dropdown a {
-        padding: 0.5rem 0;
-        font-size: 0.85rem;
-      }
-    }</style>
-  <section class="why-us" id="why-us">
-    <div class="section-inner">
-      <p class="section-label">Why Us</p>
-      <h2 class="section-title">Strategy plus execution, without the trade-off</h2>
-      <p class="section-intro">Most firms hand you a plan or a product. We build, customize, and train your team, providing optional support based on your unique needs.</p>
-
-      <div class="why-table-wrap">
-        <table class="why-table">
-          <thead>
-            <tr>
-              <th class="why-corner"></th>
-              <th>Traditional<br>Consultancies</th>
-              <th>Outsourced<br>Engineering</th>
-              <th class="why-fis-col">FutureInSites</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="why-row-label">What you get</td>
-              <td>A deck and a roadmap</td>
-              <td>A finished build to your spec</td>
-              <td class="why-fis-col">A working asset you own, plus the playbook to run it</td>
-            </tr>
-            <tr>
-              <td class="why-row-label">AI depth</td>
-              <td>Generalists ramping on AI</td>
-              <td>Builders without strategic context</td>
-              <td class="why-fis-col">Practitioners tracking the AI landscape weekly</td>
-            </tr>
-            <tr>
-              <td class="why-row-label">Engagement shape</td>
-              <td>Large team, months of discovery</td>
-              <td>Fixed scope, contractor handoff</td>
-              <td class="why-fis-col">Small team, Build-Operate-Transfer</td>
-            </tr>
-            <tr>
-              <td class="why-row-label">Speed to first value</td>
-              <td>Quarters to a recommendation</td>
-              <td>Weeks to a build</td>
-              <td class="why-fis-col">Weeks to a pilot, with you trained alongside</td>
-            </tr>
-            <tr>
-              <td class="why-row-label">After delivery</td>
-              <td>Recommendations, then exit</td>
-              <td>Project ends at delivery</td>
-              <td class="why-fis-col">Co-operate while you grow into ownership</td>
-            </tr>
-            <tr>
-              <td class="why-row-label">Cost shape</td>
-              <td>Premium fees, large overhead</td>
-              <td>Hourly billing, scope creep risk</td>
-              <td class="why-fis-col">Defined offerings, priced by outcome</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- SELECTED CASE WORK -->
-  <section class="experience" id="experience">
-    <div class="section-inner">
-      <p class="section-label">Selected Case Work</p>
-      <h2 class="section-title">Three case studies. Three angles on AI value.</h2>
-      <p class="section-intro">An NLP sentiment study of a major automotive brand. Investment-grade diligence on an AI infrastructure business. Forecasting analysis of AI's impact on an incumbent platform's economics. Three angles on how AI is changing how value is created, captured, and measured.</p>
-
-      <div class="brand-grid">
-
-        <a href="tesla.html" class="brand-card brand-card-link tesla">
-          <div class="brand-wordmark tesla-wordmark">TESLA</div>
-          <div class="brand-sector">Automotive · NLP &amp; Sentiment Analysis</div>
-          <p>An NLP case study on Tesla's Twitter brand across 2018 and 2020. ~2.4M tweets analyzed through VADER, a default BERT classifier, and a BERT model fine-tuned on Sentiment140. Findings on engagement-weighted sentiment, hashtag evolution, and what model choice reveals about domain match.</p>
-          <div class="brand-tags">
-            <span class="brand-tag">VADER &amp; BERT</span>
-            <span class="brand-tag">Engagement-Weighted Sentiment</span>
-            <span class="brand-tag">Social Listening</span>
-          </div>
-        </a>
-
-        <a href="oracle.html" class="brand-card brand-card-link oracle">
-          <div class="brand-wordmark oracle-wordmark">ORACLE</div>
-          <div class="brand-sector">AI Infrastructure · Investment Diligence</div>
-          <p>An Investment Committee memo analyzing Oracle's $455B AI backlog. Two-scenario DCF, GPU economic obsolescence vs. extended GAAP useful lives, customer concentration across NVIDIA, AMD, and OpenAI. Strong Underweight; new normal fair value $75 vs. $164.52.</p>
-          <div class="brand-tags">
-            <span class="brand-tag">Two-Scenario DCF</span>
-            <span class="brand-tag">GPU Obsolescence</span>
-            <span class="brand-tag">Customer Concentration</span>
-          </div>
-        </a>
-
-        <a href="alphabet.html" class="brand-card brand-card-link alphabet">
-          <div class="brand-wordmark google-wordmark">
-            <span class="l1">G</span><span class="l2">o</span><span class="l3">o</span><span class="l4">g</span><span class="l5">l</span><span class="l6">e</span>
-          </div>
-          <div class="brand-sector">Incumbent Platform · AI Economics</div>
-          <p>A two-engine business architecture modeling Search/Services and Cloud separately. AI Overviews monetization, Gemini long-query monetization, and the 2026 CapEx / D&amp;A trough explicitly preserved. Net call: AI raises continuing value, modestly. Maintain.</p>
-          <div class="brand-tags">
-            <span class="brand-tag">Two-Engine Architecture</span>
-            <span class="brand-tag">Cloud CapEx</span>
-            <span class="brand-tag">Continuing Value</span>
-          </div>
-        </a>
-
-      </div>
-
-      <p style="text-align:center;margin-top:2.4rem;font-size:0.78rem;color:rgba(255,255,255,0.35);letter-spacing:0.04em;line-height:1.7;">
-        Tesla, Oracle, and Alphabet are subjects of analysis, not engaged clients. Case studies are educational analytical work product authored by FutureInSites for illustrative purposes. All data is drawn from publicly available sources and cited inline.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- CASE STUDY FEATURE -->
-  <section class="case-study-feature" id="case-studies">
-    <div class="section-inner">
-      <p class="section-label">Premier Case Study</p>
-      <h2 class="section-title">Our most comprehensive engagement</h2>
-      <p class="section-intro">A full-scope AI strategy: readiness assessment, competitive benchmarking, use case prioritization across 12 initiatives, governance framework, and a phased three-pillar implementation roadmap.</p>
-
-      <div class="cs-card">
-
-        <div class="cs-content">
-          <div>
-            <span class="cs-tag">Premier Case Study</span>
-            <div class="cs-brand">lululemon athletica</div>
-            <h3>From PAVE to Platform: Building the AI Foundation for Lululemon's Next Growth Chapter</h3>
-            <p>A full-scope AI strategy for a $10B+ premium athleisure brand at a strategic inflection point: declining U.S. comps, aggressive new competitors, and a newly appointed Chief AI & Technology Officer. Our analysis covers capability assessment, competitive benchmarking, use case prioritization, and a phased three-pillar implementation roadmap.</p>
-          </div>
-
-          <div>
-            <div class="cs-metrics">
-              <div class="cs-metric">
-                <span class="val">$400–600M</span>
-                <span class="desc">Projected Revenue Impact</span>
-              </div>
-              <div class="cs-metric">
-                <span class="val">$85–110M</span>
-                <span class="desc">3-Year Investment Range</span>
-              </div>
-              <div class="cs-metric">
-                <span class="val">12</span>
-                <span class="desc">Initiatives Evaluated</span>
-              </div>
-              <div class="cs-metric">
-                <span class="val">4–7x</span>
-                <span class="desc">Projected Return on Investment</span>
-              </div>
-            </div>
-
-            <a href="lululemon.html" class="cs-link">View Full Case Study →</a>
-          </div>
-        </div>
-
-        <div class="cs-visual">
-          <div class="cs-visual-inner">
-            <div class="cs-lulu-badge">
-              <img src="images/logo-black-full.svg" alt="lululemon" />
-              <span class="badge-label">Premier Case Study · AI Strategy</span>
-            </div>
-            <div class="cs-img-stack">
-              <img src="images/lululemon-1-1653574674022.webp" alt="lululemon" />
-              <img src="images/Lululemon-p-1080.jpg" alt="lululemon" />
-              <img src="images/maxresdefault.jpg" alt="lululemon" />
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- LATEST -->
-  <section class="latest-section" id="latest">
-    <div class="section-inner">
-      <p class="section-label">The Latest</p>
-      <h2 class="section-title">New on the site, refreshed as we publish.</h2>
-
-      <div class="latest-grid">
-
-        <a href="blog/multi-model-ai-strategy.html" class="latest-card" id="latest-blog-card">
-          <div class="latest-card-image" id="latest-blog-thumb" style="background-image:url('blog/multimodel.blog.png');"></div>
-          <div class="latest-card-body">
-            <div class="latest-card-meta">Latest Post &middot; <span id="latest-blog-date">June 9, 2026</span></div>
-            <h3 id="latest-blog-title">Multi-Model Strategy Is Table Stakes for AI in 2026</h3>
-            <p id="latest-blog-excerpt">The 'pick one model' era is over. Smart deployments pair models to task complexity and build price-based waterfalls for cost efficiency.</p>
-            <span class="latest-card-link">Read the post &rarr;</span>
-          </div>
-        </a>
-
-        <a href="ai-vendor-landscape.html" class="latest-card">
-          <div class="latest-card-image" style="background-image:url('images/landscape-ai-thumb.png');"></div>
-          <div class="latest-card-body">
-            <div class="latest-card-meta">Reference</div>
-            <h3>The AI Vendor Landscape</h3>
-            <p>A categorized reference of AI companies, from frontier model labs to applied AI software. 200+ vendors across 14 categories, built for executives evaluating where to invest, partner, or build.</p>
-            <span class="latest-card-link">View the Landscape &rarr;</span>
-          </div>
-        </a>
-
-        <a href="ai-bolt-ons.html" class="latest-card">
-          <div class="latest-card-image" style="background-image:url('images/ai-bolt-ons-thumb.jpg');"></div>
-          <div class="latest-card-body">
-            <div class="latest-card-meta">Reference</div>
-            <h3>AI Bolt-Ons</h3>
-            <p>A practical reference of plugins, skills, and MCP servers worth installing on top of your AI platform. 24 bolt-ons across 3 categories.</p>
-            <span class="latest-card-link">View the Bolt-Ons &rarr;</span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ASSESSMENT CTA BLOCK -->
   <section id="assessment-cta" style="background:var(--dark); padding:4.5rem 2rem; border-top:1px solid rgba(255,255,255,0.06);">
     <div style="max-width:700px; margin:0 auto; text-align:center;">
@@ -2810,7 +2152,7 @@
       <div class="contact-card">
         <p class="section-label" style="text-align:center; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--cyan); font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 0.8rem; line-height: 1.05;">Contact Us</p>
         <h2>Not sure where to start? That&#8217;s exactly what we&#8217;re here for.</h2>
-        <p>Whether you're starting from zero or scaling an existing AI program, we'd love to explore how FutureInSites can help your organization move faster with more confidence.</p>
+        <p>Tell us what is taking too much time, where work is getting stuck, or what you would like your business to do better. You do not need to know which technology or AI tool you need before reaching out.</p>
         <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
         <button type="button" class="contact-email" data-open-inquiry data-inquiry-context="strategy">Send us a Message</button>
       </div>
@@ -2822,7 +2164,7 @@
     <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
     <div class="footer-tagline">AI Strategy &amp; Engineering</div>
     <ul class="footer-links">
-      <li><a href="#about">Approach</a></li>
+      <li><a href="approach.html">Approach</a></li>
       <li><a href="solutions.html">Solutions</a></li>
       <li><a href="ai-readiness.html">Assessment</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
