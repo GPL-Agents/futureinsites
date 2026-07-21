@@ -76,9 +76,25 @@
       overflow: visible;
     }
 
-    .nav-wordmark-img {
+    .nav-brand-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
       display: block;
-      flex-shrink: 0;
+    }
+    .nav-future {
+      color: #FFFFFF;
+      -webkit-text-fill-color: #FFFFFF;
+    }
+    .nav-insites {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
 
     .nav-wordmark-tagline {
@@ -2031,7 +2047,7 @@
     <a href="index.html" class="nav-wordmark">
       <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <img src="images/futureinsites-wordmark-v3-nav-2x.png" class="nav-wordmark-img" width="185" height="28" alt="FutureInSites">
+        <span class="nav-brand-name"><span class="nav-future">Future</span><span class="nav-insites">InSites</span></span>
         <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
       </div>
     </a>
