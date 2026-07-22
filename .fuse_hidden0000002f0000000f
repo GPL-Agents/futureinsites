@@ -488,11 +488,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">

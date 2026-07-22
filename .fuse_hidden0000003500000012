@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources | FutureInSites</title>
-  <meta name="description" content="FutureInSites resources: articles, references, and analysis on enterprise AI strategy, the AI vendor landscape, and AI investment diligence." />
+  <title>History of Generative AI: How LLMs Got Here | FutureInSites</title>
+  <meta name="description" content="Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,16 +181,15 @@
     }
     
 
-    /* ─── PAGE HEADER ─── */
-    .page-header {
-      padding: 9rem 2rem 5rem;
+    /* ─── ARTICLE HEADER ─── */
+    .article-header {
+      padding: 9rem 0 4rem;
       background: var(--dark);
-      text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    .page-header::before {
+    .article-header::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -201,7 +200,7 @@
       mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
     }
 
-    .page-header::after {
+    .article-header::after {
       content: '';
       position: absolute;
       top: 30%;
@@ -209,18 +208,36 @@
       transform: translateX(-50%);
       width: 700px;
       height: 320px;
-      background: radial-gradient(ellipse at center, rgba(45,212,255,0.18) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(37,99,235,0.06) 50%, transparent 75%);
       pointer-events: none;
     }
 
-    .page-header-inner {
+    .article-header-inner {
       position: relative;
       z-index: 10;
       max-width: 960px;
       margin: 0 auto;
+      padding: 0 2rem;
+      text-align: left;
     }
 
-    .page-header .eyebrow {
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 1.8rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--cyan); }
+
+    .article-eyebrow {
+      display: block;
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 800;
       letter-spacing: -0.03em;
@@ -230,7 +247,7 @@
       margin-bottom: 1rem;
     }
 
-    .page-header h1 {
+    .article-header h1 {
       font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 800;
       color: #FFFFFF;
@@ -240,164 +257,194 @@
       text-wrap: balance;
     }
 
-    .page-header p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.5);
-      max-width: 820px;
-      margin: 0 auto;
-      line-height: 1.7;
+    .article-deck {
+      font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 760px;
     }
 
-    /* ─── RESOURCES LIST ─── */
-    .res-list {
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      flex-wrap: wrap;
+    }
+
+    .article-meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
       max-width: 960px;
       margin: 0 auto;
-      padding: 4rem 2rem 6rem;
+      padding: 4.5rem 2rem 5rem;
     }
 
-    .res-section-label {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin: 0 0 1.4rem;
+    .article-body p {
+      font-size: 1.06rem;
+      color: var(--dark);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
     }
 
-    .res-section-label:not(:first-child) { margin-top: 3rem; }
-
-    .res-section-label .section-name {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      line-height: 1.05;
-      white-space: nowrap;
+    .article-body p.lede {
+      font-size: 1.18rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 1.8rem;
     }
 
-    .res-section-label::after {
+    .article-body p.lede strong { font-weight: 700; }
+
+    .article-body strong { font-weight: 700; }
+    .article-body em { font-style: italic; }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 2.6rem 0;
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-lt);
+      border-radius: 0 8px 8px 0;
+      font-size: 1.18rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+
+    .pull-quote::before {
       content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      align-self: center;
-      min-width: 30px;
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 0.9rem;
     }
 
-    /* Unified resource card (used for both references and articles) */
-    .res-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      margin-bottom: 1.2rem;
-      transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      color: inherit;
-      min-height: 220px;
-    }
-
-    .res-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(37,99,235,0.06);
-    }
-
-    .res-card-content {
-      padding: 2rem 2.2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .res-card-meta {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.7rem;
-    }
-
-    .res-card h3 {
-      font-size: 1.25rem;
+    /* Section heading inside article */
+    .article-body h2 {
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--dark);
       letter-spacing: -0.02em;
+      margin: 2.6rem 0 1rem;
       line-height: 1.3;
-      margin-bottom: 0.8rem;
     }
 
-    .res-card p {
-      font-size: 0.9rem;
+    /* ─── ARTICLE FIGURE / IMAGES ─── */
+    /* Figures stay within the reading column so images don't blow out the
+       page rhythm. The lightbox provides the readable, zoomed-in view. */
+    .article-figure {
+      margin: 2.6rem 0;
+    }
+
+    .article-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-figure img:hover {
+      box-shadow: 0 14px 40px rgba(11,12,16,0.12);
+      transform: translateY(-2px);
+    }
+
+    .article-figure figcaption {
+      font-size: 0.82rem;
       color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.1rem;
+      line-height: 1.55;
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 0.01em;
     }
 
-    .res-card-link {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    /* Image-style visual (right panel) */
-    .res-card-image {
-      background-size: cover;
-      background-position: center;
-      background-color: var(--bg-alt);
-      border-left: 1px solid var(--border);
-    }
-
-    /* Dark / SVG-style visual (right panel, used when no image is available) */
-    .res-card-visual {
-      background: #0E1320;
+    /* ─── LIGHTBOX ─── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,12,16,0.94);
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      border-left: 1px solid var(--border);
+      padding: 2.5rem;
+      cursor: zoom-out;
+      animation: lb-fade-in 0.2s ease-out;
     }
 
-    .res-card-visual::before {
-      content: '';
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: calc(100vh - 5rem);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
       position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 24px 24px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
     }
 
-    .res-visual-icon {
-      position: relative;
-      z-index: 2;
-      width: 64px;
-      height: 64px;
-      color: var(--cyan);
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
     }
 
-    .res-visual-icon svg { width: 100%; height: 100%; display: block; }
-
-    .res-visual-label {
-      position: relative;
-      z-index: 2;
-      font-size: 0.58rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 720px;
+      padding: 0 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
       text-align: center;
+      letter-spacing: 0.02em;
     }
 
-    /* ─── FOOTER ─── */
-    
+    body.lb-open { overflow: hidden; }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ─── ARTICLE FOOTER (inside content) ─── */
+    .article-
     /* ─── FOOTER ─── */
     footer {
       background: #FFFFFF;
@@ -448,21 +495,155 @@
     @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
     
 
+    .article-footer .author {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .article-footer .author strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .article-footer-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .article-footer-link:hover { text-decoration: underline; }
+
+    /* ─── CTA BLOCK ─── */
+    .article-cta {
+      max-width: 960px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .article-cta-inner {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 2.6rem 2.4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(45,212,255,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .article-cta-inner > * { position: relative; z-index: 1; }
+
+    .article-cta-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .article-cta-link {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.7rem 1.7rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .article-cta-link:hover { opacity: 0.88; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 760px) {
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
-      .res-card {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .res-card-image,
-      .res-card-visual {
-        min-height: 180px;
-        border-left: none;
-        border-top: 1px solid var(--border);
-        order: -1;
-      }
+      .article-header { padding: 7.5rem 0 3rem; }
+      .article-header-inner { padding: 0 1.5rem; }
+      .article-body { padding: 3rem 1.5rem 4rem; }
+      .article-cta { padding: 0 1.5rem; }
+      .lightbox-overlay { padding: 1rem; }
     }}</style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -497,11 +678,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -516,114 +697,83 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <div class="page-header-inner">
-      <p class="eyebrow">Resources</p>
-      <h1>Articles, references and analysis</h1>
-      <p>Working notes from the FutureInSites practice on enterprise AI strategy, the AI vendor landscape, and the economics of AI infrastructure.</p>
+  <!-- ARTICLE HEADER -->
+  <div class="article-header">
+    <div class="article-header-inner">
+      <a href="resources.html" class="back-link">← Back to Resources</a>
+      <span class="article-eyebrow">Primer</span>
+      <h1>History of Generative AI: How LLMs Got Here</h1>
+      <p class="article-deck">Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next.</p>
+      <div class="article-meta">
+        <span>FutureInSites</span>
+        <span class="dot"></span>
+        <span>5 min read</span>
+      </div>
     </div>
   </div>
 
-  <!-- RESOURCES LIST -->
-  <div class="res-list">
+  <!-- ARTICLE BODY -->
+  <div class="article-body">
 
-    <!-- ─── REFERENCES ─── -->
-    <div class="res-section-label">
-      <span class="section-name">References</span>
+    <p class="lede">Many people think generative AI is a sudden breakthrough. <strong>It is not.</strong></p>
+
+    <p>The blunt truth: what we call "AI" today is not a new invention. It is the scaling of ideas that have existed for decades.</p>
+
+    <figure class="article-figure">
+      <img src="articles/GenAI60years.png" alt="Sixty years of AI research milestones, from early symbolic AI through statistical NLP, deep learning, and today's generative models" title="Click to enlarge">
+      <figcaption>Sixty years of stacked advances in symbolic AI, statistical methods, deep learning, and generative models.</figcaption>
+    </figure>
+
+    <p>At its core, generative AI is a predictive, probabilistic system. What we are seeing today is the result of years of stacked advances in data science and machine learning. What sets this moment apart is not the underlying ideas, but the speed of innovation and the rapid democratization of these capabilities.</p>
+
+    <h2>From counting words to understanding them</h2>
+
+    <p>Early models like Bag of Words treated data as independent inputs. Words were just counts. Pixels were just values. Then came weighting with TF-IDF, introducing the idea that not all signals matter equally. Words like "the" were heavily discounted.</p>
+
+    <div class="pull-quote">
+      The real shift came when models stopped just counting words and started learning how words are connected.
     </div>
 
-    <a href="ai-vendor-landscape.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Reference</div>
-        <h3>The AI Vendor Landscape</h3>
-        <p>A categorized reference of AI companies, from frontier model labs to applied AI software. 200+ vendors across 14 categories. Built for executives evaluating where to invest, partner, or build.</p>
-        <span class="res-card-link">View the Landscape →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('images/ai-vendor-cloud-small.png'); background-color:#0B0C10;"></div>
-      <div class="res-card-visual" style="display:none;">
-        <div class="res-visual-icon" aria-hidden="true">
-          <!-- Stacked layers / landscape icon (kept hidden as fallback) -->
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-            <path d="M32 8 L56 20 L32 32 L8 20 Z"/>
-            <path d="M8 32 L32 44 L56 32"/>
-            <path d="M8 44 L32 56 L56 44"/>
-          </svg>
-        </div>
-        <div class="res-visual-label">AI Vendor Landscape</div>
-      </div>
-    </a>
+    <p>Word2Vec, introduced by Google researchers in 2013, turned words into numbers in a way that captured meaning. Words used in similar ways ended up close together in vector space. From there, models like CNNs and the transformer architecture (introduced in the 2017 paper "Attention Is All You Need") helped systems understand structure and context. This led to systems like BERT, which could interpret meaning based on the words around it, not just the words themselves.</p>
 
-    <a href="ai-bolt-ons.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Reference</div>
-        <h3>AI Bolt-Ons</h3>
-        <p>A practical reference of plugins, skills, and MCP servers worth installing on top of your AI platform. 24 bolt-ons across 3 categories. Curated from what FutureInSites has tested firsthand.</p>
-        <span class="res-card-link">View the Bolt-Ons →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('images/ai-bolt-ons-thumb.jpg'); background-color:#0B0C10; background-size:cover; background-position:center;"></div>
-    </a>
+    <figure class="article-figure">
+      <img src="articles/RoadtoGenAI.png" alt="The road to generative AI: a visual progression from Bag of Words and TF-IDF, through Word2Vec, CNNs, and BERT, to modern large language models" title="Click to enlarge">
+      <figcaption>The road to today's LLMs: each step built on the last, each one mostly invisible to anyone outside research.</figcaption>
+    </figure>
 
-    <!-- ─── PRIMERS ─── -->
-    <div class="res-section-label">
-      <span class="section-name">Primers</span>
+    <h2>From understanding to generation</h2>
+
+    <p>Then came generative AI.</p>
+
+    <p>Generative AI builds directly on this decades-old foundation. Models like GPT, Gemini, and Claude move beyond understanding to generation. Given context, they analyze, predict, and generate new content one piece at a time based on learned probabilities. What feels like intelligence is the result of increasingly powerful pattern recognition, layered over time and trained on a meaningful slice of the public internet.</p>
+
+    <p>This is also not the kind of AI we see in science fiction. These systems are not self-aware or broadly thinking on their own, like Skynet in Terminator. They are still predictive systems. But when they are embedded into workflows that can plan, take action, and iterate toward goals, they begin to look much closer to that vision.</p>
+
+    <h2>What comes next</h2>
+
+    <p>What comes next is not just better models. It is systems built on top of them. Agents that can plan and take actions. Models that use tools and interfaces. Platforms that learn from real-world feedback. The frontier is no longer the model itself. It is what the model is allowed to do.</p>
+
+    <div class="pull-quote">
+      The shift ahead is from predicting what comes next to deciding what to do next.
     </div>
 
-    <a href="ai-for-executives.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Start Here · Primer</div>
-        <h3>AI for Executives: A Plain-Language Guide</h3>
-        <p>What AI actually is, what it can do, and where it creates value for leaders who don't code. The start-here primer in the FutureInSites series, written for executives and board members.</p>
-        <span class="res-card-link">Read the article →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('articles/chiefofstaff.main.png'); background-color:#0B0C10;"></div>
-    </a>
+    <p>For most enterprises, that means the question is no longer "Should we use AI?" It is "Where in our workflows are decisions repetitive enough, and consequences contained enough, to let an AI system actually make them?" The companies that get this right will not be the ones with the biggest models. They will be the ones with the clearest map of which decisions to delegate, which to augment, and which to keep firmly in human hands.</p>
 
-    <a href="history-of-generative-ai.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Primer</div>
-        <h3>History of Generative AI: How LLMs Got Here</h3>
-        <p>Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next.</p>
-        <span class="res-card-link">Read the article →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('articles/RoadtoGenAI.png');"></div>
-    </a>
-
-    <a href="building-ai-agents.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Primer</div>
-        <h3>Building AI Agents: An 8-Step Framework</h3>
-        <p>A production AI agent rests on eight discrete decisions: scope, prompt design, model choice, tools, memory, orchestration, interface, and evaluation. A short executive walkthrough of each step.</p>
-        <span class="res-card-link">Read the article →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('articles/agent.primer1.png'); background-color:#0B0C10;"></div>
-    </a>
-
-    <!-- ─── OPEN SOURCE TOOLS & GUIDES ─── -->
-    <div class="res-section-label">
-      <span class="section-name">Open Source Tools &amp; Guides</span>
+    <div class="article-footer">
+      <div class="author">Published by <strong>FutureInSites</strong></div>
+      <a href="resources.html" class="article-footer-link">More resources →</a>
     </div>
 
-    <a href="job-search-command-center.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Open Source Tool</div>
-        <h3>Job Search Command Center</h3>
-        <p>A free, build-your-own job-search agent that triages, scores, tracks, and plans your search against a single source of truth you own. Build it on ChatGPT, Claude Chat, or Claude Cowork. Comes with the full instructions, the code, and a step-by-step guide.</p>
-        <span class="res-card-link">Build your own →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('images/job-search-command-center-thumb.svg'); background-color:#0E1320; background-size:cover; background-position:center;"></div>
-    </a>
+  </div>
 
-    <a href="openclaw-windows-setup.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Guide</div>
-        <h3>Windows OpenClaw Setup: 10 Steps to Your Own AI Agent</h3>
-        <p>Set up your own personal AI agent on a repurposed Windows laptop with OpenClaw. This 10-step guide covers hardware prep, installation, cost hardening, and remote access. The essentials to get you running, with a teaser into what a fully-supported setup looks like.</p>
-        <span class="res-card-link">Read the guide →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('images/personal.agent.setup.png'); background-color:#0B0C10; background-size:cover; background-position:center;"></div>
-    </a>
-
+  <!-- CTA -->
+  <div class="article-cta">
+    <div class="article-cta-inner">
+      <div class="article-cta-eyebrow">Work with us</div>
+      <h3>Mapping where AI belongs in your business?</h3>
+      <p>FutureInSites helps enterprises decide which decisions to delegate, augment, or keep human, and builds the strategy and roadmap to get there.</p>
+      <a href="contact.html" class="article-cta-link">Get in touch →</a>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -678,6 +828,66 @@
       </div>
     </div>
   </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    (function () {
+      var figs = document.querySelectorAll('.article-figure img');
+      if (!figs.length) return;
+
+      function openLightbox(src, alt, caption) {
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Image viewer');
+
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close image viewer');
+        closeBtn.innerHTML = '&times;';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(img);
+
+        if (caption) {
+          var cap = document.createElement('div');
+          cap.className = 'lightbox-caption';
+          cap.textContent = caption;
+          overlay.appendChild(cap);
+        }
+
+        function close() {
+          overlay.remove();
+          document.body.classList.remove('lb-open');
+          document.removeEventListener('keydown', onKey);
+        }
+
+        function onKey(e) {
+          if (e.key === 'Escape') close();
+        }
+
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('lb-open');
+        document.addEventListener('keydown', onKey);
+      }
+
+      figs.forEach(function (img) {
+        var figcaption = img.parentElement ? img.parentElement.querySelector('figcaption') : null;
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt, figcaption ? figcaption.textContent : '');
+        });
+      });
+    })();
+  </script>
 
   <script>
   /* Hamburger toggle */

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | FutureInSites</title>
-  <meta name="description" content="How FutureInSites collects and uses information on this website, including analytics cookies and contact form submissions." />
+  <title>Resources | FutureInSites</title>
+  <meta name="description" content="FutureInSites resources: articles, references, and analysis on enterprise AI strategy, the AI vendor landscape, and AI investment diligence." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
+    /* ─── NAV ─── */
     
     /* ─── NAV ─── */
     nav {
@@ -181,7 +181,7 @@
     }
     
 
-    /* PAGE HEADER */
+    /* ─── PAGE HEADER ─── */
     .page-header {
       padding: 9rem 2rem 5rem;
       background: var(--dark);
@@ -220,6 +220,16 @@
       margin: 0 auto;
     }
 
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
     .page-header h1 {
       font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 800;
@@ -236,39 +246,157 @@
       max-width: 820px;
       margin: 0 auto;
       line-height: 1.7;
-      text-wrap: pretty;
     }
 
-    /* CONTENT */
-    .policy-wrap {
-      max-width: 760px;
+    /* ─── RESOURCES LIST ─── */
+    .res-list {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 4rem 2rem 7rem;
+      padding: 4rem 2rem 6rem;
     }
 
-    .policy-wrap h2 {
-      font-size: 1.35rem;
+    .res-section-label {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin: 0 0 1.4rem;
+    }
+
+    .res-section-label:not(:first-child) { margin-top: 3rem; }
+
+    .res-section-label .section-name {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+
+    .res-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      align-self: center;
+      min-width: 30px;
+    }
+
+    /* Unified resource card (used for both references and articles) */
+    .res-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      margin-bottom: 1.2rem;
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      min-height: 220px;
+    }
+
+    .res-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.06);
+    }
+
+    .res-card-content {
+      padding: 2rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .res-card-meta {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .res-card h3 {
+      font-size: 1.25rem;
       font-weight: 700;
+      color: var(--dark);
       letter-spacing: -0.02em;
-      margin: 2.6rem 0 0.8rem;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
     }
 
-    .policy-wrap h2:first-child { margin-top: 0; }
-
-    .policy-wrap p { margin-bottom: 1rem; color: #374151; }
-
-    .policy-wrap ul { margin: 0 0 1rem 1.4rem; color: #374151; }
-    .policy-wrap li { margin-bottom: 0.5rem; }
-
-    .policy-wrap a { color: var(--accent); }
-
-    .policy-updated {
-      font-size: 0.82rem;
+    .res-card p {
+      font-size: 0.9rem;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      line-height: 1.65;
+      margin-bottom: 1.1rem;
     }
 
-    /* FOOTER */
+    .res-card-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Image-style visual (right panel) */
+    .res-card-image {
+      background-size: cover;
+      background-position: center;
+      background-color: var(--bg-alt);
+      border-left: 1px solid var(--border);
+    }
+
+    /* Dark / SVG-style visual (right panel, used when no image is available) */
+    .res-card-visual {
+      background: #0E1320;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      border-left: 1px solid var(--border);
+    }
+
+    .res-card-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .res-visual-icon {
+      position: relative;
+      z-index: 2;
+      width: 64px;
+      height: 64px;
+      color: var(--cyan);
+    }
+
+    .res-visual-icon svg { width: 100%; height: 100%; display: block; }
+
+    .res-visual-label {
+      position: relative;
+      z-index: 2;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+
+    /* ─── FOOTER ─── */
     
     /* ─── FOOTER ─── */
     footer {
@@ -317,10 +445,34 @@
       .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
       .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
     }
-    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }}</style>
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+    
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .res-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .res-card-image,
+      .res-card-visual {
+        min-height: 180px;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        order: -1;
+      }
+    }}</style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
+  <!-- NAV -->
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
@@ -345,11 +497,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -364,53 +516,117 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </nav>
 
-  <header class="page-header">
+  <!-- PAGE HEADER -->
+  <div class="page-header">
     <div class="page-header-inner">
-      <h1>Privacy Policy</h1>
-      <p>What we collect on this website, how we use it, and the choices you have.</p>
+      <p class="eyebrow">Resources</p>
+      <h1>Articles, references and analysis</h1>
+      <p>Working notes from the FutureInSites practice on enterprise AI strategy, the AI vendor landscape, and the economics of AI infrastructure.</p>
     </div>
-  </header>
+  </div>
 
-  <main class="policy-wrap">
-    <p class="policy-updated">Effective date: June 10, 2026</p>
+  <!-- RESOURCES LIST -->
+  <div class="res-list">
 
-    <h2>Who we are</h2>
-    <p>This website, futureinsites.com, is operated by FutureInSites LLC ("FutureInSites," "we," "us"). This policy describes what information we collect when you visit the site and how we use it.</p>
+    <!-- ─── REFERENCES ─── -->
+    <div class="res-section-label">
+      <span class="section-name">References</span>
+    </div>
 
-    <h2>Information we collect</h2>
-    <p><strong>Usage data.</strong> We use Google Analytics to understand how visitors use the site: pages viewed, time on page, approximate geographic region, device and browser type, and how you arrived here. Google Analytics sets cookies in your browser to do this. This data is aggregated and does not identify you personally to us.</p>
-    <p><strong>Information you provide.</strong> If you submit our contact form or email us, we receive the information you choose to share, such as your name, email address, company, and message. We use it only to respond to your inquiry and conduct business with you.</p>
+    <a href="ai-vendor-landscape.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Reference</div>
+        <h3>The AI Vendor Landscape</h3>
+        <p>A categorized reference of AI companies, from frontier model labs to applied AI software. 200+ vendors across 14 categories. Built for executives evaluating where to invest, partner, or build.</p>
+        <span class="res-card-link">View the Landscape →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('images/ai-vendor-cloud-small.png'); background-color:#0B0C10;"></div>
+      <div class="res-card-visual" style="display:none;">
+        <div class="res-visual-icon" aria-hidden="true">
+          <!-- Stacked layers / landscape icon (kept hidden as fallback) -->
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8 L56 20 L32 32 L8 20 Z"/>
+            <path d="M8 32 L32 44 L56 32"/>
+            <path d="M8 44 L32 56 L56 44"/>
+          </svg>
+        </div>
+        <div class="res-visual-label">AI Vendor Landscape</div>
+      </div>
+    </a>
 
-    <h2>Cookies</h2>
-    <p>The only cookies this site sets are those used by Google Analytics, and only if you accept them in the cookie banner. If you decline, Google Analytics never loads and no analytics cookies are set. We do not use advertising cookies and we do not sell or share your information with advertisers.</p>
-    <p>You can control cookies in several ways:</p>
-    <ul>
-      <li>Decline in the cookie banner when you first visit; your choice is remembered in your browser</li>
-      <li>Change your mind later by clearing this site's data in your browser settings, which makes the banner ask again</li>
-      <li>Block or delete cookies in your browser settings</li>
-      <li>Install the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Google Analytics opt-out browser add-on</a></li>
-    </ul>
-    <p>The site works fully with cookies declined or disabled.</p>
+    <a href="ai-bolt-ons.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Reference</div>
+        <h3>AI Bolt-Ons</h3>
+        <p>A practical reference of plugins, skills, and MCP servers worth installing on top of your AI platform. 24 bolt-ons across 3 categories. Curated from what FutureInSites has tested firsthand.</p>
+        <span class="res-card-link">View the Bolt-Ons →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('images/ai-bolt-ons-thumb.jpg'); background-color:#0B0C10; background-size:cover; background-position:center;"></div>
+    </a>
 
-    <h2>How Google uses this data</h2>
-    <p>Google Analytics is a service of Google LLC. Information about how Google processes data collected through sites that use its services is available at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.</p>
+    <!-- ─── PRIMERS ─── -->
+    <div class="res-section-label">
+      <span class="section-name">Primers</span>
+    </div>
 
-    <h2>Data retention</h2>
-    <p>Analytics data is retained according to our Google Analytics settings and then deleted automatically. Contact form submissions and email correspondence are kept as long as needed to handle your inquiry and meet legal or accounting obligations.</p>
+    <a href="ai-for-executives.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Start Here · Primer</div>
+        <h3>AI for Executives: A Plain-Language Guide</h3>
+        <p>What AI actually is, what it can do, and where it creates value for leaders who don't code. The start-here primer in the FutureInSites series, written for executives and board members.</p>
+        <span class="res-card-link">Read the article →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('articles/chiefofstaff.main.png'); background-color:#0B0C10;"></div>
+    </a>
 
-    <h2>Your choices and rights</h2>
-    <p>You may request a copy of the personal information we hold about you, ask us to correct it, or ask us to delete it. Email us at <a href="mailto:privacy@futureinsites.com">privacy@futureinsites.com</a> and we will respond promptly. Depending on where you live, you may have additional rights under local law.</p>
+    <a href="history-of-generative-ai.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Primer</div>
+        <h3>History of Generative AI: How LLMs Got Here</h3>
+        <p>Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next.</p>
+        <span class="res-card-link">Read the article →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('articles/RoadtoGenAI.png');"></div>
+    </a>
 
-    <h2>Third-party services</h2>
-    <p>This site is hosted on Vercel. Like most hosting providers, Vercel may process technical request data (such as IP addresses) to serve and secure the site. Links to external sites are governed by those sites' own privacy policies.</p>
+    <a href="building-ai-agents.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Primer</div>
+        <h3>Building AI Agents: An 8-Step Framework</h3>
+        <p>A production AI agent rests on eight discrete decisions: scope, prompt design, model choice, tools, memory, orchestration, interface, and evaluation. A short executive walkthrough of each step.</p>
+        <span class="res-card-link">Read the article →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('articles/agent.primer1.png'); background-color:#0B0C10;"></div>
+    </a>
 
-    <h2>Changes to this policy</h2>
-    <p>If our practices change, we will update this page and revise the effective date above.</p>
+    <!-- ─── OPEN SOURCE TOOLS & GUIDES ─── -->
+    <div class="res-section-label">
+      <span class="section-name">Open Source Tools &amp; Guides</span>
+    </div>
 
-    <h2>Contact</h2>
-    <p>Questions about this policy: <a href="mailto:privacy@futureinsites.com">privacy@futureinsites.com</a></p>
-  </main>
+    <a href="job-search-command-center.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Open Source Tool</div>
+        <h3>Job Search Command Center</h3>
+        <p>A free, build-your-own job-search agent that triages, scores, tracks, and plans your search against a single source of truth you own. Build it on ChatGPT, Claude Chat, or Claude Cowork. Comes with the full instructions, the code, and a step-by-step guide.</p>
+        <span class="res-card-link">Build your own →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('images/job-search-command-center-thumb.svg'); background-color:#0E1320; background-size:cover; background-position:center;"></div>
+    </a>
 
+    <a href="openclaw-windows-setup.html" class="res-card">
+      <div class="res-card-content">
+        <div class="res-card-meta">Guide</div>
+        <h3>Windows OpenClaw Setup: 10 Steps to Your Own AI Agent</h3>
+        <p>Set up your own personal AI agent on a repurposed Windows laptop with OpenClaw. This 10-step guide covers hardware prep, installation, cost hardening, and remote access. The essentials to get you running, with a teaser into what a fully-supported setup looks like.</p>
+        <span class="res-card-link">Read the guide →</span>
+      </div>
+      <div class="res-card-image" style="background-image:url('images/personal.agent.setup.png'); background-color:#0B0C10; background-size:cover; background-position:center;"></div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">

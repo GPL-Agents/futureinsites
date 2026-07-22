@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | FutureInSites</title>
-  <meta name="description" content="How FutureInSites collects and uses information on this website, including analytics cookies and contact form submissions." />
+  <title>Team | FutureInSites</title>
+  <meta name="description" content="Meet the FutureInSites team. Practitioners who have led at scale, with deep ML engineering and AI architecture expertise built in production." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,6 +220,16 @@
       margin: 0 auto;
     }
 
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
     .page-header h1 {
       font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 800;
@@ -239,33 +249,104 @@
       text-wrap: pretty;
     }
 
-    /* CONTENT */
-    .policy-wrap {
-      max-width: 760px;
+    /* TEAM CONTENT */
+    .team-wrap {
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 4rem 2rem 7rem;
+      padding: 5rem 2rem 7rem;
     }
 
-    .policy-wrap h2 {
-      font-size: 1.35rem;
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .team-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.2rem 1.6rem 2rem;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(79,70,229,0.08);
+    }
+
+    .team-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1.4rem;
+      border: 3px solid var(--bg-alt);
+    }
+
+    .team-name {
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 2.6rem 0 0.8rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
     }
 
-    .policy-wrap h2:first-child { margin-top: 0; }
+    .team-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
 
-    .policy-wrap p { margin-bottom: 1rem; color: #374151; }
-
-    .policy-wrap ul { margin: 0 0 1rem 1.4rem; color: #374151; }
-    .policy-wrap li { margin-bottom: 0.5rem; }
-
-    .policy-wrap a { color: var(--accent); }
-
-    .policy-updated {
-      font-size: 0.82rem;
+    .team-bio {
+      flex: 1;
+      font-size: 0.88rem;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px) {
+      .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+
+    .team-intro {
+      max-width: 740px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+
+    .team-intro p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .team-domains {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.6rem;
+    }
+
+    .team-domain-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.85rem;
+      border-radius: 100px;
+      background: var(--accent-lt);
+      color: var(--accent);
+      border: 1px solid rgba(37,99,235,0.15);
     }
 
     /* FOOTER */
@@ -317,10 +398,25 @@
       .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
       .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
     }
-    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }}</style>
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+    
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
+  <!-- NAV -->
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
@@ -345,11 +441,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -364,53 +460,68 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </nav>
 
-  <header class="page-header">
+  <!-- PAGE HEADER -->
+  <div class="page-header">
     <div class="page-header-inner">
-      <h1>Privacy Policy</h1>
-      <p>What we collect on this website, how we use it, and the choices you have.</p>
+      <p class="eyebrow">Team</p>
+      <h1>Enterprise Expertise</h1>
+      <p>Practitioners who have led at scale, grounded in deep ML engineering and real-world AI architecture.</p>
     </div>
-  </header>
+  </div>
 
-  <main class="policy-wrap">
-    <p class="policy-updated">Effective date: June 10, 2026</p>
+  <!-- TEAM GRID -->
+  <div class="team-wrap">
 
-    <h2>Who we are</h2>
-    <p>This website, futureinsites.com, is operated by FutureInSites LLC ("FutureInSites," "we," "us"). This policy describes what information we collect when you visit the site and how we use it.</p>
+    <div class="team-intro">
+      <p>The FutureInSites team combines decades of enterprise leadership with hands-on ML and AI architecture experience. We have built and scaled production AI platforms, led engineering and product organizations at Fortune 100 companies, and conducted peer-reviewed research on AI applied to real business systems. Strategy and technical depth are not separate tracks here — they are the same practice.</p>
+      <div class="team-domains">
+        <span class="team-domain-tag">ML Systems</span>
+        <span class="team-domain-tag">LLM Architecture</span>
+        <span class="team-domain-tag">Data Platforms</span>
+        <span class="team-domain-tag">Enterprise Product</span>
+        <span class="team-domain-tag">AI Research</span>
+        <span class="team-domain-tag">GenAI Deployment</span>
+      </div>
+    </div>
 
-    <h2>Information we collect</h2>
-    <p><strong>Usage data.</strong> We use Google Analytics to understand how visitors use the site: pages viewed, time on page, approximate geographic region, device and browser type, and how you arrived here. Google Analytics sets cookies in your browser to do this. This data is aggregated and does not identify you personally to us.</p>
-    <p><strong>Information you provide.</strong> If you submit our contact form or email us, we receive the information you choose to share, such as your name, email address, company, and message. We use it only to respond to your inquiry and conduct business with you.</p>
+    <div class="team-grid">
 
-    <h2>Cookies</h2>
-    <p>The only cookies this site sets are those used by Google Analytics, and only if you accept them in the cookie banner. If you decline, Google Analytics never loads and no analytics cookies are set. We do not use advertising cookies and we do not sell or share your information with advertisers.</p>
-    <p>You can control cookies in several ways:</p>
-    <ul>
-      <li>Decline in the cookie banner when you first visit; your choice is remembered in your browser</li>
-      <li>Change your mind later by clearing this site's data in your browser settings, which makes the banner ask again</li>
-      <li>Block or delete cookies in your browser settings</li>
-      <li>Install the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Google Analytics opt-out browser add-on</a></li>
-    </ul>
-    <p>The site works fully with cookies declined or disabled.</p>
+      <div class="team-card">
+        <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
+        <div class="team-name">Greg Loeffelholz</div>
+        <div class="team-title">Founder &amp; Managing Principal</div>
+        <p class="team-bio">Over 25 years scaling data, ML, and GenAI platforms as a strategic leader. Led engineering and data science at MotiveMetrics' AI SaaS platform optimizing $100MM+ in paid search, with P&amp;L and SOC 2 governance. MarTech DSP &amp; CDP leadership at Inmar Intelligence and Nelnet. Vanderbilt BA, Boston College MBA in AI &amp; Machine Learning.</p>
+      </div>
 
-    <h2>How Google uses this data</h2>
-    <p>Google Analytics is a service of Google LLC. Information about how Google processes data collected through sites that use its services is available at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.</p>
+      <div class="team-card">
+        <img src="images/jeff.jpg" alt="Jeff Hoffman" class="team-photo">
+        <div class="team-name">Jeff Hoffman</div>
+        <div class="team-title">Principal Consultant</div>
+        <p class="team-bio">Two decades of digital product leadership across pharmacy, retail, and healthcare. VP roles at Walgreens leading 200+ product and engineering professionals, Best Buy heading Digital, Analytics, and Technology, and CVS Health as Chief Digital Officer for Pharmacy overseeing $13B in digital revenue. Tufts BA, Chicago Booth MBA in Strategic Management and Finance.</p>
+      </div>
 
-    <h2>Data retention</h2>
-    <p>Analytics data is retained according to our Google Analytics settings and then deleted automatically. Contact form submissions and email correspondence are kept as long as needed to handle your inquiry and meet legal or accounting obligations.</p>
+      <!-- TEMPORARILY HIDDEN: Randal Kenworthy's profile. To reactivate, delete the surrounding comment markers (this line and the matching one below). -->
+      <!--
+      <div class="team-card">
+        <img src="images/Randal.jpg" alt="Randal Kenworthy" class="team-photo">
+        <div class="team-name">Randal Kenworthy</div>
+        <div class="team-title">Founding Advisor</div>
+        <p class="team-bio">Adjunct Professor at Boston College teaching AI Strategy. 30+ years of consulting and strategy leadership across West Monroe, Cognizant, Cisco, and Wipro, with deep experience in product innovation, transformation, M&amp;A, and Industry 4.0 for Fortune 50 consumer and industrial manufacturing companies. Boston College BS, Yale MBA in Strategy and Finance.</p>
+      </div>
+      -->
+      <!-- END TEMPORARILY HIDDEN: Randal Kenworthy -->
 
-    <h2>Your choices and rights</h2>
-    <p>You may request a copy of the personal information we hold about you, ask us to correct it, or ask us to delete it. Email us at <a href="mailto:privacy@futureinsites.com">privacy@futureinsites.com</a> and we will respond promptly. Depending on where you live, you may have additional rights under local law.</p>
+      <div class="team-card">
+        <img src="images/miao.liu.jpg" alt="Miao Liu" class="team-photo">
+        <div class="team-name">Miao Liu</div>
+        <div class="team-title">Technical Advisor</div>
+        <p class="team-bio">Assistant Professor of Accounting at Boston College's Carroll School, researching the intersection of accounting and AI. Builds RAG systems applied to financial disclosure and publishes on human-AI collaboration in corporate valuation. Teaches an AI Applications in Business course at BC. Wuhan University BA, University of Chicago PhD.</p>
+      </div>
 
-    <h2>Third-party services</h2>
-    <p>This site is hosted on Vercel. Like most hosting providers, Vercel may process technical request data (such as IP addresses) to serve and secure the site. Links to external sites are governed by those sites' own privacy policies.</p>
+    </div>
+  </div>
 
-    <h2>Changes to this policy</h2>
-    <p>If our practices change, we will update this page and revise the effective date above.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about this policy: <a href="mailto:privacy@futureinsites.com">privacy@futureinsites.com</a></p>
-  </main>
-
+  <!-- FOOTER -->
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -510,5 +621,7 @@
   })();
   </script>
   <script src="cookie-banner.js"></script>
+
+
 </body>
 </html>

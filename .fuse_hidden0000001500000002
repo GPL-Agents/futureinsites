@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How We Scope an AI Engagement | FutureInSites</title>
-  <meta name="description" content="The discovery framework FutureInSites uses to identify where AI creates real value before a single line of code is written. Three layers, three kinds of questions, and the principle that turns conversations into engagements." />
+  <title>AI for Executives: A Plain-Language Guide | FutureInSites</title>
+  <meta name="description" content="A short, plain-language guide to what AI actually is, what it can do, and where it creates real value for leaders who don't code. The start-here primer in the FutureInSites series." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -352,19 +352,25 @@
       margin-bottom: 0.9rem;
     }
 
-    /* ─── ARTICLE FIGURE / SVG DIAGRAMS ─── */
+    /* ─── ARTICLE FIGURE / IMAGES ─── */
     .article-figure {
       margin: 2.6rem 0;
     }
 
-    .article-figure .scope-diagram {
+    .article-figure img {
       width: 100%;
       height: auto;
       display: block;
       border: 1px solid var(--border);
       border-radius: 10px;
       background: var(--bg-alt);
-      padding: 1rem;
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-figure img:hover {
+      box-shadow: 0 14px 40px rgba(11,12,16,0.12);
+      transform: translateY(-2px);
     }
 
     .article-figure figcaption {
@@ -374,6 +380,55 @@
       text-align: center;
       margin-top: 1rem;
       letter-spacing: 0.01em;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,12,16,0.94);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      cursor: zoom-out;
+      animation: lb-fade-in 0.2s ease-out;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: calc(100vh - 5rem);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.lb-open { overflow: hidden; }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* ─── ARTICLE FOOTER (inside content) ─── */
@@ -610,11 +665,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -633,13 +688,13 @@
   <div class="article-header">
     <div class="article-header-inner">
       <a href="resources.html" class="back-link">← Back to Resources</a>
-      <span class="article-eyebrow">Primer</span>
-      <h1>How We Scope an AI Engagement</h1>
-      <p class="article-deck">AI strategy starts before the model selection. The discovery framework FutureInSites uses to find where AI creates real value: three layers, three kinds of questions, and the principle that turns conversations into engagements.</p>
+      <span class="article-eyebrow">Start Here</span>
+      <h1>AI for Executives: A Plain-Language Guide</h1>
+      <p class="article-deck">What AI actually is, what it can do, and where it creates value for leaders who don't code. Read this before the discovery and build primers.</p>
       <div class="article-meta">
         <span>FutureInSites</span>
         <span class="dot"></span>
-        <span>7 min read</span>
+        <span>10 min read</span>
       </div>
     </div>
   </div>
@@ -647,173 +702,75 @@
   <!-- ARTICLE BODY -->
   <div class="article-body">
 
-    <p class="lede">AI engagements that work don't start with a model or a tool. <strong>They start with one conversation.</strong></p>
+    <p class="lede">AI is not magic, and it is not science fiction. <strong>It is a powerful new way for an organization to work with language, knowledge, and reasoning at speed</strong> — and the leaders who get this right early will compound advantages quickly.</p>
 
-    <p>The build-side framework (the <a class="inline-link" href="building-ai-agents.html">eight steps from purpose through evaluation</a>) sits downstream of a question most agent projects skip: where, specifically, is this worth doing? Discovery is the upstream work. It is not strategy in the abstract. It is a structured conversation that surfaces a small number of high-leverage AI opportunities inside an organization and turns them into something concrete enough to build.</p>
-
-    <p>This is the framework we use.</p>
-
-    <h2>Three layers where AI creates value</h2>
-
-    <p>Every discovery conversation should cover three layers. They map to different stakeholders, different success criteria, and different mechanics for how AI actually lands.</p>
-
-    <p><strong>Organization.</strong> Cross-team systems and workflows. Examples: portfolio monitoring across business units, executive briefings synthesized from many data sources, benchmarking one part of the business against another. The value at this layer is leverage at the firm or enterprise level.</p>
-
-    <p><strong>Function.</strong> A specific function or business unit. Examples: customer support, deal sourcing, revenue cycle, financial reporting, document review. The value at this layer is operational density inside a workflow that already exists.</p>
-
-    <p><strong>Individual.</strong> Executive personal effectiveness. Examples: preparation for important meetings, decision stress-testing, recovering hours from low-leverage prep work. The value at this layer is reclaiming the most expensive time in the organization.</p>
+    <p>This primer is the entry point in the FutureInSites series. It is written for executives, board members, and senior leaders who do not need to become AI experts and do not want a technical lecture, but who will be in conversations about AI for the rest of their careers and need a working mental model.</p>
 
     <figure class="article-figure">
-      <svg class="scope-diagram" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three layers where AI creates value: Organization, Function, and Individual">
-        <defs>
-          <linearGradient id="layerStripe" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2DD4FF"/>
-            <stop offset="100%" stop-color="#2563EB"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Layer 1: Organization -->
-        <rect x="60" y="40" width="780" height="115" rx="11" fill="#FFFFFF" stroke="#E4E7EE" stroke-width="1"/>
-        <rect x="60" y="40" width="780" height="6" fill="url(#layerStripe)"/>
-        <text x="90" y="80" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#2563EB" letter-spacing="0.14em">LAYER 01</text>
-        <text x="90" y="108" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="#0B0C10">Organization</text>
-        <text x="90" y="135" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">Cross-team systems, monitoring, executive briefings. Leverage at the firm level.</text>
-
-        <!-- Layer 2: Function -->
-        <rect x="60" y="175" width="780" height="115" rx="11" fill="#FFFFFF" stroke="#E4E7EE" stroke-width="1"/>
-        <rect x="60" y="175" width="780" height="6" fill="url(#layerStripe)"/>
-        <text x="90" y="215" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#2563EB" letter-spacing="0.14em">LAYER 02</text>
-        <text x="90" y="243" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="#0B0C10">Function</text>
-        <text x="90" y="270" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">A specific function or business unit. Operational density inside a workflow.</text>
-
-        <!-- Layer 3: Individual -->
-        <rect x="60" y="310" width="780" height="115" rx="11" fill="#FFFFFF" stroke="#E4E7EE" stroke-width="1"/>
-        <rect x="60" y="310" width="780" height="6" fill="url(#layerStripe)"/>
-        <text x="90" y="350" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#2563EB" letter-spacing="0.14em">LAYER 03</text>
-        <text x="90" y="378" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="#0B0C10">Individual</text>
-        <text x="90" y="405" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">Executive personal effectiveness. Recovering the most expensive hours in the organization.</text>
-      </svg>
-      <figcaption>Three layers where AI creates value. Most teams default to Function and miss the other two. The strongest opportunities often live at the seams.</figcaption>
+      <img src="articles/chiefofstaff.main.png" alt="AI for Executives: a plain-language primer for senior leaders" title="Click to enlarge">
+      <figcaption>The leaders who establish a basic mental model of AI early will have better conversations, make better investments, and waste less time on the wrong questions.</figcaption>
     </figure>
 
-    <p>Most teams default to one layer (usually Function) and miss the other two. The strongest opportunities often live at the seams: a single workflow that produces an organizational artifact while saving an individual several hours per week.</p>
+    <h2>What AI actually is</h2>
 
-    <h2>Three kinds of questions</h2>
+    <p>The AI that matters today has been trained on an almost incomprehensibly large amount of text: books, research, legal documents, financial filings, medical literature, news, code, and more. Through that training it developed a working understanding of language, concepts, reasoning, and how ideas connect.</p>
 
-    <p>Inside the conversation, three question modes do different work. A good discovery moves through all three, in order.</p>
+    <p>When you give it a task — write this, summarize that, analyze this, find the flaw in that argument — it draws on that understanding to produce output at a quality and speed no human team can match.</p>
 
-    <p><strong>Dig questions</strong> are diagnostic. They get the executive describing how work actually happens today. "Walk me through the last deal you closed. Where did it feel smooth, where did it feel like grinding through paperwork?" The job is not to ask about AI. The job is to surface the friction in vivid, specific detail.</p>
-
-    <p><strong>Spark questions</strong> are imagination. They help the executive picture an outcome without using technical language. "If you woke up Monday morning and there was a one-page briefing in your inbox with the three things that need your attention this week, what would change?" Spark questions reframe what's possible in terms of outcomes, never in terms of tools.</p>
-
-    <p><strong>Close questions</strong> move the conversation toward a concrete next step. "Of everything we talked about today, what's the thing you keep coming back to?" Close questions are how discovery turns into something an organization will actually fund.</p>
-
-    <figure class="article-figure">
-      <svg class="scope-diagram" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three question modes: Dig, Spark, and Close">
-        <defs>
-          <linearGradient id="qStripe" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2DD4FF"/>
-            <stop offset="100%" stop-color="#2563EB"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Dig -->
-        <g>
-          <rect x="35" y="40" width="270" height="300" rx="14" fill="#FFFFFF" stroke="#E4E7EE" stroke-width="1"/>
-          <rect x="35" y="40" width="270" height="6" fill="url(#qStripe)"/>
-          <circle cx="63" cy="82" r="16" fill="#2563EB"/>
-          <text x="63" y="87" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">D</text>
-          <text x="90" y="87" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="800" fill="#0B0C10">Dig</text>
-          <text x="55" y="130" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#2563EB" letter-spacing="0.14em">DIAGNOSTIC</text>
-          <text x="55" y="160" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0B0C10">Get them describing how</text>
-          <text x="55" y="180" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0B0C10">work actually happens.</text>
-          <text x="55" y="218" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">"Walk me through the last</text>
-          <text x="55" y="236" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">deal you closed. Where did</text>
-          <text x="55" y="254" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">it feel smooth, where did it</text>
-          <text x="55" y="272" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">feel like grinding through</text>
-          <text x="55" y="290" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">paperwork?"</text>
-          <text x="55" y="320" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">Surfaces friction in detail.</text>
-        </g>
-
-        <!-- Spark -->
-        <g>
-          <rect x="315" y="40" width="270" height="300" rx="14" fill="#FFFFFF" stroke="#E4E7EE" stroke-width="1"/>
-          <rect x="315" y="40" width="270" height="6" fill="url(#qStripe)"/>
-          <circle cx="343" cy="82" r="16" fill="#2563EB"/>
-          <text x="343" y="87" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">S</text>
-          <text x="370" y="87" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="800" fill="#0B0C10">Spark</text>
-          <text x="335" y="130" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#2563EB" letter-spacing="0.14em">IMAGINATION</text>
-          <text x="335" y="160" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0B0C10">Help them picture an</text>
-          <text x="335" y="180" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0B0C10">outcome, not a tool.</text>
-          <text x="335" y="218" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">"If a one-page briefing</text>
-          <text x="335" y="236" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">arrived every Monday with</text>
-          <text x="335" y="254" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">the three things that need</text>
-          <text x="335" y="272" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">your attention, what</text>
-          <text x="335" y="290" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">would change?"</text>
-          <text x="335" y="320" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">Reframes what's possible.</text>
-        </g>
-
-        <!-- Close -->
-        <g>
-          <rect x="595" y="40" width="270" height="300" rx="14" fill="#FFFFFF" stroke="#E4E7EE" stroke-width="1"/>
-          <rect x="595" y="40" width="270" height="6" fill="url(#qStripe)"/>
-          <circle cx="623" cy="82" r="16" fill="#2563EB"/>
-          <text x="623" y="87" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">C</text>
-          <text x="650" y="87" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="800" fill="#0B0C10">Close</text>
-          <text x="615" y="130" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#2563EB" letter-spacing="0.14em">LANDING</text>
-          <text x="615" y="160" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0B0C10">Move toward a concrete</text>
-          <text x="615" y="180" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0B0C10">next step.</text>
-          <text x="615" y="218" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">"Of everything we talked</text>
-          <text x="615" y="236" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">about today, what's the</text>
-          <text x="615" y="254" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">thing you keep coming</text>
-          <text x="615" y="272" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B" font-style="italic">back to?"</text>
-          <text x="615" y="320" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">Turns conversation into engagement.</text>
-        </g>
-      </svg>
-      <figcaption>Three modes of discovery question. Dig first to surface real friction, spark second to reframe what's possible, close last to land a concrete next step.</figcaption>
-    </figure>
-
-    <p>Lead with too many close questions and the executive feels rushed. Lead with too many spark questions and the conversation floats. The ratio matters: dig first, spark second, close last.</p>
-
-    <h2>Watch for the moments they light up</h2>
-
-    <p>The most important signal in a discovery conversation is not what the executive says they want. It is the moment they light up when describing something. Body language shifts. They lean in. They start telling a story instead of answering a question.</p>
-
-    <p>That moment is the highest-priority proof-of-concept candidate.</p>
-
-    <p>Stated priorities are often what executives think they should care about. Lit-up moments are what they actually wish they had. Engagements built around the latter tend to land. Engagements built around the former tend to stall in the second meeting.</p>
-
-    <h2>The "brilliant chief of staff" frame</h2>
-
-    <p>Most senior leaders do not think in terms of "agents" or "RAG" or "fine-tuning." They think in terms of people. The cleanest way to make AI concrete for a non-technical executive is to ask one question, and then listen carefully:</p>
+    <p>A few things it is not. It is not a search engine. It is not a robot. It does not think the way humans do. And it is not magic. It is a very powerful tool for working with language, knowledge, and reasoning.</p>
 
     <div class="pull-quote">
-      If you had a brilliant chief of staff, someone who knew everything about your business, had read every document you've ever written, been in every meeting you've ever been in, and was available to you at any hour, what would you have them do first?
+      Imagine the most well-read, fast-thinking analyst you have ever met, available to you instantly at any hour, across virtually any domain. That is closer to what AI is than anything from a movie.
     </div>
 
-    <p>The answer is almost always the highest-value proof of concept. The question bypasses the vocabulary gap entirely and goes straight to outcomes.</p>
+    <h2>Two modes worth understanding</h2>
 
-    <h2>Demonstrate, don't present</h2>
+    <p>Not all AI does the same thing. For someone thinking about where it creates value, two modes matter most. Understanding the difference makes everything that follows click into place.</p>
 
-    <p>The principle that matters most: come back with a working demonstration on the executive's own data, not a deck about AI.</p>
+    <p><strong>Generative AI</strong> creates something when you give it a task. A draft, a summary, a complex analysis, a first version of a document. You provide the input and direction; it produces the output. Think of it as a brilliant on-demand collaborator who can draft an investor update, summarize a deck, compare two strategic options, or explain an unfamiliar concept in seconds rather than hours.</p>
 
-    <p>A deck explains what AI could do. A demonstration shows what it just did for them, in their environment, with their inputs. The first is interesting. The second is the difference between an exploratory conversation and a funded engagement.</p>
+    <p><strong>Agentic AI</strong> goes further. It does not just answer a question; it takes a sequence of actions on your behalf — searching, compiling, analyzing, monitoring, flagging — autonomously, across multiple steps, while you focus on something else. Think of the difference between an analyst who answers a specific question and a chief of staff who runs the entire process and comes back with a recommendation.</p>
 
-    <p>The cost is modest: a few days of work to build the demonstration. The signal is everything.</p>
+    <p>The distinction matters because the on-ramp is different. Generative AI is available today, requires almost no setup, and lets a leader start building intuition this week. Agentic AI requires more infrastructure but is where the highest-leverage applications live: ongoing monitoring, automated workflows, systems that work overnight. Both are relevant. The right sequence is to start with generative, build intuition for what is possible, then layer in agentic applications where the time savings and insight quality justify it.</p>
 
-    <h2>What to leave the room with</h2>
+    <figure class="article-figure">
+      <img src="articles/chiefofstaff.ref.png" alt="A conceptual desk view of an AI chief of staff: a single dashboard pulling together strategy summary, financial overview, customer insights, risk radar, priorities, and operations snapshot" title="Click to enlarge">
+      <figcaption>An agentic system can act as a "chief of staff" for a leader: continuously pulling, synthesizing, and surfacing what matters across every part of the business.</figcaption>
+    </figure>
 
-    <p>The handoff that converts discovery into engagement is small and concrete: one real piece of the executive's data. A portfolio report. A board deck. A sample dataset. Anything the demonstration will be built on.</p>
+    <h2>Where the value lands</h2>
 
-    <p>When the executive hands that over, the conversation has shifted from interesting to committed. When they do not, the engagement is one or two more conversations away from real, no matter how warm the room felt.</p>
+    <p>AI creates value in three places inside an organization. Each lands differently, and the strongest programs invest in all three.</p>
 
-    <h2>Connecting discovery to build</h2>
+    <p><strong>For the organization.</strong> Cross-team systems and workflows. Portfolio or business-unit monitoring. Executive briefings synthesized from many data sources. Benchmarks across departments. The leverage is at the firm level: information that previously required a team of analysts now arrives on a leader's desk every Monday morning.</p>
 
-    <p>Discovery surfaces what to build. The <a class="inline-link" href="building-ai-agents.html">eight-step build framework</a> governs how. Two halves of the same engagement, in that order.</p>
+    <p><strong>For a function.</strong> A specific business area. Customer support, deal sourcing, revenue cycle, financial reporting, document review. The leverage is operational density: cognitive work that consumed an entire department gets compressed into a smaller footprint with higher consistency.</p>
 
-    <p>The order matters. Building before discovery produces well-engineered systems for problems that did not need solving. Discovering before building produces a clear thesis and a clear demonstration before anyone writes code. The second sequence is the one that compounds across an entire roadmap.</p>
+    <p><strong>For the leader personally.</strong> Preparation that used to take hours. Decision stress-testing. Communications drafts you refine rather than write from scratch. On-demand expertise across any domain. This is often where the value shows up fastest, and it is the area most senior executives are slowest to explore.</p>
 
-    <p>At FutureInSites, this is the framework we open every AI engagement with. Three layers, three kinds of questions, one lit-up moment, one demonstration. The eight steps come after.</p>
+    <h2>What AI is good at, and what it is not yet good at</h2>
+
+    <p>It is honest to name both.</p>
+
+    <p>AI is genuinely powerful at synthesizing large volumes of information, drafting first versions of almost any document, analyzing patterns, explaining concepts at the depth you need, and stress-testing your own thinking by arguing the other side of an argument.</p>
+
+    <p>It is not yet reliable for final judgment calls on high-stakes decisions, blind trust on factual claims (these models can be confidently wrong), or running well without clear direction. Quality of output depends heavily on how well you direct it. Like any capable employee, AI does better work with clear context and good instructions.</p>
+
+    <p>The leader's job stays the same: provide judgment at the decision points, verify anything high-stakes, and set direction. The shift is that everything before and around those decisions becomes dramatically faster.</p>
+
+    <h2>Where to start</h2>
+
+    <p>Most senior leaders do not think in terms of "agents" or "prompts" or "models." They think in terms of people. The cleanest way to make AI concrete is to answer one question, and then take the answer seriously:</p>
+
+    <div class="pull-quote">
+      If you had a brilliant chief of staff, someone who knew everything about your business, had read every document you have ever written, been in every meeting you have ever been in, and was available to you at any hour, what would you have them do first?
+    </div>
+
+    <p>Whatever the answer is, that is almost certainly the highest-value first AI use case. The question bypasses the vocabulary problem entirely and goes straight to outcomes. It also produces something concrete enough to build a working demonstration around, not just a presentation.</p>
+
+    <h2>From here</h2>
+
+    <p>Once a basic mental model is in place, the natural next read is <a class="inline-link" href="building-ai-agents.html">Building AI Agents: An 8-Step Framework</a>. It is the technical companion to this primer, walking through the eight decisions that shape every production AI agent. Read it when the conversation moves from "where AI fits" to "how to build it."</p>
 
     <div class="article-footer">
       <div class="author">Published by <strong>FutureInSites</strong></div>
@@ -826,8 +783,8 @@
   <div class="article-cta">
     <div class="article-cta-inner">
       <div class="article-cta-eyebrow">Work with us</div>
-      <h3>Looking for the right place to start with AI?</h3>
-      <p>FutureInSites runs a structured discovery process with your leadership team and returns with a working demonstration built on your real data, not a deck.</p>
+      <h3>Want to talk through where AI fits for your business?</h3>
+      <p>FutureInSites helps leadership teams build a working mental model, identify the right first use case, and demonstrate value on real data before committing to a full build.</p>
       <a href="contact.html" class="article-cta-link">Get in touch →</a>
     </div>
   </div>
@@ -888,17 +845,26 @@
   <!-- LIGHTBOX SCRIPT -->
   <script>
     (function () {
-      var figs = document.querySelectorAll('.article-figure svg');
+      var figs = document.querySelectorAll('.article-figure img');
       if (!figs.length) return;
-      figs.forEach(function (svg) { svg.style.cursor = 'zoom-in'; });
 
-      function openLightbox(svgNode) {
+      function openLightbox(src, alt) {
         var overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;inset:0;background:rgba(11,12,16,0.94);z-index:1000;display:flex;align-items:center;justify-content:center;padding:2.5rem;cursor:zoom-out;';
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Image viewer');
 
-        var clone = svgNode.cloneNode(true);
-        clone.style.cssText = 'max-width:100%;max-height:calc(100vh - 5rem);width:auto;height:auto;display:block;background:#F8F9FB;border-radius:6px;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.6);';
-        overlay.appendChild(clone);
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close image viewer');
+        closeBtn.innerHTML = '&times;';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(img);
 
         function close() {
           overlay.remove();
@@ -906,16 +872,20 @@
           document.removeEventListener('keydown', onKey);
         }
         function onKey(e) { if (e.key === 'Escape') close(); }
-        overlay.addEventListener('click', close);
-        clone.addEventListener('click', function (e) { e.stopPropagation(); });
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
 
         document.body.appendChild(overlay);
         document.body.classList.add('lb-open');
         document.addEventListener('keydown', onKey);
       }
 
-      figs.forEach(function (svg) {
-        svg.addEventListener('click', function () { openLightbox(svg); });
+      figs.forEach(function (img) {
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt);
+        });
       });
     })();
   </script>

@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | FutureInSites</title>
-  <meta name="description" content="How FutureInSites collects and uses information on this website, including analytics cookies and contact form submissions." />
+  <title>Thank You | FutureInSites</title>
+  <meta name="description" content="Your message to FutureInSites has been received." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://www.futureinsites.com/thanks.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,6 +222,16 @@
       margin: 0 auto;
     }
 
+    .page-eyebrow {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+
     .page-header h1 {
       font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 800;
@@ -240,33 +252,37 @@
     }
 
     /* CONTENT */
-    .policy-wrap {
-      max-width: 760px;
+    .thanks-wrap {
+      max-width: 640px;
       margin: 0 auto;
       padding: 4rem 2rem 7rem;
+      text-align: center;
     }
 
-    .policy-wrap h2 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 2.6rem 0 0.8rem;
+    .thanks-wrap p { margin-bottom: 1rem; color: #374151; }
+
+    .thanks-wrap a { color: var(--accent); }
+
+    .thanks-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.2rem;
     }
 
-    .policy-wrap h2:first-child { margin-top: 0; }
-
-    .policy-wrap p { margin-bottom: 1rem; color: #374151; }
-
-    .policy-wrap ul { margin: 0 0 1rem 1.4rem; color: #374151; }
-    .policy-wrap li { margin-bottom: 0.5rem; }
-
-    .policy-wrap a { color: var(--accent); }
-
-    .policy-updated {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
+    .thanks-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.65rem 1.6rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
     }
+
+    .thanks-btn.primary { background: var(--accent); color: #FFFFFF; }
+    .thanks-btn.secondary { border: 1px solid var(--border); color: var(--dark); }
+    .thanks-btn:hover { opacity: 0.8; }
 
     /* FOOTER */
     
@@ -317,7 +333,8 @@
       .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
       .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
     }
-    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }}</style>
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -345,11 +362,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -366,49 +383,20 @@
 
   <header class="page-header">
     <div class="page-header-inner">
-      <h1>Privacy Policy</h1>
-      <p>What we collect on this website, how we use it, and the choices you have.</p>
+      <span class="page-eyebrow">Message Received</span>
+      <h1>Thank you for reaching out</h1>
+      <p>Your inquiry is on its way to our team.</p>
     </div>
   </header>
 
-  <main class="policy-wrap">
-    <p class="policy-updated">Effective date: June 10, 2026</p>
-
-    <h2>Who we are</h2>
-    <p>This website, futureinsites.com, is operated by FutureInSites LLC ("FutureInSites," "we," "us"). This policy describes what information we collect when you visit the site and how we use it.</p>
-
-    <h2>Information we collect</h2>
-    <p><strong>Usage data.</strong> We use Google Analytics to understand how visitors use the site: pages viewed, time on page, approximate geographic region, device and browser type, and how you arrived here. Google Analytics sets cookies in your browser to do this. This data is aggregated and does not identify you personally to us.</p>
-    <p><strong>Information you provide.</strong> If you submit our contact form or email us, we receive the information you choose to share, such as your name, email address, company, and message. We use it only to respond to your inquiry and conduct business with you.</p>
-
-    <h2>Cookies</h2>
-    <p>The only cookies this site sets are those used by Google Analytics, and only if you accept them in the cookie banner. If you decline, Google Analytics never loads and no analytics cookies are set. We do not use advertising cookies and we do not sell or share your information with advertisers.</p>
-    <p>You can control cookies in several ways:</p>
-    <ul>
-      <li>Decline in the cookie banner when you first visit; your choice is remembered in your browser</li>
-      <li>Change your mind later by clearing this site's data in your browser settings, which makes the banner ask again</li>
-      <li>Block or delete cookies in your browser settings</li>
-      <li>Install the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Google Analytics opt-out browser add-on</a></li>
-    </ul>
-    <p>The site works fully with cookies declined or disabled.</p>
-
-    <h2>How Google uses this data</h2>
-    <p>Google Analytics is a service of Google LLC. Information about how Google processes data collected through sites that use its services is available at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.</p>
-
-    <h2>Data retention</h2>
-    <p>Analytics data is retained according to our Google Analytics settings and then deleted automatically. Contact form submissions and email correspondence are kept as long as needed to handle your inquiry and meet legal or accounting obligations.</p>
-
-    <h2>Your choices and rights</h2>
-    <p>You may request a copy of the personal information we hold about you, ask us to correct it, or ask us to delete it. Email us at <a href="mailto:privacy@futureinsites.com">privacy@futureinsites.com</a> and we will respond promptly. Depending on where you live, you may have additional rights under local law.</p>
-
-    <h2>Third-party services</h2>
-    <p>This site is hosted on Vercel. Like most hosting providers, Vercel may process technical request data (such as IP addresses) to serve and secure the site. Links to external sites are governed by those sites' own privacy policies.</p>
-
-    <h2>Changes to this policy</h2>
-    <p>If our practices change, we will update this page and revise the effective date above.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about this policy: <a href="mailto:privacy@futureinsites.com">privacy@futureinsites.com</a></p>
+  <main class="thanks-wrap">
+    <p>We review every message personally and will get back to you within one business day.</p>
+    <p>If anything is time-sensitive, you can always reach us directly at <a href="mailto:strategy@futureinsites.com">strategy@futureinsites.com</a>.</p>
+    <p>While you wait, our case studies show how we approach AI strategy and engineering work, and the blog covers what we're seeing across the AI landscape right now.</p>
+    <div class="thanks-actions">
+      <a href="case-studies.html" class="thanks-btn primary">Explore Case Studies</a>
+      <a href="blog/index.html" class="thanks-btn secondary">Read the Blog</a>
+    </div>
   </main>
 
   <!-- FOOTER -->
@@ -463,6 +451,33 @@
     </div>
   </footer>
 
+  <script>
+    /* Dropdown toggles (handles multiple .nav-more elements) */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
   <script>
   /* Hamburger toggle */
   (function () {

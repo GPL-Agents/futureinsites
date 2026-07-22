@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tesla Sentiment Analysis: 2.4M Tweets Through VADER and BERT | FutureInSites</title>
+  <meta name="description" content="A natural-language-processing case study on Tesla's Twitter narrative across 2018 and 2020. VADER, default BERT, and a fine-tuned BERT model on Sentiment140 compared side by side. Prepared by FutureInSites." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --tesla-black: #171A20;
+      --tesla-red:   #E31937;
+      --tesla-red-dim: rgba(227,25,55,0.08);
+      --bg:          #FFFFFF;
+      --bg-alt:      #F4F4F4;
+      --bg-hero:     #000000;
+      --border:      rgba(23,26,32,0.12);
+      --border-solid: #D9D9D7;
+      --muted:       #5C5E62;
+      --font:        'Inter', system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-alt);
+      color: var(--tesla-black);
+      font-family: var(--font);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: clip;
+    }
+
+    /* ─── NAV (minimal, case-study reader style) ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2.5rem;
+      height: 56px;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(23,26,32,0.12);
+    }
+
+    .nav-logo {
+      font-family: var(--font);
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
+      position: absolute;
+      left: 2.5rem;
+    }
+
+    .nav-logo:hover { color: var(--tesla-black); }
+
+    .nav-logo::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--tesla-black);
+      flex-shrink: 0;
+      transition: width 0.2s;
+    }
+
+    .nav-logo:hover::before { width: 24px; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--tesla-black);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--tesla-red);
+      transition: width 0.22s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.nav-link-active::after { width: 100%; }
+    .nav-links a:hover { color: var(--tesla-red); }
+    .nav-links a.nav-link-active { color: var(--tesla-red); font-weight: 500; }
+
+    .nav-cta {
+      position: absolute;
+      right: 2.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--tesla-red);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.4rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6rem 2rem 0;
+      background: var(--bg-hero);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(227,25,55,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 2rem;
+    }
+
+    .hero-tesla-wordmark {
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      letter-spacing: 0.4em;
+      color: var(--tesla-red);
+      text-transform: uppercase;
+      text-indent: 0.4em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title-main {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.05;
+      display: block;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      margin: 2rem auto 0;
+      max-width: 760px;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      white-space: normal;
+      text-wrap: balance;
+    }
+
+    .hero-chart {
+      margin: 3rem auto 0;
+      max-width: 860px;
+      width: 100%;
+      padding-bottom: 4rem;
+    }
+
+    .hero-chart img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+      border-radius: 12px;
+      opacity: 0.95;
+    }
+
+    /* ─── QUOTE STRIP ─── */
+    .quote-strip {
+      position: relative;
+      background: var(--tesla-black);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .quote-strip blockquote {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.88);
+      max-width: 860px;
+      margin: 0 auto 1rem;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    .quote-strip cite {
+      display: block;
+      font-size: 0.7rem;
+      font-style: normal;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tesla-red);
+      margin-top: 1.4rem;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      padding: 5.5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--tesla-red);
+      margin-bottom: 0.9rem;
+      display: block;
+      line-height: 1.05;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+      font-weight: 700;
+      color: var(--tesla-black);
+      margin-bottom: 0;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--tesla-red);
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── EXEC SUMMARY ─── */
+    .exec-summary { background: var(--bg); border-top: 1px solid var(--border); }
+
+    .thesis-block {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--tesla-red);
+      border-radius: 2px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 3rem;
+      font-size: 1.02rem;
+      color: var(--tesla-black);
+      line-height: 1.85;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-bottom: 2px solid var(--tesla-red);
+      border-radius: 2px;
+      padding: 1.8rem 1.4rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(23,26,32,0.08);
+    }
+
+    .stat-number {
+      font-size: 2.1rem;
+      font-weight: 300;
+      color: var(--tesla-black);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .priorities-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .priority-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.8rem 1.6rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .priority-card:hover {
+      border-color: var(--tesla-black);
+      transform: translateY(-3px);
+    }
+
+    .priority-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.02em;
+    }
+
+    .priority-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--tesla-black);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .priority-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── METHODOLOGY ─── */
+    .methodology { background: var(--bg-alt); }
+
+    .body-text p { color: var(--tesla-black); line-height: 1.95; margin-bottom: 1.6rem; font-size: 1.06rem; }
+    .body-text p strong { font-weight: 700; }
+
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .method-step {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.6rem 1.6rem;
+    }
+
+    .method-step .step-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tesla-red);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .method-step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--tesla-black);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .method-step p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tool-stack {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--tesla-red);
+      border-radius: 2px;
+      padding: 1.6rem 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .tool-stack .tool-stack-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tesla-red);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .tool-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tool-pill {
+      font-size: 0.78rem;
+      color: var(--tesla-black);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ─── FIGURE / CHART PANEL ─── */
+    .chart-panel {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .chart-panel img {
+      width: 100%;
+      display: block;
+    }
+
+    .chart-caption {
+      padding: 1rem 1.2rem;
+      font-size: 0.74rem;
+      color: var(--muted);
+      line-height: 1.55;
+      border-top: 1px solid var(--border);
+    }
+
+    .chart-caption strong { color: var(--tesla-black); font-weight: 600; }
+
+    /* Two-up chart grid */
+    .chart-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .chart-grid-2 .chart-panel { margin: 0; }
+
+    /* ─── FINDINGS ─── */
+    .findings { background: var(--bg); }
+
+    .finding-callout {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--tesla-red);
+      border-radius: 2px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0;
+      font-size: 0.98rem;
+      color: var(--tesla-black);
+      line-height: 1.75;
+    }
+
+    .finding-callout strong { font-weight: 700; }
+
+    /* ─── MODEL COMPARISON TABLE ─── */
+    .model-comparison { background: var(--bg-alt); }
+
+    .model-table-wrap { overflow-x: auto; }
+
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 2rem 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+
+    .model-table th {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0.9rem 1rem;
+      border-bottom: 2px solid var(--tesla-red);
+      background: var(--bg-alt);
+      white-space: nowrap;
+    }
+
+    .model-table td {
+      padding: 1.1rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--tesla-black);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .model-table tr:last-child td { border-bottom: none; }
+
+    .model-table .model-name {
+      font-weight: 600;
+      color: var(--tesla-black);
+      white-space: nowrap;
+    }
+
+    .verdict-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.7rem;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .v-fit  { background: var(--tesla-red); color: #fff; }
+    .v-meh  { background: rgba(23,26,32,0.18); color: var(--tesla-black); }
+    .v-miss { background: rgba(23,26,32,0.45); color: #fff; }
+
+    /* ─── IMPLICATIONS ─── */
+    .implications { background: var(--bg); }
+
+    .implication-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .implication-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--tesla-red);
+      border-radius: 2px;
+      padding: 1.8rem 1.6rem;
+    }
+
+    .implication-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--tesla-black);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .implication-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── CTA FOOTER ─── */
+    .cta-strip {
+      background: var(--tesla-black);
+      padding: 4.5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-strip h3 {
+      font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 0.9rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-strip p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .cta-strip a {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--tesla-red);
+      text-decoration: none;
+      padding: 0.7rem 1.7rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-strip a:hover { opacity: 0.85; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0E1014;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.2rem;
+      justify-content: center;
+      list-style: none;
+      margin: 1.2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.66rem; color: rgba(255,255,255,0.55); margin-top: 1rem; }
+
+    .footer-disclaimer {
+      font-size: 0.66rem;
+      color: rgba(255,255,255,0.25);
+      max-width: 760px;
+      margin: 1.4rem auto 0;
+      line-height: 1.7;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .priorities-list { grid-template-columns: 1fr; }
+      .method-steps { grid-template-columns: 1fr; }
+      .implication-grid { grid-template-columns: 1fr; }
+      .chart-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .nav-logo { left: 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.4rem; }
+      .hero { padding: 5rem 1.4rem 0; }
+      .hero-tesla-wordmark { letter-spacing: 0.3em; }
+    }
+  
+    /* ï¿½ï¿½ï¿½ MORE DROPDOWN ï¿½ï¿½ï¿½ */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    /* Mobile: expand inline */
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }</style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">FutureInSites</a>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#findings">Findings</a></li>
+      <li><a href="#models">Models</a></li>
+      <li><a href="#implications">Implications</a></li>
+          <li class="nav-more">
+        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="consumer.html">Consumer</a></li>
+        </ul>
+      </li></ul>
+    <a href="case-studies.html" class="nav-cta">All Case Studies →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-inner">
+
+      <p class="hero-eyebrow">Marketing &amp; Analytics &nbsp;·&nbsp; Prepared by FutureInSites &nbsp;·&nbsp; February 2026</p>
+
+      <div class="hero-tesla-wordmark">TESLA</div>
+
+      <span class="hero-title-main">Sentiment at Scale</span>
+
+      <p class="hero-tagline">What 2.4 million tweets reveal about Tesla's brand on Twitter in 2018 and 2020, analyzed with VADER, a default BERT model, and a BERT model fine-tuned on Sentiment140.</p>
+
+      <div class="hero-chart">
+        <img src="images/tesla/tesla-tweets-hero.png" alt="Word cloud of Tesla-related tweets, dominated by 'tesla', 'model', 'elon musk', and emerging themes like 'electric' and 'stock'">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUOTE STRIP -->
+  <div class="quote-strip">
+    <blockquote>
+      "Across 2.4 million Tesla tweets, the brand maintained roughly a 2-to-1 ratio of positive to negative sentiment. Viral content skewed even more positive. The story of Tesla on Twitter is less about controversy than about an enthusiastic supporter base that consistently outvoiced its critics."
+    </blockquote>
+    <cite>FutureInSites Analysis &nbsp;·&nbsp; February 2026</cite>
+  </div>
+
+  <!-- EXEC SUMMARY -->
+  <section class="exec-summary" id="summary">
+    <div class="section-inner">
+      <p class="section-label">Executive Summary</p>
+      <h2 class="section-title">A 2.4M-tweet view of Tesla's brand</h2>
+
+      <div class="thesis-block">
+        Social media offers a continuous, unfiltered signal of public sentiment that traditional surveys and focus groups cannot match in scale or timeliness. This study mines <strong>~2.4 million Tesla tweets</strong> from 2018 and 2020 using three sentiment models in sequence: <strong>VADER</strong> (a rule-based lexicon tuned for social media), a <strong>default BERT</strong> classifier (originally trained on movie reviews), and a <strong>fine-tuned BERT</strong> model trained further on the Sentiment140 dataset of 1.6 million labeled tweets.<br><br>
+        The core finding is consistent across methods: Tesla maintained a <strong>net positive public image</strong> in both years studied, with predictable troughs around controversies (Model 3 production in 2018, the May 2020 pandemic factory shutdown) and recoveries tied to product milestones. Engagement-weighted analysis sharpens the picture: <strong>Tesla's most-amplified content skewed even more positive</strong> than the overall average.
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-number">~2.4M</span>
+          <div class="stat-label">Tweets<br>Analyzed</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <div class="stat-label">Sentiment Models<br>Compared</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2:1</span>
+          <div class="stat-label">Positive to Negative<br>Ratio (VADER)</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">+50pp</span>
+          <div class="stat-label">Swing from Default<br>to Fine-Tuned BERT</div>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-bottom:1.2rem;">Three Key Insights</p>
+      <div class="priorities-list">
+        <div class="priority-card">
+          <div class="priority-num">01</div>
+          <h3>Tesla's Twitter base is loud and positive</h3>
+          <p>Across both years, positive tweets outnumbered negative tweets roughly 2-to-1, and engagement-weighted content skewed even more positive. Tesla's loudest voices are also its most supportive ones.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-num">02</div>
+          <h3>Sentiment recovers fast after adverse events</h3>
+          <p>Negative spikes around the 2018 production crisis and the May 2020 pandemic shutdown reversed within a single month. The recovery pattern points to a loyal base that compensates for short-term criticism.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-num">03</div>
+          <h3>Model choice can flip a brand's diagnosis</h3>
+          <p>Default BERT trained on movie reviews labeled 75% of Tesla tweets negative. The same BERT architecture, fine-tuned on tweet language, called 60-70% positive. Domain match matters more than model size.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="methodology" id="methodology">
+    <div class="section-inner">
+      <p class="section-label">How We Did It</p>
+      <h2 class="section-title">Five steps from raw tweets to comparable sentiment</h2>
+
+      <div class="body-text">
+        <p>Before any model can read a tweet, the data has to be cleaned, structured, and prepared in ways that let one method's output be compared against another's. The workflow below is the same one used in production social-listening pipelines, executed end-to-end in Python.</p>
+      </div>
+
+      <div class="method-steps">
+        <div class="method-step">
+          <span class="step-num">Step 01</span>
+          <h3>Data preprocessing</h3>
+          <p>Strip URLs, @-mentions, hashtags, and emoji. Lowercase all text. Remove stopwords (the, a, is). Split by year so 2018 and 2020 can be compared directly. Without this step, hyperlinks and filler words would dominate every downstream chart.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 02</span>
+          <h3>Exploratory frequency analysis</h3>
+          <p>Surface dominant themes through top-20 word counts, top-20 bigrams (two-word phrases), top hashtags, and word clouds. Bigrams in particular capture context that single-word counts miss: "model 3," "electric vehicle," "full self driving" are concepts, not coincidences.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 03</span>
+          <h3>VADER sentiment scoring</h3>
+          <p>Rule-based lexicon designed for social media. Each tweet gets a compound score from -1 to +1, accounting for capitalization (ALL CAPS), punctuation (!!!), and emoji. Fast, transparent, and battle-tested on short informal text.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 04</span>
+          <h3>Default BERT classification</h3>
+          <p>Apply a pre-trained BERT model to a sampled subset of tweets. BERT reads whole sentences in context, catching negation and sarcasm that VADER misses. Output is a class label plus a confidence score from 0 to 1.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 05</span>
+          <h3>Fine-tuned BERT on Sentiment140</h3>
+          <p>Continue training the same BERT base on Sentiment140 (1.6M labeled tweets). The model architecture is unchanged; only the training data shifts from movie reviews to tweets. This is the closest match to the production task.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 06</span>
+          <h3>Engagement-weighted re-scoring</h3>
+          <p>Multiply each tweet's sentiment by a composite engagement score (retweets, favorites, replies, quotes). A tweet seen by 50,000 people now carries more weight than one seen by 5. This is how PR professionals already think about media impact.</p>
+        </div>
+      </div>
+
+      <div class="tool-stack">
+        <span class="tool-stack-label">Tools &amp; Libraries Used</span>
+        <div class="tool-pills">
+          <span class="tool-pill">Python</span>
+          <span class="tool-pill">pandas</span>
+          <span class="tool-pill">NLTK</span>
+          <span class="tool-pill">vaderSentiment</span>
+          <span class="tool-pill">Hugging Face Transformers</span>
+          <span class="tool-pill">BERT (base-uncased)</span>
+          <span class="tool-pill">Sentiment140</span>
+          <span class="tool-pill">matplotlib</span>
+          <span class="tool-pill">seaborn</span>
+          <span class="tool-pill">wordcloud</span>
+          <span class="tool-pill">Jupyter</span>
+        </div>
+      </div>
+
+      <div class="chart-grid-2">
+        <div class="chart-panel">
+          <img src="images/tesla/top-20-words.png" alt="Bar chart of the 20 most frequent words in Tesla tweets, 2018 vs 2020">
+          <p class="chart-caption"><strong>Fig. 1:</strong> Top 20 most-frequent words in Tesla tweets, 2018 (left) vs 2020 (right). Note the shift from "production" and "crash" in 2018 toward "stock," "battery," and "ev" in 2020.</p>
+        </div>
+        <div class="chart-panel">
+          <img src="images/tesla/top-20-bigrams.png" alt="Bar chart of the top 20 two-word phrases in Tesla tweets, 2018 vs 2020">
+          <p class="chart-caption"><strong>Fig. 2:</strong> Top 20 bigrams. Bigrams capture context single words cannot. "model 3," "full self driving," and "electric vehicle" emerge as concrete concepts in the conversation.</p>
+        </div>
+      </div>
+
+      <div class="chart-panel">
+        <img src="images/tesla/wordcloud-2020.png" alt="Word cloud of Tesla-related tweets in 2020, dominated by 'tesla' with 'nikola', 'stock', and 'electric' rising in prominence">
+        <p class="chart-caption"><strong>Fig. 3:</strong> 2020 word cloud. The emergence of "nikola" (a 2020 EV competitor that went public via SPAC), "tesla stock," and "electric" signals that Tesla had moved from a manufacturing story toward a mainstream consumer and investor brand.</p>
+      </div>
+
+      <div class="chart-panel">
+        <img src="images/tesla/top-10-hashtags.png" alt="Bar chart of the top 10 hashtags in Tesla tweets, 2018 vs 2020. 2020 shifts toward sustainability hashtags.">
+        <p class="chart-caption"><strong>Fig. 4:</strong> Top hashtags. The 2018 mix is product- and founder-centric (#Model3, #ElonMusk, #SpaceX). By 2020, sustainability hashtags (#EV, #Renewables, #ClimateChange) push into the top 10, signaling a broadened audience.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PART A FINDINGS: VADER + ENGAGEMENT -->
+  <section class="findings" id="findings">
+    <div class="section-inner">
+      <p class="section-label">Part A</p>
+      <h2 class="section-title">VADER sentiment over time, with and without engagement</h2>
+
+      <div class="body-text">
+        <p>VADER's compound score classifies each tweet as positive, neutral, or negative. Plotted month by month across both years, the unweighted view shows steady positive lean punctuated by predictable dips around real-world events. The engagement-weighted view, which gives extra weight to viral tweets, sharpens the picture: <strong>Tesla's most-amplified content skews even more positive than the average tweet.</strong></p>
+      </div>
+
+      <div class="chart-panel">
+        <img src="images/tesla/monthly-sentiment.png" alt="Monthly proportions of positive vs negative Tesla tweets for 2018 (Apr-Jun) and 2020 (Jan-Nov)">
+        <p class="chart-caption"><strong>Fig. 5:</strong> Unweighted monthly sentiment proportions. 2018 (left): positive rises from 36% in April to 42% by June across the Model 3 production crisis. 2020 (right): positive holds between 38% and 47%, with a clear May spike in negative sentiment (~25%) corresponding to the pandemic factory shutdown.</p>
+      </div>
+
+      <div class="chart-panel">
+        <img src="images/tesla/weighted-monthly-sentiment.png" alt="Monthly proportions of positive vs negative Tesla tweets weighted by engagement (retweets, favorites, replies, quotes)">
+        <p class="chart-caption"><strong>Fig. 6:</strong> Engagement-weighted monthly sentiment. Weighted positive sits 4-7 percentage points higher than the unweighted baseline in most months, meaning Tesla's viral content tends to be more positive than its average tweet. The May 2020 negative spike persists, indicating the pandemic-shutdown controversy generated unusually high engagement.</p>
+      </div>
+
+      <div class="finding-callout">
+        <strong>What this means for brand monitoring:</strong> day-to-day tweet volume is not the right metric. Engagement-weighted sentiment is. A single high-engagement event (the pandemic shutdown, the "funding secured" tweet) can move the needle more than thousands of ordinary posts. The strongest brand-monitoring systems weight by reach, not count.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PART B: MODEL COMPARISON -->
+  <section class="model-comparison" id="models">
+    <div class="section-inner">
+      <p class="section-label">Part B</p>
+      <h2 class="section-title">Three models, three answers, one architectural lesson</h2>
+
+      <div class="body-text">
+        <p>The most useful finding in this study is not about Tesla. It is about what happens when the same dataset is run through three different sentiment models. The headline numbers diverge so sharply that, to a non-technical reader, it would look like a methodology failure. It is not. Each method is making the right calculation for what it was trained on; the lesson is in matching the training data to the task.</p>
+      </div>
+
+      <div class="model-table-wrap">
+        <table class="model-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Training Data</th>
+              <th>Positive Rate on Tesla Tweets</th>
+              <th>Strength</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="model-name">VADER</td>
+              <td>Hand-curated social-media lexicon</td>
+              <td>~45% positive (with neutrals)</td>
+              <td>Fast, transparent, handles emoji and ALL CAPS</td>
+              <td><span class="verdict-badge v-fit">Good fit</span></td>
+            </tr>
+            <tr>
+              <td class="model-name">BERT (default)</td>
+              <td>Movie reviews (formal English)</td>
+              <td>~25% positive</td>
+              <td>Reads full sentences in context</td>
+              <td><span class="verdict-badge v-miss">Domain mismatch</span></td>
+            </tr>
+            <tr>
+              <td class="model-name">BERT (fine-tuned)</td>
+              <td>Sentiment140 (1.6M labeled tweets)</td>
+              <td>~60-70% positive</td>
+              <td>Context + tweet-native language</td>
+              <td><span class="verdict-badge v-fit">Best fit</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart-panel">
+        <img src="images/tesla/bert-confidence-violin.png" alt="Violin plot showing the distribution of BERT prediction confidence scores by sentiment label">
+        <p class="chart-caption"><strong>Fig. 7:</strong> Default BERT confidence distribution. The model is highly confident in nearly every prediction, with scores concentrated near 1.0. The model is not confused. It is decisively applying movie-review logic to tweet text, which is the wrong tool calibrated to the wrong domain.</p>
+      </div>
+
+      <div class="chart-grid-2">
+        <div class="chart-panel">
+          <img src="images/tesla/finetuned-bert-2018.png" alt="Monthly proportion of Tesla tweets classified as positive by the fine-tuned BERT model in 2018">
+          <p class="chart-caption"><strong>Fig. 8a:</strong> Fine-tuned BERT, 2018 (April-June). Positive rate ranges from 55% to 71% across the production crisis. Matches VADER's directional finding far better than the default model.</p>
+        </div>
+        <div class="chart-panel">
+          <img src="images/tesla/finetuned-bert-2020.png" alt="Monthly proportion of Tesla tweets classified as positive by the fine-tuned BERT model in 2020">
+          <p class="chart-caption"><strong>Fig. 8b:</strong> Fine-tuned BERT, 2020 (Jan-Nov). Positive rate ranges from 59% to 74%, peaking in November alongside record deliveries. Same May 2020 pandemic dip the other two models flagged.</p>
+        </div>
+      </div>
+
+      <div class="finding-callout">
+        <strong>The architectural lesson:</strong> the underlying neural network architecture in the default and fine-tuned BERT models is identical. Only the training data changed. That single change moved the positive-rate diagnosis by ~50 percentage points. For any production sentiment pipeline, domain-matched training data is not a refinement; it is the primary determinant of whether the output is credible.
+      </div>
+
+      <div class="chart-panel">
+        <img src="images/tesla/sentiment-vs-retweet.png" alt="Scatter plot showing the relationship between BERT sentiment score and retweet count, with positively-scored tweets receiving more retweets">
+        <p class="chart-caption"><strong>Fig. 9:</strong> Sentiment score vs retweet count. More-confidently-positive tweets accumulate more retweets. All three models agree on this directional relationship between positivity and amplification.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BUSINESS IMPLICATIONS -->
+  <section class="implications" id="implications">
+    <div class="section-inner">
+      <p class="section-label">Implications</p>
+      <h2 class="section-title">What a corporate communications team should take from this</h2>
+
+      <div class="body-text">
+        <p>The numbers are interesting. What matters more is what an in-house brand-monitoring program should look like in light of them. Three things change.</p>
+      </div>
+
+      <div class="implication-grid">
+        <div class="implication-card">
+          <h3>Build an engagement-weighted early-warning system</h3>
+          <p>Track sentiment by reach, not by tweet count. A weighted dashboard would have flagged the May 2020 controversy days before the news cycle made it a CEO-level issue. Daily volume is noise; viral content is signal.</p>
+        </div>
+        <div class="implication-card">
+          <h3>Treat hashtag evolution as a brand-identity barometer</h3>
+          <p>The 2018-to-2020 shift from #Model3 and #SpaceX to #EV and #ClimateChange was visible in the hashtag mix months before it showed up in earnings commentary. Hashtag drift is one of the fastest leading indicators of how a brand's audience is changing.</p>
+        </div>
+        <div class="implication-card">
+          <h3>Pick the model that matches the medium</h3>
+          <p>A default off-the-shelf model trained on the wrong domain will deliver confident, decisively wrong answers. Any production social-listening pipeline should be fine-tuned on tweet-native data or validated against a domain-matched benchmark before its outputs reach an executive dashboard.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <h3>Considering social listening or NLP analytics for your brand?</h3>
+    <p>FutureInSites scopes social-listening and NLP pipelines for enterprise communications, IR, and brand teams. From data preprocessing through model selection and dashboarding.</p>
+    <a href="index.html#contact">Get in touch →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-wordmark">Future<span class="wm-gradient">InSites</span></span>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="consumer.html">Consumer</a></li>
+    </ul>
+    <p class="footer-disclaimer">
+      Tesla is the subject of analysis, not an engaged client. This case study is educational analytical work product authored by FutureInSites for illustrative purposes. Tweet data drawn from publicly available datasets. Tesla, the Tesla wordmark, and all Tesla product names are trademarks of Tesla, Inc.
+    </p>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY  &nbsp;·&nbsp; Boston, MA</p>
+  </footer>
+
+  <script src="cookie-banner.js"></script>
+</body>
+</html>
