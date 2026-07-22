@@ -362,23 +362,26 @@
         <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
       </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="../index.html#about">Approach</a></li>
-      <li><a href="../solutions.html">Solutions</a></li>
-      <li><a href="../ai-readiness.html">Assessment</a></li>
-      <li><a href="../case-studies.html">Case Studies</a></li>
-      <li><a href="../index.html#team">Team</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
+        <ul class="nav-links" id="nav-links-menu">
+      <li><a href="../solutions.html">For Businesses</a></li>
       <li class="nav-more">
-        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
+        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../careers.html">Careers</a></li>
           <li><a href="index.html">Blog</a></li>
-          <li><a href="../faq.html">FAQ</a></li>
-          <li><a href="../consumer.html">Consumer</a></li>
+          <li><a href="../ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../case-studies.html">Case Studies</a></li>
         </ul>
       </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../our-story.html">Our Story</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
     <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
   </nav>
@@ -466,25 +469,33 @@
       <li><a href="../privacy.html">Privacy</a></li>
       <li><a href="../consumer.html">Consumer</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Boston, MA</p>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY  &nbsp;&middot;&nbsp; Boston, MA</p>
   </footer>
 
   <script>
-  /* More dropdown toggle */
+  /* Dropdown toggles (handles multiple .nav-more elements) */
   (function () {
-    var more = document.querySelector('.nav-more');
-    if (!more) return;
-    var btn = more.querySelector('.nav-more-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      more.classList.toggle('open');
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
     });
     document.addEventListener('click', function (e) {
-      if (!more.contains(e.target)) more.classList.remove('open');
-    });
-    more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
-      a.addEventListener('click', function () { more.classList.remove('open'); });
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
     });
   })();
   </script>
