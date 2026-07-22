@@ -26,5 +26,8 @@
     "tesla.html"
   ],
   "blog": ["index.html"],
-  "extra_content_files": []
+  "extra_content_files": [
+    "knowledge/greg_career_narrative.txt",
+    "knowledge/Greg_Loeffelholz_AI_Resume.txt"
+  ]
 }

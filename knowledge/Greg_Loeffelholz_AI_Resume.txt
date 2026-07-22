@@ -1,0 +1,130 @@
+Greg Loeffelholz
+
+AI Product, Platform & Strategy Leader
+
+Greater Boston, MA  |  gloeff@gmail.com  |  917-407-3833  |  linkedin.com/in/gregloeffelholz  |  futureinsites.com
+
+
+
+Executive Summary
+
+AI product and strategy executive with 20+ years scaling data and AI/ML decisioning platforms, four years operating production GenAI systems at scale with full P&L ownership, and active advisory work across AI strategy, governance, and AI investment analysis. Hands-on GM and operator track record translating AI capabilities into measurable margin and revenue. Currently founding partner at FutureInSites advising enterprise brands on AI strategy, while completing MBA AI specialization with applied case work in AI roadmap design, AI infrastructure investment analysis, and AI economics modeling.
+
+
+
+Areas of Expertise
+
+AI Strategy, Roadmaps & Transformation
+
+GenAI, LLMs, RAG & Agentic Workflows
+
+Use Case Prioritization & ROI Modeling
+
+ML Lifecycle, Model Oversight & Evaluation
+
+AI Governance, Responsible AI & Risk
+
+Data Platforms & Identity Resolution at Scale
+
+AI Investment Diligence & Financial Analysis
+
+GM / P&L Ownership & Cross-Functional Leadership
+
+
+
+Professional Experience
+
+FutureInSites  New York, NY
+
+Founder & Principal	Feb 2026 to Present
+
+Founded AI strategy practice delivering AI readiness assessments, use case prioritization, governance frameworks, vendor architecture, and phased implementation roadmaps for enterprise brands across retail, fintech, automotive, and consumer.
+
+Delivered comprehensive AI strategy engagement for a $10B+ premium athleisure brand (Lululemon analysis): three-pillar AI framework, 12 use case prioritization matrix, AI governance structure, and $85M to $110M phased investment roadmap projecting $400M to $600M revenue impact.
+
+Authored Oracle Investment Committee memo analyzing AI infrastructure economics: dual-scenario DCF modeling GPU economic obsolescence against extended GAAP useful lives, customer concentration analysis across NVIDIA, AMD, and OpenAI cross-exposure, and derivative implementation overlay; recommendation supported by traceable workbook (Fact Bank, DCF, Scenario Compare).
+
+Delivered Alphabet AI economics case modeling AI's impact on Search and Cloud economics: two-engine business architecture, AI Overviews monetization, Gemini-enabled long-query monetization, and capex/D&A trough modeling through 2028.
+
+MotiveMetrics  Boston, MA
+
+VP, Product & Marketing	Jan 2022 to Jan 2026
+
+AI-driven enterprise marketing platform across ML, LLM workflows, and high-stakes paid search.
+
+Owned product and platform direction for an AI-driven enterprise platform managing $100MM+ in monthly paid search spend, where model effectiveness directly drove customer ROAS and company margin.
+
+Led development across LLM-based systems leveraging RAG architectures, vector embeddings, agentic workflows, and NLP intent modeling to drive commercial outcomes through MotiveMap.ai (SaaS) and the AppX automation platform.
+
+Drove the Managed Services business to sustained profitability for the first time in company history as Acting GM (Apr 2023 to Feb 2025), maintaining positive margins for 13+ consecutive months while operating production AI with full P&L ownership.
+
+Set product direction for LLM-driven optimization workflows by evaluating tradeoffs between automation and user interaction, implementing human-in-the-loop solutions matched to complexity, reliability, and performance impact.
+
+Owned ML model lifecycle governance, platform reliability, and enterprise SOC 2 compliance, meeting customer security and responsible-AI standards.
+
+
+
+Inmar Intelligence  Boston, MA
+
+Sr. Director, Audience & Media Platforms	Oct 2019 to Dec 2021
+
+Retail media and commerce data platform integrating identity, promotions, and activation.
+
+Defined product strategy and platform direction for ShopperSync, unifying retail media, programmatic activation, incentives, promotions, and transaction data into a single platform.
+
+Expanded audience creation and attribution by integrating digital couponing, promotions, and product feed data, enabling automated, commerce-driven audience generation.
+
+Scaled enterprise adoption by extending identity and measurement workflows across retailer and brand use cases, improving usability and platform coverage.
+
+VP, Platform Management & Data Products (ownerIQ, acquired by Inmar)	Jul 2014 to Oct 2019
+
+Programmatic data platform spanning identity, RTB infrastructure, ML-driven decisioning, and cross-channel attribution.
+
+Owned data products and ML-driven systems powering real-time bidding, audience modeling, and cross-channel attribution at scale across 20+ ad exchanges, 10+ DMPs, and multiple DSPs.
+
+Directed architecture for real-time identity resolution and bid decisioning, balancing large-scale data processing with sub-60 millisecond RTB execution time.
+
+Launched and scaled identity graph of 200MM+ US consumers and cross-device initiatives supporting path-to-purchase reporting, offline-online attribution, and targeting at scale.
+
+Built and scaled systems reducing fraud rates over 70% while raising platform viewability and compliance, and led development of advanced pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation.
+
+Transcend Media  Boston, MA
+
+VP, Marketing & Business Development	Jul 2012 to Jun 2014
+
+Helped launch Boston performance marketing agency with executive leadership across operations, marketing, and business development; contributed to Inc. 5000 recognition (#255, 2013).
+
+Nelnet  Paramus, NJ
+
+Managing Director, Marketing Services & Inquiry Generation	Dec 2009 to Jun 2012
+
+GM with full P&L responsibility for a $35MM annual revenue business and leadership of a 50+ person organization delivering omni-channel performance marketing solutions to higher education clients.
+
+Built and developed product and analytics teams from the ground up, mentoring team members who advanced into senior roles across product, marketing, and leadership positions.
+
+Innovation Ads  New York, NY
+
+VP, Strategy & Business Development	Dec 2005 to Dec 2009
+
+Led platform growth and monetization strategy across performance marketing channels, contributing to the company's sale to Seaport Capital for $36.5MM.
+
+Drove expansion of proprietary ad serving and media execution capabilities, improving yield, partner integrations, and campaign performance at scale.
+
+Founder & CEO, Free Scholarship Guide (acquired by Innovation Ads)	Jul 2004 to Dec 2005
+
+Founded and scaled a profitable online business to $4MM in annual revenue at 10% EBITDA, built on proprietary ad serving and lead generation systems.
+
+Designed and optimized monetization platform across media buying, lead generation, and ad serving, improving revenue per user and campaign efficiency.
+
+Keypath Education, New York, NY  |  Director, Online Operations  |  Jun 2003 to Jul 2004. Technology operations, partner integrations, and media buying for early digital direct response campaigns; supported transition from offline acquisition to digital channels.
+
+Virtumundo, Kansas City, MO  |  Manager, Media Buying  |  May 2001 to Jun 2003. Promoted from Media Buyer to lead a 6 to 8 person team running large-scale performance marketing campaigns nationally recognized for innovations in rich media.
+
+
+
+Education & Certifications
+
+MBA, Master of Business Administration, Boston College, Carroll School of Management (Expected 2026)
+
+Marketing & Technology with AI, Machine Learning, and Advanced Analytics specialization. B.A., International Studies, Vanderbilt University 2000  |   Pragmatic Marketing Certification - Pragmatic Institute
+
