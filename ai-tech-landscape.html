@@ -558,6 +558,13 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && lb.classList.contains('open')) shut();
       });
+      /* Scroll lightbox with mouse wheel */
+      lb.addEventListener('wheel', function (e) {
+        if (lb.classList.contains('open')) {
+          lb.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
     })();
   </script>
 
