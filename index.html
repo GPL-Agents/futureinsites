@@ -1834,17 +1834,7 @@
         color: #334155;
         text-decoration: none;
       }
-      .nav-links.open li:last-child { display: block; }
-      .nav-links.open li:last-child a {
-        border-bottom: none;
-        background: #2563EB;
-        color: #FFFFFF !important;
-        border-radius: 100px;
-        text-align: center;
-        padding: 0.65rem 1.2rem;
-        margin-top: 0.5rem;
-        font-weight: 700;
-      }
+      .nav-links.open li:last-child a { border-bottom: none; }
       .solutions-grid { grid-template-columns: 1fr; }
       .contact-card { padding: 2.5rem 1.5rem; border-radius: 12px; }
       .hero-tagline { font-size: clamp(1.4rem, 6.5vw, 2.2rem); }
@@ -2045,9 +2035,6 @@
     }
 
     /* ─── NAV DROPDOWNS ─── */
-    /* Hide Contact from desktop nav-links (only show in hamburger on mobile) */
-    .nav-links li:last-child { display: none; }
-
     .nav-more { position: relative; }
     .nav-more-btn { cursor: pointer; user-select: none; }
     .nav-more-dropdown {
