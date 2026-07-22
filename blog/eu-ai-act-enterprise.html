@@ -329,83 +329,36 @@
       .nav-wordmark { position: static; }
     }
   </style>
-  <style id="fis-global-header-v2">
-    nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
-    .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
-    .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
-    .nav-wordmark-text { display:flex!important; flex-direction:column!important; gap:0!important; overflow:visible!important; }
-    .nav-brand-name { font-family:'Manrope',system-ui,sans-serif!important; font-size:1.15rem!important; font-weight:800!important; letter-spacing:-.025em!important; line-height:1!important; white-space:nowrap!important; display:block!important; background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important; background-clip:text!important; -webkit-background-clip:text!important; color:transparent!important; -webkit-text-fill-color:transparent!important; }
-    .nav-wordmark-tagline { font-size:.7rem!important; font-weight:400!important; color:#64748b!important; line-height:1.2!important; margin-top:2px!important; display:block!important; width:100%!important; white-space:nowrap!important; letter-spacing:.04em!important; }
-    .nav-links { display:flex!important; gap:2rem!important; list-style:none!important; margin:0!important; padding:0!important; }
-    .nav-links a { color:#64748b!important; text-decoration:none!important; font-size:.82rem!important; font-weight:500!important; letter-spacing:.01em!important; transition:color .2s!important; }
-    .nav-links a:hover,.nav-links a.active { color:#0f172a!important; }
-    .nav-cta { position:absolute!important; right:3rem!important; font-size:.8rem!important; font-weight:600!important; color:#fff!important; background:#2563eb!important; text-decoration:none!important; padding:.5rem 1.3rem!important; border-radius:100px!important; }
-    .nav-hamburger { display:none!important; position:absolute!important; right:1.5rem!important; background:none!important; border:0!important; cursor:pointer!important; padding:.4rem!important; flex-direction:column!important; gap:5px!important; }
-    .nav-hamburger span { display:block!important; width:22px!important; height:2px!important; background:#475569!important; border-radius:2px!important; }
-    .nav-more { position:relative!important; }
-    .nav-more-btn { cursor:pointer!important; user-select:none!important; }
-    .nav-more-dropdown { display:none!important; position:absolute!important; top:calc(100% + 6px)!important; left:50%!important; transform:translateX(-50%)!important; background:#fff!important; border:1px solid #e2e8f0!important; border-radius:8px!important; padding:.35rem 0!important; min-width:170px!important; list-style:none!important; box-shadow:0 8px 24px rgba(0,0,0,.10)!important; z-index:300!important; }
-    .nav-more-dropdown li { margin:0!important; padding:0!important; }
-    .nav-more-dropdown a { display:block!important; padding:.55rem 1.2rem!important; color:#374151!important; font-size:.82rem!important; white-space:nowrap!important; }
-    .nav-more-dropdown a:hover { color:#0f172a!important; background:#f8f9fb!important; }
-    .nav-more.open .nav-more-dropdown { display:block!important; }
-    @media (max-width:640px) {
-      nav { padding:0 1.5rem!important; }
-      .nav-wordmark { left:1.5rem!important; }
-      .nav-logo { height:30px!important; }
-      .nav-wordmark-tagline { font-size:.6rem!important; }
-      .nav-cta { display:none!important; }
-      .nav-hamburger { display:flex!important; }
-      .nav-links { display:none!important; }
-      .nav-links.open { display:flex!important; flex-direction:column!important; position:absolute!important; top:64px!important; left:0!important; right:0!important; background:#fff!important; padding:.5rem 1.5rem 1.2rem!important; gap:0!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 4px 12px rgba(0,0,0,.06)!important; z-index:199!important; }
-      .nav-links.open li { width:100%!important; }
-      .nav-links.open a { display:block!important; padding:.7rem 0!important; border-bottom:1px solid #f1f5f9!important; font-size:.88rem!important; color:#334155!important; }
-      .nav-more-dropdown { position:static!important; transform:none!important; background:transparent!important; border:0!important; box-shadow:none!important; padding:0 0 0 1rem!important; min-width:auto!important; }
-      .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
-    }
-  </style></head>
+</head>
 <body>
 
   <nav>
     <a href="../index.html" class="nav-wordmark">
-      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-brand-name">FutureInSites</span>
-        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
       </div>
     </a>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="nav-links-menu">
+    <ul class="nav-links">
+      <li><a href="../index.html#about">Approach</a></li>
+      <li><a href="../solutions.html">Solutions</a></li>
+      <li><a href="../ai-readiness.html">Assessment</a></li>
+      <li><a href="../case-studies.html">Case Studies</a></li>
+      <li><a href="../index.html#team">Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
       <li class="nav-more">
-        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="../solutions.html">Solutions</a></li>
-          <li><a href="../approach.html">Our Approach</a></li>
-          <li><a href="../consumer.html">Consumer AI</a></li>
-        </ul>
-      </li>
-      <li class="nav-more">
-        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="../blog/index.html">Blog</a></li>
           <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai-vendor-landscape.html">AI Vendor Landscape</a></li>
-          <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          <li><a href="../case-studies.html">Case Studies</a></li>
-        </ul>
-      </li>
-      <li class="nav-more">
-        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="../our-story.html">Our Story</a></li>
-          <li><a href="../team.html">Team</a></li>
           <li><a href="../careers.html">Careers</a></li>
+          <li><a href="index.html">Blog</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../consumer.html">Consumer</a></li>
         </ul>
       </li>
     </ul>
-    <a href="../contact.html" class="nav-cta">Contact</a>
+    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
   </nav>
 
   <article>
@@ -478,70 +431,30 @@
       <li><a href="../privacy.html">Privacy</a></li>
       <li><a href="../consumer.html">Consumer</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY  &nbsp;&middot;&nbsp; Boston, MA</p>
+    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY &nbsp;&middot;&nbsp; Palo Alto, CA &nbsp;&middot;&nbsp; Boston, MA</p>
   </footer>
 
   <script>
-  /* Dropdown toggles (handles multiple .nav-more elements) */
+  /* More dropdown toggle */
   (function () {
-    var allMore = document.querySelectorAll('.nav-more');
-    if (!allMore.length) return;
-    allMore.forEach(function (more) {
-      var btn = more.querySelector('.nav-more-btn');
-      if (!btn) return;
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var isOpen = more.classList.contains('open');
-        allMore.forEach(function (m) { m.classList.remove('open'); });
-        if (!isOpen) { more.classList.add('open'); }
-      });
-      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          more.classList.remove('open');
-        });
-      });
+    var more = document.querySelector('.nav-more');
+    if (!more) return;
+    var btn = more.querySelector('.nav-more-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      more.classList.toggle('open');
     });
     document.addEventListener('click', function (e) {
-      var inAny = false;
-      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
-      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+      if (!more.contains(e.target)) more.classList.remove('open');
+    });
+    more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+      a.addEventListener('click', function () { more.classList.remove('open'); });
     });
   })();
   </script>
   <script src="../cookie-banner.js"></script>
-  <script id="fis-global-header-v2-script">
-  (function () {
-    var existingNav = document.querySelector('nav');
-    if (existingNav) {
-      var cleanNav = existingNav.cloneNode(true);
-      existingNav.parentNode.replaceChild(cleanNav, existingNav);
-    }
-    var btn = document.getElementById('nav-hamburger');
-    var menu = document.getElementById('nav-links-menu');
-    if (btn && menu) {
-      btn.addEventListener('click', function () { menu.classList.toggle('open'); });
-      document.addEventListener('click', function (event) {
-        if (!btn.contains(event.target) && !menu.contains(event.target)) menu.classList.remove('open');
-      });
-    }
-    var groups = document.querySelectorAll('.nav-more');
-    groups.forEach(function (group) {
-      var trigger = group.querySelector('.nav-more-btn');
-      if (!trigger) return;
-      trigger.addEventListener('click', function (event) {
-        event.preventDefault();
-        var opening = !group.classList.contains('open');
-        groups.forEach(function (item) { item.classList.remove('open'); });
-        if (opening) group.classList.add('open');
-      });
-    });
-    document.addEventListener('click', function (event) {
-      var inside = false;
-      groups.forEach(function (group) { if (group.contains(event.target)) inside = true; });
-      if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
-    });
-  })();
-  </script></body>
+</body>
 </html>
 
 

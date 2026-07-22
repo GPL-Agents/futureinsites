@@ -1,35 +1,5 @@
 [
     {
-        "slug":  "nvidia-openShell-nemoclaw",
-        "title":  "NVIDIA OpenShell and NemoClaw: A Sound Architecture, A Narrow Strategy",
-        "date":  "2026-07-13",
-        "excerpt":  "NVIDIA built a genuinely interesting security layer for AI agents. The architecture is sound and broader than the branding suggests. The naming raises questions worth asking about how NVIDIA sees this category.",
-        "author":  "Greg Loeffelholz",
-        "tags":  [
-                     "AI Security",
-                     "NVIDIA",
-                     "OpenClaw",
-                     "AI Agents",
-                     "Agent Security",
-                     "NemoClaw"
-                 ],
-        "image":  "OpenShell.Name.Meeting.png"
-    },
-    {
-        "slug":  "classical-ai-never-ai",
-        "title":  "Classical AI Was Never Artificial Intelligence",
-        "date":  "2026-07-06",
-        "excerpt":  "Expert systems, rule engines, and classical planners were labeled AI for decades. By the correct definition of artificial intelligence, they were not. Here is the test that separates automation from intelligence.",
-        "author":  "Greg Loeffelholz",
-        "tags":  [
-                     "AI Definition",
-                     "Machine Learning",
-                     "AI Strategy",
-                     "Expert Systems"
-                 ],
-        "image":  "../images/what.is.ai.png"
-    },
-    {
         "slug":  "fable5-ban",
         "title":  "U.S. Government Orders Anthropic to Block Foreign Access to Claude Fable 5",
         "date":  "2026-06-15",

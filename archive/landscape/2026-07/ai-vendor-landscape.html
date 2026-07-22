@@ -944,13 +944,64 @@
         font-size: 0.85rem;
       }
     }
-
-    @media (max-width: 640px) {
-      .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    /* ─── ARCHIVE STRIP ─── */
+    .arch-strip {
+      background: var(--dark2);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.75rem 2rem;
     }
-  
-
-    
+    .arch-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .arch-current {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .arch-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      flex-shrink: 0;
+    }
+    .arch-label {
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .arch-version {
+      font-weight: 700;
+      color: var(--cyan);
+    }
+    .arch-past {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+    }
+    .arch-prev-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+    }
+    .arch-links {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
     .arch-links a {
       font-size: 0.72rem;
       font-weight: 600;
@@ -965,32 +1016,6 @@
       color: var(--cyan);
       border-color: var(--cyan);
     }
-    @media (max-width: 640px) {
-      .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    }
-  
-
-    
-    .arch-links a {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .arch-links a:hover {
-      color: var(--cyan);
-      border-color: var(--cyan);
-    }
-    @media (max-width: 640px) {
-      .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    }
-  
-
-
     @media (max-width: 640px) {
       .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
@@ -1123,7 +1148,7 @@
   <div class="intro-strip">
     <div class="intro-strip-inner">
       <div class="intro-stat">
-        <span class="num">238+</span>
+        <span class="num">229+</span>
         <span class="lbl">Vendors Indexed</span>
       </div>
       <div class="intro-stat">
@@ -1135,12 +1160,24 @@
         <span class="submit-ai-pill-cta">Submit AI for Review →</span>
       </a>
     </div>
-  
+  </div>
 
-<!-- LANDSCAPE THUMBNAIL + CTAs + METHODOLOGY -->
+  <div class="arch-strip">
+    <div class="arch-strip-inner">
+      <div class="arch-current">
+        <span class="arch-dot"></span>
+        <span class="arch-label">Current Edition</span>
+        <span class="arch-version">July 2026</span>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- LANDSCAPE THUMBNAIL + CTAs + METHODOLOGY -->
   <div style="max-width:1200px; margin:0 auto; padding:1rem 2rem 0;">
     <a href="ai-tech-landscape.html" style="display:block; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); text-decoration:none;">
-      <img src="images/landscape-ai-thumb.png" alt="AI Tech Landscape 2026: treemap of 238 vendors across 14 categories, sized by company-wide valuation and updated monthly" style="display:block; width:100%; height:auto;">
+      <img src="images/landscape-ai-thumb.png" alt="AI Tech Landscape 2026: treemap of 229 vendors across 14 categories, sized by company-wide valuation" style="display:block; width:100%; height:auto;">
     </a>
     <div class="landscape-cta-row" style="display:flex; gap:1.25rem; align-items:stretch; margin-top:1.1rem; flex-wrap:wrap;">
       <div style="display:flex; flex-direction:column; gap:0.6rem; flex:0 0 auto; min-width:220px;">
@@ -1149,7 +1186,7 @@
       </div>
       <div class="landscape-methodology" style="flex:1 1 0; padding:0.9rem 1.2rem; border-left:3px solid var(--accent); background:rgba(37,99,235,0.04); border-radius:0 6px 6px 0;">
         <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;">Methodology</div>
-        <p style="font-size:0.85rem; color:var(--dark); line-height:1.55; margin:0;">One outer rectangle, 14 color-coded category rectangles sized by combined vendor value. Within each category, every vendor logo is sized proportionally using log-scaled company-wide market cap (public) or last private valuation (private), July 2026 estimates. A few vendors appear in multiple categories when their AI product spans them.</p>
+        <p style="font-size:0.85rem; color:var(--dark); line-height:1.55; margin:0;">One outer rectangle, 14 color-coded category rectangles sized by combined vendor value. Within each category, every vendor logo is sized proportionally using log-scaled company-wide market cap (public) or last private valuation (private), May 2026 estimates. A few vendors appear in multiple categories when their AI product spans them.</p>
       </div>
     </div>
   </div>
@@ -1189,9 +1226,6 @@
     <!-- ─── FRONTIER MODELS ─── -->
     
     <!-- ─── FRONTIER MODEL LABS ─── -->
-    
-    
-    
     
     
     <section class="category" id="frontier">
@@ -1290,13 +1324,6 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Character.AI</div><div class="vendor-domain">character.ai</div></div>
             <p>Consumer-facing AI chatbots backed by their own foundation models. Multi-billion-dollar Google partnership.</p>
-          </div>
-        </a>
-        <a href="https://openai.com/chatgpt/work" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/chatgpt-work.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">ChatGPT Work</div><div class="vendor-domain">openai.com</div></div>
-            <p>OpenAI's agent workspace launched July 2026. GPT-5.6 agent that researches across apps and produces finished sheets, slides, docs, and web apps. Codex merged into desktop app.</p>
           </div>
         </a>
       </div>
@@ -1981,27 +2008,6 @@
             <p>No-code AI app builder. Acquired by Wix in 2025 to power vibe-coded SaaS.</p>
           </div>
         </a>
-        <a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/grok-build.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">Grok Build</div><div class="vendor-domain">github.com/xai-org</div></div>
-            <p>xAI's open-source coding agent CLI & terminal UI. Rust-based, supports sub-agents, Plan Mode, fullscreen TUI. Open-sourced July 2026.</p>
-          </div>
-        </a>
-        <a href="https://sim.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/sim.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">Sim</div><div class="vendor-domain">sim.ai</div></div>
-            <p>Open-source visual AI agent workspace (formerly Sim Studio). YC-backed, 28k+ GitHub stars. Drag-and-drop agent workflows, 1,000+ integrations, self-hostable or cloud.</p>
-          </div>
-        </a>
-        <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/gemini-cli.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">Gemini CLI</div><div class="vendor-domain">github.com/google-gemini</div></div>
-            <p>Google's open-source AI agent for terminal with built-in tools and MCP server support. Reason-and-act loop using Gemini models.</p>
-          </div>
-        </a>
       </div>
     </section>
 
@@ -2139,13 +2145,6 @@
             <p>Marketplace of AI agents plus a no-code builder, from HubSpot CTO Dharmesh Shah.</p>
           </div>
         </a>
-        <a href="https://airjelly.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/airjelly.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">AirJelly</div><div class="vendor-domain">airjelly.ai</div></div>
-            <p>Context-aware AI companion with on-device, private searchable memory. Observes, remembers, and acts across apps without sending data to the cloud.</p>
-          </div>
-        </a>
       </div>
     </section>
 
@@ -2232,13 +2231,6 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">ChatGPT Atlas</div><div class="vendor-domain">chatgpt.com</div></div>
             <p>OpenAI's AI-native browser with built-in agentic browsing and ChatGPT integration.</p>
-          </div>
-        </a>
-        <a href="https://github.com/upstash/context7" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/context7.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">Context7</div><div class="vendor-domain">github.com/upstash</div></div>
-            <p>Open-source MCP server with 54k+ GitHub stars. Dynamically fetches version-specific documentation for React, Next.js, Tailwind, and other frameworks.</p>
           </div>
         </a>
       </div>
@@ -2915,27 +2907,6 @@
             <p>AI-powered market intelligence search across filings, transcripts, expert calls, and news for finance and corporate strategy.</p>
           </div>
         </a>
-        <a href="https://github.com/usestrix/strix" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/strix.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">Strix</div><div class="vendor-domain">github.com/usestrix</div></div>
-            <p>Open-source AI penetration testing tool with 42k+ GitHub stars. Multi-agent hackers dynamically test and validate security with PoC exploits. CI/CD integrated.</p>
-          </div>
-        </a>
-        <a href="https://github.com/HKUDS/Vibe-Trading" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/vibe-trading.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">Vibe-Trading</div><div class="vendor-domain">github.com/HKUDS</div></div>
-            <p>Open-source personal AI trading agent with 24k+ GitHub stars. Natural language to trading strategies, backtesting, sentiment analysis, and portfolio rebalancing.</p>
-          </div>
-        </a>
-        <a href="https://github.com/iOfficeAI/OfficeCLI" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/officecli.png" alt="" class="vendor-logo" loading="lazy">
-          <div class="vendor-content">
-            <div class="vendor-head"><div class="vendor-name">OfficeCLI</div><div class="vendor-domain">github.com/iOfficeAI</div></div>
-            <p>Open-source single-binary Office suite for AI agents with 18k+ GitHub stars. Read, edit, and automate Word, Excel, and PowerPoint without Microsoft Office.</p>
-          </div>
-        </a>
       </div>
     </section>
 
@@ -3140,18 +3111,6 @@
       </div>
     </div>
   </div>
-
-  <div class="arch-strip">
-    <div class="arch-strip-inner">
-      <div class="arch-current">
-        <span class="arch-dot"></span>
-        <span class="arch-label">Current Edition</span>
-        <span class="arch-version">July 2026</span>
-      </div>
-      
-    </div>
-  </div>
-
 
   <script>
   /* Submission modal: open/close + submit handler */

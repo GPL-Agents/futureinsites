@@ -47,67 +47,70 @@
       justify-content: center;
       padding: 0 3rem;
       height: 64px;
-      overflow: visible;
-      background: #FFFFFF;
-      border-bottom: 1px solid #E2E8F0;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav-wordmark {
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.6rem;
       position: absolute;
       left: 3rem;
     }
 
     .nav-logo {
-      height: 36px;
-      width: auto;
+      width: 50px;
+      height: 50px;
       flex-shrink: 0;
-      object-fit: contain;
     }
 
     .nav-wordmark-text {
       display: flex;
       flex-direction: column;
       gap: 0;
-      overflow: visible;
     }
 
-    .nav-brand-name {
+    .nav-wordmark-name {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.025em;
-      line-height: 1;
-      white-space: nowrap;
-      display: block;
-      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
     }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem;
+    }
+    }
 
     .nav-wordmark-tagline {
-      font-size: 0.7rem;
+      font-size: 0.88rem;
       font-weight: 400;
-      color: #64748B;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
       line-height: 1.2;
-      margin-top: 2px;
-      display: block;
-      width: 100%;
+      margin-top: 3px;
       white-space: nowrap;
-      letter-spacing: 0.04em;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
     }
 
-    @media (max-width: 640px) {
-      .nav-logo { height: 30px; }
-      .nav-wordmark-text { width: 168px; }
-      .nav-wordmark-tagline { font-size: 0.6rem; }
-    }
+    .nav-wordmark .wm-in { color: var(--cyan); }
+    .nav-wordmark .wm-sites { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -116,7 +119,7 @@
     }
 
     .nav-links a {
-      color: #64748B;
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
@@ -124,8 +127,8 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: #0F172A; }
-    .nav-links a.active { color: #0F172A; font-weight: 700; }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-links a.active { color: #FFFFFF; font-weight: 700; }
 
     .nav-cta {
       position: absolute;
@@ -142,66 +145,128 @@
 
     .nav-cta:hover { opacity: 0.85; }
 
-    /* ─── HERO SPLIT ─── */
+    /* ─── HERO ─── */
     .hero {
-      padding: 0;
-      margin-top: 64px;
-      background: var(--bg);
+      min-height: unset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      background: var(--dark);
       position: relative;
       overflow: hidden;
     }
 
-    /* Canvas hidden on homepage — kept for R&I page */
-    #fis-hero-bg { display: none; }
+    /* Subtle grid */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    /* Cyan glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 450px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(79,70,229,0.08) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Animated node-network background */
+    #fis-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      pointer-events: none;
+    }
 
     .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
       position: relative;
-      z-index: 2;
-      max-width: 1300px;
-      margin: 0 auto;
+      z-index: 10;
+      max-width: 1000px;
+      text-align: center;
     }
 
-    .hero-left {
-      padding: 4rem 2rem 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(45,212,255,0.08);
+      border: 1px solid rgba(45,212,255,0.2);
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
     }
 
-    @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { display: block; }
-      .hero-left { padding: 2.5rem 1.5rem; }
+    .hero-tagline {
+      font-size: clamp(2.2rem, 5.8vw, 4.4rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      text-wrap: balance;
     }
 
     .hero-h1 {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
       font-weight: 800;
-      color: #0F172A;
-      line-height: 1.08;
-      letter-spacing: -0.035em;
-      margin-bottom: 1.25rem;
-      text-wrap: pretty;
+      color: var(--cyan);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--accent);
     }
 
     .hero-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 2rem;
-      max-width: 520px;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      max-width: 760px;
+      margin: 0 auto 1.2rem;
+      line-height: 1.7;
       text-wrap: pretty;
+    }
+
+    @media (max-width: 480px) {
+      .hero-sub {
+        font-size: 0.95rem;
+        max-width: 100%;
+        padding: 0 0.5rem;
+        line-height: 1.65;
+      }
     }
 
     .hero-actions {
       display: flex;
-      gap: 0.9rem;
+      gap: 1rem;
+      justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 1.25rem;
     }
 
     .btn-primary {
@@ -213,455 +278,57 @@
       padding: 0.75rem 1.8rem;
       border-radius: 100px;
       transition: opacity 0.2s, transform 0.2s;
-      display: inline-block;
     }
+
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
     .btn-outline {
       font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--accent);
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
       background: transparent;
       text-decoration: none;
       padding: 0.75rem 1.8rem;
       border-radius: 100px;
-      border: 1.5px solid var(--accent);
-      transition: background 0.2s;
-      display: inline-block;
-    }
-    .btn-outline:hover { background: var(--accent-lt); }
-
-    .hero-footnote {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .hero-footnote a {
-      color: var(--accent);
-      font-weight: 500;
-      text-decoration: none;
-    }
-    .hero-footnote a:hover { text-decoration: underline; }
-
-    /* ─── HERO COMPOSITE IMAGE ─── */
-    .hero-desk-panel {
-      position: relative;
-      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .hero-composite-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      min-height: 420px;
-    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.4); color: #FFFFFF; }
 
-    @media (max-width: 860px) {
-      .hero-composite-img { min-height: 280px; }
-    }
-
-    .wf-cards-overlay {
+    /* Scroll hint */
+    .scroll-hint {
       position: absolute;
-      inset: 0;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 10px;
-      padding: 2rem 2.5rem;
-    }
-
-    .wf-row {
-      display: flex;
       align-items: center;
-      gap: 0;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.56rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
     }
 
-    .wf-card {
-      background: rgba(255,255,255,0.96);
-      border-radius: 12px;
-      padding: 0.85rem 0.9rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.65rem;
-      flex: 1;
-    }
-
-    .wf-card-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: #FFFFFF;
-    }
-    .wf-card-icon.blue { background: #2563EB; }
-    .wf-card-icon.green { background: #16A34A; }
-
-    .wf-card-title { font-size: 0.78rem; font-weight: 700; color: #0F172A; margin-bottom: 0.18rem; }
-    .wf-card-desc { font-size: 0.65rem; color: #64748B; line-height: 1.4; }
-
-    .wf-h-line {
-      width: 32px;
-      height: 2px;
-      background: #2563EB;
-      flex-shrink: 0;
-      position: relative;
-    }
-    .wf-h-line::after {
+    .scroll-hint::after {
       content: '';
-      position: absolute;
-      right: -4px;
-      top: -3px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2563EB;
-    }
-    .wf-h-line::before {
-      content: '';
-      position: absolute;
-      left: -4px;
-      top: -3px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2563EB;
-    }
-
-    .wf-v-wrap {
-      display: flex;
-      justify-content: flex-end;
-      padding-right: calc(50% - 16px);
-    }
-    .wf-v-line {
-      width: 2px;
-      height: 22px;
-      background: #2563EB;
-    }
-
-    /* ─── 3-STEP PROCESS (HORIZONTAL) ─── */
-    .process-section {
-      background: var(--bg-alt);
-      padding: 3rem 2rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .process-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 1.5rem;
-      align-items: stretch;
-    }
-
-    .process-left {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem 2rem 2rem;
-    }
-
-    @media (max-width: 860px) {
-      .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-
-    .process-title {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--dark);
-      margin-bottom: 2.25rem;
-      line-height: 1.2;
-    }
-    .process-title em { font-style: normal; font-weight: 800; }
-
-    /* Horizontal steps row */
-    .process-steps {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
-    }
-
-    .process-step {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
-    }
-
-    .process-step-top {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .process-step-num {
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #FFFFFF;
-      font-size: 0.88rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .process-step-icon-wrap {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #E8F0FE;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .process-step-body h3 { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; line-height: 1.25; }
-    .process-step-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-
-    .process-step-arrow {
-      display: flex;
-      align-items: flex-start;
-      padding-top: 8px;
-      color: var(--accent);
-      font-size: 1.2rem;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 680px) {
-      .process-steps { flex-direction: column; gap: 1.5rem; }
-      .process-step-arrow { display: none; }
-    }
-
-    /* R&I Side Card */
-    .process-ri-card {
-      background: #FDF6EE;
-      border: 1px solid #EDE5D8;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-    }
-
-    .process-ri-card-body {
-      padding: 1.6rem 1.4rem 1.6rem 1.6rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .process-ri-card h3 {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 0.6rem;
-      line-height: 1.25;
-    }
-
-    .process-ri-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-
-    /* picture is direct flex child — image fills its column, no bg seam */
-    .process-ri-card picture {
-      width: 42%;
-      flex-shrink: 0;
       display: block;
-      overflow: hidden;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
     }
 
-    .process-ri-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
     }
-
-    .process-ri-cta {
-      display: inline-block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #FFFFFF;
-      background: var(--accent);
-      text-decoration: none;
-      padding: 0.65rem 1.4rem;
-      border-radius: 100px;
-      transition: opacity 0.2s;
-    }
-    .process-ri-cta:hover { opacity: 0.88; }
-
-    /* ─── PRACTICAL SOLUTIONS ─── */
-    .prac-section {
-      background: var(--bg-alt);
-      padding: 2.5rem 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .prac-inner { max-width: 1300px; margin: 0 auto; }
-    .prac-eyebrow {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
-    }
-    .prac-title {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 800;
-      color: var(--dark); letter-spacing: -0.03em; line-height: 1.15;
-      margin-bottom: 0.6rem;
-    }
-    .prac-sub {
-      font-size: 0.95rem; color: var(--muted); line-height: 1.7;
-      margin-bottom: 0.75rem; max-width: 620px;
-    }
-    .prac-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    @media (max-width: 860px) { .prac-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .prac-grid { grid-template-columns: 1fr; } }
-
-    .prac-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .prac-card-top {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .prac-icon {
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .prac-icon--blue  { background: #EFF6FF; color: #2563EB; }
-    .prac-icon--teal  { background: #ECFEFF; color: #0891B2; }
-    .prac-icon--green { background: #F0FDF4; color: #16A34A; }
-    .prac-icon--orange{ background: #FFF7ED; color: #EA580C; }
-
-    .prac-card-title {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 0.95rem; font-weight: 700; color: var(--dark); line-height: 1.3;
-    }
-    .prac-card-desc {
-      font-size: 0.82rem; color: var(--muted); line-height: 1.65; flex: 1;
-    }
-    .prac-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto;
-    }
-    .prac-tag {
-      font-size: 0.72rem; font-weight: 500; color: #4B5563;
-      background: #F1F5F9; border: 1px solid #E2E8F0;
-      border-radius: 100px; padding: 0.2rem 0.65rem;
-      white-space: nowrap;
-    }
-    .prac-footer {
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      gap: 1.5rem; padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .prac-footer-text {
-      font-size: 0.88rem; color: var(--muted);
-    }
-    .prac-footer-cta {
-      font-size: 0.88rem; font-weight: 600; color: #FFFFFF;
-      background: var(--accent); text-decoration: none;
-      padding: 0.65rem 1.5rem; border-radius: 100px;
-      transition: opacity 0.2s; white-space: nowrap;
-    }
-    .prac-footer-cta:hover { opacity: 0.88; }
-
-    /* ─── BOTTOM BANNER ─── */
-    .bottom-banner {
-      background: #FDF6EE;
-      padding: 2rem 2rem;
-      border-top: 1px solid #EDE5D8;
-      border-bottom: 1px solid #EDE5D8;
-    }
-
-    .bottom-banner-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    @media (max-width: 640px) { .bottom-banner-inner { grid-template-columns: 1fr; } }
-
-    /* Research carousel */
-    #research-carousel-wrap { overflow: hidden; position: relative; }
-    #research-carousel-track { display: flex; gap: 1.5rem; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
-    .rc-card { flex: 0 0 auto; display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; }
-    .rc-card:hover { box-shadow: 0 6px 24px rgba(11,42,86,0.10); transform: translateY(-2px); }
-    .rc-card-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #E5E7EB; }
-    .rc-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .rc-card-body { padding: 1.25rem 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .rc-nav-btn { position: absolute; top: 45%; transform: translateY(-50%); z-index: 10; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(11,42,86,0.12); transition: background 0.2s, box-shadow 0.2s; padding: 0; }
-    .rc-nav-btn:hover { background: #F9FAFB; box-shadow: 0 4px 12px rgba(11,42,86,0.18); }
-    .rc-nav-btn:disabled { opacity: 0.28; cursor: default; box-shadow: none; }
-    #rc-prev { left: -20px; }
-    #rc-next { right: -20px; }
-    .rc-dot { width: 8px; height: 8px; border-radius: 50%; background: #CBD5E1; border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
-    .rc-dot.rc-dot-active { background: #1769E0; transform: scale(1.35); }
-    @media (max-width: 900px) { #rc-prev { left: 4px; } #rc-next { right: 4px; } }
-
-    .bottom-banner-col {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .bottom-banner-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: #FFFFFF;
-    }
-    .bottom-banner-icon.blue  { background: #2563EB; }
-    .bottom-banner-icon.green { background: #16A34A; }
-
-    .bottom-banner-text {
-      font-size: 0.88rem;
-      color: #374151;
-      line-height: 1.6;
-    }
-    .bottom-banner-text strong { font-weight: 700; color: #111827; }
 
     /* ─── SECTIONS ─── */
-    section { padding: 2.5rem 2rem; }
+    section { padding: 3.5rem 2rem; }
 
     .section-inner {
       max-width: 960px;
@@ -946,6 +613,95 @@
     /* ─── SOLUTIONS ─── */
     .solutions { background: #FFFFFF; }
 
+    /* ─── TEAM ─── */
+    .team-section {
+      padding: 5rem 2rem;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-top: 3rem;
+    }
+    .team-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.2rem 1.6rem 2rem;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .team-bio { flex: 1; }
+    .team-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(79,70,229,0.08);
+    }
+    .team-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1.4rem;
+      border: 3px solid var(--bg-alt);
+    }
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+    }
+    .team-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .team-vertical {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      letter-spacing: -0.005em;
+    }
+    .team-bio {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 860px) {
+      .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+
+    /* Two-tier team layout: Founder up top, Advisors below */
+    .team-tier-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin: 0 0 1rem 0;
+    }
+    .team-tier-label.team-tier-second { margin-top: 3rem; }
+    .team-founder-row {
+      display: flex;
+      justify-content: center;
+    }
+    .team-founder-row .team-card {
+      width: 100%;
+      max-width: 360px;
+    }
+    .team-section .team-grid { margin-top: 0; }
+
     .solutions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1000,7 +756,7 @@
     }
 
     /* ─── AI EXPERIENCE ─── */
-    .experience { background: var(--dark); padding: 3rem 2rem; }
+    .experience { background: var(--dark); padding: 5rem 2rem; }
 
     .experience .section-title { color: #FFFFFF; }
     .experience .section-intro { color: rgba(255,255,255,0.5); }
@@ -1318,7 +1074,7 @@
     /* ─── CONTACT ─── */
     /* LATEST */
     .latest-section {
-      padding: 3rem 2rem;
+      padding: 5rem 2rem;
       background: var(--bg-alt);
       border-top: 1px solid var(--border);
     }
@@ -1421,35 +1177,29 @@
       .latest-grid { grid-template-columns: 1fr; }
     }
 
-    .contact-section {
-      background: #FFFFFF;
-      padding: 40px 24px;
-    }
+    .contact-section { background: var(--bg-alt); border-top: 1px solid var(--border); }
 
     .contact-card {
-      background: #F8FBFF;
-      border: 1px solid #D7E3F1;
-      border-radius: 20px;
-      padding: 56px;
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 4rem 3rem;
       text-align: center;
       max-width: 760px;
       margin: 0 auto;
-      box-shadow: 0 8px 24px rgba(11,42,86,0.08);
     }
 
     .contact-card h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 700;
-      color: #0B2A56;
+      color: #FFFFFF;
       letter-spacing: -0.03em;
-      line-height: 1.15;
       margin-bottom: 1rem;
       text-wrap: balance;
     }
 
     .contact-card p {
       font-size: 0.95rem;
-      color: #4B5563;
+      color: rgba(255,255,255,0.45);
       line-height: 1.75;
       margin-bottom: 2rem;
     }
@@ -1457,77 +1207,63 @@
     .contact-email {
       font-size: 1rem;
       font-weight: 600;
-      color: #FFFFFF;
+      color: var(--cyan);
       text-decoration: none;
-      border: none;
-      background: #1769E0;
+      border: 1px solid rgba(45,212,255,0.4);
+      background: rgba(45,212,255,0.1);
       padding: 0.75rem 2rem;
       border-radius: 100px;
       display: inline-block;
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
 
-    .contact-email:hover { background: #0F56C5; }
+    .contact-email:hover {
+      background: rgba(45,212,255,0.25);
+      border-color: rgba(45,212,255,0.7);
+      color: #FFFFFF;
+    }
 
     .contact-options {
       margin-top: 0.25rem;
       margin-bottom: 1.5rem !important;
       font-size: 0.92rem !important;
-      color: #4B5563 !important;
+      color: rgba(255,255,255,0.6) !important;
     }
     .contact-inline-email {
-      color: #1769E0;
+      color: var(--cyan);
       text-decoration: none;
       font-weight: 600;
-      border-bottom: 1px solid rgba(23,105,224,0.3);
+      border-bottom: 1px solid rgba(45,212,255,0.35);
       transition: color 0.15s, border-color 0.15s;
     }
     .contact-inline-email:hover {
-      color: #0F56C5;
-      border-color: rgba(15,86,197,0.6);
+      color: #FFFFFF;
+      border-color: rgba(255,255,255,0.6);
     }
 
     /* ─── FOOTER ─── */
     footer {
-      background: #FFFFFF;
-      border-top: 1px solid #DCE5F0;
-      padding: 56px 5% 24px;
-    }
-
-    .footer-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 220px 1px 1fr;
-      gap: 0 3rem;
-      align-items: start;
-    }
-
-    .footer-brand {}
-
-    .footer-vert-divider {
-      background: #DCE5F0;
-      align-self: stretch;
-    }
-
-    .footer-link-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 0 2rem;
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
     }
 
     .footer-wordmark {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.1rem;
       font-weight: 800;
       letter-spacing: -0.025em;
       line-height: 1.1;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
       display: inline-block;
-      text-decoration: none;
-      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -1536,79 +1272,51 @@
 
     .footer-tagline {
       font-size: 0.72rem;
-      color: #64748B;
-      margin-bottom: 1.5rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
       letter-spacing: 0.06em;
     }
 
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
     .footer-social {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
+      gap: 1.25rem;
+      justify-content: center;
+      margin-bottom: 2rem;
     }
 
     .footer-social a {
-      color: #64748B;
+      color: rgba(255,255,255,0.3);
       display: inline-flex;
       transition: color 0.2s;
     }
 
-    .footer-social a:hover { color: #1769E0; }
+    .footer-social a:hover { color: rgba(255,255,255,0.7); }
 
-    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; display: block; }
 
     .footer-copy {
       font-size: 0.68rem;
-      color: #64748B;
-      line-height: 1.7;
-    }
-
-    .footer-col-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #1769E0;
-      margin-bottom: 0.85rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.55rem;
-    }
-
-    .footer-col ul a {
-      color: #0B234A;
-      text-decoration: none;
-      font-size: 0.82rem;
-      transition: color 0.2s;
-    }
-
-    .footer-col ul a:hover { color: #1769E0; }
-
-    @media (max-width: 760px) {
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-      .footer-vert-divider {
-        height: 1px;
-        align-self: auto;
-        margin: 1.75rem 0;
-      }
-      .footer-link-cols {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-link-cols {
-        grid-template-columns: 1fr 1fr;
-      }
+      color: rgba(255,255,255,0.85);
     }
 
     /* ─── FUTURE AI WIDGET ─── */
@@ -1811,7 +1519,7 @@
       display: block;
       width: 22px;
       height: 2px;
-      background: #475569;
+      background: rgba(255,255,255,0.75);
       border-radius: 2px;
       transition: opacity 0.2s;
     }
@@ -1826,11 +1534,11 @@
         position: absolute;
         top: 64px;
         left: 0; right: 0;
-        background: #FFFFFF;
+        background: rgba(14,11,11,0.98);
+        backdrop-filter: blur(12px);
         padding: 0.5rem 1.5rem 1.2rem;
         gap: 0;
-        border-bottom: 1px solid #E2E8F0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
         z-index: 199;
         list-style: none;
         margin: 0;
@@ -1839,14 +1547,14 @@
       .nav-links.open a {
         display: block;
         padding: 0.7rem 0;
-        border-bottom: 1px solid #F1F5F9;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
         font-size: 0.88rem;
-        color: #334155;
+        color: rgba(255,255,255,0.75);
         text-decoration: none;
       }
       .nav-links.open li:last-child a { border-bottom: none; }
       .solutions-grid { grid-template-columns: 1fr; }
-      .contact-card { padding: 2.5rem 1.5rem; border-radius: 12px; }
+      .contact-card { padding: 2.5rem 1.5rem; }
       .hero-tagline { font-size: clamp(1.4rem, 6.5vw, 2.2rem); }
       .future-ai-widget {
         width: calc(100vw - 2rem);
@@ -2043,51 +1751,6 @@
       .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
       .fis-form-grid { grid-template-columns: 1fr; }
     }
-
-    /* ─── NAV DROPDOWNS ─── */
-    .nav-more { position: relative; }
-    .nav-more-btn { cursor: pointer; user-select: none; }
-    .nav-more-dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      padding: 0.35rem 0;
-      min-width: 170px;
-      list-style: none;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-      z-index: 300;
-    }
-    .nav-more-dropdown li { margin: 0; padding: 0; }
-    .nav-more-dropdown a {
-      display: block;
-      padding: 0.55rem 1.2rem;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      white-space: nowrap;
-      transition: color 0.2s, background 0.15s;
-    }
-    .nav-more-dropdown a:hover { color: #0F172A; background: #F8F9FB; }
-    .nav-more.open .nav-more-dropdown { display: block; }
-    @media (max-width: 640px) {
-      .nav-more-dropdown {
-        position: static;
-        transform: none;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        padding: 0 0 0 1rem;
-        min-width: auto;
-        margin-top: 0;
-      }
-      .nav-more-dropdown a { padding: 0.5rem 0; font-size: 0.85rem; }
-    }
   </style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -2100,617 +1763,756 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-wordmark">
-      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <img src="images/fis-logo-160.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-brand-name">FutureInSites</span>
-        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-wordmark-tagline">AI Strategy & Engineering</span>
       </div>
     </a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-links-menu">
-      <li class="nav-more">
-        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+      <li><a href="#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="ai-readiness.html">Assessment</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+          <li class="nav-more">
+        <a href="#" class="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="solutions.html">Solutions</a></li>
-          <li><a href="approach.html">Our Approach</a></li>
-          <li><a href="consumer.html">Consumer AI</a></li>
-        </ul>
-      </li>
-      <li class="nav-more">
-        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
-          <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-        </ul>
-      </li>
-      <li class="nav-more">
-        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="our-story.html">Our Story</a></li>
-          <li><a href="team.html">Team</a></li>
           <li><a href="careers.html">Careers</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="consumer.html">Consumer</a></li>
         </ul>
-      </li>
-    </ul>
-    <a href="contact.html" class="nav-cta">Contact</a>
+      </li></ul>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
+    <canvas id="fis-hero-bg" aria-hidden="true"></canvas>
     <div class="hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-h1">Make the work behind your business easier.</h1>
-        <p class="hero-sub">We help you choose and build practical AI tools that fit the way your team already works.</p>
-        <div class="hero-actions">
-          <a href="ai-readiness.html" class="btn-primary">See where AI could help &rarr;</a>
-          <a href="approach.html" class="btn-outline">See how it works</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-desk-panel">
-          <img src="images/hero-workflow-composite.png" alt="AI workflow over a warm desk workspace showing intake form, quote request, customer follow-up, and weekly report steps" class="hero-composite-img" loading="eager">
-        </div>
-      </div>
-  </div>
 
-  <!-- BENEFIT TILES -->
-  <!-- 3-STEP PROCESS (HORIZONTAL) -->
-  <div class="process-section" id="process">
-    <div class="prac-inner" style="padding-bottom:0.75rem;">
-      <p class="prac-eyebrow">Practical Solutions</p>
-      <h2 class="prac-title">What we can help you put to work</h2>
-      <p class="prac-sub">Specific ways FutureInSites can help, matched to the people and work they support.</p>
-    </div>
-    <div class="process-inner">
-      <div class="process-left">
-        <h2 class="process-title"><em>A proof-positive process,</em> built around your unique needs</h2>
-        <div class="process-steps">
+      <div class="hero-tagline">AI Strategy &amp; Engineering</div>
 
-          <div class="process-step">
-            <div class="process-step-top">
-              <div class="process-step-num">1</div>
-              <div class="process-step-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
-              </div>
-            </div>
-            <div class="process-step-body">
-              <h3>Find the right first project</h3>
-              <p>We help you identify a high-impact use case that fits your goals and data.</p>
-            </div>
-          </div>
+      <h1 class="hero-h1">
+        Enterprise-grade AI,<br><em>customized for your business</em><span style="color:#FFFFFF;">.</span>
+      </h1>
 
-          <div class="process-step-arrow">&rarr;</div>
+      <p class="hero-sub">
+        We help companies and professionals move from AI experimentation to execution, with ongoing support to optimize and grow as AI evolves.
+      </p>
 
-          <div class="process-step">
-            <div class="process-step-top">
-              <div class="process-step-num">2</div>
-              <div class="process-step-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-              </div>
-            </div>
-            <div class="process-step-body">
-              <h3>Build it intelligently</h3>
-              <p>We build a secure, dependable solution that works with your existing workflow.</p>
-            </div>
-          </div>
+      <p class="hero-sub" style="margin-top:1rem; font-style:italic; color:#FFFFFF; font-size:clamp(1.1rem,2vw,1.5rem); font-weight:500; letter-spacing:0.01em;">Build momentum. Fuel disruption. Drive ROI.</p>
 
-          <div class="process-step-arrow">&rarr;</div>
-
-          <div class="process-step">
-            <div class="process-step-top">
-              <div class="process-step-num">3</div>
-              <div class="process-step-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-              </div>
-            </div>
-            <div class="process-step-body">
-              <h3>Measure and improve</h3>
-              <p>We track results, refine as needed, and expand what's working.</p>
-            </div>
-          </div>
-
-        </div>
+      <div class="hero-actions">
+        <a href="case-studies.html" class="btn-primary">View Case Studies →</a>
+        <a href="#about" class="btn-outline">Learn More</a>
       </div>
 
-      <!-- R&I Card — warm cream with doorway illustration -->
-      <div class="process-ri-card">
-        <div class="process-ri-card-body">
-          <h3>Research &amp; Insights</h3>
-          <p>Straightforward perspectives on AI in small and mid-size businesses.</p>
-          <a href="resources.html" class="process-ri-cta">Explore Resources</a>
-        </div>
-        <picture>
-          <img src="images/research-insights-doorway.png" alt="" class="process-ri-img" loading="lazy">
-        </picture>
-      </div>
     </div>
   </div>
 
-  <!-- PRACTICAL SOLUTIONS -->
-  <div class="prac-section">
-    <div class="prac-inner">
+  <!-- SOLUTIONS -->
+  <section class="solutions" id="solutions">
+    <div class="section-inner">
+      <p class="section-label">Solutions</p>
+      <h2 class="section-title">What we do</h2>
+      <p class="section-intro">FutureInSites works with small and medium businesses, professional offices, and individuals who want AI working for them without needing a technical team to make it happen.</p>
 
-      <div class="prac-grid">
+      <div class="solutions-grid">
 
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--blue">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            </div>
-            <h3 class="prac-card-title">Business AI setup</h3>
+        <a href="solutions.html#smb" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
+          <div class="sol-img">
+            <img src="images/SMBs.fis.png" alt="Small and medium businesses">
           </div>
-          <p class="prac-card-desc">Set up secure business accounts, users, permissions, data controls, and approved AI tools.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
-            <span class="prac-tag">Professional offices</span>
+          <div class="sol-body">
+            <h3>SMBs</h3>
+            <p>Enterprise methodology, SMB scale. AI strategy and implementation for construction, MEP, industrial services, and suppliers where worker time is the most valuable asset.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--teal">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <h3 class="prac-card-title">Team AI training</h3>
+        <a href="solutions.html#professional-offices" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
+          <div class="sol-img">
+            <img src="images/Prof.Offices.fis.png" alt="Professional offices">
           </div>
-          <p class="prac-card-desc">Train employees to use leading AI applications and create reusable agents, skills, and workflows.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">All business clients</span>
+          <div class="sol-body">
+            <h3>Professional Offices</h3>
+            <p>Practical AI for dental, legal, and medical practices. Reduce admin burden, improve patient and client experience, and reclaim time for high-value work.</p>
           </div>
-        </div>
+        </a>
 
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <h3 class="prac-card-title">Knowledge assistants</h3>
+        <a href="solutions.html#individuals" class="solution-card" style="text-decoration:none; color:inherit; display:block;">
+          <div class="sol-img">
+            <img src="images/high.worth.png" alt="Individuals">
           </div>
-          <p class="prac-card-desc">Give employees or customers reliable answers from an approved, managed knowledge base.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
-            <span class="prac-tag">Professional offices</span>
+          <div class="sol-body">
+            <h3>Individuals</h3>
+            <p>Done-for-you AI admin for high net worth individuals. Configured across business, investments, travel, philanthropy, family, and social so you can focus on what only you can do.</p>
           </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--orange">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            </div>
-            <h3 class="prac-card-title">Document intelligence</h3>
-          </div>
-          <p class="prac-card-desc">Summarize and review notes, contracts, invoices, case files, patient histories, and project documents.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Legal</span>
-            <span class="prac-tag">Accounting</span>
-            <span class="prac-tag">Healthcare</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--blue">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            </div>
-            <h3 class="prac-card-title">Intake and communication</h3>
-          </div>
-          <p class="prac-card-desc">Check incoming information, identify missing items, route requests, and prepare updates.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Healthcare</span>
-            <span class="prac-tag">Legal</span>
-            <span class="prac-tag">Field services</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--orange">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
-            </div>
-            <h3 class="prac-card-title">Documentation automation</h3>
-          </div>
-          <p class="prac-card-desc">Turn notes and activity into chart notes, work orders, billing forms, and status reports.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Healthcare</span>
-            <span class="prac-tag">Construction</span>
-            <span class="prac-tag">Offices</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-            </div>
-            <h3 class="prac-card-title">Operational analysis</h3>
-          </div>
-          <p class="prac-card-desc">Identify workload patterns, billing exceptions, appointment trends, and emerging problems.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
-            <span class="prac-tag">Healthcare</span>
-            <span class="prac-tag">Accounting</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--teal">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            </div>
-            <h3 class="prac-card-title">Personal and executive AI</h3>
-          </div>
-          <p class="prac-card-desc">Create daily briefings, priorities, meeting preparation, and scheduling conflict alerts.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Individuals</span>
-            <span class="prac-tag">Founders</span>
-            <span class="prac-tag">Executives</span>
-          </div>
-        </div>
+        </a>
 
       </div>
 
-      <div class="prac-footer">
-
-        <a href="solutions.html" class="prac-footer-cta">Explore all solutions →</a>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="solutions.html" style="display:inline-block; background:var(--accent); color:#FFFFFF; font-size:0.85rem; font-weight:700; letter-spacing:0.04em; padding:0.85rem 1.8rem; border-radius:100px; text-decoration:none; transition:opacity 0.2s, transform 0.15s;" onmouseover="this.style.opacity='0.9'; this.style.transform='translateY(-1px)';" onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)';">View all Solutions →</a>
       </div>
-    </div>
-  </div>
 
-  <!-- BOTTOM BANNER -->
-  <div class="bottom-banner">
-    <div class="bottom-banner-inner">
-      <div class="bottom-banner-col">
-        <div class="bottom-banner-icon blue">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="bottom-banner-text">We work with small and mid-size businesses across professional services, construction, manufacturing, health &amp; wellness, and more.</div>
-      </div>
-      <div class="bottom-banner-col">
-        <div class="bottom-banner-icon green">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="bottom-banner-text"><strong>Practical. Approachable. Measurable.</strong> AI that works for your business.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ASSESSMENT CTA BLOCK -->
-  <section id="assessment-cta" style="background:#EEF5FC; padding:48px 2rem;">
-    <div style="max-width:700px; margin:0 auto; text-align:center;">
-      <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#2563EB; margin-bottom:1.2rem;">Free Assessment</p>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:#0B2A56; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; text-wrap:balance;">Find Out Where AI Could Help Your Business Most</h2>
-      <p style="font-size:0.97rem; color:#4B5563; line-height:1.75; max-width:580px; margin:0 auto 2rem;">Not sure where to start with AI? Take our free 5-minute assessment and leave with three specific opportunity areas, a readiness score, and a recommended first step &#8212; no jargon, no sales pitch.</p>
-      <a href="/ai-readiness.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.92rem; font-weight:700; color:#FFFFFF; background:#1769E0; text-decoration:none; padding:0.9rem 2.2rem; border-radius:100px; transition:background 0.2s, transform 0.2s;" onmouseover="this.style.background='#0F56C5'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='#1769E0'; this.style.transform='translateY(0)';">Find your best starting point &rarr;</a>
     </div>
   </section>
 
-  <!-- RESEARCH BRIDGE BLOCK -->
-  <section style="background:#FDF6EE; padding:48px 2rem 56px; border-top:1px solid #EDE5D8; border-bottom:1px solid #EDE5D8;">
-    <div style="max-width:1160px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:1.5rem;">
-        <p style="font-size:1rem; font-weight:700; color:#0B2A56; letter-spacing:-0.01em; margin-bottom:0.5rem;">Here for the research?</p>
-        <p style="font-size:0.92rem; color:#4B5563; line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
-        <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:#1769E0; text-decoration:none; border-bottom:1px solid rgba(23,105,224,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(23,105,224,0.7)';" onmouseout="this.style.borderColor='rgba(23,105,224,0.3)';">Explore AI Guides, Research &amp; Insights &rarr;</a>
+  <!-- ABOUT / APPROACH -->
+  <style>
+    .approach-narrative { margin-bottom: 2rem; }
+    .journey-cycle { margin-top: 1rem; }
+    .journey-cards {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-bottom: 0.4rem;
+    }
+    .journey-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.1rem;
+      border-top: 3px solid var(--cyan);
+    }
+    .journey-card-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .journey-card-titlewrap { margin: 0 0 0.4rem; }
+    .journey-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: inline;
+      margin: 0;
+    }
+    .journey-card-repeat {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-left: 0.4rem;
+    }
+    .journey-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 0.75rem;
+    }
+    .journey-card-divider {
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+    .journey-card-bullets {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.82rem;
+      color: var(--dark);
+      line-height: 1.8;
+    }
+    .journey-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+    .journey-loop { width: 100%; height: 70px; display: block; }
+    .journey-tail {
+      margin-top: 0.3rem;
+      padding: 0.8rem 1.1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .approach-stats-strip {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+    .stat-mini {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 0.7rem;
+      text-align: center;
+    }
+    .stat-mini .num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      display: block;
+    }
+    .stat-mini .lbl {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      line-height: 1.3;
+      display: block;
+    }
+    @media (max-width: 720px) {
+      .journey-cards { grid-template-columns: 1fr; gap: 0.75rem; }
+      .journey-arrow { display: none; }
+      .journey-loop { display: none; }
+      .approach-stats-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+  <section class="about-strip" id="about">
+    <div class="section-inner">
+      <p class="section-label">Approach</p>
+
+      <div class="about-grid">
+
+        <div class="about-body">
+          <h2 class="section-title">Build. Customize. Train.</h2>
+          <p>Most companies are already experimenting with AI: working groups, lunch-and-learns, pilot projects, and teams sharing the latest thing they tried in ChatGPT.</p>
+          <p>FutureInSites helps small and mid-sized businesses, professional offices, and high net worth individuals move beyond experimentation. We identify high-impact opportunities, implement practical AI solutions, and help clients turn emerging technology into a lasting advantage.</p>
+          <p>Exploring AI is easy. Embedding it into everyday work is where real value is created.</p>
+        </div>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="num">3</span>
+            <span class="lbl">Complementary Practice Areas</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">$2T+</span>
+            <span class="lbl">Market Cap Under Analysis</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">120+</span>
+            <span class="lbl">AI Use Cases Analyzed</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">100%</span>
+            <span class="lbl">ROI-Focused Approach</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">14</span>
+            <span class="lbl">AI Markets Mapped</span>
+          </div>
+          <div class="about-stat">
+            <span class="num">200+</span>
+            <span class="lbl">AI Vendor Profiles</span>
+          </div>
+        </div>
+
       </div>
-      <!-- Research carousel (8 cards, 3 visible, auto-advances every 5 s) -->
-      <div style="position:relative; margin-top:2rem;">
 
-        <!-- Overflow clip -->
-        <div id="research-carousel-wrap">
-          <div id="research-carousel-track">
+      <div class="journey-cycle">
+        <div class="journey-cards">
 
-            <!-- Card 1: Latest blog post (JS-loaded) -->
-            <a id="research-blog-card" href="resources.html" class="rc-card">
-              <div class="rc-card-img"><img id="research-blog-img" src="" alt=""></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Latest Post</p>
-                <p id="research-blog-title" style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;"></p>
-                <p id="research-blog-excerpt" style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;"></p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read more &rarr;</span>
-              </div>
-            </a>
+          <div class="journey-card">
+            <div class="journey-card-eyebrow">Stage 1</div>
+            <div class="journey-card-titlewrap">
+              <h3>Build</h3>
+            </div>
+            <p class="journey-card-desc">Map your AI opportunities, build the business case, and define the roadmap. Grounded in your priorities, your workflows, and your data.</p>
+            <div class="journey-card-divider">
+              <ul class="journey-card-bullets">
+                <li>AI Opportunity Map</li>
+                <li>Use Case Prioritization</li>
+                <li>Business Case &amp; Roadmap</li>
+              </ul>
+            </div>
+          </div>
 
-            <!-- Card 2: AI Vendor Landscape -->
-            <a href="ai-vendor-landscape.html" class="rc-card">
-              <div class="rc-card-img"><img src="images/landscape-ai-thumb.png" alt="AI Vendor Landscape"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Reference Guide</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">The AI Vendor Landscape</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">A categorized reference of AI companies, from frontier model labs to applied AI software. Built for executives evaluating where to invest, partner, or build.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Explore the landscape &rarr;</span>
-              </div>
-            </a>
+          <div class="journey-arrow">&rarr;</div>
 
-            <!-- Card 3: AI Bolt-Ons -->
-            <a href="ai-bolt-ons.html" class="rc-card">
-              <div class="rc-card-img"><img src="images/ai-bolt-ons-thumb.jpg" alt="AI Bolt-Ons"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Reference Guide</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">AI Bolt-Ons</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">A reference index of plugins, skills, MCP connectors, and browser agents you can install on top of your AI platform.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Browse the index &rarr;</span>
-              </div>
-            </a>
+          <div class="journey-card">
+            <div class="journey-card-eyebrow">Stage 2</div>
+            <div class="journey-card-titlewrap">
+              <h3>Customize</h3>
+            </div>
+            <p class="journey-card-desc">Tailor tools, workflows, and governance to your specific operations. Vendor selection, agent configuration, and process redesign built for how you work.</p>
+            <div class="journey-card-divider">
+              <ul class="journey-card-bullets">
+                <li>Workflow Redesign</li>
+                <li>Vendor &amp; Tool Selection</li>
+                <li>Governance Guardrails</li>
+              </ul>
+            </div>
+          </div>
 
-            <!-- Card 4: AI for Executives -->
-            <a href="ai-for-executives.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/chiefofstaff.main.png" alt="AI for Executives"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">AI for Executives: A Plain-Language Guide</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">What AI actually is, what it can do, and where it creates value for leaders who don&rsquo;t code. The start-here primer, written for executives and board members.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
+          <div class="journey-arrow">&rarr;</div>
 
-            <!-- Card 5: History of Generative AI -->
-            <a href="history-of-generative-ai.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/RoadtoGenAI.png" alt="History of Generative AI"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">History of Generative AI: How LLMs Got Here</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">Six decades of stacked advances in data science and machine learning led to today&rsquo;s LLMs. A short history of how we got here, and what comes next.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
+          <div class="journey-card">
+            <div class="journey-card-eyebrow">Stage 3</div>
+            <div class="journey-card-titlewrap">
+              <h3>Train</h3>
+            </div>
+            <p class="journey-card-desc">Enable your team with practical tools, playbooks, and hands-on training. We transfer ownership so the capability sticks, whether your team runs it or we support them.</p>
+            <div class="journey-card-divider">
+              <ul class="journey-card-bullets">
+                <li>Team Enablement</li>
+                <li>Playbooks &amp; Prompts</li>
+                <li>30/60/90-Day Roadmap</li>
+              </ul>
+            </div>
+          </div>
 
-            <!-- Card 6: Building AI Agents -->
-            <a href="building-ai-agents.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/agent.primer1.png" alt="Building AI Agents"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">Building AI Agents: An 8-Step Framework</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">Scope, prompt design, model choice, tools, memory, orchestration, interface, evaluation. A walkthrough of the eight decisions that shape a production AI agent.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
+        </div>
 
-            <!-- Card 7: Job Search Command Center -->
-            <a href="job-search-command-center.html" class="rc-card">
-              <div class="rc-card-img" style="background:#0E1320;"><img src="images/job-search-command-center-thumb.svg" alt="Job Search Command Center" style="width:100%;height:100%;object-fit:contain;display:block;padding:1rem;box-sizing:border-box;"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Open Source Tool</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">Job Search Command Center</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">A free, build-your-own job-search agent that triages, scores, tracks, and plans your search. Works on ChatGPT, Claude Chat, or Claude Cowork.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Build your own &rarr;</span>
-              </div>
-            </a>
+        <div class="journey-tail">For teams that want ongoing support after Train, Embedded AI Engineering is available — new agents, expanded workflows, tool integrations, and skills development as your needs evolve. Think of it as a part-time AI team that keeps your stack current: adding a scheduling agent, wiring in a new CRM, building out an intake or quoting workflow, or training staff on new capabilities as they come online. For teams with the capacity to run it themselves, we hand off cleanly with documentation, playbooks, and a clear owner for every system we built together.</div>
+      </div>
 
-            <!-- Card 8: OpenClaw Windows Setup -->
-            <a href="openclaw-windows-setup.html" class="rc-card">
-              <div class="rc-card-img"><img src="images/personal.agent.setup.png" alt="Windows OpenClaw Setup"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Guide</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">Windows OpenClaw Setup: 10 Steps to Your Own AI Agent</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">Hardware prep, installation, cost hardening, and remote access for a personal AI agent on a repurposed Windows laptop.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the guide &rarr;</span>
-              </div>
-            </a>
+      <!-- ─── SIGNATURE ENGAGEMENT: AI TRANSFORMATION SESSION ─── -->
+      <div class="signature-block" style="margin-top: 2.5rem; margin-bottom: 0;">
+        <div class="signature-eyebrow">Signature Engagement</div>
+        <h3 class="signature-title">AI Transformation Session</h3>
+        <p class="signature-lead">A 2-day onsite intensive that takes your leadership team from "we should do something with AI" to a prioritized roadmap and live development. We come onsite with pre-researched analysis of your business; you leave with both clarity and momentum.</p>
 
-          </div><!-- /track -->
-        </div><!-- /wrap -->
+        <div class="signature-days">
+          <div class="signature-day">
+            <div class="signature-day-label">Day 1</div>
+            <div class="signature-day-title">The AI Landscape</div>
+            <p class="signature-day-desc">Survey the terrain together. AI history, fundamentals, and the current vendor landscape. Frameworks for thinking about AI ROI, risk, and competitive timing. Where your industry sits on the inflection curve.</p>
+          </div>
+          <div class="signature-day">
+            <div class="signature-day-label">Day 2</div>
+            <div class="signature-day-title">Your AI Roadmap</div>
+            <p class="signature-day-desc">Chart your path through the landscape. Readiness assessment, prioritized AI application analysis, buy-vs-build evaluation, and a sequenced roadmap built on pre-researched analysis of your business.</p>
+          </div>
+        </div>
 
-        <!-- Prev arrow -->
-        <button id="rc-prev" class="rc-nav-btn" aria-label="Previous">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 12L6 8L10 4" stroke="#0B2A56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <!-- Next arrow -->
-        <button id="rc-next" class="rc-nav-btn" aria-label="Next">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4L10 8L6 12" stroke="#0B2A56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <div style="text-align: center; margin-top: 2rem;">
+          <button type="button" class="signature-cta" data-open-inquiry>Inquire about scheduling →</button>
+        </div>
+      </div>
 
-      </div><!-- /carousel outer -->
-
-      <!-- Dot indicators -->
-      <div id="rc-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.25rem;" role="tablist" aria-label="Carousel page indicators"></div>
     </div>
   </section>
 
-  <script>
-  /* Research carousel + latest blog post loader */
-  (function () {
-    'use strict';
-
-    var TOTAL_CARDS = 8;
-    var GAP_REM = 1.5;
-    var currentIndex = 0;
-    var autoTimer = null;
-
-    function remToPx(rem) {
-      return rem * parseFloat(getComputedStyle(document.documentElement).fontSize || '16');
+  <!-- WHY US (COMPARISON) -->
+  <style>
+    .why-us {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-
-    function getVisible() {
-      var wrap = document.getElementById('research-carousel-wrap');
-      if (!wrap) return 3;
-      var w = wrap.offsetWidth;
-      if (w < 480) return 1;
-      if (w < 760) return 2;
-      return 3;
+    .why-table-wrap {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 1rem;
     }
-
-    function getMaxIndex() {
-      return Math.max(0, TOTAL_CARDS - getVisible());
+    .why-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
     }
-
-    function setCardWidths() {
-      var wrap = document.getElementById('research-carousel-wrap');
-      var track = document.getElementById('research-carousel-track');
-      if (!wrap || !track) return;
-      var visible = getVisible();
-      var gap = remToPx(GAP_REM);
-      var cardWidth = (wrap.offsetWidth - gap * (visible - 1)) / visible;
-      var cards = track.querySelectorAll('.rc-card');
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].style.width = cardWidth + 'px';
+    .why-table thead tr { background: var(--bg-alt); }
+    .why-table th {
+      padding: 1.1rem 1rem;
+      text-align: left;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+      border-bottom: 1px solid var(--border);
+      vertical-align: bottom;
+    }
+    .why-table th.why-corner { width: 18%; }
+    .why-table th:not(.why-corner) { width: 27.33%; }
+    .why-table th.why-fis-col {
+      border-top: 3px solid var(--cyan);
+      background: var(--accent-lt);
+    }
+    .why-table td {
+      padding: 1.15rem 1rem;
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .why-table tbody tr:last-child td { border-bottom: none; }
+    .why-table td.why-row-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .why-table td.why-fis-col {
+      background: var(--accent-lt);
+      color: var(--dark);
+      font-weight: 600;
+    }
+    @media (max-width: 720px) {
+      .why-table-wrap { overflow-x: auto; }
+      .why-table { min-width: 640px; }
+      .why-table th, .why-table td { font-size: 0.82rem; padding: 0.9rem 0.7rem; }
+    }
+  
+    /* ï¿½ï¿½ï¿½ MORE DROPDOWN ï¿½ï¿½ï¿½ */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    /* Mobile: expand inline */
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
       }
-    }
-
-    function goTo(index) {
-      var maxIndex = getMaxIndex();
-      currentIndex = Math.min(Math.max(0, index), maxIndex);
-      var track = document.getElementById('research-carousel-track');
-      var firstCard = track ? track.querySelector('.rc-card') : null;
-      if (!firstCard) return;
-      var gap = remToPx(GAP_REM);
-      var offset = currentIndex * (firstCard.offsetWidth + gap);
-      if (track) track.style.transform = 'translateX(-' + offset + 'px)';
-
-      var dots = document.querySelectorAll('.rc-dot');
-      for (var d = 0; d < dots.length; d++) {
-        dots[d].classList.toggle('rc-dot-active', d === currentIndex);
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
       }
+    }</style>
+  <section class="why-us" id="why-us">
+    <div class="section-inner">
+      <p class="section-label">Why Us</p>
+      <h2 class="section-title">Strategy plus execution, without the trade-off</h2>
+      <p class="section-intro">Most firms force you to pick between thinking and building. We do both.</p>
 
-      var prev = document.getElementById('rc-prev');
-      var next = document.getElementById('rc-next');
-      if (prev) prev.disabled = currentIndex === 0;
-      if (next) next.disabled = currentIndex === maxIndex;
-    }
+      <div class="why-table-wrap">
+        <table class="why-table">
+          <thead>
+            <tr>
+              <th class="why-corner"></th>
+              <th>Traditional<br>Consultancies</th>
+              <th>Outsourced<br>Engineering</th>
+              <th class="why-fis-col">FutureInSites</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="why-row-label">What you get</td>
+              <td>A deck and a roadmap</td>
+              <td>A finished build to your spec</td>
+              <td class="why-fis-col">A working asset you own, plus the playbook to run it</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">AI depth</td>
+              <td>Generalists ramping on AI</td>
+              <td>Builders without strategic context</td>
+              <td class="why-fis-col">Practitioners tracking the AI landscape weekly</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">Engagement shape</td>
+              <td>Large team, months of discovery</td>
+              <td>Fixed scope, contractor handoff</td>
+              <td class="why-fis-col">Small team, Build-Operate-Transfer</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">Speed to first value</td>
+              <td>Quarters to a recommendation</td>
+              <td>Weeks to a build</td>
+              <td class="why-fis-col">Weeks to a pilot, with you trained alongside</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">After delivery</td>
+              <td>Recommendations, then exit</td>
+              <td>Project ends at delivery</td>
+              <td class="why-fis-col">Co-operate while you grow into ownership</td>
+            </tr>
+            <tr>
+              <td class="why-row-label">Cost shape</td>
+              <td>Premium fees, large overhead</td>
+              <td>Hourly billing, scope creep risk</td>
+              <td class="why-fis-col">Defined offerings, priced by outcome</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-    function buildDots() {
-      var container = document.getElementById('rc-dots');
-      if (!container) return;
-      container.innerHTML = '';
-      var maxIndex = getMaxIndex();
-      for (var i = 0; i <= maxIndex; i++) {
-        (function (idx) {
-          var dot = document.createElement('button');
-          dot.className = 'rc-dot' + (idx === 0 ? ' rc-dot-active' : '');
-          dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
-          dot.addEventListener('click', function () { stopAuto(); goTo(idx); startAuto(); });
-          container.appendChild(dot);
-        })(i);
-      }
-    }
+  <!-- SELECTED CASE WORK -->
+  <section class="experience" id="experience">
+    <div class="section-inner">
+      <p class="section-label">Selected Case Work</p>
+      <h2 class="section-title">Three case studies. Three angles on AI value.</h2>
+      <p class="section-intro">An NLP sentiment study of a major automotive brand. Investment-grade diligence on an AI infrastructure business. Forecasting analysis of AI's impact on an incumbent platform's economics. Three angles on how AI is changing how value is created, captured, and measured.</p>
 
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(function () {
-        var maxIndex = getMaxIndex();
-        goTo(currentIndex >= maxIndex ? 0 : currentIndex + 1);
-      }, 5000);
-    }
+      <div class="brand-grid">
 
-    function stopAuto() {
-      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    }
+        <a href="tesla.html" class="brand-card brand-card-link tesla">
+          <div class="brand-wordmark tesla-wordmark">TESLA</div>
+          <div class="brand-sector">Automotive · NLP &amp; Sentiment Analysis</div>
+          <p>An NLP case study on Tesla's Twitter brand across 2018 and 2020. ~2.4M tweets analyzed through VADER, a default BERT classifier, and a BERT model fine-tuned on Sentiment140. Findings on engagement-weighted sentiment, hashtag evolution, and what model choice reveals about domain match.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">VADER &amp; BERT</span>
+            <span class="brand-tag">Engagement-Weighted Sentiment</span>
+            <span class="brand-tag">Social Listening</span>
+          </div>
+        </a>
 
-    function init() {
-      setCardWidths();
-      buildDots();
-      goTo(0);
-      startAuto();
+        <a href="oracle.html" class="brand-card brand-card-link oracle">
+          <div class="brand-wordmark oracle-wordmark">ORACLE</div>
+          <div class="brand-sector">AI Infrastructure · Investment Diligence</div>
+          <p>An Investment Committee memo analyzing Oracle's $455B AI backlog. Two-scenario DCF, GPU economic obsolescence vs. extended GAAP useful lives, customer concentration across NVIDIA, AMD, and OpenAI. Strong Underweight; new normal fair value $75 vs. $164.52.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">Two-Scenario DCF</span>
+            <span class="brand-tag">GPU Obsolescence</span>
+            <span class="brand-tag">Customer Concentration</span>
+          </div>
+        </a>
 
-      var prev = document.getElementById('rc-prev');
-      var next = document.getElementById('rc-next');
-      var wrap = document.getElementById('research-carousel-wrap');
+        <a href="alphabet.html" class="brand-card brand-card-link alphabet">
+          <div class="brand-wordmark google-wordmark">
+            <span class="l1">G</span><span class="l2">o</span><span class="l3">o</span><span class="l4">g</span><span class="l5">l</span><span class="l6">e</span>
+          </div>
+          <div class="brand-sector">Incumbent Platform · AI Economics</div>
+          <p>A two-engine business architecture modeling Search/Services and Cloud separately. AI Overviews monetization, Gemini long-query monetization, and the 2026 CapEx / D&amp;A trough explicitly preserved. Net call: AI raises continuing value, modestly. Maintain.</p>
+          <div class="brand-tags">
+            <span class="brand-tag">Two-Engine Architecture</span>
+            <span class="brand-tag">Cloud CapEx</span>
+            <span class="brand-tag">Continuing Value</span>
+          </div>
+        </a>
 
-      if (prev) prev.addEventListener('click', function () { stopAuto(); goTo(currentIndex - 1); startAuto(); });
-      if (next) next.addEventListener('click', function () { stopAuto(); goTo(currentIndex + 1); startAuto(); });
+      </div>
 
-      if (wrap) {
-        wrap.addEventListener('mouseenter', stopAuto);
-        wrap.addEventListener('mouseleave', startAuto);
-      }
+      <p style="text-align:center;margin-top:2.4rem;font-size:0.78rem;color:rgba(255,255,255,0.35);letter-spacing:0.04em;line-height:1.7;">
+        Tesla, Oracle, and Alphabet are subjects of analysis, not engaged clients. Case studies are educational analytical work product authored by FutureInSites for illustrative purposes. All data is drawn from publicly available sources and cited inline.
+      </p>
 
-      var resizeTimer;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-          setCardWidths();
-          buildDots();
-          goTo(Math.min(currentIndex, getMaxIndex()));
-        }, 120);
-      });
-    }
+    </div>
+  </section>
 
-    /* Latest blog post → Card 1 */
-    fetch('blog/manifest.json')
-      .then(function (r) { return r.json(); })
-      .then(function (posts) {
-        if (!posts || !posts.length) return;
-        var post = posts[0];
-        var card    = document.getElementById('research-blog-card');
-        var img     = document.getElementById('research-blog-img');
-        var title   = document.getElementById('research-blog-title');
-        var excerpt = document.getElementById('research-blog-excerpt');
-        if (!card || !img || !title || !excerpt) return;
-        card.href = 'blog/' + post.slug + '.html';
-        if (post.image) { img.src = 'blog/' + post.image; img.alt = post.title || ''; }
-        title.textContent   = post.title   || '';
-        excerpt.textContent = post.excerpt  || '';
-      })
-      .catch(function () { /* fail silently */ });
+  <!-- CASE STUDY FEATURE -->
+  <section class="case-study-feature" id="case-studies">
+    <div class="section-inner">
+      <p class="section-label">Premier Case Study</p>
+      <h2 class="section-title">Our most comprehensive engagement</h2>
+      <p class="section-intro">A full-scope AI strategy: readiness assessment, competitive benchmarking, use case prioritization across 12 initiatives, governance framework, and a phased three-pillar implementation roadmap.</p>
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
-  })();
-  </script>
+      <div class="cs-card">
+
+        <div class="cs-content">
+          <div>
+            <span class="cs-tag">Premier Case Study</span>
+            <div class="cs-brand">lululemon athletica</div>
+            <h3>From PAVE to Platform: Building the AI Foundation for Lululemon's Next Growth Chapter</h3>
+            <p>A full-scope AI strategy for a $10B+ premium athleisure brand at a strategic inflection point: declining U.S. comps, aggressive new competitors, and a newly appointed Chief AI & Technology Officer. Our analysis covers capability assessment, competitive benchmarking, use case prioritization, and a phased three-pillar implementation roadmap.</p>
+          </div>
+
+          <div>
+            <div class="cs-metrics">
+              <div class="cs-metric">
+                <span class="val">$400–600M</span>
+                <span class="desc">Projected Revenue Impact</span>
+              </div>
+              <div class="cs-metric">
+                <span class="val">$85–110M</span>
+                <span class="desc">3-Year Investment Range</span>
+              </div>
+              <div class="cs-metric">
+                <span class="val">12</span>
+                <span class="desc">Initiatives Evaluated</span>
+              </div>
+              <div class="cs-metric">
+                <span class="val">4–7x</span>
+                <span class="desc">Projected Return on Investment</span>
+              </div>
+            </div>
+
+            <a href="lululemon.html" class="cs-link">View Full Case Study →</a>
+          </div>
+        </div>
+
+        <div class="cs-visual">
+          <div class="cs-visual-inner">
+            <div class="cs-lulu-badge">
+              <img src="images/logo-black-full.svg" alt="lululemon" />
+              <span class="badge-label">Premier Case Study · AI Strategy</span>
+            </div>
+            <div class="cs-img-stack">
+              <img src="images/lululemon-1-1653574674022.webp" alt="lululemon" />
+              <img src="images/Lululemon-p-1080.jpg" alt="lululemon" />
+              <img src="images/maxresdefault.jpg" alt="lululemon" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section" id="team">
+    <div class="section-inner">
+      <p class="section-label">Team</p>
+      <h2 class="section-title">Enterprise Expertise</h2>
+      <p class="section-intro">Practitioners who have led at scale and know what real AI transformation requires.</p>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <img src="images/greg.png" alt="Greg Loeffelholz" class="team-photo">
+          <div class="team-name">Greg Loeffelholz</div>
+          <div class="team-title">Founder &amp; Managing Principal</div>
+          <p class="team-bio">Over 25 years scaling data, ML, and GenAI platforms as a strategic leader. Led engineering and data science at MotiveMetrics' AI SaaS platform optimizing $100MM+ in paid search, with P&amp;L and SOC 2 governance. MarTech DSP &amp; CDP leadership at Inmar Intelligence and Nelnet. Vanderbilt BA, Boston College MBA in AI &amp; Machine Learning.</p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/jeff.jpg" alt="Jeff Hoffman" class="team-photo">
+          <div class="team-name">Jeff Hoffman</div>
+          <div class="team-title">Principal Consultant</div>
+          <p class="team-bio">Two decades of digital product leadership across pharmacy, retail, and healthcare. VP roles at Walgreens leading 200+ product and engineering professionals, Best Buy heading Digital, Analytics, and Technology, and CVS Health as Chief Digital Officer for Pharmacy overseeing $13B in digital revenue. Tufts BA, Chicago Booth MBA in Strategic Management and Finance.</p>
+        </div>
+
+        <!-- TEMPORARILY HIDDEN: Randal Kenworthy's profile. To reactivate, delete the surrounding comment markers (this line and the matching one below). -->
+        <!--
+        <div class="team-card">
+          <img src="images/Randal.jpg" alt="Randal Kenworthy" class="team-photo">
+          <div class="team-name">Randal Kenworthy</div>
+          <div class="team-title">Founding Advisor</div>
+          <p class="team-bio">Adjunct Professor at Boston College teaching AI Strategy. 30+ years of consulting and strategy leadership across West Monroe, Cognizant, Cisco, and Wipro, with deep experience in product innovation, transformation, M&amp;A, and Industry 4.0 for Fortune 50 consumer and industrial manufacturing companies. Boston College BS, Yale MBA in Strategy and Finance.</p>
+        </div>
+        -->
+        <!-- END TEMPORARILY HIDDEN: Randal Kenworthy -->
+
+        <div class="team-card">
+          <img src="images/miao.liu.jpg" alt="Miao Liu" class="team-photo">
+          <div class="team-name">Miao Liu</div>
+          <div class="team-title">Technical Advisor</div>
+          <p class="team-bio">Assistant Professor of Accounting at Boston College's Carroll School, researching the intersection of accounting and AI. Builds RAG systems applied to financial disclosure and publishes on human-AI collaboration in corporate valuation. Teaches an AI Applications in Business course at BC. Wuhan University BA, University of Chicago PhD.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST -->
+  <section class="latest-section" id="latest">
+    <div class="section-inner">
+      <p class="section-label">The Latest</p>
+      <h2 class="section-title">New on the site, refreshed as we publish.</h2>
+
+      <div class="latest-grid">
+
+        <a href="blog/multi-model-ai-strategy.html" class="latest-card" id="latest-blog-card">
+          <div class="latest-card-image" id="latest-blog-thumb" style="background-image:url('blog/multimodel.blog.png');"></div>
+          <div class="latest-card-body">
+            <div class="latest-card-meta">Latest Post &middot; <span id="latest-blog-date">June 9, 2026</span></div>
+            <h3 id="latest-blog-title">Multi-Model Strategy Is Table Stakes for AI in 2026</h3>
+            <p id="latest-blog-excerpt">The 'pick one model' era is over. Smart deployments pair models to task complexity and build price-based waterfalls for cost efficiency.</p>
+            <span class="latest-card-link">Read the post &rarr;</span>
+          </div>
+        </a>
+
+        <a href="ai-vendor-landscape.html" class="latest-card">
+          <div class="latest-card-image" style="background-image:url('images/landscape-ai-thumb.png');"></div>
+          <div class="latest-card-body">
+            <div class="latest-card-meta">Reference</div>
+            <h3>The AI Vendor Landscape</h3>
+            <p>A categorized reference of AI companies, from frontier model labs to applied AI software. 200+ vendors across 14 categories, built for executives evaluating where to invest, partner, or build.</p>
+            <span class="latest-card-link">View the Landscape &rarr;</span>
+          </div>
+        </a>
+
+        <a href="ai-bolt-ons.html" class="latest-card">
+          <div class="latest-card-image" style="background-image:url('images/ai-bolt-ons-thumb.jpg');"></div>
+          <div class="latest-card-body">
+            <div class="latest-card-meta">Reference</div>
+            <h3>AI Bolt-Ons</h3>
+            <p>A practical reference of plugins, skills, and MCP servers worth installing on top of your AI platform. 24 bolt-ons across 3 categories.</p>
+            <span class="latest-card-link">View the Bolt-Ons &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-inner">
+      <div class="contact-card">
+        <h2>Ready to build your AI strategy?</h2>
+        <p>Whether you're starting from zero or scaling an existing AI program, we'd love to explore how FutureInSites can help your organization move faster with more confidence.</p>
+        <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
+        <button type="button" class="contact-email" data-open-inquiry data-inquiry-context="strategy">Send us a Message</button>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-
-      <!-- Brand column -->
-      <div class="footer-brand">
-        <a href="index.html" class="footer-wordmark">FutureInSites</a>
-        <div class="footer-tagline">AI Strategy &amp; Engineering</div>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        </div>
-        <p class="footer-copy">© 2026 FutureInSites LLC<br>New York, NY &nbsp;·&nbsp; Boston, MA</p>
-      </div>
-
-      <!-- Vertical divider -->
-      <div class="footer-vert-divider"></div>
-
-      <!-- Link columns -->
-      <div class="footer-link-cols">
-        <div class="footer-col">
-          <p class="footer-col-label">Business</p>
-          <ul>
-            <li><a href="approach.html">Our Approach</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="ai-readiness.html">Assessment</a></li>
-            <li><a href="consumer.html">Consumer AI</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Company</p>
-          <ul>
-            <li><a href="our-story.html">Our Story</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="blog/index.html">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Resources</p>
-          <ul>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="ai-vendor-landscape.html">AI Landscape</a></li>
-            <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Connect</p>
-          <ul>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
-        </div>
-      </div>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="ai-readiness.html">Assessment</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="consumer.html">Consumer</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </div>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Palo Alto, CA &nbsp;·&nbsp; Boston, MA</p>
   </footer>
 
   <!-- FUTURE AI WIDGET -->
@@ -2855,29 +2657,26 @@
       });
     });
   })();
-  /* Dropdown toggles (handles multiple .nav-more elements) */
+  /* More dropdown toggle */
   (function () {
-    var allMore = document.querySelectorAll('.nav-more');
-    if (!allMore.length) return;
-    allMore.forEach(function (more) {
-      var btn = more.querySelector('.nav-more-btn');
-      if (!btn) return;
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var isOpen = more.classList.contains('open');
-        allMore.forEach(function (m) { m.classList.remove('open'); });
-        if (!isOpen) { more.classList.add('open'); }
-      });
-      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          more.classList.remove('open');
-        });
-      });
+    var more = document.querySelector('.nav-more');
+    if (!more) return;
+    var btn = more.querySelector('.nav-more-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      more.classList.toggle('open');
     });
     document.addEventListener('click', function (e) {
-      var inAny = false;
-      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
-      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+      if (!more.contains(e.target)) {
+        more.classList.remove('open');
+      }
+    });
+    /* close on link click inside dropdown */
+    more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        more.classList.remove('open');
+      });
     });
   })();
   </script>
@@ -3120,7 +2919,6 @@
         if (thumb) {
           if (p.image) {
             thumb.style.backgroundImage = "url('blog/" + p.image + "')";
-            thumb.style.backgroundPosition = p.imagePosition || 'top';
           } else {
             /* no image for this post: dark branded banner instead */
             thumb.style.backgroundImage = 'none';
