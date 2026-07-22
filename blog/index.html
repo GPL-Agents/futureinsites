@@ -44,6 +44,282 @@
       justify-content: center;
       padding: 0 3rem;
       height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* Hero */
+    .blog-hero {
+      margin-top: 64px;
+      height: 520px;
+      background-color: #000000;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('../images/fis.blog.hero.final.png') center center / auto 100% no-repeat;
+    }
+    .blog-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 82%, #000000 100%);
+    }
+    @media (max-width: 640px) {
+      .blog-hero {
+        height: 380px;
+      }
+    }
+
+    /* Blog List */
+    .blog-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .blog-card {
+      display: block;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: padding 0.2s;
+    }
+    .blog-card:hover {
+      padding-left: 1rem;
+    }
+    .blog-card:hover { text-decoration: none; }
+    .blog-card:hover .blog-card-title { color: var(--accent); }
+    .blog-card-date {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .blog-card-title {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .blog-card-excerpt {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card-tags {
+      margin-top: 0.8rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .blog-tag {
+      background: var(--accent-lt);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .blog-empty {
+      text-align: center;
+      padding: 4rem 0;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 640px) {
+
+      nav { padding: 0 1rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+    }
+  
+    /* ï¿½ï¿½ï¿½ MORE DROPDOWN ï¿½ï¿½ï¿½ */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    /* Mobile: expand inline */
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }
+    /* ─── NAV OVERRIDE ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
       overflow: visible;
       background: #FFFFFF;
       border-bottom: 1px solid #E2E8F0;
@@ -175,90 +451,12 @@
       .nav-more-dropdown a { padding: 0.5rem 1.2rem; }
     }
 
-    .blog-hero {
-      margin-top: 64px;
-      height: 520px;
-      background-color: #000000;
-      position: relative;
-      overflow: hidden;
+    /* ─── FOOTER OVERRIDE ─── */
+    footer {
+      background: #F5F8FC;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
     }
-    .blog-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('../images/fis.blog.hero.final.png') center center / auto 100% no-repeat;
-    }
-    .blog-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 82%, #000000 100%);
-    }
-    @media (max-width: 640px) {
-      .blog-hero {
-        height: 380px;
-      }
-    }
-
-    /* Blog List */
-    .blog-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-    .blog-card {
-      display: block;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: padding 0.2s;
-    }
-    .blog-card:hover {
-      padding-left: 1rem;
-    }
-    .blog-card:hover { text-decoration: none; }
-    .blog-card:hover .blog-card-title { color: var(--accent); }
-    .blog-card-date {
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-    }
-    .blog-card-title {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      transition: color 0.2s;
-    }
-    .blog-card-excerpt {
-      color: #555;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .blog-card-tags {
-      margin-top: 0.8rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .blog-tag {
-      background: var(--accent-lt);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-    .blog-empty {
-      text-align: center;
-      padding: 4rem 0;
-      color: var(--muted);
-    }
-
-    /* Footer */
-
     .footer-inner {
       max-width: 1200px;
       margin: 0 auto;
@@ -300,409 +498,8 @@
       .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
       .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
     }
-    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }}</style>
-</head>
-<body>
-
-  <!-- NAV -->
-  <!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-wordmark">
-      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
-      <div class="nav-wordmark-text">
-        <span class="nav-brand-name">FutureInSites</span>
-        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
-      </div>
-    </a>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="nav-links-menu">
-      <li class="nav-more">
-        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="solutions.html">Business</a></li>
-          <li><a href="approach.html">Our Approach</a></li>
-        </ul>
-      </li>
-      <li class="nav-more">
-        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="blog/index.html">Blog</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
-          <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-        </ul>
-      </li>
-      <li class="nav-more">
-        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
-        <ul class="nav-more-dropdown">
-          <li><a href="our-story.html">Our Story</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="careers.html">Careers</a></li>
-        </ul>
-      </li>
-    </ul>
-    <a href="index.html#contact" class="nav-cta">Contact</a>
-  </nav>
-
-  <!-- HERO -->
-  <header class="page-header">
-    <p class="eyebrow">Solutions</p>
-    <h1>How we work with you</h1>
-    <p>FutureInSites works with small and medium businesses, professional offices, and individuals who want AI working for them without needing a technical team to make it happen.</p>
-  </header>
-
-  <!-- ─── SMBs ─── -->
-  <section class="segment" id="smb">
-    <div class="segment-label">Small &amp; Medium Businesses</div>
-    <h2 class="segment-title">AI strategy and implementation for field-first businesses</h2>
-    <p class="segment-intro">For construction companies, MEP contractors, industrial services firms, field trades, and suppliers: businesses where worker time is the most valuable asset and a dedicated IT team is not in the budget. We bring enterprise methodology at SMB scale, with engagements that follow a Build, Customize, Train model: we build the foundation, tailor it to your operations, and train your team to own it.</p>
-    <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:2rem;">
-      <img src="images/SMBs.fis.png" alt="AI for small and medium businesses" style="width:100%; height:480px; object-fit:cover; object-position:center top; display:block;">
-    </div>
-
-    <div class="solutions-grid">
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="12"/>
-              <circle cx="16" cy="16" r="7"/>
-              <circle cx="16" cy="16" r="2.2" fill="currentColor" stroke="none"/>
-              <line x1="16" y1="2" x2="16" y2="5"/>
-              <line x1="16" y1="27" x2="16" y2="30"/>
-              <line x1="2" y1="16" x2="5" y2="16"/>
-              <line x1="27" y1="16" x2="30" y2="16"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>AI Readiness Assessment</h3>
-        <p>A structured audit of your data infrastructure, talent, culture, and existing AI investments. Outputs include a capability heatmap, gap analysis, and a clear-eyed view of where you can move now versus what needs to be built first.</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 25 Q 11 22, 14 18 T 22 12 T 27 5"/>
-              <circle cx="5" cy="25" r="2.2" fill="currentColor" stroke="none"/>
-              <circle cx="14" cy="18" r="2" fill="none"/>
-              <circle cx="22" cy="12" r="2" fill="none"/>
-              <circle cx="27" cy="5" r="2.2" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>AI Strategy &amp; Roadmap</h3>
-        <p>A prioritized, phased AI strategy tied directly to your business objectives. Includes use case prioritization across a value vs. complexity framework, build/buy/partner decisions, governance frameworks, and investment sizing.</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="21" width="24" height="6" rx="1"/>
-              <rect x="6" y="13" width="20" height="6" rx="1"/>
-              <rect x="9" y="5" width="14" height="6" rx="1"/>
-              <line x1="11" y1="24" x2="13" y2="24"/>
-              <line x1="13" y1="16" x2="15" y2="16"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>Vendor Selection &amp; Architecture</h3>
-        <p>Navigate the AI vendor landscape across model providers, infrastructure, and applied AI software. We help you select, configure, and integrate the right platforms, with reference architectures that protect optionality as the landscape keeps shifting.</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 11 L16 4 L28 11"/>
-              <line x1="3" y1="11" x2="29" y2="11"/>
-              <line x1="3" y1="27" x2="29" y2="27"/>
-              <line x1="8" y1="13" x2="8" y2="25"/>
-              <line x1="16" y1="13" x2="16" y2="25"/>
-              <line x1="24" y1="13" x2="24" y2="25"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>AI Governance &amp; Ethics</h3>
-        <p>Responsible AI frameworks, stage-gate investment criteria, and Centers of Excellence that scale your AI program without unmanaged risk. Policy guardrails and model risk management that keep Board oversight honest as deployments multiply.</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <rect x="13" y="13" width="6" height="6" rx="1" fill="currentColor" stroke="none"/>
-              <rect x="3" y="3" width="6" height="6" rx="1"/>
-              <rect x="23" y="3" width="6" height="6" rx="1"/>
-              <rect x="3" y="23" width="6" height="6" rx="1"/>
-              <rect x="23" y="23" width="6" height="6" rx="1"/>
-              <line x1="9" y1="9" x2="13" y2="13"/>
-              <line x1="23" y1="9" x2="19" y2="13"/>
-              <line x1="9" y1="23" x2="13" y2="19"/>
-              <line x1="23" y1="23" x2="19" y2="19"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>AI Build &amp; Integration</h3>
-        <p>Build and integrate AI capability across your business. Custom agent development for specific workflows, multi-step workflow orchestration across internal and external systems, and third-party AI platform integration (OpenAI, Anthropic, vertical SaaS).</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <!-- Gear with continuous-cycle arrow: ongoing engineering -->
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/>
-              <line x1="16" y1="9" x2="16" y2="11"/>
-              <line x1="16" y1="21" x2="16" y2="23"/>
-              <line x1="9" y1="16" x2="11" y2="16"/>
-              <line x1="21" y1="16" x2="23" y2="16"/>
-              <line x1="11" y1="11" x2="12.5" y2="12.5"/>
-              <line x1="19.5" y1="19.5" x2="21" y2="21"/>
-              <line x1="11" y1="21" x2="12.5" y2="19.5"/>
-              <line x1="19.5" y1="12.5" x2="21" y2="11"/>
-              <path d="M28 19 A13 13 0 0 1 11 28"/>
-              <path d="M11 28 L14 28 M11 28 L11 25"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>Embedded AI Engineering</h3>
-        <p>Ongoing engineering support, upgrades, and maintenance for your AI systems. A Forward Deployed Engineer working a set number of hours each week to keep your stack current as the underlying tools, integrations, and bolt-ons change. Built for organizations that need ongoing engineering capacity without standing up an internal AI team.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─── PROFESSIONAL OFFICES ─── -->
-  <section class="segment" id="professional-offices">
-    <div class="segment-label">Professional Offices</div>
-    <h2 class="segment-title">AI that reduces admin and reclaims billable time</h2>
-    <p class="segment-intro">For dental practices, law firms, chiropractic offices, accounting firms, and similar professional practices: businesses where the most valuable hours are spent with patients and clients, not on scheduling, documentation, intake, and follow-up. We tailor AI to your practice management workflows so your team spends less time on back-office drag and more time on what they were trained to do.</p>
-    <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:2rem;">
-      <img src="images/Prof.Offices.fis.png" alt="AI for professional offices" style="width:100%; height:480px; object-fit:cover; object-position:center top; display:block;">
-    </div>
-
-    <div class="solutions-grid">
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 25 Q 11 22, 14 18 T 22 12 T 27 5"/>
-              <circle cx="5" cy="25" r="2.2" fill="currentColor" stroke="none"/>
-              <circle cx="14" cy="18" r="2" fill="none"/>
-              <circle cx="22" cy="12" r="2" fill="none"/>
-              <circle cx="27" cy="5" r="2.2" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>Workflow Automation</h3>
-        <p>AI-powered automation for intake, scheduling, documentation, follow-up, and billing workflows. Built around your existing practice management software, not instead of it.</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <rect x="13" y="13" width="6" height="6" rx="1" fill="currentColor" stroke="none"/>
-              <rect x="3" y="3" width="6" height="6" rx="1"/>
-              <rect x="23" y="3" width="6" height="6" rx="1"/>
-              <rect x="3" y="23" width="6" height="6" rx="1"/>
-              <rect x="23" y="23" width="6" height="6" rx="1"/>
-              <line x1="9" y1="9" x2="13" y2="13"/>
-              <line x1="23" y1="9" x2="19" y2="13"/>
-              <line x1="9" y1="23" x2="13" y2="19"/>
-              <line x1="23" y1="23" x2="19" y2="19"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>AI Build &amp; Integration</h3>
-        <p>Custom agent development and integration for your practice. Front-desk agents, documentation assistants, referral coordination, and client communication tools built to your specific workflows.</p>
-      </div>
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/>
-              <line x1="16" y1="9" x2="16" y2="11"/>
-              <line x1="16" y1="21" x2="16" y2="23"/>
-              <line x1="9" y1="16" x2="11" y2="16"/>
-              <line x1="21" y1="16" x2="23" y2="16"/>
-              <line x1="11" y1="11" x2="12.5" y2="12.5"/>
-              <line x1="19.5" y1="19.5" x2="21" y2="21"/>
-              <line x1="11" y1="21" x2="12.5" y2="19.5"/>
-              <line x1="19.5" y1="12.5" x2="21" y2="11"/>
-              <path d="M28 19 A13 13 0 0 1 11 28"/>
-              <path d="M11 28 L14 28 M11 28 L11 25"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>Embedded AI Engineering</h3>
-        <p>Ongoing support for practices that want to keep improving after initial setup: new integrations, staff training on new capabilities, and upgrades as the tools evolve.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─── INDIVIDUALS ─── -->
-  <section class="segment" id="individuals">
-    <div class="segment-label">Individuals</div>
-    <h2 class="segment-title">A personal AI built for the life you actually run</h2>
-    <p class="segment-intro">For individuals managing multiple business interests, investment portfolios, family obligations, philanthropic commitments, and international travel, the complexity of your life doesn't fit neatly into any one app. FutureInSites builds a custom AI infrastructure that works across all of it: scheduling across time zones, briefing you before meetings, tracking commitments across your business and personal worlds, and handling the administrative layer that consumes time you cannot afford to lose. Built on hardware you own, with no dependency on a third-party platform. Think of it as a chief of staff that never sleeps and never forgets.</p>
-
-    <div class="solutions-grid">
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <!-- Personal agent: silhouette + node -->
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="11" r="4"/>
-              <path d="M4 27 Q 4 19, 12 19 Q 20 19, 20 27"/>
-              <circle cx="24" cy="9" r="3.5" fill="currentColor" stroke="none"/>
-              <line x1="17" y1="10" x2="20.7" y2="9.5"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>Personal AI Agent Setup</h3>
-        <p>A fully configured personal AI agent you can reach anytime via Telegram. No app to learn, no UI to manage — just message it like you would a person. Tuned to your workflow and connected to Gmail, Google Calendar, and your existing tools. Includes agent personality tuning, integration setup, and a training session so you can get the most out of it from day one. Built on OpenClaw, an open architecture designed for personal AI assistants.</p>
-        <div class="sol-meta">Engagement from $2,500</div>
-      </div>
-
-      <div class="personal-feature-image" style="grid-column: span 2; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;">
-        <img src="images/personal.agent.setup.png" alt="Personal AI Agent setup: chat via Telegram, integrated with Gmail and Google Calendar." style="width: 100%; height: auto; display: block;">
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─── CTA ─── -->
-  <section class="solutions-cta">
-    <h2>Not sure where you fit?</h2>
-    <p>Get in touch and we will help you scope the right engagement, whether that is a single conversation, a productized setup, or a multi-month transformation.</p>
-    <a href="index.html#contact" class="solutions-cta-button">Get in touch →</a>
-  </section>
-
-  <!-- ─── FOOTER ─── -->
-  <!-- FOOTER -->
-    <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
-        <div class="footer-tagline">AI Strategy &amp; Engineering</div>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        </div>
-        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
-      </div>
-      <div class="footer-vert-divider"></div>
-      <div class="footer-link-cols">
-        <div class="footer-col">
-          <p class="footer-col-label">Business</p>
-          <ul>
-            <li><a href="../approach.html">Our Approach</a></li>
-            <li><a href="../solutions.html">Business</a></li>
-            <li><a href="../ai-readiness.html">Assessment</a></li>
-            <li><a href="../consumer.html">Consumer AI</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Company</p>
-          <ul>
-            <li><a href="../our-story.html">Our Story</a></li>
-            <li><a href="../team.html">Team</a></li>
-            <li><a href="../blog/index.html">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Resources</p>
-          <ul>
-            <li><a href="../case-studies.html">Case Studies</a></li>
-            <li><a href="../ai-vendor-landscape.html">AI Landscape</a></li>
-            <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Connect</p>
-          <ul>
-            <li><a href="../index.html#contact">Contact</a></li>
-            <li><a href="../faq.html">FAQ</a></li>
-            <li><a href="../privacy.html">Privacy</a></li>
-            <li><a href="../careers.html">Careers</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-  /* Hamburger toggle */
-  (function () {
-    var btn  = document.getElementById('nav-hamburger');
-    var menu = document.getElementById('nav-links-menu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function () {
-      menu.classList.toggle('open');
-    });
-    document.addEventListener('click', function (e) {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('open');
-      }
-    });
-    menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        menu.classList.remove('open');
-      });
-    });
-  })();
-  /* Dropdown toggles */
-  (function () {
-    var allMore = document.querySelectorAll('.nav-more');
-    if (!allMore.length) return;
-    allMore.forEach(function (more) {
-      var btn = more.querySelector('.nav-more-btn');
-      if (!btn) return;
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var isOpen = more.classList.contains('open');
-        allMore.forEach(function (m) { m.classList.remove('open'); });
-        if (!isOpen) { more.classList.add('open'); }
-      });
-      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          more.classList.remove('open');
-        });
-      });
-    });
-    document.addEventListener('click', function (e) {
-      var inAny = false;
-      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
-      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
-    });
-  })();
-  </script>
-  <script src="cookie-banner.js"></script>
-</body>
-</html>
-  </style>
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+</style>
 </head>
 <body>
 
@@ -721,7 +518,7 @@
       <li class="nav-more">
         <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="../solutions.html">Business</a></li>
+          <li><a href="../solutions.html">Solutions</a></li>
           <li><a href="../approach.html">Our Approach</a></li>
         </ul>
       </li>
@@ -757,22 +554,54 @@
   </div>
 
   <footer>
-    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
-    <div class="footer-tagline">AI Strategy & Engineering</div>
-    <ul class="footer-links">
-      <li><a href="../index.html#about">Approach</a></li>
-      <li><a href="../solutions.html">Business</a></li>
-      <li><a href="../case-studies.html">Case Studies</a></li>
-      <li><a href="../index.html#team">Team</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-      <li><a href="../resources.html">Resources</a></li>
-      <li><a href="../careers.html">Careers</a></li>
-      <li><a href="index.html">Blog</a></li>
-      <li><a href="../faq.html">FAQ</a></li>
-      <li><a href="../privacy.html">Privacy</a></li>
-      <li><a href="../consumer.html">Consumer</a></li>
-    </ul>
-    <p class="footer-copy">&copy; 2026 &nbsp;&middot;&nbsp; FutureInSites LLC &nbsp;&middot;&nbsp; New York, NY  &nbsp;&middot;&nbsp; Boston, MA</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="../approach.html">Our Approach</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../ai-readiness.html">Assessment</a></li>
+            <li><a href="../consumer.html">Consumer AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="../our-story.html">Our Story</a></li>
+            <li><a href="../team.html">Team</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Resources</p>
+          <ul>
+            <li><a href="../case-studies.html">Case Studies</a></li>
+            <li><a href="../ai-vendor-landscape.html">AI Landscape</a></li>
+            <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script>
@@ -803,42 +632,17 @@
   </script>
   <script src="../cookie-banner.js"></script>
   <script>
-  /* Hamburger toggle */
-  (function () {
-    var btn  = document.getElementById('nav-hamburger');
-    var menu = document.getElementById('nav-links-menu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function () { menu.classList.toggle('open'); });
-    document.addEventListener('click', function (e) {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) { menu.classList.remove('open'); }
-    });
-    menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { menu.classList.remove('open'); });
-    });
-  })();
-  /* Dropdown toggles */
-  (function () {
-    var allMore = document.querySelectorAll('.nav-more');
-    if (!allMore.length) return;
-    allMore.forEach(function (more) {
-      var btn = more.querySelector('.nav-more-btn');
-      if (!btn) return;
-      btn.addEventListener('click', function (e) {
+    document.querySelectorAll('.nav-more-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
         e.preventDefault();
-        var isOpen = more.classList.contains('open');
-        allMore.forEach(function (m) { m.classList.remove('open'); });
-        if (!isOpen) { more.classList.add('open'); }
-      });
-      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
-        a.addEventListener('click', function () { more.classList.remove('open'); });
+        btn.closest('.nav-more').classList.toggle('open');
       });
     });
-    document.addEventListener('click', function (e) {
-      var inAny = false;
-      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
-      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-more')) {
+        document.querySelectorAll('.nav-more.open').forEach(function(el) { el.classList.remove('open'); });
+      }
     });
-  })();
   </script>
 </body>
 </html>
