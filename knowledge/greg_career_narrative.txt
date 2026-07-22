@@ -1,0 +1,148 @@
+
+
+Career Narrative 
+
+
+
+Leadership Identity Statement
+
+I help organizations turn ambitious ideas into scalable products by aligning technology, data, and marketing functions, leading teams, and building platforms that evolve with the digital ecosystem.
+
+
+
+Career Arc
+
+
+
+
+
+Performance Media, Analytics, and Monetization (Early Career → FreeScholarshipGuide)Built foundation in media buying, performance marketing, and analytics across display, email, and web, with a focus on data-driven optimization and monetization.
+
+
+
+Organizational Growth and Talent Development (InnovationAds → TranscendMedia)Expanded into general management at Nelnet, leading a 50+ person organization and building team structure, talent, and operating discipline, with continued focus on scaling teams and developing leaders through ownerIQ.
+
+
+
+Platform Design, Product Leadership, and AI Systems (ownerIQ → MotiveMetrics)Led platform evolution across identity, attribution, and new channels at ownerIQ, continued through post-acquisition integration at Inmar, and most recently built AI-driven marketing systems at MotiveMetrics spanning ML, LLM workflows, and infrastructure.
+
+
+
+90-Second Career Narrative
+
+Updated 90-Second Career Narrative
+
+I focus on turning ambitious ideas into scalable products by aligning technology, data, and marketing, and by building the teams and operating models required to make those ideas work in practice.
+
+I started in digital marketing, running paid search, affiliate, and lead generation programs. Early on, I became closely involved in how targeting, attribution, and performance systems should work—defining requirements, partnering with engineers, and driving improvements that made campaigns more effective.
+
+
+
+I then founded FreeScholarshipGuide, where I built the business from the ground up—setting up operations, hiring and managing the team, running marketing, and defining product direction. While I didn’t write the platform myself, I led development end-to-end and built a scalable acquisition engine before the company was acquired.
+
+
+
+After that, I moved into larger organizations. At Nelnet, I ran a performance marketing business supporting higher education clients, with P&L responsibility for a $35M revenue line and a 50+ person team. The work focused on driving student acquisition through multi-channel marketing, while building the analytics, lead management, and operational infrastructure needed to scale efficiently.
+
+
+
+A key inflection point came at ownerIQ. I was initially brought in to assess and lead the managed service business, but after evaluating platform performance, I was asked to step into a product leadership role. At that point, I had limited experience with real-time bidding, but ramped quickly and led product across identity resolution, audience targeting, attribution, and expansion into mobile and video.
+
+
+
+That work contributed to capabilities like offline purchase attribution and a retail media audience platform, which became core drivers of growth and part of the reason ownerIQ was acquired by Inmar. After the acquisition, I led the integration of ownerIQ’s platform with Inmar’s couponing, promotions, and customer data systems, bringing together media, identity, and transaction data into a unified platform.
+
+
+
+Alongside that, I’ve been completing my MBA and focusing heavily on AI and machine learning—getting hands-on with Python, modeling, and how these systems translate into real products. That led me to MotiveMetrics, where I joined to help rebuild and scale an AI-driven paid search platform. There, I built and led product, engineering, and data science teams working on machine learning systems, LLM-based workflows, and platform integrations, while also improving reliability and cost efficiency across AWS workflows.
+
+
+
+Across each stage of my career, the consistent pattern has been stepping into moments of change, learning quickly, and building the teams, platforms, and operating structures needed for the next phase of growth.
+
+
+
+30-Second Version
+
+I build marketing and AI platforms by aligning technology, data, and go-to-market, turning ambitious ideas into scalable products.
+
+I started in performance marketing, founded and scaled my own company, and then moved into a GM role at Nelnet running a $35M acquisition business for higher education clients.
+
+A key inflection point came at ownerIQ, where I was asked to move from a delivery role into product leadership based on my platform analysis. That led to work across identity, attribution, and retail media, which became part of the company’s acquisition by Inmar.
+
+Most recently at MotiveMetrics, I’ve led development of AI-driven paid search platforms, combining machine learning and LLM workflows with enterprise marketing systems.
+
+
+
+Leadership Story Map  
+
+FreeScholarshipGuide/Innovation Ads
+
+P&L & Team Ownership - Built and operated a profitable marketing platform with full P&L ownership, making investment decisions across marketing spend and team growth to drive ROI, and later adapting product and business direction following acquisition.
+
+Nelnet
+
+Mentoring and Talent Development – Built and developed teams while mentoring high-potential individuals into senior roles, including Akeel (now Head of Global Growth), and strengthening leadership effectiveness through executive coaching and a focus on continuous learning and leveraging team expertise. 
+
+ownerIQ
+
+Weekend Pacing Algorithms – Identified consistent delivery volatility by day of week and redesigned pacing logic to stabilize spend and improve campaign performance consistency.
+
+In-App Advertising Expansion – Extended platform beyond cookies by integrating device IDs, establishing new SSP partnerships, and supporting dual identity graphs for web and mobile environments.
+
+Video Advertising Expansion – Shifted platform toward premium audience targeting to support higher-CPM video inventory, adding stricter quality controls and improving monetization.
+
+Identity Graph Expansion – Led architecture shift to incorporate CRM data, including both raw and hashed PII and mobile identifiers, enabling cross-device identity resolution and unlocking offline retail attribution tied to real purchase data.
+
+Self-Service Audience Marketplace – Built client-facing interface allowing advertisers to explore, compare, and request audience segments, improving transparency and increasing adoption of retail media data.
+
+MotiveMetrics
+
+Building High-Performance Teams – Built and scaled product and cross-functional teams at ownerIQ and MotiveMetrics, establishing structure, training, and operating rhythms across analytics, engineering, and paid search.
+
+RSA Asset Optimization Algorithm – Proved through controlled experiments that asset-level optimization outperformed full-ad replacement, then built and deployed an algorithm that became a core driver of performance.
+
+LLM Targeting Interaction Model – Defined product approach for LLM-driven workflows using a hybrid model where AI generates recommendations and users review and refine outputs.
+
+ML Infrastructure Efficiency and Workflow Reliability (NEW) – Identified failed AWS processes leaving EC2 instances running unnecessarily; reduced embedding dimensionality without loss of model quality and redesigned pipeline retry and failure handling to lower costs and enable targeted reprocessing.
+
+Conference Demo Failure Recovery – Recovered from a failed live demo during a conference presentation and established a release freeze policy and pre-demo validation process to prevent recurrence.
+
+SOC 2 Compliance – Led company-wide initiative to achieve SOC 2 certification, coordinating across engineering, product, and go-to-market while maintaining roadmap progress.
+
+
+
+Emerging Themes
+
+Platform Builder – Built and evolved marketing and data platforms across multiple industry transitions, from early performance marketing systems to programmatic infrastructure and AI-driven optimization.
+
+Systems Thinker – Works across interconnected systems including identity, targeting, prediction, attribution, and ecosystem integrations, focusing on how decisions in one area impact the entire platform.
+
+Organizational Builder – Repeatedly stepped into environments with limited structure and built teams, functions, and operating models needed to scale.
+
+Talent Developer – Mentored and developed team members who advanced into senior roles across product, growth, and marketing organizations.
+
+Strategic Evolution – Operated at key transition points in the ecosystem, including the shift to programmatic advertising, the expansion into mobile and video, and the emergence of AI-driven marketing systems.
+
+
+
+Leadership Lessons
+
+I balance GTM speed with forward-looking design, shipping early to learn while avoiding dead ends and unnecessary rework for future feature iterations.
+
+Scaling requires operational discipline, not just innovation.
+
+AI products work best when human and machine roles are intentionally designed.
+
+System-level improvements drive more impact than isolated fixes.
+
+I take accountability for outcomes and ensure the team gets credit for success.
+
+Feedback is direct and private; learning and progress are shared.
+
+I lead with curiosity and assume I can learn something from everyone by asking the right questions and creating space for input.
+
+My leadership approach is grounded in patience and empathy, which shapes how I support teams, develop individuals, and navigate challenges.
+
+
+
