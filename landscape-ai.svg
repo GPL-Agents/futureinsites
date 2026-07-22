@@ -6,9 +6,8 @@
   
   <!-- Title area -->
   <g transform="translate(3000, 56)" text-anchor="middle">
-    <text font-size="72" font-weight="800" fill="#FFFFFF" letter-spacing="-1.5">AI Tech Landscape</text>
-    <text y="76" font-size="56" font-weight="400" fill="rgba(255,255,255,0.4)" letter-spacing="0.5">July 2026 Edition</text>
-    <text y="152" font-size="40" font-weight="400" fill="rgba(255,255,255,0.35)" letter-spacing="0.3">14 categories · 238 vendors · Cell area ∝ log(valuation)</text>
+    <text font-size="72" font-weight="800" fill="#FFFFFF" letter-spacing="-1.5">AI Tech Landscape · July 2026 Edition</text>
+    <text y="100" font-size="36" font-weight="500" fill="rgba(255,255,255,0.55)" letter-spacing="0.3">14 categories · 238 vendors · Cell area ∝ log(valuation)</text>
   </g>
   
   <!-- Categories -->
@@ -18,11 +17,11 @@
     <rect x="40" y="2409" width="1589" height="1141" rx="10" fill="rgba(124,58,237,0.15)" stroke="#7C3AED" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="40" y="2409" width="1589" height="64" rx="10" fill="#7C3AED" fill-opacity="0.25"/>
+    <rect x="40" y="2409" width="1589" height="64" rx="10" fill="#7C3AED" fill-opacity="0.35"/>
     <rect x="40" y="2472" width="1589" height="1" fill="#7C3AED" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="54" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#7C3AED" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Frontier Model Labs</text>
+    <text x="54" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Frontier Model Labs</text>
     
     <!-- Vendor count -->
     <text x="1615" y="2441" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">14</text>
@@ -49,11 +48,11 @@
     <rect x="40" y="180" width="1071" height="1041" rx="10" fill="rgba(37,99,235,0.13)" stroke="#2563EB" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="40" y="180" width="1071" height="64" rx="10" fill="#2563EB" fill-opacity="0.25"/>
+    <rect x="40" y="180" width="1071" height="64" rx="10" fill="#2563EB" fill-opacity="0.35"/>
     <rect x="40" y="243" width="1071" height="1" fill="#2563EB" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="54" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#2563EB" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Open-Source &amp;amp; Specialist Models</text>
+    <text x="54" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Open-Source &amp;amp; Specialist Models</text>
     
     <!-- Vendor count -->
     <text x="1097" y="212" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">12</text>
@@ -78,11 +77,11 @@
     <rect x="1643" y="2409" width="1060" height="1141" rx="10" fill="rgba(5,150,105,0.13)" stroke="#059669" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="1643" y="2409" width="1060" height="64" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <rect x="1643" y="2409" width="1060" height="64" rx="10" fill="#059669" fill-opacity="0.35"/>
     <rect x="1643" y="2472" width="1060" height="1" fill="#059669" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="1657" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#059669" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Hyperscaler &amp;amp; Cloud AI Platforms</text>
+    <text x="1657" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Hyperscaler &amp;amp; Cloud AI Platforms</text>
     
     <!-- Vendor count -->
     <text x="2689" y="2441" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">8</text>
@@ -103,11 +102,11 @@
     <rect x="40" y="1237" width="1609" height="1156" rx="10" fill="rgba(217,119,6,0.13)" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="40" y="1237" width="1609" height="64" rx="10" fill="#D97706" fill-opacity="0.25"/>
+    <rect x="40" y="1237" width="1609" height="64" rx="10" fill="#D97706" fill-opacity="0.35"/>
     <rect x="40" y="1300" width="1609" height="1" fill="#D97706" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="54" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#D97706" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Compute, Silicon &amp;amp; Inference</text>
+    <text x="54" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Compute, Silicon &amp;amp; Inference</text>
     
     <!-- Vendor count -->
     <text x="1635" y="1269" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">17</text>
@@ -137,11 +136,11 @@
     <rect x="1663" y="1237" width="1054" height="1156" rx="10" fill="rgba(220,38,38,0.12)" stroke="#DC2626" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="1663" y="1237" width="1054" height="64" rx="10" fill="#DC2626" fill-opacity="0.25"/>
+    <rect x="1663" y="1237" width="1054" height="64" rx="10" fill="#DC2626" fill-opacity="0.35"/>
     <rect x="1663" y="1300" width="1054" height="1" fill="#DC2626" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="1677" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#DC2626" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Data, Vector Stores &amp;amp; ML Ops</text>
+    <text x="1677" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Data, Vector Stores &amp;amp; ML Ops</text>
     
     <!-- Vendor count -->
     <text x="2703" y="1269" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">18</text>
@@ -172,11 +171,11 @@
     <rect x="2731" y="1237" width="1453" height="1156" rx="10" fill="rgba(8,145,178,0.12)" stroke="#0891B2" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="2731" y="1237" width="1453" height="64" rx="10" fill="#0891B2" fill-opacity="0.25"/>
+    <rect x="2731" y="1237" width="1453" height="64" rx="10" fill="#0891B2" fill-opacity="0.35"/>
     <rect x="2731" y="1300" width="1453" height="1" fill="#0891B2" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="2745" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#0891B2" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Enterprise AI &amp;amp; SaaS Platforms</text>
+    <text x="2745" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Enterprise AI &amp;amp; SaaS Platforms</text>
     
     <!-- Vendor count -->
     <text x="4170" y="1269" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">16</text>
@@ -205,11 +204,11 @@
     <rect x="1125" y="180" width="1513" height="1041" rx="10" fill="rgba(124,58,237,0.10)" stroke="#7C3AED" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="1125" y="180" width="1513" height="64" rx="10" fill="#7C3AED" fill-opacity="0.25"/>
+    <rect x="1125" y="180" width="1513" height="64" rx="10" fill="#7C3AED" fill-opacity="0.35"/>
     <rect x="1125" y="243" width="1513" height="1" fill="#7C3AED" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="1139" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#7C3AED" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Developer &amp;amp; Coding AI</text>
+    <text x="1139" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Developer &amp;amp; Coding AI</text>
     
     <!-- Vendor count -->
     <text x="2624" y="212" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">20</text>
@@ -242,11 +241,11 @@
     <rect x="4198" y="1237" width="1028" height="1156" rx="10" fill="rgba(37,99,235,0.10)" stroke="#2563EB" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="4198" y="1237" width="1028" height="64" rx="10" fill="#2563EB" fill-opacity="0.25"/>
+    <rect x="4198" y="1237" width="1028" height="64" rx="10" fill="#2563EB" fill-opacity="0.35"/>
     <rect x="4198" y="1300" width="1028" height="1" fill="#2563EB" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="4212" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#2563EB" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Agents &amp;amp; Workflow Automation</text>
+    <text x="4212" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Agents &amp;amp; Workflow Automation</text>
     
     <!-- Vendor count -->
     <text x="5212" y="1269" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">19</text>
@@ -278,11 +277,11 @@
     <rect x="2717" y="2409" width="627" height="1141" rx="10" fill="rgba(5,150,105,0.10)" stroke="#059669" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="2717" y="2409" width="627" height="64" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <rect x="2717" y="2409" width="627" height="64" rx="10" fill="#059669" fill-opacity="0.35"/>
     <rect x="2717" y="2472" width="627" height="1" fill="#059669" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="2731" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#059669" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Search, Research &amp;amp; Knowledge</text>
+    <text x="2731" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Search, Research &amp;amp; Knowledge</text>
     
     <!-- Vendor count -->
     <text x="3330" y="2441" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">12</text>
@@ -307,11 +306,11 @@
     <rect x="3358" y="2409" width="1559" height="1141" rx="10" fill="rgba(217,119,6,0.10)" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="3358" y="2409" width="1559" height="64" rx="10" fill="#D97706" fill-opacity="0.25"/>
+    <rect x="3358" y="2409" width="1559" height="64" rx="10" fill="#D97706" fill-opacity="0.35"/>
     <rect x="3358" y="2472" width="1559" height="1" fill="#D97706" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="3372" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#D97706" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Image, Video &amp;amp; Audio Generation</text>
+    <text x="3372" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Image, Video &amp;amp; Audio Generation</text>
     
     <!-- Vendor count -->
     <text x="4903" y="2441" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">22</text>
@@ -346,11 +345,11 @@
     <rect x="4930" y="2409" width="1030" height="1141" rx="10" fill="rgba(220,38,38,0.10)" stroke="#DC2626" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="4930" y="2409" width="1030" height="64" rx="10" fill="#DC2626" fill-opacity="0.25"/>
+    <rect x="4930" y="2409" width="1030" height="64" rx="10" fill="#DC2626" fill-opacity="0.35"/>
     <rect x="4930" y="2472" width="1030" height="1" fill="#DC2626" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="4944" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#DC2626" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Productivity &amp;amp; Knowledge Work</text>
+    <text x="4944" y="2441" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Productivity &amp;amp; Knowledge Work</text>
     
     <!-- Vendor count -->
     <text x="5946" y="2441" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">21</text>
@@ -384,11 +383,11 @@
     <rect x="2651" y="180" width="1861" height="1041" rx="10" fill="rgba(8,145,178,0.10)" stroke="#0891B2" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="2651" y="180" width="1861" height="64" rx="10" fill="#0891B2" fill-opacity="0.25"/>
+    <rect x="2651" y="180" width="1861" height="64" rx="10" fill="#0891B2" fill-opacity="0.35"/>
     <rect x="2651" y="243" width="1861" height="1" fill="#0891B2" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="2665" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#0891B2" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Sales, Marketing &amp;amp; Customer Experience</text>
+    <text x="2665" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Sales, Marketing &amp;amp; Customer Experience</text>
     
     <!-- Vendor count -->
     <text x="4498" y="212" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">30</text>
@@ -431,11 +430,11 @@
     <rect x="4526" y="180" width="1434" height="1041" rx="10" fill="rgba(124,58,237,0.08)" stroke="#7C3AED" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="4526" y="180" width="1434" height="64" rx="10" fill="#7C3AED" fill-opacity="0.25"/>
+    <rect x="4526" y="180" width="1434" height="64" rx="10" fill="#7C3AED" fill-opacity="0.35"/>
     <rect x="4526" y="243" width="1434" height="1" fill="#7C3AED" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="4540" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#7C3AED" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Vertical AI: Healthcare, Legal, Finance &amp;amp; HR</text>
+    <text x="4540" y="212" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Vertical AI: Healthcare, Legal, Finance &amp;amp; HR</text>
     
     <!-- Vendor count -->
     <text x="5946" y="212" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">20</text>
@@ -468,11 +467,11 @@
     <rect x="5240" y="1237" width="720" height="1156" rx="10" fill="rgba(37,99,235,0.08)" stroke="#2563EB" stroke-width="2.5" stroke-opacity="0.6"/>
     
     <!-- Category header bar -->
-    <rect x="5240" y="1237" width="720" height="64" rx="10" fill="#2563EB" fill-opacity="0.25"/>
+    <rect x="5240" y="1237" width="720" height="64" rx="10" fill="#2563EB" fill-opacity="0.35"/>
     <rect x="5240" y="1300" width="720" height="1" fill="#2563EB" fill-opacity="0.3"/>
     
     <!-- Category title -->
-    <text x="5254" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#2563EB" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Robotics &amp;amp; Embodied AI</text>
+    <text x="5254" y="1269" dominant-baseline="central" font-size="40" font-weight="700" fill="#FFFFFF" font-family="Manrope, system-ui, sans-serif" letter-spacing="0.3">Robotics &amp;amp; Embodied AI</text>
     
     <!-- Vendor count -->
     <text x="5946" y="1269" dominant-baseline="central" font-size="32" fill="rgba(255,255,255,0.5)" font-family="Manrope, system-ui, sans-serif" text-anchor="end">9</text>
