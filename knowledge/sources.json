@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "index.html",
+    "solutions.html",
+    "approach.html",
+    "our-story.html",
+    "team.html",
+    "careers.html",
+    "resources.html",
+    "case-studies.html",
+    "ai-readiness.html",
+    "faq.html",
+    "ai-vendor-landscape.html",
+    "ai-bolt-ons.html",
+    "ai-tech-landscape.html",
+    "ai-for-executives.html",
+    "building-ai-agents.html",
+    "consumer.html",
+    "job-search-command-center.html",
+    "scoping-ai-engagements.html",
+    "history-of-generative-ai.html",
+    "openclaw-windows-setup.html",
+    "lululemon.html",
+    "alphabet.html",
+    "oracle.html",
+    "tesla.html"
+  ],
+  "blog": ["index.html"],
+  "extra_content_files": []
+}
