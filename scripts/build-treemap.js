@@ -204,11 +204,11 @@ function makeVendorEl(v) {
   let logoEl = '';
   const logoUri = embedLogo(v.logo);
   if (logoUri) {
-    const lw = Math.max(12, Math.min(w - 8, h * 0.55));
+    const lw = Math.min(Math.min(w - 8, h * 0.5), 32);
     const lh = lw;
     const lx = x + (w - lw) / 2;
-    const ly = y + 5;
-    logoEl = `<image x="${lx}" y="${ly}" width="${lw}" height="${lh}" href="${logoUri}" preserveAspectRatio="xMidYMid slice"/>`;
+    const ly = y + 6;
+    logoEl = `<image x="${lx}" y="${ly}" width="${lw}" height="${lh}" href="${logoUri}" preserveAspectRatio="xMidYMid meet"/>`;
   }
 
   // Name label below logo or centered if no logo
