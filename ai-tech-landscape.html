@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Tech Landscape July 2026 | FutureInSites</title>
-  <meta name="description" content="An interactive treemap of 229 AI vendors across 14 categories, sized by company-wide valuation. Download as PDF or zoom for detail." />
+  <meta name="description" content="An interactive treemap of 238 AI vendors across 14 categories, sized by prominence. Click to zoom and scroll to pan." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -467,7 +467,7 @@
 
   <div class="landscape-wrap">
     <figure class="landscape-figure" id="landscape-figure" role="button" tabindex="0" aria-label="Open the landscape at full size">
-      <img src="landscape-ai.svg" alt="AI Tech Landscape July 2026 treemap of 238 vendors across 14 categories" loading="eager">
+      <img src="landscape-ai.svg?v=20260722" alt="AI Tech Landscape July 2026 treemap of 238 vendors across 14 categories" loading="eager">
     </figure>
     <figcaption>Click the landscape to expand. Color-coded by category. Rectangle area = log of company-wide valuation.</figcaption>
   </div>
@@ -558,6 +558,13 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && lb.classList.contains('open')) shut();
       });
+      /* Scroll lightbox with mouse wheel */
+      lb.addEventListener('wheel', function (e) {
+        if (lb.classList.contains('open')) {
+          lb.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
     })();
   </script>
 
