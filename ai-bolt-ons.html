@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -34,88 +34,79 @@
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
-    }
+    }
 
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 3rem;
-      height: 64px;
-      background: rgba(11,12,16,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+/* â”€â”€â”€ PRACTICAL SOLUTIONS â”€â”€â”€ */
+    .prac-section {
+      background: var(--bg-alt);
+      padding: 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
     }
-
-    .nav-wordmark {
-      position: absolute;
-      left: 3rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .prac-inner { max-width: 1300px; margin: 0 auto; }
+    .prac-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
     }
-    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
-    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
-    .nav-wordmark-name {
+    .prac-title {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: #FFFFFF;
-      width: fit-content;
-      align-self: flex-start;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 800;
+      color: var(--dark); letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 0.6rem;
     }
-    .nav-wordmark-name .wm-gradient {
-      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
+    .prac-sub {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.7;
+      margin-bottom: 0.75rem; max-width: 620px;
     }
-    @media (max-width: 640px) {
-      .nav-wordmark-name { font-size: 1.25rem;
+    .prac-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
+    @media (max-width: 860px) { .prac-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .prac-grid { grid-template-columns: 1fr; } }
+
+    .prac-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
-    .nav-wordmark-tagline {
-      font-size: 0.88rem;
-      font-weight: 400;
-      color: #FFFFFF;
-      letter-spacing: 0.005em;
-      line-height: 1.2;
-      margin-top: 3px;
+    .prac-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .prac-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .prac-icon--blue  { background: #EFF6FF; color: #2563EB; }
+    .prac-icon--teal  { background: #ECFEFF; color: #0891B2; }
+    .prac-icon--green { background: #F0FDF4; color: #16A34A; }
+    .prac-icon--orange{ background: #FFF7ED; color: #EA580C; }
+
+    .prac-card-title {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--dark); line-height: 1.3;
+    }
+    .prac-card-desc {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.65; flex: 1;
+    }
+    .prac-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto;
+    }
+    .prac-tag {
+      font-size: 0.72rem; font-weight: 500; color: #4B5563;
+      background: #F1F5F9; border: 1px solid #E2E8F0;
+      border-radius: 100px; padding: 0.2rem 0.65rem;
       white-space: nowrap;
     }
-    @media (max-width: 640px) {
-      .nav-wordmark-tagline { font-size: 0.68rem; }
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
-    .nav-cta {
-      position: absolute;
-      right: 3rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #FFFFFF;
-      background: var(--accent);
-      text-decoration: none;
-      padding: 0.5rem 1.3rem;
-      border-radius: 100px;
-      transition: opacity 0.2s;
-    }
-    .nav-cta:hover { opacity: 0.85; }
+    .prac-
 
     /* PAGE HEADER */
     .page-header {
@@ -2002,5 +1993,33 @@
       if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
     });
   })();
-  </script></body>
+  </script>
+<script>
+  /* Dropdown toggles */
+  (function () {
+    var dropdowns = document.querySelectorAll('.nav-more-btn');
+    dropdowns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var parent = btn.closest('.nav-more');
+        if (parent) parent.classList.toggle('open');
+      });
+    });
+    /* Hamburger */
+    var ham = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (ham && menu) {
+      ham.addEventListener('click', function () {
+        menu.classList.toggle('open');
+      });
+    }
+    /* Close dropdowns on outside click */
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-more')) {
+        document.querySelectorAll('.nav-more.open').forEach(function (m) { m.classList.remove('open'); });
+      }
+    });
+  })();
+</script>
+</body>
 </html>
