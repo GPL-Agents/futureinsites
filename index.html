@@ -126,6 +126,7 @@
 
     .nav-links a:hover { color: #0F172A; }
     .nav-links a.active { color: #0F172A; font-weight: 700; }
+    .nav-cta-mobile { display: none; }
 
     .nav-cta {
       position: absolute;
@@ -1819,6 +1820,7 @@
     @media (max-width: 640px) {
       nav { padding: 0 1.5rem; }
       .nav-hamburger { display: flex; }
+      .nav-cta { display: none; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
@@ -1845,6 +1847,7 @@
         text-decoration: none;
       }
       .nav-links.open li:last-child a { border-bottom: none; }
+      .nav-links.open .nav-cta-mobile { display: block; margin-top: 0.5rem; }
       .solutions-grid { grid-template-columns: 1fr; }
       .contact-card { padding: 2.5rem 1.5rem; border-radius: 12px; }
       .hero-tagline { font-size: clamp(1.4rem, 6.5vw, 2.2rem); }
@@ -2136,6 +2139,7 @@
           <li><a href="careers.html">Careers</a></li>
         </ul>
       </li>
+      <li class="nav-cta-mobile"><a href="contact.html">Contact</a></li>
     </ul>
     <a href="contact.html" class="nav-cta">Contact</a>
   </nav>
