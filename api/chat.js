@@ -2,24 +2,33 @@
  * api/chat.js -- FutureInSites AI Chatbot (Vercel serverless)
  *
  * RAG over pre-indexed site content via Gemini.
- * Env: GEMINI_API_KEY (required)
- *       Knowledge embeddings loaded from ../knowledge/embeddings.json at cold start.
+ * Env: GEMINI_API_KEY or GOOGLE_API_KEY (required)
  */
 
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
 const path = require('path');
 
-// ─── Load knowledge at cold start ───
+// ─── Find & load knowledge JSON (try multiple paths) ───
 let knowledge = null;
 function loadKnowledge() {
   if (knowledge) return knowledge;
-  const kp = path.join(process.cwd(), 'knowledge', 'embeddings.json');
-  if (!fs.existsSync(kp)) {
-    throw new Error('Knowledge file not found at knowledge/embeddings.json');
+
+  const candidates = [
+    path.join(__dirname, 'embeddings.json'),
+    path.join(process.cwd(), 'knowledge', 'embeddings.json'),
+    path.join(process.cwd(), 'api', 'embeddings.json'),
+  ];
+
+  for (const kp of candidates) {
+    if (fs.existsSync(kp)) {
+      console.log('Loading knowledge from:', kp);
+      knowledge = JSON.parse(fs.readFileSync(kp, 'utf-8'));
+      return knowledge;
+    }
   }
-  knowledge = JSON.parse(fs.readFileSync(kp, 'utf-8'));
-  return knowledge;
+
+  throw new Error('embeddings.json not found in any expected location');
 }
 
 // ─── Cosine similarity ───
@@ -91,9 +100,14 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY);
+    const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ error: 'API key not configured (GEMINI_API_KEY or GOOGLE_API_KEY)' });
+    }
+
+    const genAI = new GoogleGenerativeAI(apiKey);
     const kb = loadKnowledge();
-    const embedModelName = kb.model || 'text-embedding-004';
+    const embedModelName = kb.model || 'gemini-embedding-2';
     const chatModelName = kb.chat_model || 'gemini-2.5-flash';
 
     // 1. Embed query
@@ -105,10 +119,8 @@ module.exports = async (req, res) => {
 
     // 3. Build messages
     const messages = [];
-    if (SYSTEM_PROMPT) {
-      messages.push({ role: 'user', parts: [{ text: SYSTEM_PROMPT }] });
-      messages.push({ role: 'model', parts: [{ text: 'Understood. I will answer questions based only on the context provided.' }] });
-    }
+    messages.push({ role: 'user', parts: [{ text: SYSTEM_PROMPT }] });
+    messages.push({ role: 'model', parts: [{ text: 'Understood. I will answer questions based only on the context provided.' }] });
     if (Array.isArray(history)) {
       for (const h of history) {
         if (h.role === 'user' || h.role === 'model') {
@@ -117,7 +129,6 @@ module.exports = async (req, res) => {
       }
     }
 
-    // If context was found, prepend it
     let userPrompt = message;
     if (context) {
       userPrompt = `Context from FutureInSites website:\n\n${context}\n\n---\n\nQuestion: ${message}`;
@@ -139,7 +150,7 @@ module.exports = async (req, res) => {
       }
     }
 
-    // Append source citations as a final data event
+    // Source citations
     const sources = topChunks
       .filter(c => c.score > 0.3 && c.url)
       .map(c => ({ url: c.url, title: c.title || c.source }));
@@ -151,7 +162,7 @@ module.exports = async (req, res) => {
     res.write('data: [DONE]\n\n');
     res.end();
   } catch (err) {
-    console.error('/api/chat error:', err);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('/api/chat error:', err.message);
+    res.status(500).json({ error: err.message || 'Internal server error' });
   }
 };
