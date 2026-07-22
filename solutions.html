@@ -475,39 +475,6 @@
     <p>FutureInSites works with small and medium businesses, professional offices, and individuals who want AI working for them without needing a technical team to make it happen.</p>
   </header>
 
-  <!-- ─── INDIVIDUALS ─── -->
-  <section class="segment" id="individuals">
-    <div class="segment-label">Individuals</div>
-    <h2 class="segment-title">A personal AI built for the life you actually run</h2>
-    <p class="segment-intro">For individuals managing multiple business interests, investment portfolios, family obligations, philanthropic commitments, and international travel, the complexity of your life doesn't fit neatly into any one app. FutureInSites builds a custom AI infrastructure that works across all of it: scheduling across time zones, briefing you before meetings, tracking commitments across your business and personal worlds, and handling the administrative layer that consumes time you cannot afford to lose. Built on hardware you own, with no dependency on a third-party platform. Think of it as a chief of staff that never sleeps and never forgets.</p>
-
-    <div class="solutions-grid">
-
-      <div class="solution-card">
-        <div class="sol-header">
-          <div class="sol-icon" aria-hidden="true">
-            <!-- Personal agent: silhouette + node -->
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="11" r="4"/>
-              <path d="M4 27 Q 4 19, 12 19 Q 20 19, 20 27"/>
-              <circle cx="24" cy="9" r="3.5" fill="currentColor" stroke="none"/>
-              <line x1="17" y1="10" x2="20.7" y2="9.5"/>
-            </svg>
-          </div>
-          <div class="sol-rule"></div>
-        </div>
-        <h3>Personal AI Agent Setup</h3>
-        <p>A fully configured personal AI agent you can reach anytime via Telegram. No app to learn, no UI to manage — just message it like you would a person. Tuned to your workflow and connected to Gmail, Google Calendar, and your existing tools. Includes agent personality tuning, integration setup, and a training session so you can get the most out of it from day one. Built on OpenClaw, an open architecture designed for personal AI assistants.</p>
-        <div class="sol-meta">Engagement from $2,500</div>
-      </div>
-
-      <div class="personal-feature-image" style="grid-column: span 2; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;">
-        <img src="images/personal.agent.setup.png" alt="Personal AI Agent setup: chat via Telegram, integrated with Gmail and Google Calendar." style="width: 100%; height: auto; display: block;">
-      </div>
-
-    </div>
-  </section>
-
   <!-- ─── SMBs ─── -->
   <section class="segment" id="smb">
     <div class="segment-label">Small &amp; Medium Businesses</div>
@@ -713,6 +680,39 @@
     </div>
   </section>
 
+  <!-- ─── INDIVIDUALS ─── -->
+  <section class="segment" id="individuals">
+    <div class="segment-label">Individuals</div>
+    <h2 class="segment-title">A personal AI built for the life you actually run</h2>
+    <p class="segment-intro">For individuals managing multiple business interests, investment portfolios, family obligations, philanthropic commitments, and international travel, the complexity of your life doesn't fit neatly into any one app. FutureInSites builds a custom AI infrastructure that works across all of it: scheduling across time zones, briefing you before meetings, tracking commitments across your business and personal worlds, and handling the administrative layer that consumes time you cannot afford to lose. Built on hardware you own, with no dependency on a third-party platform. Think of it as a chief of staff that never sleeps and never forgets.</p>
+
+    <div class="solutions-grid">
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <!-- Personal agent: silhouette + node -->
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="11" r="4"/>
+              <path d="M4 27 Q 4 19, 12 19 Q 20 19, 20 27"/>
+              <circle cx="24" cy="9" r="3.5" fill="currentColor" stroke="none"/>
+              <line x1="17" y1="10" x2="20.7" y2="9.5"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>Personal AI Agent Setup</h3>
+        <p>A fully configured personal AI agent you can reach anytime via Telegram. No app to learn, no UI to manage — just message it like you would a person. Tuned to your workflow and connected to Gmail, Google Calendar, and your existing tools. Includes agent personality tuning, integration setup, and a training session so you can get the most out of it from day one. Built on OpenClaw, an open architecture designed for personal AI assistants.</p>
+        <div class="sol-meta">Engagement from $2,500</div>
+      </div>
+
+      <div class="personal-feature-image" style="grid-column: span 2; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;">
+        <img src="images/personal.agent.setup.png" alt="Personal AI Agent setup: chat via Telegram, integrated with Gmail and Google Calendar." style="width: 100%; height: auto; display: block;">
+      </div>
+
+    </div>
+  </section>
+
   <!-- ─── CTA ─── -->
   <section class="solutions-cta">
     <h2>Not sure where you fit?</h2>
@@ -767,6 +767,52 @@
     </div>
   </footer>
 
+  <script>
+  /* Hamburger toggle */
+  (function () {
+    var btn  = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      menu.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+      });
+    });
+  })();
+  /* Dropdown toggles */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
   <script src="cookie-banner.js"></script>
 </body>
 </html>
