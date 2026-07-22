@@ -204,10 +204,10 @@ function makeVendorEl(v) {
   let logoEl = '';
   const logoUri = embedLogo(v.logo);
   if (logoUri) {
-    const lw = Math.min(Math.min(w - 8, h * 0.5), 32);
+    const lw = Math.max(8, Math.min(w - 8, h - 18));
     const lh = lw;
     const lx = x + (w - lw) / 2;
-    const ly = y + 6;
+    const ly = y + (h - 18 - lw) / 2;
     logoEl = `<image x="${lx}" y="${ly}" width="${lw}" height="${lh}" href="${logoUri}" preserveAspectRatio="xMidYMid meet"/>`;
   }
 
