@@ -617,6 +617,11 @@
 
     @media (max-width: 640px) { .bottom-banner-inner { grid-template-columns: 1fr; } }
 
+    /* Research bridge cards responsive */
+    @media (max-width: 860px) {
+      #research-card-grid { grid-template-columns: 1fr !important; }
+    }
+
     .bottom-banner-col {
       display: flex;
       align-items: center;
@@ -2204,7 +2209,7 @@
         <div class="process-ri-card-body">
           <h3>Research &amp; Insights</h3>
           <p>Straightforward perspectives on AI in small and mid-size businesses.</p>
-          <a href="resources.html" class="process-ri-cta">Explore insights</a>
+          <a href="resources.html" class="process-ri-cta">Explore Resources</a>
         </div>
         <picture>
           <img src="images/research-insights-doorway.png" alt="" class="process-ri-img" loading="lazy">
@@ -2365,7 +2370,7 @@
   <!-- ASSESSMENT CTA BLOCK -->
   <section id="assessment-cta" style="background:#EEF5FC; padding:48px 2rem;">
     <div style="max-width:700px; margin:0 auto; text-align:center;">
-      <p style="font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#007FAF; margin-bottom:1.2rem;">Free Assessment</p>
+      <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#2563EB; margin-bottom:1.2rem;">Free Assessment</p>
       <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:#0B2A56; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; text-wrap:balance;">Find Out Where AI Could Help Your Business Most</h2>
       <p style="font-size:0.97rem; color:#4B5563; line-height:1.75; max-width:580px; margin:0 auto 2rem;">Not sure where to start with AI? Take our free 5-minute assessment and leave with three specific opportunity areas, a readiness score, and a recommended first step &#8212; no jargon, no sales pitch.</p>
       <a href="/ai-readiness.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.92rem; font-weight:700; color:#FFFFFF; background:#1769E0; text-decoration:none; padding:0.9rem 2.2rem; border-radius:100px; transition:background 0.2s, transform 0.2s;" onmouseover="this.style.background='#0F56C5'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='#1769E0'; this.style.transform='translateY(0)';">Find your best starting point &rarr;</a>
@@ -2373,18 +2378,88 @@
   </section>
 
   <!-- RESEARCH BRIDGE BLOCK -->
-  <section style="background:#FDF6EE; padding:32px 2rem; border-top:1px solid #EDE5D8; border-bottom:1px solid #EDE5D8;">
-    <div style="max-width:640px; margin:0 auto; text-align:center;">
-      <p style="font-size:1rem; font-weight:700; color:#0B2A56; letter-spacing:-0.01em; margin-bottom:0.5rem;">Here for the research?</p>
-      <p style="font-size:0.92rem; color:#4B5563; line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
-      <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:#1769E0; text-decoration:none; border-bottom:1px solid rgba(23,105,224,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(23,105,224,0.7)';" onmouseout="this.style.borderColor='rgba(23,105,224,0.3)';">Explore Research &amp; Insights &rarr;</a>
+  <section style="background:#FDF6EE; padding:48px 2rem 56px; border-top:1px solid #EDE5D8; border-bottom:1px solid #EDE5D8;">
+    <div style="max-width:1160px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <p style="font-size:1rem; font-weight:700; color:#0B2A56; letter-spacing:-0.01em; margin-bottom:0.5rem;">Here for the research?</p>
+        <p style="font-size:0.92rem; color:#4B5563; line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
+        <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:#1769E0; text-decoration:none; border-bottom:1px solid rgba(23,105,224,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(23,105,224,0.7)';" onmouseout="this.style.borderColor='rgba(23,105,224,0.3)';">Explore AI Guides, Research &amp; Insights &rarr;</a>
+      </div>
+      <!-- 3-card grid -->
+      <div id="research-card-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem;">
+
+        <!-- Card 1: Latest blog post (JS-loaded) -->
+        <a id="research-blog-card" href="resources.html" style="display:flex; flex-direction:column; background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; overflow:hidden; text-decoration:none; transition:box-shadow 0.2s, transform 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(11,42,86,0.10)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';">
+          <div style="width:100%; aspect-ratio:16/9; overflow:hidden; background:#E5E7EB;">
+            <img id="research-blog-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div style="padding:1.25rem 1.25rem 1.5rem; flex:1; display:flex; flex-direction:column;">
+            <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0; margin-bottom:0.5rem;">Latest Post</p>
+            <p id="research-blog-title" style="font-size:0.97rem; font-weight:700; color:#0B2A56; line-height:1.35; margin-bottom:0.6rem; flex:1;"></p>
+            <p id="research-blog-excerpt" style="font-size:0.84rem; color:#4B5563; line-height:1.6; margin-bottom:1rem; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;"></p>
+            <span style="font-size:0.82rem; font-weight:600; color:#1769E0;">Read more &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Card 2: AI Vendor Landscape -->
+        <a href="ai-vendor-landscape.html" style="display:flex; flex-direction:column; background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; overflow:hidden; text-decoration:none; transition:box-shadow 0.2s, transform 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(11,42,86,0.10)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';">
+          <div style="width:100%; aspect-ratio:16/9; overflow:hidden; background:#E5E7EB;">
+            <img src="images/landscape-ai-thumb.png" alt="AI Vendor Landscape" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div style="padding:1.25rem 1.25rem 1.5rem; flex:1; display:flex; flex-direction:column;">
+            <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0; margin-bottom:0.5rem;">Reference Guide</p>
+            <p style="font-size:0.97rem; font-weight:700; color:#0B2A56; line-height:1.35; margin-bottom:0.6rem; flex:1;">The AI Vendor Landscape</p>
+            <p style="font-size:0.84rem; color:#4B5563; line-height:1.6; margin-bottom:1rem;">A categorized reference of AI companies, from frontier model labs to applied AI software. Built for executives evaluating where to invest, partner, or build.</p>
+            <span style="font-size:0.82rem; font-weight:600; color:#1769E0;">Explore the landscape &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Card 3: AI Bolt-Ons -->
+        <a href="ai-bolt-ons.html" style="display:flex; flex-direction:column; background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; overflow:hidden; text-decoration:none; transition:box-shadow 0.2s, transform 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(11,42,86,0.10)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';">
+          <div style="width:100%; aspect-ratio:16/9; overflow:hidden; background:#E5E7EB;">
+            <img src="images/ai-bolt-ons-thumb.jpg" alt="AI Bolt-Ons" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div style="padding:1.25rem 1.25rem 1.5rem; flex:1; display:flex; flex-direction:column;">
+            <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0; margin-bottom:0.5rem;">Reference Guide</p>
+            <p style="font-size:0.97rem; font-weight:700; color:#0B2A56; line-height:1.35; margin-bottom:0.6rem; flex:1;">AI Bolt-Ons</p>
+            <p style="font-size:0.84rem; color:#4B5563; line-height:1.6; margin-bottom:1rem;">A reference index of plugins, skills, MCP connectors, and browser agents you can install on top of your AI platform.</p>
+            <span style="font-size:0.82rem; font-weight:600; color:#1769E0;">Browse the index &rarr;</span>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
+
+  <script>
+  /* Auto-load latest blog post into research card */
+  (function () {
+    fetch('blog/manifest.json')
+      .then(function (r) { return r.json(); })
+      .then(function (posts) {
+        if (!posts || !posts.length) return;
+        var post = posts[0];
+        var card = document.getElementById('research-blog-card');
+        var img  = document.getElementById('research-blog-img');
+        var title = document.getElementById('research-blog-title');
+        var excerpt = document.getElementById('research-blog-excerpt');
+        if (!card || !img || !title || !excerpt) return;
+        card.href = 'blog/' + post.slug + '.html';
+        if (post.image) {
+          img.src = 'blog/' + post.image;
+          img.alt = post.title || '';
+        }
+        title.textContent = post.title || '';
+        excerpt.textContent = post.excerpt || '';
+      })
+      .catch(function () { /* fail silently — card stays as link to resources */ });
+  })();
+  </script>
 
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <div class="contact-card">
-      <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#007FAF; margin-bottom:1rem;">Contact Us</p>
+      <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#2563EB; margin-bottom:1rem;">Contact Us</p>
       <h2>Not sure where to start? That&#8217;s exactly what we&#8217;re here for.</h2>
       <p>Tell us what is taking too much time, where work is getting stuck, or what you would like your business to do better. You do not need to know which technology or AI tool you need before reaching out.</p>
       <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
