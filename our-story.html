@@ -630,6 +630,19 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     }
 
+    /* Photo column nudged down to align with heading */
+    .founder-photo-col { padding-top: 1.75rem; }
+
+    /* Full-width prose below the 2-col intro grid */
+    .founder-prose-full {
+      margin-top: 1.75rem;
+    }
+    .founder-prose-full p { margin-bottom: 1rem; }
+
+    @media (max-width: 720px) {
+      .founder-photo-col { padding-top: 0; }
+    }
+
     /* FAMILY PHOTO */
     .family-photo-wrap {
       float: right;
@@ -919,13 +932,6 @@
           <p class="section-label">The beginning</p>
           <h2>I have always been a builder</h2>
           <p>In high school and college, I framed houses. There was something deeply satisfying about starting with an architect's design and gradually watching it become real. A foundation became a frame. A drawing became rooms, walls, and a roof. Eventually, it became a place where people would live.</p>
-          <p>I loved the physical work, but what stayed with me was the experience of bringing an idea to life and knowing that what we built would be useful to someone.</p>
-          <div class="pull-quote">
-            I still build today. The materials have changed.
-          </div>
-          <p>Instead of lumber and plans, I work with technology, data, products, business processes, and people. I help architect systems, assemble the right capabilities, and guide the work from an initial idea to something operating in the real world.</p>
-          <p>The satisfaction is still the same. It comes from seeing a design become functional, watching people begin to use it, and knowing that something we built has made a meaningful difference.</p>
-          <p>That instinct has shaped my entire career and is the reason I founded FutureInSites.</p>
         </div>
         <div class="founder-photo-col">
           <picture>
@@ -940,6 +946,15 @@
             >
           </picture>
         </div>
+      </div>
+      <div class="founder-prose-full">
+        <p>I loved the physical work, but what stayed with me was the experience of bringing an idea to life and knowing that what we built would be useful to someone.</p>
+        <div class="pull-quote">
+          I still build today. The materials have changed.
+        </div>
+        <p>Instead of lumber and plans, I work with technology, data, products, business processes, and people. I help architect systems, assemble the right capabilities, and guide the work from an initial idea to something operating in the real world.</p>
+        <p>The satisfaction is still the same. It comes from seeing a design become functional, watching people begin to use it, and knowing that something we built has made a meaningful difference.</p>
+        <p>That instinct has shaped my entire career and is the reason I founded FutureInSites.</p>
       </div>
     </div>
   </section>
