@@ -1021,63 +1021,27 @@
     }
   
 
-    /* ─── ARCHIVE STRIP ─── */
-    .arch-strip {
-      background: var(--dark2);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 0.75rem 2rem;
+    
+    .arch-links a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      transition: color 0.15s, border-color 0.15s;
     }
-    .arch-strip-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .arch-current {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.85);
-    }
-    .arch-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #10B981;
-      flex-shrink: 0;
-    }
-    .arch-label {
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: 0.62rem;
-      color: rgba(255,255,255,0.5);
-    }
-    .arch-version {
-      font-weight: 700;
+    .arch-links a:hover {
       color: var(--cyan);
+      border-color: var(--cyan);
     }
-    .arch-past {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
+    @media (max-width: 640px) {
+      .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
-    .arch-prev-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      font-weight: 500;
-    }
-    .arch-links {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
+  
+
+    
     .arch-links a {
       font-size: 0.72rem;
       font-weight: 600;
@@ -1298,15 +1262,7 @@
   </div>
 
 
-  <div class="arch-strip">
-    <div class="arch-strip-inner">
-      <div class="arch-current">
-        <span class="arch-dot"></span>
-        <span class="arch-label">Current Edition</span>
-        <span class="arch-version">July 2026</span>
-      </div>
-      
-    </div>
+  
   </div>
 
 
@@ -1362,6 +1318,7 @@
     <!-- ─── FRONTIER MODELS ─── -->
     
     <!-- ─── FRONTIER MODEL LABS ─── -->
+    
     
     
     
