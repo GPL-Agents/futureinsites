@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -36,76 +36,86 @@
       overflow-x: hidden;
     }
 
-/* â”€â”€â”€ PRACTICAL SOLUTIONS â”€â”€â”€ */
-    .prac-section {
-      background: var(--bg-alt);
-      padding: 2.5rem 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .prac-inner { max-width: 1300px; margin: 0 auto; }
-    .prac-eyebrow {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
-    }
-    .prac-title {
-      font-family: 'Manrope', system-ui, sans-serif;
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 800;
-      color: var(--dark); letter-spacing: -0.03em; line-height: 1.15;
-      margin-bottom: 0.6rem;
-    }
-    .prac-sub {
-      font-size: 0.95rem; color: var(--muted); line-height: 1.7;
-      margin-bottom: 0.75rem; max-width: 620px;
-    }
-    .prac-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    @media (max-width: 860px) { .prac-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .prac-grid { grid-template-columns: 1fr; } }
-
-    .prac-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .prac-card-top {
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .prac-icon {
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .prac-icon--blue  { background: #EFF6FF; color: #2563EB; }
-    .prac-icon--teal  { background: #ECFEFF; color: #0891B2; }
-    .prac-icon--green { background: #F0FDF4; color: #16A34A; }
-    .prac-icon--orange{ background: #FFF7ED; color: #EA580C; }
 
-    .prac-card-title {
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 0.95rem; font-weight: 700; color: var(--dark); line-height: 1.3;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
     }
-    .prac-card-desc {
-      font-size: 0.82rem; color: var(--muted); line-height: 1.65; flex: 1;
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
-    .prac-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto;
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem;
     }
-    .prac-tag {
-      font-size: 0.72rem; font-weight: 500; color: #4B5563;
-      background: #F1F5F9; border: 1px solid #E2E8F0;
-      border-radius: 100px; padding: 0.2rem 0.65rem;
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
       white-space: nowrap;
     }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
 
     /* PAGE HEADER */
     .page-header {
@@ -654,38 +664,23 @@
 
     /* FOOTER */
     footer {
-      background: #FFFFFF;
-      border-top: 1px solid #DCE5F0;
-      padding: 56px 5% 24px;
-    }
-    .footer-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 220px 1px 1fr;
-      gap: 0 3rem;
-      align-items: start;
-    }
-    .footer-brand {}
-    .footer-vert-divider {
-      background: #DCE5F0;
-      align-self: stretch;
-    }
-    .footer-link-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 0 2rem;
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
     }
     .footer-wordmark {
       font-family: 'Manrope', system-ui, sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.1rem;
       font-weight: 800;
       letter-spacing: -0.025em;
       line-height: 1.1;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
       display: inline-block;
-      text-decoration: none;
-      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -693,44 +688,28 @@
     }
     .footer-tagline {
       font-size: 0.72rem;
-      color: #64748B;
-      margin-bottom: 1.5rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
       letter-spacing: 0.06em;
     }
-    .footer-social {
+    .footer-links {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
-    .footer-social a { color: #64748B; display: inline-flex; transition: color 0.2s; }
-    .footer-social a:hover { color: #1769E0; }
-    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
-    .footer-copy { font-size: 0.68rem; color: #64748B; line-height: 1.7; }
-    .footer-col-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #1769E0;
-      margin-bottom: 0.85rem;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.55rem; }
-    .footer-col ul a {
-      color: #0B234A;
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
-    .footer-col ul a:hover { color: #1769E0; }
-    @media (max-width: 760px) {
-      .footer-inner { grid-template-columns: 1fr; gap: 0; }
-      .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
-      .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
-    }
-    @media (max-width: 480px) {
-      .footer-link-cols { grid-template-columns: 1fr 1fr; }
-    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
 
     /* RESPONSIVE */
     @media (max-width: 760px) {
@@ -1001,7 +980,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <style id="fis-global-header-v2">
+  <style id="fis-homepage-header">
     nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
     .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
     .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
@@ -1062,11 +1041,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
           <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -1684,54 +1663,23 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-wordmark">FutureInSites</a>
-        <div class="footer-tagline">AI Strategy &amp; Engineering</div>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        </div>
-        <p class="footer-copy">© 2026 FutureInSites LLC<br>New York, NY &nbsp;·&nbsp; Boston, MA</p>
-      </div>
-      <div class="footer-vert-divider"></div>
-      <div class="footer-link-cols">
-        <div class="footer-col">
-          <p class="footer-col-label">Business</p>
-          <ul>
-            <li><a href="approach.html">Our Approach</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="ai-readiness.html">Assessment</a></li>
-            <li><a href="consumer.html">Consumer AI</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Company</p>
-          <ul>
-            <li><a href="our-story.html">Our Story</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="blog/index.html">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Resources</p>
-          <ul>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="ai-vendor-landscape.html">AI Landscape</a></li>
-            <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-label">Connect</p>
-          <ul>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="consumer.html">Consumer</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Boston, MA</p>
   </footer>
 
   <script>
@@ -1992,33 +1940,5 @@
       if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
     });
   })();
-  </script>
-<script>
-  /* Dropdown toggles */
-  (function () {
-    var dropdowns = document.querySelectorAll('.nav-more-btn');
-    dropdowns.forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var parent = btn.closest('.nav-more');
-        if (parent) parent.classList.toggle('open');
-      });
-    });
-    /* Hamburger */
-    var ham = document.getElementById('nav-hamburger');
-    var menu = document.getElementById('nav-links-menu');
-    if (ham && menu) {
-      ham.addEventListener('click', function () {
-        menu.classList.toggle('open');
-      });
-    }
-    /* Close dropdowns on outside click */
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.nav-more')) {
-        document.querySelectorAll('.nav-more.open').forEach(function (m) { m.classList.remove('open'); });
-      }
-    });
-  })();
-</script>
-</body>
+  </script></body>
 </html>
