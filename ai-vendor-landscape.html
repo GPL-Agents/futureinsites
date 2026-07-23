@@ -1076,6 +1076,12 @@
       .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
     }
   </style><style id="fis-light-page-intro">.page-header{background:#fff!important;color:#0f172a!important;border-bottom:1px solid #e2e8f0!important}.page-header h1{color:#0f172a!important}.page-header p,.page-header .back-link,.page-header .eyebrow{color:#475569!important}
+
+    @media (max-width: 640px) {
+      .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  
+
     /* ─── ARCHIVE STRIP ─── */
     .arch-strip {
       background: var(--dark2);
@@ -1302,6 +1308,7 @@
     
     
     
+    
     <section class="category" id="frontier">
       <div class="category-header">
         <span class="category-label">01</span>
@@ -1345,7 +1352,7 @@
           </div>
         </a>
         <a href="https://mistral.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/mistral-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">M</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Mistral AI</div><div class="vendor-domain">mistral.ai</div></div>
             <p>Paris-based lab producing both open-weight and frontier-tier models with a strong focus on European data sovereignty.</p>
@@ -1373,7 +1380,7 @@
           </div>
         </a>
         <a href="https://www.inflection.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/inflection-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">I</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Inflection AI</div><div class="vendor-domain">inflection.ai</div></div>
             <p>Pivoted to enterprise after its commercial team joined Microsoft. Now offers Inflection-tuned models for regulated workloads.</p>
@@ -1521,7 +1528,7 @@
           </div>
         </a>
         <a href="https://azure.microsoft.com/products/ai-services" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/microsoft-azure-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">M</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Microsoft Azure AI</div><div class="vendor-domain">azure.microsoft.com</div></div>
             <p>Azure OpenAI Service, Azure AI Foundry, and Copilot Studio. The default enterprise on-ramp for OpenAI models.</p>
@@ -1549,7 +1556,7 @@
           </div>
         </a>
         <a href="https://www.alibabacloud.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/alibaba-cloud.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">A</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Alibaba Cloud</div><div class="vendor-domain">alibabacloud.com</div></div>
             <p>The leading non-US hyperscaler in many APAC markets, with deep integration into the Qwen model family.</p>
@@ -1588,7 +1595,7 @@
           </div>
         </a>
         <a href="https://www.amd.com" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-logo vendor-logo-fallback">A</div>
+          <img src="images/vendor-logos/amd.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">AMD</div><div class="vendor-domain">amd.com</div></div>
             <p>The Instinct MI300/MI350/MI400 GPU line plus ROCm software. The credible second source named in most major AI build-outs.</p>
@@ -1693,7 +1700,7 @@
           </div>
         </a>
         <a href="https://www.etched.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/etched.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">E</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Etched</div><div class="vendor-domain">etched.com</div></div>
             <p>Transformer-specific ASIC (Sohu) burning the architecture into silicon for an order-of-magnitude inference speedup.</p>
@@ -1876,14 +1883,14 @@
           </div>
         </a>
         <a href="https://www.sap.com/products/artificial-intelligence" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/sap-joule.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">S</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">SAP Joule</div><div class="vendor-domain">sap.com</div></div>
             <p>SAP's AI copilot and generative AI hub embedded across S/4HANA, Ariba, and SuccessFactors.</p>
           </div>
         </a>
         <a href="https://c3.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/c3-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">C</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">C3.ai</div><div class="vendor-domain">c3.ai</div></div>
             <p>Application-layer enterprise AI focused on industrial, energy, defense, and government use cases.</p>
@@ -2013,7 +2020,7 @@
           </div>
         </a>
         <a href="https://replit.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/replit-agent.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">R</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Replit Agent</div><div class="vendor-domain">replit.com</div></div>
             <p>Browser-native development environment with an autonomous agent that can stand up full applications from a prompt.</p>
@@ -2273,14 +2280,14 @@
           </div>
         </a>
         <a href="https://you.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/you-com.png" alt="" class="vendor-logo" loading="lazy">
+          <img src="images/vendor-logos/you-com.jpg" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">You.com</div><div class="vendor-domain">you.com</div></div>
             <p>AI search with consumer and enterprise products, plus an API for retrieval-grounded generation.</p>
           </div>
         </a>
         <a href="https://exa.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/exa.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">E</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Exa</div><div class="vendor-domain">exa.ai</div></div>
             <p>Neural search API designed for AI agents and research workflows. Embeddings-first rather than keyword-first.</p>
@@ -2431,7 +2438,7 @@
           </div>
         </a>
         <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="vendor-card">
-          <div class="vendor-logo vendor-logo-fallback">E</div>
+          <img src="images/vendor-logos/elevenlabs.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">ElevenLabs</div><div class="vendor-domain">elevenlabs.io</div></div>
             <p>The reference AI voice synthesis platform. Used across audiobooks, dubbing, gaming, and conversational agents.</p>
@@ -2526,7 +2533,7 @@
       <p class="category-desc">AI features and standalone tools that reshape how individual knowledge workers write, meet, and organize. The fastest-adopted layer of GenAI in most enterprises.</p>
       <div class="vendor-grid">
         <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/microsoft-copilot.png" alt="" class="vendor-logo" loading="lazy">
+          <img src="images/vendor-logos/microsoft-copilot.jpg" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Microsoft Copilot</div><div class="vendor-domain">microsoft.com</div></div>
             <p>The Microsoft 365 Copilot suite across Outlook, Word, Excel, PowerPoint, Teams, and Copilot Studio.</p>
@@ -2905,7 +2912,7 @@
       <p class="category-desc">Deeply specialized AI built for a specific industry workflow. Often the most defensible category against horizontal LLMs alone.</p>
       <div class="vendor-grid">
         <a href="https://harvey.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/harvey.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">H</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Harvey</div><div class="vendor-domain">harvey.ai</div></div>
             <p>Generative AI platform purpose-built for elite law firms and corporate legal teams. The reference legal AI win.</p>
@@ -2933,7 +2940,7 @@
           </div>
         </a>
         <a href="https://www.tempus.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/tempus-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">T</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Tempus AI</div><div class="vendor-domain">tempus.com</div></div>
             <p>Precision medicine and clinical AI built on a large library of multimodal patient data.</p>
@@ -3056,7 +3063,7 @@
       <p class="category-desc">Foundation-model-era robotics: humanoids, manipulation, and embodied AI. The longest-cycle but highest-stakes frontier of AI deployment.</p>
       <div class="vendor-grid">
         <a href="https://www.figure.ai" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/figure.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">F</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Figure</div><div class="vendor-domain">figure.ai</div></div>
             <p>Humanoid robot company (Figure 02 / 03) with high-profile commercial pilots in logistics and manufacturing.</p>
@@ -3105,7 +3112,7 @@
           </div>
         </a>
         <a href="https://physicalintelligence.company" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/physical-intelligence.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-logo vendor-logo-fallback">P</div>
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Physical Intelligence</div><div class="vendor-domain">physicalintelligence.company</div></div>
             <p>Foundation-model lab for robotics. Notable for its π0 model targeting general-purpose robot manipulation.</p>
@@ -3262,6 +3269,9 @@
       </div>
     </div>
   </div>
+
+
+  
 
 
   
