@@ -126,6 +126,7 @@
 
     .nav-links a:hover { color: #0F172A; }
     .nav-links a.active { color: #0F172A; font-weight: 700; }
+    
 
     .nav-cta {
       position: absolute;
@@ -633,6 +634,13 @@
     .rc-dot { width: 8px; height: 8px; border-radius: 50%; background: #CBD5E1; border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
     .rc-dot.rc-dot-active { background: #1769E0; transform: scale(1.35); }
     @media (max-width: 900px) { #rc-prev { left: 4px; } #rc-next { right: 4px; } }
+    @media (max-width: 480px) {
+      .rc-card-body { padding: 0.85rem 0.9rem 1rem; }
+      .rc-card-body p:first-of-type { font-size: 0.6rem !important; }
+      .rc-card-body p:nth-of-type(2) { font-size: 0.82rem !important; }
+      .rc-card-body p:nth-of-type(3) { font-size: 0.72rem !important; }
+      .rc-card-body span { font-size: 0.72rem !important; }
+    }
 
     .bottom-banner-col {
       display: flex;
@@ -1818,7 +1826,10 @@
 
     @media (max-width: 640px) {
       nav { padding: 0 1.5rem; }
-      .nav-hamburger { display: flex; }
+      nav { justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+      .nav-hamburger { position: static; display: flex; right: auto; }
+      .nav-cta { position: static; margin-left: auto; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
@@ -2147,7 +2158,7 @@
         <h1 class="hero-h1">Make the work behind your business easier.</h1>
         <p class="hero-sub">We help you choose and build practical AI tools that fit the way your team already works.</p>
         <div class="hero-actions">
-          <a href="ai-readiness.html" class="btn-primary">See where AI could help &rarr;</a>
+          <a href="#solutions-list" class="btn-primary">See where AI could help &rarr;</a>
           <a href="approach.html" class="btn-outline">See how it works</a>
         </div>
       </div>
@@ -2232,7 +2243,7 @@
   </div>
 
   <!-- PRACTICAL SOLUTIONS -->
-  <div class="prac-section">
+  <div class="prac-section" id="solutions-list">
     <div class="prac-inner">
 
       <div class="prac-grid">
@@ -2591,6 +2602,7 @@
 
     function startAuto() {
       stopAuto();
+      if (window.innerWidth < 760) return;
       autoTimer = setInterval(function () {
         var maxIndex = getMaxIndex();
         goTo(currentIndex >= maxIndex ? 0 : currentIndex + 1);
