@@ -605,88 +605,139 @@
       .form-section { padding: 1.5rem 1rem 2rem; }
       .section-score-name { width: 120px; font-size: 0.8rem; }
     }}
-    /* Rather Talk First: bridge section */
+    /* ─── BRIDGE SECTION ─── */
     .readiness-bridge {
-      background: #F5F7FB;
-      border-top: 1px solid #E5E7EB;
-      border-bottom: 1px solid #E5E7EB;
-      padding: 3rem 2rem;
+      background: #FFFFFF;
+      border-top: 3px solid #E5E7EB;
+      border-bottom: 3px solid #E5E7EB;
+      padding: 3.5rem 2rem;
     }
     .readiness-bridge-inner {
-      max-width: 880px;
+      max-width: 1040px;
       margin: 0 auto;
+    }
+    .bridge-top {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .bridge-offer-tag {
+      display: inline-block;
+      background: #EFF6FF;
+      color: #2563EB;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .bridge-jump {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .bridge-columns {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 1fr 360px;
       gap: 3rem;
       align-items: start;
     }
-    .bridge-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #6B7280;
-      margin-bottom: 0.65rem;
+    .bridge-headline {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0F172A;
+      margin: 0 0 0.85rem;
+      line-height: 1.2;
     }
     .bridge-lead {
-      color: #374151;
+      color: #526174;
       font-size: 0.95rem;
       line-height: 1.65;
-      margin: 0 0 1.1rem;
+      margin: 0 0 0.75rem;
     }
-    .bridge-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      color: #2563EB;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
+    .bridge-outcome {
+      color: #374151;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0 0 1.75rem;
     }
-    .bridge-cta:hover { color: #1D4ED8; }
-    .bridge-details {
-      border-left: 1px solid #D1D5DB;
-      padding-left: 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-    }
-    .bridge-section-label {
-      font-size: 0.72rem;
+    .bridge-dlabel {
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #2563EB;
-      margin-bottom: 0.75rem;
+      margin: 0 0 0.75rem;
     }
-    .bridge-deliverable-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+    .bridge-deliverable {
+      margin-bottom: 0.9rem;
+      padding-left: 0.85rem;
+      border-left: 2px solid #E5E7EB;
     }
-    .bridge-deliverable-item strong {
+    .bridge-deliverable strong {
       display: block;
       font-size: 0.88rem;
       font-weight: 600;
       color: #111827;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
     }
-    .bridge-deliverable-item span {
+    .bridge-deliverable span {
       font-size: 0.82rem;
       color: #6B7280;
       line-height: 1.5;
     }
+    .bridge-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    .bridge-review-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+    }
+    .bridge-review-card h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 0 0 0.85rem;
+    }
+    .bridge-review-list {
+      margin: 0;
+      padding: 0 0 0 1.1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem 1rem;
+    }
+    .bridge-review-list li {
+      font-size: 0.83rem;
+      color: #374151;
+      line-height: 1.4;
+    }
+    .bridge-process { }
     .bridge-steps {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
+      margin-bottom: 0.5rem;
     }
     .bridge-step {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.88rem;
+      gap: 0.35rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: #374151;
     }
@@ -699,21 +750,108 @@
       background: #2563EB;
       color: #FFFFFF;
       border-radius: 50%;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       flex-shrink: 0;
     }
-    .bridge-step-arrow { color: #D1D5DB; font-size: 0.85rem; }
+    .bridge-step-arrow { color: #CBD5E1; font-size: 0.8rem; }
     .bridge-locations {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: #6B7280;
-      margin-top: 0.6rem;
+      margin: 0;
     }
-    @media (max-width: 768px) {
-      .readiness-bridge-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .bridge-details { border-left: none; padding-left: 0; border-top: 1px solid #D1D5DB; padding-top: 2rem; }
-      .bridge-deliverable-grid { grid-template-columns: 1fr; }
+    .bridge-footer {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #E5E7EB;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
+    .bridge-price {
+      flex: 1;
+      font-size: 0.85rem;
+      color: #6B7280;
+      line-height: 1.55;
+      margin: 0;
+      min-width: 200px;
+    }
+    .bridge-price strong { color: #374151; }
+    .bridge-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .bridge-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .bridge-cta-primary:hover { background: #1D4ED8; color: #FFFFFF; }
+    .bridge-cta-secondary {
+      font-size: 0.88rem;
+      color: #6B7280;
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .bridge-cta-secondary:hover { color: #374151; }
+    @media (max-width: 860px) {
+      .bridge-columns { grid-template-columns: 1fr; gap: 2rem; }
+      .bridge-right { order: -1; }
+      .bridge-review-list { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .bridge-top { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .bridge-footer { flex-direction: column; align-items: flex-start; }
+      .bridge-cta-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    }
+
+    /* ─── PROGRESS SECTION NAME ─── */
+    .progress-section-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2563EB;
+      margin-bottom: 0.5rem;
+      min-height: 1em;
+    }
+
+    /* ─── GLOBAL QUESTION NAV ─── */
+    .q-nav {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ─── HIDE INLINE BTN-ROWS IN QUESTION SECTIONS ─── */
+    .section-block[data-section="B"] .btn-row,
+    .section-block[data-section="C"] .btn-row,
+    .section-block[data-section="D"] .btn-row,
+    .section-block[data-section="E"] .btn-row,
+    .section-block[data-section="F"] .btn-row { display: none !important; }
+
+    /* ─── VALIDATION ERROR STATE ─── */
+    .field-group.q-unanswered .option-grid { border: 1.5px solid #DC2626; border-radius: 8px; }
+    .q-error-msg {
+      color: #DC2626;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
 
   </style>
 </head>
@@ -773,60 +911,92 @@
   </div>
 </section>
 
-<!-- Rather Talk First: free assessment connector -->
-<section class="readiness-bridge">
+<!-- Assessment jumpstart bridge -->
+<section class="readiness-bridge" id="why-start">
   <div class="readiness-bridge-inner">
 
-    <div class="bridge-intro">
-      <p class="bridge-eyebrow">Rather talk first?</p>
-      <p class="bridge-lead">The online assessment is a helpful head-start, not a requirement. We also offer a free AI opportunity assessment where we review your business firsthand and identify where AI can create the most practical value.</p>
-      <a href="contact.html?inquiry=assessment" class="bridge-cta">Request your free assessment &rarr;</a>
+    <div class="bridge-top">
+      <span class="bridge-offer-tag">Free AI Assessment</span>
+      <p class="bridge-jump">Jumpstart your free AI Assessment by completing the AI Readiness Questionnaire below.</p>
     </div>
 
-    <div class="bridge-details">
+    <div class="bridge-columns">
 
-      <div class="bridge-deliverables">
-        <p class="bridge-section-label">What you receive</p>
-        <div class="bridge-deliverable-grid">
-          <div class="bridge-deliverable-item">
+      <div class="bridge-left">
+        <h2 class="bridge-headline">See where AI could help, and where to start.</h2>
+        <p class="bridge-lead">We look across your business, including AI already in use, to identify opportunities with a clear use case and measurable impact, such as time saved, greater productivity, or improved business outcomes.</p>
+        <p class="bridge-outcome"><strong>You will receive a categorized report outlining the opportunities we uncover</strong>, organized to show where AI could create practical value across your business.</p>
+
+        <div class="bridge-deliverables">
+          <p class="bridge-dlabel">What you receive</p>
+          <div class="bridge-deliverable">
             <strong>Categorized opportunity report</strong>
             <span>First-round opportunities across workflows, service, administration, and growth.</span>
           </div>
-          <div class="bridge-deliverable-item">
+          <div class="bridge-deliverable">
             <strong>Data, technology, and governance findings</strong>
             <span>Practical recommendations covering data readiness, software, integrations, security, and policy.</span>
           </div>
-          <div class="bridge-deliverable-item">
+          <div class="bridge-deliverable">
             <strong>Initial proof-of-concept proposal</strong>
             <span>One recommended initiative with a clear scope and measurable outcome.</span>
           </div>
         </div>
       </div>
 
-      <div class="bridge-process">
-        <p class="bridge-section-label">How it works</p>
-        <div class="bridge-steps">
-          <span class="bridge-step"><span class="bridge-step-num">1</span>Meet</span>
-          <span class="bridge-step-arrow">&rarr;</span>
-          <span class="bridge-step"><span class="bridge-step-num">2</span>Follow up</span>
-          <span class="bridge-step-arrow">&rarr;</span>
-          <span class="bridge-step"><span class="bridge-step-num">3</span>Assess</span>
-          <span class="bridge-step-arrow">&rarr;</span>
-          <span class="bridge-step"><span class="bridge-step-num">4</span>Recommend</span>
+      <div class="bridge-right">
+        <div class="bridge-review-card">
+          <h3>Your 10-point AI opportunity assessment</h3>
+          <ol class="bridge-review-list">
+            <li>Core workflows</li>
+            <li>Manual bottlenecks</li>
+            <li>Software stack</li>
+            <li>Data readiness</li>
+            <li>System integrations</li>
+            <li>Current AI setup</li>
+            <li>Security and privacy</li>
+            <li>Policy and governance</li>
+            <li>Team readiness</li>
+            <li>Customer experience</li>
+          </ol>
         </div>
-        <p class="bridge-locations">Available in person in Boston and New York City, or virtually.</p>
+
+        <div class="bridge-process">
+          <p class="bridge-dlabel">How it works</p>
+          <div class="bridge-steps">
+            <span class="bridge-step"><span class="bridge-step-num">1</span>Meet</span>
+            <span class="bridge-step-arrow">&rarr;</span>
+            <span class="bridge-step"><span class="bridge-step-num">2</span>Follow up</span>
+            <span class="bridge-step-arrow">&rarr;</span>
+            <span class="bridge-step"><span class="bridge-step-num">3</span>Assess</span>
+            <span class="bridge-step-arrow">&rarr;</span>
+            <span class="bridge-step"><span class="bridge-step-num">4</span>Recommend</span>
+          </div>
+          <p class="bridge-locations">Available in person in Boston and New York City, or virtually.</p>
+        </div>
       </div>
 
     </div>
+
+    <div class="bridge-footer">
+      <p class="bridge-price"><strong>Proof-of-concept implementation typically ranges from $5K to $20K.</strong> Build, implementation, training, user guides, and one year of support are included.</p>
+      <div class="bridge-cta-row">
+        <a href="#questionnaire" class="bridge-cta-primary">Begin the questionnaire &darr;</a>
+        <a href="contact.html?inquiry=assessment" class="bridge-cta-secondary">Skip ahead and request a full assessment</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É FORM ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
+<a id="questionnaire" aria-hidden="true"></a>
 <form id="readinessForm" novalidate>
   <div id="formSection" class="form-section">
 
     <!-- Progress -->
     <div class="progress-wrap">
+      <div class="progress-section-name" id="progressSection"></div>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progressFill"></div>
       </div>
@@ -834,6 +1004,12 @@
         <span class="progress-step" id="progressStep">Section 1 of 6</span>
         <span id="progressPct">0%</span>
       </div>
+    </div>
+
+    <!-- Global one-question navigation -->
+    <div id="qNav" class="q-nav" style="display:none;">
+      <button type="button" id="qNavBack" class="btn btn-secondary" onclick="prevQuestion()">&larr; Back</button>
+      <button type="button" id="qNavNext" class="btn btn-primary" onclick="nextQuestion()">Next &rarr;</button>
     </div>
 
     <!-- Section B: Data Maturity -->
@@ -1196,7 +1372,7 @@
 
       <div class="btn-row">
         <button type="button" class="btn btn-secondary" onclick="prevSection()">&larr; Back</button>
-        <button type="submit" class="btn btn-primary" id="submitBtn">Submit Assessment</button>
+        <button type="submit" class="btn btn-primary" id="submitBtnAlt">Submit Assessment</button>
       </div>
     </div>
 
@@ -1204,7 +1380,7 @@
     <div class="section-block" data-section="G">
       <div class="section-header">
         <h2>Get Your Results</h2>
-        <p>You answered all 28 questions. Enter your email below and we will send your personalized AI Readiness Report as a PDF -- including your score, tier, section breakdown, and tailored recommendations.</p>
+        <p>Enter your contact information below and we will send your personalized AI Readiness Report as a PDF, including your score, tier, section breakdown, and tailored recommendations.</p>
       </div>
       <div class="field-group">
         <label for="email">Email address <span style="color:#DC2626;">*</span></label>
@@ -1367,167 +1543,146 @@
 
 <!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É JS ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <script>
-const SECTIONS = ['B', 'C', 'D', 'E', 'F', 'G'];
-let currentIdx = 0;
+// ── One-question-at-a-time questionnaire ──
+var allQuestions = [];
+var currentQ = 0;
+var inContactSection = false;
 
-function getSectionEl(idx) {
-  return document.querySelector(`.section-block[data-section="${SECTIONS[idx]}"]`);
+var SECTION_NAMES = {
+  'B': 'Data Maturity',
+  'C': 'AI Governance & Risk',
+  'D': 'Technical Readiness',
+  'E': 'Business Readiness',
+  'F': 'Security & Compliance'
+};
+
+['B', 'C', 'D', 'E', 'F'].forEach(function(sec) {
+  var sectionEl = document.querySelector('.section-block[data-section="' + sec + '"]');
+  if (!sectionEl) return;
+  sectionEl.querySelectorAll('.field-group').forEach(function(fg) {
+    allQuestions.push({ el: fg, sectionEl: sectionEl, sectionKey: sec });
+  });
+});
+
+var totalQ = allQuestions.length;
+
+function showQuestion(idx) {
+  inContactSection = false;
+  document.querySelectorAll('.section-block').forEach(function(s) { s.classList.remove('active'); });
+  var q = allQuestions[idx];
+  q.sectionEl.classList.add('active');
+  q.sectionEl.querySelectorAll('.field-group').forEach(function(fg) {
+    fg.style.display = (fg === q.el) ? '' : 'none';
+  });
+  var hdr = q.sectionEl.querySelector('.section-header');
+  if (hdr) hdr.style.display = 'none';
+  currentQ = idx;
+  updateQProgress();
+  var backBtn = document.getElementById('qNavBack');
+  if (backBtn) backBtn.disabled = (idx === 0);
+  document.getElementById('qNav').style.display = 'flex';
+  q.el.classList.remove('q-unanswered');
+  var errMsg = q.el.querySelector('.q-error-msg');
+  if (errMsg) errMsg.style.display = 'none';
+  var formEl = document.getElementById('formSection');
+  if (formEl) window.scrollTo({ top: formEl.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
 }
 
-function showSection(idx) {
-  document.querySelectorAll('.section-block').forEach(el => el.classList.remove('active'));
-  getSectionEl(idx).classList.add('active');
-  currentIdx = idx;
-  updateProgress();
-  window.scrollTo({ top: document.querySelector('.form-section').offsetTop - 80, behavior: 'smooth' });
-}
-
-function updateProgress() {
-  const pct = Math.round(((currentIdx + 1) / SECTIONS.length) * 100);
+function updateQProgress() {
+  var pct = Math.round(((currentQ + 1) / totalQ) * 100);
+  var sectionName = allQuestions[currentQ] ? SECTION_NAMES[allQuestions[currentQ].sectionKey] : '';
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressStep').textContent = `Section ${currentIdx + 1} of ${SECTIONS.length}`;
+  document.getElementById('progressStep').textContent = 'Question ' + (currentQ + 1) + ' of ' + totalQ;
   document.getElementById('progressPct').textContent = pct + '%';
+  var secLabel = document.getElementById('progressSection');
+  if (secLabel) secLabel.textContent = sectionName;
 }
 
-function nextSection() {
-  if (currentIdx < SECTIONS.length - 1) {
-    showSection(currentIdx + 1);
+function nextQuestion() {
+  var q = allQuestions[currentQ];
+  var radios = q.el.querySelectorAll('input[type="radio"]');
+  var checkboxes = q.el.querySelectorAll('input[type="checkbox"]');
+  var answered = false;
+  if (radios.length > 0) {
+    answered = Array.from(radios).some(function(r) { return r.checked; });
+  } else if (checkboxes.length > 0) {
+    answered = Array.from(checkboxes).some(function(c) { return c.checked; });
+  } else {
+    answered = true;
+  }
+  if (!answered) {
+    q.el.classList.add('q-unanswered');
+    var errMsg = q.el.querySelector('.q-error-msg');
+    if (!errMsg) {
+      errMsg = document.createElement('p');
+      errMsg.className = 'q-error-msg';
+      errMsg.textContent = 'Please select an answer to continue.';
+      q.el.appendChild(errMsg);
+    }
+    errMsg.style.display = 'block';
+    return;
+  }
+  q.el.classList.remove('q-unanswered');
+  if (currentQ < totalQ - 1) {
+    showQuestion(currentQ + 1);
+  } else {
+    showContactSection();
   }
 }
 
-function prevSection() {
-  if (currentIdx > 0) {
-    showSection(currentIdx - 1);
+function prevQuestion() {
+  if (inContactSection) {
+    showQuestion(totalQ - 1);
+    return;
+  }
+  if (currentQ > 0) {
+    showQuestion(currentQ - 1);
   }
 }
 
-// Clickable option items
+// Alias for section G's back button (still calls prevSection in HTML)
+function prevSection() { prevQuestion(); }
+
+function showContactSection() {
+  inContactSection = true;
+  document.querySelectorAll('.section-block').forEach(function(s) { s.classList.remove('active'); });
+  var contactEl = document.querySelector('.section-block[data-section="G"]');
+  if (contactEl) {
+    contactEl.classList.add('active');
+    contactEl.querySelectorAll('.field-group').forEach(function(fg) { fg.style.display = ''; });
+  }
+  document.getElementById('qNav').style.display = 'none';
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressStep').textContent = 'Almost done';
+  document.getElementById('progressPct').textContent = '100%';
+  var secLabel = document.getElementById('progressSection');
+  if (secLabel) secLabel.textContent = 'Your Results';
+  var formEl = document.getElementById('formSection');
+  if (formEl) window.scrollTo({ top: formEl.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+}
+
+// Clear validation error on selection
 document.addEventListener('change', function(e) {
-  const li = e.target.closest('.option-item');
+  var li = e.target.closest('.option-item');
   if (li) {
     if (e.target.type === 'radio') {
-      // Unselect siblings
-      const parent = li.closest('.option-grid');
-      parent.querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
+      var parent = li.closest('.option-grid');
+      parent.querySelectorAll('.option-item').forEach(function(o) { o.classList.remove('selected'); });
       li.classList.add('selected');
     } else if (e.target.type === 'checkbox') {
       li.classList.toggle('selected', e.target.checked);
     }
+    var fg = li.closest('.field-group');
+    if (fg) {
+      fg.classList.remove('q-unanswered');
+      var errMsg = fg.querySelector('.q-error-msg');
+      if (errMsg) errMsg.style.display = 'none';
+    }
   }
 });
 
-// Required email validation
-document.getElementById('readinessForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  const emailInput = document.getElementById('email');
-  const email = emailInput.value.trim();
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    emailInput.classList.add('error');
-    emailInput.focus();
-    emailInput.parentElement.querySelector('label').style.color = '#DC2626';
-    showSection(SECTIONS.length - 1); return; } emailInput.classList.remove('error');
-  emailInput.parentElement.querySelector('label').style.color = '';
-
-  // Collect all answers
-  const form = document.getElementById('readinessForm');
-  const data = {};
-
-  // Text inputs
-  ['email','name','company','industry','role','companySize','phone'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) data[id] = el.value.trim();
-  });
-
-  // Radio and checkbox groups
-  const questionKeys = ['q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15',
-                        'q16','q17','q18','q19','q20','q21','q22','q23','q24','q25',
-                        'q26','q27','q28'];
-
-  questionKeys.forEach(key => {
-    const radios = form.querySelectorAll(`input[name="${key}"][type="radio"]:checked`);
-    const checkboxes = form.querySelectorAll(`input[name="${key}"][type="checkbox"]:checked`);
-    if (radios.length > 0) {
-      data[key] = radios[0].value;
-    } else if (checkboxes.length > 0) {
-      data[key] = Array.from(checkboxes).map(c => c.value);
-    } else {
-      data[key] = '';
-    }
-  });
-
-  // Show loading, hide form
-  document.getElementById('formSection').style.display = 'none';
-  document.getElementById('loadingWrap').classList.add('active');
-  document.getElementById('submitBtn').disabled = true;
-
-  try {
-    const resp = await fetch('/api/ai-readiness', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-
-    const result = await resp.json();
-
-    document.getElementById('loadingWrap').classList.remove('active');
-
-    if (!result.ok) {
-      document.getElementById('formSection').style.display = 'block';
-      document.getElementById('submitBtn').disabled = false;
-      alert(result.error || 'Something went wrong. Please try again.');
-      return;
-    }
-
-    // Show results
-    showResults(result);
-  } catch (err) {
-    document.getElementById('loadingWrap').classList.remove('active');
-    document.getElementById('formSection').style.display = 'block';
-    document.getElementById('submitBtn').disabled = false;
-    alert('Network error. Please check your connection and try again.');
-  }
-});
-
-function showResults(r) {
-  document.getElementById('formSection').style.display = 'none';
-  document.getElementById('resultsWrap').classList.add('active');
-
-  document.getElementById('rScore').innerHTML = `${r.score}<span>/100</span>`;
-  document.getElementById('rTier').textContent = r.tier.label;
-  document.getElementById('rTier').style.color = r.tier.color;
-  document.getElementById('rDesc').textContent = r.tier.desc;
-  document.getElementById('resultsWrap').scrollIntoView({ behavior: 'smooth' });
-
-  // Section scores
-  const barColors = { B: '#16A34A', C: '#2563EB', D: '#EAB308', E: '#F97316', F: '#DC2626' };
-  const sDiv = document.getElementById('rSections');
-  sDiv.innerHTML = '';
-  Object.entries(r.sectionNames).forEach(([k, name]) => {
-    const s = r.sectionScores[k];
-    const row = document.createElement('div');
-    row.className = 'section-score-row';
-    row.innerHTML = `
-      <div class="section-score-name">${name}</div>
-      <div class="section-score-bar-wrap">
-        <div class="section-score-bar" style="width:${s * 0.85 + 15}%;background:${barColors[k]};"></div>
-      </div>
-      <div class="section-score-num">${s}</div>
-    `;
-    sDiv.appendChild(row);
-  });
-
-  // Recommendations
-  const recsList = document.getElementById('rRecs');
-  recsList.innerHTML = '';
-  r.recommendations.forEach(rec => {
-    const li = document.createElement('li');
-    li.textContent = rec;
-    recsList.appendChild(li);
-  });
-}
-  // Initialize first section on page load
-  showSection(0);
+// Initialize
+showQuestion(0);
 
 </script>
 
