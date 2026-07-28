@@ -1588,6 +1588,7 @@ var SECTION_NAMES = {
 
 var totalQ = allQuestions.length;
 
+var qInitialized = false;
 function showQuestion(idx) {
   inContactSection = false;
   document.querySelectorAll('.section-block').forEach(function(s) { s.classList.remove('active'); });
@@ -1606,8 +1607,10 @@ function showQuestion(idx) {
   q.el.classList.remove('q-unanswered');
   var errMsg = q.el.querySelector('.q-error-msg');
   if (errMsg) errMsg.style.display = 'none';
-  var formEl = document.getElementById('formSection');
-  if (formEl) window.scrollTo({ top: formEl.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+  if (qInitialized) {
+    var formEl = document.getElementById('formSection');
+    if (formEl) window.scrollTo({ top: formEl.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+  }
 }
 
 function updateQProgress() {
@@ -1703,8 +1706,9 @@ document.addEventListener('change', function(e) {
   }
 });
 
-// Initialize
+// Initialize — show first question without scrolling; scroll only on user navigation
 showQuestion(0);
+qInitialized = true;
 
 </script>
 
