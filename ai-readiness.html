@@ -243,7 +243,7 @@
     .form-section {
       max-width: 720px;
       margin: 0 auto;
-      padding: 2rem 2rem 5rem;
+      padding: 2.5rem 2rem 5rem;
     }
 
     /* Progress bar */
@@ -614,7 +614,7 @@
       background: #FFFFFF;
       border-top: 3px solid #E5E7EB;
       border-bottom: 3px solid #E5E7EB;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
     }
     .readiness-bridge-inner {
       max-width: 1040px;
@@ -769,8 +769,8 @@
       margin: 0;
     }
     .bridge-footer {
-      margin-top: 1.75rem;
-      padding-top: 1.5rem;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
       border-top: 1px solid #E5E7EB;
       display: flex;
       align-items: center;
@@ -808,13 +808,21 @@
     }
     .bridge-cta-primary:hover { background: #1D4ED8; color: #FFFFFF; }
     .bridge-cta-secondary {
-      font-size: 0.88rem;
-      color: #6B7280;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      color: #374151;
       text-decoration: none;
-      font-weight: 500;
+      padding: 0.65rem 1.4rem;
+      border-radius: 100px;
+      border: 1px solid #D1D5DB;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
       white-space: nowrap;
     }
-    .bridge-cta-secondary:hover { color: #374151; }
+    .bridge-cta-secondary:hover { border-color: #2563EB; color: #2563EB; }
     @media (max-width: 860px) {
       .bridge-columns { grid-template-columns: 1fr; gap: 2rem; }
       .bridge-right { order: -1; }
@@ -996,7 +1004,7 @@
       <p class="bridge-price"><strong>Proof-of-concept implementation typically ranges from $5K to $20K.</strong> Build, implementation, training, user guides, and one year of support are included.</p>
       <div class="bridge-cta-row">
         <a href="#questionnaire" class="bridge-cta-primary">Begin the questionnaire &darr;</a>
-        <a href="contact.html?inquiry=assessment" class="bridge-cta-secondary">Skip ahead and request a full assessment</a>
+        <a href="contact.html?inquiry=assessment" class="bridge-cta-secondary">Skip, Request Full Assessment</a>
       </div>
     </div>
 
