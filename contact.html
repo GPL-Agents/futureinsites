@@ -575,6 +575,7 @@
           <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">Our Approach</a></li>
           <li><a href="consumer.html">Consumer AI</a></li>
+          <li><a href="ai-readiness.html">AI Readiness</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -938,6 +939,13 @@
         lead: "Whether you're starting from zero or scaling an existing program, share a few details and we'll respond as soon as possible.",
         successTitle: 'Thanks, your note is in.',
         successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      assessment: {
+        eyebrow: 'Free AI Assessment',
+        title: 'Tell us about your business.',
+        lead: "A few details will help us prepare for the assessment. We'll follow up to schedule a virtual meeting or an in-person meeting around Boston or New York City.",
+        successTitle: 'Thanks, your assessment request is in.',
+        successBody: "We'll be in touch as soon as possible to schedule your free AI assessment."
       }
     };
     var currentContext = 'session';
@@ -992,6 +1000,12 @@
         openModal(ctx);
       });
     });
+
+    // Direct links and QR codes can open the same form in a specific context.
+    var linkedContext = new URLSearchParams(window.location.search).get('inquiry');
+    if (linkedContext && CONTEXTS[linkedContext]) {
+      openModal(linkedContext);
+    }
 
     // Close triggers — × button, backdrop click, Escape key
     modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {

@@ -2149,12 +2149,12 @@
       cursor: pointer;
     }
     .assessment-popup-close:hover { color: #0F172A; border-color: #B8C5D5; }
-    .assessment-popup-inner { padding: 1.55rem 2.1rem 1.6rem; }
+    .assessment-popup-inner { padding: 1.2rem 2.1rem 1.25rem; }
     .assessment-popup-topbar {
       display: flex;
       align-items: center;
       min-height: 42px;
-      margin-bottom: 1.45rem;
+      margin-bottom: 1.1rem;
     }
     .assessment-popup-brand {
       display: flex;
@@ -2297,8 +2297,8 @@
       grid-template-columns: 130px 0.85fr 1.15fr 1.25fr;
       gap: 1rem;
       align-items: start;
-      margin-top: 1.25rem;
-      padding: 0.9rem 1rem;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
       border: 1px solid #DCE7F5;
       border-radius: 14px;
       background: #F8FBFF;
@@ -2340,12 +2340,35 @@
       align-items: center;
       justify-content: space-between;
       gap: 1.25rem;
-      margin-top: 1rem;
-      padding-top: 1rem;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
       border-top: 1px solid #E5EBF3;
     }
     .assessment-popup-price { margin: 0; color: #64748B; font-size: 0.7rem; line-height: 1.5; }
     .assessment-popup-price strong { display: block; color: #24364D; font-size: 0.78rem; }
+    .assessment-popup-qr {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-shrink: 0;
+      color: #35506F;
+      text-decoration: none;
+    }
+    .assessment-popup-qr img {
+      width: 56px;
+      height: 56px;
+      padding: 4px;
+      border: 1px solid #DCE7F5;
+      border-radius: 8px;
+      background: #FFFFFF;
+    }
+    .assessment-popup-qr span {
+      width: 86px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .assessment-popup-qr:hover span { color: #1769E0; }
     .assessment-popup-cta {
       display: inline-flex;
       align-items: center;
@@ -2378,6 +2401,7 @@
       .assessment-deliverables { grid-template-columns: 1fr; }
       .assessment-deliverables-title { padding-bottom: 0.5rem; border-bottom: 1px solid #DCE7F5; }
       .assessment-popup-footer { align-items: stretch; flex-direction: column; }
+      .assessment-popup-qr { display: none; }
       .assessment-popup-cta { width: 100%; min-width: 0; }
     }
     @media (max-width: 480px) {
@@ -2416,6 +2440,7 @@
           <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">Our Approach</a></li>
           <li><a href="consumer.html">Consumer AI</a></li>
+          <li><a href="ai-readiness.html">AI Readiness</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -3089,6 +3114,10 @@
 
         <div class="assessment-popup-footer">
           <p class="assessment-popup-price"><strong>Proof-of-concept implementation typically ranges from $5K to $20K.</strong>Build, implementation, training, user guides, and one year of support are included.</p>
+          <a class="assessment-popup-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form">
+            <img src="images/assessment-contact-qr.png" alt="QR code for the free AI assessment form">
+            <span>Scan to continue on your phone</span>
+          </a>
           <button type="button" class="assessment-popup-cta" data-open-inquiry data-inquiry-context="assessment">Request your free assessment&nbsp; →</button>
         </div>
       </div>
