@@ -611,6 +611,7 @@
       border-top: 3px solid #E5E7EB;
       border-bottom: 3px solid #E5E7EB;
       padding: 5rem 2rem;
+      margin-top: 3rem;
     }
     .readiness-bridge-inner {
       max-width: 1040px;
@@ -728,10 +729,14 @@
     .bridge-process { }
     .bridge-steps {
       display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .bridge-step-row {
+      display: flex;
       align-items: center;
       gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.5rem;
     }
     .bridge-step {
       display: inline-flex;
@@ -964,13 +969,17 @@
         <div class="bridge-process">
           <p class="bridge-dlabel">How it works</p>
           <div class="bridge-steps">
-            <span class="bridge-step"><span class="bridge-step-num">1</span>Meet</span>
-            <span class="bridge-step-arrow">&rarr;</span>
-            <span class="bridge-step"><span class="bridge-step-num">2</span>Follow up</span>
-            <span class="bridge-step-arrow">&rarr;</span>
-            <span class="bridge-step"><span class="bridge-step-num">3</span>Assess</span>
-            <span class="bridge-step-arrow">&rarr;</span>
-            <span class="bridge-step"><span class="bridge-step-num">4</span>Recommend</span>
+            <div class="bridge-step-row">
+              <span class="bridge-step"><span class="bridge-step-num">1</span>Meet</span>
+              <span class="bridge-step-arrow">&rarr;</span>
+              <span class="bridge-step"><span class="bridge-step-num">2</span>Follow up</span>
+              <span class="bridge-step-arrow">&rarr;</span>
+            </div>
+            <div class="bridge-step-row">
+              <span class="bridge-step"><span class="bridge-step-num">3</span>Assess</span>
+              <span class="bridge-step-arrow">&rarr;</span>
+              <span class="bridge-step"><span class="bridge-step-num">4</span>Recommend</span>
+            </div>
           </div>
           <p class="bridge-locations">Available in person in Boston and New York City, or virtually.</p>
         </div>
