@@ -604,7 +604,57 @@
       .page-hero h1 { font-size: 1.8rem; }
       .form-section { padding: 1.5rem 1rem 2rem; }
       .section-score-name { width: 120px; font-size: 0.8rem; }
-    }}</style>
+    }}
+    /* Bridge: connects online tool to free assessment */
+    .readiness-bridge {
+      background: #F5F7FB;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 2.5rem 2rem;
+    }
+    .readiness-bridge-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .readiness-bridge-col--alt {
+      border-left: 1px solid #D1D5DB;
+      padding-left: 2.5rem;
+    }
+    .bridge-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2563EB;
+      margin-bottom: 0.6rem;
+    }
+    .bridge-label--muted { color: #6B7280; }
+    .bridge-body {
+      color: #374151;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .bridge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.9rem;
+      color: #2563EB;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .bridge-link:hover { color: #1D4ED8; }
+    @media (max-width: 640px) {
+      .readiness-bridge-inner { grid-template-columns: 1fr; gap: 1.75rem; }
+      .readiness-bridge-col--alt { border-left: none; padding-left: 0; border-top: 1px solid #D1D5DB; padding-top: 1.75rem; }
+    }
+
+  </style>
 </head>
 <body>
 
@@ -628,6 +678,7 @@
           <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">Our Approach</a></li>
           <li><a href="consumer.html">Consumer AI</a></li>
+          <li><a href="ai-readiness.html">AI Readiness</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -656,10 +707,26 @@
 <section class="page-hero">
   <div class="page-hero-inner">
     <div class="eyebrow">AI Readiness Assessment</div>
-    <h1>Get Your Instant Results Today!</h1>
-    <p>Answer 28 questions across data, governance, technology, and security. Get an instant score, tier rating, and a personalized PDF report with actionable recommendations.</p>
+    <h1>See Where Your Organization Stands on AI</h1>
+    <p>Answer 28 questions across data, governance, technology, and security. Get an instant score, a tier rating, and a personalized PDF report with actionable recommendations &#8212; no contact information required until you&#8217;re ready for your results.</p>
   </div>
 </section>
+
+<!-- Bridge: online tool and free assessment connection -->
+<section class="readiness-bridge">
+  <div class="readiness-bridge-inner">
+    <div class="readiness-bridge-col">
+      <p class="bridge-label">Take the online assessment</p>
+      <p class="bridge-body">Complete the 28-question self-assessment below to get your instant score, tier rating, and a personalized PDF report you can act on right away. It takes about five minutes and covers data, governance, technology, and security. Sharing your results with us is optional &#8212; but it gives us a meaningful head start before we connect.</p>
+    </div>
+    <div class="readiness-bridge-col readiness-bridge-col--alt">
+      <p class="bridge-label bridge-label--muted">Rather talk first?</p>
+      <p class="bridge-body">The online assessment is a helpful head-start, not a requirement. If you&#8217;d rather connect directly, we offer a free AI opportunity assessment &#8212; a structured conversation where we review your business and identify where AI can create the most practical value.</p>
+      <a href="contact.html?inquiry=assessment" class="bridge-link">Request your free assessment &#8594;</a>
+    </div>
+  </div>
+</section>
+
 
 <!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É FORM ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <form id="readinessForm" novalidate>
