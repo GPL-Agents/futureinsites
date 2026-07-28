@@ -1,5 +1,20 @@
 [
     {
+        "slug":  "ai-saas-disruption-smb-opportunity",
+        "title":  "Can AI Replace SaaS? A Practical Guide for Small Businesses",
+        "date":  "2026-07-28",
+        "excerpt":  "The 'SaaSpocalypse' raised a legitimate question: if AI agents can complete workflows across files, databases, and business systems, how many separate software subscriptions does a company actually need? A practical framework for SMBs.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "AI Strategy",
+                     "SaaS",
+                     "SMB",
+                     "Custom Software",
+                     "Build vs Buy"
+                 ],
+        "image":  "endofsaas.072826_no_ai_metadata.jpg"
+    },
+    {
         "slug":  "nvidia-openShell-nemoclaw",
         "title":  "NVIDIA OpenShell and NemoClaw: A Sound Architecture, A Narrow Strategy",
         "date":  "2026-07-13",
@@ -48,7 +63,7 @@
         "slug":  "anthropic-ipo-2026",
         "title":  "Anthropic Files for IPO: What It Means for Enterprise AI Strategy",
         "date":  "2026-06-03",
-        "excerpt":  "Anthropic\u0027s confidential S-1 filing marks a turning point for the AI industry. For enterprises building on Claude, the implications go well beyond the stock price.",
+        "excerpt":  "Anthropic's confidential S-1 filing marks a turning point for the AI industry. For enterprises building on Claude, the implications go well beyond the stock price.",
         "author":  "Greg Loeffelholz",
         "tags":  [
                      "Anthropic",
@@ -61,7 +76,7 @@
         "slug":  "multi-model-ai-strategy",
         "title":  "Multi-Model Strategy Is Table Stakes for AI in 2026",
         "date":  "2026-06-09",
-        "excerpt":  "The \u0027pick one model\u0027 era is over. Smart deployments pair models to task complexity and build price-based waterfalls for cost efficiency -- and that\u0027s no longer optimization, it\u0027s the baseline.",
+        "excerpt":  "The 'pick one model' era is over. Smart deployments pair models to task complexity and build price-based waterfalls for cost efficiency -- and that's no longer optimization, it's the baseline.",
         "author":  "Greg Loeffelholz",
         "tags":  [
                      "AI Strategy",
@@ -72,7 +87,7 @@
     },
     {
         "slug":  "stainless-acquisition",
-        "title":  "Why Anthropic\u0027s Stainless Acquisition Matters (And What Competitors Do Next)",
+        "title":  "Why Anthropic's Stainless Acquisition Matters (And What Competitors Do Next)",
         "date":  "2026-05-27",
         "excerpt":  "This was not an acquisition to make Claude smarter. It was an acquisition to make Claude easier to connect, deploy, and use everywhere. The AI race is shifting from model intelligence to system integration.",
         "author":  "Greg Loeffelholz",
@@ -88,7 +103,7 @@
         "slug":  "eu-ai-act-enterprise",
         "title":  "The EU AI Act Is Here: What It Means for Your AI Stack",
         "date":  "2025-12-15",
-        "excerpt":  "Europe\u0027s comprehensive AI regulation entered force last month, and it has teeth. Here is how US-based enterprises should adjust their AI stacks, vendor evaluations, and internal compliance workflows.",
+        "excerpt":  "Europe's comprehensive AI regulation entered force last month, and it has teeth. Here is how US-based enterprises should adjust their AI stacks, vendor evaluations, and internal compliance workflows.",
         "author":  "Greg Loeffelholz",
         "tags":  [
                      "EU AI Act",
@@ -101,7 +116,7 @@
         "slug":  "enterprise-ai-pragmatism-2026",
         "title":  "From Hype to Pragmatism: What Enterprise AI Looks Like in 2026",
         "date":  "2026-01-12",
-        "excerpt":  "If 2024 was the year of \u0027look what AI can do\u0027 and 2025 was the year of \u0027we should probably use this,\u0027 2026 is shaping up to be the year of \u0027does it actually move the needle?\u0027",
+        "excerpt":  "If 2024 was the year of 'look what AI can do' and 2025 was the year of 'we should probably use this,' 2026 is shaping up to be the year of 'does it actually move the needle?'",
         "author":  "Greg Loeffelholz",
         "tags":  [
                      "Enterprise AI",
@@ -127,7 +142,7 @@
         "slug":  "mcp-new-http-of-ai",
         "title":  "MCP Hit 97M Installs: Why the Model Context Protocol Is the New HTTP of AI",
         "date":  "2026-03-16",
-        "excerpt":  "Anthropic\u0027s Model Context Protocol crossed 97 million installs in March 2026, cementing its role as foundational infrastructure for AI-tool integration.",
+        "excerpt":  "Anthropic's Model Context Protocol crossed 97 million installs in March 2026, cementing its role as foundational infrastructure for AI-tool integration.",
         "author":  "Greg Loeffelholz",
         "tags":  [
                      "MCP",

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Can AI Replace SaaS? A Practical Guide for Small Businesses | FutureInSites Blog</title>
+  <meta name="description" content="AI is creating a credible third option for SMBs trapped in bloated SaaS stacks. Here is a practical framework for deciding what to keep, augment, consolidate, or replace." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* Post Layout */
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 700px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Content */
+    .post-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+
+    .scorecard {
+      background: var(--bg-alt);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+    .scorecard ol {
+      margin: 0.5rem 0 0 1.25rem;
+    }
+    .scorecard li {
+      margin-bottom: 0.65rem;
+    }
+
+    .four-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .option-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.25rem;
+    }
+    .option-card .option-label {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .option-card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .four-options { grid-template-columns: 1fr; }
+    }
+
+    .ref-list {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 1rem 0 0 1.25rem;
+    }
+    .ref-list li {
+      margin-bottom: 0.35rem;
+      color: var(--muted);
+    }
+    .ref-list a { color: var(--muted); text-decoration: underline; }
+    .ref-list a:hover { color: var(--accent); }
+
+    /* Footer */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+    .footer-brand {}
+    .footer-vert-divider {
+      background: #DCE5F0;
+      align-self: stretch;
+    }
+    .footer-link-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0 2rem;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: #64748B;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.06em;
+    }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .footer-social a {
+      color: #64748B;
+      display: inline-flex;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: #1769E0; }
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-copy {
+      font-size: 0.68rem;
+      color: #64748B;
+      line-height: 1.7;
+    }
+    .footer-col-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1769E0;
+      margin-bottom: 0.85rem;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.55rem;
+    }
+    .footer-col ul a {
+      color: #0B234A;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: #1769E0; }
+    @media (max-width: 760px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .footer-vert-divider {
+        height: 1px;
+        align-self: auto;
+        margin: 1.75rem 0;
+      }
+      .footer-link-cols {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer-link-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+  <style id="fis-global-header-v2">
+    nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
+    .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
+    .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
+    .nav-wordmark-text { display:flex!important; flex-direction:column!important; gap:0!important; overflow:visible!important; }
+    .nav-brand-name { font-family:'Manrope',system-ui,sans-serif!important; font-size:1.15rem!important; font-weight:800!important; letter-spacing:-.025em!important; line-height:1!important; white-space:nowrap!important; display:block!important; background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important; background-clip:text!important; -webkit-background-clip:text!important; color:transparent!important; -webkit-text-fill-color:transparent!important; }
+    .nav-wordmark-tagline { font-size:.7rem!important; font-weight:400!important; color:#64748b!important; line-height:1.2!important; margin-top:2px!important; display:block!important; width:100%!important; white-space:nowrap!important; letter-spacing:.04em!important; }
+    .nav-links { display:flex!important; gap:2rem!important; list-style:none!important; margin:0!important; padding:0!important; }
+    .nav-links a { color:#64748b!important; text-decoration:none!important; font-size:.82rem!important; font-weight:500!important; letter-spacing:.01em!important; transition:color .2s!important; }
+    .nav-links a:hover,.nav-links a.active { color:#0f172a!important; }
+    .nav-cta { position:absolute!important; right:3rem!important; font-size:.8rem!important; font-weight:600!important; color:#fff!important; background:#2563eb!important; text-decoration:none!important; padding:.5rem 1.3rem!important; border-radius:100px!important; }
+    .nav-hamburger { display:none!important; position:absolute!important; right:1.5rem!important; background:none!important; border:0!important; cursor:pointer!important; padding:.4rem!important; flex-direction:column!important; gap:5px!important; }
+    .nav-hamburger span { display:block!important; width:22px!important; height:2px!important; background:#475569!important; border-radius:2px!important; }
+    .nav-more { position:relative!important; }
+    .nav-more-btn { cursor:pointer!important; user-select:none!important; }
+    .nav-more-dropdown { display:none!important; position:absolute!important; top:calc(100% + 6px)!important; left:50%!important; transform:translateX(-50%)!important; background:#fff!important; border:1px solid #e2e8f0!important; border-radius:8px!important; padding:.35rem 0!important; min-width:170px!important; list-style:none!important; box-shadow:0 8px 24px rgba(0,0,0,.10)!important; z-index:300!important; }
+    .nav-more-dropdown li { margin:0!important; padding:0!important; }
+    .nav-more-dropdown a { display:block!important; padding:.55rem 1.2rem!important; color:#374151!important; font-size:.82rem!important; white-space:nowrap!important; }
+    .nav-more-dropdown a:hover { color:#0f172a!important; background:#f8f9fb!important; }
+    .nav-more.open .nav-more-dropdown { display:block!important; }
+    @media (max-width:640px) {
+      nav { padding:0 1.5rem!important; }
+      .nav-wordmark { left:1.5rem!important; }
+      .nav-logo { height:30px!important; }
+      .nav-wordmark-tagline { font-size:.6rem!important; }
+      .nav-cta { display:none!important; }
+      .nav-hamburger { display:flex!important; }
+      .nav-links { display:none!important; }
+      .nav-links.open { display:flex!important; flex-direction:column!important; position:absolute!important; top:64px!important; left:0!important; right:0!important; background:#fff!important; padding:.5rem 1.5rem 1.2rem!important; gap:0!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 4px 12px rgba(0,0,0,.06)!important; z-index:199!important; }
+      .nav-links.open li { width:100%!important; }
+      .nav-links.open a { display:block!important; padding:.7rem 0!important; border-bottom:1px solid #f1f5f9!important; font-size:.88rem!important; color:#334155!important; }
+      .nav-more-dropdown { position:static!important; transform:none!important; background:transparent!important; border:0!important; box-shadow:none!important; padding:0 0 0 1rem!important; min-width:auto!important; }
+      .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../solutions.html">Solutions</a></li>
+          <li><a href="../approach.html">Our Approach</a></li>
+          <li><a href="../consumer.html">Consumer AI</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../case-studies.html">Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../our-story.html">Our Story</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">July 28, 2026</div>
+      <h1>Can AI Replace SaaS? A Practical Guide for Small Businesses</h1>
+      <p class="post-excerpt">The "SaaSpocalypse" raised a legitimate question: if AI agents can complete workflows across files, databases, and business systems, how many separate software subscriptions does a company actually need? For SMBs, this is not an abstract debate. It is a practical question about cost, complexity, and control.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <img src="endofsaas.072826_no_ai_metadata.jpg" alt="AI and SaaS disruption: a practical guide for small businesses" style="width:100%; max-height:480px; object-fit:cover; display:block;">
+
+    <div class="post-content">
+
+      <p>In early February 2026, a sharp selloff swept through software and information-services stocks after Anthropic released industry-focused plugins for its Claude Cowork platform. Investors began asking whether AI agents could perform work that previously required employees to navigate specialized software. Approximately $285 billion in market value reportedly disappeared during the initial selloff, and the episode quickly earned an ominous nickname: the "SaaSpocalypse."</p>
+
+      <p>The market reaction may have been dramatic, but the underlying question is legitimate. If an AI agent can complete a workflow across files, databases, email, and business systems, how many separate software interfaces and user licenses does a company still need?</p>
+
+      <p>For small and medium businesses, this is not an abstract debate about the future of Salesforce or ServiceNow. It is a practical question about cost, complexity, and control.</p>
+
+      <p>Until recently, an SMB that disliked an expensive software package had two realistic choices: tolerate it or commission custom software at considerable cost. AI-assisted development is creating a credible third option. A business can now build a focused application, automation, or AI agent around its actual workflow in far less time than traditional software development often required. That does not mean every SaaS product should be replaced. It means replacement is now a real option worth evaluating.</p>
+
+      <h2>SaaS Is Changing, Not Disappearing</h2>
+
+      <p>The strongest evidence points to a restructuring of software, not its extinction.</p>
+
+      <p>In July 2026, <a href="https://www.gartner.com/en/newsroom/press-releases/2026-07-01-gartner-says-us-dollars-234-billion-in-enterprise-application-software-spend-is-at-risk-from-agentic-artificial-intelligence" target="_blank" rel="noopener">Gartner estimated that up to $234 billion in enterprise application spending</a> could be exposed to "agentic arbitrage" by 2030. That represents roughly 20% of enterprise application SaaS spending. Agentic arbitrage occurs when AI agents complete tasks across multiple systems, reducing the need for people to interact with every application directly.</p>
+
+      <p>Gartner described the change as a metamorphosis rather than the destruction of SaaS. This is an important distinction. Much of the underlying software will remain, but the way people access it, the functions they pay for, and the basis on which vendors charge may change substantially.</p>
+
+      <p><a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/upgrading-software-business-models-to-thrive-in-the-ai-era" target="_blank" rel="noopener">McKinsey's research on AI-era software business models</a> reaches a similar conclusion. As AI performs more work, the traditional relationship between the number of employees using a product and the value the product creates becomes weaker. Vendors are experimenting with usage-based, activity-based, and outcome-oriented pricing as alternatives to charging for every user seat.</p>
+
+      <p>The likely future is not "AI or SaaS." It is a mixed environment in which businesses use AI to access some established systems, replace selected point solutions, and build custom workflows where generic products no longer justify their cost.</p>
+
+      <h2>What AI Can Replace, and What It Usually Cannot</h2>
+
+      <p>Discussions about AI replacing software often mix together three very different changes.</p>
+
+      <h3>1. Replacing the Interface</h3>
+
+      <p>An employee asks an AI assistant to "show me every open proposal over $25,000 and draft follow-ups for the ones that have been idle for ten days." The agent retrieves information and prepares the work without requiring the employee to navigate several screens.</p>
+
+      <p>The CRM or database may still exist underneath. What disappears is some of the time spent learning and operating its interface.</p>
+
+      <h3>2. Replacing the Workflow</h3>
+
+      <p>A custom application receives a client intake form, checks for missing information, classifies the request, creates tasks, drafts a response, and routes exceptions for human review. This may replace a point solution or several disconnected automation tools. It is one of the strongest opportunities for AI-assisted custom development because the workflow can be narrow, observable, and designed around the business.</p>
+
+      <h3>3. Replacing the System of Record</h3>
+
+      <p>A company removes the authoritative platform that stores its accounting transactions, patient records, payroll, inventory, or contractual commitments and builds its own replacement. This is a much larger decision. Systems of record enforce permissions, maintain audit histories, preserve data integrity, manage complex rules, and support regulatory obligations. Replacing one may be justified in some situations, but it requires a different level of engineering, testing, security, documentation, and ongoing support.</p>
+
+      <p>The first two forms of replacement are becoming much more accessible. The third remains a high-risk undertaking. This distinction is consistent with <a href="https://www.bain.com/insights/will-agentic-ai-disrupt-saas-technology-report-2025/" target="_blank" rel="noopener">Bain &amp; Company's framework for evaluating AI disruption in SaaS</a>. Bain recommends evaluating workflows according to factors such as task repetition, risk of error, process variability, proprietary data, switching friction, regulation, and the maturity of agent integrations. Its analysis also places systems of record at the foundation of the emerging agent economy. AI may increasingly operate those systems without necessarily eliminating them.</p>
+
+      <h2>Why the Opportunity Is Especially Important for SMBs</h2>
+
+      <p>Large enterprises can negotiate contracts, employ platform administrators, and spread implementation costs across thousands of employees. Smaller businesses often have less leverage.</p>
+
+      <p>An SMB may subscribe to one product for customer records, another for intake, another for scheduling, another for document generation, and another for reporting. Each product can be reasonable on its own while the combined stack becomes expensive and difficult to manage.</p>
+
+      <p>The problem is not simply unused features. It is the operational friction created by fragmented data, repeated entry, multiple logins, inconsistent processes, and subscriptions that overlap without working together.</p>
+
+      <p>AI-assisted development changes the economics in several ways. Natural-language interfaces can reduce the need to recreate every traditional software screen. Modern platforms provide reusable databases, authentication, hosting, and integrations. AI coding tools can accelerate prototyping, testing, documentation, and routine development. AI agents can handle unstructured material such as emails, forms, notes, and documents that traditional automation struggles to process. A focused application can be designed around one company's process rather than the broadest possible customer base.</p>
+
+      <p>This does not make software free. It lowers the cost of reaching a useful first version and expands the set of problems for which a custom solution can be economically reasonable.</p>
+
+      <h2>The Shift Is Already Visible</h2>
+
+      <p>Current evidence is still early, but it shows that businesses are beginning to act on this option.</p>
+
+      <p>In a late-2025 survey of 817 Retool customers and software builders, <a href="https://retool.com/newsroom/build-vs-buy-report-2026" target="_blank" rel="noopener">35% said their teams had replaced at least one SaaS tool with a custom build</a>, while 78% expected to build more internal tools in 2026. Workflow automation and internal administrative tools led the replacement list, followed by categories including CRM, business intelligence, project management, and customer support.</p>
+
+      <p>The sample is not representative of every business. Retool surveyed people who were already customers or software builders, so the results should be read as evidence of an active trend rather than a universal adoption rate. The same study also found that 60% of respondents had built software outside formal IT oversight during the prior year. That finding highlights both the opportunity and the governance risk.</p>
+
+      <p>Several <a href="https://www.pymnts.com/news/artificial-intelligence/2026/smbs-swap-pricey-saas-contracts-for-ai-built-apps/" target="_blank" rel="noopener">reported examples show what selective replacement can look like</a>:</p>
+
+      <ul>
+        <li><strong>Greenleaf Management, a 55-person real estate investment manager:</strong> Replaced Salesforce and exited two real estate software contracts using a custom application built with Replit and Claude Code. The company reported approximately $300 per month in maintenance cost and about $100,000 in annual savings.</li>
+        <li><strong>Atonom, a 45-person startup:</strong> Replaced a $40,000-per-year Salesforce contract with a focused custom CRM. The expected annual cost was about $1,200.</li>
+        <li><strong>Seattle Seawolves, a 70-person professional rugby organization:</strong> Replaced Salesforce and a ticketing system in four months using AI-assisted development. The organization reported approximately $100,000 in software savings.</li>
+      </ul>
+
+      <p>These examples were reported by PYMNTS based on interviews originally published by The Information. They are useful illustrations, not independently audited ROI studies. Results will vary according to workflow complexity, data quality, implementation choices, and support requirements.</p>
+
+      <h2>Where Replacement Is Most Promising</h2>
+
+      <p>A SaaS replacement is strongest when the workflow is narrow, stable, measurable, and expensive relative to the value the current product delivers.</p>
+
+      <p>Good candidates often include client or customer intake, lead routing and follow-up preparation, internal approvals and request management, document classification and extraction, recurring report generation, knowledge search across approved company material, project-status collection and summarization, customer-support triage, quote and proposal preparation, and inventory alerts and operational exception reporting.</p>
+
+      <p>For example, a professional-services firm may keep its accounting and document-management systems while replacing a collection of intake, status-reporting, and follow-up tools with one focused application. A healthcare practice might preserve its EHR and billing platforms while adding a controlled layer that prepares intake summaries, identifies missing information, and drafts nonclinical communications. A manufacturer might retain its ERP while building a mobile workflow for quality notes, work-order updates, and exception escalation.</p>
+
+      <p>In each case, the custom layer targets the work surrounding a core system rather than immediately attempting to replace the system itself.</p>
+
+      <h2>A Practical Replacement Scorecard</h2>
+
+      <p>Before replacing a subscription, evaluate the workflow against eight questions:</p>
+
+      <div class="scorecard">
+        <ol>
+          <li><strong>Is the workflow well understood?</strong> If employees cannot agree on how the process should work, software will not resolve the ambiguity.</li>
+          <li><strong>Can success be measured?</strong> Define expected savings, cycle-time improvements, error rates, or service outcomes before building.</li>
+          <li><strong>Can errors be detected and corrected?</strong> High-impact decisions require validation, approval steps, and safe failure modes.</li>
+          <li><strong>Do you control the required data?</strong> Confirm that data can be exported, normalized, and used under existing contracts and privacy obligations.</li>
+          <li><strong>How many critical integrations are involved?</strong> Every connection adds cost, failure points, and maintenance responsibility.</li>
+          <li><strong>Is the application a regulated system of record?</strong> If so, the threshold for replacement should be much higher.</li>
+          <li><strong>Is the existing product expensive relative to actual use?</strong> Include administrator time, implementation effort, integrations, and switching costs, not just license fees.</li>
+          <li><strong>Who will own the system after launch?</strong> A production application needs monitoring, support, security updates, and accountable decision-making.</li>
+        </ol>
+      </div>
+
+      <p>A promising project does not need a perfect score. It needs a clear economic case and a risk level the organization is equipped to manage.</p>
+
+      <h2>The Hidden Costs of Building</h2>
+
+      <p>AI makes it easier to produce software. It does not eliminate the obligations that come with owning software.</p>
+
+      <h3>Maintenance and Integration Changes</h3>
+
+      <p>Custom applications depend on APIs, authentication services, libraries, model providers, cloud platforms, and external data formats. Any of these can change. Endpoints are retired, permissions are revised, dependencies develop vulnerabilities, and model behavior evolves. A working application therefore needs automated tests, integration monitoring, backups, error alerts, release procedures, and someone responsible for responding when a dependency changes. Maintenance should be budgeted from the beginning according to the system's complexity, usage, risk, and number of external connections.</p>
+
+      <h3>Reliability and Quality Control</h3>
+
+      <p>AI outputs are probabilistic. Even a strong model can misunderstand unusual input, omit an important detail, or take an unexpected path. Production systems need structured validation, limited permissions, human approval for consequential actions, and logs that make behavior reviewable. The right question is not simply whether an agent can complete a task during a demonstration. It is whether the complete system can perform dependably under real operating conditions, including incomplete data, unusual cases, outages, and user mistakes.</p>
+
+      <h3>Security and Data Governance</h3>
+
+      <p>A custom application can improve security by reducing unnecessary access and centralizing controls. It can also introduce new risk if credentials are exposed, permissions are overly broad, sensitive prompts are logged, or company data is sent to unapproved services. The design should specify what data the system can access, where that data is processed, how long it is retained, which models and subprocessors are used, and how access is revoked. Security should be part of the architecture, not a final checklist.</p>
+
+      <h3>Compliance Is a Shared Responsibility</h3>
+
+      <p>Established SaaS vendors may provide certifications, contractual commitments, security controls, audit reports, and compliance features. Those protections have value, but subscribing to a compliant platform does not automatically make the customer's workflow compliant. The same principle applies to custom software. Using compliant cloud infrastructure is only one part of the obligation. The organization remains responsible for how the system is designed, configured, and used.</p>
+
+      <p>For example, <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html" target="_blank" rel="noopener">U.S. Department of Health and Human Services guidance</a> explains that a cloud provider handling electronic protected health information is generally a business associate and must enter into an appropriate Business Associate Agreement. The covered entity must still conduct its own risk analysis and implement the service appropriately.</p>
+
+      <p>Businesses in healthcare, finance, legal services, and other regulated fields should involve qualified legal, security, and compliance professionals when determining their obligations. An AI development partner can help build the required technical controls, but it should not substitute engineering judgment for legal or regulatory advice.</p>
+
+      <h2>Four Options Are Better Than a Build-or-Buy Debate</h2>
+
+      <p>Every software review should consider four outcomes:</p>
+
+      <div class="four-options">
+        <div class="option-card">
+          <div class="option-label">Keep</div>
+          <p>The platform is reliable, appropriately priced, deeply integrated, or serves as a critical system of record.</p>
+        </div>
+        <div class="option-card">
+          <div class="option-label">Augment</div>
+          <p>AI can improve how employees use the platform without replacing its data, controls, or transaction engine.</p>
+        </div>
+        <div class="option-card">
+          <div class="option-label">Consolidate</div>
+          <p>A custom layer can replace several interfaces, automations, or narrow point tools while retaining essential back-end systems.</p>
+        </div>
+        <div class="option-card">
+          <div class="option-label">Replace</div>
+          <p>The workflow is focused, measurable, portable, and sufficiently low risk, and the economic case includes ongoing ownership costs.</p>
+        </div>
+      </div>
+
+      <p>For many SMBs, augmentation and consolidation will deliver value faster and with less risk than complete replacement. A successful first project may later support a larger transition, but it should earn that expansion through measured results.</p>
+
+      <h2>Why Experienced Guidance Matters</h2>
+
+      <p>The hardest part of custom AI software is no longer producing an initial body of code. It is deciding what should be built, what should remain on a proven platform, how data should move, where human approval is required, how results will be measured, and who will maintain the system.</p>
+
+      <p>An effective engagement begins before development. It starts with inventorying applications, licenses, integrations, and actual usage; mapping the workflow to identify where time, money, and information are being lost; separating systems of record from replaceable interfaces and point solutions; estimating the full cost of each option including migration, training, support, security, and maintenance; and choosing a bounded first use case with measurable results. From there: build a controlled pilot using representative data and real edge cases, test security, permissions, failure handling, and recovery before deployment, and monitor performance before expanding.</p>
+
+      <div class="callout">
+        <strong>This is where experienced guidance makes the difference</strong> between a promising prototype and a dependable business system. At FutureInSites, we help small and medium businesses choose and build practical AI tools that fit the way their teams already work. We assess which applications should be kept, augmented, consolidated, or replaced, then design secure, focused solutions with clear measures of success and an ongoing improvement plan.
+      </div>
+
+      <h2>The Bottom Line</h2>
+
+      <p>AI is not ending software subscriptions. It is ending the assumption that every business must accept the same oversized package, pay for every human seat, and adapt its workflow to whatever a vendor decided to build.</p>
+
+      <p>For SMBs and professional firms, custom AI software is now a credible alternative in many cases, particularly for narrow workflows, internal tools, document-heavy processes, and collections of overlapping point solutions.</p>
+
+      <p>The opportunity is real, but so are the risks. A quick prototype is not automatically secure, compliant, maintainable, or ready to become a company's source of truth. The best strategy is selective: preserve the systems that provide durable value, use AI to simplify how people work, and replace software only where the economics and risk genuinely support it.</p>
+
+      <p>Before renewing another underused subscription, ask a better question: should we keep it, augment it, consolidate it, or replace it?</p>
+
+      <hr />
+
+      <p><em>Interested in evaluating your software stack? <a href="../contact.html">Contact FutureInSites</a> to identify a practical, measurable first opportunity.</em></p>
+
+      <h2>References</h2>
+
+      <ol class="ref-list">
+        <li>Gartner. "<a href="https://www.gartner.com/en/newsroom/press-releases/2026-07-01-gartner-says-us-dollars-234-billion-in-enterprise-application-software-spend-is-at-risk-from-agentic-artificial-intelligence" target="_blank" rel="noopener">Gartner Says $234 Billion in Enterprise Application Software Spend Is at Risk from Agentic AI</a>." July 1, 2026.</li>
+        <li>Bain &amp; Company. "<a href="https://www.bain.com/insights/will-agentic-ai-disrupt-saas-technology-report-2025/" target="_blank" rel="noopener">Will Agentic AI Disrupt SaaS?</a>" Technology Report 2025.</li>
+        <li>Deloitte Insights. "<a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/saas-ai-agents.html" target="_blank" rel="noopener">SaaS Meets AI Agents: Transforming Budgets, Customer Experience, and Workforce Dynamics</a>." 2026 Technology, Media &amp; Telecommunications Predictions.</li>
+        <li>McKinsey &amp; Company. "<a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/upgrading-software-business-models-to-thrive-in-the-ai-era" target="_blank" rel="noopener">Upgrading Software Business Models to Thrive in the AI Era</a>." September 22, 2025.</li>
+        <li>Retool. "<a href="https://retool.com/newsroom/build-vs-buy-report-2026" target="_blank" rel="noopener">Retool's 2026 Build vs. Buy Report Reveals 35% of Enterprises Have Already Replaced SaaS with Custom Software</a>." February 17, 2026.</li>
+        <li>PYMNTS. "<a href="https://www.pymnts.com/news/artificial-intelligence/2026/smbs-swap-pricey-saas-contracts-for-ai-built-apps/" target="_blank" rel="noopener">SMBs Swap Pricey SaaS Contracts for AI-Built Apps</a>." July 8, 2026.</li>
+        <li>U.S. Department of Health and Human Services. "<a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html" target="_blank" rel="noopener">Guidance on HIPAA and Cloud Computing</a>." Office for Civil Rights.</li>
+        <li>National Institute of Standards and Technology. "<a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework</a>." NIST AI 100-1.</li>
+      </ol>
+
+      <p style="margin-top: 2rem;"><a href="index.html" class="post-back">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="../approach.html">Our Approach</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../ai-readiness.html">Assessment</a></li>
+            <li><a href="../consumer.html">Consumer AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="../our-story.html">Our Story</a></li>
+            <li><a href="../team.html">Team</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Resources</p>
+          <ul>
+            <li><a href="../case-studies.html">Case Studies</a></li>
+            <li><a href="../ai-vendor-landscape.html">AI Landscape</a></li>
+            <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* Dropdown toggles */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
+  <script src="../cookie-banner.js"></script>
+  <script id="fis-global-header-v2-script">
+  (function () {
+    var existingNav = document.querySelector('nav');
+    if (existingNav) {
+      var cleanNav = existingNav.cloneNode(true);
+      existingNav.parentNode.replaceChild(cleanNav, existingNav);
+    }
+    var btn = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () { menu.classList.toggle('open'); });
+      document.addEventListener('click', function (event) {
+        if (!btn.contains(event.target) && !menu.contains(event.target)) menu.classList.remove('open');
+      });
+    }
+    var groups = document.querySelectorAll('.nav-more');
+    groups.forEach(function (group) {
+      var trigger = group.querySelector('.nav-more-btn');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        var opening = !group.classList.contains('open');
+        groups.forEach(function (item) { item.classList.remove('open'); });
+        if (opening) group.classList.add('open');
+      });
+    });
+    document.addEventListener('click', function (event) {
+      var inside = false;
+      groups.forEach(function (group) { if (group.contains(event.target)) inside = true; });
+      if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
+    });
+  })();
+  </script>
+</body>
+</html>
