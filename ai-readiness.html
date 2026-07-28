@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Readiness Assessment | FutureInSites</title>
+  <title>AI Readiness Questionnaire | FutureInSites</title>
   <meta name="description" content="Assess your organization's AI readiness across data, governance, technology, and security. Get an instant score, tier, and personalized recommendations." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -605,53 +605,114 @@
       .form-section { padding: 1.5rem 1rem 2rem; }
       .section-score-name { width: 120px; font-size: 0.8rem; }
     }}
-    /* Bridge: connects online tool to free assessment */
+    /* Rather Talk First: bridge section */
     .readiness-bridge {
       background: #F5F7FB;
+      border-top: 1px solid #E5E7EB;
       border-bottom: 1px solid #E5E7EB;
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem;
     }
     .readiness-bridge-inner {
-      max-width: 720px;
+      max-width: 880px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
       align-items: start;
     }
-    .readiness-bridge-col--alt {
-      border-left: 1px solid #D1D5DB;
-      padding-left: 2.5rem;
-    }
-    .bridge-label {
+    .bridge-eyebrow {
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #2563EB;
-      margin-bottom: 0.6rem;
+      color: #6B7280;
+      margin-bottom: 0.65rem;
     }
-    .bridge-label--muted { color: #6B7280; }
-    .bridge-body {
+    .bridge-lead {
       color: #374151;
       font-size: 0.95rem;
       line-height: 1.65;
-      margin: 0;
+      margin: 0 0 1.1rem;
     }
-    .bridge-link {
+    .bridge-cta {
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      margin-top: 0.9rem;
       color: #2563EB;
       font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
     }
-    .bridge-link:hover { color: #1D4ED8; }
-    @media (max-width: 640px) {
-      .readiness-bridge-inner { grid-template-columns: 1fr; gap: 1.75rem; }
-      .readiness-bridge-col--alt { border-left: none; padding-left: 0; border-top: 1px solid #D1D5DB; padding-top: 1.75rem; }
+    .bridge-cta:hover { color: #1D4ED8; }
+    .bridge-details {
+      border-left: 1px solid #D1D5DB;
+      padding-left: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    .bridge-section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2563EB;
+      margin-bottom: 0.75rem;
+    }
+    .bridge-deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .bridge-deliverable-item strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.3rem;
+    }
+    .bridge-deliverable-item span {
+      font-size: 0.82rem;
+      color: #6B7280;
+      line-height: 1.5;
+    }
+    .bridge-steps {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .bridge-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #374151;
+    }
+    .bridge-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: #2563EB;
+      color: #FFFFFF;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .bridge-step-arrow { color: #D1D5DB; font-size: 0.85rem; }
+    .bridge-locations {
+      font-size: 0.82rem;
+      color: #6B7280;
+      margin-top: 0.6rem;
+    }
+    @media (max-width: 768px) {
+      .readiness-bridge-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .bridge-details { border-left: none; padding-left: 0; border-top: 1px solid #D1D5DB; padding-top: 2rem; }
+      .bridge-deliverable-grid { grid-template-columns: 1fr; }
     }
 
   </style>
@@ -678,7 +739,7 @@
           <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">Our Approach</a></li>
           <li><a href="consumer.html">Consumer AI</a></li>
-          <li><a href="ai-readiness.html">AI Readiness</a></li>
+          <li><a href="ai-readiness.html">AI Assessment</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -706,27 +767,59 @@
 <!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É HERO ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="eyebrow">AI Readiness Assessment</div>
+    <div class="eyebrow">AI Readiness Questionnaire</div>
     <h1>See Where Your Organization Stands on AI</h1>
-    <p>Answer 28 questions across data, governance, technology, and security. Get an instant score, a tier rating, and a personalized PDF report with actionable recommendations &#8212; no contact information required until you&#8217;re ready for your results.</p>
+    <p>Answer 28 questions across data, governance, technology, and security. Receive an instant score, a tier rating, and a personalized PDF report. No contact information is required until you are ready for your results.</p>
   </div>
 </section>
 
-<!-- Bridge: online tool and free assessment connection -->
+<!-- Rather Talk First: free assessment connector -->
 <section class="readiness-bridge">
   <div class="readiness-bridge-inner">
-    <div class="readiness-bridge-col">
-      <p class="bridge-label">Take the online assessment</p>
-      <p class="bridge-body">Complete the 28-question self-assessment below to get your instant score, tier rating, and a personalized PDF report you can act on right away. It takes about five minutes and covers data, governance, technology, and security. Sharing your results with us is optional &#8212; but it gives us a meaningful head start before we connect.</p>
+
+    <div class="bridge-intro">
+      <p class="bridge-eyebrow">Rather talk first?</p>
+      <p class="bridge-lead">The online assessment is a helpful head-start, not a requirement. We also offer a free AI opportunity assessment where we review your business firsthand and identify where AI can create the most practical value.</p>
+      <a href="contact.html?inquiry=assessment" class="bridge-cta">Request your free assessment &rarr;</a>
     </div>
-    <div class="readiness-bridge-col readiness-bridge-col--alt">
-      <p class="bridge-label bridge-label--muted">Rather talk first?</p>
-      <p class="bridge-body">The online assessment is a helpful head-start, not a requirement. If you&#8217;d rather connect directly, we offer a free AI opportunity assessment &#8212; a structured conversation where we review your business and identify where AI can create the most practical value.</p>
-      <a href="contact.html?inquiry=assessment" class="bridge-link">Request your free assessment &#8594;</a>
+
+    <div class="bridge-details">
+
+      <div class="bridge-deliverables">
+        <p class="bridge-section-label">What you receive</p>
+        <div class="bridge-deliverable-grid">
+          <div class="bridge-deliverable-item">
+            <strong>Categorized opportunity report</strong>
+            <span>First-round opportunities across workflows, service, administration, and growth.</span>
+          </div>
+          <div class="bridge-deliverable-item">
+            <strong>Data, technology, and governance findings</strong>
+            <span>Practical recommendations covering data readiness, software, integrations, security, and policy.</span>
+          </div>
+          <div class="bridge-deliverable-item">
+            <strong>Initial proof-of-concept proposal</strong>
+            <span>One recommended initiative with a clear scope and measurable outcome.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bridge-process">
+        <p class="bridge-section-label">How it works</p>
+        <div class="bridge-steps">
+          <span class="bridge-step"><span class="bridge-step-num">1</span>Meet</span>
+          <span class="bridge-step-arrow">&rarr;</span>
+          <span class="bridge-step"><span class="bridge-step-num">2</span>Follow up</span>
+          <span class="bridge-step-arrow">&rarr;</span>
+          <span class="bridge-step"><span class="bridge-step-num">3</span>Assess</span>
+          <span class="bridge-step-arrow">&rarr;</span>
+          <span class="bridge-step"><span class="bridge-step-num">4</span>Recommend</span>
+        </div>
+        <p class="bridge-locations">Available in person in Boston and New York City, or virtually.</p>
+      </div>
+
     </div>
   </div>
 </section>
-
 
 <!-- ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É FORM ├óΓÇó┬É├óΓÇó┬É├óΓÇó┬É -->
 <form id="readinessForm" novalidate>
