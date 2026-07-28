@@ -2251,7 +2251,6 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      counter-reset: assessment;
     }
     .assessment-review-list li {
       position: relative;
@@ -2259,22 +2258,16 @@
       color: #334964;
       font-size: 0.72rem;
       line-height: 1.35;
-      counter-increment: assessment;
     }
     .assessment-review-list li::before {
-      content: counter(assessment);
+      content: '›';
       position: absolute;
       left: 0;
-      top: -1px;
-      display: grid;
-      place-items: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      color: #FFFFFF;
-      background: #1769E0;
-      font-size: 0.55rem;
-      font-weight: 700;
+      top: -3px;
+      color: #1769E0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1;
     }
     .assessment-process { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid #D4E5F8; }
     .assessment-process h4 { margin: 0 0 0.7rem; color: #0B2A56; font-size: 0.88rem; }
@@ -2291,8 +2284,14 @@
       background: #FFFFFF;
     }
     .assessment-process-icon svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .assessment-process-copy strong { display: block; color: #173B68; font-size: 0.68rem; }
+    .assessment-process-copy strong { display: flex; align-items: center; color: #173B68; font-size: 0.68rem; white-space: nowrap; }
     .assessment-process-copy span { display: block; color: #5B708A; font-size: 0.58rem; line-height: 1.35; }
+    .assessment-process-number {
+      display: inline-block;
+      margin-right: 0.25rem;
+      color: #1769E0;
+      font-weight: 800;
+    }
     .assessment-deliverables {
       display: grid;
       grid-template-columns: 130px 0.85fr 1.15fr 1.25fr;
@@ -3062,19 +3061,19 @@
               <div class="assessment-process-grid">
                 <div class="assessment-process-step">
                   <span class="assessment-process-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg></span>
-                  <div class="assessment-process-copy"><strong>Meet</strong><span>Virtual, Boston, or NYC</span></div>
+                  <div class="assessment-process-copy"><strong><span class="assessment-process-number">1</span>Meet</strong><span>Virtual, Boston, or NYC</span></div>
                 </div>
                 <div class="assessment-process-step">
                   <span class="assessment-process-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M8 13h8M8 17h5"></path></svg></span>
-                  <div class="assessment-process-copy"><strong>Follow up</strong><span>Written due-diligence questions</span></div>
+                  <div class="assessment-process-copy"><strong><span class="assessment-process-number">2</span>Follow up</strong><span>Written due-diligence questions</span></div>
                 </div>
                 <div class="assessment-process-step">
                   <span class="assessment-process-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg></span>
-                  <div class="assessment-process-copy"><strong>Assess</strong><span>Categorize the opportunities</span></div>
+                  <div class="assessment-process-copy"><strong><span class="assessment-process-number">3</span>Assess</strong><span>Categorize the opportunities</span></div>
                 </div>
                 <div class="assessment-process-step">
                   <span class="assessment-process-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 22h4"></path><path d="M8.5 14.5A7 7 0 1 1 15.5 14.5C14.5 15.3 14 16 14 18h-4c0-2-.5-2.7-1.5-3.5z"></path></svg></span>
-                  <div class="assessment-process-copy"><strong>Recommend</strong><span>Select the first proof of concept</span></div>
+                  <div class="assessment-process-copy"><strong><span class="assessment-process-number">4</span>Recommend</strong><span>Select the first proof of concept</span></div>
                 </div>
               </div>
             </div>
@@ -3113,8 +3112,8 @@
       assessmentPopup.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       setTimeout(function () {
-        var cta = assessmentPopup.querySelector('.assessment-popup-cta');
-        if (cta) cta.focus();
+        var closeButton = assessmentPopup.querySelector('.assessment-popup-close');
+        if (closeButton) closeButton.focus();
       }, 50);
     }
 
