@@ -2,9 +2,36 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "futureinsites.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "futureinsites.com"
+        }
+      ],
       "destination": "https://www.futureinsites.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "free-ai-assessment.com"
+        }
+      ],
+      "destination": "https://www.futureinsites.com/ai-readiness.html?utm_source=free-ai-assessment&utm_medium=domain-redirect",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.free-ai-assessment.com"
+        }
+      ],
+      "destination": "https://www.futureinsites.com/ai-readiness.html?utm_source=free-ai-assessment&utm_medium=domain-redirect",
+      "permanent": false
     }
   ]
 }
