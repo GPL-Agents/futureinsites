@@ -469,9 +469,32 @@ module.exports = async function handler(req, res) {
   const a = {};
   ['q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15',
    'q16','q17','q18','q19','q20','q21','q22','q23','q24','q25',
-   'q26','q27','q28'].forEach(k => {
+   'q26','q27','q28','q29'].forEach(k => {
     a[k] = body[k];
   });
+
+  // q29 = self-reported AI opportunity areas. Not scored; passed through for the team.
+  const OPPORTUNITY_LABELS = {
+    docautomation: 'Document automation',
+    intake: 'Intake and communication',
+    knowledge: 'Knowledge assistants',
+    opsanalysis: 'Operational analysis',
+    execai: 'Personal and executive AI',
+    aisetup: 'Business AI setup',
+    training: 'Team AI training',
+    readiness: 'AI readiness assessment',
+    workflow: 'Workflow automation',
+    clientcomms: 'Client and patient communication',
+    scheduling: 'Scheduling and dispatch support',
+    billing: 'Billing and claims preparation',
+    proposals: 'Proposal and contract drafting',
+    research: 'Research and competitive intelligence',
+    agents: 'Custom AI agent development',
+    strategy: 'AI strategy and roadmap',
+  };
+  const opportunityAreas = (Array.isArray(a.q29) ? a.q29 : (a.q29 ? [a.q29] : []))
+    .map(v => OPPORTUNITY_LABELS[v])
+    .filter(Boolean);
 
   // Optional fields
   const company = (body.company || '').toString().trim().slice(0, 200);
@@ -656,6 +679,14 @@ module.exports = async function handler(req, res) {
         </ol>
       </div>
 
+      ${opportunityAreas.length ? `
+      <div style="border-top:1px solid #E4E7EE;padding-top:12px;margin-bottom:16px;">
+        <div style="color:#64748B;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.06em;margin-bottom:6px;">Where They Think AI Could Help</div>
+        <ul style="color:#140F0F;font-size:13px;padding-left:18px;margin:0;">
+          ${opportunityAreas.map(o => `<li style="margin-bottom:4px;">${escapeHtml(o)}</li>`).join('')}
+        </ul>
+      </div>` : ''}
+
       <div style="border-top:1px solid #E4E7EE;padding-top:12px;">
         <div style="color:#64748B;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.06em;margin-bottom:6px;">Raw Answers</div>
         <pre style="font-size:11px;color:#64748B;white-space:pre-wrap;margin:0;">${escapeHtml(answersSummary)}</pre>
@@ -677,6 +708,9 @@ module.exports = async function handler(req, res) {
     `Recommendations:`,
     ...recommendations.map((r, i) => `${i + 1}. ${r}`),
     ``,
+    ...(opportunityAreas.length
+      ? [`Where They Think AI Could Help:`, ...opportunityAreas.map(o => `  - ${o}`), ``]
+      : []),
     `Raw Answers:`,
     answersSummary,
     ``,

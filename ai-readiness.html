@@ -381,6 +381,15 @@
       line-height: 1.4;
     }
 
+    /* Multi-column option grid (used by the AI opportunity-areas question) */
+    .option-grid.option-grid-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 8px;
+      align-items: stretch;
+    }
+    .option-grid.option-grid-cols .option-item { align-items: center; }
+
     /* Buttons */
     .btn-row {
       display: flex;
@@ -859,6 +868,7 @@
     .section-block[data-section="D"] .btn-row,
     .section-block[data-section="E"] .btn-row,
     .section-block[data-section="F"] .btn-row { display: none !important; }
+    .section-block[data-section="H"] .btn-row { display: none !important; }
 
     /* ─── VALIDATION ERROR STATE ─── */
     .field-group.q-unanswered .option-grid { border: 1.5px solid #DC2626; border-radius: 8px; }
@@ -893,8 +903,8 @@
         <ul class="nav-more-dropdown">
           <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">Our Approach</a></li>
-          <li><a href="consumer.html">Consumer AI</a></li>
           <li><a href="ai-readiness.html">AI Assessment</a></li>
+          <li><a href="consumer.html">Consumer AI</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -1398,6 +1408,38 @@
       </div>
     </div>
 
+    <!-- Section H: AI Opportunity Areas -->
+    <div class="section-block" data-section="H">
+      <div class="section-header">
+        <h2>AI Opportunity Areas</h2>
+        <p>Where you think AI could be useful in your business.</p>
+      </div>
+
+      <!-- Q29 -->
+      <div class="field-group" data-optional="true">
+        <label>Where do you think AI may be useful for your business?</label>
+        <div class="hint">Select all that apply, or skip this question if you are not sure yet.</div>
+        <div class="option-grid option-grid-cols">
+          <label class="option-item"><input type="checkbox" name="q29" value="docautomation" /> <span class="option-text">Document automation</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="intake" /> <span class="option-text">Intake and communication</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="knowledge" /> <span class="option-text">Knowledge assistants</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="opsanalysis" /> <span class="option-text">Operational analysis</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="execai" /> <span class="option-text">Personal and executive AI</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="aisetup" /> <span class="option-text">Business AI setup</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="training" /> <span class="option-text">Team AI training</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="readiness" /> <span class="option-text">AI readiness assessment</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="workflow" /> <span class="option-text">Workflow automation</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="clientcomms" /> <span class="option-text">Client and patient communication</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="scheduling" /> <span class="option-text">Scheduling and dispatch support</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="billing" /> <span class="option-text">Billing and claims preparation</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="proposals" /> <span class="option-text">Proposal and contract drafting</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="research" /> <span class="option-text">Research and competitive intelligence</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="agents" /> <span class="option-text">Custom AI agent development</span></label>
+          <label class="option-item"><input type="checkbox" name="q29" value="strategy" /> <span class="option-text">AI strategy and roadmap</span></label>
+        </div>
+      </div>
+    </div>
+
         <!-- ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ Section G: Get Your Results ├óΓÇ¥Γé¼├óΓÇ¥Γé¼├óΓÇ¥Γé¼ -->
     <div class="section-block" data-section="G">
       <div class="section-header">
@@ -1575,10 +1617,11 @@ var SECTION_NAMES = {
   'C': 'AI Governance & Risk',
   'D': 'Technical Readiness',
   'E': 'Business Readiness',
-  'F': 'Security & Compliance'
+  'F': 'Security & Compliance',
+  'H': 'AI Opportunity Areas'
 };
 
-['B', 'C', 'D', 'E', 'F'].forEach(function(sec) {
+['B', 'C', 'D', 'E', 'F', 'H'].forEach(function(sec) {
   var sectionEl = document.querySelector('.section-block[data-section="' + sec + '"]');
   if (!sectionEl) return;
   sectionEl.querySelectorAll('.field-group').forEach(function(fg) {
@@ -1628,7 +1671,9 @@ function nextQuestion() {
   var radios = q.el.querySelectorAll('input[type="radio"]');
   var checkboxes = q.el.querySelectorAll('input[type="checkbox"]');
   var answered = false;
-  if (radios.length > 0) {
+  if (q.el.getAttribute('data-optional') === 'true') {
+    answered = true;
+  } else if (radios.length > 0) {
     answered = Array.from(radios).some(function(r) { return r.checked; });
   } else if (checkboxes.length > 0) {
     answered = Array.from(checkboxes).some(function(c) { return c.checked; });
@@ -1705,6 +1750,125 @@ document.addEventListener('change', function(e) {
     }
   }
 });
+
+// ── Form submission → /api/ai-readiness ──
+document.getElementById('readinessForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  var form = document.getElementById('readinessForm');
+  var emailInput = document.getElementById('email');
+  var emailVal = emailInput.value.trim();
+  var emailLabel = emailInput.parentElement.querySelector('label');
+
+  if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+    emailInput.classList.add('error');
+    if (emailLabel) emailLabel.style.color = '#DC2626';
+    showContactSection();
+    emailInput.focus();
+    return;
+  }
+  emailInput.classList.remove('error');
+  if (emailLabel) emailLabel.style.color = '';
+
+  var data = {};
+
+  ['email', 'name', 'company', 'industry', 'role', 'companySize', 'phone'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) data[id] = el.value.trim();
+  });
+
+  // Honeypot fields — the API discards submissions where these are filled
+  ['website_hp', 'fax'].forEach(function (n) {
+    var el = form.querySelector('input[name="' + n + '"]');
+    if (el) data[n] = el.value.trim();
+  });
+
+  var questionKeys = ['q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15',
+                      'q16', 'q17', 'q18', 'q19', 'q20', 'q21', 'q22', 'q23', 'q24', 'q25',
+                      'q26', 'q27', 'q28', 'q29'];
+
+  questionKeys.forEach(function (key) {
+    var radios = form.querySelectorAll('input[name="' + key + '"][type="radio"]:checked');
+    var checkboxes = form.querySelectorAll('input[name="' + key + '"][type="checkbox"]:checked');
+    if (radios.length > 0) {
+      data[key] = radios[0].value;
+    } else if (checkboxes.length > 0) {
+      data[key] = Array.prototype.slice.call(checkboxes).map(function (c) { return c.value; });
+    } else {
+      data[key] = '';
+    }
+  });
+
+  var submitBtn = document.getElementById('submitBtn');
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('loadingWrap').classList.add('active');
+  if (submitBtn) submitBtn.disabled = true;
+
+  function restoreForm() {
+    document.getElementById('loadingWrap').classList.remove('active');
+    document.getElementById('formSection').style.display = 'block';
+    if (submitBtn) submitBtn.disabled = false;
+  }
+
+  try {
+    var resp = await fetch('/api/ai-readiness', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    var result = await resp.json();
+    document.getElementById('loadingWrap').classList.remove('active');
+
+    if (!result.ok) {
+      restoreForm();
+      alert(result.error || 'Something went wrong. Please try again.');
+      return;
+    }
+    if (typeof result.score !== 'number') {
+      // Accepted with no score (honeypot path). Nothing further to show.
+      return;
+    }
+    showResults(result);
+  } catch (err) {
+    restoreForm();
+    alert('Network error. Please check your connection and try again.');
+  }
+});
+
+function showResults(r) {
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('resultsWrap').classList.add('active');
+
+  document.getElementById('rScore').innerHTML = r.score + '<span>/100</span>';
+  document.getElementById('rTier').textContent = r.tier.label;
+  document.getElementById('rTier').style.color = r.tier.color;
+  document.getElementById('rDesc').textContent = r.tier.desc;
+  document.getElementById('resultsWrap').scrollIntoView({ behavior: 'smooth' });
+
+  var barColors = { B: '#16A34A', C: '#2563EB', D: '#EAB308', E: '#F97316', F: '#DC2626' };
+  var sDiv = document.getElementById('rSections');
+  sDiv.innerHTML = '';
+  Object.keys(r.sectionNames).forEach(function (k) {
+    var score = r.sectionScores[k];
+    var row = document.createElement('div');
+    row.className = 'section-score-row';
+    row.innerHTML =
+      '<div class="section-score-name">' + r.sectionNames[k] + '</div>' +
+      '<div class="section-score-bar-wrap">' +
+        '<div class="section-score-bar" style="width:' + (score * 0.85 + 15) + '%;background:' + barColors[k] + ';"></div>' +
+      '</div>' +
+      '<div class="section-score-num">' + score + '</div>';
+    sDiv.appendChild(row);
+  });
+
+  var recsList = document.getElementById('rRecs');
+  recsList.innerHTML = '';
+  r.recommendations.forEach(function (rec) {
+    var li = document.createElement('li');
+    li.textContent = rec;
+    recsList.appendChild(li);
+  });
+}
 
 // Initialize — show first question without scrolling; scroll only on user navigation
 showQuestion(0);
