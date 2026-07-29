@@ -219,7 +219,7 @@
 
     /* ─── SEGMENT SECTIONS ─── */
     .segment {
-      padding: 5rem 2rem;
+      padding: 5rem 2rem 2.5rem;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -288,6 +288,32 @@
       letter-spacing: 0.06em; text-transform: uppercase;
       margin-top: 0.9rem;
     }
+    .sol-list-label {
+      margin-top: 1.15rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark);
+    }
+    .sol-list { list-style: none; margin: 0; padding: 0; }
+    .sol-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .sol-list li:last-child { margin-bottom: 0; }
+    .sol-list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.52rem;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .sol-list li strong { color: var(--dark); font-weight: 600; }
 
     /* ─── CTA AT BOTTOM ─── */
     .solutions-cta {
@@ -323,9 +349,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1.5rem;
-      margin-top: 2.25rem;
-      padding-top: 1.6rem;
-      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
     }
     .segment-cta-price {
       margin: 0;
@@ -390,12 +414,6 @@
       color: #FFFFFF;
       border: 1px solid var(--accent);
     }
-    .segment-cta-btn-secondary {
-      background: #FFFFFF;
-      color: var(--dark);
-      border: 1px solid var(--border);
-    }
-    .segment-cta-btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
     .segment-cta-btn:hover { opacity: 0.92; transform: translateY(-1px); }
     @media (max-width: 860px) {
       .segment-cta { flex-direction: column; align-items: flex-start; }
@@ -835,11 +853,11 @@
       <p class="segment-cta-price"><strong>Proof-of-concept implementation typically ranges from $10K to $30K.</strong>Build, implementation, training, user guides, and one year of support are included.</p>
       <a class="segment-cta-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form on your phone">
         <img src="images/assessment-contact-qr.png" alt="QR code linking to the free AI assessment form">
-        <span>Scan to request your free assessment</span>
+        <span>Scan to continue on mobile</span>
       </a>
       <div class="segment-cta-actions">
         <a class="segment-cta-btn segment-cta-btn-primary" href="ai-readiness.html">Free Assessment</a>
-        <button type="button" class="segment-cta-btn segment-cta-btn-secondary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
+        <button type="button" class="segment-cta-btn segment-cta-btn-primary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
       </div>
     </div>
 
@@ -923,11 +941,11 @@
       <p class="segment-cta-price"><strong>Proof-of-concept implementation typically ranges from $5K to $15K.</strong>Build, implementation, training, user guides, and one year of support are included.</p>
       <a class="segment-cta-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form on your phone">
         <img src="images/assessment-contact-qr.png" alt="QR code linking to the free AI assessment form">
-        <span>Scan to request your free assessment</span>
+        <span>Scan to continue on mobile</span>
       </a>
       <div class="segment-cta-actions">
         <a class="segment-cta-btn segment-cta-btn-primary" href="ai-readiness.html">Free Assessment</a>
-        <button type="button" class="segment-cta-btn segment-cta-btn-secondary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
+        <button type="button" class="segment-cta-btn segment-cta-btn-primary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
       </div>
     </div>
 
@@ -955,8 +973,17 @@
           <div class="sol-rule"></div>
         </div>
         <h3>Personal AI Agent Setup</h3>
-        <p>A fully configured personal AI agent you can reach anytime via Telegram. No app to learn, no UI to manage — just message it like you would a person. Tuned to your workflow and connected to Gmail, Google Calendar, and your existing tools. Includes agent personality tuning, integration setup, and a training session so you can get the most out of it from day one. Built on OpenClaw, an open architecture designed for personal AI assistants.</p>
-        <div class="sol-meta">Engagement from $2,500</div>
+        <p>A fully configured personal AI agent you can reach anytime via Telegram. No app to learn, no UI to manage, just message it like you would a person. Built on OpenClaw, an open architecture designed for personal AI assistants.</p>
+        <p class="sol-list-label">What's included</p>
+        <ul class="sol-list">
+          <li><strong>Personality and workflow tuning.</strong> The agent's tone, defaults, and judgment calls shaped around how you actually work, not a generic assistant persona.</li>
+          <li><strong>Integration setup.</strong> Connected to Gmail, Google Calendar, and the tools you already use, so it works from your real calendar and inbox on day one.</li>
+          <li><strong>Secure remote access.</strong> Reach your agent from anywhere over Tailscale, with nothing exposed to the public internet.</li>
+          <li><strong>Runs on hardware you own.</strong> Windows or Mac, with no third-party SaaS dependency for the agent itself. We advise on dedicated always-on hardware if you want it running around the clock.</li>
+          <li><strong>Workflow training session.</strong> A working session so you understand how your agent is built and can extend it yourself.</li>
+          <li><strong>Support after launch.</strong> Seven days of support on the initial buildout, with ongoing support available monthly.</li>
+          <li><strong>You own the result.</strong> The agent runs under your control, so you are never locked into us to keep it running.</li>
+        </ul>
       </div>
 
       <div class="personal-feature-image" style="grid-column: span 2; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;">
@@ -969,11 +996,11 @@
       <p class="segment-cta-price"><strong>Personal AI agent setup from $2,500.</strong>Agent personality tuning, integration setup, and a training session are included.</p>
       <a class="segment-cta-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form on your phone">
         <img src="images/assessment-contact-qr.png" alt="QR code linking to the free AI assessment form">
-        <span>Scan to request your free assessment</span>
+        <span>Scan to continue on mobile</span>
       </a>
       <div class="segment-cta-actions">
         <a class="segment-cta-btn segment-cta-btn-primary" href="ai-readiness.html">Free Assessment</a>
-        <button type="button" class="segment-cta-btn segment-cta-btn-secondary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
+        <button type="button" class="segment-cta-btn segment-cta-btn-primary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
       </div>
     </div>
 
