@@ -1,9 +1,14 @@
 {
   "name": "futureinsites",
   "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@vercel/blob": "^2.4.0",
+    "@vercel/functions": "3.7.6",
     "canvas": "^3.2.3",
     "pdf-lib": "^1.17.1",
     "sharp": "^0.35.3"

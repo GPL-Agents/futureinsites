@@ -12,16 +12,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Single source of truth for this client (name, logos, access code) -->
+  <!-- Single source of truth for this client (name and logos) -->
   <script src="/clients/trace/client.js"></script>
 
   <!-- ============================================================= -->
-  <!--  TRACE - INTRODUCTION  (access code is stored only as a hash in client.js) -->
+  <!--  TRACE - INTRODUCTION -->
   <!-- ============================================================= -->
   <script>
     const DECK = {
-      slug: CLIENT.slug,
-      passwordHash: CLIENT.passwordHash,
       title:    "Introduction",
       subtitle: "Prepared for TRACE Services Co. · June 10, 2026",
       pdfFile: "/clients/trace/introduction/TRACE-Introduction-Deck-v9.pdf",
@@ -130,21 +128,6 @@
     </span>
   </nav>
 
-  <!-- LOCK SCREEN -->
-  <section id="lock">
-    <div class="lock-card">
-      <img class="lock-client-logo" data-client-icon alt="">
-      <h1>Private Presentation</h1>
-      <p class="sub">Enter the access code provided to you.</p>
-      <form class="lock-form" id="lockForm">
-        <input type="password" id="pw" placeholder="Access code" autocomplete="off" autofocus />
-        <button type="submit">Unlock</button>
-        <div class="lock-error" id="err">Incorrect code. Please try again.</div>
-      </form>
-      <div class="lock-foot">Questions? <a href="mailto:help@futureinsites.com">help@futureinsites.com</a></div>
-    </div>
-  </section>
-
   <!-- DECK CONTENT -->
   <div id="deck">
 
@@ -187,30 +170,11 @@
       viewer.appendChild(img);
     }
 
-    async function sha256(text) {
-      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
     function reveal() {
-      document.getElementById('lock').style.display = 'none';
       document.getElementById('deck').classList.add('show');
     }
 
-    if (sessionStorage.getItem('fis-unlocked-' + DECK.slug) === '1') reveal();
-
-    document.getElementById('lockForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const hash = await sha256(DECK.slug + ':' + document.getElementById('pw').value);
-      if (hash === DECK.passwordHash) {
-        sessionStorage.setItem('fis-unlocked-' + DECK.slug, '1');
-        reveal();
-      } else {
-        document.getElementById('err').classList.add('show');
-        document.getElementById('pw').value = '';
-        document.getElementById('pw').focus();
-      }
-    });
+    reveal();
   </script>
 </body>
 </html>

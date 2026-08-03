@@ -1,5 +1,34 @@
 {
-  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/client-login",
+      "destination": "/client-login.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/client-login",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/api/client-login",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",

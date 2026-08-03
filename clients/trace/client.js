@@ -2,17 +2,13 @@
    SINGLE SOURCE OF TRUTH for this client.
    To set up a new client: copy this client's folder, then edit ONLY the
    values below and drop in the two logo images. Every page in the folder
-   reads from here, so the name, logos, and access code populate everywhere.
+   reads from here, so the name and logos populate everywhere.
    ===================================================================== */
 window.CLIENT = {
   slug: "trace",
   name: "Trace Services",
 
-  // SHA-256 of  slug + ":" + access code   (generate with /clients/password-tool.html)
-  // Keep the plain access code OUT of all source files; only this hash belongs here.
-  passwordHash: "2ff2cb78f2c4abb3dad19fe60e0a75aaf0a4b9bb8f48d4911d978935ef454da4",
-
-  // Small square icon: browser tab, nav bar (top right), and the sign-in card.
+  // Small square icon: browser tab and nav bar (top right).
   favicon:  "/clients/trace/TraceFavicon.webp",
   // Full-name wordmark logo: the dashboard header.
   wordmark: "/clients/trace/TraceServicesLogo.webp"

@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Single source of truth for this client (name, logos, access code) -->
+  <!-- Single source of truth for this client (name and logos) -->
   <script src="/clients/trace/client.js"></script>
 
   <!-- ============================================================= -->
-  <!--  TRACE - CLIENT DASHBOARD  (the access code is stored only as a hash in client.js; never put the plain code in source)
+  <!--  TRACE - CLIENT DASHBOARD
        Everything below the CONFIG line is data you can edit:
        - ENGAGEMENT: status pills + Current Engagement card (details)
        - DELIVERABLES: progress checklist  (state: done | active | todo)
@@ -24,9 +24,6 @@
                   leave href null to show it grayed as "Coming soon".      -->
   <!-- ============================================================= -->
   <script>
-    // slug + access code live in client.js (single source of truth)
-    const PORTAL = { slug: CLIENT.slug, passwordHash: CLIENT.passwordHash };
-
     const ENGAGEMENT = {
       status: "Active",
       phase:  "Introduction",
@@ -211,20 +208,6 @@
     </span>
   </nav>
 
-  <section id="lock">
-    <div class="lock-card">
-      <img class="lock-client-logo" data-client-icon alt="">
-      <h1>Client Portal</h1>
-      <p class="sub">Enter the access code provided to you.</p>
-      <form class="lock-form" id="lockForm">
-        <input type="password" id="pw" placeholder="Access code" autocomplete="off" autofocus />
-        <button type="submit">Unlock</button>
-        <div class="lock-error" id="err">Incorrect code. Please try again.</div>
-      </form>
-      <div class="lock-foot">Questions? <a href="mailto:help@futureinsites.com">help@futureinsites.com</a></div>
-    </div>
-  </section>
-
   <section id="portal">
     <div class="portal-inner">
       <aside class="dash">
@@ -307,29 +290,10 @@
         return '<div class="lib-group"><h3>' + g.group + '</h3><div class="lib-items">' + items + '</div></div>';
       }).join('');
 
-      document.getElementById('lock').style.display = 'none';
       document.getElementById('portal').classList.add('show');
     }
 
-    async function sha256(text) {
-      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    if (sessionStorage.getItem('fis-unlocked-' + PORTAL.slug) === '1') reveal();
-
-    document.getElementById('lockForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const hash = await sha256(PORTAL.slug + ':' + document.getElementById('pw').value);
-      if (hash === PORTAL.passwordHash) {
-        sessionStorage.setItem('fis-unlocked-' + PORTAL.slug, '1');
-        reveal();
-      } else {
-        document.getElementById('err').classList.add('show');
-        document.getElementById('pw').value = '';
-        document.getElementById('pw').focus();
-      }
-    });
+    reveal();
   </script>
 </body>
 </html>

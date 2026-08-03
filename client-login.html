@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="FutureInSites client portals bring engagement progress, deliverables, documents, and shared knowledge into one organized workspace." />
   <title>Client Portal | FutureInSites</title>
-  <link rel="canonical" href="https://www.futureinsites.com/clients/" />
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://www.futureinsites.com/client-login" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -183,11 +183,12 @@
       border-radius: 16px;
       box-shadow: 0 18px 45px rgba(15,23,42,0.09);
     }
-    .access-label { display: block; margin-bottom: 0.55rem; color: #334155; font-size: 0.78rem; font-weight: 700; }
-    .access-row { display: flex; gap: 0.65rem; }
-    .access-row input {
+    .access-heading { display: block; margin-bottom: 0.75rem; color: #334155; font-size: 0.78rem; font-weight: 700; }
+    .access-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .access-field { display: grid; gap: 0.35rem; color: #475569; font-size: 0.69rem; font-weight: 700; }
+    .access-field input {
       min-width: 0;
-      flex: 1;
+      width: 100%;
       padding: 0.78rem 0.9rem;
       color: var(--ink);
       background: var(--white);
@@ -197,8 +198,9 @@
       font-size: 0.9rem;
       outline: none;
     }
-    .access-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
-    .access-row button {
+    .access-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+    .access-button {
+      grid-column: 1 / -1;
       padding: 0.78rem 1.15rem;
       border: 0;
       border-radius: 9px;
@@ -210,10 +212,12 @@
       cursor: pointer;
       transition: background 0.2s ease;
     }
-    .access-row button:hover { background: var(--accent-dark); }
+    .access-button:hover { background: var(--accent-dark); }
+    .access-button:disabled { cursor: wait; opacity: 0.72; }
     .access-help { margin-top: 0.62rem; color: var(--muted); font-size: 0.75rem; line-height: 1.5; }
-    .form-error { display: none; margin-top: 0.55rem; color: #B42318; font-size: 0.78rem; }
-    .form-error.show { display: block; }
+    .form-message { display: none; margin-top: 0.55rem; color: #B42318; font-size: 0.78rem; }
+    .form-message.show { display: block; }
+    .form-message.notice { color: #166534; }
 
     .portal-window {
       position: relative;
@@ -356,7 +360,8 @@
       .hero { padding: 7rem 1rem 4.5rem; }
       .hero-inner { gap: 2.5rem; }
       h1 { font-size: clamp(2.45rem, 13vw, 3.55rem); }
-      .access-row { flex-direction: column; }
+      .access-row { grid-template-columns: 1fr; }
+      .access-button { grid-column: auto; }
       .portal-body { min-height: auto; grid-template-columns: 118px 1fr; }
       .portal-sidebar { padding: 0.8rem 0.65rem; }
       .portal-main { padding: 0.8rem; }
@@ -426,13 +431,20 @@
           <p class="hero-copy">Follow progress, find deliverables, review key documents, and keep the knowledge created during our work together organized and accessible.</p>
 
           <form class="access-card" id="portal-form" novalidate>
-            <label class="access-label" for="portal-id">Open your client portal</label>
+            <div class="access-heading">Sign in to your client portal</div>
             <div class="access-row">
-              <input id="portal-id" name="portal-id" type="text" inputmode="url" autocomplete="off" placeholder="Portal ID or private portal link" aria-describedby="access-help form-error" />
-              <button type="submit">Continue</button>
+              <label class="access-field" for="workspace">
+                <span>Workspace</span>
+                <input id="workspace" name="workspace" type="text" inputmode="text" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Your workspace" aria-describedby="access-help form-message" required />
+              </label>
+              <label class="access-field" for="password">
+                <span>Password</span>
+                <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" aria-describedby="access-help form-message" required />
+              </label>
+              <button class="access-button" id="submit-button" type="submit">Sign in</button>
             </div>
-            <p class="access-help" id="access-help">Use the portal ID or private link included in your access email. You will enter your access code on the next screen.</p>
-            <p class="form-error" id="form-error" role="alert">Please enter a valid portal ID or private portal link.</p>
+            <p class="access-help" id="access-help">Use the workspace name and password included in your welcome email.</p>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -515,7 +527,7 @@
 
     <section class="access-note">
       <div class="access-note-inner">
-        <div><h2>Need help accessing your portal?</h2><p>Each client receives a dedicated portal link and access code. If you cannot find yours or need access restored, we can help.</p></div>
+        <div><h2>Need help accessing your portal?</h2><p>Each client receives a dedicated workspace and password. If you cannot find yours or need access restored, we can help.</p></div>
         <a class="help-link" href="mailto:help@futureinsites.com">Email support</a>
       </div>
     </section>
@@ -538,31 +550,71 @@
     });
 
     const portalForm = document.getElementById('portal-form');
-    const portalInput = document.getElementById('portal-id');
-    const formError = document.getElementById('form-error');
+    const workspaceInput = document.getElementById('workspace');
+    const passwordInput = document.getElementById('password');
+    const submitButton = document.getElementById('submit-button');
+    const formMessage = document.getElementById('form-message');
+    const query = new URLSearchParams(window.location.search);
+    const requestedWorkspace = (query.get('workspace') || '').trim().toLowerCase();
+    const requestedNext = query.get('next') || '';
 
-    portalForm.addEventListener('submit', (event) => {
+    function showMessage(message, type = 'error') {
+      formMessage.textContent = message;
+      formMessage.classList.toggle('notice', type === 'notice');
+      formMessage.classList.toggle('show', Boolean(message));
+    }
+
+    if (/^[a-z0-9][a-z0-9-]{1,62}$/.test(requestedWorkspace)) {
+      workspaceInput.value = requestedWorkspace;
+      passwordInput.focus();
+    }
+
+    if (query.get('reason') === 'expired') {
+      showMessage('Your session has expired. Please sign in again.', 'notice');
+    } else if (query.get('logged_out') === '1') {
+      showMessage('You have signed out.', 'notice');
+    }
+
+    portalForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const raw = portalInput.value.trim();
-      let portalId = raw;
+      const workspace = workspaceInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
+      const validWorkspace = /^[a-z0-9][a-z0-9-]{1,62}$/.test(workspace);
 
-      if (/^https?:\/\//i.test(raw)) {
-        try {
-          const url = new URL(raw);
-          const parts = url.pathname.split('/').filter(Boolean);
-          const clientsIndex = parts.indexOf('clients');
-          portalId = clientsIndex >= 0 ? (parts[clientsIndex + 1] || '') : '';
-        } catch {
-          portalId = '';
-        }
+      workspaceInput.setAttribute('aria-invalid', String(!validWorkspace));
+      passwordInput.setAttribute('aria-invalid', String(!password));
+      if (!validWorkspace || !password) {
+        showMessage('Enter your workspace and password.');
+        return;
       }
 
-      portalId = portalId.toLowerCase().replace(/^clients\//, '').replace(/^\/+|\/+$/g, '');
-      const valid = /^[a-z0-9][a-z0-9-]{1,62}$/.test(portalId);
-      formError.classList.toggle('show', !valid);
-      portalInput.setAttribute('aria-invalid', String(!valid));
+      submitButton.disabled = true;
+      submitButton.textContent = 'Signing in...';
+      showMessage('');
 
-      if (valid) window.location.assign('/clients/' + encodeURIComponent(portalId) + '/');
+      try {
+        const response = await fetch('/api/client-login', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ workspace, password, next: requestedNext }),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          passwordInput.value = '';
+          passwordInput.focus();
+          showMessage(result.error || 'Unable to sign in. Please try again.');
+          return;
+        }
+
+        window.location.assign(result.redirect || `/clients/${encodeURIComponent(workspace)}/`);
+      } catch {
+        showMessage('Unable to reach the sign-in service. Please try again.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Sign in';
+      }
     });
   </script>
 </body>
