@@ -102,13 +102,25 @@
     pointer-events: none;
   }
   .hero-inner {
-    max-width: 1060px; margin: 0 auto; width: 100%;
+    max-width: 1100px; margin: 0 auto; width: 100%;
     position: relative; z-index: 1;
     display: grid; grid-template-columns: 1fr 300px;
     gap: 4rem; align-items: center;
   }
   .hero-text { min-width: 0; }
 
+  .hero-avail {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: var(--text-dim); letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+  }
+  .avail-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 7px rgba(34,197,94,0.65);
+    flex-shrink: 0;
+  }
   .hero-eyebrow {
     font-family: 'Manrope', sans-serif;
     font-size: clamp(1.4rem, 3vw, 2rem);
@@ -203,7 +215,7 @@
     padding: 28px 2rem;
   }
   .stats-inner {
-    max-width: 960px; margin: 0 auto;
+    max-width: 1100px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(6, 1fr);
   }
   .stat {
@@ -225,7 +237,7 @@
 
   /* SHARED SECTION */
   section { padding: 72px 2rem; }
-  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
 
   .sec-eyebrow {
     display: flex; align-items: baseline; gap: 1rem;
@@ -299,7 +311,7 @@
   .fw-n {
     font-family: 'Manrope', sans-serif;
     font-size: 32px; font-weight: 800;
-    color: rgba(255,255,255,0.05);
+    color: rgba(45,212,255,0.22);
     line-height: 1; margin-bottom: 10px; letter-spacing: -0.04em;
   }
   .fw-title {
@@ -363,6 +375,8 @@
   }
   .mba-body { font-size: 13px; color: var(--text-dim); line-height: 1.65; }
   .mba-body strong { color: var(--text); font-weight: 600; }
+  .mba-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+  .mba-body a:hover { text-decoration: underline; }
 
   /* ENGAGE */
   .engage-section { background: var(--dark); border-top: 1px solid var(--border); }
@@ -483,10 +497,11 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Head of AI</p>
+      <div class="hero-avail"><span class="avail-dot"></span>Available now · Full-time or Fractional</div>
+      <p class="hero-eyebrow">Head of AI · Fractional CAIO</p>
       <h1 class="hero-name">Greg Loeffelholz</h1>
       <p class="hero-sub">
-        Companies hiring a VP of AI run into the same problem: the candidates who understand the systems have never run a P&amp;L, and the candidates who can run a P&amp;L have not been inside the systems at production depth. Greg has done both, simultaneously, running a production AI platform managing $100M per month in client ad spend.
+        Available for Head of AI, Chief AI Officer, Sr. Director of AI, and Fractional Chief AI Officer roles. Twenty-five years building data and AI platforms from founder through exit, across identity data, real-time bidding, production GenAI, and agentic automation.
       </p>
 
       <div class="hero-facts">
@@ -509,7 +524,7 @@
       </div>
 
       <p class="hero-intro">
-        His 25-year track record follows a consistent pattern: enter a domain, build production-grade expertise within 12 to 18 months, construct the platform capability, and make it commercially viable. The ML and AI work specifically spans 12 years: <em>identity graphs and real-time bid decisioning at sub-60ms across 20 ad exchanges at ownerIQ and Inmar, then production GenAI and agentic orchestration managing $100M per month in client ad spend at MotiveMetrics, where he also served as Acting GM.</em> He was not supervising those outcomes or advising on them. He owned them, including the infrastructure costs when ML jobs blew up at enterprise scale and a silent AWS retry loop ran up the bill. Three startup exits. Autonomous AI products running in production today. This is not a resume built in a single comfortable environment.
+        Three startup exits. Twelve years of ML and AI at production scale. A 25-year track record with a consistent pattern: <em>enter a domain, build production-grade expertise within 12 to 18 months, construct the platform, and make it commercially viable.</em> The AI work spans identity graphs and sub-60ms real-time bid decisioning at ownerIQ and Inmar, through production GenAI and agentic orchestration at MotiveMetrics, where he also served as Acting GM. He owned those outcomes directly, including the infrastructure failures when ML jobs blew up at enterprise scale. Autonomous AI products running today. This is not a resume built in a single comfortable environment.
       </p>
       <div class="hero-ctas">
         <a href="#engage" class="btn btn-primary">How to work together</a>
@@ -557,14 +572,14 @@
 <section class="diff-section" id="why-greg">
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Why Greg</span></div>
-    <h2 class="sec-heading">What most VP of AI candidates cannot say.</h2>
-    <p class="sec-sub">These are the specific gaps that eliminate most candidates at the finalist stage. The profile below closes all of them.</p>
+    <h2 class="sec-heading">Five things that define this profile.</h2>
+    <p class="sec-sub">Not a checklist. A pattern of building and delivering that runs across 25 years.</p>
 
     <div class="diff-grid">
       <div class="diff-card">
         <div class="diff-num">01</div>
-        <div class="diff-title">The AI field moves faster than any prior specialization can hold</div>
-        <div class="diff-body">The question every hiring manager should ask but rarely does: what happens when this person's specific domain expertise is obsolete in 18 months? Greg's track record answers it directly. He has built production-grade expertise from scratch in retail media, programmatic real-time bidding, offline attribution, and AI-driven paid search, each within 12 to 18 months of entering a new domain. At ownerIQ he was initially considered for a delivery-side assessment role. Within months he was asked to lead product across identity, bidding, and attribution. <strong>The investment is not in what he knows today. It is in how fast he becomes what you need next.</strong></div>
+        <div class="diff-title">Production-grade domain mastery, from scratch, in 12 to 18 months</div>
+        <div class="diff-body">Greg has built production-grade expertise from scratch across five distinct domains over 25 years: education platforms, digital advertising strategy, programmatic RTB and identity data, retail attribution, and production GenAI. Each time he entered a new domain, he reached working production depth within 12 to 18 months. At ownerIQ he was brought in to assess a delivery-side opportunity and within months was asked to lead product across identity, bidding, and attribution. <strong>That pattern of accelerated domain mastery is durable across technology cycles — it is not tied to any single platform or moment.</strong></div>
         <div class="diff-tags">
           <span class="diff-tag">Rapid domain ramp</span>
           <span class="diff-tag">Platform transitions</span>
@@ -574,8 +589,8 @@
 
       <div class="diff-card">
         <div class="diff-num">02</div>
-        <div class="diff-title">There is a difference between surviving acquisitions and building for them</div>
-        <div class="diff-body">Most candidates have been employees at companies that were acquired. Greg has been the person building the capability that made the company worth acquiring. Three times. He founded Free Scholarship Guide, scaled it to $4M in annual revenue, and sold it. He served as VP of Strategy at Innovation Ads through a <strong>$36.5M exit to Seaport Capital.</strong> He led platform product at ownerIQ through its <strong>acquisition by Inmar Intelligence,</strong> where the identity graph and RTB infrastructure he built were central to the deal. The investor question behind any Head of AI hire is whether this person builds durable capability or internal tooling. Greg has answered that question with real transactions.</div>
+        <div class="diff-title">Three platforms built to acquisition as founder and executive</div>
+        <div class="diff-body">Greg founded Free Scholarship Guide, scaled it to $4M in annual revenue, and sold it. He then served as VP of Strategy at Innovation Ads through a <strong>$36.5M exit to Seaport Capital.</strong> He later led platform product at ownerIQ through its <strong>acquisition by Inmar Intelligence,</strong> where the identity graph and RTB infrastructure he built were central to the deal. Three transactions. In each case the platform capability he helped build was part of what made the company worth acquiring — a different kind of operator credential than a GM track record alone.</div>
         <div class="diff-tags">
           <span class="diff-tag">Founder to exit</span>
           <span class="diff-tag">$36.5M sale</span>
@@ -585,19 +600,19 @@
 
       <div class="diff-card">
         <div class="diff-num">03</div>
-        <div class="diff-title">The translation failure is where most AI initiatives actually break down</div>
-        <div class="diff-body">Engineering teams build systems the executive team does not understand well enough to fund correctly. Executives set goals the engineering team cannot map to system design. The result is an AI function that talks well in board decks and ships slowly in production. Greg has operated in both rooms with real accountability. He has designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> He has also carried full P&amp;L and presented AI investment strategy to boards. Those credentials exist in the same profile because of the same 25 years, not because of two different careers.</div>
+        <div class="diff-title">Technical depth engineers respect and strategic fluency boards trust</div>
+        <div class="diff-body">Greg has designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> He has also carried full P&amp;L accountability and presented AI investment strategy to boards. Both sets of credentials exist in the same profile, built across the same 25 years. That fluency in both directions — detailed enough to design the system alongside engineers, clear enough to fund and justify it at the leadership level — is what allows AI initiatives to actually ship.</div>
         <div class="diff-tags">
           <span class="diff-tag">RAG + Agentic workflows</span>
           <span class="diff-tag">Board-level communication</span>
-          <span class="diff-tag">Eng to exec translation</span>
+          <span class="diff-tag">P&amp;L ownership</span>
         </div>
       </div>
 
       <div class="diff-card">
         <div class="diff-num">04</div>
-        <div class="diff-title">The transition period is not a gap. It is the reason for the breadth.</div>
-        <div class="diff-body">The question candidates between roles face is whether the gap is an asset or a liability. Greg's answer is specific. After MotiveMetrics he structured a deliberate broadening period: AI strategy advisory across clients in different industries through FutureInSites, AI and ML coursework at Boston College Carroll School, and <strong>independent AI product development with no existing playbook.</strong> Every other finalist has spent that same period inside one company, in one domain, building one thing. Greg is arriving with fresh cross-industry pattern recognition from active client work, formal training refreshed to the current AI curriculum, and operating experience in systems he is running today.</div>
+        <div class="diff-title">Cross-industry AI perspective built from active advisory and live products</div>
+        <div class="diff-body">After MotiveMetrics, Greg structured a period of deliberate broadening: AI strategy advisory across clients in multiple industries through FutureInSites, AI and ML coursework at Boston College Carroll School, and <strong>independent AI product development with no existing playbook.</strong> The result is cross-industry pattern recognition from active client engagements, formal ML training refreshed to the current curriculum, and operating experience in autonomous AI systems he is running today. That breadth is what this period produced.</div>
         <div class="diff-tags">
           <span class="diff-tag">BC MBA, AI/ML</span>
           <span class="diff-tag">Multi-industry advisory</span>
@@ -607,8 +622,8 @@
 
       <div class="diff-card wide">
         <div class="diff-num">05</div>
-        <div class="diff-title">He is running what he recommends</div>
-        <div class="diff-body">NYCWine.com is a fully AI-automated e-commerce business Greg built and currently operates: automated inventory sourcing, pricing, customer communication, and fulfillment coordination. Spirantix.ai applies AI to accessibility for seniors, a design environment that demands reliability and trust calibration at a level most AI product contexts do not require. These are not portfolio projects or proof-of-concept demos. They are live products where the system either works or the business fails. When Greg recommends an AI architecture or a production approach, he is drawing on experience as both the executive who commissioned it and the operator who has run it through failures and fixed it. That is a different quality of judgment than advisory credentials or a single-employer track record produces. Beyond the product work: Greg is also a published novelist and has supported the UMKC Memorial Scholarship Fund for 26 consecutive years. These are not resume items. They are the same pattern as everything else: commit to something at full depth and stay with it.</div>
+        <div class="diff-title">Running autonomous AI businesses as live proof of what he advises</div>
+        <div class="diff-body">NYCWine.com is a fully AI-automated e-commerce business Greg built and currently operates: automated inventory sourcing, pricing, customer communication, and fulfillment coordination. Spirantix.ai applies AI to accessibility for seniors, a design environment that demands reliability and trust calibration at a level most AI product contexts do not require. These are live businesses, not portfolio projects. When Greg recommends an AI architecture or operational approach, he is drawing on experience as both the executive who commissioned it and the operator who has run it through failures and fixed it. Greg is also a published novelist and has supported the UMKC Memorial Scholarship Fund for 26 consecutive years — the same pattern throughout: commit at full depth and stay with it.</div>
         <div class="diff-tags">
           <span class="diff-tag">NYCWine.com (live AI business)</span>
           <span class="diff-tag">Spirantix.ai</span>
@@ -762,7 +777,7 @@
       <div>
         <div class="mba-heading">MBA, AI and Machine Learning — Boston College Carroll School of Management, expected 2026</div>
         <div class="mba-body">
-          Completing formal AI and ML training at Boston College alongside active advisory and product work at FutureInSites. <strong>Two courses finished this summer;</strong> final course (AI in Advertising) begins fall before graduation. Hands-on ML modeling, applied AI strategy, and cross-industry case exposure that expands working knowledge beyond any single employer context. This is the formal complement to four years of production experience, not a substitute for it.
+          Completing formal AI and ML training at Boston College alongside active advisory and product work at FutureInSites. <strong>Two courses finished this summer;</strong> final course (AI in Advertising) begins fall before graduation. Hands-on ML modeling, applied AI strategy, and cross-industry case exposure that expands working knowledge beyond any single employer context. This is the formal complement to four years of production experience, not a substitute for it. Academic and consulting case studies from the program are published at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
         </div>
       </div>
     </div>
