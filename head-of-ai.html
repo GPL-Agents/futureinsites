@@ -355,6 +355,9 @@
   }
   .work-body { font-size: 13px; color: var(--text-dim); line-height: 1.65; }
   .work-body strong { color: var(--text); font-weight: 600; }
+  .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+  .work-body a:hover { text-decoration: underline; }
+  .work-card.wide { grid-column: 1 / -1; }
 
   /* MBA BANNER */
   .mba-banner {
@@ -365,9 +368,11 @@
     display: flex; align-items: flex-start; gap: 18px;
   }
   .mba-icon {
-    width: 40px; height: 40px; background: rgba(37,99,235,0.14);
+    width: 44px; height: 44px; background: #8B2333;
     border-radius: 8px; display: flex; align-items: center;
-    justify-content: center; font-size: 18px; flex-shrink: 0;
+    justify-content: center; flex-shrink: 0;
+    font-family: 'Manrope', sans-serif; font-size: 14px;
+    font-weight: 800; color: #C4A044; letter-spacing: 0.03em;
   }
   .mba-heading {
     font-family: 'Manrope', sans-serif;
@@ -423,7 +428,7 @@
     background: var(--dark2); border-top: 1px solid var(--border);
     text-align: center; padding: 80px 2rem;
   }
-  .cta-inner { max-width: 620px; margin: 0 auto; }
+  .cta-inner { max-width: 760px; margin: 0 auto; }
   .cta-eyebrow {
     font-family: 'Manrope', sans-serif;
     font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -474,6 +479,116 @@
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
     .hero-facts { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* INQUIRY MODAL */
+  .fis-modal {
+    position: fixed; inset: 0; z-index: 2000;
+    display: none; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    background: rgba(11,12,16,0.80);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .fis-modal.open { display: flex; }
+  .fis-modal-card {
+    position: relative; width: 100%; max-width: 540px;
+    max-height: calc(100vh - 3rem); overflow-y: auto;
+    background: #12141A; color: #fff;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 2rem 2rem 1.75rem;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    animation: modalIn 0.18s ease-out;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.985); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .fis-modal-close {
+    position: absolute; top: 0.85rem; right: 0.85rem;
+    width: 32px; height: 32px; display: flex;
+    align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 50%; cursor: pointer; font-size: 1rem; line-height: 1;
+    transition: background 0.15s, color 0.15s;
+  }
+  .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .fis-modal-eyebrow {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem;
+  }
+  .fis-modal-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em;
+    margin: 0 0 0.4rem; color: #fff;
+  }
+  .fis-modal-lead {
+    font-size: 0.92rem; color: rgba(255,255,255,0.65);
+    margin: 0 0 1.5rem; line-height: 1.55;
+  }
+  .fis-form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.9rem 1rem; margin-bottom: 1rem;
+  }
+  .fis-form-field-full { grid-column: 1 / -1; }
+  .fis-form label {
+    display: block; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 0.35rem;
+  }
+  .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+  .fis-form input, .fis-form textarea {
+    width: 100%; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; padding: 0.7rem 0.85rem;
+    color: #fff; font-size: 0.9rem; font-family: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .fis-form input:focus, .fis-form textarea:focus {
+    outline: none; border-color: var(--cyan);
+    background: rgba(255,255,255,0.07);
+  }
+  .fis-form textarea { min-height: 110px; resize: vertical; }
+  .fis-form-honeypot {
+    position: absolute; left: -10000px; width: 1px; height: 1px;
+    opacity: 0; pointer-events: none;
+  }
+  .fis-form-actions {
+    display: flex; flex-direction: column;
+    gap: 0.65rem; margin-top: 1.25rem;
+  }
+  .fis-form-submit {
+    background: var(--cyan); color: var(--dark);
+    font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 0.9rem 1.8rem; border-radius: 100px;
+    border: none; cursor: pointer; width: 100%;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .fis-form-submit:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+  .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+  .fis-form-note { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-align: center; }
+  .fis-form-error {
+    display: none; margin-top: 0.85rem;
+    padding: 0.7rem 0.85rem;
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.35);
+    border-radius: 6px; color: #FCA5A5; font-size: 0.85rem;
+  }
+  .fis-form-error.show { display: block; }
+  .fis-form-success { display: none; text-align: center; padding: 1.5rem 0.5rem 0.5rem; }
+  .fis-form-success.show { display: block; }
+  .fis-form-success-icon {
+    width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%;
+    background: rgba(45,212,255,0.12); border: 1px solid rgba(45,212,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cyan); font-size: 1.6rem; font-weight: 700;
+  }
+  .fis-form-success-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+  .fis-form-success-body { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.55; }
+  @media (max-width: 560px) {
+    .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+    .fis-form-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -485,9 +600,9 @@
     <span class="nav-brand-text">Greg Loeffelholz</span>
   </a>
   <div class="nav-links">
-    <a href="#why-greg" class="nav-link">Why Greg</a>
     <a href="#approach" class="nav-link">Approach</a>
     <a href="#work" class="nav-link">Work</a>
+    <a href="#why-greg" class="nav-link">Why Greg</a>
     <a href="#engage" class="nav-link">Engage</a>
   </div>
   <a href="mailto:gloeff@gmail.com" class="nav-cta">Get in touch</a>
@@ -527,7 +642,7 @@
         Three startup exits. Twelve years of ML and AI at production scale. A 25-year track record with a consistent pattern: <em>enter a domain, build production-grade expertise within 12 to 18 months, construct the platform, and make it commercially viable.</em> The AI work spans identity graphs and sub-60ms real-time bid decisioning at ownerIQ and Inmar, through production GenAI and agentic orchestration at MotiveMetrics, where he also served as Acting GM. He owned those outcomes directly, including the infrastructure failures when ML jobs blew up at enterprise scale. Autonomous AI products running today. This is not a resume built in a single comfortable environment.
       </p>
       <div class="hero-ctas">
-        <a href="#engage" class="btn btn-primary">How to work together</a>
+        <a href="#engage" class="btn btn-primary">Engagement options</a>
         <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
         <a href="https://www.futureinsites.com" target="_blank" rel="noopener" class="btn btn-ghost">FutureInSites.com</a>
       </div>
@@ -567,73 +682,6 @@
     </div>
   </div>
 </div>
-
-<!-- WHY GREG -->
-<section class="diff-section" id="why-greg">
-  <div class="section-inner">
-    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Why Greg</span></div>
-    <h2 class="sec-heading">Five things that define this profile.</h2>
-    <p class="sec-sub">Not a checklist. A pattern of building and delivering that runs across 25 years.</p>
-
-    <div class="diff-grid">
-      <div class="diff-card">
-        <div class="diff-num">01</div>
-        <div class="diff-title">Production-grade domain mastery, from scratch, in 12 to 18 months</div>
-        <div class="diff-body">Greg has built production-grade expertise from scratch across five distinct domains over 25 years: education platforms, digital advertising strategy, programmatic RTB and identity data, retail attribution, and production GenAI. Each time he entered a new domain, he reached working production depth within 12 to 18 months. At ownerIQ he was brought in to assess a delivery-side opportunity and within months was asked to lead product across identity, bidding, and attribution. <strong>That pattern of accelerated domain mastery is durable across technology cycles — it is not tied to any single platform or moment.</strong></div>
-        <div class="diff-tags">
-          <span class="diff-tag">Rapid domain ramp</span>
-          <span class="diff-tag">Platform transitions</span>
-          <span class="diff-tag">Cross-domain depth</span>
-        </div>
-      </div>
-
-      <div class="diff-card">
-        <div class="diff-num">02</div>
-        <div class="diff-title">Three platforms built to acquisition as founder and executive</div>
-        <div class="diff-body">Greg founded Free Scholarship Guide, scaled it to $4M in annual revenue, and sold it. He then served as VP of Strategy at Innovation Ads through a <strong>$36.5M exit to Seaport Capital.</strong> He later led platform product at ownerIQ through its <strong>acquisition by Inmar Intelligence,</strong> where the identity graph and RTB infrastructure he built were central to the deal. Three transactions. In each case the platform capability he helped build was part of what made the company worth acquiring — a different kind of operator credential than a GM track record alone.</div>
-        <div class="diff-tags">
-          <span class="diff-tag">Founder to exit</span>
-          <span class="diff-tag">$36.5M sale</span>
-          <span class="diff-tag">3 acquisitions</span>
-        </div>
-      </div>
-
-      <div class="diff-card">
-        <div class="diff-num">03</div>
-        <div class="diff-title">Technical depth engineers respect and strategic fluency boards trust</div>
-        <div class="diff-body">Greg has designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> He has also carried full P&amp;L accountability and presented AI investment strategy to boards. Both sets of credentials exist in the same profile, built across the same 25 years. That fluency in both directions — detailed enough to design the system alongside engineers, clear enough to fund and justify it at the leadership level — is what allows AI initiatives to actually ship.</div>
-        <div class="diff-tags">
-          <span class="diff-tag">RAG + Agentic workflows</span>
-          <span class="diff-tag">Board-level communication</span>
-          <span class="diff-tag">P&amp;L ownership</span>
-        </div>
-      </div>
-
-      <div class="diff-card">
-        <div class="diff-num">04</div>
-        <div class="diff-title">Cross-industry AI perspective built from active advisory and live products</div>
-        <div class="diff-body">After MotiveMetrics, Greg structured a period of deliberate broadening: AI strategy advisory across clients in multiple industries through FutureInSites, AI and ML coursework at Boston College Carroll School, and <strong>independent AI product development with no existing playbook.</strong> The result is cross-industry pattern recognition from active client engagements, formal ML training refreshed to the current curriculum, and operating experience in autonomous AI systems he is running today. That breadth is what this period produced.</div>
-        <div class="diff-tags">
-          <span class="diff-tag">BC MBA, AI/ML</span>
-          <span class="diff-tag">Multi-industry advisory</span>
-          <span class="diff-tag">FutureInSites</span>
-        </div>
-      </div>
-
-      <div class="diff-card wide">
-        <div class="diff-num">05</div>
-        <div class="diff-title">Running autonomous AI businesses as live proof of what he advises</div>
-        <div class="diff-body">NYCWine.com is a fully AI-automated e-commerce business Greg built and currently operates: automated inventory sourcing, pricing, customer communication, and fulfillment coordination. Spirantix.ai applies AI to accessibility for seniors, a design environment that demands reliability and trust calibration at a level most AI product contexts do not require. These are live businesses, not portfolio projects. When Greg recommends an AI architecture or operational approach, he is drawing on experience as both the executive who commissioned it and the operator who has run it through failures and fixed it. Greg is also a published novelist and has supported the UMKC Memorial Scholarship Fund for 26 consecutive years — the same pattern throughout: commit at full depth and stay with it.</div>
-        <div class="diff-tags">
-          <span class="diff-tag">NYCWine.com (live AI business)</span>
-          <span class="diff-tag">Spirantix.ai</span>
-          <span class="diff-tag">Published author</span>
-          <span class="diff-tag">26-yr scholarship commitment</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- DESIGN FRAMEWORK -->
 <section class="fw-section" id="approach">
@@ -710,9 +758,9 @@
           <span class="work-badge">MotiveMetrics</span>
           <span class="work-year">2022 to 2026</span>
         </div>
-        <div class="work-title">3-Agent RSA Optimization Engine</div>
+        <div class="work-title">Production Agentic Orchestration System</div>
         <div class="work-body">
-          Designed and shipped a production agentic pipeline: <strong>asset selection agent (ChatGPT API) to content generation (Claude / Bedrock RAG) to brand review agent,</strong> orchestrated via AWS Step Functions and deployed to Google and Bing APIs. A feedback loop fed approved outputs back into the next inference cycle. Managed <strong>$100M+ per month</strong> in client ad spend. This was a revenue-defense system, not a technology experiment.
+          Designed and shipped a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Deployed against live external APIs managing <strong>$100M+ per month in client ad spend.</strong> Built to production reliability standards with real cost controls and SLA accountability — not a prototype.
         </div>
       </div>
 
@@ -729,55 +777,99 @@
 
       <div class="work-card">
         <div class="work-meta">
-          <span class="work-badge">MotiveMetrics</span>
-          <span class="work-year">2022 to 2026</span>
-        </div>
-        <div class="work-title">BERT Audience Segmentation at Scale</div>
-        <div class="work-body">
-          Built and shipped an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem. Led ML infrastructure efficiency work that reduced embedding dimensionality without quality loss and redesigned retry and failure handling across pipelines.
-        </div>
-      </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">ownerIQ to Inmar</span>
-          <span class="work-year">2014 to 2021</span>
-        </div>
-        <div class="work-title">200MM+ Identity Graph and RTB Infrastructure</div>
-        <div class="work-body">
-          Led architecture for a <strong>200MM+ US consumer identity graph</strong> with cross-device resolution and ML-driven bid decisioning at <strong>sub-60ms across 20+ ad exchanges.</strong> Fraud reduction systems drove 70%+ improvement. Built advanced pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation. This platform capability was a core driver of ownerIQ's acquisition by Inmar Intelligence.
-        </div>
-      </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">FutureInSites</span>
+          <span class="work-badge">BC Carroll School</span>
           <span class="work-year">2026</span>
         </div>
-        <div class="work-title">Enterprise AI Strategy for a $10B+ Brand</div>
+        <div class="work-title">AI Strategy and Business Case: Lululemon Athletica</div>
         <div class="work-body">
-          Developed a full-scope AI strategy for a <strong>$10B+ premium athleisure brand:</strong> competitive benchmarking, capability heatmap, 12 prioritized AI initiatives, governance structure, and a three-pillar roadmap projecting <strong>$400M to $600M revenue impact.</strong> Also authored AI investment and strategic diligence on Oracle and Alphabet, modeling AI infrastructure economics, monetization trajectories, and valuation implications for institutional clients.
+          Developed a full AI strategy for Lululemon against decelerating revenue growth and AI-native competitive pressure. Built a three-tier capability assessment of the existing PAVE ML platform (20M+ loyalty profiles scored), competitive benchmarking across Nike, Alo, Vuori, and Adidas, and a 12-initiative prioritization matrix mapping value against execution complexity. Designed a three-pillar strategic framework with a five-horizon implementation roadmap and a financial model projecting ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
         </div>
       </div>
 
       <div class="work-card">
         <div class="work-meta">
+          <span class="work-badge">BC Carroll School</span>
+          <span class="work-year">2026</span>
+        </div>
+        <div class="work-title">AI Investment Analysis: Alphabet / Google</div>
+        <div class="work-body">
+          Built an investment-grade analysis of whether AI raises or destroys Alphabet's terminal value, sourced entirely from 10-K, 10-Q filings, and earnings call transcripts. Constructed a two-engine framework separating Search/Services from Cloud to isolate competing AI dynamics, a 9-variable KPI driver tree, and an <strong>FCF bridge model through the 2026 CapEx trough ($180B spend)</strong> and recovery to ~$50B FCF by 2028. Conclusion: Cloud backlog growth from $155B to $240B in a single quarter and Search volume resilience (+17% YoY) dominate inference cost headwinds. <a href="https://www.futureinsites.com/alphabet" target="_blank" rel="noopener">View full analysis →</a>
+        </div>
+      </div>
+
+      <div class="work-card wide">
+        <div class="work-meta">
           <span class="work-badge">MotiveMetrics</span>
           <span class="work-year">2022 to 2026</span>
         </div>
-        <div class="work-title">SOC 2 Compliance and Responsible AI Governance</div>
+        <div class="work-title">AI Governance, SOC 2 Compliance, and Responsible AI Framework</div>
         <div class="work-body">
-          Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market while maintaining roadmap velocity. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements. This was the governance infrastructure that allowed enterprise clients to trust the system.
+          Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market while maintaining roadmap velocity. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements — the governance infrastructure that allowed enterprise clients to trust and contract against the system.
         </div>
       </div>
     </div>
 
     <div class="mba-banner">
-      <div class="mba-icon">🎓</div>
+      <div class="mba-icon">BC</div>
       <div>
-        <div class="mba-heading">MBA, AI and Machine Learning — Boston College Carroll School of Management, expected 2026</div>
+        <div class="mba-heading">MBA, AI and Machine Learning. Boston College Carroll School of Management, expected 2026</div>
         <div class="mba-body">
           Completing formal AI and ML training at Boston College alongside active advisory and product work at FutureInSites. <strong>Two courses finished this summer;</strong> final course (AI in Advertising) begins fall before graduation. Hands-on ML modeling, applied AI strategy, and cross-industry case exposure that expands working knowledge beyond any single employer context. This is the formal complement to four years of production experience, not a substitute for it. Academic and consulting case studies from the program are published at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY GREG -->
+<section class="diff-section" id="why-greg">
+  <div class="section-inner">
+    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Why Greg</span></div>
+    <h2 class="sec-heading">Four things that define this profile.</h2>
+    <p class="sec-sub">Not a checklist. A pattern of building and delivering that runs across 25 years.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <div class="diff-title">Production-grade domain mastery, from scratch, in 12 to 18 months</div>
+        <div class="diff-body">Greg has built production-grade expertise from scratch across five distinct domains over 25 years: education platforms, digital advertising strategy, programmatic RTB and identity data, retail attribution, and production GenAI. Each time he entered a new domain, he reached working production depth within 12 to 18 months. At ownerIQ he was brought in to assess a delivery-side opportunity and within months was asked to lead product across identity, bidding, and attribution. <strong>That pattern of accelerated domain mastery is durable across technology cycles. It is not tied to any single platform or moment.</strong></div>
+        <div class="diff-tags">
+          <span class="diff-tag">Rapid domain ramp</span>
+          <span class="diff-tag">Platform transitions</span>
+          <span class="diff-tag">Cross-domain depth</span>
+        </div>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <div class="diff-title">Three platforms built to acquisition as founder and executive</div>
+        <div class="diff-body">Greg founded Free Scholarship Guide, scaled it to $4M in annual revenue, and sold it. He then served as VP of Strategy at Innovation Ads through a <strong>$36.5M exit to Seaport Capital.</strong> He later led platform product at ownerIQ through its <strong>acquisition by Inmar Intelligence,</strong> where the identity graph and RTB infrastructure he built were central to the deal. Three transactions. In each case the platform capability he helped build was part of what made the company worth acquiring — a different kind of operator credential than a GM track record alone.</div>
+        <div class="diff-tags">
+          <span class="diff-tag">Founder to exit</span>
+          <span class="diff-tag">$36.5M sale</span>
+          <span class="diff-tag">3 acquisitions</span>
+        </div>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <div class="diff-title">Technical depth engineers respect and strategic fluency boards trust</div>
+        <div class="diff-body">Greg has designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> He has also carried full P&amp;L accountability and presented AI investment strategy to boards. Both sets of credentials exist in the same profile, built across the same 25 years. That fluency in both directions — detailed enough to design the system alongside engineers, clear enough to fund and justify it at the leadership level — is what allows AI initiatives to actually ship.</div>
+        <div class="diff-tags">
+          <span class="diff-tag">RAG + Agentic workflows</span>
+          <span class="diff-tag">Board-level communication</span>
+          <span class="diff-tag">P&amp;L ownership</span>
+        </div>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-num">04</div>
+        <div class="diff-title">Cross-industry AI perspective built from active advisory and live products</div>
+        <div class="diff-body">After MotiveMetrics, Greg structured a period of deliberate broadening: AI strategy advisory across clients in multiple industries through FutureInSites, AI and ML coursework at Boston College Carroll School, and <strong>independent AI product development with no existing playbook.</strong> The result is cross-industry pattern recognition from active client engagements, formal ML training refreshed to the current curriculum, and operating experience in autonomous AI systems he is running today. That breadth is what this period produced.</div>
+        <div class="diff-tags">
+          <span class="diff-tag">BC MBA, AI/ML</span>
+          <span class="diff-tag">Multi-industry advisory</span>
+          <span class="diff-tag">FutureInSites</span>
         </div>
       </div>
     </div>
@@ -787,7 +879,7 @@
 <!-- ENGAGE -->
 <section class="engage-section" id="engage">
   <div class="section-inner">
-    <div class="sec-eyebrow"><span class="sec-eyebrow-text">How To Work Together</span></div>
+    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Engagement Options</span></div>
     <h2 class="sec-heading">Full-time or fractional. Both on the table.</h2>
     <p class="sec-sub">The right structure depends on your stage, your need, and how much ownership you want Greg to carry.</p>
 
@@ -833,7 +925,7 @@
     <h2 class="cta-heading">What should AI actually do for your business?</h2>
     <p class="cta-sub">Whether you are exploring a hire, have a specific role in mind, or want to start with a fractional engagement, a direct conversation about fit is the right first step.</p>
     <div class="cta-links">
-      <a href="mailto:gloeff@gmail.com" class="btn btn-primary">Email Greg</a>
+      <button type="button" class="btn btn-primary" data-open-inquiry>Email Greg</button>
       <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       <a href="https://www.futureinsites.com" target="_blank" rel="noopener" class="btn btn-ghost">FutureInSites.com</a>
     </div>
@@ -846,6 +938,173 @@
   <div>Greg Loeffelholz · AI Strategy and Product Executive · <a href="https://www.futureinsites.com">futureinsites.com</a> · <a href="https://www.linkedin.com/in/gregloeffelholz">LinkedIn</a></div>
   <div style="color: #1e2a38;">Shared by direct link only · Not indexed</div>
 </footer>
+
+<!-- INQUIRY MODAL -->
+<div class="fis-modal" id="fis-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="fis-inquiry-title" aria-hidden="true">
+  <div class="fis-modal-card" role="document">
+    <button type="button" class="fis-modal-close" aria-label="Close" data-close-inquiry>&times;</button>
+
+    <div id="fis-inquiry-header">
+      <div class="fis-modal-eyebrow">Get in Touch</div>
+      <h3 class="fis-modal-title" id="fis-inquiry-title">Tell me about the role.</h3>
+      <p class="fis-modal-lead">Whether you are exploring a full-time hire, a fractional engagement, or want to start with a conversation, share a few details and I will be in touch.</p>
+    </div>
+
+    <form class="fis-form" id="fis-inquiry-form" novalidate>
+      <div class="fis-form-grid">
+        <div>
+          <label for="fis-name">Name <span class="req">*</span></label>
+          <input type="text" id="fis-name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="fis-email">Email <span class="req">*</span></label>
+          <input type="email" id="fis-email" name="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="fis-company">Company</label>
+          <input type="text" id="fis-company" name="company" autocomplete="organization">
+        </div>
+        <div>
+          <label for="fis-role">Your Role / Title</label>
+          <input type="text" id="fis-role" name="role" autocomplete="organization-title">
+        </div>
+        <div class="fis-form-field-full">
+          <label for="fis-message">What would you like to discuss?</label>
+          <textarea id="fis-message" name="message" placeholder="The role, the team structure, timing, or just a quick note to connect."></textarea>
+        </div>
+      </div>
+
+      <div class="fis-form-honeypot" aria-hidden="true">
+        <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="fis-form-actions">
+        <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send message</button>
+        <p class="fis-form-note">No newsletters. No sharing. Just a direct response from Greg.</p>
+      </div>
+
+      <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
+    </form>
+
+    <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
+      <div class="fis-form-success-icon">&#10003;</div>
+      <div class="fis-form-success-title">Thanks, your message is in.</div>
+      <div class="fis-form-success-body">Greg will be in touch as soon as possible at the email you provided.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var modal   = document.getElementById('fis-inquiry-modal');
+  var form    = document.getElementById('fis-inquiry-form');
+  var success = document.getElementById('fis-inquiry-success');
+  var errorEl = document.getElementById('fis-inquiry-error');
+  var submitEl = document.getElementById('fis-inquiry-submit');
+  if (!modal || !form) return;
+
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    success.classList.remove('show');
+    errorEl.classList.remove('show');
+    errorEl.textContent = '';
+    form.style.display = '';
+    submitEl.disabled = false;
+    submitEl.textContent = 'Send message';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () {
+      var first = document.getElementById('fis-name');
+      if (first) first.focus();
+    }, 50);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+  });
+
+  modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {
+    el.addEventListener('click', closeModal);
+  });
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorEl.classList.remove('show');
+    errorEl.textContent = '';
+
+    var data = {
+      name:    form.name.value.trim(),
+      email:   form.email.value.trim(),
+      company: form.company.value.trim(),
+      role:    form.role.value.trim(),
+      message: form.message.value.trim(),
+      context: 'hire',
+      website: form.website.value,
+      fax:     form.fax.value,
+    };
+
+    if (!data.name) {
+      errorEl.textContent = 'Please enter your name.';
+      errorEl.classList.add('show');
+      form.name.focus();
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.classList.add('show');
+      form.email.focus();
+      return;
+    }
+
+    submitEl.disabled = true;
+    submitEl.textContent = 'Sending...';
+
+    fetch('/api/inquire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(function (res) {
+        return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+      })
+      .then(function (result) {
+        if (result.ok && result.json && result.json.ok) {
+          form.reset();
+          form.style.display = 'none';
+          success.classList.add('show');
+          return;
+        }
+        var msg = (result.json && result.json.error)
+          || 'Something went wrong. Please email gloeff@gmail.com directly.';
+        errorEl.textContent = msg;
+        errorEl.classList.add('show');
+        submitEl.disabled = false;
+        submitEl.textContent = 'Send message';
+      })
+      .catch(function () {
+        errorEl.textContent = 'Network error. Please email gloeff@gmail.com directly.';
+        errorEl.classList.add('show');
+        submitEl.disabled = false;
+        submitEl.textContent = 'Send message';
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
