@@ -269,6 +269,7 @@
 
   /* DIFFERENTIATORS */
   .diff-section { background: var(--dark3); padding-top: 24px; }
+  .diff-section .sec-sub { margin-bottom: 1.4rem; }
   .diff-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 2px; background: var(--border-m);
@@ -618,7 +619,7 @@
       <p class="hero-eyebrow">Head of AI · Fractional CAIO</p>
       <h1 class="hero-name">Greg Loeffelholz</h1>
       <p class="hero-sub">
-        Business and product executive who spent the last four years running production GenAI at enterprise scale: agentic pipelines live against $100M+ per month in client ad spend, SOC 2 governance, and 13 straight months of positive margin as Acting GM. Close enough to implementation to debate system design and hold technical teams accountable.
+        I am a business and product executive who spent the last four years building and running production GenAI at enterprise scale: agentic pipelines live against $100M+ per month in client ad spend, SOC 2 governance, and 13 straight months of positive margin as Acting GM. I stay close enough to implementation to debate system design and hold technical teams accountable.
       </p>
 
       <div class="hero-facts">
@@ -642,7 +643,7 @@
 
 
       <div class="hero-ctas">
-        <button type="button" class="btn btn-primary" data-open-inquiry>Email Greg</button>
+        <button type="button" class="btn btn-primary" data-open-inquiry>Email me</button>
         <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
         <a href="/Marketing/Greg_Loeffelholz.Resume.pdf" download class="btn btn-ghost">Download Resume</a>
       </div>
@@ -687,39 +688,39 @@
 <section class="fw-section" id="approach">
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Design Philosophy</span></div>
-    <h2 class="sec-heading">How Greg approaches building AI systems.</h2>
-    <p class="sec-sub">Six principles applied to every AI platform, whether starting from zero or inheriting something already in production.</p>
+    <h2 class="sec-heading">How I approach building AI systems.</h2>
+    <p class="sec-sub">Six principles I apply to every AI platform, whether I am starting from zero or inheriting something already in production.</p>
 
     <div class="fw-grid">
       <div class="fw-card">
         <div class="fw-n">01</div>
-        <div class="fw-title">Business Problem First, Simplest Pattern Second</div>
-        <p class="fw-tagline">Escalates only as the problem requires: rules, retrieval, RAG, tool calling, bounded agents, greater autonomy. Models interpret and recommend; deterministic software controls permissions, business rules, and database writes.</p>
+        <div class="fw-title">Business Problem First</div>
+        <p class="fw-tagline">My first question is whether AI is the best solution to the problem. A chatbot with predictable questions may work better as a decision tree; a model earns its place only where simpler systems fall short.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">02</div>
         <div class="fw-title">Human-in-the-Loop Validation</div>
-        <p class="fw-tagline">Tiered autonomy by task risk, structured reviewer feedback captured as ground truth, and review thresholds adjusted as measured reliability improves.</p>
+        <p class="fw-tagline">I match the level of human review to the risk of the task, capture reviewer feedback as ground truth, and loosen or tighten oversight as the system proves itself.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">03</div>
         <div class="fw-title">Model Fallback and Cost-Quality Optimization</div>
-        <p class="fw-tagline">Task-based model routing, fallback chains from LLM to rules to human escalation, and per-task cost and latency budgets set at design time.</p>
+        <p class="fw-tagline">I route each task to the model that fits it, with fallbacks from LLM to rules to human review when something fails, and I set cost and latency budgets during design.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">04</div>
         <div class="fw-title">Data Governance, Lineage and Privacy</div>
-        <p class="fw-tagline">Data classification, RAG provenance, and PII handling enforced at ingestion, aligned to SOC 2 and GDPR requirements.</p>
+        <p class="fw-tagline">I keep customer and business unit data separate, control access by role, and set explicit rules for what data models can see, retain, or train on.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">05</div>
         <div class="fw-title">Responsible AI and Guardrails</div>
-        <p class="fw-tagline">Risk tiers assigned before deployment, with red-team testing, input and output filtering, and bias audits scoped to each tier.</p>
+        <p class="fw-tagline">I assign every AI capability a risk tier before it ships, then scope red-team testing, input and output filtering, and bias audits to that tier.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">06</div>
         <div class="fw-title">Observability, Evals and Continuous Learning</div>
-        <p class="fw-tagline">Full inference telemetry, automated evals on every model or prompt change, drift detection, and a fine-tuning loop on production feedback.</p>
+        <p class="fw-tagline">I instrument everything: inference telemetry, automated evals on every model or prompt change, drift detection, and a feedback loop that turns production results into improvements.</p>
       </div>
     </div>
   </div>
@@ -740,7 +741,7 @@
         </div>
         <div class="work-title">Production Agentic Orchestration System</div>
         <div class="work-body">
-          Designed and shipped a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Approved assets deployed through Google and Bing APIs behind human approval, against live spend of <strong>$100M+ per month.</strong> Built to production reliability standards with cost controls and SLA accountability, the system contributed to <strong>50% year-over-year growth in a key account.</strong>
+          Designed and shipped a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Assets deployed through the Google and Bing APIs only after human approval, against live spend of <strong>$100M+ per month.</strong> The system ran with cost controls and SLA accountability and contributed to <strong>50% year-over-year growth in a key account.</strong>
         </div>
       </div>
 
@@ -751,7 +752,7 @@
         </div>
         <div class="work-title">Acting GM to First Profitability</div>
         <div class="work-body">
-          Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining profitability for 13 consecutive months. Profitability came from rebuilding revenue mix, operational discipline, and product delivery simultaneously while continuing to run the production AI platform.
+          Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining it for 13 consecutive months. The margin came from rebuilding revenue mix, operational discipline, and product delivery while continuing to run the production AI platform.
         </div>
       </div>
 
@@ -762,7 +763,7 @@
         </div>
         <div class="work-title">BERT Audience Segmentation at Scale</div>
         <div class="work-body">
-          Built and shipped an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem; the retry fix alone, adding limits and termination controls, cut roughly <strong>$50,000 per month in AWS costs.</strong> Led ML infrastructure efficiency work that reduced embedding dimensionality without quality loss and redesigned retry and failure handling across pipelines.
+          Built and shipped an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem: embedding dimensionality reduced without quality loss to fix the compute failure, retry limits and termination controls that cut roughly <strong>$50,000 per month in AWS costs,</strong> and an automated divergence review before results reached clients.
         </div>
       </div>
 
@@ -773,18 +774,29 @@
         </div>
         <div class="work-title">200MM+ Identity Graph and RTB Infrastructure</div>
         <div class="work-body">
-          Directed the buildout of a <strong>200MM+ US consumer identity graph</strong> with cross-device resolution and ML-driven bid decisioning at <strong>sub-60ms across 20+ ad exchanges.</strong> Fraud reduction systems drove 70%+ improvement. Built advanced pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation. This platform capability was a core driver of ownerIQ's acquisition by Inmar Intelligence.
+          Directed the buildout of a <strong>200MM+ US consumer identity graph</strong> with cross-device resolution and ML-driven bid decisioning at <strong>sub-60ms across 20+ ad exchanges.</strong> Fraud reduction systems cut fraud by more than 70%. Built pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation. This platform capability was a core driver of ownerIQ's acquisition by Inmar Intelligence.
         </div>
       </div>
 
-      <div class="work-card wide">
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">Inmar Intelligence</span>
+          <span class="work-year">2019 to 2021</span>
+        </div>
+        <div class="work-title">Post-Acquisition Integration and Retail Media Data Platform</div>
+        <div class="work-body">
+          Led the integration of ownerIQ's platform with Inmar's couponing, promotions, and customer data systems after the acquisition, bringing <strong>media, identity, and transaction data together in a unified platform.</strong> As Senior Director of Audience and Media Platforms, ran ShopperSync, Inmar's retail media and commerce data platform, extending the audience and attribution capabilities built at ownerIQ into retail media.
+        </div>
+      </div>
+
+      <div class="work-card">
         <div class="work-meta">
           <span class="work-badge">FutureInSites</span>
           <span class="work-year">2026</span>
         </div>
         <div class="work-title">Enterprise AI Strategy: Lululemon Athletica, a $10B+ Brand</div>
         <div class="work-body">
-          Developed a full-scope AI strategy for the <strong>$10B+ athleisure brand</strong> against decelerating revenue growth and AI-native competitive pressure: a three-tier capability assessment of the existing PAVE ML platform (20M+ loyalty profiles scored), competitive benchmarking across Nike, Alo, Vuori, and Adidas, a 12-initiative prioritization matrix, governance structure, and a three-pillar roadmap with a five-horizon implementation plan. The financial model projects ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> Also authored AI investment and strategic diligence on Oracle and Alphabet, modeling AI infrastructure economics, monetization trajectories, and valuation implications for institutional clients. <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
+          Developed an AI strategy for the <strong>$10B+ athleisure brand</strong> against decelerating revenue growth and AI-native competitive pressure: a three-tier capability assessment of the existing PAVE ML platform (20M+ loyalty profiles scored), competitive benchmarking across Nike, Alo, Vuori, and Adidas, a 12-initiative prioritization matrix, governance structure, and a phased implementation roadmap. The financial model projects ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> Separately authored an Oracle Investment Committee memo modeling AI infrastructure economics and valuation implications for institutional clients. <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
         </div>
       </div>
 
@@ -806,7 +818,7 @@
         </div>
         <div class="work-title">AI Governance, SOC 2 Compliance, and Responsible AI Framework</div>
         <div class="work-body">
-          Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market while maintaining roadmap velocity. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements: the governance infrastructure that allowed enterprise clients to trust and contract against the system.
+          Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market without slowing the product roadmap. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements: the governance infrastructure that allowed enterprise clients to trust and contract against the system.
         </div>
       </div>
     </div>
@@ -816,7 +828,7 @@
       <div>
         <div class="mba-heading">MBA, AI and Machine Learning. Boston College Carroll School of Management, completing capstone Fall 2026</div>
         <div class="mba-body">
-          Formal AI and ML training at Boston College Carroll School, completing alongside active advisory and product work at FutureInSites. The academic complement to four years of production experience. Case studies published at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
+          I am completing my MBA in AI and Machine Learning at Boston College Carroll School alongside my advisory and product work at FutureInSites. The program added formal depth in Python, machine learning, and data science tooling on top of four years of production experience. Case studies published at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
         </div>
       </div>
     </div>
@@ -827,14 +839,14 @@
 <section class="diff-section" id="why-greg">
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Why Greg</span></div>
-    <h2 class="sec-heading">What sets Greg apart.</h2>
-    <p class="sec-sub">A pattern of building and delivering that runs across 25 years.</p>
+    <h2 class="sec-heading">What sets me apart.</h2>
+    <p class="sec-sub">A pattern of building and delivering that runs across 25 years of my career.</p>
 
     <div class="diff-grid">
       <div class="diff-card">
         <div class="diff-num">01</div>
-        <div class="diff-title">Built the AI platform. Owned the roadmap. Then ran the business it powered.</div>
-        <div class="diff-body">Four years at MotiveMetrics with full accountability: model selection, vendor evaluation, architecture decisions, deployment, and operating economics for a platform running against <strong>$100M+ per month.</strong> Stepped into Acting GM and delivered the first profitable quarter in company history, sustaining it for 13 months.</div>
+        <div class="diff-title">I built the AI platform, then ran the business it powered</div>
+        <div class="diff-body">I spent four years at MotiveMetrics with full accountability for the platform: model selection, vendor evaluation, architecture decisions, deployment, and operating economics, against <strong>$100M+ per month.</strong> When the business needed it, I stepped in as Acting GM and delivered the first profitable quarter in company history, sustaining it for 13 months.</div>
         <div class="diff-tags">
           <span class="diff-tag">AI roadmap ownership</span>
           <span class="diff-tag">Acting GM to profitability</span>
@@ -844,8 +856,8 @@
 
       <div class="diff-card">
         <div class="diff-num">02</div>
-        <div class="diff-title">Led the teams. Directed the technical functions. Delivered through both.</div>
-        <div class="diff-body">Greg has built and led product, marketing, media, and business teams across 25 years, including organizations of 50+, with direct management of engineering and data science teams at MotiveMetrics. Leads by defining acceptance criteria, challenging architecture tradeoffs, identifying failure modes, and holding technical leaders accountable for production outcomes.</div>
+        <div class="diff-title">I lead teams, including the technical ones</div>
+        <div class="diff-body">I have built and led product, marketing, media, and business teams for 25 years, including organizations of 50+, and at MotiveMetrics I directly managed engineering and data science. I lead by defining acceptance criteria, challenging architecture tradeoffs, identifying failure modes, and holding technical leaders accountable for production outcomes.</div>
         <div class="diff-tags">
           <span class="diff-tag">Team leadership</span>
           <span class="diff-tag">Orgs of 50+</span>
@@ -855,8 +867,8 @@
 
       <div class="diff-card">
         <div class="diff-num">03</div>
-        <div class="diff-title">Technical depth engineers respect and strategic fluency boards trust</div>
-        <div class="diff-body">Designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> Also built and presented multi-year AI roadmaps and investment strategy at the board level. Still builds hands-on: agent orchestration, MCP tool integrations, and production deployments in current FutureInSites work.</div>
+        <div class="diff-title">I go deep with engineers and translate for the board</div>
+        <div class="diff-body">I designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> I have also built and presented multi-year AI roadmaps and investment strategy at the board level. I still build hands-on: agent orchestration, MCP tool integrations, and production deployments in my current FutureInSites work.</div>
         <div class="diff-tags">
           <span class="diff-tag">RAG + Agentic workflows</span>
           <span class="diff-tag">Board-level communication</span>
@@ -866,8 +878,8 @@
 
       <div class="diff-card">
         <div class="diff-num">04</div>
-        <div class="diff-title">Governance and responsible AI built as production infrastructure</div>
-        <div class="diff-body">Led SOC 2 certification and built the responsible AI governance framework: risk tiers, model cards, audit trails, incident response playbooks. <strong>These operated as production controls that enterprise clients contracted against.</strong></div>
+        <div class="diff-title">I build governance as production infrastructure</div>
+        <div class="diff-body">I led SOC 2 certification and built our responsible AI governance framework: risk tiers, model cards, audit trails, and incident response playbooks. <strong>These operated as production controls that enterprise clients contracted against.</strong></div>
         <div class="diff-tags">
           <span class="diff-tag">SOC 2 certified</span>
           <span class="diff-tag">Responsible AI framework</span>
@@ -877,8 +889,8 @@
 
       <div class="diff-card">
         <div class="diff-num">05</div>
-        <div class="diff-title">Three platforms built to acquisition. The AI and data capability was the deal.</div>
-        <div class="diff-body">Free Scholarship Guide (sold), Innovation Ads (<strong>$36.5M exit to Seaport Capital</strong>), ownerIQ (<strong>acquired by Inmar Intelligence</strong>). Each time, the platform capability was central to what made the company worth acquiring.</div>
+        <div class="diff-title">I have built three platforms to acquisition</div>
+        <div class="diff-body">Free Scholarship Guide (sold), Innovation Ads (<strong>$36.5M exit to Seaport Capital</strong>), and ownerIQ (<strong>acquired by Inmar Intelligence</strong>). In each case, the platform and data capability I built was central to what made the company worth acquiring.</div>
         <div class="diff-tags">
           <span class="diff-tag">Founder to exit</span>
           <span class="diff-tag">$36.5M sale</span>
@@ -888,8 +900,8 @@
 
       <div class="diff-card">
         <div class="diff-num">06</div>
-        <div class="diff-title">New domain. Same result: production AI that ships.</div>
-        <div class="diff-body">Programmatic advertising, identity resolution, retail media, enterprise GenAI: Greg entered each one as an outsider and left production AI running inside it. Whatever domain is hiring, converting it into a shipped system is the repeatable skill.</div>
+        <div class="diff-title">Every domain I have shipped in was new to me at the start</div>
+        <div class="diff-body">Programmatic advertising, identity resolution, retail media, enterprise GenAI: I entered each one as an outsider and left production AI running inside it. Whatever domain you are hiring in, converting it into a shipped system is the skill I bring.</div>
         <div class="diff-tags">
           <span class="diff-tag">Cross-domain execution</span>
           <span class="diff-tag">Production AI shipped</span>
@@ -905,7 +917,7 @@
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Engagement Options</span></div>
     <h2 class="sec-heading">Full-time or fractional. Both on the table.</h2>
-    <p class="sec-sub">The right structure depends on your stage, your need, and how much ownership you want Greg to carry.</p>
+    <p class="sec-sub">The right structure depends on your stage, your need, and how much ownership you want me to carry.</p>
 
     <div class="engage-grid">
       <div class="engage-card featured">
@@ -913,7 +925,7 @@
         <div class="engage-type">Full-Time Executive</div>
         <div class="engage-title">VP / Head / Chief of AI</div>
         <div class="engage-body">
-          For companies where AI is a <strong>core strategic bet</strong> and you need an executive who can build and own it. The roadmap, the team, the platform, and the outcomes.
+          For companies where AI is a <strong>core strategic bet</strong> and you need an executive who can build and own it: the roadmap, the team, the platform, and the outcomes.
         </div>
         <ul class="engage-list">
           <li><strong>Define and execute AI strategy</strong> aligned to measurable business objectives</li>
@@ -921,7 +933,7 @@
           <li><strong>Own the AI product roadmap</strong> including prioritization, sequencing, trade-offs, and measurable ROI</li>
           <li><strong>Drive AI adoption across the business</strong> with technical credibility and executive-level communication</li>
           <li><strong>Establish AI governance and responsible AI frameworks</strong> that enable enterprise trust and scale</li>
-          <li><strong>Structured first 90 days:</strong> diagnose across functions, select one customer-facing and one operational priority, and move both into controlled production pilots with evaluation and escalation in place</li>
+          <li><strong>Structured first 90 days:</strong> diagnose across functions, select one customer-facing and one operational priority, and move both into controlled production pilots with evaluation and human review in place</li>
           <li><strong>Location:</strong> Greater Boston, hybrid, or fully remote. Target base $250K to $350K</li>
         </ul>
       </div>
@@ -930,7 +942,7 @@
         <div class="engage-type">Fractional / Advisory</div>
         <div class="engage-title">Fractional Chief AI Officer</div>
         <div class="engage-body">
-          For companies that need senior AI leadership now but are not ready for a full-time executive hire. Delivered through <a href="https://www.futureinsites.com" target="_blank" rel="noopener">FutureInSites.</a>
+          For companies that need senior AI leadership now but are not ready for a full-time executive hire. I deliver these engagements through <a href="https://www.futureinsites.com" target="_blank" rel="noopener">FutureInSites.</a>
         </div>
         <ul class="engage-list">
           <li><strong>AI readiness assessment</strong> including where the gaps are and what to build first</li>
@@ -951,7 +963,7 @@
     <h2 class="cta-heading">What should AI actually do for your business?</h2>
     <p class="cta-sub">Whether you are exploring a hire, have a specific role in mind, or want to start with a fractional engagement, a direct conversation about fit is the right first step.</p>
     <div class="cta-links">
-      <button type="button" class="btn btn-primary" data-open-inquiry>Email Greg</button>
+      <button type="button" class="btn btn-primary" data-open-inquiry>Email me</button>
       <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       <a href="https://www.futureinsites.com" target="_blank" rel="noopener" class="btn btn-ghost">FutureInSites.com</a>
     </div>
@@ -1007,7 +1019,7 @@
 
       <div class="fis-form-actions">
         <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send message</button>
-        <p class="fis-form-note">No newsletters. No sharing. Just a direct response from Greg.</p>
+        <p class="fis-form-note">No newsletters. No sharing. Just a direct response from me.</p>
       </div>
 
       <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
@@ -1016,7 +1028,7 @@
     <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
       <div class="fis-form-success-icon">&#10003;</div>
       <div class="fis-form-success-title">Thanks, your message is in.</div>
-      <div class="fis-form-success-body">Greg will be in touch as soon as possible at the email you provided.</div>
+      <div class="fis-form-success-body">I will be in touch as soon as possible at the email you provided.</div>
     </div>
   </div>
 </div>
