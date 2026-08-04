@@ -123,17 +123,24 @@
   }
   .hero-eyebrow {
     font-family: 'Manrope', sans-serif;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 800; letter-spacing: -0.03em;
+    font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+    font-weight: 800; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--cyan);
-    line-height: 1.05; margin-bottom: 0.7rem;
+    line-height: 1.2; margin-bottom: 0.9rem;
   }
   .hero-name {
     font-family: 'Manrope', sans-serif;
-    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
     font-weight: 800; color: #fff;
-    letter-spacing: -0.03em; line-height: 1.05;
-    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em; line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+  .hero-headline {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    font-weight: 800; color: #fff;
+    letter-spacing: -0.03em; line-height: 1.12;
+    margin-bottom: 0.9rem; max-width: 720px;
   }
   .hero-sub {
     font-size: 1.05rem; color: var(--text);
@@ -459,9 +466,9 @@
 
   /* RESPONSIVE */
   @media (max-width: 860px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-photo { order: -1; }
-    .hero-photo img { width: 160px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-photo { order: 1; width: fit-content; margin: 0 auto; }
+    .hero-photo img { width: 150px; }
     .hero-photo::before { inset: -7px; }
     .hero-facts { grid-template-columns: repeat(2, 1fr); }
   }
@@ -481,6 +488,10 @@
     .fw-grid { grid-template-columns: 1fr; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
     .hero-facts { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 0 1rem; }
+    nav .nav-link { display: none; }
+    .nav-cta { padding: 7px 14px; font-size: 12.5px; white-space: nowrap; }
+    .nav-brand-text { font-size: 13px; }
   }
 
   /* INQUIRY MODAL */
@@ -604,9 +615,9 @@
   </a>
   <div class="nav-links">
     <a href="#approach" class="nav-link">Approach</a>
+    <a href="#engage" class="nav-link">Engage</a>
     <a href="#work" class="nav-link">Work</a>
     <a href="#why-greg" class="nav-link">Why Greg</a>
-    <a href="#engage" class="nav-link">Engage</a>
   </div>
   <div style="display:flex;align-items:center;gap:8px;">
     <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="nav-link" style="color:var(--cyan);font-weight:600;">LinkedIn</a>
@@ -618,11 +629,12 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-avail"><span class="avail-dot"></span>Exploring opportunities · Full-time or Fractional</div>
-      <p class="hero-eyebrow">Head of AI · Fractional CAIO</p>
+      <div class="hero-avail"><span class="avail-dot"></span>Available now · Full-time or Fractional</div>
       <h1 class="hero-name">Greg Loeffelholz</h1>
+      <p class="hero-eyebrow">Head of AI · Fractional Chief AI Officer</p>
+      <p class="hero-headline">A Head of AI who sets the strategy, builds what ships, and owns the outcome.</p>
       <p class="hero-sub">
-        For more than 12 years I have set the strategy and built hands-on: ML and AI platforms, and the last four running production GenAI and agentic systems against $100M+ per month in live client ad spend. I build and lead the teams, set the multi-year roadmap, and answer for measurable business outcomes.
+        I set the AI roadmap, prioritize the highest-value use cases, build and lead the teams, and govern production delivery. 12+ years building ML and AI platforms, including the last four running GenAI and agentic systems in production against $100M+ per month in live client ad spend.
       </p>
 
       <div class="hero-facts">
@@ -649,13 +661,13 @@
         <div>
           <div class="mba-heading">MBA, AI and Machine Learning. Boston College Carroll School of Management</div>
           <div class="mba-body">
-            <em>Why am I available now?</em> I went back to school full time to add formal depth in Python, machine learning, and data science on top of 25 years of building. I finish the capstone this fall. Case studies at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
+            I went back to school full time, adding formal depth in Python, machine learning, and data science on top of 25 years of building. I finish the capstone this fall. Case studies at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
           </div>
         </div>
       </div>
 
       <div class="hero-ctas">
-        <button type="button" class="btn btn-primary" data-open-inquiry>Email me</button>
+        <button type="button" class="btn btn-primary" data-open-inquiry>Discuss a role or engagement</button>
         <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
         <a href="/Marketing/Greg_Loeffelholz.Resume.pdf" download class="btn btn-ghost">Download Resume</a>
       </div>
@@ -687,7 +699,7 @@
     </div>
     <div class="stat">
       <div class="stat-val">$10<span class="cy">B+</span></div>
-      <div class="stat-label">Brand AI strategy delivered</div>
+      <div class="stat-label">Brand AI strategy case study</div>
     </div>
     <div class="stat">
       <div class="stat-val">20<span class="cy">+</span></div>
@@ -738,6 +750,50 @@
   </div>
 </section>
 
+<!-- ENGAGE -->
+<section class="engage-section" id="engage">
+  <div class="section-inner">
+    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Engagement Options</span></div>
+    <h2 class="sec-heading">Full-time or fractional. Both on the table.</h2>
+    <p class="sec-sub">The right structure depends on your stage, your need, and how much ownership you want me to carry.</p>
+
+    <div class="engage-grid">
+      <div class="engage-card featured">
+        <div class="engage-badge">Primary focus</div>
+        <div class="engage-type">Full-Time Executive</div>
+        <div class="engage-title">VP / Head / Chief of AI</div>
+        <div class="engage-body">
+          For companies where AI is a <strong>core strategic bet</strong> and you need an executive who can build and run it: the roadmap, the team, the platform, and the outcomes.
+        </div>
+        <ul class="engage-list">
+          <li><strong>Define and execute AI strategy</strong> aligned to measurable business objectives</li>
+          <li><strong>Build, hire, and lead the AI organization</strong> from zero or inherit and accelerate an existing team</li>
+          <li><strong>Create and manage the AI product roadmap</strong> including prioritization, sequencing, trade-offs, and measurable ROI</li>
+          <li><strong>Drive AI adoption across the business</strong> with technical credibility and executive-level communication</li>
+          <li><strong>Establish AI governance and responsible AI frameworks</strong> that enable enterprise trust and scale</li>
+          <li><strong>Structured first 90 days:</strong> diagnose across functions, select one customer-facing and one operational priority, and move both into controlled production pilots with evaluation and human review in place</li>
+          <li><strong>Location:</strong> Greater Boston, hybrid, or fully remote. Target base $250K to $350K</li>
+        </ul>
+      </div>
+
+      <div class="engage-card">
+        <div class="engage-type">Fractional / Advisory</div>
+        <div class="engage-title">Fractional Chief AI Officer</div>
+        <div class="engage-body">
+          For companies that need senior AI leadership now but are not ready for a full-time executive hire. I deliver these engagements through <a href="https://www.futureinsites.com" target="_blank" rel="noopener">FutureInSites.</a>
+        </div>
+        <ul class="engage-list">
+          <li><strong>AI readiness assessment</strong> including where the gaps are and what to build first</li>
+          <li><strong>Use case prioritization and ROI modeling</strong> that makes the business case for each initiative</li>
+          <li><strong>Build/buy/partner decisions</strong> evaluated against your actual constraints</li>
+          <li><strong>Governance and responsible AI framework</strong> including policy, risk tiers, and audit-ready controls</li>
+          <li><strong>Implementation roadmap</strong> phased, resourced, and tied to measurable outcomes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WORK -->
 <section class="work-section" id="work">
   <div class="section-inner">
@@ -751,7 +807,7 @@
           <span class="work-badge">MotiveMetrics</span>
           <span class="work-year">2022 to 2026</span>
         </div>
-        <div class="work-title">Production Agentic Orchestration System</div>
+        <div class="work-title">Production Agentic System Supporting $100M+ in Monthly Client Spend</div>
         <div class="work-body">
           Designed and shipped a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Assets deployed through the Google and Bing APIs only after human approval, against live spend of <strong>$100M+ per month.</strong> The system ran with cost controls and SLA accountability and contributed to <strong>50% year-over-year growth in a key account.</strong>
         </div>
@@ -762,7 +818,7 @@
           <span class="work-badge">MotiveMetrics</span>
           <span class="work-year">2023 to 2025</span>
         </div>
-        <div class="work-title">Acting GM to First Profitability</div>
+        <div class="work-title">Managed Services to First Profitability in Company History</div>
         <div class="work-body">
           Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining it for 13 consecutive months. The margin came from rebuilding revenue mix, operational discipline, and product delivery while continuing to run the production AI platform.
         </div>
@@ -773,7 +829,7 @@
           <span class="work-badge">MotiveMetrics</span>
           <span class="work-year">2022 to 2026</span>
         </div>
-        <div class="work-title">BERT Audience Segmentation at Scale</div>
+        <div class="work-title">ML Segmentation at Enterprise Scale: Three Production Failures Resolved</div>
         <div class="work-body">
           Built and shipped an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem: embedding dimensionality reduced without quality loss to fix the compute failure, retry limits and termination controls that cut roughly <strong>$50,000 per month in AWS costs,</strong> and an automated divergence review before results reached clients.
         </div>
@@ -784,7 +840,7 @@
           <span class="work-badge">ownerIQ to Inmar</span>
           <span class="work-year">2014 to 2021</span>
         </div>
-        <div class="work-title">200MM+ Identity Graph and RTB Infrastructure</div>
+        <div class="work-title">200MM+ Identity Graph That Helped Drive an Acquisition</div>
         <div class="work-body">
           Directed the buildout of a <strong>200MM+ US consumer identity graph</strong> with cross-device resolution and ML-driven bid decisioning at <strong>sub-60ms across 20+ ad exchanges.</strong> Fraud reduction systems cut fraud by more than 70%. Built pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation. This platform capability was a core driver of ownerIQ's acquisition by Inmar Intelligence.
         </div>
@@ -795,7 +851,7 @@
           <span class="work-badge">Inmar Intelligence</span>
           <span class="work-year">2019 to 2021</span>
         </div>
-        <div class="work-title">Post-Acquisition Integration and Retail Media Data Platform</div>
+        <div class="work-title">Post-Acquisition Integration into Retail Media</div>
         <div class="work-body">
           Led the integration of ownerIQ's platform with Inmar's couponing, promotions, and customer data systems after the acquisition, bringing <strong>media, identity, and transaction data together in a unified platform.</strong> As Senior Director of Audience and Media Platforms, ran ShopperSync, Inmar's retail media and commerce data platform, extending the audience and attribution capabilities built at ownerIQ into retail media.
         </div>
@@ -806,9 +862,9 @@
           <span class="work-badge">FutureInSites</span>
           <span class="work-year">2026</span>
         </div>
-        <div class="work-title">Enterprise AI Strategy: Lululemon Athletica, a $10B+ Brand</div>
+        <div class="work-title">Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand</div>
         <div class="work-body">
-          Developed an AI strategy for the <strong>$10B+ athleisure brand</strong> against decelerating revenue growth and AI-native competitive pressure: a three-tier capability assessment of the existing PAVE ML platform (20M+ loyalty profiles scored), competitive benchmarking across Nike, Alo, Vuori, and Adidas, a 12-initiative prioritization matrix, governance structure, and a phased implementation roadmap. The financial model projects ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> Separately authored an Oracle Investment Committee memo modeling AI infrastructure economics and valuation implications for institutional clients. <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
+          Developed an independent AI strategy for the <strong>$10B+ athleisure brand</strong> against decelerating revenue growth and AI-native competitive pressure: a three-tier capability assessment of the existing PAVE ML platform (20M+ loyalty profiles scored), competitive benchmarking across Nike, Alo, Vuori, and Adidas, a 12-initiative prioritization matrix, governance structure, and a phased implementation roadmap. The financial model projects ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> Separately authored an independent investment analysis of Oracle, modeling AI infrastructure economics and valuation implications. <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
         </div>
       </div>
 
@@ -817,7 +873,7 @@
           <span class="work-badge">BC Carroll School</span>
           <span class="work-year">2026</span>
         </div>
-        <div class="work-title">AI Investment Analysis: Alphabet / Google</div>
+        <div class="work-title">Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough</div>
         <div class="work-body">
           Built an investment-grade analysis of whether AI raises or destroys Alphabet's terminal value, sourced entirely from 10-K, 10-Q filings, and earnings call transcripts. Constructed a two-engine framework separating Search/Services from Cloud to isolate competing AI dynamics, a 9-variable KPI driver tree, and an <strong>FCF bridge model through the 2026 CapEx trough ($180B spend)</strong> and recovery to ~$50B FCF by 2028. Conclusion: Cloud backlog growth from $155B to $240B in a single quarter and Search volume resilience (+17% YoY) dominate inference cost headwinds. <a href="https://www.futureinsites.com/alphabet" target="_blank" rel="noopener">View full analysis →</a>
         </div>
@@ -828,7 +884,7 @@
           <span class="work-badge">MotiveMetrics</span>
           <span class="work-year">2022 to 2026</span>
         </div>
-        <div class="work-title">AI Governance, SOC 2 Compliance, and Responsible AI Framework</div>
+        <div class="work-title">SOC 2 and Responsible AI Built as Production Infrastructure</div>
         <div class="work-body">
           Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market without slowing the product roadmap. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements: the governance infrastructure that allowed enterprise clients to trust and contract against the system.
         </div>
@@ -915,50 +971,6 @@
   </div>
 </section>
 
-<!-- ENGAGE -->
-<section class="engage-section" id="engage">
-  <div class="section-inner">
-    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Engagement Options</span></div>
-    <h2 class="sec-heading">Full-time or fractional. Both on the table.</h2>
-    <p class="sec-sub">The right structure depends on your stage, your need, and how much ownership you want me to carry.</p>
-
-    <div class="engage-grid">
-      <div class="engage-card featured">
-        <div class="engage-badge">Primary focus</div>
-        <div class="engage-type">Full-Time Executive</div>
-        <div class="engage-title">VP / Head / Chief of AI</div>
-        <div class="engage-body">
-          For companies where AI is a <strong>core strategic bet</strong> and you need an executive who can build and run it: the roadmap, the team, the platform, and the outcomes.
-        </div>
-        <ul class="engage-list">
-          <li><strong>Define and execute AI strategy</strong> aligned to measurable business objectives</li>
-          <li><strong>Build, hire, and lead the AI organization</strong> from zero or inherit and accelerate an existing team</li>
-          <li><strong>Create and manage the AI product roadmap</strong> including prioritization, sequencing, trade-offs, and measurable ROI</li>
-          <li><strong>Drive AI adoption across the business</strong> with technical credibility and executive-level communication</li>
-          <li><strong>Establish AI governance and responsible AI frameworks</strong> that enable enterprise trust and scale</li>
-          <li><strong>Structured first 90 days:</strong> diagnose across functions, select one customer-facing and one operational priority, and move both into controlled production pilots with evaluation and human review in place</li>
-          <li><strong>Location:</strong> Greater Boston, hybrid, or fully remote. Target base $250K to $350K</li>
-        </ul>
-      </div>
-
-      <div class="engage-card">
-        <div class="engage-type">Fractional / Advisory</div>
-        <div class="engage-title">Fractional Chief AI Officer</div>
-        <div class="engage-body">
-          For companies that need senior AI leadership now but are not ready for a full-time executive hire. I deliver these engagements through <a href="https://www.futureinsites.com" target="_blank" rel="noopener">FutureInSites.</a>
-        </div>
-        <ul class="engage-list">
-          <li><strong>AI readiness assessment</strong> including where the gaps are and what to build first</li>
-          <li><strong>Use case prioritization and ROI modeling</strong> that makes the business case for each initiative</li>
-          <li><strong>Build/buy/partner decisions</strong> evaluated against your actual constraints</li>
-          <li><strong>Governance and responsible AI framework</strong> including policy, risk tiers, and audit-ready controls</li>
-          <li><strong>Implementation roadmap</strong> phased, resourced, and tied to measurable outcomes</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-inner">
@@ -966,7 +978,7 @@
     <h2 class="cta-heading">What should AI actually do for your business?</h2>
     <p class="cta-sub">Whether you are exploring a hire, have a specific role in mind, or want to start with a fractional engagement, a direct conversation about fit is the right first step.</p>
     <div class="cta-links">
-      <button type="button" class="btn btn-primary" data-open-inquiry>Email me</button>
+      <button type="button" class="btn btn-primary" data-open-inquiry>Discuss a role or engagement</button>
       <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       <a href="https://www.futureinsites.com" target="_blank" rel="noopener" class="btn btn-ghost">FutureInSites.com</a>
     </div>
