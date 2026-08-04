@@ -300,7 +300,7 @@
 
   /* DESIGN FRAMEWORK */
   .fw-section { background: var(--dark); border-top: 1px solid var(--border); }
-  .fw-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .fw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .fw-card {
     background: var(--dark2); border: 1px solid var(--border);
     border-radius: 10px; padding: 22px 18px; transition: border-color 0.2s;
@@ -688,31 +688,36 @@
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Design Philosophy</span></div>
     <h2 class="sec-heading">How Greg approaches building AI systems.</h2>
-    <p class="sec-sub">Five principles applied to every AI platform, whether starting from zero or inheriting something already in production.</p>
+    <p class="sec-sub">Six principles applied to every AI platform, whether starting from zero or inheriting something already in production.</p>
 
     <div class="fw-grid">
       <div class="fw-card">
         <div class="fw-n">01</div>
-        <div class="fw-title">Human-in-the-Loop Validation</div>
-        <p class="fw-tagline">Tiered autonomy, feedback capture as ground truth, and trust calibration over time. Not just a human approval button.</p>
+        <div class="fw-title">Business Problem First, Simplest Pattern Second</div>
+        <p class="fw-tagline">Escalates only as the problem requires: rules, retrieval, RAG, tool calling, bounded agents, greater autonomy. Models interpret and recommend; deterministic software controls permissions, business rules, and database writes.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">02</div>
-        <div class="fw-title">Model Fallback and Cost-Quality Optimization</div>
-        <p class="fw-tagline">Task-based model routing, fallback chains from LLM to rules to human escalation, and token economics baked in from day one.</p>
+        <div class="fw-title">Human-in-the-Loop Validation</div>
+        <p class="fw-tagline">Tiered autonomy by task risk, structured reviewer feedback captured as ground truth, and review thresholds adjusted as measured reliability improves.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">03</div>
-        <div class="fw-title">Data Governance, Lineage and Privacy</div>
-        <p class="fw-tagline">Data classification, RAG provenance, PII handling, and SOC 2 / GDPR compliance built at ingestion, not retrofitted after launch.</p>
+        <div class="fw-title">Model Fallback and Cost-Quality Optimization</div>
+        <p class="fw-tagline">Task-based model routing, fallback chains from LLM to rules to human escalation, and per-task cost and latency budgets set at design time.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">04</div>
-        <div class="fw-title">Responsible AI and Guardrails</div>
-        <p class="fw-tagline">Red-teaming, input/output filtering, bias audits, and risk tiers before anything ships. Production requirements, not policy theater.</p>
+        <div class="fw-title">Data Governance, Lineage and Privacy</div>
+        <p class="fw-tagline">Data classification, RAG provenance, and PII handling enforced at ingestion, aligned to SOC 2 and GDPR requirements.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">05</div>
+        <div class="fw-title">Responsible AI and Guardrails</div>
+        <p class="fw-tagline">Risk tiers assigned before deployment, with red-team testing, input and output filtering, and bias audits scoped to each tier.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-n">06</div>
         <div class="fw-title">Observability, Evals and Continuous Learning</div>
         <p class="fw-tagline">Full inference telemetry, automated evals on every model or prompt change, drift detection, and a fine-tuning loop on production feedback.</p>
       </div>
@@ -725,7 +730,7 @@
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Selected Work</span></div>
     <h2 class="sec-heading">Production systems with real business outcomes.</h2>
-    <p class="sec-sub">Not strategy decks. Shipped systems with infrastructure costs, production failures recovered from, and revenue on the line.</p>
+    <p class="sec-sub">Shipped systems with infrastructure costs, production failures recovered from, and revenue on the line.</p>
 
     <div class="work-grid">
       <div class="work-card">
@@ -735,7 +740,7 @@
         </div>
         <div class="work-title">Production Agentic Orchestration System</div>
         <div class="work-body">
-          Designed and shipped a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Deployed against live external APIs managing <strong>$100M+ per month in client ad spend.</strong> Built to production reliability standards with real cost controls and SLA accountability. Not a prototype.
+          Designed and shipped a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Approved assets deployed through Google and Bing APIs behind human approval, against live spend of <strong>$100M+ per month.</strong> Built to production reliability standards with cost controls and SLA accountability, the system contributed to <strong>50% year-over-year growth in a key account.</strong>
         </div>
       </div>
 
@@ -746,7 +751,7 @@
         </div>
         <div class="work-title">Acting GM to First Profitability</div>
         <div class="work-body">
-          Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining profitability for 13 consecutive months. This was not a cost-cutting exercise. It required rebuilding revenue mix, operational discipline, and product delivery simultaneously while continuing to run the production AI platform. P&amp;L ownership of AI at scale, not advisory distance from it.
+          Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining profitability for 13 consecutive months. Profitability came from rebuilding revenue mix, operational discipline, and product delivery simultaneously while continuing to run the production AI platform.
         </div>
       </div>
 
@@ -757,7 +762,7 @@
         </div>
         <div class="work-title">BERT Audience Segmentation at Scale</div>
         <div class="work-body">
-          Built and shipped an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem. Led ML infrastructure efficiency work that reduced embedding dimensionality without quality loss and redesigned retry and failure handling across pipelines.
+          Built and shipped an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem; the retry fix alone, adding limits and termination controls, cut roughly <strong>$50,000 per month in AWS costs.</strong> Led ML infrastructure efficiency work that reduced embedding dimensionality without quality loss and redesigned retry and failure handling across pipelines.
         </div>
       </div>
 
@@ -823,7 +828,7 @@
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Why Greg</span></div>
     <h2 class="sec-heading">What sets Greg apart.</h2>
-    <p class="sec-sub">Not a checklist. A pattern of building and delivering that runs across 25 years.</p>
+    <p class="sec-sub">A pattern of building and delivering that runs across 25 years.</p>
 
     <div class="diff-grid">
       <div class="diff-card">
@@ -840,7 +845,7 @@
       <div class="diff-card">
         <div class="diff-num">02</div>
         <div class="diff-title">Led the teams. Directed the technical functions. Delivered through both.</div>
-        <div class="diff-body">Greg has built and led product, marketing, media, and business teams across 25 years, including organizations of 50+. On AI platforms, he directed engineering and data science work without owning the org chart: setting priorities, debating system design, and holding delivery accountable.</div>
+        <div class="diff-body">Greg has built and led product, marketing, media, and business teams across 25 years, including organizations of 50+, with direct management of engineering and data science teams at MotiveMetrics. Leads by defining acceptance criteria, challenging architecture tradeoffs, identifying failure modes, and holding technical leaders accountable for production outcomes.</div>
         <div class="diff-tags">
           <span class="diff-tag">Team leadership</span>
           <span class="diff-tag">Orgs of 50+</span>
@@ -851,7 +856,7 @@
       <div class="diff-card">
         <div class="diff-num">03</div>
         <div class="diff-title">Technical depth engineers respect and strategic fluency boards trust</div>
-        <div class="diff-body">Designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> Also built and presented multi-year AI roadmaps and investment strategy at the board level.</div>
+        <div class="diff-body">Designed <strong>RAG pipelines, agentic orchestration on AWS Step Functions, BERT embedding pipelines, and sub-60ms identity resolution across 20 ad exchanges.</strong> Also built and presented multi-year AI roadmaps and investment strategy at the board level. Still builds hands-on: agent orchestration, MCP tool integrations, and production deployments in current FutureInSites work.</div>
         <div class="diff-tags">
           <span class="diff-tag">RAG + Agentic workflows</span>
           <span class="diff-tag">Board-level communication</span>
@@ -862,7 +867,7 @@
       <div class="diff-card">
         <div class="diff-num">04</div>
         <div class="diff-title">Governance and responsible AI built as production infrastructure</div>
-        <div class="diff-body">Led SOC 2 certification and built the responsible AI governance framework: risk tiers, model cards, audit trails, incident response playbooks. Enterprise clients contracted against these systems. <strong>Most governance is policy documents. This was production infrastructure.</strong></div>
+        <div class="diff-body">Led SOC 2 certification and built the responsible AI governance framework: risk tiers, model cards, audit trails, incident response playbooks. <strong>These operated as production controls that enterprise clients contracted against.</strong></div>
         <div class="diff-tags">
           <span class="diff-tag">SOC 2 certified</span>
           <span class="diff-tag">Responsible AI framework</span>
@@ -911,11 +916,12 @@
           For companies where AI is a <strong>core strategic bet</strong> and you need an executive who can build and own it. The roadmap, the team, the platform, and the outcomes.
         </div>
         <ul class="engage-list">
-          <li><strong>Define and execute AI strategy</strong> aligned to business objectives, not technology for its own sake</li>
+          <li><strong>Define and execute AI strategy</strong> aligned to measurable business objectives</li>
           <li><strong>Build, hire, and lead the AI organization</strong> from zero or inherit and accelerate an existing team</li>
           <li><strong>Own the AI product roadmap</strong> including prioritization, sequencing, trade-offs, and measurable ROI</li>
           <li><strong>Drive AI adoption across the business</strong> with technical credibility and executive-level communication</li>
           <li><strong>Establish AI governance and responsible AI frameworks</strong> that enable enterprise trust and scale</li>
+          <li><strong>Structured first 90 days:</strong> diagnose across functions, select one customer-facing and one operational priority, and move both into controlled production pilots with evaluation and escalation in place</li>
           <li><strong>Location:</strong> Greater Boston, hybrid, or fully remote. Target base $250K to $350K</li>
         </ul>
       </div>
