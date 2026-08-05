@@ -367,6 +367,14 @@
   .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .work-body a:hover { text-decoration: underline; }
   .work-card.wide { grid-column: 1 / -1; }
+  .work-group {
+    grid-column: 1 / -1;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--cyan); margin: 14px 0 0;
+  }
+  .work-group:first-child { margin-top: 0; }
 
   /* MBA BANNER */
   .mba-banner {
@@ -614,9 +622,9 @@
     <span class="nav-brand-text">Greg Loeffelholz</span>
   </a>
   <div class="nav-links">
-    <a href="#approach" class="nav-link">Approach</a>
-    <a href="#engage" class="nav-link">Engage</a>
     <a href="#work" class="nav-link">Work</a>
+    <a href="#engage" class="nav-link">Engage</a>
+    <a href="#approach" class="nav-link">Approach</a>
     <a href="#why-greg" class="nav-link">Why Greg</a>
   </div>
   <div style="display:flex;align-items:center;gap:8px;">
@@ -708,45 +716,107 @@
   </div>
 </div>
 
-<!-- DESIGN FRAMEWORK -->
-<section class="fw-section" id="approach">
+<!-- WORK -->
+<section class="work-section" id="work">
   <div class="section-inner">
-    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Approach</span></div>
-    <h2 class="sec-heading">How I approach building AI systems.</h2>
-    <p class="sec-sub">Six principles I apply to every AI platform, whether I am starting from zero or inheriting something already in production.</p>
+    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Selected Work</span></div>
+    <h2 class="sec-heading">Production systems, operating leadership, and independent analysis.</h2>
+    <p class="sec-sub">Grouped by the kind of evidence each provides. The production work ran with infrastructure costs and revenue on the line; the independent analyses are linked in full.</p>
 
-    <div class="fw-grid">
-      <div class="fw-card">
-        <div class="fw-n">01</div>
-        <div class="fw-title">Where AI Should and Should Not Be Used</div>
-        <p class="fw-tagline">My first question is whether AI is the best solution to the problem. A chatbot with predictable questions may work better as a decision tree; a model earns its place where simpler systems fall short. That discipline keeps AI investment tied to return.</p>
+    <div class="work-grid">
+      <div class="work-group">Production AI and Platforms</div>
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">MotiveMetrics</span>
+          <span class="work-year">2022 to 2026</span>
+        </div>
+        <div class="work-title">Production Agentic System Supporting $100M+ in Monthly Client Spend</div>
+        <div class="work-body">
+          Led the design and deployment of a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Assets deployed through the Google and Bing APIs only after human approval, against live spend of <strong>$100M+ per month.</strong> The system ran with cost controls and SLA accountability and contributed to <strong>50% year-over-year growth in a key account.</strong>
+        </div>
       </div>
-      <div class="fw-card">
-        <div class="fw-n">02</div>
-        <div class="fw-title">Human-in-the-Loop Validation</div>
-        <p class="fw-tagline">Human review is matched to the risk of each task, and reviewer feedback is captured as the benchmark for correct output. As a system proves itself in production, we adjust the level of oversight based on measured reliability.</p>
+
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">MotiveMetrics</span>
+          <span class="work-year">2022 to 2026</span>
+        </div>
+        <div class="work-title">ML Segmentation at Enterprise Scale: Three Production Failures Resolved</div>
+        <div class="work-body">
+          Led the build and launch of an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem: embedding dimensionality reduced without quality loss to fix the compute failure, retry limits and termination controls that cut roughly <strong>$50,000 per month in AWS costs,</strong> and an automated divergence review before results reached clients.
+        </div>
       </div>
-      <div class="fw-card">
-        <div class="fw-n">03</div>
-        <div class="fw-title">Model Routing, Fallbacks, and Token Economics</div>
-        <p class="fw-tagline">Each task is routed to the model that fits it, with fallbacks from LLM to rules to human review when something fails. Cost and latency budgets are set with engineering during design and tracked against production usage month over month.</p>
+
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">ownerIQ to Inmar</span>
+          <span class="work-year">2014 to 2021</span>
+        </div>
+        <div class="work-title">200MM+ Identity Graph That Helped Drive an Acquisition</div>
+        <div class="work-body">
+          Directed the buildout of a <strong>200MM+ US consumer identity graph</strong> with cross-device resolution and ML-driven bid decisioning at <strong>sub-60ms across 20+ ad exchanges.</strong> Fraud reduction systems cut fraud by more than 70%. Built pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation. This platform capability was a core driver of ownerIQ's acquisition by Inmar Intelligence.
+        </div>
       </div>
-      <div class="fw-card">
-        <div class="fw-n">04</div>
-        <div class="fw-title">Data Governance, Lineage and Privacy</div>
-        <p class="fw-tagline">Customer and business unit data stay separate, access is controlled by role, and explicit rules govern what data models can see, retain, or train on. These controls are built into the platform at the start, where they are enforceable.</p>
+
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">Inmar Intelligence</span>
+          <span class="work-year">2019 to 2021</span>
+        </div>
+        <div class="work-title">Post-Acquisition Integration into Retail Media</div>
+        <div class="work-body">
+          Led the integration of ownerIQ's platform with Inmar's couponing, promotions, and customer data systems after the acquisition, connecting <strong>digital and paper coupons, online advertising, and in-store transaction data for closed-loop attribution.</strong> Managed the Azure-to-GCP platform migration that made the unified build possible. As Senior Director of Audience and Media Platforms, ran ShopperSync, Inmar's retail media and commerce data platform, extending the audience and attribution capabilities built at ownerIQ into retail media.
+        </div>
       </div>
-      <div class="fw-card">
-        <div class="fw-n">05</div>
-        <div class="fw-title">Responsible AI and Guardrails</div>
-        <p class="fw-tagline">Every AI capability gets a risk tier before it ships, and the tier sets the depth of red-team testing, input and output filtering, and bias audits. Higher risk earns heavier guardrails and more human oversight, applied consistently across the platform.</p>
+
+      <div class="work-group">Governance and Operating Leadership</div>
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">MotiveMetrics</span>
+          <span class="work-year">2022 to 2026</span>
+        </div>
+        <div class="work-title">SOC 2 and Responsible AI Built as Production Infrastructure</div>
+        <div class="work-body">
+          Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market without slowing the product roadmap. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements: the governance infrastructure that allowed enterprise clients to trust and contract against the system.
+        </div>
       </div>
-      <div class="fw-card">
-        <div class="fw-n">06</div>
-        <div class="fw-title">Observability, Evaluation, and Continuous Learning</div>
-        <p class="fw-tagline">The systems we ship are instrumented end to end: every model call is logged with its cost, speed, and output quality; automated evaluations run on every change; and quality drift is caught early. Production results drive continuous improvement.</p>
+
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">MotiveMetrics</span>
+          <span class="work-year">2023 to 2025</span>
+        </div>
+        <div class="work-title">Managed Services to First Profitability in Company History</div>
+        <div class="work-body">
+          Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining it for 13 consecutive months. The margin came from rebuilding revenue mix, operational discipline, and product delivery while continuing to run the production AI platform.
+        </div>
       </div>
+
+      <div class="work-group">Independent Strategy and Analysis</div>
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">FutureInSites</span>
+          <span class="work-year">2026</span>
+        </div>
+        <div class="work-title">Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand</div>
+        <div class="work-body">
+          Developed an independent AI strategy for the <strong>$10B+ athleisure brand:</strong> capability assessment of its existing ML platform, competitive benchmarking, a 12-initiative prioritization matrix, and a phased roadmap, with a financial model projecting ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> Separately authored an independent investment analysis of Oracle. <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-meta">
+          <span class="work-badge">BC Carroll School</span>
+          <span class="work-year">2026</span>
+        </div>
+        <div class="work-title">Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough</div>
+        <div class="work-body">
+          Built an investment-grade analysis of whether AI raises or destroys Alphabet's terminal value, sourced entirely from 10-K, 10-Q filings, and earnings call transcripts. Constructed a two-engine framework separating Search/Services from Cloud to isolate competing AI dynamics, a 9-variable KPI driver tree, and an <strong>FCF bridge model through the 2026 CapEx trough ($180B spend)</strong> and recovery to ~$50B FCF by 2028. Conclusion: Cloud backlog growth from $155B to $240B in a single quarter and Search volume resilience (+17% YoY) dominate inference cost headwinds. <a href="https://www.futureinsites.com/alphabet" target="_blank" rel="noopener">View full analysis →</a>
+        </div>
+      </div>
+
     </div>
+
   </div>
 </section>
 
@@ -794,103 +864,45 @@
   </div>
 </section>
 
-<!-- WORK -->
-<section class="work-section" id="work">
+<!-- DESIGN FRAMEWORK -->
+<section class="fw-section" id="approach">
   <div class="section-inner">
-    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Selected Work</span></div>
-    <h2 class="sec-heading">Production systems with measurable business outcomes.</h2>
-    <p class="sec-sub">Shipped systems with infrastructure costs, production failures recovered from, and revenue on the line.</p>
+    <div class="sec-eyebrow"><span class="sec-eyebrow-text">Approach</span></div>
+    <h2 class="sec-heading">How I approach building AI systems.</h2>
+    <p class="sec-sub">Six principles I apply to every AI platform, whether I am starting from zero or inheriting something already in production.</p>
 
-    <div class="work-grid">
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">MotiveMetrics</span>
-          <span class="work-year">2022 to 2026</span>
-        </div>
-        <div class="work-title">Production Agentic System Supporting $100M+ in Monthly Client Spend</div>
-        <div class="work-body">
-          Led the design and deployment of a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Assets deployed through the Google and Bing APIs only after human approval, against live spend of <strong>$100M+ per month.</strong> The system ran with cost controls and SLA accountability and contributed to <strong>50% year-over-year growth in a key account.</strong>
-        </div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-n">01</div>
+        <div class="fw-title">Where AI Should and Should Not Be Used</div>
+        <p class="fw-tagline">My first question is whether AI is the best solution to the problem. A chatbot with predictable questions may work better as a decision tree; a model earns its place where simpler systems fall short. That discipline keeps AI investment tied to return.</p>
       </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">MotiveMetrics</span>
-          <span class="work-year">2023 to 2025</span>
-        </div>
-        <div class="work-title">Managed Services to First Profitability in Company History</div>
-        <div class="work-body">
-          Stepped into Acting GM role in April 2023 and <strong>took the Managed Services business to positive margin for the first time in company history,</strong> sustaining it for 13 consecutive months. The margin came from rebuilding revenue mix, operational discipline, and product delivery while continuing to run the production AI platform.
-        </div>
+      <div class="fw-card">
+        <div class="fw-n">02</div>
+        <div class="fw-title">Human-in-the-Loop Validation</div>
+        <p class="fw-tagline">Human review is matched to the risk of each task, and reviewer feedback is captured as the benchmark for correct output. As a system proves itself in production, we adjust the level of oversight based on measured reliability.</p>
       </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">MotiveMetrics</span>
-          <span class="work-year">2022 to 2026</span>
-        </div>
-        <div class="work-title">ML Segmentation at Enterprise Scale: Three Production Failures Resolved</div>
-        <div class="work-body">
-          Led the build and launch of an ML pipeline using <strong>BERT embeddings and K-means clustering</strong> for audience generation from paid search terms. Diagnosed three post-launch production failures: compute blowup at enterprise scale, a silent AWS retry loop causing runaway cost spikes, and segment quality drift. Each was resolved as a system design problem: embedding dimensionality reduced without quality loss to fix the compute failure, retry limits and termination controls that cut roughly <strong>$50,000 per month in AWS costs,</strong> and an automated divergence review before results reached clients.
-        </div>
+      <div class="fw-card">
+        <div class="fw-n">03</div>
+        <div class="fw-title">Model Routing, Fallbacks, and Token Economics</div>
+        <p class="fw-tagline">Each task is routed to the model that fits it, with fallbacks from LLM to rules to human review when something fails. Cost and latency budgets are set with engineering during design and tracked against production usage month over month.</p>
       </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">ownerIQ to Inmar</span>
-          <span class="work-year">2014 to 2021</span>
-        </div>
-        <div class="work-title">200MM+ Identity Graph That Helped Drive an Acquisition</div>
-        <div class="work-body">
-          Directed the buildout of a <strong>200MM+ US consumer identity graph</strong> with cross-device resolution and ML-driven bid decisioning at <strong>sub-60ms across 20+ ad exchanges.</strong> Fraud reduction systems cut fraud by more than 70%. Built pacing algorithms incorporating channel, media type, and KPI constraints into real-time bidding automation. This platform capability was a core driver of ownerIQ's acquisition by Inmar Intelligence.
-        </div>
+      <div class="fw-card">
+        <div class="fw-n">04</div>
+        <div class="fw-title">Data Governance, Lineage and Privacy</div>
+        <p class="fw-tagline">Customer and business unit data stay separate, access is controlled by role, and explicit rules govern what data models can see, retain, or train on. These controls are built into the platform at the start, where they are enforceable.</p>
       </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">Inmar Intelligence</span>
-          <span class="work-year">2019 to 2021</span>
-        </div>
-        <div class="work-title">Post-Acquisition Integration into Retail Media</div>
-        <div class="work-body">
-          Led the integration of ownerIQ's platform with Inmar's couponing, promotions, and customer data systems after the acquisition, connecting <strong>digital and paper coupons, online advertising, and in-store transaction data for closed-loop attribution.</strong> Managed the Azure-to-GCP platform migration that made the unified build possible. As Senior Director of Audience and Media Platforms, ran ShopperSync, Inmar's retail media and commerce data platform, extending the audience and attribution capabilities built at ownerIQ into retail media.
-        </div>
+      <div class="fw-card">
+        <div class="fw-n">05</div>
+        <div class="fw-title">Responsible AI and Guardrails</div>
+        <p class="fw-tagline">Every AI capability gets a risk tier before it ships, and the tier sets the depth of red-team testing, input and output filtering, and bias audits. Higher risk earns heavier guardrails and more human oversight, applied consistently across the platform.</p>
       </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">FutureInSites</span>
-          <span class="work-year">2026</span>
-        </div>
-        <div class="work-title">Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand</div>
-        <div class="work-body">
-          Developed an independent AI strategy for the <strong>$10B+ athleisure brand:</strong> capability assessment of its existing ML platform, competitive benchmarking, a 12-initiative prioritization matrix, and a phased roadmap, with a financial model projecting ~$450M in AI investment against <strong>~$2.5B in incremental annual operating profit by 2030.</strong> Separately authored an independent investment analysis of Oracle. <a href="https://www.futureinsites.com/lululemon" target="_blank" rel="noopener">View full case study →</a>
-        </div>
-      </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">BC Carroll School</span>
-          <span class="work-year">2026</span>
-        </div>
-        <div class="work-title">Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough</div>
-        <div class="work-body">
-          Built an investment-grade analysis of whether AI raises or destroys Alphabet's terminal value, sourced entirely from 10-K, 10-Q filings, and earnings call transcripts. Constructed a two-engine framework separating Search/Services from Cloud to isolate competing AI dynamics, a 9-variable KPI driver tree, and an <strong>FCF bridge model through the 2026 CapEx trough ($180B spend)</strong> and recovery to ~$50B FCF by 2028. Conclusion: Cloud backlog growth from $155B to $240B in a single quarter and Search volume resilience (+17% YoY) dominate inference cost headwinds. <a href="https://www.futureinsites.com/alphabet" target="_blank" rel="noopener">View full analysis →</a>
-        </div>
-      </div>
-
-      <div class="work-card">
-        <div class="work-meta">
-          <span class="work-badge">MotiveMetrics</span>
-          <span class="work-year">2022 to 2026</span>
-        </div>
-        <div class="work-title">SOC 2 and Responsible AI Built as Production Infrastructure</div>
-        <div class="work-body">
-          Led the company-wide initiative to achieve <strong>SOC 2 certification,</strong> coordinating across engineering, product, and go-to-market without slowing the product roadmap. Built the responsible AI governance framework covering risk tiers, model cards, audit trails, and incident response playbooks. Designed human-in-the-loop workflows for LLM outputs matched to task complexity and reliability requirements: the governance infrastructure that allowed enterprise clients to trust and contract against the system.
-        </div>
+      <div class="fw-card">
+        <div class="fw-n">06</div>
+        <div class="fw-title">Observability, Evaluation, and Continuous Learning</div>
+        <p class="fw-tagline">The systems we ship are instrumented end to end: every model call is logged with its cost, speed, and output quality; automated evaluations run on every change; and quality drift is caught early. Production results drive continuous improvement.</p>
       </div>
     </div>
-
   </div>
 </section>
 
