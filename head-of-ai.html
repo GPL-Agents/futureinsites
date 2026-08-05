@@ -719,32 +719,32 @@
       <div class="fw-card">
         <div class="fw-n">01</div>
         <div class="fw-title">Where AI Should and Should Not Be Used</div>
-        <p class="fw-tagline">My first question is whether AI is the best solution to the problem. A chatbot with predictable questions may work better as a decision tree; a model earns its place only where simpler systems fall short.</p>
+        <p class="fw-tagline">My first question is whether AI is the best solution to the problem. A chatbot with predictable questions may work better as a decision tree; a model earns its place where simpler systems fall short. That discipline keeps AI investment tied to return.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">02</div>
         <div class="fw-title">Human-in-the-Loop Validation</div>
-        <p class="fw-tagline">I match the level of human review to the risk of the task, capture reviewer feedback as ground truth, and loosen or tighten oversight as the system proves itself.</p>
+        <p class="fw-tagline">Human review is matched to the risk of each task, and reviewer feedback is captured as the benchmark for correct output. As a system proves itself in production, we adjust the level of oversight based on measured reliability.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">03</div>
         <div class="fw-title">Model Routing, Fallbacks, and Token Economics</div>
-        <p class="fw-tagline">I route each task to the model that fits it, with fallbacks from LLM to rules to human review when something fails, and I set cost and latency budgets during design.</p>
+        <p class="fw-tagline">Each task is routed to the model that fits it, with fallbacks from LLM to rules to human review when something fails. Cost and latency budgets are set with engineering during design and tracked against production usage month over month.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">04</div>
         <div class="fw-title">Data Governance, Lineage and Privacy</div>
-        <p class="fw-tagline">I keep customer and business unit data separate, control access by role, and set explicit rules for what data models can see, retain, or train on.</p>
+        <p class="fw-tagline">Customer and business unit data stay separate, access is controlled by role, and explicit rules govern what data models can see, retain, or train on. These controls are built into the platform at the start, where they are enforceable.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">05</div>
         <div class="fw-title">Responsible AI and Guardrails</div>
-        <p class="fw-tagline">I assign every AI capability a risk tier before it ships, then scope red-team testing, input and output filtering, and bias audits to that tier.</p>
+        <p class="fw-tagline">Every AI capability gets a risk tier before it ships, and the tier sets the depth of red-team testing, input and output filtering, and bias audits. Higher risk earns heavier guardrails and more human oversight, applied consistently across the platform.</p>
       </div>
       <div class="fw-card">
         <div class="fw-n">06</div>
         <div class="fw-title">Observability, Evaluation, and Continuous Learning</div>
-        <p class="fw-tagline">I instrument everything: inference telemetry, automated evals on every model or prompt change, drift detection, and a feedback loop that turns production results into improvements.</p>
+        <p class="fw-tagline">The systems we ship are instrumented end to end: every model call is logged with its cost, speed, and output quality; automated evaluations run on every change; and quality drift is caught early. Production results drive continuous improvement.</p>
       </div>
     </div>
   </div>
