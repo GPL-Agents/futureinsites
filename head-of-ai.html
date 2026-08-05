@@ -393,6 +393,12 @@
     display: block; align-self: center;
     mix-blend-mode: screen;
   }
+  .mba-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 4px;
+  }
   .mba-heading {
     font-family: 'Manrope', sans-serif;
     font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 5px;
@@ -636,7 +642,7 @@
   </div>
   <div style="display:flex;align-items:center;gap:8px;">
     <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="nav-link" style="color:var(--cyan);font-weight:600;">LinkedIn</a>
-    <a href="mailto:gloeff@gmail.com" class="nav-cta">Get in touch</a>
+    <a href="#" class="nav-cta" data-open-inquiry>Get in touch</a>
   </div>
 </nav>
 
@@ -644,19 +650,15 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-avail"><span class="avail-dot"></span>Open to full-time or fractional roles</div>
+      <div class="hero-avail"><span class="avail-dot"></span>Open to full-time or fractional AI leadership</div>
       <h1 class="hero-name">Greg Loeffelholz</h1>
       <p class="hero-eyebrow">Head of AI · Fractional Chief AI Officer</p>
       <p class="hero-headline">A Head of AI who sets the strategy, builds what ships, and owns the outcome.</p>
       <p class="hero-sub">
-        In practice that means creating the AI roadmap, prioritizing the highest-value use cases, building and leading multi-disciplinary teams, and working cross-functionally to govern delivery. It comes from 12+ years of hands-on ML and AI platform experience, the last four running GenAI and agentic systems in production against $100M+ per month in live client ad spend, and from formal graduate study in AI and machine learning.
+        In practice that means creating the AI roadmap, prioritizing the highest-value use cases, building and leading multidisciplinary teams, and governing delivery from pilot through production. It comes from 12+ years of hands-on ML and AI platform experience, four years running GenAI and agentic systems supporting $100M+ in monthly client spend, and formal graduate study in AI and machine learning.
       </p>
 
       <div class="hero-facts">
-        <div class="hero-fact">
-          <span class="hf-val">3</span>
-          <span class="hf-label">Startup exits / acquisitions</span>
-        </div>
         <div class="hero-fact">
           <span class="hf-val">$100M+</span>
           <span class="hf-label">Monthly client ad spend on AI platform</span>
@@ -669,14 +671,19 @@
           <span class="hf-val">12<span style="font-size:12px">+</span></span>
           <span class="hf-label">Years building ML and AI at scale</span>
         </div>
+        <div class="hero-fact">
+          <span class="hf-val">3</span>
+          <span class="hf-label">Startup exits / acquisitions</span>
+        </div>
       </div>
 
       <div class="mba-banner hero-mba">
         <img src="images/bc-logo.png" alt="Boston College" class="mba-icon">
         <div>
+          <div class="mba-eyebrow">Why Now</div>
           <div class="mba-heading">MBA, AI and Machine Learning. Boston College Carroll School of Management</div>
           <div class="mba-body">
-            I went back to school full time, adding formal depth in Python, machine learning, and data science on top of 25 years of building. I finish the capstone this fall. Case studies at <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">futureinsites.com/case-studies</a>.
+            I returned to school full time to add graduate-level depth in Python, machine learning, data science, and AI strategy to 25 years of business and platform leadership. The coursework is complete; the capstone project remains this fall. The program also enabled concentrated experimentation across cross-industry case studies and diverse AI projects. <a href="https://www.futureinsites.com/case-studies" target="_blank" rel="noopener">Explore graduate AI case studies and projects →</a>
           </div>
         </div>
       </div>
@@ -739,7 +746,7 @@
         </div>
         <div class="work-title">Production Agentic System Supporting $100M+ in Monthly Client Spend</div>
         <div class="work-body">
-          Led the design and deployment of a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Assets deployed through the Google and Bing APIs only after human approval, against live spend of <strong>$100M+ per month.</strong> The system ran with cost controls and SLA accountability and contributed to <strong>50% year-over-year growth in a key account.</strong>
+          Led the design and deployment of a 3-agent production pipeline: a selection agent (ChatGPT API) routing to a content generation agent (Claude / Bedrock RAG) routing to a review and approval agent, orchestrated via AWS Step Functions with a feedback loop feeding approved outputs back into the next inference cycle. Assets deployed through the Google and Bing APIs only after human approval, supporting <strong>$100M+ per month in live client ad spend.</strong> The system ran with cost controls and SLA accountability and contributed to <strong>50% year-over-year growth in a key account.</strong>
         </div>
       </div>
 
@@ -851,6 +858,7 @@
           <li><strong>Structured first 90 days:</strong> diagnose across functions, select one customer-facing and one operational priority, and move both into controlled production pilots with evaluation and human review in place</li>
           <li><strong>Location:</strong> Greater Boston, hybrid, or fully remote. Target base $250K to $350K</li>
         </ul>
+        <button type="button" class="btn btn-primary" data-open-inquiry style="margin-top:20px">Discuss a full-time Head of AI role</button>
       </div>
 
       <div class="engage-card">
@@ -866,6 +874,7 @@
           <li><strong>Governance and responsible AI framework</strong> including policy, risk tiers, and audit-ready controls</li>
           <li><strong>Implementation roadmap</strong> phased, resourced, and tied to measurable outcomes</li>
         </ul>
+        <button type="button" class="btn btn-primary" data-open-inquiry style="margin-top:20px">Discuss a fractional AI leadership engagement</button>
       </div>
     </div>
   </div>
@@ -1001,7 +1010,7 @@
       <a href="https://www.linkedin.com/in/gregloeffelholz" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       <a href="https://www.futureinsites.com" target="_blank" rel="noopener" class="btn btn-ghost">FutureInSites.com</a>
     </div>
-    <p class="cta-note">Greater Boston, MA. Available immediately. gloeff@gmail.com</p>
+    <p class="cta-note">Greater Boston, MA · Hybrid or fully remote · gloeff@gmail.com</p>
   </div>
 </section>
 
