@@ -169,7 +169,7 @@
     color: var(--cyan); letter-spacing: -0.02em; line-height: 1;
   }
   .hf-label {
-    font-size: 9.5px; color: var(--text-dim);
+    font-size: 10.5px; color: rgba(255,255,255,0.62);
     font-weight: 500; text-transform: uppercase;
     letter-spacing: 0.05em; line-height: 1.3;
   }
@@ -362,7 +362,7 @@
     font-size: 14.5px; font-weight: 700;
     color: #fff; margin-bottom: 8px; line-height: 1.3;
   }
-  .work-body { font-size: 14.5px; color: var(--text-dim); line-height: 1.65; }
+  .work-body { font-size: 14.5px; color: rgba(255,255,255,0.62); line-height: 1.65; }
   .work-body strong { color: var(--text); font-weight: 600; }
   .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .work-body a:hover { text-decoration: underline; }
@@ -375,6 +375,10 @@
     color: var(--cyan); margin: 14px 0 0;
   }
   .work-group:first-child { margin-top: 0; }
+  .work-badge.independent {
+    background: rgba(45,212,255,0.10); color: var(--cyan);
+    border-color: rgba(45,212,255,0.30);
+  }
 
   /* MBA BANNER */
   .mba-banner {
@@ -479,6 +483,9 @@
     .hero-photo img { width: 150px; }
     .hero-photo::before { inset: -7px; }
     .hero-facts { grid-template-columns: repeat(2, 1fr); }
+    .hero-text { display: flex; flex-direction: column; }
+    .hero-text .hero-ctas { order: 5; margin-bottom: 1.4rem; }
+    .hero-text .hero-mba { order: 6; margin-bottom: 0; }
   }
   @media (max-width: 760px) {
     nav { padding: 0 1.5rem; }
@@ -795,7 +802,7 @@
       <div class="work-group">Independent Strategy and Analysis</div>
       <div class="work-card">
         <div class="work-meta">
-          <span class="work-badge">FutureInSites</span>
+          <span class="work-badge independent">FutureInSites</span>
           <span class="work-year">2026</span>
         </div>
         <div class="work-title">Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand</div>
@@ -806,7 +813,7 @@
 
       <div class="work-card">
         <div class="work-meta">
-          <span class="work-badge">BC Carroll School</span>
+          <span class="work-badge independent">BC Carroll School</span>
           <span class="work-year">2026</span>
         </div>
         <div class="work-title">Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough</div>
@@ -868,7 +875,7 @@
 <section class="fw-section" id="approach">
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Approach</span></div>
-    <h2 class="sec-heading">How I approach building AI systems.</h2>
+    <h2 class="sec-heading">How I lead AI from strategy through production.</h2>
     <p class="sec-sub">Six principles I apply to every AI platform, whether I am starting from zero or inheriting something already in production.</p>
 
     <div class="fw-grid">
@@ -916,7 +923,7 @@
     <div class="diff-grid">
       <div class="diff-card">
         <div class="diff-num">01</div>
-        <div class="diff-title">I held every decision from model selection to operating economics</div>
+        <div class="diff-title">My accountability spans strategy, architecture, delivery, and operating economics</div>
         <div class="diff-body">My accountability at MotiveMetrics ran the full span: model selection, vendor evaluation, architecture decisions, deployment, operating economics, and the commercial results they produced. Every tradeoff between strategy and production belonged to me, including the hard ones among cost, quality, and speed.</div>
         <div class="diff-tags">
           <span class="diff-tag">AI roadmap ownership</span>
@@ -971,7 +978,7 @@
 
       <div class="diff-card">
         <div class="diff-num">06</div>
-        <div class="diff-title">Every domain I have shipped in was new to me at the start</div>
+        <div class="diff-title">I become effective quickly in new industries and problem domains</div>
         <div class="diff-body">Programmatic advertising, identity resolution, retail media, enterprise GenAI: every one was a new domain for me on day one. In each, I built expertise quickly and shipped production AI with measurable results, and the full-time MBA applies the same learning discipline to formal study. Whatever industry you are hiring in, that speed of learning is what I bring.</div>
         <div class="diff-tags">
           <span class="diff-tag">Cross-domain execution</span>
