@@ -16,6 +16,23 @@ const escapeHtml = (str) =>
 
 const isEmail = (v) => typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
+// Simple in-memory rate limiter (per serverless instance). Stops bursts; not a
+// distributed guarantee, but free and adequate for this form's traffic.
+const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_MAX = 5;                    // max submissions per IP per window
+const ipHits = new Map();
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const rec = ipHits.get(ip);
+  if (!rec || now - rec.start > RATE_WINDOW_MS) {
+    ipHits.set(ip, { start: now, count: 1 });
+    return false;
+  }
+  rec.count += 1;
+  return rec.count > RATE_MAX;
+}
+
 module.exports = async function handler(req, res) {
   // CORS guard: same-origin only; tighten by setting an explicit origin if you want.
   if (req.method === 'OPTIONS') {
@@ -38,6 +55,12 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
 
+  // Rate limit: drop bursts (observed spam pattern is several submissions in minutes).
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (rateLimited(ip)) {
+    return res.status(429).json({ ok: false, error: 'Too many submissions. Please try again later or email strategy@futureinsites.com directly.' });
+  }
+
   const name    = (body.name    || '').toString().trim().slice(0, 200);
   const email   = (body.email   || '').toString().trim().slice(0, 200);
   const company = (body.company || '').toString().trim().slice(0, 200);
@@ -48,6 +71,11 @@ module.exports = async function handler(req, res) {
 
   if (!name)         return res.status(400).json({ ok: false, error: 'Name is required.' });
   if (!isEmail(email)) return res.status(400).json({ ok: false, error: 'A valid email is required.' });
+
+  // Message required: every real inquiry includes context; every spam submission so far has been empty.
+  if (message.length < 20) {
+    return res.status(400).json({ ok: false, error: 'Please include a brief message (at least 20 characters) about what you are looking for.' });
+  }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const INQUIRY_TO     = process.env.INQUIRY_TO   || 'strategy@futureinsites.com';

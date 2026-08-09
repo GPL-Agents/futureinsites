@@ -3453,6 +3453,12 @@
         form.email.focus();
         return;
       }
+      if (data.message.length < 20) {
+        errorEl.textContent = 'Please include a brief message (at least 20 characters).';
+        errorEl.classList.add('show');
+        form.message.focus();
+        return;
+      }
 
       submitEl.disabled = true;
       submitEl.textContent = 'Sending…';
