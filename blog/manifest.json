@@ -1,5 +1,21 @@
 [
     {
+        "slug":  "lululemon-ai-knowledge-base",
+        "title":  "What Lululemon Teaches Us About AI Knowledge Bases",
+        "date":  "2026-08-12",
+        "excerpt":  "Lululemon tested putting its knowledge base online, accessible to store employees on iPads, with AI that answers questions instead of returning documents. A RAG-powered knowledge base improves onboarding, training, and real-time on-the-job support. And it is not just a retail story.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+                     "AI Knowledge Base",
+                     "RAG",
+                     "Onboarding",
+                     "Training",
+                     "Lululemon",
+                     "Enterprise AI"
+                 ],
+        "image":  "lululemon-kb-blog.jpg"
+    },
+    {
         "slug":  "ai-saas-disruption-smb-opportunity",
         "title":  "Can AI Replace SaaS? A Practical Guide for Small Businesses",
         "date":  "2026-07-28",
