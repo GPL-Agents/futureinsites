@@ -550,7 +550,7 @@
 
       <p>A traditional knowledge base search works like a library catalog. You type a question, you get a list of documents, you open the right one, and you read. The burden is on the employee: figure out which document is relevant, then extract the answer from a long SOP.</p>
 
-      <p>What lululemon tested is a <strong>RAG architecture</strong> (retrieval-augmented generation). The AI searches the knowledge base behind the scenes, pulls the relevant sections, and generates a direct answer to the question that was asked. The employee does not read a 40-page manual to find the one paragraph they need. They get the answer, with the source right there to verify it.</p>
+      <p>The architecture that changes this is <strong>RAG</strong> (retrieval-augmented generation). As <a href="https://www.ibm.com/think/topics/retrieval-augmented-generation" target="_blank" rel="noopener">IBM describes it</a>, RAG is an architecture that connects an AI model to external knowledge bases, and <a href="https://aws.amazon.com/what-is/retrieval-augmented-generation/" target="_blank" rel="noopener">AWS adds</a> that the model then references that authoritative knowledge base rather than relying on its training data. The AI searches your documents behind the scenes, pulls the relevant sections, and generates a direct answer to the question that was asked. The employee does not read a 40-page manual to find the one paragraph they need. They get the answer, with the source right there to verify it.</p>
 
       <p>And it is interactive. Because it is a chat interface, an employee can ask a follow-up: "What if the customer wants a return past 30 days?" "Which approval do I need for that?" The system holds the context of the conversation. That is the difference between a document search and a conversation.</p>
 
@@ -560,7 +560,9 @@
 
       <h2>What the Pilot Targeted</h2>
 
-      <p>In the case study we tracked this as the <strong>Associate AI Training Tutor</strong> - AI-powered associate onboarding, developed as a proof of concept with the University of Washington iSchool. The mechanics matter less than the outcomes it targets:</p>
+      <p>The program is real and publicly documented. In 2024, a <a href="https://ischool.uw.edu/capstone/projects/2024/lululemon-ai-tutor-reducing-onboarding-time-newly-hired-store-associates" target="_blank" rel="noopener">University of Washington iSchool capstone team built lululemon's AI tutor</a> - a web-based internal platform for onboarding and training newly hired store associates, built on GPT-4, using Socratic-style questioning to gauge product familiarity and close knowledge gaps. The project brief notes the scale of the problem it attacked: lululemon employs thousands of retail associates across more than 700 stores, and new employees historically spent significant time learning what to recommend to shoppers.</p>
+
+      <p>The mechanics matter less than the outcomes it targets:</p>
 
       <ul>
         <li><strong>Onboarding.</strong> New hires get answers the moment they need them, instead of waiting for a veteran to be free or digging through a binder.</li>
@@ -568,7 +570,7 @@
         <li><strong>Real-time support.</strong> When a customer asks something an associate has never handled, the answer is seconds away - on the device already in their hand.</li>
       </ul>
 
-      <p>The key detail: lululemon did not build a separate training system. The knowledge base is the same one the company already maintains. They put AI in front of what they already had.</p>
+      <p>The key detail: lululemon did not build a separate training system. The knowledge base is the same one the company already maintains. They put AI in front of what they already had. The timing is no accident either - lululemon <a href="https://corporate.lululemon.com/media/press-releases/2025/08-26-2025-113010087" target="_blank" rel="noopener">appointed its first Chief AI &amp; Technology Officer</a> in August 2025, after a stretch where <a href="https://www.cnbc.com/2025/09/04/lululemon-lulu-q2-2025-earnings.html" target="_blank" rel="noopener">Americas comparable sales declined 4% in Q2 FY2025</a>. Operational efficiency is no longer a nice-to-have; it is the plan.</p>
 
       <h2>This Is Not Just a Retail Story</h2>
 
@@ -590,7 +592,7 @@
 
       <p>This is where it stops being a document library and becomes a knowledge base. Employees add tips, tricks, and ideas that have worked for them on the job, and those contributions are logged and searchable for everyone. A project manager logs a prompt that saves them an hour in their estimating tool. A field superintendent posts the checklist they use for subcontractor walkthroughs. A veteran shares the shortcut for a software package the whole office uses.</p>
 
-      <p>For a company with a veteran team, this is quiet gold. The knowledge that currently lives in people's heads - the stuff that walks out the door at retirement - starts accumulating in a form the whole organization can use. It also builds a culture where sharing how you work is part of the job.</p>
+      <p>For a company with a veteran team, this is quiet gold. The knowledge that currently lives in people's heads - the stuff that walks out the door at retirement - starts accumulating in a form the whole organization can use. Construction is a stark example of the risk: about <a href="https://www.constructiondive.com/news/construction-labor-retirement-recruiting-dei/651184/" target="_blank" rel="noopener">one in five construction workers is 55 or older</a>, and the industry's experienced-worker exodus is a documented concern, with <a href="https://skillit.com/blog/concerns-from-an-aging-construction-workforce" target="_blank" rel="noopener">losing decades of institutional knowledge</a> among the top risks. The same logic applies to any field where expertise is concentrated in long-tenured people.</p>
 
       <h3>3. Visibility into what people actually look up</h3>
 
@@ -599,7 +601,7 @@
       <ul>
         <li><strong>Missing documentation.</strong> A cluster of unanswered searches is a document that needs to be written. You stop guessing what's missing and start knowing.</li>
         <li><strong>Training needs.</strong> When the same question comes up repeatedly, it is not a documentation problem, it is a training problem. Now you have evidence to build a session around.</li>
-        <li><strong>Process friction.</strong> If every new hire asks the same four questions, your onboarding is not covering them. Fix the root cause instead of answering the questions one by one.</li>
+        <li><strong>Process friction.</strong> If every new hire asks the same four questions, your onboarding is not covering them. Fix the root cause instead of answering the questions one by one. The stakes are measurable: structured onboarding programs are associated with <a href="https://gitnux.org/onboarding-statistics/" target="_blank" rel="noopener">cutting time to full productivity from about eight months to five</a> - for a veteran team that already knows the business, the equivalent lever is compressing how long it takes a new hire to stop asking.</li>
       </ul>
 
       <h2>The Compound Effect</h2>
@@ -611,6 +613,19 @@
       <hr />
 
       <p><em>FutureInSites helps companies design and build AI knowledge bases over their existing documentation - RAG architecture, employee contribution workflows, and the analytics to know what your people actually need. We built the lululemon case study in the <a href="../case-studies.html">case studies library</a>, and we have seen the same pattern land for commercial construction firms, professional services, and manufacturers. <a href="../contact.html">Get in touch</a> if you want to put AI in front of the knowledge you already have.</em></p>
+
+      <h2>References</h2>
+
+      <ol class="ref-list">
+        <li>University of Washington Information School. "<a href="https://ischool.uw.edu/capstone/projects/2024/lululemon-ai-tutor-reducing-onboarding-time-newly-hired-store-associates" target="_blank" rel="noopener">lululemon AI Tutor: Reducing Onboarding Time for Newly-Hired Store Associates</a>." Capstone project, 2024.</li>
+        <li>IBM. "<a href="https://www.ibm.com/think/topics/retrieval-augmented-generation" target="_blank" rel="noopener">What is RAG (Retrieval Augmented Generation)?</a>" IBM Think.</li>
+        <li>Amazon Web Services. "<a href="https://aws.amazon.com/what-is/retrieval-augmented-generation/" target="_blank" rel="noopener">What is RAG? - Retrieval-Augmented Generation AI Explained</a>." AWS.</li>
+        <li>lululemon athletica inc. "<a href="https://corporate.lululemon.com/media/press-releases/2025/08-26-2025-113010087" target="_blank" rel="noopener">lululemon Appoints Ranju Das as the Company's First Chief AI &amp; Technology Officer</a>." Press release, August 26, 2025.</li>
+        <li>CNBC. "<a href="https://www.cnbc.com/2025/09/04/lululemon-lulu-q2-2025-earnings.html" target="_blank" rel="noopener">Lululemon (LULU) Q2 2025 earnings</a>." September 4, 2025.</li>
+        <li>Construction Dive. "<a href="https://www.constructiondive.com/news/construction-labor-retirement-recruiting-dei/651184/" target="_blank" rel="noopener">Construction's age problem: A foreboding exodus of experience</a>." May 25, 2023.</li>
+        <li>Skillit. "<a href="https://skillit.com/blog/concerns-from-an-aging-construction-workforce" target="_blank" rel="noopener">Challenges Facing an Aging Construction Workforce</a>."</li>
+        <li>Gitnux. "<a href="https://gitnux.org/onboarding-statistics/" target="_blank" rel="noopener">150+ Onboarding Statistics: 2026 Verified Report</a>." (SHRM data on structured onboarding and time to productivity.)</li>
+      </ol>
 
       <p style="margin-top: 2rem;"><a href="index.html" class="post-back">&larr; Back to Blog</a></p>
 
