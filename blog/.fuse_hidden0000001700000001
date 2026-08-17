@@ -539,7 +539,7 @@
       <p class="post-author">By Greg Loeffelholz</p>
     </header>
 
-    <img src="lululemon-kb-blog.jpg" alt="AI knowledge base accessed on a tablet: Lululemon-inspired illustration" style="width:100%; max-width:860px; height:auto; margin:0 auto; border-radius:10px; display:block;">
+    <img src="lululemon-kb-blog.jpg" alt="AI knowledge base accessed on a tablet: Lululemon-inspired illustration" style="width:100%; max-height:480px; object-fit:cover; display:block;">
 
     <div class="post-content">
       <p>We recently published a full <a href="../lululemon.html">case study on lululemon's AI strategy</a> - the three pillars, the use case prioritization matrix, the phased investment roadmap. One finding keeps coming up in client conversations, because it is quietly one of the most practical things in the entire study: lululemon tested putting its own knowledge base online and making it available to in-store employees on iPads, powered by AI. Associates use it on the job to get answers in real time. It helps with onboarding, training, and day-to-day operations.</p>
