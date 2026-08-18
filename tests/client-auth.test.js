@@ -11,6 +11,7 @@ const {
   safeNextPath,
   serializeSessionCookie,
   verifyWorkspacePassword,
+  workspaceEnvName,
 } = require('../lib/client-auth');
 
 const TEST_PASSWORD = 'correct horse battery staple';
@@ -33,6 +34,7 @@ test('workspace names are normalized and constrained', () => {
   assert.equal(normalizeWorkspace(' TRACE '), 'trace');
   assert.equal(normalizeWorkspace('a'), '');
   assert.equal(normalizeWorkspace('../trace'), '');
+  assert.equal(workspaceEnvName('Acme-Co'), 'CLIENT_WORKSPACE_ACME_CO');
 });
 
 test('password verification accepts only the configured workspace password', async () => {
@@ -42,6 +44,24 @@ test('password verification accepts only the configured workspace password', asy
   );
   assert.equal((await verifyWorkspacePassword('trace', 'wrong', TEST_CONFIG)).ok, false);
   assert.equal((await verifyWorkspacePassword('unknown', TEST_PASSWORD, TEST_CONFIG)).ok, false);
+});
+
+test('individual workspace variables add clients without replacing existing credentials', async () => {
+  const environment = {
+    CLIENT_WORKSPACE_ACME_CO: JSON.stringify({
+      salt: TEST_SALT.toString('base64url'),
+      hash: TEST_HASH.toString('base64url'),
+    }),
+  };
+
+  assert.deepEqual(
+    await verifyWorkspacePassword('acme-co', TEST_PASSWORD, TEST_CONFIG, environment),
+    { ok: true, workspace: 'acme-co' },
+  );
+  assert.deepEqual(
+    await verifyWorkspacePassword('trace', TEST_PASSWORD, TEST_CONFIG, environment),
+    { ok: true, workspace: 'trace' },
+  );
 });
 
 test('session token contains an expiry and is signed', () => {

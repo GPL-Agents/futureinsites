@@ -17,11 +17,11 @@ layout reference. Do not use its `passwordHash` configuration for new clients.
 3. Update the dashboard configuration near the top of `index.html`.
 4. Put downloadable files in a `documents/` subfolder. Use lowercase,
    URL-safe filenames.
-5. Generate a unique salt and scrypt hash using the parameters in
-   `lib/client-auth.js`: 32,768 iterations, block size 8, parallelization 1,
-   and a 32-byte result.
-6. Merge the new workspace entry into the existing `CLIENT_AUTH_CONFIG`
-   environment variable in Vercel. Keep all existing workspace entries.
+5. Run `pnpm client:credential <workspace>` to generate a password, the
+   workspace-specific Vercel variable name, and its credential value.
+6. Add that one new `CLIENT_WORKSPACE_<WORKSPACE>` variable to Vercel for
+   Production and Preview. Existing client variables do not need to be read or
+   changed.
 7. Deploy, then test both the shared login and direct workspace URL in a fresh
    browser session.
 
@@ -40,7 +40,9 @@ placeholder without creating a broken link.
 ## Security notes
 
 - Never store plaintext passwords in the repository.
-- Do not commit the production `CLIENT_AUTH_CONFIG` value.
+- Do not commit production `CLIENT_WORKSPACE_*` or `CLIENT_AUTH_CONFIG` values.
+- Use one `CLIENT_WORKSPACE_*` variable per client. The aggregate
+  `CLIENT_AUTH_CONFIG` map remains supported only for existing deployments.
 - Client pages and files must stay under their matching workspace path.
 - The login endpoint validates redirect paths so one workspace session cannot
   be used to enter another workspace.

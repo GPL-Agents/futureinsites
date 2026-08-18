@@ -25,5 +25,8 @@ client assets, or update their paths in `client.js` if the filenames change.
 
 ## Authentication
 
-Authentication is managed on the server through `CLIENT_AUTH_CONFIG`. Never
-place the plaintext password or the production credential map in this folder.
+Authentication is managed on the server. New clients use an independent
+`CLIENT_WORKSPACE_<WORKSPACE>` Vercel environment variable, so adding or
+rotating one client does not affect any other workspace. The aggregate
+`CLIENT_AUTH_CONFIG` map remains supported for compatibility. Never place a
+plaintext password or production credential value in this folder.
