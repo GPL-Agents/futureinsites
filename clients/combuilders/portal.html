@@ -25,14 +25,15 @@
   <!-- ============================================================= -->
   <script>
     const ENGAGEMENT = {
-      status: "In progress",
-      phase:  "Assessment & POC",
+      status: "POC Draft & Discovery",
+      phase:  "POC Proposal",
       // Current Engagement card (left dashboard)
       details: [
-        { label: "Phase",          value: "Assessment & POC" },
-        { label: "Status",         value: "Due diligence underway" },
-        { label: "Next Milestone", value: "Finalize POC" },
-        { label: "Target Date",    value: "To be scheduled" }
+        { label: "Phase",          value: "POC Proposal" },
+        { label: "Status",         value: "POC Draft & Discovery" },
+        { label: "Next Milestone", value: "POC Kickoff" },
+        { label: "Target Date",    value: "8/31/26" },
+        { label: "Duration",       value: "6 weeks" }
       ]
     };
 
@@ -44,10 +45,6 @@
       { label: "Project kickoff",              state: "todo" },
       { label: "Technical build & integration", state: "todo" },
       { label: "Team training & rollout",      state: "todo" }
-    ];
-
-    const KEY_DOCS = [
-      { title: "POC Agreement", href: null }
     ];
 
     const LIBRARY = [
@@ -127,13 +124,13 @@
     #portal { flex: 1; display: none; }
     #portal.show { display: block; }
     .portal-inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 2.4rem 2rem 3.5rem;
-      display: grid; grid-template-columns: minmax(300px, 350px) 1fr; gap: 1.8rem; align-items: start; }
+      display: grid; grid-template-columns: minmax(300px, 350px) 1fr; gap: 1.8rem; align-items: stretch; }
     @media (max-width: 880px) { .portal-inner { grid-template-columns: 1fr; } }
 
     .card { background: #fff; border: 1px solid var(--border); border-radius: 16px; }
 
     /* Left dashboard */
-    .dash { display: flex; flex-direction: column; gap: 1.2rem; }
+    .dash { display: flex; flex-direction: column; gap: 1.2rem; height: 100%; }
     .dash-head { padding: 1.6rem 1.6rem 1.5rem; }
     .dash-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
     .dash-client { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
@@ -146,6 +143,7 @@
 
     .dash-block { padding: 1.4rem 1.6rem; }
     .dash-block h3 { font-family: 'Manrope', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
+    .deliverables-block { flex: 1; }
 
     .progress { list-style: none; }
     .progress li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.32rem 0; font-size: 0.92rem; }
@@ -158,13 +156,6 @@
     .engagement-grid { display: flex; flex-direction: column; gap: 0.95rem; }
     .eng-row dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.12rem; }
     .eng-row dd { font-size: 0.98rem; font-weight: 600; color: var(--dark); }
-
-    .keydocs { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .keydoc { display: flex; align-items: center; gap: 0.55rem; font-size: 0.9rem; text-decoration: none; color: var(--dark); }
-    a.keydoc:hover { color: var(--accent); }
-    .keydoc.soon { color: var(--muted); cursor: not-allowed; }
-    .keydoc svg { flex-shrink: 0; color: var(--muted); }
-    a.keydoc svg { color: var(--accent); }
 
     /* Right library */
     .library { display: flex; flex-direction: column; }
@@ -218,13 +209,9 @@
           <h3>Current Engagement</h3>
           <dl class="engagement-grid" id="engagementGrid"></dl>
         </div>
-        <div class="card dash-block">
+        <div class="card dash-block deliverables-block">
           <h3>Deliverables</h3>
           <ul class="progress" id="progress"></ul>
-        </div>
-        <div class="card dash-block">
-          <h3>Key Documents</h3>
-          <ul class="keydocs" id="keydocs"></ul>
         </div>
       </aside>
 
@@ -270,12 +257,6 @@
       // Current engagement
       document.getElementById('engagementGrid').innerHTML = ENGAGEMENT.details.map(function (d) {
         return '<div class="eng-row"><dt>' + d.label + '</dt><dd>' + d.value + '</dd></div>';
-      }).join('');
-
-      // Key documents
-      document.getElementById('keydocs').innerHTML = KEY_DOCS.map(function (k) {
-        if (k.href) return '<li><a class="keydoc" href="' + k.href + '">' + I.doc + k.title + '</a></li>';
-        return '<li><span class="keydoc soon">' + I.doc + k.title + '</span></li>';
       }).join('');
 
       // Document library

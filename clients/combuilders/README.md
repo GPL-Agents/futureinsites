@@ -9,7 +9,7 @@ matching is case-insensitive.
 ## Add documents
 
 1. Put client files in `documents/` using lowercase, URL-safe filenames.
-2. Edit `KEY_DOCS` or `LIBRARY` near the top of `portal.html`.
+2. Edit `LIBRARY` near the top of `portal.html`.
 3. Set the item's `href` to `/clients/combuilders/documents/filename.ext`.
 4. Leave `href: null` for documents that are not ready. They display as
    unavailable placeholders in the portal.
@@ -21,7 +21,7 @@ Current documents:
 
 ## Update engagement details
 
-Edit the `ENGAGEMENT`, `DELIVERABLES`, `KEY_DOCS`, and `LIBRARY` blocks near
+Edit the `ENGAGEMENT`, `DELIVERABLES`, and `LIBRARY` blocks near
 the top of `portal.html`. No layout changes are needed for routine updates.
 
 ## Branding
