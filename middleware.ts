@@ -89,6 +89,22 @@ function loginRedirect(request: Request, workspace: string, reason = ''): Respon
   return new Response(null, { status: 302, headers });
 }
 
+function portalRedirect(request: Request, workspace: string): Response {
+  const requestUrl = new URL(request.url);
+  const portalUrl = new URL(`/clients/${workspace}/portal`, requestUrl);
+  portalUrl.search = requestUrl.search;
+
+  return new Response(null, {
+    status: 302,
+    headers: {
+      'Cache-Control': 'private, no-store',
+      Location: portalUrl.toString(),
+      Vary: 'Cookie',
+      'X-Robots-Tag': 'noindex, nofollow, noarchive',
+    },
+  });
+}
+
 export default async function middleware(request: Request): Promise<Response> {
   const url = new URL(request.url);
   const segments = url.pathname.split('/').filter(Boolean);
@@ -98,6 +114,7 @@ export default async function middleware(request: Request): Promise<Response> {
   const token = getCookie(request, COOKIE_NAME);
   if (!token) return loginRedirect(request, workspace);
   if (!(await verifySession(token, workspace))) return loginRedirect(request, workspace, 'expired');
+  if (segments.length === 2) return portalRedirect(request, workspace);
 
   return next({
     headers: {

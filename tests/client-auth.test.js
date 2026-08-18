@@ -90,7 +90,9 @@ test('post-login redirects remain inside the authenticated workspace', () => {
     safeNextPath('/clients/trace/introduction/?slide=2', 'trace'),
     '/clients/trace/introduction/?slide=2',
   );
-  assert.equal(safeNextPath('/clients/acme/', 'trace'), '/clients/trace/');
-  assert.equal(safeNextPath('https://example.com/', 'trace'), '/clients/trace/');
-  assert.equal(safeNextPath('//example.com/clients/trace', 'trace'), '/clients/trace/');
+  assert.equal(safeNextPath('/clients/trace/', 'trace'), '/clients/trace/portal');
+  assert.equal(safeNextPath('/clients/trace?tab=summary', 'trace'), '/clients/trace/portal?tab=summary');
+  assert.equal(safeNextPath('/clients/acme/', 'trace'), '/clients/trace/portal');
+  assert.equal(safeNextPath('https://example.com/', 'trace'), '/clients/trace/portal');
+  assert.equal(safeNextPath('//example.com/clients/trace', 'trace'), '/clients/trace/portal');
 });

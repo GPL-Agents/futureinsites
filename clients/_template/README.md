@@ -14,7 +14,7 @@ layout reference. Do not use its `passwordHash` configuration for new clients.
    lowercase workspace folder. Copy only the dashboard files and branding
    assets unless the client needs existing presentation-page templates.
 2. Update the client `slug`, display `name`, and branding paths in `client.js`.
-3. Update the dashboard configuration near the top of `index.html`.
+3. Update the dashboard configuration near the top of `portal.html`.
 4. Put downloadable files in a `documents/` subfolder. Use lowercase,
    URL-safe filenames.
 5. Run `pnpm client:credential <workspace>` to generate a password, the
@@ -22,8 +22,9 @@ layout reference. Do not use its `passwordHash` configuration for new clients.
 6. Add that one new `CLIENT_WORKSPACE_<WORKSPACE>` variable to Vercel for
    Production and Preview. Existing client variables do not need to be read or
    changed.
-7. Deploy, then test both the shared login and direct workspace URL in a fresh
-   browser session.
+7. Deploy, then test both the shared login and the dedicated
+   `/clients/<workspace>/portal` page in a fresh browser session. The shorter
+   `/clients/<workspace>/` address redirects there after authentication.
 
 ## Link a document
 
