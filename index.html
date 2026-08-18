@@ -126,11 +126,28 @@
 
     .nav-links a:hover { color: #0F172A; }
     .nav-links a.active { color: #0F172A; font-weight: 700; }
-    
 
-    .nav-cta {
+    .nav-actions {
       position: absolute;
       right: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+    }
+
+    .nav-client-link {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-client-link:hover { color: #0F56C5; }
+    .nav-client-menu { display: none; }
+
+    .nav-cta {
       font-size: 0.8rem;
       font-weight: 600;
       color: #FFFFFF;
@@ -1835,7 +1852,9 @@
       nav { justify-content: flex-start; }
       .nav-wordmark { position: static; }
       .nav-hamburger { position: static; display: flex; right: auto; }
-      .nav-cta { position: static; margin-left: auto; }
+      .nav-actions { position: static; margin-left: auto; }
+      .nav-client-link { display: none; }
+      .nav-client-menu { display: block; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
@@ -2450,7 +2469,9 @@
       .nav-wordmark-tagline { display: none; }
       .nav-links { gap: 0.65rem; }
       .nav-links a { font-size: 0.69rem; }
-      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+      .nav-actions { right: 1rem; gap: 0.75rem; }
+      .nav-client-link { font-size: 0.72rem; }
+      .nav-cta { padding: 0.45rem 0.82rem; font-size: 0.72rem; }
     }</style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -2500,9 +2521,12 @@
           <li><a href="careers.html">Careers</a></li>
         </ul>
       </li>
-      <li><a href="/client-login">Client Portal</a></li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Contact</a>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
   </nav>
 
   <!-- HERO -->
