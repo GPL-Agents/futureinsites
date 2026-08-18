@@ -25,57 +25,56 @@
   <!-- ============================================================= -->
   <script>
     const ENGAGEMENT = {
-      status: "Ready",
-      phase:  "Setup",
+      status: "In progress",
+      phase:  "Assessment & POC",
       // Current Engagement card (left dashboard)
       details: [
-        { label: "Phase",          value: "Setup" },
-        { label: "Status",         value: "Ready for documents" },
-        { label: "Next Milestone", value: "Project kickoff" },
+        { label: "Phase",          value: "Assessment & POC" },
+        { label: "Status",         value: "Due diligence underway" },
+        { label: "Next Milestone", value: "Finalize POC" },
         { label: "Target Date",    value: "To be scheduled" }
       ]
     };
 
     const DELIVERABLES = [
-      { label: "Client portal setup",        state: "done" },
-      { label: "Project kickoff",            state: "active" },
-      { label: "Discovery",                  state: "todo" },
-      { label: "Recommendations & Roadmap", state: "todo" }
+      { label: "Client portal setup",          state: "done" },
+      { label: "Intro meeting",                state: "done" },
+      { label: "Due diligence & assessment",   state: "active" },
+      { label: "Finalize POC",                 state: "todo" },
+      { label: "Project kickoff",              state: "todo" },
+      { label: "Technical build & integration", state: "todo" },
+      { label: "Team training & rollout",      state: "todo" }
     ];
 
     const KEY_DOCS = [
-      { title: "Project Brief",            href: null },
-      { title: "Meeting Notes",            href: null },
-      { title: "Contract",                 href: null }
+      { title: "POC Agreement", href: null }
     ];
 
     const LIBRARY = [
       { group: "Strategy", items: [
-        { title: "Discovery",                href: null },
-        { title: "Project Brief",            href: null },
-        { title: "Current State Assessment", href: null },
-        { title: "Opportunity Assessment",   href: null },
-        { title: "Recommendations",          href: null },
-        { title: "Roadmap",                  href: null }
+        { title: "Discovery",    href: "/clients/combuilders/documents/ComBuilders.Due.Diligence.081826.pdf" },
+        { title: "POC Proposal", href: "/clients/combuilders/documents/ComBuilders.POC.Proposal.081826.pdf" },
+        { title: "Assessment",   href: null },
+        { title: "Recommendations", href: null },
+        { title: "Roadmap",         href: null }
       ]},
       { group: "Engineering", items: [
-        { title: "Architecture",        href: null },
-        { title: "Technical Specs",     href: null },
-        { title: "Agent Documentation", href: null },
-        { title: "Integrations",        href: null },
-        { title: "Testing",             href: null }
+        { title: "Technical Architecture", href: null },
+        { title: "Integration Plan",       href: null },
+        { title: "Build Documentation",    href: null },
+        { title: "Testing & Acceptance",   href: null }
       ]},
       { group: "Adoption", items: [
-        { title: "Training",             href: null },
-        { title: "User Guides",          href: null },
-        { title: "Governance",           href: null },
-        { title: "Operating Procedures", href: null }
+        { title: "Training Plan",       href: null },
+        { title: "User Guides",         href: null },
+        { title: "Rollout Plan",        href: null },
+        { title: "Governance & Support", href: null }
       ]},
       { group: "Project", items: [
-        { title: "Meeting Notes",      href: null },
-        { title: "Decisions Log",      href: null },
-        { title: "Timeline",           href: null },
-        { title: "Contract Documents", href: null }
+        { title: "Meeting Notes", href: null },
+        { title: "Decisions Log", href: null },
+        { title: "Timeline",      href: null },
+        { title: "Agreement",     href: null }
       ]}
     ];
   </script>

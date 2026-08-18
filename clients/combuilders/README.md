@@ -14,6 +14,11 @@ matching is case-insensitive.
 4. Leave `href: null` for documents that are not ready. They display as
    unavailable placeholders in the portal.
 
+Current documents:
+
+- `ComBuilders.Due.Diligence.081826.pdf`
+- `ComBuilders.POC.Proposal.081826.pdf`
+
 ## Update engagement details
 
 Edit the `ENGAGEMENT`, `DELIVERABLES`, `KEY_DOCS`, and `LIBRARY` blocks near
