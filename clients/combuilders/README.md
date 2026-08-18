@@ -1,6 +1,6 @@
-# ComBuilders client portal
+# Commonwealth Building client portal
 
-This folder is the protected ComBuilders workspace served at
+This folder is the protected Commonwealth Building workspace served at
 `/clients/combuilders/portal`. The shorter `/clients/combuilders/` address
 redirects there after authentication. The shared sign-in page accepts
 `ComBuilders` or `combuilders` as the workspace name because workspace
@@ -19,10 +19,11 @@ matching is case-insensitive.
 Edit the `ENGAGEMENT`, `DELIVERABLES`, `KEY_DOCS`, and `LIBRARY` blocks near
 the top of `portal.html`. No layout changes are needed for routine updates.
 
-## Replace the temporary branding
+## Branding
 
-Replace `ComBuildersFavicon.svg` and `ComBuildersWordmark.svg` with official
-client assets, or update their paths in `client.js` if the filenames change.
+`CommonwealthBuildingIcon.png` and `CommonwealthBuildingLogo.svg` are official
+client assets sourced from https://combuild.com/. Update their paths in
+`client.js` if the filenames change.
 
 ## Authentication
 

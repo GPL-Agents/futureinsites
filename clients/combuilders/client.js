@@ -1,17 +1,17 @@
 /* =====================================================================
    SINGLE SOURCE OF TRUTH for this client.
    Client name and logo paths live here so every page in this workspace
-   stays in sync. The included SVG files are temporary placeholders that
-   can be replaced with official ComBuilders brand assets later.
+   stays in sync. The included assets come from Commonwealth Building's
+   official website.
    ===================================================================== */
 window.CLIENT = {
   slug: "combuilders",
-  name: "ComBuilders",
+  name: "Commonwealth Building",
 
   // Small square icon: browser tab and nav bar (top right).
-  favicon:  "/clients/combuilders/ComBuildersFavicon.svg",
+  favicon:  "/clients/combuilders/CommonwealthBuildingIcon.png",
   // Full-name wordmark logo: the dashboard header.
-  wordmark: "/clients/combuilders/ComBuildersWordmark.svg"
+  wordmark: "/clients/combuilders/CommonwealthBuildingLogo.svg"
 };
 
 /* Populates branding into any page that includes this file. Pages mark
