@@ -1,1 +1,3 @@
 Remove-Item 'C:\Users\gloef\Documents\GitHub\FutureInSites\.git\index.lock','C:\Users\gloef\Documents\GitHub\FutureInSites\_to_delete' -Recurse -Force -ErrorAction SilentlyContinue
+
+Remove-Item 'C:\Users\gloef\Documents\GitHub\nycwine\.git\index.lock','C:\Users\gloef\Documents\GitHub\nycwine\_to_delete' -Recurse -Force -ErrorAction SilentlyContinue
