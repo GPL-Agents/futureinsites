@@ -1,61 +1,48 @@
-# Client Presentations
+# Client portals
 
-Each client gets their own folder under `clients/` with a private, password-gated
-page. They visit a unique URL, enter an access code, and see their presentation
-as a webpage with optional PDF / PowerPoint download buttons.
+Each client has a folder under `clients/`, while every client signs in through
+the shared `/client-login` page with a workspace name and password. Vercel
+middleware protects all `/clients/<workspace>/` pages with a signed,
+server-issued session cookie.
 
-## Add a new client (about 2 minutes)
+The older browser-side password template in this folder is retained only as a
+layout reference. Do not use its `passwordHash` configuration for new clients.
 
-1. **Copy this `_template` folder** and rename it to the client's slug.
-   Example: `clients/_template/` -> `clients/trace/`
-   The slug should be lowercase, no spaces (it becomes part of the URL).
+## Add a new client
 
-2. **Drop in the presentation files** inside the new folder:
-   - `presentation.pdf` (for the on-page viewer and PDF download)
-   - `presentation.pptx` (optional, for the PowerPoint download)
-   You can name them anything; just match the names in step 4.
+1. Copy an established dashboard folder, such as `clients/trace/`, into a new
+   lowercase workspace folder. Copy only the dashboard files and branding
+   assets unless the client needs existing presentation-page templates.
+2. Update the client `slug`, display `name`, and branding paths in `client.js`.
+3. Update the dashboard configuration near the top of `index.html`.
+4. Put downloadable files in a `documents/` subfolder. Use lowercase,
+   URL-safe filenames.
+5. Generate a unique salt and scrypt hash using the parameters in
+   `lib/client-auth.js`: 32,768 iterations, block size 8, parallelization 1,
+   and a 32-byte result.
+6. Merge the new workspace entry into the existing `CLIENT_AUTH_CONFIG`
+   environment variable in Vercel. Keep all existing workspace entries.
+7. Deploy, then test both the shared login and direct workspace URL in a fresh
+   browser session.
 
-3. **Generate an access code hash.** Open `clients/password-tool.html` in your
-   browser. Enter the slug (e.g. `trace`) and the access code you want to give
-   the client (e.g. `Roadmap-2026`). Click Generate and copy the hash.
+## Link a document
 
-4. **Edit the new folder's `index.html`** and fill in the CONFIG block near the
-   top of the file:
-   - `slug` - same slug you used in the password tool (e.g. `"trace"`)
-   - `client` - client name shown on the page
-   - `title` / `subtitle` - presentation heading
-   - `passwordHash` - paste the hash from step 3
-   - `viewerFile` - the PDF to show on the page, or `null` to hide the viewer
-   - `pdfFile` - PDF download button filename, or `null` to hide it
-   - `pptFile` - PowerPoint download filename, or `null` to hide it
+In the dashboard's `KEY_DOCS` or `LIBRARY` configuration, point `href` to the
+protected client path. For example:
 
-5. **Commit and push** in GitHub Desktop. Vercel deploys automatically.
+```js
+{ title: "Project Brief", href: "/clients/example/documents/project-brief.pdf" }
+```
 
-6. **Send the client** their link and access code, for example:
-   - URL: `https://futureinsites.com/clients/trace/`
-   - Access code: `Roadmap-2026`
+Leave `href: null` until the file is ready. The portal will show a muted
+placeholder without creating a broken link.
 
-## Try the demo
+## Security notes
 
-`clients/sample/` is a working example. Access code: **demo2026**.
-Live at `https://futureinsites.com/clients/sample/` after deploy.
-
-## How the password works (and its limit)
-
-The access code is never stored in the site. Only a salted SHA-256 hash is,
-so someone reading the page source cannot see the code itself. This is a
-courtesy gate: it keeps the presentation private from anyone without the link
-and code, and is great for normal client sharing. It is not bank-grade though.
-Because the site is static, a determined technical person who has the page URL
-could find the underlying PDF path in the source. If you ever need a deck that
-must be impossible to reach without authentication, ask for the server-side
-version (uses a Vercel function instead of in-page JavaScript).
-
-## Tips
-
-- Folders starting with `_` (like `_template`) are just there for you; clients
-  never get a link to them.
-- `clients/index.html` is a generic "private area" page, so `/clients/` never
-  shows a file listing.
-- Each client folder is fully self-contained: delete the folder to remove a
-  client's access.
+- Never store plaintext passwords in the repository.
+- Do not commit the production `CLIENT_AUTH_CONFIG` value.
+- Client pages and files must stay under their matching workspace path.
+- The login endpoint validates redirect paths so one workspace session cannot
+  be used to enter another workspace.
+- Sessions expire after eight hours by default and can be cleared through
+  `/api/client-logout`.

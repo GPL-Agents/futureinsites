@@ -11,11 +11,13 @@ function read(relativePath) {
   return fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
 }
 
-test('TRACE pages do not contain browser-side credential gates', () => {
+test('client pages do not contain browser-side credential gates', () => {
   const sources = [
     read('clients/trace/client.js'),
     read('clients/trace/index.html'),
     read('clients/trace/introduction/index.html'),
+    read('clients/combbuilders/client.js'),
+    read('clients/combbuilders/index.html'),
   ].join('\n');
 
   assert.doesNotMatch(sources, /passwordHash/);
