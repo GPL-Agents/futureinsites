@@ -17,9 +17,9 @@ test('client pages do not contain browser-side credential gates', () => {
     read('clients/trace/index.html'),
     read('clients/trace/portal.html'),
     read('clients/trace/introduction/index.html'),
-    read('clients/combbuilders/client.js'),
-    read('clients/combbuilders/index.html'),
-    read('clients/combbuilders/portal.html'),
+    read('clients/combuilders/client.js'),
+    read('clients/combuilders/index.html'),
+    read('clients/combuilders/portal.html'),
   ].join('\n');
 
   assert.doesNotMatch(sources, /passwordHash/);

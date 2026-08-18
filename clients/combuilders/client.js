@@ -5,13 +5,13 @@
    can be replaced with official ComBuilders brand assets later.
    ===================================================================== */
 window.CLIENT = {
-  slug: "combbuilders",
+  slug: "combuilders",
   name: "ComBuilders",
 
   // Small square icon: browser tab and nav bar (top right).
-  favicon:  "/clients/combbuilders/ComBuildersFavicon.svg",
+  favicon:  "/clients/combuilders/ComBuildersFavicon.svg",
   // Full-name wordmark logo: the dashboard header.
-  wordmark: "/clients/combbuilders/ComBuildersWordmark.svg"
+  wordmark: "/clients/combuilders/ComBuildersWordmark.svg"
 };
 
 /* Populates branding into any page that includes this file. Pages mark
