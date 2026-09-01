@@ -1173,6 +1173,94 @@
       .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
   
+
+    /* ─── ARCHIVE STRIP ─── */
+    .arch-strip {
+      background: var(--dark2);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.75rem 2rem;
+    }
+    .arch-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .arch-current {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .arch-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      flex-shrink: 0;
+    }
+    .arch-label {
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .arch-version {
+      font-weight: 700;
+      color: var(--cyan);
+    }
+    .arch-version a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .arch-version a:hover {
+      text-decoration: underline;
+    }
+    .arch-none {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+    }
+    .arch-past {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+    }
+    .arch-prev-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+    }
+    .arch-links {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .arch-links a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .arch-links a:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+    @media (max-width: 640px) {
+      .arch-strip-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  
 </style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -1871,7 +1959,7 @@
   <div class="intro-strip">
     <div class="intro-strip-inner">
       <div class="intro-stat">
-        <span class="num">238+</span>
+        <span class="num">274+</span>
         <span class="lbl">Vendors Indexed</span>
       </div>
       <div class="intro-stat">
@@ -1890,11 +1978,12 @@
       <div class="arch-current">
         <span class="arch-dot"></span>
         <span class="arch-label">Current Edition</span>
-        <span class="arch-version"><a href="archive/landscape/2026-07/ai-vendor-landscape.html" class="arch-version-link">July 2026</a></span>
+        <span class="arch-version"><a href="archive/landscape/2026-09/ai-vendor-landscape.html" class="arch-version-link">September 2026</a></span>
       </div>
       <div class="arch-past">
         <span class="arch-prev-label">Past editions:</span>
-        <span class="arch-none">(first edition)</span>
+        <div class="arch-links"><a href="archive/landscape/2026-08/ai-vendor-landscape.html">August 2026</a>
+              <a href="archive/landscape/2026-07/ai-vendor-landscape.html">July 2026</a></div>
       </div>
     </div>
   </div>
@@ -1912,10 +2001,19 @@
   
 
 
+  
+
+
+  
+
+
+  
+
+
   <!-- LANDSCAPE THUMBNAIL + CTAs + METHODOLOGY -->
   <div style="max-width:1200px; margin:0 auto; padding:1rem 2rem 0;">
     <a href="ai-tech-landscape.html" style="display:block; border-radius:8px; overflow:hidden; border:1px solid var(--border); text-decoration:none;">
-      <img src="images/landscape-ai-thumb.png?v=20260722" alt="AI Tech Landscape July 2026: treemap of 238 vendors across 14 categories, sized by company-wide valuation" style="display:block; width:100%; height:auto;">
+      <img src="images/landscape-ai-thumb.png?v=20260809" alt="AI Tech Landscape August 2026: treemap of 269 vendors across 14 categories, sized by company-wide valuation" style="display:block; width:100%; height:auto;">
     </a>
     <div class="landscape-cta-row" style="display:flex; gap:1.25rem; align-items:stretch; margin-top:1.1rem; flex-wrap:wrap;">
       <div style="display:flex; flex-direction:column; gap:0.6rem; flex:0 0 auto; min-width:220px;">
@@ -1971,6 +2069,14 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     <section class="category" id="frontier">
       <div class="category-header">
         <span class="category-label">01</span>
@@ -1982,35 +2088,35 @@
           <img src="images/vendor-logos/openai.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">OpenAI</div><div class="vendor-domain">openai.com</div></div>
-            <p>Maker of the GPT and o-series models, ChatGPT, Sora, and the OpenAI API. Anchored by a deep partnership with Microsoft.</p>
+            <p>Maker of the GPT and o-series models, ChatGPT, Sora, and the OpenAI API. Launched the GPT-5.6 family (Sol, Terra, Luna) in July 2026 — the first frontier model to clear a customer-by-customer US government review before public release. Anchored by a deep partnership with Microsoft.</p>
           </div>
         </a>
         <a href="https://www.anthropic.com" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/anthropic.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Anthropic</div><div class="vendor-domain">anthropic.com</div></div>
-            <p>Creator of Claude, with a research focus on AI safety, interpretability, and building steerable models for high-stakes enterprise work.</p>
+            <p>Creator of Claude, with a research focus on AI safety, interpretability, and steerable models for high-stakes enterprise work. July 2026: Claude Fable 5 and Mythos 5 restored worldwide after the export-control pause, plus Claude Sonnet 5 and Opus 5 — near-Fable-5 coding performance at half the cost. First frontier lab to file for an IPO (S-1, June 2026).</p>
           </div>
         </a>
         <a href="https://deepmind.google" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/google-deepmind.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Google DeepMind</div><div class="vendor-domain">deepmind.google</div></div>
-            <p>Google's combined AI research division behind Gemini, AlphaFold, and Veo. Deeply integrated into Search, Workspace, and Google Cloud.</p>
+            <p>Google's combined AI research division behind Gemini, AlphaFold, and Veo. Deeply integrated into Search, Workspace, and Google Cloud. July 2026 shipped the Gemini 3.6 Flash refresh and Lyria 3.5 for full-length music generation.</p>
           </div>
         </a>
         <a href="https://ai.meta.com" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/meta-ai.jpg" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Meta AI</div><div class="vendor-domain">ai.meta.com</div></div>
-            <p>Meta's research arm and home of the Llama family of open-weight models. The reference open-source ecosystem for enterprise self-hosting.</p>
+            <p>Meta's research arm and home of the Llama family of open-weight models. The reference open-source ecosystem for enterprise self-hosting. July 2026: Muse Spark 1.1 multimodal reasoning model and Meta's first paid developer API.</p>
           </div>
         </a>
         <a href="https://x.ai" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/xai.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">xAI</div><div class="vendor-domain">x.ai</div></div>
-            <p>Elon Musk's AI lab behind the Grok model family, integrated across X (formerly Twitter) and exposed via its own API.</p>
+            <p>Elon Musk's AI lab behind the Grok model family, integrated across X (formerly Twitter) and exposed via its own API. Grok 4.5 shipped in July 2026 with real-time and coding upgrades, supercharged by the SpaceX/Cursor integration.</p>
           </div>
         </a>
         <a href="https://mistral.ai" target="_blank" rel="noopener" class="vendor-card">
@@ -2076,6 +2182,13 @@
             <p>OpenAI's agent workspace launched July 2026. GPT-5.6 agent that researches across apps and produces finished sheets, slides, docs, and web apps. Codex merged into desktop app.</p>
           </div>
         </a>
+        <a href="https://openai.com/gpt-live/" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/gpt-live.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">GPT-Live</div><div class="vendor-domain">openai.com</div></div>
+            <p>OpenAI's full-duplex voice mode (July 2026): simultaneous listening and speaking, natural interruption handling, and real-time translation across ChatGPT. Backed by 150 million weekly voice and dictation users. App-only at launch; no API yet.</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -2112,7 +2225,7 @@
           <img src="images/vendor-logos/black-forest-labs.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Black Forest Labs</div><div class="vendor-domain">blackforestlabs.ai</div></div>
-            <p>Founded by ex-Stability researchers; the FLUX family is a current state-of-the-art open image-generation lineage.</p>
+            <p>German lab behind FLUX, the open-weights image model family. FLUX 3 (July 2026) generates image, 20-second video with native audio, and robot action prediction from one set of weights.</p>
           </div>
         </a>
         <a href="https://aleph-alpha.com" target="_blank" rel="noopener" class="vendor-card">
@@ -2126,21 +2239,21 @@
           <img src="images/vendor-logos/deepseek.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">DeepSeek</div><div class="vendor-domain">deepseek.com</div></div>
-            <p>Chinese lab whose efficient reasoning models reset assumptions on training cost and open-weight performance.</p>
+            <p>Chinese lab whose efficient reasoning models reset assumptions on training cost and open-weight performance. V4-Pro went GA in Aug 2026 with its strongest agent-benchmark scores yet, still far cheaper than frontier closed models ($1.32/$3.96 per 1M tokens).</p>
           </div>
         </a>
         <a href="https://qwen.aliyun.com" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/alibaba-qwen.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Alibaba Qwen</div><div class="vendor-domain">qwenlm.ai</div></div>
-            <p>Alibaba's open-weight Qwen model family, a major non-Western foundation model series with strong multilingual coverage.</p>
+            <p>Alibaba's open-weight Qwen family, a major non-Western foundation model series with strong multilingual coverage. Qwen3.8-Max (Aug 2026) is the largest open-weight release ever at 2.4T parameters (~95B active) — the first Max-class model to be open-sourced.</p>
           </div>
         </a>
         <a href="https://www.moonshot.cn" target="_blank" rel="noopener" class="vendor-card">
           <img src="images/vendor-logos/moonshot-ai.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Moonshot AI</div><div class="vendor-domain">moonshot.cn</div></div>
-            <p>Maker of the Kimi long-context model family. Notable for strong long-document and reasoning benchmarks.</p>
+            <p>Chinese lab behind the Kimi assistant and the K-series models. July 2026: Kimi K3 open-weight checkpoints — the largest open model ever at 2.8T parameters with a 1M-token context window.</p>
           </div>
         </a>
         <a href="https://01.ai" target="_blank" rel="noopener" class="vendor-card">
@@ -2169,6 +2282,34 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">LM Studio</div><div class="vendor-domain">lmstudio.ai</div></div>
             <p>Desktop application for discovering, downloading, and chatting with local open-source LLMs across Windows, macOS, and Linux.</p>
+          </div>
+        </a>
+        <a href="https://liquid.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/liquid-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Liquid AI</div><div class="vendor-domain">liquid.ai</div></div>
+            <p>Model lab behind the Liquid Foundation Models. July research (Antidoom) cut doom-loop failure rates from 22.9% to 1% on small open models - a real win for reliable automated workflows.</p>
+          </div>
+        </a>
+        <a href="https://thinkingmachines.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/thinking-machines-lab.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Thinking Machines Lab</div><div class="vendor-domain">thinkingmachines.ai</div></div>
+            <p>Ex-OpenAI research lab founded by Mira Murati. Released Inkling (975B/41B active) and Inkling-Small (276B/12B) — its first open-weights multimodal models, with native reasoning over text, images, and audio and strong agentic-coding results.</p>
+          </div>
+        </a>
+        <a href="https://z.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/z-ai-zhipu.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Z.ai (Zhipu)</div><div class="vendor-domain">z.ai</div></div>
+            <p>Zhipu AI's global brand and maker of the GLM family. Shipped GLM-5.3-Flash in Aug 2026 and open-weight GLM-5.2; widely believed to be behind OX Alpha, the anonymous model that topped GPT-5.6 on coding benchmarks (80% DeepSWE Pass@1, 1M context) during its free one-week preview.</p>
+          </div>
+        </a>
+        <a href="https://www.minimax.io" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/minimax.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">MiniMax</div><div class="vendor-domain">minimax.io</div></div>
+            <p>Chinese omni-modal lab behind Hailuo AI. Open-sourced H3 (Aug 2026), a 33B model that handles text, image, video, and audio in one system — including 4–15s 2K video clips with native stereo sound. License excludes US/EU commercial use.</p>
           </div>
         </a>
       </div>
@@ -2250,7 +2391,7 @@
       <p class="category-desc">The supply side of AI: silicon, GPU clouds, and inference platforms. The economics here flow downstream into every model and product.</p>
       <div class="vendor-grid">
         <a href="https://www.nvidia.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/nvidia.png" alt="" class="vendor-logo" loading="lazy">
+          <img src="images/vendor-logos/nvidia.jpg" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">NVIDIA</div><div class="vendor-domain">nvidia.com</div></div>
             <p>The dominant AI accelerator vendor. CUDA, H100/H200/Blackwell, NIM microservices, and the broader Omniverse / DGX stack.</p>
@@ -2366,6 +2507,34 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Etched</div><div class="vendor-domain">etched.com</div></div>
             <p>Transformer-specific ASIC (Sohu) burning the architecture into silicon for an order-of-magnitude inference speedup.</p>
+          </div>
+        </a>
+        <a href="https://omniroute.online" target="_blank" rel="noopener" class="vendor-card">
+          <div class="vendor-logo vendor-logo-fallback">O</div>
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">OmniRoute</div><div class="vendor-domain">omniroute.online</div></div>
+            <p>Free local AI gateway: one endpoint routing across 231+ providers (50+ free) with token compression, automatic fallback, and multimodal support. Wire Claude Code, Codex, Cursor, or Copilot to a shared model pool.</p>
+          </div>
+        </a>
+        <a href="https://cubesandbox.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/cubesandbox.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">CubeSandbox</div><div class="vendor-domain">cubesandbox.com</div></div>
+            <p>Hardware-isolated, lightweight sandboxes for concurrent agent code execution, from Tencent Cloud. Run untrusted agent workloads in isolation without spinning up a full VM.</p>
+          </div>
+        </a>
+        <a href="https://github.com/JustVugg/colibri" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/colibri.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Colibri</div><div class="vendor-domain">github.com/JustVugg</div></div>
+            <p>Tiny pure-C inference engine that streams Mixture-of-Experts experts from disk - runs frontier-scale models like GLM-5.2 (744B) on a consumer machine with roughly 25GB of RAM.</p>
+          </div>
+        </a>
+        <a href="https://www.emeraldai.co" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/emerald-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Emerald AI</div><div class="vendor-domain">emeraldai.co</div></div>
+            <p>Turns AI data centers into flexible grid assets: GridLink and Conductor software shift workload power draw in real time to grid conditions, unlocking ~100GW of untapped US capacity. Raised $150M Series A at a $1.05B valuation (Aug 2026); NVIDIA NVentures portfolio company.</p>
           </div>
         </a>
       </div>
@@ -2505,6 +2674,13 @@
             <p>Vector search and AI-native retrieval inside the Elasticsearch platform, including ELSER semantic ranking.</p>
           </div>
         </a>
+        <a href="https://trexlabel.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/t-rex-label.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">T-Rex Label</div><div class="vendor-domain">trexlabel.com</div></div>
+            <p>AI-assisted vision data labeling (July 2026 launch wave): select one object as a visual prompt and it auto-labels all similar objects — bounding boxes, segmentation, and masks on COCO/YOLO formats, powered by Grounding DINO and DINO-X. Claims up to 99% time savings with no fine-tuning.</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -2628,6 +2804,13 @@
             <p>Native AI summarization, Q&amp;A, and metadata extraction across documents stored in Box.</p>
           </div>
         </a>
+        <a href="https://openai.com/index/introducing-openai-presence/" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/openai-presence.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">OpenAI Presence</div><div class="vendor-domain">openai.com</div></div>
+            <p>OpenAI's enterprise agent platform (July 22, 2026): deploy production voice and chat agents for customer and internal workflows with policies, guardrails, and human escalation paths built in. Limited GA with Codex-powered improvement loops; early customer Roche.</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -2643,7 +2826,7 @@
           <img src="images/vendor-logos/github-copilot.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">GitHub Copilot</div><div class="vendor-domain">github.com</div></div>
-            <p>The original AI coding assistant. Now multi-model, with Copilot Workspace and Spark agents extending it beyond inline completion.</p>
+            <p>The original AI coding assistant. Now multi-model — including its first open-weight coding model (July 2026) — with Copilot Workspace and Spark agents extending it beyond inline completion.</p>
           </div>
         </a>
         <a href="https://cursor.com" target="_blank" rel="noopener" class="vendor-card">
@@ -2692,7 +2875,7 @@
           <img src="images/vendor-logos/cognition-devin.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Cognition (Devin)</div><div class="vendor-domain">cognition.ai</div></div>
-            <p>Maker of Devin, a fully autonomous software engineering agent positioned for end-to-end ticket execution.</p>
+            <p>Maker of Devin, a fully autonomous software engineering agent positioned for end-to-end ticket execution. July 2026: SWE-1.7 pushed FrontierCode scores from 30.1% to 42.3% while serving output at 1,000 tokens per second.</p>
           </div>
         </a>
         <a href="https://magic.dev" target="_blank" rel="noopener" class="vendor-card">
@@ -2777,6 +2960,76 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Gemini CLI</div><div class="vendor-domain">github.com/google-gemini</div></div>
             <p>Google's open-source AI agent for terminal with built-in tools and MCP server support. Reason-and-act loop using Gemini models.</p>
+          </div>
+        </a>
+        <a href="https://onorca.dev" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/orca.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Orca</div><div class="vendor-domain">onorca.dev</div></div>
+            <p>Desktop and mobile workspace for running parallel coding agents - worktrees, terminals, design review, and clean handoffs. Trending fast with teams that run several agents at once.</p>
+          </div>
+        </a>
+        <a href="https://herdr.dev" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/herdr.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">herdr</div><div class="vendor-domain">herdr.dev</div></div>
+            <p>A terminal multiplexer purpose-built for AI agents: launch, view, detach from, and return to multiple coding agents from one session. Lightweight control plane for agent-heavy workflows.</p>
+          </div>
+        </a>
+        <a href="https://usehallmark.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/hallmark.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Hallmark</div><div class="vendor-domain">usehallmark.com</div></div>
+            <p>Design skill for Claude Code, Cursor, and Codex that runs 57 anti-slop gates plus a pre-emit self-critique. Pushes agent-built interfaces from functional to intentional.</p>
+          </div>
+        </a>
+        <a href="https://prelint.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/prelint.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Prelint</div><div class="vendor-domain">prelint.com</div></div>
+            <p>Prevents product drift in AI-written code - keeps generated features aligned with the spec before they ship. Topped Product Hunt at the end of July.</p>
+          </div>
+        </a>
+        <a href="https://framer.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/framer.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Framer</div><div class="vendor-domain">framer.com</div></div>
+            <p>Design and publish professional sites with AI. July put agents on the canvas - design, write, analyze, and organize with AI, hook in Claude Code or Codex, and branch for safer experiments before publishing.</p>
+          </div>
+        </a>
+        <a href="https://github.com/langchain-ai/openwiki" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/openwiki.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">OpenWiki</div><div class="vendor-domain">github.com</div></div>
+            <p>LangChain's open-source CLI and agent that writes and maintains agent-friendly documentation for your codebase. Keeps an AGENTS.md/CLAUDE.md wiki pointed at the right context, updating only its own block. ~12k GitHub stars.</p>
+          </div>
+        </a>
+        <a href="https://plugthis.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/plugthis.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">PlugThis</div><div class="vendor-domain">plugthis.ai</div></div>
+            <p>Lovable for Chrome extensions: describe the extension in plain English and it generates manifest, popup, content scripts, and permissions, verifying the build compiles before showing it to you. 500+ upvotes on launch.</p>
+          </div>
+        </a>
+        <a href="https://auravcs.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/aura.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Aura</div><div class="vendor-domain">auravcs.com</div></div>
+            <p>Open-source, Git-native IDE and semantic version control for AI coding agents (July 2026). Runs agents, tracks changes at the function and class level via AST hashing, cross-references edits against stated intent, and halts commits on hallucinated changes. Adds a sigstore provenance layer on top of Git.</p>
+          </div>
+        </a>
+        <a href="https://getccshare.vercel.app" target="_blank" rel="noopener" class="vendor-card">
+          <div class="vendor-logo vendor-logo-fallback">c</div>
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">ccshare</div><div class="vendor-domain">getccshare.vercel.app</div></div>
+            <p>Multiplayer Claude Code: share a live Claude Code session with a 6-character code, AirDrop-style. Friends join from their terminal or any browser — no install, no accounts, no telemetry — and both can type. Open source; part of the July multiplayer-agents wave.</p>
+          </div>
+        </a>
+        <a href="https://hoplite.sh" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/hoplite.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Hoplite</div><div class="vendor-domain">hoplite.sh</div></div>
+            <p>YC S26 cloud coding agent. Connect a repo, describe a task, and an agent works in an isolated sandbox — editing, running tests, checking in a browser — then opens a pull request. Fan out a whole backlog in parallel and review video recordings of every feature.</p>
           </div>
         </a>
       </div>
@@ -2921,6 +3174,34 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">AirJelly</div><div class="vendor-domain">airjelly.ai</div></div>
             <p>Context-aware AI companion with on-device, private searchable memory. Observes, remembers, and acts across apps without sending data to the cloud.</p>
+          </div>
+        </a>
+        <a href="https://osaurus.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/osaurus.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Osaurus</div><div class="vendor-domain">osaurus.ai</div></div>
+            <p>Native macOS harness for local AI agents: any model, persistent memory, autonomous execution, hardware sandboxing, and a built-in MCP server with 20+ native plugins. 7.3k stars and 185k+ downloads since July.</p>
+          </div>
+        </a>
+        <a href="https://claude.com/cowork" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/claude-cowork.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Claude Cowork</div><div class="vendor-domain">claude.com</div></div>
+            <p>Anthropic's agent workspace (launched July 7, 2026, expanded to web and mobile): hand Claude long-running email, calendar, file, and document tasks that keep executing in the background, even offline. More than 90% of usage is office work rather than coding.</p>
+          </div>
+        </a>
+        <a href="https://cloud.google.com/gemini-enterprise-agent-platform" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/gemini-managed-agents.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Gemini Managed Agents</div><div class="vendor-domain">cloud.google.com</div></div>
+            <p>Google's agent platform: autonomous agents that run inside Google-hosted, sandboxed Linux environments, provisioned and governed via the Managed Agents API. July 28 update added Gemini 3.6 Flash as default, pre/post-tool hooks, token budgets, scheduled triggers, and free-tier access.</p>
+          </div>
+        </a>
+        <a href="https://www.tryopentag.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/opentag.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">OpenTag</div><div class="vendor-domain">tryopentag.com</div></div>
+            <p>YC S26, model-agnostic AI teammate for Slack and Teams. Tag it in a thread, hand it a task, get the result in-channel — the Claude Tag interface, but swappable across any model with full company context.</p>
           </div>
         </a>
       </div>
@@ -3103,7 +3384,7 @@
           <img src="images/vendor-logos/elevenlabs.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">ElevenLabs</div><div class="vendor-domain">elevenlabs.io</div></div>
-            <p>The reference AI voice synthesis platform. Used across audiobooks, dubbing, gaming, and conversational agents.</p>
+            <p>The reference AI voice synthesis platform. Used across audiobooks, dubbing, gaming, and conversational agents. July 2026: Conversational AI 2.0 with natural turn-taking, automatic language detection, and enterprise-ready voice-agent tooling.</p>
           </div>
         </a>
         <a href="https://suno.com" target="_blank" rel="noopener" class="vendor-card">
@@ -3183,6 +3464,34 @@
             <p>AI ad creative production and optimization platform for performance marketing.</p>
           </div>
         </a>
+        <a href="https://v2fun.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/v2fun.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">V2Fun</div><div class="vendor-domain">v2fun.ai</div></div>
+            <p>AI 3D creation platform: turn images, prompts, and video into rigged 3D characters with 8K textures and AI motion capture - no mocap studio or full art team required.</p>
+          </div>
+        </a>
+        <a href="https://opencut.app" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/opencut.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">OpenCut</div><div class="vendor-domain">opencut.app</div></div>
+            <p>Open video editor being rebuilt for web, desktop, mobile, and agents - plugins, headless automation, and a built-in MCP server for AI-driven editing.</p>
+          </div>
+        </a>
+        <a href="https://pixverse.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/pixverse.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">PixVerse</div><div class="vendor-domain">pixverse.ai</div></div>
+            <p>AI video generation platform (Aishu Technology) with viral photo-to-video effects and an API. Closed a $439M Series C in July 2026 at a $2B+ valuation, led by Alibaba, and is expanding from video models toward interactive worlds and game engines.</p>
+          </div>
+        </a>
+        <a href="https://chatcut.io" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/chatcut.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">ChatCut</div><div class="vendor-domain">chatcut.io</div></div>
+            <p>Agentic video editor that runs inside ChatGPT (Work and Codex tabs), desktop, and web. Describe the edit and it handles captions, B-roll, audio cleanup, and timeline assembly without switching tools. 600+ upvotes on launch.</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -3195,7 +3504,7 @@
       <p class="category-desc">AI features and standalone tools that reshape how individual knowledge workers write, meet, and organize. The fastest-adopted layer of GenAI in most enterprises.</p>
       <div class="vendor-grid">
         <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/microsoft-copilot.jpg" alt="" class="vendor-logo" loading="lazy">
+          <img src="images/vendor-logos/microsoft-copilot.png" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Microsoft Copilot</div><div class="vendor-domain">microsoft.com</div></div>
             <p>The Microsoft 365 Copilot suite across Outlook, Word, Excel, PowerPoint, Teams, and Copilot Studio.</p>
@@ -3341,6 +3650,20 @@
             <p>Google's AI research notebook that grounds answers in user-provided source documents.</p>
           </div>
         </a>
+        <a href="https://teable.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/teable.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Teable</div><div class="vendor-domain">teable.ai</div></div>
+            <p>AI spreadsheet for business that turns data into AI workflows and custom apps. Open-source community edition for self-hosting; #1 product on OpenAI Day (July 2026) for its spreadsheet-to-workflow approach.</p>
+          </div>
+        </a>
+        <a href="https://github.com/JasonLovesDoggo/Flow" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/flow.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Flow</div><div class="vendor-domain">github.com/JasonLovesDoggo</div></div>
+            <p>Open-source native macOS dictation that captures audio, transcribes, and formats it into clean text in any app — hold Fn, speak, release, done. Per-app tone and learning, custom shortcuts. Topped Product Hunt mid-July 2026; a free local alternative to Wispr Flow.</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -3472,7 +3795,7 @@
           </div>
         </a>
         <a href="https://salesloft.com" target="_blank" rel="noopener" class="vendor-card">
-          <img src="images/vendor-logos/salesloft.png" alt="" class="vendor-logo" loading="lazy">
+          <img src="images/vendor-logos/salesloft.jpg" alt="" class="vendor-logo" loading="lazy">
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Salesloft</div><div class="vendor-domain">salesloft.com</div></div>
             <p>Sales engagement platform using AI for conversation insights, deal scoring, and rep coaching.</p>
@@ -3560,6 +3883,20 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Kore.ai</div><div class="vendor-domain">kore.ai</div></div>
             <p>Enterprise conversational AI platform for customer and employee experience automation.</p>
+          </div>
+        </a>
+        <a href="https://leapingai.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/leaping-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Leaping AI</div><div class="vendor-domain">leapingai.com</div></div>
+            <p>YC-backed voice and SMS AI agents for outreach, lead qualification, and appointment scheduling. Handles 100+ parallel conversations, multi-language calls, and CRM integration; targets home services, travel, and call-center teams.</p>
+          </div>
+        </a>
+        <a href="https://tryscarlett.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/scarlett.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Scarlett</div><div class="vendor-domain">tryscarlett.ai</div></div>
+            <p>AI co-worker that lives in Slack and iMessage, connecting 3,000+ tools to ship CRM and marketing tasks end to end. Powered by Claude; ~400 upvotes on its July 2026 launch.</p>
           </div>
         </a>
       </div>
@@ -3713,6 +4050,13 @@
             <p>Open-source single-binary Office suite for AI agents with 18k+ GitHub stars. Read, edit, and automate Word, Excel, and PowerPoint without Microsoft Office.</p>
           </div>
         </a>
+        <a href="https://github.com/MadsLorentzen/ai-job-search" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/ai-job-search.jpg" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">AI Job Search</div><div class="vendor-domain">github.com/MadsLorentzen</div></div>
+            <p>Claude Code-based framework that automates the job hunt: evaluates postings, tailors resumes, drafts cover letters, and preps interview answers. 23k+ stars within weeks of launch.</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -3785,6 +4129,20 @@
           <div class="vendor-content">
             <div class="vendor-head"><div class="vendor-name">Covariant</div><div class="vendor-domain">covariant.ai</div></div>
             <p>Industrial robotic manipulation foundation models. Founding team largely joined Amazon in 2024.</p>
+          </div>
+        </a>
+        <a href="https://www.waldenrobotics.com" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/walden-robotics.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Walden Robotics</div><div class="vendor-domain">waldenrobotics.com</div></div>
+            <p>Full-stack Physical AI company deploying general-purpose robots that learn on the job in manufacturing and logistics. Launched July 2026 with $300M seed at a $1.1B valuation; Toyota-backed spin-out led by MIT robotics professor Russ Tedrake.</p>
+          </div>
+        </a>
+        <a href="https://www.rhoda.ai" target="_blank" rel="noopener" class="vendor-card">
+          <img src="images/vendor-logos/rhoda-ai.png" alt="" class="vendor-logo" loading="lazy">
+          <div class="vendor-content">
+            <div class="vendor-head"><div class="vendor-name">Rhoda AI</div><div class="vendor-domain">rhoda.ai</div></div>
+            <p>Robot foundation-model lab behind FutureVision, a video-predictive control architecture (Direct Video Action) that trains robots on internet video instead of lab data. $450M Series A; licenses its brain to hardware makers and builds its own 25kg-payload robots.</p>
           </div>
         </a>
       </div>

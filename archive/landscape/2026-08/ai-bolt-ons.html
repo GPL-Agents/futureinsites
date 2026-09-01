@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Bolt-Ons | FutureInSites</title>
+  <meta name="description" content="A reference index of plugins, skills, MCP connectors, and browser agents you can install on top of your AI platform. Built for operators getting beyond chat with Claude, ChatGPT, and similar." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem;
+    }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-header-inner { position: relative; z-index: 10; max-width: 720px; margin: 0 auto; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cyan); }
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* INTRO STRIP */
+    .intro-strip {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+    }
+    .intro-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .intro-strip-inner > *:nth-child(1) { justify-self: end; }
+    .intro-strip-inner > *:nth-child(2) { justify-self: center; }
+    .intro-strip-inner > *:nth-child(3) { justify-self: start; }
+    @media (max-width: 720px) {
+      .intro-strip-inner { grid-template-columns: 1fr; gap: 0.5rem; }
+      .intro-strip-inner > *:nth-child(1),
+      .intro-strip-inner > *:nth-child(2),
+      .intro-strip-inner > *:nth-child(3) { justify-self: center; }
+    }
+    .intro-stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .intro-stat:last-child { border-right: none; }
+    .intro-stat .num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      display: block;
+      line-height: 1.1;
+    }
+    .intro-stat .lbl {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* DIAGRAM STRIP */
+    .diagram-strip {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+    }
+    .diagram-frame {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0B0C10;
+    }
+    .diagram-frame svg { display: block; width: 100%; height: auto; }
+    .diagram-context {
+      display: flex;
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-top: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .diagram-explainer {
+      flex: 1 1 0;
+      padding: 0.9rem 1.2rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(37,99,235,0.04);
+      border-radius: 0 6px 6px 0;
+    }
+    .diagram-explainer .lbl {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .diagram-explainer p {
+      font-size: 0.85rem;
+      color: var(--dark);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* TOOL SEARCH */
+    .vendor-search {
+      max-width: 720px;
+      margin: 1rem auto 0;
+      padding: 0 2rem;
+      position: relative;
+    }
+    .vendor-search input {
+      width: 100%;
+      padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+      font-size: 1rem;
+      border: 2px solid var(--cyan);
+      border-radius: 100px;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: inherit;
+      box-shadow: 0 0 0 4px rgba(45,212,255,0.12);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .vendor-search input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.18);
+    }
+    .vendor-search::before {
+      content: '';
+      position: absolute;
+      left: 3rem;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      transform: translateY(-50%);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232DD4FF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>");
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+    .vendor-search-empty {
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: none;
+    }
+    .vendor-search-empty.show { display: block; }
+
+    /* CATEGORY NAV */
+    .cat-nav {
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 2rem;
+    }
+    .cat-nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1.4rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+    .cat-nav a {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 0.3rem 0;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    .cat-nav a:hover { color: var(--accent); }
+
+    /* CONTENT */
+    .resources-content {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .category {
+      margin-bottom: 4rem;
+      scroll-margin-top: 130px;
+    }
+    .category-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      flex-wrap: wrap;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .category-label {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .category-title {
+      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .category-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* TOOL CARDS (bolt-on variant of vendor-card) */
+    .bolton-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .bolton-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.3rem 1.4rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      min-height: 200px;
+    }
+    .bolton-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.08);
+    }
+    .bolton-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .bolton-head-text { min-width: 0; }
+    .bolton-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .bolton-meta {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin-top: 0.2rem;
+      word-break: break-all;
+    }
+    .bolton-type {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(45,212,255,0.12);
+      color: var(--accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .bolton-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0.4rem 0 1rem 0;
+      flex: 1;
+    }
+    .bolton-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 0.55rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--bg);
+      white-space: nowrap;
+    }
+    .badge-setup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--dark);
+    }
+    .dots { display: inline-flex; gap: 3px; }
+    .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(11,12,16,0.12);
+    }
+    .dot.filled { background: var(--accent); }
+
+    /* BOLT-ON BUCKETS (sub-sections within a category) */
+    .bolton-bucket { margin-bottom: 2.6rem; }
+    .bolton-bucket:last-child { margin-bottom: 0; }
+    .bucket-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .bucket-label {
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .bucket-label-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .bucket-dot-native { background: #10B981; }
+    .bucket-dot-specialized { background: #F59E0B; }
+    .bucket-dot-platform { background: #8B5CF6; }
+    .bucket-tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
+      flex: 1 1 240px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .bucket-header { gap: 0.45rem; }
+      .bucket-tagline { font-size: 0.78rem; flex-basis: 100%; }
+    }
+
+    /* AGGREGATOR CARD (full-width variant for integration platforms) */
+    .bolton-card.bolton-aggregator {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #F8F9FB 0%, #EFF6FF 100%);
+      border-color: rgba(37,99,235,0.18);
+      min-height: 0;
+    }
+    .bolton-aggregator .bolton-name { font-size: 1.2rem; }
+    .bolton-aggregator p { max-width: 760px; }
+    .bolton-aggregator-apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin: 0 0 1rem 0;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(37,99,235,0.12);
+    }
+    .bolton-apps-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 0.25rem;
+    }
+    .bolton-app-chip {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.28rem 0.6rem;
+      border-radius: 100px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .bolton-app-more {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-left: 0.15rem;
+    }
+
+    /* SUBMIT AI BUTTON (pill in intro strip) */
+    .submit-ai-pill {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.1rem;
+      padding: 0.7rem 1.4rem;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+    }
+    .submit-ai-pill:hover {
+      background: #1D4ED8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(37,99,235,0.28);
+    }
+    .submit-ai-pill-label {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+    .submit-ai-pill-cta {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    /* SUBMIT FORM */
+    .submit-section {
+      max-width: 720px;
+      margin: 0 auto 4rem;
+      padding: 2.5rem 2.5rem;
+      background: var(--dark);
+      border-radius: 12px;
+      color: #FFFFFF;
+      position: relative;
+    }
+    .submit-section h2 {
+      font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+    .submit-section .submit-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+    .submit-cta-button {
+      display: inline-block;
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.95rem 1.9rem;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 0.6rem;
+    }
+    .submit-cta-button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      max-width: 960px;
+      margin: 0 auto 4rem;
+      padding: 1.5rem 2rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .disclaimer strong { color: var(--dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .bolton-grid { grid-template-columns: 1fr; }
+      .intro-stat { border-right: none; padding: 0.4rem 0; }
+      .cat-nav { padding: 0.6rem 1rem; }
+    }
+
+    /* SUBMISSION MODAL */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea,
+    .fis-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.55) 50%), linear-gradient(135deg, rgba(255,255,255,0.55) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 2.2rem;
+    }
+    .fis-form select option { background: #12141A; color: #FFFFFF; }
+    .fis-form input:focus,
+    .fis-form textarea:focus,
+    .fis-form select:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ï¿½ï¿½ï¿½ MORE DROPDOWN ï¿½ï¿½ï¿½ */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    /* Mobile: expand inline */
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }</style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style id="fis-homepage-header">
+    nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
+    .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
+    .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
+    .nav-wordmark-text { display:flex!important; flex-direction:column!important; gap:0!important; overflow:visible!important; }
+    .nav-brand-name { font-family:'Manrope',system-ui,sans-serif!important; font-size:1.15rem!important; font-weight:800!important; letter-spacing:-.025em!important; line-height:1!important; white-space:nowrap!important; display:block!important; background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important; background-clip:text!important; -webkit-background-clip:text!important; color:transparent!important; -webkit-text-fill-color:transparent!important; }
+    .nav-wordmark-tagline { font-size:.7rem!important; font-weight:400!important; color:#64748b!important; line-height:1.2!important; margin-top:2px!important; display:block!important; width:100%!important; white-space:nowrap!important; letter-spacing:.04em!important; }
+    .nav-links { display:flex!important; gap:2rem!important; list-style:none!important; margin:0!important; padding:0!important; }
+    .nav-links a { color:#64748b!important; text-decoration:none!important; font-size:.82rem!important; font-weight:500!important; letter-spacing:.01em!important; transition:color .2s!important; }
+    .nav-links a:hover,.nav-links a.active { color:#0f172a!important; }
+    .nav-cta { position:absolute!important; right:3rem!important; font-size:.8rem!important; font-weight:600!important; color:#fff!important; background:#2563eb!important; text-decoration:none!important; padding:.5rem 1.3rem!important; border-radius:100px!important; }
+    .nav-hamburger { display:none!important; position:absolute!important; right:1.5rem!important; background:none!important; border:0!important; cursor:pointer!important; padding:.4rem!important; flex-direction:column!important; gap:5px!important; }
+    .nav-hamburger span { display:block!important; width:22px!important; height:2px!important; background:#475569!important; border-radius:2px!important; }
+    .nav-more { position:relative!important; }
+    .nav-more-btn { cursor:pointer!important; user-select:none!important; }
+    .nav-more-dropdown { display:none!important; position:absolute!important; top:calc(100% + 6px)!important; left:50%!important; transform:translateX(-50%)!important; background:#fff!important; border:1px solid #e2e8f0!important; border-radius:8px!important; padding:.35rem 0!important; min-width:170px!important; list-style:none!important; box-shadow:0 8px 24px rgba(0,0,0,.10)!important; z-index:300!important; }
+    .nav-more-dropdown li { margin:0!important; padding:0!important; }
+    .nav-more-dropdown a { display:block!important; padding:.55rem 1.2rem!important; color:#374151!important; font-size:.82rem!important; white-space:nowrap!important; }
+    .nav-more-dropdown a:hover { color:#0f172a!important; background:#f8f9fb!important; }
+    .nav-more.open .nav-more-dropdown { display:block!important; }
+    @media (max-width:640px) {
+      nav { padding:0 1.5rem!important; }
+      .nav-wordmark { left:1.5rem!important; }
+      .nav-logo { height:30px!important; }
+      .nav-wordmark-tagline { font-size:.6rem!important; }
+      .nav-cta { display:none!important; }
+      .nav-hamburger { display:flex!important; }
+      .nav-links { display:none!important; }
+      .nav-links.open { display:flex!important; flex-direction:column!important; position:absolute!important; top:64px!important; left:0!important; right:0!important; background:#fff!important; padding:.5rem 1.5rem 1.2rem!important; gap:0!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 4px 12px rgba(0,0,0,.06)!important; z-index:199!important; }
+      .nav-links.open li { width:100%!important; }
+      .nav-links.open a { display:block!important; padding:.7rem 0!important; border-bottom:1px solid #f1f5f9!important; font-size:.88rem!important; color:#334155!important; }
+      .nav-more-dropdown { position:static!important; transform:none!important; background:transparent!important; border:0!important; box-shadow:none!important; padding:0 0 0 1rem!important; min-width:auto!important; }
+      .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
+    }
+  </style></head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="approach.html">Our Approach</a></li>
+          <li><a href="consumer.html">Consumer AI</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <a href="resources.html" class="back-link">← Back to Resources</a>
+      <p class="eyebrow">Reference</p>
+      <h1>AI Bolt-Ons</h1>
+      <p>A reference index of the plugins, skills, MCP connectors, and browser agents you can install on top of your AI platform. Built for operators getting beyond chat with Claude, ChatGPT, and similar.</p>
+    </div>
+  </div>
+
+  <!-- INTRO STRIP -->
+  <div class="intro-strip">
+    <div class="intro-strip-inner">
+      <div class="intro-stat">
+        <span class="num">38</span>
+        <span class="lbl">Bolt-Ons Indexed</span>
+      </div>
+      <div class="intro-stat">
+        <span class="num">3</span>
+        <span class="lbl">Categories</span>
+      </div>
+      <a href="#fis-submit-modal" class="submit-ai-pill" data-open-submit>
+        <span class="submit-ai-pill-label">Tested one we missed?</span>
+        <span class="submit-ai-pill-cta">Submit a Bolt-On →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- DIAGRAM STRIP -->
+  <div class="diagram-strip">
+    <div class="diagram-frame">
+      <img src="images/bolt-ons-image.png" alt="Diagram: how your AI talks to apps, data, and services through MCP servers, with plugins and skills extending its capabilities." style="display:block; width:100%; height:auto;">
+    </div>
+
+    <div class="diagram-context">
+      <div class="diagram-explainer">
+        <div class="lbl">How to read this page</div>
+        <p>The AI Vendor Landscape covers the platforms themselves. This page covers what to add on top: plugins (bundles of skills and tools), skills (single-purpose know-how), and MCP servers (connectors to your apps and data). Different shopping moment, different mental model. Pick a category, scan the cards, and do your own due diligence before installing anything.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="resources-content" style="padding-top:1.5rem;">
+
+    <hr style="border:none; border-top:1px solid var(--border); margin:0 0 2.2rem 0;">
+
+    <!-- CATEGORY FILTER -->
+    <div class="cat-nav" style="position:static; padding:0.6rem 0; margin-bottom:0.6rem; background:transparent; backdrop-filter:none; border-bottom:none;">
+      <div class="cat-nav-inner">
+        <a href="#plugins">Plugins</a>
+        <a href="#skills">Skills</a>
+        <a href="#mcp-servers">MCP Servers</a>
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="vendor-search" style="margin-bottom:2.2rem;">
+      <input type="search" id="vendor-search-input" placeholder="Search bolt-ons by name, type, or platform..." aria-label="Search AI bolt-ons">
+    </div>
+    <p class="vendor-search-empty" id="vendor-search-empty">No bolt-ons match your search. Try a different term, or <a href="#fis-submit-modal" style="color:var(--accent);" data-open-submit>submit one we should add</a>.</p>
+
+    <!-- SECTION 1: PLUGINS -->
+    
+    <!-- ─── PLUGINS ─── -->
+    
+    <!-- ─── PLUGINS ─── -->
+    
+    <!-- ─── PLUGINS ─── -->
+    
+    <!-- ─── PLUGINS ─── -->
+    
+    <!-- ─── PLUGINS ─── -->
+    <section class="category" id="plugins">
+      <div class="category-header">
+        <span class="category-label">01</span>
+        <h2 class="category-title">Plugins</h2>
+      </div>
+      <p class="category-desc">Bundles of capability you install in one motion: a plugin can ship dozens of skills, prompts, and tools tuned for a domain. The highest-leverage install if you want a whole specialist team showing up at once.</p>
+
+      <div class="bolton-grid">
+
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">gstack</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>23 specialist tools in a single install. The closest thing to dropping a full development team into your Claude in one move. Strong default if you don't know where to start.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">82.7k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">superpowers</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>A complete development methodology packaged as 14 skills. Opinionated about how to structure work, draft requirements, review code, and ship reliably. Most-starred plugin in the ecosystem.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">192k ★</span>
+          </div>
+        </a>
+        <a href="https://github.com/openai/codex" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">codex-plugin-cc</div>
+              <div class="bolton-meta">github.com/openai</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>OpenAI's official Codex plugin for Claude Code. Lets you run OpenAI's coding model side by side with Claude in the same session. Handy when you want a second opinion on a tricky diff.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude Code</span>
+            <span class="badge">8.9k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">financial-services</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>Investment banking, equity research, private equity, and wealth management workflows in one bundle. Aimed at boutique shops and CFO offices that want senior-analyst leverage without a full data team.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">23k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">claude-for-legal</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>Legal workflows across practice areas: contract review, clause comparison, redline drafting, and matter intake. Sized for solo practitioners and small firms that don't have a legal-ops team.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">6.6k ★</span>
+          </div>
+        </a>
+        <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">claude-skills</div>
+              <div class="bolton-meta">github.com/anthropics/skills</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>The catch-all plugin: 255+ skills across every platform. Native .docx, .pptx, .xlsx, and .pdf creation; image, audio, and video helpers; and a long tail of workflow primitives. The single highest-leverage install for knowledge workers.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">5.2k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">marketingskills</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>40 marketing tools across the full growth-ops surface: campaign planning, persona briefs, channel-fit analysis, lifecycle copy, and reporting templates. Marketer hand-off without losing the strategy.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">28.8k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">social-media-skills</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Plugin</span>
+          </div>
+          
+          <p>A content OS for posts, reels, and captions. Voice consistency across platforms, scheduling cadence helpers, and adaptation between LinkedIn, X, and short-form video. Pairs naturally with Granola for meeting-to-post pipelines.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  
+    <!-- ─── SKILLS ─── -->
+    <section class="category" id="skills">
+      <div class="category-header">
+        <span class="category-label">02</span>
+        <h2 class="category-title">Skills</h2>
+      </div>
+      <p class="category-desc">Single-purpose know-how you add to your AI: a skill is one well-described task, automatically invoked when the work calls for it. Lighter than a plugin, narrower than an MCP, and easy to mix and match.</p>
+
+      <div class="bolton-grid">
+
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">frontend-design</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Kills generic AI UI. The taste fixer for front-end work: opinionated about spacing, type, and component shape so your build looks designed instead of defaulted. Most-installed skill in the catalog.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">277k installs</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">hyperframes</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Write HTML, render video. Agent-native. Lets Claude generate motion graphics and explainer-style video right out of HTML markup. The fastest path from rough idea to a usable B-roll clip.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">18.6k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">ai-second-brain</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Karpathy-style wiki built from your AI history. Turns past chats and projects into a queryable knowledge base so you stop re-asking the same setup questions.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">notebooklm-skill</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Lets Claude query your research and playbooks the way NotebookLM does: grounded answers, source citations, and good behavior on long PDFs. Stays inside Claude so you don't need to swap tools.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">humanizer</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Strips AI writing tells from any draft. Targets the specific cadence and word choices that make machine prose feel machine-written, and rewrites them in a more natural voice.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">claude-seo</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>GEO-first SEO skill. Built for the AI era: optimizes pages for both classic search and the new generative-search surfaces (Perplexity, ChatGPT Search, Google AI Overviews).</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">4.5k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">skills</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>The Vue and Vite core teams' own skills collection. Best-in-class for front-end work on those stacks because the maintainers wrote it. Use it any time you're building or refactoring a Vue app.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">3.5k ★</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">caveman</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Cuts about 65% of tokens. Talks like caveman. Sounds like a joke, behaves like a cost lever: shorter prompts, shorter responses, less budget burn for routine calls.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">59.2k ★</span>
+          </div>
+        </a>
+        <a href="https://marketing-skills.com" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">marketing-skills</div>
+              <div class="bolton-meta">marketing-skills.com</div>
+            </div>
+            <span class="bolton-type">Skill</span>
+          </div>
+          
+          <p>Reusable skills for CRO, copy, SEO, analytics, launch, pricing, and growth workflows. Drops a marketing specialist into any agent session without the headcount.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude Code</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  
+    <!-- ─── MCP SERVERS ─── -->
+    <section class="category" id="mcp-servers">
+      <div class="category-header">
+        <span class="category-label">03</span>
+        <h2 class="category-title">MCP Servers</h2>
+      </div>
+      <p class="category-desc">Connectors that let your AI read and act on the rest of your stack. MCP (Model Context Protocol) is the open standard that finally makes "your AI can use my tools" a normal sentence instead of a custom build. Three flavors below: direct hooks into apps you already use, specialized tools that bring their own AI capability, and integration platforms that bundle thousands of services behind one endpoint.</p>
+
+      <div class="bolton-grid">
+
+        <a href="https://granola.ai" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">granola</div>
+              <div class="bolton-meta">granola.ai</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Feeds every meeting note to Claude. Granola already records and summarizes your calls; the MCP lets Claude pull those notes into any later workflow without manual copy-paste.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/slack" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">slack</div>
+              <div class="bolton-meta">modelcontextprotocol.io</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Posts updates and reads channel history on your behalf. Workflows finally get real workplace context instead of you pasting threads in. The single most useful MCP for most teams.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://www.notion.so/help/mcp" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">notion</div>
+              <div class="bolton-meta">notion.so</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Reads and writes your databases and docs. Claude can query Notion as a knowledge base, then update pages from a conversation. Best paired with operators who already live in Notion.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">kondo</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Flags which LinkedIn DMs actually need a reply. The first useful AI take on relationship inbox triage: skips the noise, surfaces the conversations that move work forward.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://claude.ai/plugins" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">agent-browser</div>
+              <div class="bolton-meta">claude.ai/plugins</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Token-efficient browser automation. A sandboxed browser the AI controls so it can fill forms and pull info from pages without a public API, without burning your context window on raw HTML.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">22k ★</span>
+          </div>
+        </a>
+        <a href="https://perplexity.ai" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">perplexity</div>
+              <div class="bolton-meta">perplexity.ai</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Real-time web search inside Claude. Drops Perplexity's grounded, citation-first search behavior into any Claude session so research questions don't require swapping tools.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://higgsfield.ai" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">higgsfield</div>
+              <div class="bolton-meta">higgsfield.ai</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Cinematic video from a single prompt. The MCP exposes Higgsfield's model to Claude so you can describe a clip in conversation and get a usable rough cut without leaving the chat.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">elevenlabs</div>
+              <div class="bolton-meta">elevenlabs.io</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Lifelike text-to-speech and voice cloning. The MCP lets Claude turn written text into natural-sounding audio, produce voiceovers, and transcribe speech without leaving the conversation.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://zapier.com/mcp" target="_blank" rel="noopener" class="bolton-card bolton-aggregator">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">zapier</div>
+              <div class="bolton-meta">zapier.com</div>
+            </div>
+            <span class="bolton-type">Aggregator</span>
+          </div>
+          <div class="bolton-aggregator-apps">
+            <div class="bolton-apps-label">Connects to</div>
+            <span class="bolton-app-chip">Salesforce</span>
+            <span class="bolton-app-chip">HubSpot</span>
+            <span class="bolton-app-chip">Stripe</span>
+            <span class="bolton-app-chip">Shopify</span>
+            <span class="bolton-app-chip">Mailchimp</span>
+            <span class="bolton-app-chip">Google Sheets</span>
+            <span class="bolton-app-chip">Airtable</span>
+            <span class="bolton-app-chip">Calendly</span>
+            <span class="bolton-app-more">+ more</span></div>
+          <p>9,000+ apps behind one MCP endpoint. The lazy-but-correct way to bridge Claude to everything else in your stack: CRMs, billing tools, calendars, spreadsheets. Free tier covers 100 tasks per month (each MCP call counts as two), then paid plans scale from there.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://composio.dev" target="_blank" rel="noopener" class="bolton-card bolton-aggregator">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">composio</div>
+              <div class="bolton-meta">composio.dev</div>
+            </div>
+            <span class="bolton-type">Aggregator</span>
+          </div>
+          <div class="bolton-aggregator-apps">
+            <div class="bolton-apps-label">Connects to</div>
+            <span class="bolton-app-chip">GitHub</span>
+            <span class="bolton-app-chip">Linear</span>
+            <span class="bolton-app-chip">Slack</span>
+            <span class="bolton-app-chip">Notion</span>
+            <span class="bolton-app-chip">Gmail</span>
+            <span class="bolton-app-chip">Jira</span>
+            <span class="bolton-app-chip">Salesforce</span>
+            <span class="bolton-app-chip">Asana</span>
+            <span class="bolton-app-more">+ more</span></div>
+          <p>250+ tools behind one MCP endpoint, built specifically for AI agents. Free tier covers 20,000 tool calls per month with no credit card; paid plans start at $29/month for 200,000 calls. Open-source under MIT, with both hosted and self-hosted options for teams that want their integrations to stay on their own infrastructure.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://mcp.pipedream.com" target="_blank" rel="noopener" class="bolton-card bolton-aggregator">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">pipedream</div>
+              <div class="bolton-meta">pipedream.com</div>
+            </div>
+            <span class="bolton-type">Aggregator</span>
+          </div>
+          <div class="bolton-aggregator-apps">
+            <div class="bolton-apps-label">Connects to</div>
+            <span class="bolton-app-chip">GitHub</span>
+            <span class="bolton-app-chip">Slack</span>
+            <span class="bolton-app-chip">Gmail</span>
+            <span class="bolton-app-chip">Google Sheets</span>
+            <span class="bolton-app-chip">Salesforce</span>
+            <span class="bolton-app-chip">HubSpot</span>
+            <span class="bolton-app-chip">Stripe</span>
+            <span class="bolton-app-chip">Notion</span>
+            <span class="bolton-app-more">+ more</span></div>
+          <p>3,000+ APIs and 10,000+ prebuilt tools behind one MCP endpoint, with managed OAuth and per-user credential handling baked in. Free in development mode for testing; pricing kicks in when you move to production. Stronger on event-driven workflows than Zapier and more developer-leaning out of the gate.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+          </div>
+        </a>
+        <a href="https://github.com/x/mcp-server" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">X/Twitter MCP</div>
+              <div class="bolton-meta">github.com/x/mcp-server</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Official hosted MCP server from X. 200+ API endpoints for tweeting, searching, DMing, and analytics. Released June 2026.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Claude</span>
+            <span class="badge">Grok Build</span>
+          </div>
+        </a>
+        <a href="https://github.com/upstash/context7" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">Context7 MCP</div>
+              <div class="bolton-meta">github.com/upstash/context7</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Dynamically fetches version-specific documentation for React, Next.js, Tailwind, and 100+ frameworks. 54k+ GitHub stars, 890K weekly npm downloads.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude Code</span>
+            <span class="badge">Cursor</span>
+            <span class="badge">Codex</span>
+            <span class="badge">54K ★</span>
+          </div>
+        </a>
+        <a href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">GitHub MCP</div>
+              <div class="bolton-meta">github.com/github/github-mcp-server</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Official MCP server from GitHub with 9 configurable toolsets: repos, issues, PRs, Actions, security, discussions, deployments. PR/issue automation via natural language.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Claude Code</span>
+            <span class="badge">Cursor</span>
+            <span class="badge">Codex</span>
+          </div>
+        </a>
+        <a href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">Playwright MCP</div>
+              <div class="bolton-meta">github.com/microsoft/playwright-mcp</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Official MCP server from Microsoft for browser automation. Stealth-mode browsing, screenshots, form fills, and cross-browser testing. 30k+ GitHub stars.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Claude Code</span>
+            <span class="badge">Cursor</span>
+            <span class="badge">30K ★</span>
+          </div>
+        </a>
+        <a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">codebase-memory-mcp</div>
+              <div class="bolton-meta">github.com/DeusData</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Builds a persistent knowledge graph of your codebase with tree-sitter across 158 languages - cuts structural-query token use by up to 99%. Single static C binary, runs fully local.</p>
+          <div class="bolton-badges">
+            <span class="badge">Claude</span>
+            <span class="badge">32k ★</span>
+          </div>
+        </a>
+        <a href="https://github.com/figma/mcp-server" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">figma</div>
+              <div class="bolton-meta">github.com/figma</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Official Figma MCP server. Gives Claude and other agents read access to design files — components, variables, and page structure — so design context flows straight into code generation without screenshots.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Claude Code</span>
+            <span class="badge">Cursor</span>
+          </div>
+        </a>
+        <a href="https://github.com/linearapp/linear-mcp-server" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">linear</div>
+              <div class="bolton-meta">github.com/linearapp</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Official Linear MCP server. Agents can read, create, and update issues and projects in your Linear workspace — the system-of-record pick for teams that run product work there.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Claude Code</span>
+            <span class="badge">Cursor</span>
+          </div>
+        </a>
+        <a href="https://github.com/stripe/agent-toolkit" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">stripe</div>
+              <div class="bolton-meta">github.com/stripe</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Official Stripe Agent Toolkit with MCP support. Agents can look up customers, inspect invoices and subscriptions, and answer billing questions against your live account with proper scoped keys.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Claude Code</span>
+            <span class="badge">Codex</span>
+          </div>
+        </a>
+        <a href="https://developers.cloudflare.com/agents/model-context-protocol/" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">cloudflare remote mcp</div>
+              <div class="bolton-meta">developers.cloudflare.com</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Cloudflare's hosted MCP servers for Workers, D1, R2, and its other platform products. Day-zero support for the MCP 2026-07-28 spec (stateless, load-balancer friendly) and free to run your own remote MCP servers on Workers.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">Remote</span>
+          </div>
+        </a>
+        <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">mcp tasks (aws)</div>
+              <div class="bolton-meta">modelcontextprotocol.io</div>
+            </div>
+            <span class="bolton-type">MCP</span>
+          </div>
+          
+          <p>Tasks is one of the first official MCP extensions, contributed by AWS in the 2026-07-28 spec. Adds reliable, long-running agent operations — durable task state and resumable work — for production agent workloads.</p>
+          <div class="bolton-badges">
+            <span class="badge">Official</span>
+            <span class="badge">AWS</span>
+            <span class="badge">2026-07-28</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  
+
+<div class="disclaimer">
+    <strong>Methodology &amp; disclaimer.</strong> The AI Bolt-Ons page is a reference index of plugins, skills, MCP connectors, and browser agents in circulation. Modeled on our AI Landscape, it is intended to map the ecosystem broadly rather than to recommend a curated shortlist of FIS-tested tools. Inclusion here is not endorsement, recommendation, partnership, engagement, or fitness for any particular use case. Setup ratings reflect general complexity expectations and may differ on your stack. Always conduct independent diligence before procurement or integration. The bolt-on ecosystem moves quickly; tools may have repositioned, been acquired, or wound down since publication.
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">Future<span class="wm-gradient">InSites</span></div>
+    <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">Approach</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="consumer.html">Consumer</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FutureInSites LLC &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Boston, MA</p>
+  </footer>
+
+  <script>
+  /* Bolt-on search: filter cards by text, hide empty categories */
+  (function () {
+    var input = document.getElementById('vendor-search-input');
+    var empty = document.getElementById('vendor-search-empty');
+    if (!input) return;
+
+    function filter(q) {
+      q = (q || '').trim().toLowerCase();
+      var anyVisible = false;
+      document.querySelectorAll('section.category').forEach(function (sec) {
+        var matched = 0;
+        sec.querySelectorAll('a.bolton-card').forEach(function (card) {
+          var text = card.textContent.toLowerCase();
+          var hit = q === '' || text.indexOf(q) !== -1;
+          card.style.display = hit ? '' : 'none';
+          if (hit) matched++;
+        });
+        sec.querySelectorAll('.bolton-bucket').forEach(function (bucket) {
+          var bucketHits = 0;
+          bucket.querySelectorAll('a.bolton-card').forEach(function (c) {
+            if (c.style.display !== 'none') bucketHits++;
+          });
+          bucket.style.display = (q === '' || bucketHits > 0) ? '' : 'none';
+        });
+        var show = q === '' || matched > 0;
+        sec.style.display = show ? '' : 'none';
+        if (matched > 0 || q === '') anyVisible = true;
+      });
+      if (empty) empty.classList.toggle('show', q !== '' && !anyVisible);
+    }
+
+    input.addEventListener('input', function (e) { filter(e.target.value); });
+  })();
+  </script>
+
+  <!-- SUBMISSION MODAL -->
+  <div class="fis-modal" id="fis-submit-modal" role="dialog" aria-modal="true" aria-labelledby="fis-submit-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close submission form" data-close-submit>×</button>
+
+      <div id="fis-submit-header">
+        <div class="fis-modal-eyebrow">AI Bolt-Ons</div>
+        <h3 class="fis-modal-title" id="fis-submit-title">Submit a Bolt-On for Review</h3>
+        <p class="fis-modal-lead">Know a plugin, skill, MCP, or agent we should include in the next refresh? Tell us about it.</p>
+      </div>
+
+      <form class="fis-form" id="fis-submit-form" novalidate>
+        <div class="fis-form-grid">
+          <div class="fis-form-field-full">
+            <label for="fis-submit-tool">Bolt-On Name <span class="req">*</span></label>
+            <input type="text" id="fis-submit-tool" name="toolName" required maxlength="200">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-url">Website or Repo URL <span class="req">*</span></label>
+            <input type="url" id="fis-submit-url" name="url" placeholder="https://example.com" required maxlength="500">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-category">Category</label>
+            <select id="fis-submit-category" name="category">
+              <option value="">Choose a category (or leave blank if unsure)</option>
+              <option>Plugin</option>
+              <option>Skill</option>
+              <option>MCP Server</option>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-description">Why include it? What does it do?</label>
+            <textarea id="fis-submit-description" name="description" placeholder="A short note: what it does, who it's for, what sets it apart from generic tools." maxlength="4000"></textarea>
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-submit-email">Your Email <span class="req">*</span></label>
+            <input type="email" id="fis-submit-email" name="email" autocomplete="email" required maxlength="200">
+          </div>
+        </div>
+
+        <!-- Honeypot -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-submit-submit">Submit for Review</button>
+          <p class="fis-form-note">Reviewed each month for inclusion in the next refresh.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-submit-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-submit-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title">Thanks, submission received.</div>
+        <div class="fis-form-success-body">We'll review it for inclusion in the next monthly refresh.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Submission modal: open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-submit-modal');
+    var form     = document.getElementById('fis-submit-form');
+    var success  = document.getElementById('fis-submit-success');
+    var errorEl  = document.getElementById('fis-submit-error');
+    var submitEl = document.getElementById('fis-submit-submit');
+    var header   = document.getElementById('fis-submit-header');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Submit for Review';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-submit-tool');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    document.querySelectorAll('[data-open-submit]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    modal.querySelectorAll('[data-close-submit]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        toolName:    form.toolName.value.trim(),
+        url:         form.url.value.trim(),
+        category:    form.category.value,
+        description: form.description.value.trim(),
+        email:       form.email.value.trim(),
+        website_hp:  form.website_hp.value,
+        fax:         form.fax.value,
+        source:      'ai-bolt-ons',
+      };
+
+      if (!data.toolName) {
+        errorEl.textContent = 'Please enter the bolt-on name.';
+        errorEl.classList.add('show');
+        form.toolName.focus();
+        return;
+      }
+      if (!/^https?:\/\/[^\s.]+\.[^\s]+/i.test(data.url)) {
+        errorEl.textContent = 'Please enter a valid URL (include https://).';
+        errorEl.classList.add('show');
+        form.url.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/submit-ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (header) header.style.display = 'none';
+            form.style.display = 'none';
+            success.classList.add('show');
+            form.reset();
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please try again, or email submissions@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Submit for Review';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please try again, or email submissions@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Submit for Review';
+        });
+    });
+  })();
+  </script>
+
+  <script src="cookie-banner.js"></script>
+  <script id="fis-global-header-v2-script">
+  (function () {
+    var existingNav = document.querySelector('nav');
+    if (existingNav) {
+      var cleanNav = existingNav.cloneNode(true);
+      existingNav.parentNode.replaceChild(cleanNav, existingNav);
+    }
+    var btn = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () { menu.classList.toggle('open'); });
+      document.addEventListener('click', function (event) {
+        if (!btn.contains(event.target) && !menu.contains(event.target)) menu.classList.remove('open');
+      });
+    }
+    var groups = document.querySelectorAll('.nav-more');
+    groups.forEach(function (group) {
+      var trigger = group.querySelector('.nav-more-btn');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        var opening = !group.classList.contains('open');
+        groups.forEach(function (item) { item.classList.remove('open'); });
+        if (opening) group.classList.add('open');
+      });
+    });
+    document.addEventListener('click', function (event) {
+      var inside = false;
+      groups.forEach(function (group) { if (group.contains(event.target)) inside = true; });
+      if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
+    });
+  })();
+  </script></body>
+</html>
