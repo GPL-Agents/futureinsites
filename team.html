@@ -257,8 +257,9 @@
     }
 
     .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.4rem;
     }
 
@@ -271,6 +272,8 @@
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
       display: flex;
       flex-direction: column;
+      flex: 1 1 280px;
+      max-width: 480px;
     }
 
     .team-card:hover {
@@ -314,7 +317,8 @@
     }
 
     @media (max-width: 860px) {
-      .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .team-grid { gap: 1.25rem; }
+      .team-card { flex-basis: 100%; max-width: none; }
     }
 
     .team-intro {
