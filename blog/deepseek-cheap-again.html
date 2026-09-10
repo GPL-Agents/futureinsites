@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepSeek Is Cheap Again. Is It Worth the Risk? | FutureInSites Blog</title>
+  <meta name="description" content="DeepSeek has released a cheaper AI model, but price is only part of the decision. Here is what individuals and small businesses should know about capability, privacy, security, and data jurisdiction." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }
+    .back-link {
+      padding: 1.5rem 2rem 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .back-link a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .back-link a:hover { opacity: 1; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 860px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .post-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content .featured-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .post-content .featured-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .post-content .featured-image .caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+    /* ─── FOOTER ─── */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+
+    .footer-brand {}
+
+    .footer-vert-divider {
+      background: #DCE5F0;
+      align-self: stretch;
+    }
+
+    .footer-link-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0 2rem;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: #64748B;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-social a {
+      color: #64748B;
+      display: inline-flex;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: #64748B;
+      line-height: 1.7;
+    }
+
+    .footer-col-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1769E0;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.55rem;
+    }
+
+    .footer-col ul a {
+      color: #0B234A;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: #1769E0; }
+
+    @media (max-width: 760px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .footer-vert-divider {
+        height: 1px;
+        align-self: auto;
+        margin: 1.75rem 0;
+      }
+      .footer-link-cols {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-link-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+</style>
+  <style id="fis-global-header-v2">
+    nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
+    .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
+    .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
+    .nav-wordmark-text { display:flex!important; flex-direction:column!important; gap:0!important; overflow:visible!important; }
+    .nav-brand-name { font-family:'Manrope',system-ui,sans-serif!important; font-size:1.15rem!important; font-weight:800!important; letter-spacing:-.025em!important; line-height:1!important; white-space:nowrap!important; display:block!important; background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important; background-clip:text!important; -webkit-background-clip:text!important; color:transparent!important; -webkit-text-fill-color:transparent!important; }
+    .nav-wordmark-tagline { font-size:.7rem!important; font-weight:400!important; color:#64748b!important; line-height:1.2!important; margin-top:2px!important; display:block!important; width:100%!important; white-space:nowrap!important; letter-spacing:.04em!important; }
+    .nav-links { display:flex!important; gap:2rem!important; list-style:none!important; margin:0!important; padding:0!important; }
+    .nav-links a { color:#64748b!important; text-decoration:none!important; font-size:.82rem!important; font-weight:500!important; letter-spacing:.01em!important; transition:color .2s!important; }
+    .nav-links a:hover,.nav-links a.active { color:#0f172a!important; }
+    .nav-cta { position:absolute!important; right:3rem!important; font-size:.8rem!important; font-weight:600!important; color:#fff!important; background:#2563eb!important; text-decoration:none!important; padding:.5rem 1.3rem!important; border-radius:100px!important; }
+    .nav-hamburger { display:none!important; position:absolute!important; right:1.5rem!important; background:none!important; border:0!important; cursor:pointer!important; padding:.4rem!important; flex-direction:column!important; gap:5px!important; }
+    .nav-hamburger span { display:block!important; width:22px!important; height:2px!important; background:#475569!important; border-radius:2px!important; }
+    .nav-more { position:relative!important; }
+    .nav-more-btn { cursor:pointer!important; user-select:none!important; }
+    .nav-more-dropdown { display:none!important; position:absolute!important; top:calc(100% + 6px)!important; left:50%!important; transform:translateX(-50%)!important; background:#fff!important; border:1px solid #e2e8f0!important; border-radius:8px!important; padding:.35rem 0!important; min-width:170px!important; list-style:none!important; box-shadow:0 8px 24px rgba(0,0,0,.10)!important; z-index:300!important; }
+    .nav-more-dropdown li { margin:0!important; padding:0!important; }
+    .nav-more-dropdown a { display:block!important; padding:.55rem 1.2rem!important; color:#374151!important; font-size:.82rem!important; white-space:nowrap!important; }
+    .nav-more-dropdown a:hover { color:#0f172a!important; background:#f8f9fb!important; }
+    .nav-more.open .nav-more-dropdown { display:block!important; }
+    @media (max-width:640px) {
+      nav { padding:0 1.5rem!important; }
+      .nav-wordmark { left:1.5rem!important; }
+      .nav-logo { height:30px!important; }
+      .nav-wordmark-tagline { font-size:.6rem!important; }
+      .nav-cta { display:none!important; }
+      .nav-hamburger { display:flex!important; }
+      .nav-links { display:none!important; }
+      .nav-links.open { display:flex!important; flex-direction:column!important; position:absolute!important; top:64px!important; left:0!important; right:0!important; background:#fff!important; padding:.5rem 1.5rem 1.2rem!important; gap:0!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 4px 12px rgba(0,0,0,.06)!important; z-index:199!important; }
+      .nav-links.open li { width:100%!important; }
+      .nav-links.open a { display:block!important; padding:.7rem 0!important; border-bottom:1px solid #f1f5f9!important; font-size:.88rem!important; color:#334155!important; }
+      .nav-more-dropdown { position:static!important; transform:none!important; background:transparent!important; border:0!important; box-shadow:none!important; padding:0 0 0 1rem!important; min-width:auto!important; }
+      .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
+    }
+  
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }</style>  <link rel="canonical" href="https://www.futureinsites.com/blog/deepseek-cheap-again.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="DeepSeek Is Cheap Again. Is It Worth the Risk?" />
+  <meta property="og:description" content="DeepSeek has released a cheaper AI model, but price is only part of the decision. Here is what individuals and small businesses should know about capability, privacy, security, and data jurisdiction." />
+  <meta property="og:url" content="https://www.futureinsites.com/blog/deepseek-cheap-again.html" />
+  <meta property="og:image" content="https://www.futureinsites.com/blog/deepseek-cheap-again-linkedin.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DeepSeek Is Cheap Again. Is It Worth the Risk?" />
+  <meta name="twitter:description" content="DeepSeek has released a cheaper AI model, but price is only part of the decision. Here is what individuals and small businesses should know about capability, privacy, security, and data jurisdiction." />
+  <meta name="twitter:image" content="https://www.futureinsites.com/blog/deepseek-cheap-again-linkedin.png" />
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">AI Strategy &amp; Engineering</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../solutions.html">Solutions</a></li>
+          <li><a href="../approach.html">Our Approach</a></li>
+          <li><a href="../consumer.html">Consumer AI</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research &amp; Insights <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../case-studies.html">Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../our-story.html">Our Story</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">September 10, 2026</div>
+      <h1>DeepSeek Is Cheap Again. Is It Worth the Risk?</h1>
+      <p class="post-excerpt">DeepSeek has released a cheaper AI model, but price is only part of the decision. Here is what individuals and small businesses should know about capability, privacy, security, and data jurisdiction.</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p>September 10, 2026</p>
+      <p>DeepSeek is the Chinese artificial intelligence company that seemed to come out of nowhere in early 2025. <a href="https://www.ap.org/news-highlights/spotlights/2025/what-is-deepseek-the-chinese-ai-company-upending-the-stock-market/" target="_blank" rel="noopener">Its chatbot overtook ChatGPT as the most downloaded free iPhone app in the United States</a>, while its low cost models rattled technology stocks and challenged assumptions about how expensive capable AI had to be.</p>
+      <p>DeepSeek built its reputation by offering surprisingly capable AI at bargain prices. For developers, solopreneurs, and small businesses, the appeal was obvious: why pay frontier model prices when a much cheaper model could handle much of the same work?</p>
+      <p>That calculation has become more complicated.</p>
+      <p>American AI companies have released smaller, cheaper models. The U.S. government has published sharply critical evaluations of DeepSeek's performance, security, and censorship. DeepSeek's own privacy policy confirms that personal data is processed and stored in China. And DeepSeek has changed its prices twice in less than a month.</p>
+      <p>Then, on September 10, DeepSeek officially released V4.1 Flash at prices below the V4 rates it introduced on August 16. DeepSeek never stopped being inexpensive, so "cheap again" is partly a joke about a pricing detour that lasted less than a month. The new model adds native visual understanding and is available through the API under the new <code>deepseek-flash</code> model name. DeepSeek also claims the new Flash model outperforms V4 Pro across performance, cost, speed, and task completion time.</p>
+      <p>The launch is confirmed. The performance claim has not yet been independently verified. But the release changes the question again.</p>
+      <p>DeepSeek may be the bargain option once more. Is the tradeoff worth it?</p>
+      <div class="featured-image">
+        <img src="deepseek-cheap-again-linkedin.png" alt="DeepSeek pricing comparison with OpenAI, Google, and Anthropic, alongside a visual representation of privacy and security risk" />
+        <div class="caption">DeepSeek is again the least expensive option in this low-cost API model comparison. Price alone does not establish equivalent capability or an acceptable data risk.</div>
+      </div>
+      <h2>DeepSeek's Pitch: Frontier Capability Without Frontier Prices</h2>
+      <p>DeepSeek describes V4 Pro as a 1.6 trillion parameter mixture of experts model that activates 49 billion parameters for each token. It offers a one million token context window and several reasoning levels. At launch, DeepSeek said V4 Pro rivaled leading closed models, led open models in agentic coding, and delivered world class reasoning.</p>
+      <p>V4 Flash was positioned as the smaller, faster, more economical option. DeepSeek said its reasoning approached Pro and matched Pro on simpler agent tasks.</p>
+      <p>Those are DeepSeek's own benchmark claims, and that distinction matters. Model companies choose the tests, configurations, and competitors shown in their launch materials. The results can be useful, but they are marketing evidence, not independent validation.</p>
+      <p>DeepSeek's broader value proposition is real. It offers a very large context window, inexpensive API access, OpenAI and Anthropic compatible interfaces, and open model distribution for organizations willing to operate the infrastructure themselves. For developers building high volume applications, those advantages can matter.</p>
+      <p class="sources">Sources: <a href="https://deepseek.com/en/news/v4-preview/" target="_blank" rel="noopener">DeepSeek V4 launch</a>, <a href="https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf" target="_blank" rel="noopener">DeepSeek V4 model card</a></p>
+      <h2>There Are Three Different Ways to Use DeepSeek</h2>
+      <p>Before comparing prices or privacy, it is important to separate three very different ways people encounter DeepSeek.</p>
+      <h3>1. The DeepSeek website and consumer apps</h3>
+      <p>This is the familiar chatbot experience. A person visits DeepSeek's website or opens its mobile app, enters a prompt, and reads the answer. The user is not normally calculating token charges or building software around the model.</p>
+      <p>The consumer interface may appear free, but free access does not eliminate the privacy tradeoff. Prompts, uploaded documents, chat history, device information, and account information are handled under DeepSeek's privacy policy. This is the version a solopreneur might use casually to draft an email, summarize public material, or brainstorm ideas.</p>
+      <h3>2. DeepSeek's API inside another product</h3>
+      <p>An API lets software send requests to DeepSeek programmatically. This is how a product such as Hawking can use an AI model behind its own interface and workflow. The end user may never visit DeepSeek's website, but the application sends selected information to the model provider and receives a generated response.</p>
+      <p>The token prices in this article apply to this direct API usage, not to ordinary use of the DeepSeek chatbot. The application operator pays for input and output tokens, controls which information is submitted, and is responsible for telling end users how their data is handled.</p>
+      <p>Using an API can provide more control than asking employees to use a public chatbot. The application can remove unnecessary personal information, restrict which fields are sent, log model decisions, validate outputs, and route sensitive work to a different provider. But if the application calls DeepSeek's own API, the submitted data still reaches DeepSeek's infrastructure in China. Wrapping the API in a different interface does not change the underlying destination.</p>
+      <p>This is the most relevant distinction for small businesses building internal tools, customer features, or products like Hawking. The decision is not simply whether employees like the DeepSeek app. It is whether DeepSeek should be one of the model providers inside a controlled application architecture.</p>
+      <h3>3. A DeepSeek model hosted by someone else</h3>
+      <p>Some DeepSeek models can be operated by an independent cloud provider or on infrastructure controlled by the business. In that case, prompts do not necessarily travel to DeepSeek. Data location, retention, security, and pricing depend on the company operating the model.</p>
+      <p>Self hosting offers the greatest control, but it is not automatically simple or inexpensive. Large models require substantial computing infrastructure, monitoring, security, and technical expertise. A third party host can reduce that burden, but the business must evaluate that provider's contract and data practices rather than assuming the DeepSeek privacy policy describes the whole arrangement.</p>
+      <p>These three routes should never be treated as interchangeable. The model may have the same name, but the economics, data path, and business risk can be completely different.</p>
+      <h2>The Price Went Up, Then Back Down</h2>
+      <p>DeepSeek introduced new V4 pricing on August 16. It also adopted peak and off peak rates, with off peak usage costing half as much as peak usage.</p>
+      <p>For V4 Flash, fresh input cost $0.22 per million tokens off peak and $0.44 at peak. Output cost $0.66 off peak and $1.32 at peak. V4 Pro was three times as expensive.</p>
+      <p>The September 10 release reverses much of that increase. The new Flash pricing is:</p>
+      <ul>
+        <li>$0.15 per million fresh input tokens and $0.60 per million output tokens off peak</li>
+        <li>$0.30 per million fresh input tokens and $1.20 per million output tokens at peak</li>
+        <li>$0.003 per million cached input tokens off peak and $0.006 at peak</li>
+      </ul>
+      <p>The notice defines peak periods as 01:00 to 04:00 UTC and 06:00 to 10:00 UTC, Monday through Friday. All other hours are off peak.</p>
+      <p>The new rates cut off peak fresh input by about 32 percent, output by about 9 percent, and cached input by about 57 percent compared with the August V4 Flash prices.</p>
+      <p>There is another important change. V4.1 Flash is now called through the <code>deepseek-flash</code> API model name. The older <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> names temporarily route to the new model. DeepSeek says V4 Pro will remain available at its existing price until 12:00 Beijing time on September 14. After that, and until V4.1 Pro arrives, requests to the Pro model will be routed to V4.1 Flash and billed at the lower Flash rate.</p>
+      <h3>What changed in our own platform</h3>
+      <p>We saw the operational impact immediately in the AI routing configuration behind our own OpenClaw platform. A live API check on September 10 found that our existing <code>deepseek-v4-flash</code> route still worked, but DeepSeek returned <code>deepseek-flash</code>, confirming that the older identifier was already serving V4.1 Flash. The legacy <code>deepseek-chat</code> and <code>deepseek-reasoner</code> identifiers also returned the same Flash model in our test. That meant a route we had treated as a fallback was no longer a true fallback at all.</p>
+      <p>The release also made our internal cost assumptions stale. Our catalog still expected $0.14 per million input tokens and $0.28 per million output tokens. The new off peak price is $0.15 for fresh input and $0.60 for output, while cached input falls to $0.003. Without an update, our cost reporting would materially understate output expense.</p>
+      <p>Timing matters too. During U.S. daylight saving time, DeepSeek's weekday peak windows translate to 9:00 p.m. to midnight and 2:00 a.m. to 6:00 a.m. Eastern. Our normal daytime activity remains off peak, while work after 9:00 p.m. can cost twice as much. The practical response is to use the canonical model name, remove duplicate fallbacks, update cost tracking, and confirm that a genuinely independent provider comes next in the routing chain.</p>
+      <p>This is a useful lesson for any small business using multiple AI providers. A model update can silently change what an alias serves, collapse two apparent fallbacks into one, and make an internal cost dashboard inaccurate. Checking only whether requests still succeed is not enough.</p>
+      <p>Developers may receive a different model through an endpoint they already use. Any production system should be retested when the routing changes.</p>
+      <p class="sources">Sources: DeepSeek customer notices received September 9 and 10, 2026; <a href="https://api-docs.deepseek.com/updates/" target="_blank" rel="noopener">DeepSeek September 10 change log</a>; <a href="https://api-docs.deepseek.com/quick_start/pricing/" target="_blank" rel="noopener">DeepSeek API pricing</a></p>
+      <h2>An Apples to Apples Price Comparison</h2>
+      <p>There are two separate comparisons to make: consumer chat access and API usage. Mixing them produces misleading conclusions.</p>
+      <p>Each company sells access to its models through at least two different products. One is its own website or app, where people chat with the model directly. The other is an API, where developers pay to put the model inside software such as Hawking. Paying for one normally does not buy the other.</p>
+      <p>A ChatGPT Plus subscription does not include OpenAI API credits. Claude Pro does not include Anthropic API usage. A Google AI plan does not function as a general Gemini API allowance, although some plans include limited developer benefits or cloud credits. DeepSeek's free chatbot does not make calls from Hawking or another application free.</p>
+      <h3>Consumer website and app access</h3>
+      <p>DeepSeek, OpenAI, Anthropic, and Google all provide model access through their own interfaces. This is what an individual sees when choosing a chatbot or productivity assistant:</p>
+      <ul>
+        <li>DeepSeek web and app: advertised as free. V4 Pro is available through Expert Mode and V4 Flash through the standard experience, subject to service limits. Direct API usage is a separate prepaid service.</li>
+        <li>ChatGPT Plus: $20 per month for higher access to OpenAI models and ChatGPT features, subject to usage limits. OpenAI API usage is billed separately.</li>
+        <li>Claude Pro: $20 per month, or about $17 per month when paid annually, for more usage and access to additional Claude models and features. Anthropic API usage is billed separately.</li>
+        <li>Google AI Pro: $19.99 per month for expanded Gemini model access, including Gemini 3.1 Pro, plus storage and Google product integrations. Gemini API billing remains a separate product, although the subscription may include specific developer benefits.</li>
+      </ul>
+      <p>This interface comparison is not a token price contest. Users generally pay a subscription, or use a limited free tier, rather than receiving a bill for every input and output token. The paid U.S. plans also bundle capabilities such as research, coding tools, image generation, cloud storage, productivity integrations, and higher limits. DeepSeek does not publish a dollar value for an equivalent bundle. For a person who only wants a general chatbot, DeepSeek's free access is attractive. For someone buying an integrated productivity product, the available models, features, privacy terms, and usage limits must be compared along with the monthly fee.</p>
+      <p class="sources">Sources: <a href="https://api-docs.deepseek.com/news/news250115/" target="_blank" rel="noopener">DeepSeek app</a>, <a href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus" target="_blank" rel="noopener">ChatGPT Plus</a>, <a href="https://support.claude.com/en/articles/8325606-what-is-the-pro-plan" target="_blank" rel="noopener">Claude Pro</a>, <a href="https://one.google.com/about/plans" target="_blank" rel="noopener">Google AI plans</a></p>
+      <h3>API comparison for an application such as Hawking</h3>
+      <p>API access is a different purchase. Hawking sends selected information to a model provider programmatically, and the Hawking operator pays the resulting API bill. The end user does not need a personal subscription to that provider's chatbot, and a personal subscription does not pay Hawking's API bill.</p>
+      <p>For API usage, we can compare the same workload across providers. The example below uses one million fresh input tokens and one million output tokens. It assumes standard synchronous processing, no cache hits, no batch discount, and no extra charges for tools or web searches. This is a price comparison among each provider's lower cost models, not a claim that they provide equal capability.</p>
+      <h4>Lower cost execution models</h4>
+      <ul>
+        <li>DeepSeek V4.1 Flash at the off peak rate: $0.75</li>
+        <li>OpenAI GPT 5.6 Luna: $1.40</li>
+        <li>DeepSeek V4.1 Flash at the peak rate: $1.50</li>
+        <li>Google Gemini 3.1 Flash Lite: $1.75</li>
+        <li>Anthropic Claude Haiku 4.5: $6.00</li>
+      </ul>
+      <p>Under those assumptions, DeepSeek wins off peak. At peak, GPT 5.6 Luna has a lower input rate, while the two models have the same $1.20 output rate. Gemini Flash Lite is close behind. Claude Haiku is substantially more expensive on raw tokens.</p>
+      <h4>Higher capability and balanced models</h4>
+      <p>Using the same workload:</p>
+      <ul>
+        <li>DeepSeek V4 Pro off peak: $2.64</li>
+        <li>DeepSeek V4 Pro at peak: $5.28</li>
+        <li>Google Gemini 3.5 Flash: $10.50</li>
+        <li>Anthropic Claude Sonnet 5: $12.00 at the currently listed $2 input and $10 output rates</li>
+        <li>OpenAI GPT 5.6 Terra: $14.00</li>
+        <li>OpenAI GPT 5.6 Sol: $24.00 at its current promotional rates</li>
+        <li>Anthropic Claude Opus 5: $30.00</li>
+      </ul>
+      <p>This second list compares higher capability purchasing options, but it does not prove equal quality. DeepSeek says V4 Pro rivals top closed models. Commerce's 2026 evaluation placed V4 Pro in a broadly similar aggregate capability range to GPT 5.4 mini, while finding meaningful weaknesses on some reasoning, software engineering, and cyber tests. No independent evaluation yet establishes where V4.1 Flash belongs relative to the current OpenAI, Anthropic, and Google lineups.</p>
+      <p>The defensible conclusion is about price, not parity: DeepSeek's new rates are lower than the listed Anthropic rates and most Google and OpenAI rates. Whether it is less expensive per successful business outcome depends on the task.</p>
+      <p class="sources">Sources: <a href="https://api-docs.deepseek.com/quick_start/pricing/" target="_blank" rel="noopener">DeepSeek API pricing</a>, <a href="https://platform.openai.com/docs/models" target="_blank" rel="noopener">OpenAI model pricing</a>, <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic API pricing</a>, <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Google Gemini API pricing</a></p>
+      <h3>Where caching and batch processing change the result</h3>
+      <p>DeepSeek's new cached input rate is exceptionally low, beginning at $0.003 per million tokens off peak. That can create a major advantage for applications that repeatedly send the same long instructions or reference material.</p>
+      <p>But caching systems are not identical. Anthropic charges separately for cache writes and reads. OpenAI discounts cached input. Google charges for cached tokens and, in some cases, cache storage time. Batch processing can reduce some competitors' input and output rates by 50 percent. A comparison that gives DeepSeek a cache hit while charging every competitor for fresh input is not apples to apples.</p>
+      <p>For Hawking, the right calculation should come from actual traffic: fresh input, reusable input, output, reasoning tokens, peak timing, retries, and successful completion rate. Posted rates are the starting point, not the final unit economics.</p>
+      <p>Token prices are not the same as completed work costs. A model that needs more reasoning tokens, produces more failed attempts, or requires more human correction can cost more even when every token is cheap. Latency, reliability, tool use, and the percentage of tasks completed correctly matter more than the price printed on the rate card.</p>
+      <h2>What the U.S. Government Actually Found</h2>
+      <p>The government story requires more nuance than the headlines suggest.</p>
+      <p>In September 2025, the Commerce Department's Center for AI Standards and Innovation evaluated DeepSeek R1, R1 0528, and V3.1. It found that leading U.S. models outperformed DeepSeek on most tests, with the largest gaps in software engineering and cybersecurity. It also found that GPT 5 mini cost 35 percent less on average than V3.1 at a similar capability level.</p>
+      <p>The security findings were more concerning. DeepSeek models were more likely to follow malicious prompt hijacking instructions and were highly susceptible to jailbreaks. The evaluation also found censorship aligned with Chinese Communist Party narratives in models downloaded directly from public repositories, meaning the behavior was not limited to DeepSeek's hosted chatbot.</p>
+      <p>But Commerce published a newer V4 Pro evaluation in May 2026. That report found DeepSeek's selected benchmarks made V4 look roughly competitive with frontier U.S. systems. On Commerce's separate tests, V4 Pro performed worse on some reasoning, software engineering, and cyber evaluations.</p>
+      <p>The price conclusion was mixed. Commerce found V4 Pro cheaper than GPT 5.4 mini on five of seven comparable benchmarks, with individual results ranging from 53 percent cheaper to 41 percent more expensive.</p>
+      <p>Calling DeepSeek "third rate" is therefore political rhetoric, not a complete description of the latest evidence. DeepSeek trails leading U.S. models on several difficult tasks, but the government's own 2026 testing placed V4 Pro in a broadly comparable capability range and found it cheaper more often than not.</p>
+      <p class="sources">Sources: <a href="https://www.nist.gov/system/files/documents/2025/09/30/CAISI_Evaluation_of_DeepSeek_AI_Models.pdf" target="_blank" rel="noopener">CAISI evaluation of DeepSeek models</a>, <a href="https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro" target="_blank" rel="noopener">CAISI evaluation of DeepSeek V4 Pro</a></p>
+      <h2>The Privacy Risk Is Not Hypothetical, but It Should Be Stated Accurately</h2>
+      <p>DeepSeek's privacy policy says its services collect prompts, uploaded files, chat history, account information, device identifiers, network information, and usage data. It says DeepSeek directly collects, processes, and stores personal data in the People's Republic of China.</p>
+      <p>The policy also says personal data may be used to improve and train its technology, although users can opt out, and that information may be shared with public authorities when DeepSeek believes disclosure is required by applicable law or a government request.</p>
+      <p>This does not prove that every prompt is routinely handed to the Chinese government. The accurate conclusion is that information submitted to DeepSeek's website, apps, or direct API is handled by a Chinese company, on infrastructure in China, under Chinese legal jurisdiction. For many U.S. businesses, that creates an unacceptable government access, contractual, and legal recourse risk.</p>
+      <p>The distinction between direct use and self hosting also matters. Running an open DeepSeek model on infrastructure you control is not the same as sending prompts to DeepSeek's API. Using a third party host introduces that host's privacy and security terms instead. The model name alone does not tell you where your data goes.</p>
+      <p class="sources">Source: <a href="https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html" target="_blank" rel="noopener">DeepSeek privacy policy</a></p>
+      <h2>Competitors Accuse DeepSeek of Extracting Their Models' Capabilities</h2>
+      <p>Anthropic reported in February 2026 that DeepSeek, Moonshot, and MiniMax used approximately 24,000 fraudulent accounts to generate more than 16 million exchanges with Claude. Anthropic characterized the activity as industrial scale capability extraction intended to improve competing models.</p>
+      <p>OpenAI separately told a House committee that it found continued DeepSeek activity consistent with adversarial distillation. OpenAI said accounts associated with DeepSeek employees attempted to evade restrictions and access U.S. models through third party routers that masked their source.</p>
+      <p>These are serious and documented allegations. They are also claims made by DeepSeek's direct competitors, not findings from a court. They should be treated as evidence about vendor governance and intellectual property risk, not as settled legal conclusions.</p>
+      <p class="sources">Sources: <a href="https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks" target="_blank" rel="noopener">Anthropic on distillation attacks</a>, <a href="https://cdn.openai.com/pdf/045aa967-ee96-4a09-94ee-3098ddf6db2c/OpenAI-US-House-Select-Cmte-Update-%5B021226%5D.pdf" target="_blank" rel="noopener">OpenAI submission to the House Select Committee</a></p>
+      <h2>When DeepSeek Makes Sense</h2>
+      <p>DeepSeek can be a rational choice for:</p>
+      <ul>
+        <li>Public, nonconfidential brainstorming, rewriting, translation, and summarization</li>
+        <li>High volume batch work that can run during off peak periods</li>
+        <li>Agent workloads with high prompt cache reuse</li>
+        <li>Coding experiments using public or nonproprietary code</li>
+        <li>Tasks whose outputs can be tested automatically and inexpensively</li>
+        <li>Self hosted deployments where the organization controls the infrastructure and understands the operational burden</li>
+      </ul>
+      <p>The strongest case is sanitized, high volume work where a small price difference compounds across millions or billions of tokens.</p>
+      <h2>When It Does Not</h2>
+      <p>DeepSeek's direct service is a poor default for:</p>
+      <ul>
+        <li>Customer records or client documents</li>
+        <li>Health, financial, legal, or employment information</li>
+        <li>Passwords, credentials, or access tokens</li>
+        <li>Proprietary source code and unreleased product plans</li>
+        <li>Regulated work requiring contractual data residency, retention, or audit guarantees</li>
+        <li>Research where political censorship or viewpoint distortion could affect the answer</li>
+        <li>High consequence decisions that cannot be independently verified</li>
+      </ul>
+      <p>For most solopreneurs and small businesses, the absolute savings will be modest. Saving a few dollars on API usage is not worth exposing a client document, trade secret, or regulated record.</p>
+      <h2>The Bottom Line</h2>
+      <p>DeepSeek is not a toy, and it is not simply a third rate copy. It is a capable model provider whose aggressive pricing continues to pressure the entire AI market. If V4.1 Flash performs as DeepSeek claims, its off peak price and capability combination could be exceptional.</p>
+      <p>But the bargain comes with conditions.</p>
+      <p>The direct service processes data in China. Government testing has documented censorship and weaker security behavior. Competitors have made credible, detailed accusations about adversarial distillation. Prices and model routing have changed rapidly enough to complicate production planning. And the newest performance claim cannot yet be independently checked.</p>
+      <p>For individuals and small businesses, the practical answer is straightforward: use DeepSeek for sanitized, low stakes, verifiable work when the price advantage matters. Use a provider with stronger contractual protections and acceptable data jurisdiction for sensitive business work.</p>
+      <p>Do not choose an AI model based on ideology. Do not choose it based on the cheapest token either. Choose it based on the task, the data, the cost of failure, and who you are trusting with the information.</p>
+
+      <hr />
+
+      <p><em>FutureInSites helps small businesses choose and deploy AI systems based on the task, the data, and the real cost of failure. <a href="../index.html#contact">Get in touch</a> if you want to evaluate the models and data routes inside your own AI workflow.</em></p>
+
+      <p style="margin-top: 2rem;"><a href="index.html" class="post-back">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI Strategy &amp; Engineering</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="../approach.html">Our Approach</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../ai-readiness.html">Assessment</a></li>
+            <li><a href="../consumer.html">Consumer AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="../our-story.html">Our Story</a></li>
+            <li><a href="../team.html">Team</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Resources</p>
+          <ul>
+            <li><a href="../case-studies.html">Case Studies</a></li>
+            <li><a href="../ai-vendor-landscape.html">AI Landscape</a></li>
+            <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* Dropdown toggles (handles multiple .nav-more elements) */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
+  <script src="../cookie-banner.js"></script>
+  <script id="fis-global-header-v2-script">
+  (function () {
+    var existingNav = document.querySelector('nav');
+    if (existingNav) {
+      var cleanNav = existingNav.cloneNode(true);
+      existingNav.parentNode.replaceChild(cleanNav, existingNav);
+    }
+    var btn = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () { menu.classList.toggle('open'); });
+      document.addEventListener('click', function (event) {
+        if (!btn.contains(event.target) && !menu.contains(event.target)) menu.classList.remove('open');
+      });
+    }
+    var groups = document.querySelectorAll('.nav-more');
+    groups.forEach(function (group) {
+      var trigger = group.querySelector('.nav-more-btn');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        var opening = !group.classList.contains('open');
+        groups.forEach(function (item) { item.classList.remove('open'); });
+        if (opening) group.classList.add('open');
+      });
+    });
+    document.addEventListener('click', function (event) {
+      var inside = false;
+      groups.forEach(function (group) { if (group.contains(event.target)) inside = true; });
+      if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
+    });
+  })();
+  </script></body>
+</html>
+
+
+
+
+
