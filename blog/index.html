@@ -149,23 +149,35 @@
 
     /* Blog List */
     .blog-container {
-      max-width: 800px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 4rem 2rem;
     }
     .blog-card {
-      display: block;
-      padding: 2rem 0;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem 0;
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
-      transition: padding 0.2s;
+      transition: transform 0.2s;
     }
     .blog-card:hover {
-      padding-left: 1rem;
+      transform: translateX(6px);
     }
     .blog-card:hover { text-decoration: none; }
     .blog-card:hover .blog-card-title { color: var(--accent); }
+    .blog-card-image {
+      width: 240px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+    }
+    .blog-card-content { min-width: 0; }
     .blog-card-date {
       color: var(--muted);
       font-size: 0.85rem;
@@ -197,6 +209,18 @@
       font-weight: 600;
       padding: 0.2rem 0.6rem;
       border-radius: 4px;
+    }
+    @media (max-width: 700px) {
+      .blog-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .blog-card-image {
+        width: 100%;
+      }
+      .blog-card:hover {
+        transform: none;
+      }
     }
     .blog-empty {
       text-align: center;
@@ -638,11 +662,17 @@
           const date = new Date(p.date + 'T12:00:00');
           const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
           const tags = (p.tags || []).map(t => `<span class="blog-tag">${t}</span>`).join('');
+          const imageSrc = p.image
+            ? (p.image.startsWith('../') ? `/${p.image.replace(/^\.\.\//, '')}` : `/blog/${p.image}`)
+            : '/images/fis.blog.hero.final.png';
           return `<a href="/blog/${p.slug}.html" class="blog-card">
-            <div class="blog-card-date">${dateStr}</div>
-            <div class="blog-card-title">${p.title}</div>
-            <div class="blog-card-excerpt">${p.excerpt}</div>
-            <div class="blog-card-tags">${tags}</div>
+            <img class="blog-card-image" src="${imageSrc}" alt="" loading="lazy">
+            <div class="blog-card-content">
+              <div class="blog-card-date">${dateStr}</div>
+              <div class="blog-card-title">${p.title}</div>
+              <div class="blog-card-excerpt">${p.excerpt}</div>
+              <div class="blog-card-tags">${tags}</div>
+            </div>
           </a>`;
         }).join('');
       })
