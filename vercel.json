@@ -2,6 +2,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/deepseek-cheap-again",
+      "destination": "/blog/deepseek-cheap-again.html"
+    },
+    {
       "source": "/client-login",
       "destination": "/client-login.html"
     }
