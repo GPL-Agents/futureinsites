@@ -638,7 +638,7 @@
           const date = new Date(p.date + 'T12:00:00');
           const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
           const tags = (p.tags || []).map(t => `<span class="blog-tag">${t}</span>`).join('');
-          return `<a href="${p.slug}.html" class="blog-card">
+          return `<a href="/blog/${p.slug}.html" class="blog-card">
             <div class="blog-card-date">${dateStr}</div>
             <div class="blog-card-title">${p.title}</div>
             <div class="blog-card-excerpt">${p.excerpt}</div>
