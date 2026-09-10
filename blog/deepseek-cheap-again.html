@@ -281,6 +281,9 @@
       border-radius: 8px;
       border: 1px solid var(--border);
     }
+    .post-content .featured-image.source-document img {
+      max-width: 680px;
+    }
     .post-content .featured-image .caption {
       font-size: 0.8rem;
       color: var(--muted);
@@ -582,6 +585,10 @@
       <p>The notice defines peak periods as 01:00 to 04:00 UTC and 06:00 to 10:00 UTC, Monday through Friday. All other hours are off peak.</p>
       <p>The new rates cut off peak fresh input by about 32 percent, output by about 9 percent, and cached input by about 57 percent compared with the August V4 Flash prices.</p>
       <p>There is another important change. V4.1 Flash is now called through the <code>deepseek-flash</code> API model name. The older <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> names temporarily route to the new model. DeepSeek says V4 Pro will remain available at its existing price until 12:00 Beijing time on September 14. After that, and until V4.1 Pro arrives, requests to the Pro model will be routed to V4.1 Flash and billed at the lower Flash rate.</p>
+      <div class="featured-image source-document">
+        <img src="deepseek-v4-1-flash-release-notice.png" alt="DeepSeek's September 10, 2026 customer notice announcing the V4.1 Flash release, API prices, and V4 Pro transition" loading="lazy" />
+        <div class="caption">DeepSeek's September 10, 2026 customer notice confirms the V4.1 Flash prices and the planned transition from V4 Pro.</div>
+      </div>
       <h3>What changed in our own platform</h3>
       <p>We saw the operational impact immediately in the AI routing configuration behind our own OpenClaw platform. A live API check on September 10 found that our existing <code>deepseek-v4-flash</code> route still worked, but DeepSeek returned <code>deepseek-flash</code>, confirming that the older identifier was already serving V4.1 Flash. The legacy <code>deepseek-chat</code> and <code>deepseek-reasoner</code> identifiers also returned the same Flash model in our test. That meant a route we had treated as a fallback was no longer a true fallback at all.</p>
       <p>The release also made our internal cost assumptions stale. Our catalog still expected $0.14 per million input tokens and $0.28 per million output tokens. The new off peak price is $0.15 for fresh input and $0.60 for output, while cached input falls to $0.003. Without an update, our cost reporting would materially understate output expense.</p>
