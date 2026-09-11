@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">FutureInSites</title>
+  <desc id="desc">FutureInSites, AI for Small Business</desc>
+  <defs>
+    <linearGradient id="brandGradient" x1="190" y1="180" x2="1010" y2="1020" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2DD4FF"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="60%">
+      <stop offset="0" stop-color="#17356A"/>
+      <stop offset="1" stop-color="#0B0C10"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" rx="160" fill="url(#glow)"/>
+  <g transform="translate(470 190) scale(3.25)">
+    <line x1="14" y1="14" x2="14" y2="66" stroke="url(#brandGradient)" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="14" y1="14" x2="54" y2="14" stroke="url(#brandGradient)" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="54" y1="14" x2="34" y2="40" stroke="url(#brandGradient)" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="14" y1="40" x2="52" y2="40" stroke="url(#brandGradient)" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="14" y1="66" x2="26" y2="74" stroke="url(#brandGradient)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="14" cy="14" r="8" fill="url(#brandGradient)"/>
+    <circle cx="54" cy="14" r="6" fill="url(#brandGradient)"/>
+    <circle cx="34" cy="40" r="6" fill="url(#brandGradient)"/>
+    <circle cx="52" cy="40" r="5.5" fill="url(#brandGradient)"/>
+    <circle cx="14" cy="66" r="6" fill="url(#brandGradient)"/>
+    <circle cx="26" cy="74" r="4.5" fill="url(#brandGradient)"/>
+  </g>
+  <text x="600" y="650" text-anchor="middle" fill="url(#brandGradient)" font-family="Manrope, Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="-3">FutureInSites</text>
+  <text x="600" y="750" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="43" font-weight="500" letter-spacing="4">AI FOR SMALL BUSINESS</text>
+</svg>
