@@ -3032,7 +3032,7 @@
         var excerpt = document.getElementById('research-blog-excerpt');
         if (!card || !img || !title || !excerpt) return;
         card.href = 'blog/' + post.slug + '.html';
-        if (post.image) { img.src = 'blog/' + post.image; img.alt = post.title || ''; }
+        if (post.homepageImage || post.image) { img.src = 'blog/' + (post.homepageImage || post.image); img.alt = post.title || ''; }
         title.textContent   = post.title   || '';
         excerpt.textContent = post.excerpt  || '';
       })

@@ -1,5 +1,20 @@
 [
   {
+    "slug": "how-does-an-llm-know-anything",
+    "title": "How Does an LLM Know Anything?",
+    "date": "2026-09-17",
+    "excerpt": "AI can answer without searching because training changes the model itself. Learn how that works, why sources disappear, and why fluent answers can still be wrong.",
+    "author": "Greg Loeffelholz",
+    "tags": [
+      "AI Education",
+      "Large Language Models",
+      "Hallucinations",
+      "AI Research"
+    ],
+    "image": "llm-knowledge-blog-card.png",
+    "homepageImage": "llm-knowledge-homepage-rotation.png"
+  },
+  {
     "slug": "deepseek-cheap-again",
     "title": "DeepSeek Is Cheap Again. Is It Worth the Risk?",
     "date": "2026-09-10",

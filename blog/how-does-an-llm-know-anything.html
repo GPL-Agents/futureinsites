@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Does an LLM Know Anything? | FutureInSites Blog</title>
+  <meta name="description" content="AI can answer without searching because training changes the model itself. Learn how that works, why sources disappear, and why fluent answers can still be wrong." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0B0C10;
+      --dark2: #12141A;
+      --accent: #2563EB;
+      --accent-lt: #EFF6FF;
+      --cyan: #2DD4FF;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E4E7EE;
+      --muted: #64748B;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-wordmark:hover { text-decoration: none; }
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-wordmark-tagline { font-size: 0.68rem; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }
+    .back-link {
+      padding: 1.5rem 2rem 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .back-link a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .back-link a:hover { opacity: 1; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .post-header {
+      margin-top: 64px;
+      padding: 5rem 2rem 2rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      text-align: center;
+    }
+    .post-header .post-date {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .post-header h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      max-width: 1040px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.2;
+    }
+    .post-header .post-excerpt {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .post-header .post-author {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .post-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .post-content h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--dark);
+    }
+    .post-content h3 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+      color: var(--dark);
+    }
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #333;
+    }
+    .post-content ul, .post-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .post-content li {
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    .post-content strong {
+      color: var(--dark);
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--bg-alt);
+      font-style: italic;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content .callout {
+      background: var(--accent-lt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--accent);
+    }
+    .post-content .callout strong {
+      color: var(--accent);
+    }
+    .post-content .featured-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .post-content .featured-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .post-content .featured-image.source-document img {
+      max-width: 680px;
+    }
+    .post-content .featured-image .caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+    .post-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .post-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .post-back:hover { text-decoration: underline; }
+    /* ─── FOOTER ─── */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+
+    .footer-brand {}
+
+    .footer-vert-divider {
+      background: #DCE5F0;
+      align-self: stretch;
+    }
+
+    .footer-link-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0 2rem;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: #64748B;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-social a {
+      color: #64748B;
+      display: inline-flex;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: #64748B;
+      line-height: 1.7;
+    }
+
+    .footer-col-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1769E0;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.55rem;
+    }
+
+    .footer-col ul a {
+      color: #0B234A;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: #1769E0; }
+
+    @media (max-width: 760px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .footer-vert-divider {
+        height: 1px;
+        align-self: auto;
+        margin: 1.75rem 0;
+      }
+      .footer-link-cols {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-link-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+</style>
+  <style id="fis-global-header-v2">
+    nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
+    .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
+    .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
+    .nav-wordmark-text { display:flex!important; flex-direction:column!important; gap:0!important; overflow:visible!important; }
+    .nav-brand-name { font-family:'Manrope',system-ui,sans-serif!important; font-size:1.15rem!important; font-weight:800!important; letter-spacing:-.025em!important; line-height:1!important; white-space:nowrap!important; display:block!important; background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important; background-clip:text!important; -webkit-background-clip:text!important; color:transparent!important; -webkit-text-fill-color:transparent!important; }
+    .nav-wordmark-tagline { font-size:.7rem!important; font-weight:400!important; color:#64748b!important; line-height:1.2!important; margin-top:2px!important; display:block!important; width:100%!important; white-space:nowrap!important; letter-spacing:.04em!important; }
+    .nav-links { display:flex!important; gap:2rem!important; list-style:none!important; margin:0!important; padding:0!important; }
+    .nav-links a { color:#64748b!important; text-decoration:none!important; font-size:.82rem!important; font-weight:500!important; letter-spacing:.01em!important; transition:color .2s!important; }
+    .nav-links a:hover,.nav-links a.active { color:#0f172a!important; }
+    .nav-cta { position:absolute!important; right:3rem!important; font-size:.8rem!important; font-weight:600!important; color:#fff!important; background:#2563eb!important; text-decoration:none!important; padding:.5rem 1.3rem!important; border-radius:100px!important; }
+    .nav-hamburger { display:none!important; position:absolute!important; right:1.5rem!important; background:none!important; border:0!important; cursor:pointer!important; padding:.4rem!important; flex-direction:column!important; gap:5px!important; }
+    .nav-hamburger span { display:block!important; width:22px!important; height:2px!important; background:#475569!important; border-radius:2px!important; }
+    .nav-more { position:relative!important; }
+    .nav-more-btn { cursor:pointer!important; user-select:none!important; }
+    .nav-more-dropdown { display:none!important; position:absolute!important; top:calc(100% + 6px)!important; left:50%!important; transform:translateX(-50%)!important; background:#fff!important; border:1px solid #e2e8f0!important; border-radius:8px!important; padding:.35rem 0!important; min-width:170px!important; list-style:none!important; box-shadow:0 8px 24px rgba(0,0,0,.10)!important; z-index:300!important; }
+    .nav-more-dropdown li { margin:0!important; padding:0!important; }
+    .nav-more-dropdown a { display:block!important; padding:.55rem 1.2rem!important; color:#374151!important; font-size:.82rem!important; white-space:nowrap!important; }
+    .nav-more-dropdown a:hover { color:#0f172a!important; background:#f8f9fb!important; }
+    .nav-more.open .nav-more-dropdown { display:block!important; }
+    @media (max-width:640px) {
+      nav { padding:0 1.5rem!important; }
+      .nav-wordmark { left:1.5rem!important; }
+      .nav-logo { height:30px!important; }
+      .nav-wordmark-tagline { font-size:.6rem!important; }
+      .nav-cta { display:none!important; }
+      .nav-hamburger { display:flex!important; }
+      .nav-links { display:none!important; }
+      .nav-links.open { display:flex!important; flex-direction:column!important; position:absolute!important; top:64px!important; left:0!important; right:0!important; background:#fff!important; padding:.5rem 1.5rem 1.2rem!important; gap:0!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 4px 12px rgba(0,0,0,.06)!important; z-index:199!important; }
+      .nav-links.open li { width:100%!important; }
+      .nav-links.open a { display:block!important; padding:.7rem 0!important; border-bottom:1px solid #f1f5f9!important; font-size:.88rem!important; color:#334155!important; }
+      .nav-more-dropdown { position:static!important; transform:none!important; background:transparent!important; border:0!important; box-shadow:none!important; padding:0 0 0 1rem!important; min-width:auto!important; }
+      .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
+    }
+  
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }</style>  <link rel="canonical" href="https://www.futureinsites.com/blog/how-does-an-llm-know-anything.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How Does an LLM Know Anything?" />
+  <meta property="og:description" content="AI can answer without searching because training changes the model itself. Learn how that works, why sources disappear, and why fluent answers can still be wrong." />
+  <meta property="og:url" content="https://www.futureinsites.com/blog/how-does-an-llm-know-anything.html" />
+  <meta property="og:image" content="https://www.futureinsites.com/blog/llm-knowledge-article-hero.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How Does an LLM Know Anything?" />
+  <meta name="twitter:description" content="AI can answer without searching because training changes the model itself. Learn how that works, why sources disappear, and why fluent answers can still be wrong." />
+  <meta name="twitter:image" content="https://www.futureinsites.com/blog/llm-knowledge-article-hero.png" />
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">AI for Small Business</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../solutions.html">Solutions</a></li>
+          <li><a href="../approach.html">Our Approach</a></li>
+          <li><a href="../consumer.html">Consumer AI</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../case-studies.html">Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../our-story.html">Our Story</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </nav>
+
+  <article>
+    <header class="post-header">
+      <div class="post-date">September 17, 2026</div>
+      <h1>How Does an LLM Know Anything?</h1>
+      <p class="post-excerpt">How AI learns, why it can answer without searching, and why it can confidently get things wrong</p>
+      <p class="post-author">By Greg Loeffelholz</p>
+    </header>
+
+    <div class="post-content">
+
+      <p><em>How AI learns, why it can answer without searching, and why it can confidently get things wrong</em></p>
+      <p>Ask ChatGPT a simple question:</p>
+      <blockquote>Who was the first president of the United States?</blockquote>
+      <p>It will answer George Washington almost immediately.</p>
+      <p>It probably did not search the internet. It did not open an encyclopedia or query a database of presidents. Unless you asked it to research the question, it may not be able to tell you which book, website, or document established the fact.</p>
+      <p>So how does it know?</p>
+      <p>The answer helps explain one of the most confusing things about large language models. An AI can know an extraordinary number of things and still produce a false statement with complete confidence.</p>
+      <p>To understand hallucinations, it helps to first understand how an LLM knows anything at all.</p>
+      <div class="featured-image">
+        <img src="llm-knowledge-article-hero.png" alt="Text and images flowing through learned layers toward a grounded answer, with a faint uncertain alternative" />
+      </div>
+      <h2>It starts with training data</h2>
+      <p>Large language models are trained on very large collections of information. The exact mix varies by model and provider. OpenAI, for example, says its foundation models use publicly available information, information accessed through partners, and information provided or generated by users, human trainers, and researchers.</p>
+      <p>Imagine that the training material contains many sentences like these:</p>
+      <ul>
+        <li>George Washington was the first president of the United States.</li>
+        <li>America's first president, George Washington, took office in 1789.</li>
+        <li>Who was the first U.S. president? George Washington.</li>
+        <li>Washington served as the nation's first president from 1789 to 1797.</li>
+      </ul>
+      <p>An LLM is not simply collecting those sentences into a giant searchable database. It is learning patterns and relationships from them.</p>
+      <p>That learning begins with something surprisingly basic: numbers.</p>
+      <h2>Step 1: Turn text into numbers</h2>
+      <p>Computers do not understand the word <em>king</em> the way a person does. They work with numbers.</p>
+      <p>Before a model can process a sentence, the text is divided into units called <strong>tokens</strong>. A token can be a whole word, part of a word, punctuation, or another piece of text.</p>
+      <p>The model represents those tokens with lists of numbers called <strong>vectors</strong>. A simple vector might look like this:</p>
+      <p><code>[3.2, 1.7, 4.6]</code></p>
+      <p>You can picture those three numbers as a location in a three-dimensional space. Draw an arrow from zero to that location, and the arrow is a vector.</p>
+      <p>Real model representations are much larger and more complex. The useful idea is simply that language can be represented mathematically, allowing a computer to compare and transform relationships among pieces of text.</p>
+      <h2>Step 2: Relationships appear in the numbers</h2>
+      <p>Now imagine mathematical representations for <em>king</em>, <em>queen</em>, <em>man</em>, <em>woman</em>, <em>dog</em>, <em>cat</em>, <em>president</em>, <em>country</em>, <em>Paris</em>, and <em>France</em>.</p>
+      <p>When concepts appear in related contexts across large amounts of text, their numerical representations can develop useful relationships. One famous result from early word-embedding research was:</p>
+      <blockquote>King - Man + Woman ≈ Queen</blockquote>
+      <p>The researchers did not explicitly program the rule that a female king is called a queen. The system learned a relationship from patterns in language. The numerical direction from <em>man</em> to <em>woman</em> resembled the direction from <em>king</em> to <em>queen</em>.</p>
+      <p>This is a helpful teaching example, but it is not a literal diagram of how ChatGPT stores facts today. Modern Transformer models are much more sophisticated. Their internal representations change with context and move through many layers. Knowledge is distributed across many learned parameters, not stored as tidy pairs of word vectors.</p>
+      <h2>Step 3: Add more dimensions than we can draw</h2>
+      <p>We use two or three dimensions in illustrations because humans can see them.</p>
+      <p>A computer does not share that limitation. A vector can contain hundreds or thousands of numbers. We cannot draw that space, but a model can still calculate within it.</p>
+      <p>Those extra dimensions let the system represent far richer patterns than the king and queen example suggests. They also give the model room to distinguish meaning based on context.</p>
+      <h2>Step 4: Context changes what a word means</h2>
+      <p>Consider the word <em>bank</em>:</p>
+      <ul>
+        <li>She deposited her paycheck at the bank.</li>
+        <li>They sat on the bank of the river.</li>
+      </ul>
+      <p>The spelling is identical, but the meaning is not.</p>
+      <p>Modern language models do not have to give <em>bank</em> one permanent representation. As a sentence passes through the model's layers, surrounding words influence how each token is represented. In the first sentence, <em>bank</em> develops relationships with ideas such as money, deposits, loans, and accounts. In the second, it moves toward rivers, water, shores, and streams.</p>
+      <p>This ability to account for relationships among different parts of the input is central to the Transformer architecture used by modern LLMs. The architecture's attention mechanism helps the model weigh relevant parts of a sequence while building context.</p>
+      <p>You do not need the mathematics of attention to understand the central point: the model continually transforms numerical representations based on the language around them.</p>
+      <h2>Step 5: Predict, compare, adjust, repeat</h2>
+      <p>One of the basic tasks used to train a language model is predicting what comes next.</p>
+      <p>Suppose a piece of training text says:</p>
+      <blockquote>The dog chased the _____.</blockquote>
+      <p>Early in training, the model's prediction might be poor. After seeing enormous amounts of language, it becomes much better at estimating which continuations fit the context. It might assign far more probability to <em>ball</em> than to <em>democracy</em>.</p>
+      <p>During training, the prediction is compared with what actually appeared in the text. The numerical values inside the model, called <strong>weights</strong> or <strong>parameters</strong>, are adjusted slightly so future predictions improve.</p>
+      <p>Then the process repeats:</p>
+      <ol>
+        <li>Read training text.</li>
+        <li>Predict the next token.</li>
+        <li>Compare the prediction with the actual token.</li>
+        <li>Adjust the parameters slightly.</li>
+        <li>Try again across an enormous amount of data.</li>
+      </ol>
+      <p>The training material itself supplies the target. A person does not need to label every completion by hand.</p>
+      <h2>Step 6: Billions of small adjustments become learned knowledge</h2>
+      <p>Now return to George Washington.</p>
+      <p>The model may encounter his name in many contexts involving <em>president</em>, <em>United States</em>, <em>first</em>, <em>1789</em>, <em>Revolutionary War</em>, <em>Virginia</em>, and <em>Mount Vernon</em>. Every example can contribute a small adjustment to the model.</p>
+      <p>There is no need for one internal record that says:</p>
+      <p><code>FIRST_US_PRESIDENT = GEORGE_WASHINGTON</code></p>
+      <p>Instead, the relationship becomes distributed across the network. Eventually, when someone asks who the first U.S. president was, <em>George Washington</em> is overwhelmingly consistent with what the model has learned.</p>
+      <p>The model can answer without looking it up.</p>
+      <p>Researchers often call this <strong>parametric knowledge</strong>. It is information learned during training and incorporated into the model's parameters. The model can use that information without retrieving the original source.</p>
+      <h2>So where did the source go?</h2>
+      <p>This is one of the clearest differences among an LLM, a search engine, and research.</p>
+      <ul>
+        <li><strong>LLM:</strong> An answer generated from learned internal patterns.</li>
+        <li><strong>Search:</strong> External information and links to possible sources.</li>
+        <li><strong>Research:</strong> A conclusion supported by identifiable and evaluated evidence.</li>
+      </ul>
+      <p>Many people know that George Washington was the first president without remembering the teacher, textbook, documentary, or conversation where they first learned it. They retained the conclusion but lost its provenance.</p>
+      <p>An LLM does not remember like a person, but the analogy is useful. Learned information can remain available even when the system producing the answer cannot point to its original source.</p>
+      <p>Modern AI products can also search the web, retrieve documents, and perform research. Those are additional capabilities layered around or connected to the model. They should not be confused with the knowledge already encoded in the model's parameters.</p>
+      <h2>This is also the beginning of hallucination</h2>
+      <p>Ask who the first U.S. president was and the model says George Washington. Correct.</p>
+      <p>Now ask about an obscure person, a little-known company, or a book that received almost no attention.</p>
+      <p>The model is still doing what it was trained to do: generating the next token based on learned patterns and the current context.</p>
+      <p>But the relevant patterns may be weak. Sources may conflict. The fact may have appeared rarely. Two real people may have similar biographies. Several accurate details may be combined into an event that never happened.</p>
+      <p>The model can still produce an answer, and that answer can sound exactly as fluent as the George Washington response.</p>
+      <p>That is the central connection. The mechanism that lets an LLM answer without searching is closely related to the mechanism that can produce something that sounds like knowledge but is false.</p>
+      <p>This does not mean vectors alone cause hallucinations. Hallucination is broader than that. It can reflect the training objective, the available data, the prompt and context, the way a response is generated, and the incentives used during later training and evaluation.</p>
+      <p>Recent OpenAI research highlights another important factor: systems are often rewarded for guessing rather than admitting uncertainty. If a benchmark gives a model no credit for saying "I don't know," a lucky guess can score better than an honest refusal. That can encourage confident answers even when evidence is weak.</p>
+      <h2>Post-training shapes how the knowledge is used</h2>
+      <p>Pretraining gives a model much of its general language ability and learned information. Developers then use additional stages, generally called <strong>post-training</strong>, to shape how the model responds.</p>
+      <p>Post-training can include human-created examples, preference feedback, reinforcement learning, automated feedback, and other methods. It can make a model more helpful, safer, and better at following instructions.</p>
+      <p>A useful approximation is that pretraining builds much of the model's general capability and post-training shapes how that capability is used. The boundary is not absolute. Post-training can also change knowledge and capabilities.</p>
+      <h2>Knowing is not the same as proving</h2>
+      <p>This distinction matters most when the consequences of being wrong are high.</p>
+      <p>If you ask an LLM to explain photosynthesis, suggest workshop topics, or brainstorm product names, you may be comfortable using its learned knowledge without demanding a source for every sentence.</p>
+      <p>If you ask what a new regulation requires, what a company reported last quarter, or what current medical evidence says about a treatment, an unsupported answer is not enough. You need evidence.</p>
+      <p>That may require the AI to search current information, retrieve authoritative documents, compare sources, or conduct research with citations you can verify.</p>
+      <p>The practical question is not only, "Can the AI answer?"</p>
+      <p>It is also, "What is supporting the answer?"</p>
+      <p>An LLM can generate an answer from what it learned. Search can retrieve information. Research can establish and document the evidence supporting a conclusion. Modern AI products can combine all three, but users still need to know which mode is doing the work.</p>
+      <p>When ChatGPT answers instantly, the interesting question may be, "How does it know?"</p>
+      <p>When the answer matters, ask one more:</p>
+      <blockquote>Can it prove it?</blockquote>
+      <h2>Sources and further reading</h2>
+      <ul>
+        <li><a href="https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed" target="_blank" rel="noopener">OpenAI: How ChatGPT and our foundation models are developed</a></li>
+        <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Vaswani et al.: Attention Is All You Need</a></li>
+        <li><a href="https://www.microsoft.com/en-us/research/publication/linguistic-regularities-in-continuous-space-word-representations/" target="_blank" rel="noopener">Mikolov, Yih, and Zweig: Linguistic Regularities in Continuous Space Word Representations</a></li>
+        <li><a href="https://aclanthology.org/2020.emnlp-main.437/" target="_blank" rel="noopener">Roberts, Raffel, and Shazeer: How Much Knowledge Can You Pack Into the Parameters of a Language Model?</a></li>
+        <li><a href="https://openai.com/index/why-language-models-hallucinate/" target="_blank" rel="noopener">OpenAI: Why language models hallucinate</a></li>
+      </ul>
+
+      <hr />
+
+      <p><em>FutureInSites helps small businesses use AI with a clear understanding of the task, the evidence, and the cost of being wrong. <a href="../contact.html">Get in touch</a> if your team needs help choosing or building dependable AI tools.</em></p>
+
+      <p style="margin-top: 2rem;"><a href="index.html" class="post-back">&larr; Back to Blog</a></p>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="../approach.html">Our Approach</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../ai-readiness.html">Assessment</a></li>
+            <li><a href="../consumer.html">Consumer AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="../our-story.html">Our Story</a></li>
+            <li><a href="../team.html">Team</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Resources</p>
+          <ul>
+            <li><a href="../case-studies.html">Case Studies</a></li>
+            <li><a href="../ai-vendor-landscape.html">AI Landscape</a></li>
+            <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* Dropdown toggles (handles multiple .nav-more elements) */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
+  <script src="../cookie-banner.js"></script>
+  <script id="fis-global-header-v2-script">
+  (function () {
+    var existingNav = document.querySelector('nav');
+    if (existingNav) {
+      var cleanNav = existingNav.cloneNode(true);
+      existingNav.parentNode.replaceChild(cleanNav, existingNav);
+    }
+    var btn = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () { menu.classList.toggle('open'); });
+      document.addEventListener('click', function (event) {
+        if (!btn.contains(event.target) && !menu.contains(event.target)) menu.classList.remove('open');
+      });
+    }
+    var groups = document.querySelectorAll('.nav-more');
+    groups.forEach(function (group) {
+      var trigger = group.querySelector('.nav-more-btn');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        var opening = !group.classList.contains('open');
+        groups.forEach(function (item) { item.classList.remove('open'); });
+        if (opening) group.classList.add('open');
+      });
+    });
+    document.addEventListener('click', function (event) {
+      var inside = false;
+      groups.forEach(function (group) { if (group.contains(event.target)) inside = true; });
+      if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
+    });
+  })();
+  </script></body>
+</html>
