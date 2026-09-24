@@ -1,4 +1,19 @@
 [
+    {
+        "slug":  "ai-model-bake-off",
+        "title":  "The Great AI Model Bake-Off: Same Brief, Five Models, One Clear Winner",
+        "date":  "2026-09-24",
+        "excerpt":  "In June we argued that multi-model strategy is table stakes. Then we tested the claim: one brief, five models, one template, one renderer, one pass each. The expensive models did not win. Here is what the bake-off showed, and what it means for how you buy AI.",
+        "author":  "Greg Loeffelholz",
+        "tags":  [
+            "AI Strategy",
+            "Model Selection",
+            "Multi-Model",
+            "AI Evaluation",
+            "Cost Optimization"
+        ],
+        "image":  "ai-model-bakeoff.png"
+    },
   {
     "slug": "how-does-an-llm-know-anything",
     "title": "How Does an LLM Know Anything?",
