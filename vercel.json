@@ -36,6 +36,26 @@
   ],
   "redirects": [
     {
+      "source": "/head-of-ai",
+      "destination": "/greg-loeffelholz",
+      "permanent": true
+    },
+    {
+      "source": "/head-of-ai.html",
+      "destination": "/greg-loeffelholz",
+      "permanent": true
+    },
+    {
+      "source": "/hire-greg",
+      "destination": "/greg-loeffelholz",
+      "permanent": true
+    },
+    {
+      "source": "/hire-greg.html",
+      "destination": "/greg-loeffelholz",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
