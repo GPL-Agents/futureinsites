@@ -1012,6 +1012,19 @@
 
     <p>So the most precise statement is: <strong>ChatGPT is an AI application with agentic capabilities. In some modes and tasks, it functions as an AI agent.</strong></p>
 
+    <h3>Agents do not have to come from a chatbot</h3>
+    <p>An AI agent does not have to come from ChatGPT, Claude, or another general-purpose assistant. It can be built into specialized third-party software.</p>
+    <p>Buildr is a preconstruction platform for general contractors, and Kit is its AI agent. Buildr describes Kit as an agent that can read emails and project documents, evaluate information, update CRM records, draft proposals, flag conflicts, and use the result of one step to decide what to do next <a href="#ref32">[32]</a>. Based on that published description, Kit reasonably qualifies as an AI agent. Buildr is the platform that contains and operates it.</p>
+    <p>The same distinction applies to products that let customers create their own agents:</p>
+    <ul>
+      <li>The agent builder is the platform.</li>
+      <li>The configured worker you create is the agent.</li>
+      <li>The underlying LLM is the AI model used by that agent.</li>
+      <li>Connected applications, APIs, calculators, browsers, and databases are its tools.</li>
+    </ul>
+    <p>Not everything marketed as an "agent" behaves like one. The test is whether it receives a goal, chooses among possible steps or tools, observes the results, and adjusts what it does next. If it does, it is reasonably an agent, even if its job is narrow. If it simply follows a fixed sequence, such as "when an email arrives, summarize it and enter the result in this field," it is better described as an AI-powered automation or an agentic workflow.</p>
+    <p>There is therefore a spectrum: LLM feature &rarr; AI automation &rarr; constrained agent &rarr; general-purpose agent &rarr; multi-agent platform.</p>
+    <p>A narrowly configured Buildr worker can be a genuine agent without being as broadly capable as Muse, ChatGPT, or Claude <a href="#ref33">[33]</a>. "Agent" describes how the system operates, not how large, independent, or intelligent it is.</p>
     <h3>Why the distinction matters</h3>
 
     <p>The difference is not academic. Everything that waits to be used is safe by default, because a person starts it and a person stops it. An agent starts itself inside its loop and keeps going, so the same design that makes it useful also makes it the part that needs bounds. Define the goal tightly, grant only the permissions it needs, and watch what it does. That is the whole design problem, and it is the same whether the agent runs one task or a thousand.</p>
@@ -1183,6 +1196,8 @@
       <li id="ref29">UK National Cyber Security Centre, "The near-term impact of AI on the cyber threat" (assessment). <a href="https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat" target="_blank" rel="noopener">ncsc.gov.uk</a></li>
       <li id="ref30">Europol, Internet Organised Crime Threat Assessment (IOCTA) 2025. <a href="https://www.europol.europa.eu/publications-events/main-reports/iocta-report" target="_blank" rel="noopener">europol.europa.eu</a></li>
       <li id="ref31">CISA, "#StopRansomware Guide." <a href="https://www.cisa.gov/resources-tools/resources/stopransomware-guide" target="_blank" rel="noopener">cisa.gov</a></li>
+      <li id="ref32">Buildr, "Kit, Buildr's AI Agent" (product page). <a href="https://buildr.com/crm/" target="_blank" rel="noopener">buildr.com</a></li>
+      <li id="ref33">Meta, "Introducing Muse: The World's First Personal AI Agent Built for Everyone" (Sep 8, 2026). <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" target="_blank" rel="noopener">about.fb.com</a></li>
     </ol>
 
     <div class="article-footer">
