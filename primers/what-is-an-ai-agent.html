@@ -835,17 +835,14 @@
 
     <p>Six parts make up a typical agent. Only one of them is AI.</p>
 
-    <p><strong>Instructions (its programming).</strong> The goals and rules written in plain language. This is the agent's job description, and it shapes every decision the agent makes.</p>
-
-    <p><strong>Orchestrator and loop.</strong> The code that runs the loop: it gives the model the current state, takes back the model's proposed action, checks and runs it, and repeats until the goal is met or the budget runs out. This loop is what separates an agent from a single answer.</p>
-
-    <p><strong>LLM (generative AI).</strong> The AI part. It reads the current situation and proposes the next action. It may be one model or several working together, and it is still one component inside the program.</p>
-
-    <p><strong>Tools.</strong> The connections that let the agent act in the world: APIs, web browsing, code, and files. Tools are what turn a proposed action into an effect.</p>
-
-    <p><strong>Memory.</strong> Working state for the task in front of it, plus longer-term notes it carries forward. Memory is what lets an agent build on what it already did instead of starting over.</p>
-
-    <p><strong>Guardrails.</strong> Permissions, logging, and monitoring that bound what the agent is allowed to do and record what it did. Guardrails run across every other part.</p>
+    <ul>
+      <li><strong>Instructions (its programming).</strong> The goals and rules written in plain language. This is the agent's job description, and it shapes every decision the agent makes.</li>
+      <li><strong>Orchestrator and loop.</strong> The code that runs the loop: it gives the model the current state, takes back the model's proposed action, checks and runs it, and repeats until the goal is met or the budget runs out. This loop is what separates an agent from a single answer.</li>
+      <li><strong>LLM (generative AI).</strong> The AI part. It reads the current situation and proposes the next action. It may be one model or several working together, and it is still one component inside the program.</li>
+      <li><strong>Tools.</strong> The connections that let the agent act in the world: APIs, web browsing, code, and files. Tools are what turn a proposed action into an effect.</li>
+      <li><strong>Memory.</strong> Working state for the task in front of it, plus longer-term notes it carries forward. Memory is what lets an agent build on what it already did instead of starting over.</li>
+      <li><strong>Guardrails.</strong> Permissions, logging, and monitoring that bound what the agent is allowed to do and record what it did. Guardrails run across every other part.</li>
+    </ul>
 
     <div class="pull-quote">
       The model is one part. Everything else is ordinary software.
