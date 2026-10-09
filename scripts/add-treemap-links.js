@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 // add-treemap-links.js
-// Post-processes landscape-ai.svg so every vendor logo is a link to that
-// company's site. URLs come from the vendor directory cards in
-// landscape/index.html. Re-run this after regenerating the treemap with
-// scripts/build-treemap.js.
+// Post-processes landscape-ai.svg so every vendor logo links to that company's
+// site. URLs come from the vendor directory cards in landscape/index.html.
+// Re-run this after regenerating the treemap with scripts/build-treemap.js.
 //
-// Mapping: an <image> embeds a logo as a base64 data URI. We match the decoded
-// bytes to a file in images/vendor-logos/, then look up that file's card URL.
-// Fallback: match the vendor name text that follows the image to a card name.
+// Mapping: an <image> embeds a logo as a base64 data URI. Primary key is the
+// vendor name <text> that immediately follows the image (unique per vendor);
+// fallback is matching the decoded bytes to a file in images/vendor-logos/.
 //
 // Run: node scripts/add-treemap-links.js
 
@@ -21,15 +20,20 @@ const DIRECTORY = path.join(ROOT, 'landscape', 'index.html');
 const LOGO_DIR = path.join(ROOT, 'images', 'vendor-logos');
 
 // 1) Build the vendor maps from the directory page.
+//    Each card is <a href="URL" ... class="vendor-card"> ... </a>, so anchor on
+//    the whole element -- the href precedes the class attribute in the same tag.
 const dirHtml = fs.readFileSync(DIRECTORY, 'utf8');
-const cards = dirHtml.split('class="vendor-card"').slice(1);
 const byFile = new Map();
 const byName = new Map();
-for (const ch of cards) {
-  const url = (ch.match(/href="([^"]+)"/) || [])[1];
-  if (!url) continue;
-  const file = (ch.match(/vendor-logos\/([^"?]+)"/) || [])[1];
-  const name = (ch.match(/class="vendor-name">([^<]+)</) || [])[1];
+let cardCount = 0;
+const CARD = /<a\s+href="([^"]+)"[^>]*class="vendor-card"[^>]*>([\s\S]*?)<\/a>/g;
+let cm;
+while ((cm = CARD.exec(dirHtml))) {
+  cardCount++;
+  const url = cm[1];
+  const inner = cm[2];
+  const file = (inner.match(/vendor-logos\/([^"?]+)"/) || [])[1];
+  const name = (inner.match(/class="vendor-name">([^<]+)</) || [])[1];
   if (name) byName.set(name.trim().replace(/&amp;/g, '&'), url);
   if (file) byFile.set(file, url);
 }
@@ -48,18 +52,21 @@ svg = svg.replace(/<a\b[^>]*>\s*(<image\b[^>]*\/>)\s*<\/a>/g, '$1');
 
 // 4) Wrap each logo <image> with its company link.
 const IMG = /<image\b[^>]*href="data:([^;]+);base64,([A-Za-z0-9+/=]+)"[^>]*\/>/g;
-let linked = 0;
+let linked = 0, byNameHits = 0, byFileHits = 0;
 const unmatched = [];
 svg = svg.replace(IMG, (full, mime, b64, offset) => {
-  const buf = Buffer.from(b64, 'base64');
-  const file = hash2file.get(crypto.createHash('sha1').update(buf).digest('hex'));
-  let url = file ? byFile.get(file) : null;
+  const tail = svg.slice(offset + full.length, offset + full.length + 500);
+  const label = (tail.match(/>([^<>]{1,60})<\/text>/) || [])[1];
+  const labelName = label ? label.trim().replace(/&amp;/g, '&') : null;
+  let url = labelName ? byName.get(labelName) : null;
+  if (url) byNameHits++;
   if (!url) {
-    const tail = svg.slice(offset + full.length, offset + full.length + 500);
-    const t = (tail.match(/>([^<>]{2,60})<\/text>/) || [])[1];
-    if (t) url = byName.get(t.trim().replace(/&amp;/g, '&'));
+    const buf = Buffer.from(b64, 'base64');
+    const file = hash2file.get(crypto.createHash('sha1').update(buf).digest('hex'));
+    url = file ? byFile.get(file) : null;
+    if (url) byFileHits++;
+    if (!url) { unmatched.push(labelName || file || '(unknown)'); return full; }
   }
-  if (!url) { unmatched.push(file || '(unknown)'); return full; }
   linked++;
   return `<a href="${url}" target="_blank" rel="noopener">${full}</a>`;
 });
@@ -70,5 +77,6 @@ if (!svg.includes('id="treemap-link-style"')) {
 }
 
 fs.writeFileSync(SVG, svg, 'utf8');
-console.log(`treemap links: ${linked} logos linked, ${unmatched.length} unmatched`);
+console.log(`directory cards: ${cardCount} | names: ${byName.size} | files: ${byFile.size}`);
+console.log(`treemap links: ${linked} linked (by name ${byNameHits}, by file ${byFileHits}), ${unmatched.length} unmatched`);
 if (unmatched.length) console.log('unmatched:', unmatched.join(', '));
