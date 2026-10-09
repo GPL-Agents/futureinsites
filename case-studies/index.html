@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Primers | FutureInSites</title>
-  <meta name="description" content="FutureInSites resources: articles, references, and analysis on enterprise AI strategy, the AI vendor landscape, and AI investment diligence." />
+  <title>Case Studies | FutureInSites</title>
+  <meta name="description" content="FutureInSites case studies in AI strategy and digital transformation." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,38 +186,6 @@
       padding: 9rem 2rem 5rem;
       background: var(--dark);
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
-    }
-
-    .page-header::after {
-      content: '';
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 320px;
-      background: radial-gradient(ellipse at center, rgba(45,212,255,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .page-header-inner {
-      position: relative;
-      z-index: 10;
-      max-width: 960px;
-      margin: 0 auto;
     }
 
     .page-header .eyebrow {
@@ -226,8 +194,8 @@
       letter-spacing: -0.03em;
       text-transform: uppercase;
       color: var(--cyan);
-      line-height: 1.05;
       margin-bottom: 1rem;
+      line-height: 1.05;
     }
 
     .page-header h1 {
@@ -237,163 +205,340 @@
       letter-spacing: -0.03em;
       line-height: 1.1;
       margin-bottom: 1rem;
-      text-wrap: balance;
     }
 
     .page-header p {
       font-size: 1rem;
-      color: rgba(255,255,255,0.5);
-      max-width: 820px;
+      color: rgba(255,255,255,0.45);
+      max-width: 760px;
       margin: 0 auto;
       line-height: 1.7;
     }
 
-    /* ─── RESOURCES LIST ─── */
-    .res-list {
+    /* ─── CASE STUDIES LIST ─── */
+    .cs-list {
       max-width: 960px;
       margin: 0 auto;
       padding: 4rem 2rem 6rem;
     }
 
-    .res-section-label {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin: 0 0 1.4rem;
+    /* Premier case study card */
+    .cs-premier {
+      background: var(--dark);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.25s;
     }
 
-    .res-section-label:not(:first-child) { margin-top: 3rem; }
+    .cs-premier:hover { border-color: rgba(37,99,235,0.35); }
 
-    .res-section-label .section-name {
+    .cs-premier-content {
+      padding: 3rem;
+    }
+
+    .cs-tag {
+      display: block;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: none;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+    }
+
+    .cs-client {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.5rem;
+    }
+
+    .cs-premier-content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+
+    .cs-premier-content p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .cs-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .cs-pill {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.22rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    .cs-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .cs-cta:hover { opacity: 0.85; }
+
+    .cs-premier-visual {
+      background: #0B0C10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 2rem 1.8rem;
+    }
+
+    .cs-lulu-badge {
+      text-align: center;
+    }
+
+    .cs-lulu-badge img { filter: brightness(0) invert(1); opacity: 0.85; height: 30px; width: auto; }
+
+    .cs-lulu-badge .badge-label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 0.5rem;
+    }
+
+    .cs-img-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      width: 100%;
+    }
+
+    .cs-img-stack img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cs-metrics-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .cs-metric-mini {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 0.9rem;
+    }
+
+    .cs-metric-mini .val {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .cs-metric-mini .lbl {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.3;
+      display: block;
+    }
+
+    /* Practice section label */
+    .cs-practice-label {
+      margin: 0 0 1.4rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-practice-label .practice-name {
+      display: block;
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       text-transform: uppercase;
       color: var(--cyan);
       line-height: 1.05;
-      white-space: nowrap;
     }
 
-    .res-section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      align-self: center;
-      min-width: 30px;
+    .cs-practice-label .practice-desc {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      margin-top: 0.5rem;
     }
 
-    /* Unified resource card (used for both references and articles) */
-    .res-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+    /* Standard case study card (Oracle, Alphabet) */
+    .cs-card {
+      background: var(--dark);
+      border-radius: 12px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1fr 280px;
-      margin-bottom: 1.2rem;
-      transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      color: inherit;
-      min-height: 220px;
+      grid-template-columns: 1fr 320px;
+      margin-bottom: 1.4rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.25s, transform 0.2s;
     }
 
-    .res-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(37,99,235,0.06);
-    }
+    .cs-card.oracle:hover { border-color: rgba(199,70,52,0.45); transform: translateY(-2px); }
+    .cs-card.alphabet:hover { border-color: rgba(66,133,244,0.45); transform: translateY(-2px); }
+    .cs-card.tesla:hover { border-color: rgba(227,25,55,0.55); transform: translateY(-2px); }
 
-    .res-card-content {
-      padding: 2rem 2.2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .cs-card-content { padding: 2.6rem 2.8rem; }
 
-    .res-card-meta {
+    .cs-card .cs-tag {
       font-size: 0.62rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.7rem;
+      padding: 0.32rem 0.8rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 1.3rem;
+      border: 1px solid;
     }
 
-    .res-card h3 {
-      font-size: 1.25rem;
+    .cs-card.oracle .cs-tag {
+      color: #E26956;
+      background: rgba(199,70,52,0.15);
+      border-color: rgba(199,70,52,0.32);
+    }
+
+    .cs-card.alphabet .cs-tag {
+      color: #6BA4F8;
+      background: rgba(66,133,244,0.15);
+      border-color: rgba(66,133,244,0.32);
+    }
+
+    .cs-card.tesla .cs-tag {
+      color: #FF4D6B;
+      background: rgba(227,25,55,0.16);
+      border-color: rgba(227,25,55,0.38);
+    }
+
+    .cs-card h2 {
+      font-size: 1.3rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #FFFFFF;
       letter-spacing: -0.02em;
       line-height: 1.3;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
     }
 
-    .res-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.1rem;
+    .cs-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
     }
 
-    .res-card-link {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    /* Image-style visual (right panel) */
-    .res-card-image {
-      background-size: cover;
-      background-position: center;
-      background-color: var(--bg-alt);
-      border-left: 1px solid var(--border);
-    }
-
-    /* Dark / SVG-style visual (right panel, used when no image is available) */
-    .res-card-visual {
-      background: #0E1320;
+    .cs-card-visual {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
       padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      border-left: 1px solid var(--border);
+      background: #0E0B0B;
     }
 
-    .res-card-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 24px 24px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    .cs-card.alphabet .cs-card-visual { background: #0E0F12; }
+    .cs-card.tesla .cs-card-visual { background: #000000; }
+
+    /* Tesla wordmark */
+    .cs-tesla-wordmark {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      font-size: 1.5rem;
+      color: #E31937;
+      text-transform: uppercase;
+      text-indent: 0.4em;
+      line-height: 1;
     }
 
-    .res-visual-icon {
-      position: relative;
-      z-index: 2;
-      width: 64px;
-      height: 64px;
-      color: var(--cyan);
+    /* Oracle wordmark */
+    .cs-oracle-wordmark {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: 1.85rem;
+      color: #E26956;
+      text-transform: uppercase;
+      line-height: 1;
     }
 
-    .res-visual-icon svg { width: 100%; height: 100%; display: block; }
+    /* Google four-color wordmark */
+    .cs-google-wordmark {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 2rem;
+      line-height: 1;
+    }
 
-    .res-visual-label {
-      position: relative;
-      z-index: 2;
-      font-size: 0.58rem;
+    .cs-google-wordmark .l1 { color: #4285F4; }
+    .cs-google-wordmark .l2 { color: #EA4335; }
+    .cs-google-wordmark .l3 { color: #FBBC04; }
+    .cs-google-wordmark .l4 { color: #4285F4; }
+    .cs-google-wordmark .l5 { color: #34A853; }
+    .cs-google-wordmark .l6 { color: #EA4335; }
+
+    .cs-visual-label {
+      font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.3);
       text-align: center;
+      line-height: 1.5;
     }
 
     /* ─── FOOTER ─── */
@@ -454,21 +599,14 @@
     @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
     
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 760px) {
+      .cs-premier { grid-template-columns: 1fr; }
+      .cs-premier-visual { min-height: 200px; }
+      .cs-card { grid-template-columns: 1fr; }
+      .cs-card-visual { min-height: 160px; padding: 2.4rem 2rem; }
+      .cs-card-content { padding: 2rem 1.8rem; }
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
-      .res-card {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .res-card-image,
-      .res-card-visual {
-        min-height: 180px;
-        border-left: none;
-        border-top: 1px solid var(--border);
-        order: -1;
-      }
     }
     /* Client Portal responsive nav fit */
     @media (max-width: 900px) and (min-width: 641px) {
@@ -518,7 +656,7 @@
           <li><a href="../resources.html">Resources</a></li>
           <li><a href="../landscape/index.html">AI Vendor Landscape</a></li>
           <li><a href="../landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          <li><a href="../case-studies/index.html">Case Studies</a></li>
+          <li><a href="index.html">Case Studies</a></li>
           <li><a href="../blog/index.html">Blog</a></li>
         </ul>
       </li>
@@ -536,59 +674,217 @@
 
   <!-- PAGE HEADER -->
   <div class="page-header">
-    <div class="page-header-inner">
-      <p class="eyebrow">Resources</p>
-      <h1>Primers</h1>
-      <p>Plain-language guides from the FutureInSites practice. Start with the definition of an AI agent, then go deeper on how to build one, where AI creates value, and how we got here.</p>
-    </div>
+    <p class="eyebrow">Our Work</p>
+    <h1>Case Studies</h1>
+    <p>In-depth AI strategy and AI investment diligence work, from operator-side transformation to investment-grade analysis of how AI is reshaping incumbent economics.</p>
   </div>
 
-  <!-- RESOURCES LIST -->
-  <div class="res-list">
+  <!-- CASE STUDIES LIST -->
+  <div class="cs-list">
 
-<div class="res-section-label">
-      <span class="section-name">Primers</span>
+    <!-- Practice section label: Enterprise AI Strategy -->
+    <div class="cs-practice-label">
+      <span class="practice-name">Enterprise AI Strategy</span>
+      <span class="practice-desc">Operator-side AI transformation for growth-stage and established brands</span>
     </div>
 
-    <a href="ai-for-executives.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Start Here · Primer</div>
-        <h3>AI for Executives: A Plain-Language Guide</h3>
-        <p>What AI actually is, what it can do, and where it creates value for leaders who don't code. The start-here primer in the FutureInSites series, written for executives and board members.</p>
-        <span class="res-card-link">Read the article →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('../articles/chiefofstaff.main.png'); background-color:#0B0C10;"></div>
-    </a>
+    <!-- Premier Case Study: Lululemon -->
+    <div class="cs-premier">
+      <div class="cs-premier-content">
+        <span class="cs-tag">Premier Case Study</span>
+        <div class="cs-client">lululemon athletica &nbsp;·&nbsp; Retail / Athleisure</div>
+        <h2>From PAVE to Platform: Building the AI Foundation for Lululemon's Next Growth Chapter</h2>
+        <p>A comprehensive AI strategy for a $10B+ premium athleisure brand navigating slowing U.S. growth, intensifying competition, and the appointment of a first-ever Chief AI & Technology Officer. We delivered a three-pillar AI framework, use case prioritization matrix, governance structure, and phased investment roadmap.</p>
 
-    <a href="history-of-generative-ai.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Primer</div>
-        <h3>History of Generative AI: How LLMs Got Here</h3>
-        <p>Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next.</p>
-        <span class="res-card-link">Read the article →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('../articles/RoadtoGenAI.png');"></div>
-    </a>
+        <div class="cs-metrics-mini">
+          <div class="cs-metric-mini">
+            <span class="val">$400–600M</span>
+            <span class="lbl">Projected Revenue Impact</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">$85–110M</span>
+            <span class="lbl">3-Year Investment Range</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">12</span>
+            <span class="lbl">Initiatives Evaluated</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">4–7x</span>
+            <span class="lbl">Projected Return on Investment</span>
+          </div>
+        </div>
 
-    <a href="what-is-an-ai-agent.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Primer</div>
-        <h3>What Is an AI Agent?</h3>
-        <p>An AI agent is a software program with exactly one AI part inside it. A plain-language primer on the six parts of an agent, and how to tell an agent from everything else in the stack.</p>
-        <span class="res-card-link">Read the article →</span>
-      </div>
-      <div class="res-card-image" style="background-image:url('../articles/ai-agent-compartments.png'); background-color:#0B0C10;"></div>
-    </a>
+        <div class="cs-pills">
+          <span class="cs-pill">AI Readiness Assessment</span>
+          <span class="cs-pill">Use Case Prioritization</span>
+          <span class="cs-pill">Competitive Benchmarking</span>
+          <span class="cs-pill">Implementation Roadmap</span>
+          <span class="cs-pill">AI Governance</span>
+          <span class="cs-pill">Financial Business Case</span>
+        </div>
 
-    <a href="building-ai-agents.html" class="res-card">
-      <div class="res-card-content">
-        <div class="res-card-meta">Primer</div>
-        <h3>Building AI Agents: An 8-Step Framework</h3>
-        <p>A production AI agent rests on eight discrete decisions: scope, prompt design, model choice, tools, memory, orchestration, interface, and evaluation. A short executive walkthrough of each step.</p>
-        <span class="res-card-link">Read the article →</span>
+        <a href="lululemon.html" class="cs-cta">Read Full Case Study →</a>
       </div>
-      <div class="res-card-image" style="background-image:url('../articles/agent.primer1.png'); background-color:#0B0C10;"></div>
-    </a>
+
+      <div class="cs-premier-visual">
+        <div class="cs-lulu-badge">
+          <img src="../images/logo-black-full.svg" alt="lululemon">
+          <span class="badge-label">Premier Case Study · AI Strategy</span>
+        </div>
+        <div class="cs-img-stack">
+          <img src="../images/lululemon-1-1653574674022.webp" alt="lululemon" />
+          <img src="../images/Lululemon-p-1080.jpg" alt="lululemon" />
+          <img src="../images/maxresdefault.jpg" alt="lululemon" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Practice section label: AI Investment & Strategic Diligence -->
+    <div class="cs-practice-label" style="margin-top:3.5rem;">
+      <span class="practice-name">AI Investment &amp; Strategic Diligence</span>
+      <span class="practice-desc">Investment-grade analysis of AI businesses and AI's impact on incumbent economics</span>
+    </div>
+
+    <!-- Oracle Case Study -->
+    <div class="cs-card oracle">
+      <div class="cs-card-content">
+        <span class="cs-tag">Investment Committee Memo</span>
+        <div class="cs-client">Oracle Corporation (NYSE: ORCL) &nbsp;·&nbsp; AI Infrastructure Diligence</div>
+        <h2>Oracle trades at 2x fair value.</h2>
+        <p>A two-scenario DCF modeling Oracle's $455B AI backlog against GPU economic obsolescence and customer concentration risk across NVIDIA, AMD, and OpenAI. Memo recommends Strong Underweight / Sell with new normal fair value of $75 per share. Includes derivative implementation overlay and SAP / Workday pair trade.</p>
+
+        <div class="cs-metrics-mini">
+          <div class="cs-metric-mini">
+            <span class="val">$75</span>
+            <span class="lbl">New Normal Fair Value</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">~55%</span>
+            <span class="lbl">Implied Downside</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">$455B</span>
+            <span class="lbl">RPO Analyzed</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">4 Pillars</span>
+            <span class="lbl">Evidence Base</span>
+          </div>
+        </div>
+
+        <div class="cs-pills">
+          <span class="cs-pill">AI Infrastructure Diligence</span>
+          <span class="cs-pill">Two-Scenario DCF</span>
+          <span class="cs-pill">GPU Economic Obsolescence</span>
+          <span class="cs-pill">Customer Concentration</span>
+          <span class="cs-pill">Derivatives Implementation</span>
+        </div>
+
+        <a href="oracle.html" class="cs-cta">Read Full Case Study →</a>
+      </div>
+
+      <div class="cs-card-visual">
+        <div class="cs-oracle-wordmark">ORACLE</div>
+        <div class="cs-visual-label">Investment Memo · April 2026<br>AI Infrastructure Economics</div>
+      </div>
+    </div>
+
+    <!-- Alphabet Case Study -->
+    <div class="cs-card alphabet">
+      <div class="cs-card-content">
+        <span class="cs-tag">Forecasting Case</span>
+        <div class="cs-client">Alphabet (NASDAQ: GOOGL) &nbsp;·&nbsp; AI Economics for Incumbents</div>
+        <h2>AI is making Alphabet more valuable, not less.</h2>
+        <p>A two-engine business architecture modeling Search/Services and Cloud separately, with AI Overviews monetization, Gemini long-query monetization, and the 2026 CapEx / D&amp;A trough explicitly preserved. Net call: AI raises Alphabet's continuing value, modestly. Maintain position; the 2026 entry point will look worse than fair value.</p>
+
+        <div class="cs-metrics-mini">
+          <div class="cs-metric-mini">
+            <span class="val">$240B</span>
+            <span class="lbl">Cloud Backlog Modeled</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">+17% YoY</span>
+            <span class="lbl">Q4 2025 Search Print</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">30.7%</span>
+            <span class="lbl">2025 Cloud Margin</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">2 Engines</span>
+            <span class="lbl">Architecture Modeled</span>
+          </div>
+        </div>
+
+        <div class="cs-pills">
+          <span class="cs-pill">AI Economics</span>
+          <span class="cs-pill">Two-Engine Architecture</span>
+          <span class="cs-pill">AI Overviews Monetization</span>
+          <span class="cs-pill">Cloud CapEx Modeling</span>
+          <span class="cs-pill">Continuing Value Analysis</span>
+        </div>
+
+        <a href="alphabet.html" class="cs-cta">Read Full Case Study →</a>
+      </div>
+
+      <div class="cs-card-visual">
+        <div class="cs-google-wordmark">
+          <span class="l1">G</span><span class="l2">o</span><span class="l3">o</span><span class="l4">g</span><span class="l5">l</span><span class="l6">e</span>
+        </div>
+        <div class="cs-visual-label">Forecasting Case · May 2026<br>AI Economics for Incumbents</div>
+      </div>
+    </div>
+
+    <!-- Practice section label: Marketing & Analytics -->
+    <div class="cs-practice-label" style="margin-top:3.5rem;">
+      <span class="practice-name">Marketing &amp; Analytics</span>
+      <span class="practice-desc">Applied NLP and social-listening analysis for brand, communications, and IR teams</span>
+    </div>
+
+    <!-- Tesla Case Study -->
+    <div class="cs-card tesla">
+      <div class="cs-card-content">
+        <span class="cs-tag">Sentiment Analysis</span>
+        <div class="cs-client">Tesla, Inc. (NASDAQ: TSLA) &nbsp;·&nbsp; Automotive / Brand Analytics</div>
+        <h2>What 2.4M tweets say about Tesla's brand.</h2>
+        <p>A natural-language-processing case study comparing VADER, a default BERT classifier, and a BERT model fine-tuned on Sentiment140 across ~2.4 million Tesla tweets from 2018 and 2020. Findings on engagement-weighted sentiment, hashtag evolution, and a clean architectural lesson on why training-data match matters more than model size.</p>
+
+        <div class="cs-metrics-mini">
+          <div class="cs-metric-mini">
+            <span class="val">~2.4M</span>
+            <span class="lbl">Tweets Analyzed</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">3</span>
+            <span class="lbl">Sentiment Models Compared</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">2:1</span>
+            <span class="lbl">Positive-to-Negative Ratio</span>
+          </div>
+          <div class="cs-metric-mini">
+            <span class="val">+50pp</span>
+            <span class="lbl">Default vs Fine-Tuned BERT Swing</span>
+          </div>
+        </div>
+
+        <div class="cs-pills">
+          <span class="cs-pill">NLP &amp; Sentiment Analysis</span>
+          <span class="cs-pill">VADER</span>
+          <span class="cs-pill">Fine-Tuned BERT</span>
+          <span class="cs-pill">Engagement-Weighted Sentiment</span>
+          <span class="cs-pill">Hashtag Evolution</span>
+        </div>
+
+        <a href="tesla.html" class="cs-cta">Read Full Case Study →</a>
+      </div>
+
+      <div class="cs-card-visual">
+        <div class="cs-tesla-wordmark">TESLA</div>
+        <div class="cs-visual-label">Sentiment Analysis · February 2026<br>NLP &amp; Social Listening</div>
+      </div>
+    </div>
 
   </div>
 

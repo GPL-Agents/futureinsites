@@ -77,22 +77,22 @@
     },
     {
       "source": "/head-of-ai",
-      "destination": "/greg-loeffelholz",
+      "destination": "/internal/greg-loeffelholz",
       "permanent": true
     },
     {
       "source": "/head-of-ai.html",
-      "destination": "/greg-loeffelholz",
+      "destination": "/internal/greg-loeffelholz",
       "permanent": true
     },
     {
       "source": "/hire-greg",
-      "destination": "/greg-loeffelholz",
+      "destination": "/internal/greg-loeffelholz",
       "permanent": true
     },
     {
       "source": "/hire-greg.html",
-      "destination": "/greg-loeffelholz",
+      "destination": "/internal/greg-loeffelholz",
       "permanent": true
     },
     {
@@ -104,6 +104,146 @@
       "source": "/team.html",
       "destination": "/our-story",
       "permanent": false
+    },
+    {
+      "source": "/ai-vendor-landscape",
+      "destination": "/landscape",
+      "permanent": true
+    },
+    {
+      "source": "/ai-vendor-landscape.html",
+      "destination": "/landscape",
+      "permanent": true
+    },
+    {
+      "source": "/ai-vendor-landscape-full",
+      "destination": "/landscape/ai-vendor-landscape-full",
+      "permanent": true
+    },
+    {
+      "source": "/ai-vendor-landscape-full.html",
+      "destination": "/landscape/ai-vendor-landscape-full",
+      "permanent": true
+    },
+    {
+      "source": "/ai-bolt-ons",
+      "destination": "/landscape/ai-bolt-ons",
+      "permanent": true
+    },
+    {
+      "source": "/ai-bolt-ons.html",
+      "destination": "/landscape/ai-bolt-ons",
+      "permanent": true
+    },
+    {
+      "source": "/ai-tech-landscape",
+      "destination": "/landscape/ai-tech-landscape",
+      "permanent": true
+    },
+    {
+      "source": "/ai-tech-landscape.html",
+      "destination": "/landscape/ai-tech-landscape",
+      "permanent": true
+    },
+    {
+      "source": "/lululemon",
+      "destination": "/case-studies/lululemon",
+      "permanent": true
+    },
+    {
+      "source": "/lululemon.html",
+      "destination": "/case-studies/lululemon",
+      "permanent": true
+    },
+    {
+      "source": "/tesla",
+      "destination": "/case-studies/tesla",
+      "permanent": true
+    },
+    {
+      "source": "/tesla.html",
+      "destination": "/case-studies/tesla",
+      "permanent": true
+    },
+    {
+      "source": "/oracle",
+      "destination": "/case-studies/oracle",
+      "permanent": true
+    },
+    {
+      "source": "/oracle.html",
+      "destination": "/case-studies/oracle",
+      "permanent": true
+    },
+    {
+      "source": "/alphabet",
+      "destination": "/case-studies/alphabet",
+      "permanent": true
+    },
+    {
+      "source": "/alphabet.html",
+      "destination": "/case-studies/alphabet",
+      "permanent": true
+    },
+    {
+      "source": "/detail",
+      "destination": "/case-studies/detail",
+      "permanent": true
+    },
+    {
+      "source": "/detail.html",
+      "destination": "/case-studies/detail",
+      "permanent": true
+    },
+    {
+      "source": "/bibliography",
+      "destination": "/case-studies/bibliography",
+      "permanent": true
+    },
+    {
+      "source": "/bibliography.html",
+      "destination": "/case-studies/bibliography",
+      "permanent": true
+    },
+    {
+      "source": "/greg-loeffelholz",
+      "destination": "/internal/greg-loeffelholz",
+      "permanent": true
+    },
+    {
+      "source": "/greg-loeffelholz.html",
+      "destination": "/internal/greg-loeffelholz",
+      "permanent": true
+    },
+    {
+      "source": "/beta-board",
+      "destination": "/internal/beta-board",
+      "permanent": true
+    },
+    {
+      "source": "/beta-board.html",
+      "destination": "/internal/beta-board",
+      "permanent": true
+    },
+    {
+      "source": "/gmail-signature",
+      "destination": "/internal/gmail-signature",
+      "permanent": true
+    },
+    {
+      "source": "/gmail-signature.html",
+      "destination": "/internal/gmail-signature",
+      "permanent": true
+    },
+    {
+      "source": "/gmail-signature-template",
+      "destination": "/internal/gmail-signature-template",
+      "permanent": true
+    },
+    {
+      "source": "/gmail-signature-template.html",
+      "destination": "/internal/gmail-signature-template",
+      "permanent": true
     },
     {
       "source": "/(.*)",

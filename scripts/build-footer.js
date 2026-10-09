@@ -18,9 +18,10 @@ const END = '<!-- FOOTER:END -->';
 const SKIP_DIRS = new Set(['.git', 'node_modules', 'archive', 'clients', 'tools', 'partials', '.vercel']);
 const EXCLUDE = new Set([
   // Case studies keep their own footers
-  'lululemon.html', 'tesla.html', 'oracle.html', 'alphabet.html', 'bibliography.html',
+  'case-studies/lululemon.html', 'case-studies/tesla.html', 'case-studies/oracle.html',
+  'case-studies/alphabet.html', 'case-studies/bibliography.html',
   // Unlisted personal pages ("Shared by direct link only")
-  'greg-loeffelholz.html', 'hire-greg.html',
+  'internal/greg-loeffelholz.html', 'hire-greg.html',
 ]);
 
 const args = new Set(process.argv.slice(2));
