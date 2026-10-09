@@ -36,6 +36,46 @@
   ],
   "redirects": [
     {
+      "source": "/ai-for-executives",
+      "destination": "/primers/ai-for-executives",
+      "permanent": true
+    },
+    {
+      "source": "/ai-for-executives.html",
+      "destination": "/primers/ai-for-executives",
+      "permanent": true
+    },
+    {
+      "source": "/history-of-generative-ai",
+      "destination": "/primers/history-of-generative-ai",
+      "permanent": true
+    },
+    {
+      "source": "/history-of-generative-ai.html",
+      "destination": "/primers/history-of-generative-ai",
+      "permanent": true
+    },
+    {
+      "source": "/building-ai-agents",
+      "destination": "/primers/building-ai-agents",
+      "permanent": true
+    },
+    {
+      "source": "/building-ai-agents.html",
+      "destination": "/primers/building-ai-agents",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-an-ai-agent",
+      "destination": "/primers/what-is-an-ai-agent",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-an-ai-agent.html",
+      "destination": "/primers/what-is-an-ai-agent",
+      "permanent": true
+    },
+    {
       "source": "/head-of-ai",
       "destination": "/greg-loeffelholz",
       "permanent": true

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI for Executives: A Plain-Language Guide | FutureInSites</title>
-  <meta name="description" content="A short, plain-language guide to what AI actually is, what it can do, and where it creates real value for leaders who don't code. The start-here primer in the FutureInSites series." />
+  <title>History of Generative AI: How LLMs Got Here | FutureInSites</title>
+  <meta name="description" content="Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -310,25 +310,6 @@
     .article-body strong { font-weight: 700; }
     .article-body em { font-style: italic; }
 
-    .article-body h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-      margin: 2.6rem 0 1rem;
-      line-height: 1.3;
-    }
-
-    .article-body a.inline-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(37,99,235,0.3);
-      transition: border-color 0.15s;
-    }
-
-    .article-body a.inline-link:hover { border-bottom-color: var(--accent); }
-
     /* Pull quote */
     .pull-quote {
       margin: 2.6rem 0;
@@ -352,7 +333,19 @@
       margin-bottom: 0.9rem;
     }
 
+    /* Section heading inside article */
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin: 2.6rem 0 1rem;
+      line-height: 1.3;
+    }
+
     /* ─── ARTICLE FIGURE / IMAGES ─── */
+    /* Figures stay within the reading column so images don't blow out the
+       page rhythm. The lightbox provides the readable, zoomed-in view. */
     .article-figure {
       margin: 2.6rem 0;
     }
@@ -422,6 +415,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 720px;
+      padding: 0 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      letter-spacing: 0.02em;
     }
 
     body.lb-open { overflow: hidden; }
@@ -637,6 +649,7 @@
       .article-header-inner { padding: 0 1.5rem; }
       .article-body { padding: 3rem 1.5rem 4rem; }
       .article-cta { padding: 0 1.5rem; }
+      .lightbox-overlay { padding: 1rem; }
     }
     /* Client Portal responsive nav fit */
     @media (max-width: 900px) and (min-width: 641px) {
@@ -651,8 +664,8 @@
     }</style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/fis-favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
@@ -660,8 +673,8 @@
   <!-- NAV -->
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-wordmark">
-      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
         <span class="nav-brand-name">FutureInSites</span>
         <span class="nav-wordmark-tagline">AI for Small Business</span>
@@ -672,47 +685,47 @@
     </button>
     <ul class="nav-links" id="nav-links-menu">
       <li class="nav-more">
-        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="solutions.html">Solutions</a></li>
-          <li><a href="approach.html">Our Approach</a></li>
-          <li><a href="ai-readiness.html">AI Assessment</a></li>
-          <li><a href="consumer.html">Consumer AI</a></li>
+          <li><a href="../solutions.html">Solutions</a></li>
+          <li><a href="../approach.html">Our Approach</a></li>
+          <li><a href="../ai-readiness.html">AI Assessment</a></li>
+          <li><a href="../consumer.html">Consumer AI</a></li>
         </ul>
       </li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai-vendor-landscape.html">AI Vendor Landscape</a></li>
-          <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai-vendor-landscape.html">AI Vendor Landscape</a></li>
+          <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../case-studies.html">Case Studies</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="our-story.html">Our Story</a></li>
-          <li><a href="careers.html">Careers</a></li>
+          <li><a href="../our-story.html">Our Story</a></li>
+          <li><a href="../careers.html">Careers</a></li>
         </ul>
       </li>
       <li><a href="/client-login">Client Portal</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Contact</a>
+    <a href="../contact.html" class="nav-cta">Contact</a>
   </nav>
 
   <!-- ARTICLE HEADER -->
   <div class="article-header">
     <div class="article-header-inner">
-      <a href="resources.html" class="back-link">← Back to Resources</a>
-      <span class="article-eyebrow">Start Here</span>
-      <h1>AI for Executives: A Plain-Language Guide</h1>
-      <p class="article-deck">What AI actually is, what it can do, and where it creates value for leaders who don't code. Read this before the discovery and build primers.</p>
+      <a href="../resources.html" class="back-link">← Back to Resources</a>
+      <span class="article-eyebrow">Primer</span>
+      <h1>History of Generative AI: How LLMs Got Here</h1>
+      <p class="article-deck">Generative AI is not a sudden breakthrough. It is the scaling of six decades of stacked advances in data science and machine learning. A short history of how today's LLMs got here, and what comes next.</p>
       <div class="article-meta">
         <span>FutureInSites</span>
         <span class="dot"></span>
-        <span>10 min read</span>
+        <span>5 min read</span>
       </div>
     </div>
   </div>
@@ -720,79 +733,53 @@
   <!-- ARTICLE BODY -->
   <div class="article-body">
 
-    <p class="lede">AI is not magic, and it is not science fiction. <strong>It is a powerful new way for an organization to work with language, knowledge, and reasoning at speed</strong>, and the leaders who get this right early will compound advantages quickly.</p>
+    <p class="lede">Many people think generative AI is a sudden breakthrough. <strong>It is not.</strong></p>
 
-    <p>This primer is the entry point in the FutureInSites series. It is written for executives, board members, and senior leaders who do not need to become AI experts and do not want a technical lecture, but who will be in conversations about AI for the rest of their careers and need a working mental model.</p>
-
-    <figure class="article-figure">
-      <img src="articles/chiefofstaff.main.png" alt="AI for Executives: a plain-language primer for senior leaders" title="Click to enlarge">
-      <figcaption>The leaders who establish a basic mental model of AI early will have better conversations, make better investments, and waste less time on the wrong questions.</figcaption>
-    </figure>
-
-    <h2>What AI actually is</h2>
-
-    <p>The AI that matters today has been trained on an almost incomprehensibly large amount of text: books, research, legal documents, financial filings, medical literature, news, code, and more. Through that training it developed a working understanding of language, concepts, reasoning, and how ideas connect.</p>
-
-    <p>When you give it a task (write this, summarize that, analyze this, find the flaw in that argument), it draws on that understanding to produce output at a quality and speed no human team can match.</p>
-
-    <p>A few things it is not. It is not a search engine. It is not a robot. It does not think the way humans do. And it is not magic. It is a very powerful tool for working with language, knowledge, and reasoning.</p>
-
-    <div class="pull-quote">
-      Imagine the most well-read, fast-thinking analyst you have ever met, available to you instantly at any hour, across virtually any domain. That is closer to what AI is than anything from a movie.
-    </div>
-
-    <h2>Two modes worth understanding</h2>
-
-    <p>Not all AI does the same thing. For someone thinking about where it creates value, two modes matter most. Understanding the difference makes everything that follows click into place.</p>
-
-    <p><strong>Generative AI</strong> creates something when you give it a task. A draft, a summary, a complex analysis, a first version of a document. You provide the input and direction; it produces the output. Think of it as a brilliant on-demand collaborator who can draft an investor update, summarize a deck, compare two strategic options, or explain an unfamiliar concept in seconds rather than hours.</p>
-
-    <p><strong>Agentic AI</strong> goes further. It does not just answer a question; it takes a sequence of actions on your behalf (searching, compiling, analyzing, monitoring, flagging) autonomously, across multiple steps, while you focus on something else. Think of the difference between an analyst who answers a specific question and a chief of staff who runs the entire process and comes back with a recommendation.</p>
-
-    <p>The distinction matters because the on-ramp is different. Generative AI is available today, requires almost no setup, and lets a leader start building intuition this week. Agentic AI requires more infrastructure but is where the highest-leverage applications live: ongoing monitoring, automated workflows, systems that work overnight. Both are relevant. The right sequence is to start with generative, build intuition for what is possible, then layer in agentic applications where the time savings and insight quality justify it.</p>
+    <p>The blunt truth: what we call "AI" today is not a new invention. It is the scaling of ideas that have existed for decades.</p>
 
     <figure class="article-figure">
-      <img src="articles/chiefofstaff.ref.png" alt="A conceptual desk view of an AI chief of staff: a single dashboard pulling together strategy summary, financial overview, customer insights, risk radar, priorities, and operations snapshot" title="Click to enlarge">
-      <figcaption>An agentic system can act as a "chief of staff" for a leader: continuously pulling, synthesizing, and surfacing what matters across every part of the business.</figcaption>
+      <img src="../articles/GenAI60years.png" alt="Sixty years of AI research milestones, from early symbolic AI through statistical NLP, deep learning, and today's generative models" title="Click to enlarge">
+      <figcaption>Sixty years of stacked advances in symbolic AI, statistical methods, deep learning, and generative models.</figcaption>
     </figure>
 
-    <h2>Where the value lands</h2>
+    <p>At its core, generative AI is a predictive, probabilistic system. What we are seeing today is the result of years of stacked advances in data science and machine learning. What sets this moment apart is not the underlying ideas, but the speed of innovation and the rapid democratization of these capabilities.</p>
 
-    <p>AI creates value in three places inside an organization. Each lands differently, and the strongest programs invest in all three.</p>
+    <h2>From counting words to understanding them</h2>
 
-    <p><strong>For the organization.</strong> Cross-team systems and workflows. Portfolio or business-unit monitoring. Executive briefings synthesized from many data sources. Benchmarks across departments. The leverage is at the firm level: information that previously required a team of analysts now arrives on a leader's desk every Monday morning.</p>
-
-    <p><strong>For a function.</strong> A specific business area. Customer support, deal sourcing, revenue cycle, financial reporting, document review. The leverage is operational density: cognitive work that consumed an entire department gets compressed into a smaller footprint with higher consistency.</p>
-
-    <p><strong>For the leader personally.</strong> Preparation that used to take hours. Decision stress-testing. Communications drafts you refine rather than write from scratch. On-demand expertise across any domain. This is often where the value shows up fastest, and it is the area most senior executives are slowest to explore.</p>
-
-    <h2>What AI is good at, and what it is not yet good at</h2>
-
-    <p>It is honest to name both.</p>
-
-    <p>AI is genuinely powerful at synthesizing large volumes of information, drafting first versions of almost any document, analyzing patterns, explaining concepts at the depth you need, and stress-testing your own thinking by arguing the other side of an argument.</p>
-
-    <p>It is not yet reliable for final judgment calls on high-stakes decisions, blind trust on factual claims (these models can be confidently wrong), or running well without clear direction. Quality of output depends heavily on how well you direct it. Like any capable employee, AI does better work with clear context and good instructions.</p>
-
-    <p>The leader's job stays the same: provide judgment at the decision points, verify anything high-stakes, and set direction. The shift is that everything before and around those decisions becomes dramatically faster.</p>
-
-    <h2>Where to start</h2>
-
-    <p>Most senior leaders do not think in terms of "agents" or "prompts" or "models." They think in terms of people. The cleanest way to make AI concrete is to answer one question, and then take the answer seriously:</p>
+    <p>Early models like Bag of Words treated data as independent inputs. Words were just counts. Pixels were just values. Then came weighting with TF-IDF, introducing the idea that not all signals matter equally. Words like "the" were heavily discounted.</p>
 
     <div class="pull-quote">
-      If you had a brilliant chief of staff, someone who knew everything about your business, had read every document you have ever written, been in every meeting you have ever been in, and was available to you at any hour, what would you have them do first?
+      The real shift came when models stopped just counting words and started learning how words are connected.
     </div>
 
-    <p>Whatever the answer is, that is almost certainly the highest-value first AI use case. The question bypasses the vocabulary problem entirely and goes straight to outcomes. It also produces something concrete enough to build a working demonstration around, not just a presentation.</p>
+    <p>Word2Vec, introduced by Google researchers in 2013, turned words into numbers in a way that captured meaning. Words used in similar ways ended up close together in vector space. From there, models like CNNs and the transformer architecture (introduced in the 2017 paper "Attention Is All You Need") helped systems understand structure and context. This led to systems like BERT, which could interpret meaning based on the words around it, not just the words themselves.</p>
 
-    <h2>From here</h2>
+    <figure class="article-figure">
+      <img src="../articles/RoadtoGenAI.png" alt="The road to generative AI: a visual progression from Bag of Words and TF-IDF, through Word2Vec, CNNs, and BERT, to modern large language models" title="Click to enlarge">
+      <figcaption>The road to today's LLMs: each step built on the last, each one mostly invisible to anyone outside research.</figcaption>
+    </figure>
 
-    <p>Once a basic mental model is in place, the natural next read is <a class="inline-link" href="building-ai-agents.html">Building AI Agents: An 8-Step Framework</a>. It is the technical companion to this primer, walking through the eight decisions that shape every production AI agent. Read it when the conversation moves from "where AI fits" to "how to build it."</p>
+    <h2>From understanding to generation</h2>
+
+    <p>Then came generative AI.</p>
+
+    <p>Generative AI builds directly on this decades-old foundation. Models like GPT, Gemini, and Claude move beyond understanding to generation. Given context, they analyze, predict, and generate new content one piece at a time based on learned probabilities. What feels like intelligence is the result of increasingly powerful pattern recognition, layered over time and trained on a meaningful slice of the public internet.</p>
+
+    <p>This is also not the kind of AI we see in science fiction. These systems are not self-aware or broadly thinking on their own, like Skynet in Terminator. They are still predictive systems. But when they are embedded into workflows that can plan, take action, and iterate toward goals, they begin to look much closer to that vision.</p>
+
+    <h2>What comes next</h2>
+
+    <p>What comes next is not just better models. It is systems built on top of them. Agents that can plan and take actions. Models that use tools and interfaces. Platforms that learn from real-world feedback. The frontier is no longer the model itself. It is what the model is allowed to do.</p>
+
+    <div class="pull-quote">
+      The shift ahead is from predicting what comes next to deciding what to do next.
+    </div>
+
+    <p>For most enterprises, that means the question is no longer "Should we use AI?" It is "Where in our workflows are decisions repetitive enough, and consequences contained enough, to let an AI system actually make them?" The companies that get this right will not be the ones with the biggest models. They will be the ones with the clearest map of which decisions to delegate, which to augment, and which to keep firmly in human hands.</p>
 
     <div class="article-footer">
       <div class="author">Published by <strong>FutureInSites</strong></div>
-      <a href="resources.html" class="article-footer-link">More resources →</a>
+      <a href="../resources.html" class="article-footer-link">More resources →</a>
     </div>
 
   </div>
@@ -801,20 +788,20 @@
   <div class="article-cta">
     <div class="article-cta-inner">
       <div class="article-cta-eyebrow">Work with us</div>
-      <h3>Want to talk through where AI fits for your business?</h3>
-      <p>FutureInSites helps leadership teams build a working mental model, identify the right first use case, and demonstrate value on real data before committing to a full build.</p>
-      <a href="contact.html" class="article-cta-link">Get in touch →</a>
+      <h3>Mapping where AI belongs in your business?</h3>
+      <p>FutureInSites helps enterprises decide which decisions to delegate, augment, or keep human, and builds the strategy and roadmap to get there.</p>
+      <a href="../contact.html" class="article-cta-link">Get in touch →</a>
     </div>
   </div>
 
   <!-- FOOTER -->
   <!-- FOOTER -->
   <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="../css/footer.css">
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="footer-wordmark">FutureInSites</a>
+        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
         <div class="footer-tagline">AI for Small Business</div>
         <div class="footer-social">
           <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
@@ -828,36 +815,36 @@
         <div class="footer-col">
           <p class="footer-col-label">Business</p>
           <ul>
-            <li><a href="approach.html">Our Approach</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="ai-readiness.html">Assessment</a></li>
-            <li><a href="consumer.html">Consumer AI</a></li>
+            <li><a href="../approach.html">Our Approach</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../ai-readiness.html">Assessment</a></li>
+            <li><a href="../consumer.html">Consumer AI</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <p class="footer-col-label">Company</p>
           <ul>
-            <li><a href="our-story.html">Our Story</a></li>
-            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="../our-story.html">Our Story</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
             <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <p class="footer-col-label">Research</p>
           <ul>
-            <li><a href="resources.html">Resources</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="ai-vendor-landscape.html">AI Landscape</a></li>
-            <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../case-studies.html">Case Studies</a></li>
+            <li><a href="../ai-vendor-landscape.html">AI Landscape</a></li>
+            <li><a href="../ai-bolt-ons.html">AI Bolt-Ons</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <p class="footer-col-label">Connect</p>
           <ul>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="careers.html">Careers</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../careers.html">Careers</a></li>
           </ul>
         </div>
       </div>
@@ -871,7 +858,7 @@
       var figs = document.querySelectorAll('.article-figure img');
       if (!figs.length) return;
 
-      function openLightbox(src, alt) {
+      function openLightbox(src, alt, caption) {
         var overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         overlay.setAttribute('role', 'dialog');
@@ -889,12 +876,23 @@
         overlay.appendChild(closeBtn);
         overlay.appendChild(img);
 
+        if (caption) {
+          var cap = document.createElement('div');
+          cap.className = 'lightbox-caption';
+          cap.textContent = caption;
+          overlay.appendChild(cap);
+        }
+
         function close() {
           overlay.remove();
           document.body.classList.remove('lb-open');
           document.removeEventListener('keydown', onKey);
         }
-        function onKey(e) { if (e.key === 'Escape') close(); }
+
+        function onKey(e) {
+          if (e.key === 'Escape') close();
+        }
+
         overlay.addEventListener('click', function (e) {
           if (e.target === overlay || e.target === closeBtn) close();
         });
@@ -906,8 +904,9 @@
       }
 
       figs.forEach(function (img) {
+        var figcaption = img.parentElement ? img.parentElement.querySelector('figcaption') : null;
         img.addEventListener('click', function () {
-          openLightbox(img.src, img.alt);
+          openLightbox(img.src, img.alt, figcaption ? figcaption.textContent : '');
         });
       });
     })();
@@ -959,6 +958,6 @@
     });
   })();
   </script>
-  <script src="cookie-banner.js"></script>
+  <script src="../cookie-banner.js"></script>
 </body>
 </html>
