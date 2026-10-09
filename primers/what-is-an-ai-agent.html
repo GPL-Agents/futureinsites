@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What Is an AI Agent? | FutureInSites</title>
-  <meta name="description" content="An AI agent is a software program with exactly one AI part inside it. A plain-language primer on the six parts of an agent, and how to tell an agent from everything else in the stack." />
+  <meta name="description" content="An AI agent is a software program with one or more AI models at its core. A plain-language primer on the six parts of an agent, and how to tell an agent from everything else in the stack." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -309,6 +309,8 @@
 
     .article-body strong { font-weight: 700; }
     .article-body em { font-style: italic; }
+    .article-body ul { margin: 0 0 1.5rem 1.6rem; }
+    .article-body li { font-size: 1.06rem; color: var(--dark); line-height: 1.85; margin-bottom: 0.4rem; }
 
     /* Pull quote */
     .pull-quote {
@@ -765,11 +767,11 @@
       <a href="../resources.html" class="back-link">← Back to Resources</a>
       <span class="article-eyebrow">Primer</span>
       <h1>What Is an AI Agent?</h1>
-      <p class="article-deck">An AI agent is a software program with exactly one AI part inside it. Here is what that means, what the parts are, and how to tell an agent from everything else in the stack.</p>
+      <p class="article-deck">An AI agent is a software program with one or more AI models at its core. Here is what that means, what the parts are, and how to tell an agent from everything else in the stack.</p>
       <div class="article-meta">
         <span>FutureInSites</span>
         <span class="dot"></span>
-        <span>6 min read</span>
+        <span>7 min read</span>
       </div>
     </div>
   </div>
@@ -779,10 +781,10 @@
 
     <p class="lede">"AI agent" is one of the most used and least defined terms in the stack. The clearest definition is structural: <strong>an AI agent is a software program, and the AI model is only one part inside it.</strong> Everything else that makes it work is ordinary software.</p>
 
-    <p>A model on its own answers a question and stops. It reads text and writes text. An agent is what you get when you wrap that model in a program that can hold a goal, decide the next step, use tools, remember what it has done, and repeat until the work is finished. The model is the one part that reasons. The rest of the program is what turns that reasoning into action.</p>
+    <p>A model on its own answers a question and stops. It reads text and writes text. An agent is what you get when you wrap that model in a program that can hold a goal, decide the next step, use tools, remember what it has done, and repeat until the work is finished. The model is the part that reasons. The rest of the program is what turns that reasoning into action.</p>
 
     <figure class="article-figure">
-      <img src="../articles/ai-agent-compartments.png" alt="The parts of an AI agent: instructions, orchestrator and loop, LLM, tools and skills, memory, and guardrails, arranged around a software program." title="Click to enlarge">
+      <img src="../articles/ai-agent-compartments.png" alt="The parts of an AI agent: instructions, orchestrator and loop, LLM, tools, memory, and guardrails, arranged around a software program." title="Click to enlarge">
       <figcaption>The parts of an AI agent. The model is one part. Everything else is ordinary software.</figcaption>
     </figure>
 
@@ -796,13 +798,13 @@
 
     <p>Six parts make up a typical agent. Only one of them is AI.</p>
 
-    <p><strong>Instructions (its programming).</strong> The goals, rules, and guardrails written in plain language. This is the agent's job description, and it shapes every decision the agent makes.</p>
+    <p><strong>Instructions (its programming).</strong> The goals and rules written in plain language. This is the agent's job description, and it shapes every decision the agent makes.</p>
 
-    <p><strong>Orchestrator and loop.</strong> The logic that decides the next step, runs it, reads the result, and repeats until the goal is met or the budget runs out. This loop is what separates an agent from a single answer.</p>
+    <p><strong>Orchestrator and loop.</strong> The code that runs the loop: it gives the model the current state, takes back the model's proposed action, checks and runs it, and repeats until the goal is met or the budget runs out. This loop is what separates an agent from a single answer.</p>
 
-    <p><strong>LLM (generative AI).</strong> The one AI part. It reads the current situation and reasons about what to do next. It is powerful, and it is still one component inside the program.</p>
+    <p><strong>LLM (generative AI).</strong> The AI part. It reads the current situation and proposes the next action. It may be one model or several working together, and it is still one component inside the program.</p>
 
-    <p><strong>Tools and skills.</strong> The connections that let the agent act in the world: APIs, web browsing, code, and files. Tools are what turn reasoning into an effect.</p>
+    <p><strong>Tools.</strong> The connections that let the agent act in the world: APIs, web browsing, code, and files. Tools are what turn a proposed action into an effect.</p>
 
     <p><strong>Memory.</strong> Working state for the task in front of it, plus longer-term notes it carries forward. Memory is what lets an agent build on what it already did instead of starting over.</p>
 
@@ -831,6 +833,21 @@
     <p>When a product, a feature, or a demo arrives with the word "agent" on the label, ask one question: <strong>does this decide and act on its own, or does it sit there until it is used?</strong> If it decides and acts, it is an agent. If it waits, it is a capability or a connection wearing the word.</p>
 
     <p>That single question does most of the work. It shows where the leverage is, which is the parts that act, and it shows where the controls belong, which is the same parts. An agent that decides and acts is the only part of the stack that needs guardrails, memory you can inspect, and logs you can read.</p>
+
+    <h2>Is ChatGPT an AI agent?</h2>
+
+    <p>ChatGPT is a software product that can host several kinds of AI interaction. Depending on the mode and task, it may operate as:</p>
+
+    <ul>
+      <li>A chatbot that generates a response</li>
+      <li>A tool-using assistant that searches or analyzes files</li>
+      <li>An agent that performs a multistep task through repeated model and tool calls</li>
+      <li>A platform that hosts configured workspace agents</li>
+    </ul>
+
+    <p>A simple chat response is not necessarily agentic. If you ask, "Rewrite this paragraph," ChatGPT may call the model once and return its output. If you ask it to research a topic, inspect files, execute code, evaluate results, and continue until it reaches an answer, ChatGPT is operating as an agent. OpenAI describes this behavior as a sequence of model requests and tool calls coordinated by an agentic harness.</p>
+
+    <p>So the most precise statement is: <strong>ChatGPT is an AI application with agentic capabilities. In some modes and tasks, it functions as an AI agent.</strong></p>
 
     <h2>Why the distinction matters</h2>
 
