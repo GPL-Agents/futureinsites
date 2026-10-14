@@ -814,7 +814,7 @@
       <ul>
         <li><strong>What an agent is.</strong> A software program that uses one or more AI models as one part inside it. The model reasons; the surrounding software holds the goal, chooses the next step, uses tools, remembers what it has done, and repeats until the work is finished. "Agent" describes how a system operates, not how large, independent, or intelligent it is.</li>
         <li><strong>What it is not.</strong> A chatbot, a raw model, a skill, a plugin, and a connector all wait for a trigger. They are capabilities and connections, not deciders. Only two things choose their own steps once they have a goal: a single agent, and a multi-agent system.</li>
-        <li><strong>Why the distinction matters.</strong> Everything that only acts when called is safe by default, because a person starts it and a person stops it. An agent, once started, keeps going: it chooses the next step itself and runs many steps without a person in the loop. That is what makes it the part that needs bounds: a tight goal, the permissions it needs and no more, and logs you can read.</li>
+        <li><strong>Why the distinction matters.</strong> Everything a person drives step by step, or a fixed path a developer wrote, is safe by default. An agent, once it has a goal, chooses and runs its own steps without a person in the loop. That is what makes it the part that needs bounds: a tight goal, the permissions it needs and no more, and logs you can read.</li>
       </ul>
     </div>
 
@@ -995,7 +995,7 @@
 
     <h3>The one question that sorts it</h3>
 
-    <p>When a product, a feature, or a demo arrives with the word "agent" on the label, ask one question: <strong>once it has a goal, does it choose and run its own steps, or follow a path someone else fixed in advance?</strong> If it chooses its own steps, it is an agent. If it follows a path that was fixed in advance, or does one thing when called, it is not.</p>
+    <p>When a product, a feature, or a demo arrives with the word "agent" on the label, ask one question: <strong>once it has a goal, does it choose and run its own steps, or follow steps set by a person or a fixed path?</strong> If it chooses its own steps, it is an agent. If a person sets the steps, or the path is fixed, it is not.</p>
 
     <p>That single question does most of the work. It shows where the leverage is, which is the parts that act, and it shows where the controls belong, which is the same parts. An agent that chooses and runs its own steps is the only part of the stack that needs guardrails, memory you can inspect, and logs you can read.</p>
 
@@ -1029,7 +1029,7 @@
     <p>A narrowly configured Buildr worker can be a genuine agent without being as broadly capable as Muse, ChatGPT, Claude, or an OpenClaw platform <a href="#ref9">[9]</a>. "Agent" describes how the system operates, not how large, independent, or intelligent it is.</p>
     <h3>Why the distinction matters</h3>
 
-    <p>The difference is not academic. Everything that only acts when called is safe by default, because a person starts it and a person stops it. An agent, once started, keeps going inside its loop, so the same design that makes it useful also makes it the part that needs bounds. Define the goal tightly, grant only the permissions it needs, and watch what it does. That is the whole design problem, and it is the same whether the agent runs one task or a thousand.</p>
+    <p>The difference is not academic. Everything a person drives step by step, or a fixed path a developer wrote, is safe by default, because a person starts it or the path bounds it. An agent, once it has a goal, chooses and runs its own steps inside its loop, so the same design that makes it useful also makes it the part that needs bounds. Define the goal tightly, grant only the permissions it needs, and watch what it does. That is the whole design problem, and it is the same whether the agent runs one task or a thousand.</p>
 
     <p>At FutureInSites, this is where every agent engagement starts: agree on what an agent is, then bound what it can do. Clarity here carries through everything you build on top of it.</p>
 
