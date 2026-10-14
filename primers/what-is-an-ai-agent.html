@@ -989,7 +989,7 @@
         </tbody>
       </table>
     </div>
-    <p class="table-caption">The building blocks you see in ChatGPT and Claude. Only the bottom two rows choose their own steps once given a goal. Background material: Wikipedia's background summary of the incident <a href="#ref7">[7]</a>.</p>
+    <p class="table-caption">The building blocks of an AI stack. Only the bottom two rows choose their own steps once given a goal.</p>
 
     <p>The first nine rows are capabilities, connections, and fixed paths. They act only when called. Only the last two rows choose their own steps. Every headline about "AI agents" is about those two rows, and only those rows carry the risks that come with autonomy.</p>
 
@@ -1016,7 +1016,7 @@
 
     <h3>Agents do not have to come from a chatbot</h3>
     <p>An AI agent does not have to come from ChatGPT, Claude, or another general-purpose assistant. It can be built into specialized third-party software.</p>
-    <p>Buildr is a preconstruction platform for general contractors, and Kit is its AI agent. Buildr describes Kit as an agent that can read emails and project documents, evaluate information, update CRM records, draft proposals, flag conflicts, and use the result of one step to decide what to do next <a href="#ref8">[8]</a>. Based on that published description, Kit reasonably qualifies as an AI agent. Buildr is the platform that contains and operates it.</p>
+    <p>Buildr is a preconstruction platform for general contractors, and Kit is its AI agent. Buildr describes Kit as an agent that can read emails and project documents, evaluate information, update CRM records, draft proposals, flag conflicts, and use the result of one step to decide what to do next <a href="#ref7">[7]</a>. Based on that published description, Kit reasonably qualifies as an AI agent. Buildr is the platform that contains and operates it.</p>
     <p>The same distinction applies to products that let customers create their own agents:</p>
     <ul>
       <li>The agent builder is the platform.</li>
@@ -1026,7 +1026,7 @@
     </ul>
     <p>Not everything marketed as an "agent" behaves like one. The test is whether it receives a goal, chooses among possible steps or tools, observes the results, and adjusts what it does next. If it does, it is reasonably an agent, even if its job is narrow. If it simply follows a fixed sequence, such as "when an email arrives, summarize it and enter the result in this field," it is better described as an AI-powered automation or an agentic workflow.</p>
     <p>There is therefore a spectrum: LLM feature &rarr; AI automation &rarr; constrained agent &rarr; general-purpose agent &rarr; multi-agent platform.</p>
-    <p>A narrowly configured Buildr worker can be a genuine agent without being as broadly capable as Muse, ChatGPT, Claude, or an OpenClaw platform <a href="#ref9">[9]</a>. "Agent" describes how the system operates, not how large, independent, or intelligent it is.</p>
+    <p>A narrowly configured Buildr worker can be a genuine agent without being as broadly capable as Muse, ChatGPT, Claude, or an OpenClaw platform <a href="#ref8">[8]</a>. "Agent" describes how the system operates, not how large, independent, or intelligent it is.</p>
     <h3>Why the distinction matters</h3>
 
     <p>The difference is not academic. Everything a person drives step by step, or a fixed path a developer wrote, is safe by default, because a person starts it or the path bounds it. An agent, once it has a goal, chooses and runs its own steps inside its loop, so the same design that makes it useful also makes it the part that needs bounds. Define the goal tightly, grant only the permissions it needs, and watch what it does. That is the whole design problem, and it is the same whether the agent runs one task or a thousand.</p>
@@ -1044,9 +1044,8 @@
       <li id="ref4">OpenAI, "Custom GPT retirement and migration FAQ," OpenAI Help Center (Custom GPTs scheduled to retire Dec 11, 2026). <a href="https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq" target="_blank" rel="noopener">help.openai.com</a></li>
       <li id="ref5">Anthropic, "Introducing the Model Context Protocol" (Nov 25, 2024). <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener">anthropic.com</a></li>
       <li id="ref6">ExploitGym, "Can AI Agents Turn Security Vulnerabilities into Real Attacks?" arXiv:2605.11086 (May 11, 2026). <a href="https://arxiv.org/abs/2605.11086" target="_blank" rel="noopener">arxiv.org</a></li>
-      <li id="ref7">Wikipedia, "OpenAI-HuggingFace incident" (background). <a href="https://en.wikipedia.org/wiki/OpenAI%E2%80%93HuggingFace_incident" target="_blank" rel="noopener">en.wikipedia.org</a></li>
-      <li id="ref8">Buildr, "Kit, Buildr's AI Agent" (product page). <a href="https://buildr.com/crm/" target="_blank" rel="noopener">buildr.com</a></li>
-      <li id="ref9">Meta, "Introducing Muse: The World's First Personal AI Agent Built for Everyone" (Sep 8, 2026). <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" target="_blank" rel="noopener">about.fb.com</a></li>
+      <li id="ref7">Buildr, "Kit, Buildr's AI Agent" (product page). <a href="https://buildr.com/crm/" target="_blank" rel="noopener">buildr.com</a></li>
+      <li id="ref8">Meta, "Introducing Muse: The World's First Personal AI Agent Built for Everyone" (Sep 8, 2026). <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" target="_blank" rel="noopener">about.fb.com</a></li>
     </ol>
 
     <div class="article-footer">
