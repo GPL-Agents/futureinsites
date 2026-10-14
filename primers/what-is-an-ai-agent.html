@@ -813,8 +813,8 @@
       <p class="tldr-label">The short version</p>
       <ul>
         <li><strong>What an agent is.</strong> A software program that uses one or more AI models as one part inside it. The model reasons; the surrounding software holds the goal, chooses the next step, uses tools, remembers what it has done, and repeats until the work is finished. "Agent" describes how a system operates, not how large, independent, or intelligent it is.</li>
-        <li><strong>What it is not.</strong> A chatbot, a raw model, a skill, a plugin, and a connector all wait to be used. They are capabilities and connections, not deciders. Only two things decide and act on their own: a single agent, and a multi-agent system.</li>
-        <li><strong>Why the distinction matters.</strong> Everything that waits to be used is safe by default, because a person starts it and a person stops it. An agent starts itself inside its loop and keeps going, which makes it the part that needs bounds: a tight goal, the permissions it needs and no more, and logs you can read.</li>
+        <li><strong>What it is not.</strong> A chatbot, a raw model, a skill, a plugin, and a connector all wait for a trigger. They are capabilities and connections, not deciders. Only two things choose their own steps once they have a goal: a single agent, and a multi-agent system.</li>
+        <li><strong>Why the distinction matters.</strong> Everything that only acts when called is safe by default, because a person starts it and a person stops it. An agent, once started, keeps going: it chooses the next step itself and runs many steps without a person in the loop. That is what makes it the part that needs bounds: a tight goal, the permissions it needs and no more, and logs you can read.</li>
       </ul>
     </div>
 
@@ -867,7 +867,7 @@
 
     <h3>What an agent is not</h3>
 
-    <p>Many things marketed as agents are not agents. They are capabilities and connections that wait to be used.</p>
+    <p>Many things marketed as agents are not agents. They are capabilities and connections that act only when called.</p>
 
     <ul>
       <li><strong>A model or prompt</strong> generates and reasons over text. It has no memory, no tools, and no actions. It does nothing until it is asked.</li>
@@ -880,7 +880,7 @@
 
     <h3>The building blocks, compared</h3>
 
-    <p>The same terms appear across ChatGPT, Claude, and the rest of the stack, and they do not mean the same thing. The table below sorts them, from the pieces that simply wait to be used up to the two that decide and act. Read it top to bottom.</p>
+    <p>The same terms appear across ChatGPT, Claude, and the rest of the stack, and they do not mean the same thing. The table below sorts them, from the pieces that act only when called up to the two that choose their own steps. Read it top to bottom.</p>
 
     <div class="table-wrap">
       <table class="cmp">
@@ -890,7 +890,7 @@
             <th>What it is</th>
             <th>Who builds it</th>
             <th>What it can do</th>
-            <th>Acts on its own?</th>
+            <th>Chooses its own steps?</th>
             <th>Example</th>
             <th>Watch-out</th>
           </tr>
@@ -972,7 +972,7 @@
             <td>Agent</td>
             <td>A model plus instructions, tools, memory, a loop, and a goal <a href="#ref1">[1]</a></td>
             <td>You / vendor</td>
-            <td>Decide and act iteratively</td>
+            <td>Choose and run their own steps</td>
             <td><strong>Yes</strong></td>
             <td>The ExploitGym agents <a href="#ref6">[6]</a></td>
             <td>The leverage point -- and the risk</td>
@@ -989,15 +989,15 @@
         </tbody>
       </table>
     </div>
-    <p class="table-caption">The building blocks you see in ChatGPT and Claude. Only the bottom two rows decide and act on their own. Background material: Wikipedia's background summary of the incident <a href="#ref7">[7]</a>.</p>
+    <p class="table-caption">The building blocks you see in ChatGPT and Claude. Only the bottom two rows choose their own steps once given a goal. Background material: Wikipedia's background summary of the incident <a href="#ref7">[7]</a>.</p>
 
-    <p>The first nine rows are capabilities, connections, and fixed paths. They wait to be used. Only the last two rows decide and act. Every headline about "AI agents" is about those two rows, and only those rows carry the risks that come with autonomy.</p>
+    <p>The first nine rows are capabilities, connections, and fixed paths. They act only when called. Only the last two rows choose their own steps. Every headline about "AI agents" is about those two rows, and only those rows carry the risks that come with autonomy.</p>
 
     <h3>The one question that sorts it</h3>
 
-    <p>When a product, a feature, or a demo arrives with the word "agent" on the label, ask one question: <strong>does this decide and act on its own, or does it sit there until it is used?</strong> If it decides and acts, it is an agent. If it waits, it is a capability or a connection wearing the word.</p>
+    <p>When a product, a feature, or a demo arrives with the word "agent" on the label, ask one question: <strong>once it has a goal, does it choose and run its own steps, or follow a path someone else fixed in advance?</strong> If it chooses its own steps, it is an agent. If it follows a path that was fixed in advance, or does one thing when called, it is not.</p>
 
-    <p>That single question does most of the work. It shows where the leverage is, which is the parts that act, and it shows where the controls belong, which is the same parts. An agent that decides and acts is the only part of the stack that needs guardrails, memory you can inspect, and logs you can read.</p>
+    <p>That single question does most of the work. It shows where the leverage is, which is the parts that act, and it shows where the controls belong, which is the same parts. An agent that chooses and runs its own steps is the only part of the stack that needs guardrails, memory you can inspect, and logs you can read.</p>
 
     <h3>Is ChatGPT an AI agent?</h3>
 
@@ -1029,11 +1029,11 @@
     <p>A narrowly configured Buildr worker can be a genuine agent without being as broadly capable as Muse, ChatGPT, Claude, or an OpenClaw platform <a href="#ref9">[9]</a>. "Agent" describes how the system operates, not how large, independent, or intelligent it is.</p>
     <h3>Why the distinction matters</h3>
 
-    <p>The difference is not academic. Everything that waits to be used is safe by default, because a person starts it and a person stops it. An agent starts itself inside its loop and keeps going, so the same design that makes it useful also makes it the part that needs bounds. Define the goal tightly, grant only the permissions it needs, and watch what it does. That is the whole design problem, and it is the same whether the agent runs one task or a thousand.</p>
+    <p>The difference is not academic. Everything that only acts when called is safe by default, because a person starts it and a person stops it. An agent, once started, keeps going inside its loop, so the same design that makes it useful also makes it the part that needs bounds. Define the goal tightly, grant only the permissions it needs, and watch what it does. That is the whole design problem, and it is the same whether the agent runs one task or a thousand.</p>
 
     <p>At FutureInSites, this is where every agent engagement starts: agree on what an agent is, then bound what it can do. Clarity here carries through everything you build on top of it.</p>
 
-    <p>Agents decide and act on their own, which raises the next question: whether that can make them dangerous, and under what conditions. That is the subject of the companion post, <a href="../blog/are-ai-agents-dangerous.html">Are AI Agents Dangerous?</a></p>
+    <p>Agents choose and run their own steps toward a goal, which raises the next question: whether that can make them dangerous, and under what conditions. That is the subject of the companion post, <a href="../blog/are-ai-agents-dangerous.html">Are AI Agents Dangerous?</a></p>
 
     <p class="refs-heading">References</p>
 
