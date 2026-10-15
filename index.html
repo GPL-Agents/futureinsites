@@ -659,6 +659,22 @@
       .rc-card-body span { font-size: 0.72rem !important; }
     }
 
+    /* Research resource tiles (landscape / bolt-ons / primers) */
+    .res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .res-tile { display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; }
+    a.res-tile:hover { box-shadow: 0 6px 24px rgba(11,42,86,0.10); transform: translateY(-2px); }
+    .res-tile-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #E5E7EB; }
+    .res-tile-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .res-tile-body { padding: 1.25rem 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .res-tile-kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1769E0; margin-bottom: 0.5rem; }
+    .res-tile-title { font-size: 1.05rem; font-weight: 700; color: #0B2A56; line-height: 1.3; margin-bottom: 0.6rem; }
+    .res-tile-desc { font-size: 0.86rem; color: #4B5563; line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+    .res-tile-link { font-size: 0.84rem; font-weight: 600; color: #1769E0; text-decoration: none; margin-top: auto; }
+    .res-tile-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+    .res-tile-list a { font-size: 0.9rem; font-weight: 600; color: #0B2A56; text-decoration: none; line-height: 1.4; }
+    .res-tile-list a:hover { color: #1769E0; }
+    .res-tile-note { margin-top: 1.6rem; text-align: center; font-size: 0.88rem; color: #4B5563; }
+    .res-tile-note a { color: #1769E0; font-weight: 600; text-decoration: none; }
     .bottom-banner-col {
       display: flex;
       align-items: center;
@@ -2786,113 +2802,57 @@
         <p style="font-size:0.92rem; color:#4B5563; line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
         <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:#1769E0; text-decoration:none; border-bottom:1px solid rgba(23,105,224,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(23,105,224,0.7)';" onmouseout="this.style.borderColor='rgba(23,105,224,0.3)';">Explore AI Guides, Research &rarr;</a>
       </div>
-      <!-- Research carousel (8 cards, 3 visible, auto-advances every 5 s) -->
+      <!-- Research & Resources: landscape, bolt-ons, primers -->
+      <div class="res-grid">
+
+        <a href="landscape/index.html" class="res-tile">
+          <div class="res-tile-img"><img src="images/landscape-ai-thumb.png" alt="The AI Vendor Landscape" loading="lazy"></div>
+          <div class="res-tile-body">
+            <p class="res-tile-kicker">Reference Guide</p>
+            <p class="res-tile-title">The AI Vendor Landscape</p>
+            <p class="res-tile-desc">A categorized reference of AI companies, from frontier model labs to applied AI software.</p>
+            <span class="res-tile-link">Explore the landscape &rarr;</span>
+          </div>
+        </a>
+
+        <a href="landscape/ai-bolt-ons.html" class="res-tile">
+          <div class="res-tile-img"><img src="images/ai-bolt-ons-thumb.jpg" alt="AI Bolt-Ons" loading="lazy"></div>
+          <div class="res-tile-body">
+            <p class="res-tile-kicker">Reference Guide</p>
+            <p class="res-tile-title">AI Bolt-Ons</p>
+            <p class="res-tile-desc">A reference index of plugins, skills, MCP connectors, and browser agents you can add on top of your AI platform.</p>
+            <span class="res-tile-link">Browse the index &rarr;</span>
+          </div>
+        </a>
+
+        <div class="res-tile">
+          <div class="res-tile-body">
+            <p class="res-tile-kicker">Primers</p>
+            <p class="res-tile-title">Start here</p>
+            <ul class="res-tile-list">
+              <li><a href="primers/ai-for-executives.html">AI for Executives: A Plain-Language Guide</a></li>
+              <li><a href="primers/history-of-generative-ai.html">History of Generative AI: How LLMs Got Here</a></li>
+              <li><a href="primers/what-is-an-ai-agent.html">What Is an AI Agent?</a></li>
+              <li><a href="primers/building-ai-agents.html">Building AI Agents: An 8-Step Framework</a></li>
+            </ul>
+            <a href="primers/index.html" class="res-tile-link">All primers &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="res-tile-note">Guides &amp; tools: <a href="job-search-command-center.html">Job Search Command Center</a> &nbsp;&middot;&nbsp; <a href="openclaw-windows-setup.html">Windows OpenClaw Setup</a></p>
+
+      <!-- From the blog -->
+      <p style="text-align:center; margin:2.75rem 0 0.25rem; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0;">From the Blog</p>
+      <p style="text-align:center; margin:0 0 1.25rem; font-size:0.92rem; color:#4B5563;">Recent posts</p>
+
+      <!-- Research carousel: blog posts only, cards built from blog/manifest.json -->
       <div style="position:relative; margin-top:2rem;">
 
         <!-- Overflow clip -->
         <div id="research-carousel-wrap">
-          <div id="research-carousel-track">
-
-            <!-- Card 1: Latest blog post (JS-loaded) -->
-            <a id="research-blog-card" href="resources.html" class="rc-card">
-              <div class="rc-card-img"><img id="research-blog-img" src="" alt=""></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Latest Post</p>
-                <p id="research-blog-title" style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;"></p>
-                <p id="research-blog-excerpt" style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;"></p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read more &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 2: AI Vendor Landscape -->
-            <a href="landscape/index.html" class="rc-card">
-              <div class="rc-card-img"><img src="images/landscape-ai-thumb.png" alt="AI Vendor Landscape"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Reference Guide</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">The AI Vendor Landscape</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">A categorized reference of AI companies, from frontier model labs to applied AI software. Built for executives evaluating where to invest, partner, or build.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Explore the landscape &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 3: AI Bolt-Ons -->
-            <a href="landscape/ai-bolt-ons.html" class="rc-card">
-              <div class="rc-card-img"><img src="images/ai-bolt-ons-thumb.jpg" alt="AI Bolt-Ons"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Reference Guide</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">AI Bolt-Ons</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">A reference index of plugins, skills, MCP connectors, and browser agents you can install on top of your AI platform.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Browse the index &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 4: AI for Executives -->
-            <a href="primers/ai-for-executives.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/chiefofstaff.main.png" alt="AI for Executives"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">AI for Executives: A Plain-Language Guide</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">What AI actually is, what it can do, and where it creates value for leaders who don&rsquo;t code. The start-here primer, written for executives and board members.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 5: History of Generative AI -->
-            <a href="primers/history-of-generative-ai.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/RoadtoGenAI.png" alt="History of Generative AI"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">History of Generative AI: How LLMs Got Here</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">Six decades of stacked advances in data science and machine learning led to today&rsquo;s LLMs. A short history of how we got here, and what comes next.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Primer: What Is an AI Agent? -->
-            <a href="primers/what-is-an-ai-agent.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/ai-agent-compartments.png" alt="What Is an AI Agent?"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">What Is an AI Agent?</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">An AI agent is a software program with one or more AI models at its core. The six parts of an agent, and how to tell an agent from everything else in the stack.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 6: Building AI Agents -->
-            <a href="primers/building-ai-agents.html" class="rc-card">
-              <div class="rc-card-img"><img src="articles/agent.primer1.png" alt="Building AI Agents"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Primer</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">Building AI Agents: An 8-Step Framework</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">Scope, prompt design, model choice, tools, memory, orchestration, interface, evaluation. A walkthrough of the eight decisions that shape a production AI agent.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the article &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 7: Job Search Command Center -->
-            <a href="job-search-command-center.html" class="rc-card">
-              <div class="rc-card-img" style="background:#0E1320;"><img src="images/job-search-command-center-thumb.svg" alt="Job Search Command Center" style="width:100%;height:100%;object-fit:contain;display:block;padding:1rem;box-sizing:border-box;"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Open Source Tool</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">Job Search Command Center</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">A free, build-your-own job-search agent that triages, scores, tracks, and plans your search. Works on ChatGPT, Claude Chat, or Claude Cowork.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Build your own &rarr;</span>
-              </div>
-            </a>
-
-            <!-- Card 8: OpenClaw Windows Setup -->
-            <a href="openclaw-windows-setup.html" class="rc-card">
-              <div class="rc-card-img"><img src="images/personal.agent.setup.png" alt="Windows OpenClaw Setup"></div>
-              <div class="rc-card-body">
-                <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">Guide</p>
-                <p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">Windows OpenClaw Setup: 10 Steps to Your Own AI Agent</p>
-                <p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;">Hardware prep, installation, cost hardening, and remote access for a personal AI agent on a repurposed Windows laptop.</p>
-                <span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the guide &rarr;</span>
-              </div>
-            </a>
-
-          </div><!-- /track -->
+          <div id="research-carousel-track"></div><!-- /track -->
         </div><!-- /wrap -->
 
         <!-- Prev arrow -->
@@ -3030,29 +2990,54 @@
       });
     }
 
-    /* Latest blog post → Card 1 */
-    fetch('blog/manifest.json')
-      .then(function (r) { return r.json(); })
-      .then(function (posts) {
-        if (!posts || !posts.length) return;
-        var post = posts[0];
-        var card    = document.getElementById('research-blog-card');
-        var img     = document.getElementById('research-blog-img');
-        var title   = document.getElementById('research-blog-title');
-        var excerpt = document.getElementById('research-blog-excerpt');
-        if (!card || !img || !title || !excerpt) return;
-        card.href = 'blog/' + post.slug + '.html';
-        if (post.homepageImage || post.image) { img.src = 'blog/' + (post.homepageImage || post.image); img.alt = post.title || ''; }
-        title.textContent   = post.title   || '';
-        excerpt.textContent = post.excerpt  || '';
-      })
-      .catch(function () { /* fail silently */ });
+    /* Blog carousel: posts only, built from blog/manifest.json */
+    var RECENT_POSTS = 6;
+
+    function escapeHtml(s) {
+      var d = document.createElement('div');
+      d.textContent = (s == null ? '' : String(s));
+      return d.innerHTML;
+    }
+
+    function buildBlogCard(post) {
+      var a = document.createElement('a');
+      a.className = 'rc-card';
+      a.href = 'blog/' + post.slug + '.html';
+      var img = post.homepageImage || post.image || '';
+      a.innerHTML =
+        '<div class="rc-card-img"><img src="blog/' + escapeHtml(img) + '" alt="' + escapeHtml(post.title) + '" loading="lazy"></div>' +
+        '<div class="rc-card-body">' +
+          '<p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1769E0;margin-bottom:0.5rem;">From the Blog</p>' +
+          '<p style="font-size:0.97rem;font-weight:700;color:#0B2A56;line-height:1.35;margin-bottom:0.6rem;flex:1;">' + escapeHtml(post.title) + '</p>' +
+          '<p style="font-size:0.84rem;color:#4B5563;line-height:1.6;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHtml(post.excerpt) + '</p>' +
+          '<span style="font-size:0.82rem;font-weight:600;color:#1769E0;">Read the post &rarr;</span>' +
+        '</div>';
+      return a;
+    }
+
+    function buildCarousel() {
+      var track = document.getElementById('research-carousel-track');
+      if (!track) return Promise.resolve();
+      return fetch('blog/manifest.json')
+        .then(function (r) { return r.json(); })
+        .then(function (posts) {
+          if (!posts || !posts.length) return;
+          var recent = posts.slice(0, RECENT_POSTS);
+          track.innerHTML = '';
+          for (var i = 0; i < recent.length; i++) { track.appendChild(buildBlogCard(recent[i])); }
+          TOTAL_CARDS = recent.length;
+        })
+        .catch(function () { /* fail silently */ });
+    }
+
+    function boot() { buildCarousel().then(init); }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', boot);
     } else {
-      init();
+      boot();
     }
+
   })();
   </script>
   <!-- FOOTER -->
