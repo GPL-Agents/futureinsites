@@ -393,6 +393,14 @@
     }
 
     /* TOOL CARDS (bolt-on variant of vendor-card) */
+    .bolton-subhead {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      margin: 2.5rem 0 0.5rem;
+    }
+
     .bolton-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1580,7 +1588,7 @@
         <span class="category-label">03</span>
         <h2 class="category-title">MCP Servers</h2>
       </div>
-      <p class="category-desc">Connectors that let your AI read and act on the rest of your stack. MCP (Model Context Protocol) is the open standard that finally makes "your AI can use my tools" a normal sentence instead of a custom build. Three flavors below: direct hooks into apps you already use, specialized tools that bring their own AI capability, and integration platforms that bundle thousands of services behind one endpoint.</p>
+      <p class="category-desc">Connectors that let your AI read and act on the rest of your stack. MCP (Model Context Protocol) is the open standard that finally makes "your AI can use my tools" a normal sentence instead of a custom build. Three flavors below: direct hooks into apps you already use, specialized tools that bring their own AI capability, and integration platforms that bundle thousands of services behind one endpoint. What follows is a curated slice, not the full ecosystem: public registries now index thousands of MCP servers, and we link the main ones at the end of this section.</p>
 
       <div class="bolton-grid">
 
@@ -2046,6 +2054,68 @@
             <span class="badge">Official</span>
             <span class="badge">Enterprise</span>
           </div>
+        </a>
+
+      </div>
+    
+      <h3 class="bolton-subhead">Browse the registries</h3>
+      <p class="category-desc" style="margin-bottom:1.25rem;">This page shows a curated slice; the full ecosystem is far larger. These registries index the rest, searchable by vendor and category.</p>
+
+      <div class="bolton-grid">
+
+        <a href="https://registry.modelcontextprotocol.io" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">Model Context Protocol Registry</div>
+              <div class="bolton-meta">registry.modelcontextprotocol.io</div>
+            </div>
+            <span class="bolton-type">Registry</span>
+          </div>
+          <p>The official registry from the MCP project. Server names are namespace-verified, so each one is tied to a real GitHub account or domain. Around 9,600 servers.</p>
+        </a>
+
+        <a href="https://www.pulsemcp.com" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">PulseMCP</div>
+              <div class="bolton-meta">pulsemcp.com</div>
+            </div>
+            <span class="bolton-type">Registry</span>
+          </div>
+          <p>One of the largest community directories, updated daily with new and trending servers. Around 21,700 servers.</p>
+        </a>
+
+        <a href="https://smithery.ai" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">Smithery</div>
+              <div class="bolton-meta">smithery.ai</div>
+            </div>
+            <span class="bolton-type">Registry</span>
+          </div>
+          <p>Install-focused registry: browse MCP servers and add them to Claude, Cursor, and other clients, with hosted options.</p>
+        </a>
+
+        <a href="https://glama.ai/mcp/servers" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">Glama</div>
+              <div class="bolton-meta">glama.ai/mcp/servers</div>
+            </div>
+            <span class="bolton-type">Registry</span>
+          </div>
+          <p>Searchable MCP server directory with categories and per-server details.</p>
+        </a>
+
+        <a href="https://mcp.so" target="_blank" rel="noopener" class="bolton-card">
+          <div class="bolton-head">
+            <div class="bolton-head-text">
+              <div class="bolton-name">mcp.so</div>
+              <div class="bolton-meta">mcp.so</div>
+            </div>
+            <span class="bolton-type">Registry</span>
+          </div>
+          <p>Community-run directory of MCP servers and clients, browsable by category.</p>
         </a>
 
       </div>
