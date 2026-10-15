@@ -2504,7 +2504,125 @@
       .nav-actions { right: 1rem; gap: 0.75rem; }
       .nav-client-link { font-size: 0.72rem; }
       .nav-cta { padding: 0.45rem 0.82rem; font-size: 0.72rem; }
-    }</style>
+    }
+    /* ─── HOMEPAGE FUNNEL (Oct 2026) ─── */
+    .prac-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 860px) { .prac-grid--3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .prac-grid--3 { grid-template-columns: 1fr; } }
+    .prac-head { margin-bottom: 1.75rem; }
+    .prac-card-link {
+      font-size: 0.82rem; font-weight: 600; color: var(--accent);
+      text-decoration: none;
+    }
+    .prac-card-link:hover { text-decoration: underline; }
+
+    .fx-section { padding: 4rem 2rem; }
+    .fx-section--white { background: #FFFFFF; border-bottom: 1px solid var(--border); }
+    .fx-section--cream { background: #FDF6EE; border-top: 1px solid #EDE5D8; border-bottom: 1px solid #EDE5D8; }
+    .fx-section--blue  { background: #EEF5FC; }
+    .fx-inner { max-width: 1300px; margin: 0 auto; }
+    .fx-head { max-width: 680px; margin-bottom: 2rem; }
+    .fx-head--center { margin-left: auto; margin-right: auto; text-align: center; }
+    .fx-link {
+      font-size: 0.88rem; font-weight: 600; color: var(--accent);
+      text-decoration: none; white-space: nowrap;
+    }
+    .fx-link:hover { text-decoration: underline; }
+    .fx-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; margin-top: 1.75rem; }
+    .fx-links--center { justify-content: center; }
+
+    /* Experience */
+    .xp-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center; }
+    @media (max-width: 860px) { .xp-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .xp-intro { font-size: 0.97rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+    .xp-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; }
+    .xp-list li {
+      position: relative; padding-left: 1.6rem;
+      font-size: 0.93rem; color: #1E293B; line-height: 1.55;
+    }
+    .xp-list li::before {
+      content: ""; position: absolute; left: 0; top: 0.5em;
+      width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--accent);
+    }
+    .xp-quote {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent); border-radius: 12px;
+      padding: 1.75rem 1.75rem 1.5rem;
+    }
+    .xp-quote blockquote {
+      margin: 0 0 1rem; font-size: 1.05rem; line-height: 1.6; color: #0F172A; font-weight: 500;
+    }
+    .xp-quote cite { font-style: normal; font-size: 0.85rem; color: var(--muted); }
+
+    /* Guidance cards */
+    .gd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media (max-width: 860px) { .gd-grid { grid-template-columns: 1fr; } }
+    .gd-card {
+      display: flex; flex-direction: column; background: #FFFFFF;
+      border: 1px solid #E5E7EB; border-radius: 12px; padding: 1.5rem;
+      text-decoration: none; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .gd-card:hover { box-shadow: 0 6px 20px rgba(11,42,86,0.08); transform: translateY(-2px); }
+
+    /* Process (standalone) */
+    .process-section--solo { padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+    .process-inner--solo { grid-template-columns: 1fr; }
+    .process-left .fx-links { margin-top: 2rem; }
+
+    /* Getting started */
+    .gs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 760px) { .gs-grid { grid-template-columns: 1fr; } }
+    .gs-card {
+      background: #FFFFFF; border: 1px solid #D6E4F5; border-radius: 16px;
+      padding: 2rem; display: flex; flex-direction: column; gap: 0.9rem;
+    }
+    .gs-label {
+      align-self: flex-start; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); background: var(--accent-lt);
+      border-radius: 100px; padding: 0.3rem 0.8rem;
+    }
+    .gs-title {
+      font-family: 'Manrope', system-ui, sans-serif; font-size: 1.35rem; font-weight: 800;
+      color: var(--dark); letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .gs-desc { font-size: 0.93rem; color: #4B5563; line-height: 1.65; flex: 1; }
+    .gs-note { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+    .gs-card .btn-primary, .gs-card .btn-outline { align-self: flex-start; margin-top: 0.4rem; text-align: center; }
+
+    /* Contact form */
+    .ct-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
+    @media (max-width: 860px) { .ct-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .ct-form {
+      background: var(--bg-alt); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; display: flex; flex-direction: column; gap: 1.1rem;
+    }
+    .ct-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .ct-field label { font-size: 0.85rem; font-weight: 600; color: #0F172A; }
+    .ct-field input, .ct-field textarea {
+      font: inherit; font-size: 16px; color: #0F172A; background: #FFFFFF;
+      border: 1px solid #CBD5E1; border-radius: 10px; padding: 0.75rem 0.9rem; width: 100%;
+    }
+    .ct-field textarea { min-height: 120px; resize: vertical; }
+    .ct-field input:focus, .ct-field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+    .ct-hint { font-size: 0.78rem; color: var(--muted); }
+    .ct-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .ct-submit {
+      font: inherit; font-size: 0.95rem; font-weight: 600; color: #FFFFFF; background: var(--accent);
+      border: none; border-radius: 100px; padding: 0.85rem 1.8rem; cursor: pointer;
+      align-self: flex-start; transition: opacity 0.2s;
+    }
+    .ct-submit:hover { opacity: 0.9; }
+    .ct-submit:disabled { opacity: 0.6; cursor: default; }
+    .ct-error { display: none; font-size: 0.85rem; color: #B91C1C; }
+    .ct-error.show { display: block; }
+    .ct-note { font-size: 0.78rem; color: var(--muted); }
+    @media (max-width: 560px) {
+      .fx-section, .process-section--solo, .prac-section { padding: 3rem 1rem; }
+      .gs-card, .ct-form { padding: 1.4rem; }
+      .ct-submit { align-self: stretch; }
+      .gs-card .btn-primary, .gs-card .btn-outline { align-self: stretch; }
+    }
+  </style>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
@@ -2531,7 +2649,8 @@
         <ul class="nav-more-dropdown">
           <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">Our Approach</a></li>
-          <li><a href="ai-readiness.html">AI Assessment</a></li>
+          <li><a href="ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="assessment.html">Opportunity Assessment</a></li>
           <li><a href="consumer.html">Consumer AI</a></li>
         </ul>
       </li>
@@ -2568,7 +2687,7 @@
         <p class="hero-sub">We help you choose and build practical AI tools that fit the way your team already works.</p>
         <div class="hero-actions">
           <a href="#solutions-list" class="btn-primary">See where AI could help &rarr;</a>
-          <a href="approach.html" class="btn-outline">See how it works</a>
+          <a href="#process" class="btn-outline">See how it works</a>
         </div>
       </div>
       <div class="hero-right">
@@ -2578,16 +2697,177 @@
       </div>
   </div>
 
-  <!-- BENEFIT TILES -->
-  <!-- 3-STEP PROCESS (HORIZONTAL) -->
-  <div class="process-section" id="process">
-    <div class="prac-inner" style="padding-bottom:0.75rem;">
-      <p class="prac-eyebrow">Practical Solutions</p>
-      <h2 class="prac-title">What we can help you put to work</h2>
-      <p class="prac-sub">Specific ways FutureInSites can help, matched to the people and work they support.</p>
+  <!-- PROBLEMS AND SOLUTIONS -->
+  <div class="prac-section" id="solutions-list">
+    <div class="prac-inner">
+      <div class="prac-head">
+        <p class="prac-eyebrow">Where we can help</p>
+        <h2 class="prac-title">Problems we can help you solve</h2>
+        <p class="prac-sub">Common challenges we hear from business owners and professional firms, and the kind of solution we would build for each. These are examples, not client case studies.</p>
+      </div>
+
+      <div class="prac-grid prac-grid--3">
+
+        <div class="prac-card">
+          <div class="prac-card-top">
+            <div class="prac-icon prac-icon--green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="prac-card-title">Information is scattered across documents and systems</h3>
+          </div>
+          <p class="prac-card-desc">We set up an assistant that answers staff questions from your own documents and systems, with sources they can check.</p>
+          <div class="prac-tags">
+            <span class="prac-tag">SMBs</span>
+            <span class="prac-tag">Professional offices</span>
+          </div>
+        </div>
+
+        <div class="prac-card">
+          <div class="prac-card-top">
+            <div class="prac-icon prac-icon--orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 class="prac-card-title">Routine documents take too long to prepare</h3>
+          </div>
+          <p class="prac-card-desc">We automate drafting and review for notes, reports, work orders, and billing forms, with your team approving the final version.</p>
+          <div class="prac-tags">
+            <span class="prac-tag">Legal</span>
+            <span class="prac-tag">Healthcare</span>
+            <span class="prac-tag">Construction</span>
+          </div>
+        </div>
+
+        <div class="prac-card">
+          <div class="prac-card-top">
+            <div class="prac-icon prac-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3 class="prac-card-title">Client intake and follow-up slip through the cracks</h3>
+          </div>
+          <p class="prac-card-desc">We build a process that checks incoming requests, flags missing information, routes work, and drafts follow-ups.</p>
+          <div class="prac-tags">
+            <span class="prac-tag">Healthcare</span>
+            <span class="prac-tag">Legal</span>
+            <span class="prac-tag">Field services</span>
+          </div>
+        </div>
+
+        <div class="prac-card">
+          <div class="prac-card-top">
+            <div class="prac-icon prac-icon--teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3 class="prac-card-title">Employees are using AI without clear rules</h3>
+          </div>
+          <p class="prac-card-desc">We set up secure business accounts and approved tools, write usage guidelines, and train your team to use them consistently.</p>
+          <div class="prac-tags">
+            <span class="prac-tag">All business clients</span>
+          </div>
+        </div>
+
+        <div class="prac-card">
+          <div class="prac-card-top">
+            <div class="prac-icon prac-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3 class="prac-card-title">Software you already pay for is underused</h3>
+          </div>
+          <p class="prac-card-desc">We put the AI features and add-ons in your current tools to work so they handle more of the routine load.</p>
+          <div class="prac-tags">
+            <span class="prac-tag">SMBs</span>
+            <span class="prac-tag">Professional offices</span>
+          </div>
+        </div>
+
+        <div class="prac-card">
+          <div class="prac-card-top">
+            <div class="prac-icon prac-icon--orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+            </div>
+            <h3 class="prac-card-title">You're not sure where AI should start</h3>
+          </div>
+          <p class="prac-card-desc">We review your workflows, data, and tools, then recommend one first project with a clear cost and a measurable result.</p>
+          <a href="ai-readiness.html" class="prac-card-link">Take the readiness questionnaire &rarr;</a>
+          <div class="prac-tags">
+            <span class="prac-tag">All business clients</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="prac-footer">
+        <p class="prac-footer-text">We work with small and mid-size businesses across professional services, construction, manufacturing, health &amp; wellness, and more.</p>
+        <a href="solutions.html" class="prac-footer-cta">Explore all solutions &rarr;</a>
+      </div>
     </div>
-    <div class="process-inner">
+  </div>
+
+  <!-- EXPERIENCE BEHIND THE WORK -->
+  <section class="fx-section fx-section--white" id="experience">
+    <div class="fx-inner xp-grid">
+      <div>
+        <p class="prac-eyebrow">Experience behind the work</p>
+        <h2 class="prac-title">Enterprise-level expertise, sized for small and midsize businesses.</h2>
+        <p class="xp-intro">FutureInSites was founded by Greg Loeffelholz, who brings enterprise AI and operating experience to every engagement.</p>
+        <ul class="xp-list">
+          <li>Took machine learning and generative AI products from concept through production</li>
+          <li>Led an AI-driven business managing more than $100 million in monthly search spend, bringing it to sustained profitability for the first time</li>
+          <li>Ran a multimillion-dollar business with full P&amp;L responsibility</li>
+          <li>Founded a company, grew it to profitability, and sold it</li>
+        </ul>
+      </div>
+      <div>
+        <figure class="xp-quote">
+          <blockquote>&ldquo;I&rsquo;ve been the owner signing the checks. I know what it&rsquo;s like when the money comes out of your own budget and your team is counting on you to get it right.&rdquo;</blockquote>
+          <cite>Greg Loeffelholz, Founder</cite>
+        </figure>
+        <div class="fx-links">
+          <a href="our-story.html" class="fx-link">Read our story &rarr;</a>
+          <a href="#contact" class="fx-link">Talk through the problem &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED GUIDANCE -->
+  <section class="fx-section fx-section--cream" id="guidance">
+    <div class="fx-inner">
+      <div class="fx-head">
+        <p class="prac-eyebrow">Guides and research</p>
+        <h2 class="prac-title">Practical guidance for making better AI decisions</h2>
+        <p class="prac-sub">We study the technology, test the claims, and translate what matters for business owners.</p>
+      </div>
+      <div class="gd-grid">
+        <a href="primers/ai-for-executives.html" class="gd-card">
+          <p class="res-tile-kicker">Primer &middot; 10 min</p>
+          <p class="res-tile-title">AI for Executives: A Plain-Language Guide</p>
+          <p class="res-tile-desc">What AI is, what it can do, and where it creates real value for leaders who don't code.</p>
+          <span class="res-tile-link">Read the guide &rarr;</span>
+        </a>
+        <a href="blog/ai-saas-disruption-smb-opportunity.html" class="gd-card">
+          <p class="res-tile-kicker">Business decisions</p>
+          <p class="res-tile-title">Can AI Replace SaaS? A Practical Guide for Small Businesses</p>
+          <p class="res-tile-desc">How many separate software subscriptions does a company need once AI can work across its systems? A practical framework for SMBs.</p>
+          <span class="res-tile-link">Read the guide &rarr;</span>
+        </a>
+        <a href="blog/lululemon-ai-knowledge-base.html" class="gd-card">
+          <p class="res-tile-kicker">Lessons from the field</p>
+          <p class="res-tile-title">What Lululemon Teaches Us About AI Knowledge Bases</p>
+          <p class="res-tile-desc">How an AI knowledge base that answers staff questions improves onboarding, training, and on-the-job support, and why it isn't just a retail story.</p>
+          <span class="res-tile-link">Read the post &rarr;</span>
+        </a>
+      </div>
+      <div class="fx-links">
+        <a href="resources.html" class="fx-link">Explore all guides and research &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-STEP PROCESS -->
+  <div class="process-section process-section--solo" id="process">
+    <div class="process-inner process-inner--solo">
       <div class="process-left">
+        <p class="prac-eyebrow">How it works</p>
         <h2 class="process-title"><em>A proof-positive process,</em> built around your unique needs</h2>
         <div class="process-steps">
 
@@ -2635,235 +2915,76 @@
           </div>
 
         </div>
-      </div>
-
-      <!-- R&I Card — warm cream with doorway illustration -->
-      <div class="process-ri-card">
-        <div class="process-ri-card-body">
-          <h3>Research</h3>
-          <p>Straightforward perspectives on AI in small and mid-size businesses.</p>
-          <a href="resources.html" class="process-ri-cta">Explore Resources</a>
+        <div class="fx-links">
+          <a href="#contact" class="fx-link">Talk through the problem &rarr;</a>
         </div>
-        <picture>
-          <img src="images/research-insights-doorway.png" alt="" class="process-ri-img" loading="lazy">
-        </picture>
       </div>
     </div>
   </div>
 
-  <!-- PRACTICAL SOLUTIONS -->
-  <div class="prac-section" id="solutions-list">
-    <div class="prac-inner">
-
-      <div class="prac-grid">
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--blue">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            </div>
-            <h3 class="prac-card-title">Business AI setup</h3>
-          </div>
-          <p class="prac-card-desc">Set up secure business accounts, users, permissions, data controls, and approved AI tools.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
-            <span class="prac-tag">Professional offices</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--teal">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <h3 class="prac-card-title">Team AI training</h3>
-          </div>
-          <p class="prac-card-desc">Train employees to use leading AI applications and create reusable agents, skills, and workflows.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">All business clients</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <h3 class="prac-card-title">Knowledge assistants</h3>
-          </div>
-          <p class="prac-card-desc">Give employees or customers reliable answers from an approved, managed knowledge base.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
-            <span class="prac-tag">Professional offices</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--orange">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            </div>
-            <h3 class="prac-card-title">Document intelligence</h3>
-          </div>
-          <p class="prac-card-desc">Summarize and review notes, contracts, invoices, case files, patient histories, and project documents.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Legal</span>
-            <span class="prac-tag">Accounting</span>
-            <span class="prac-tag">Healthcare</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--blue">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            </div>
-            <h3 class="prac-card-title">Intake and communication</h3>
-          </div>
-          <p class="prac-card-desc">Check incoming information, identify missing items, route requests, and prepare updates.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Healthcare</span>
-            <span class="prac-tag">Legal</span>
-            <span class="prac-tag">Field services</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--orange">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
-            </div>
-            <h3 class="prac-card-title">Documentation automation</h3>
-          </div>
-          <p class="prac-card-desc">Turn notes and activity into chart notes, work orders, billing forms, and status reports.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Healthcare</span>
-            <span class="prac-tag">Construction</span>
-            <span class="prac-tag">Offices</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-            </div>
-            <h3 class="prac-card-title">Operational analysis</h3>
-          </div>
-          <p class="prac-card-desc">Identify workload patterns, billing exceptions, appointment trends, and emerging problems.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
-            <span class="prac-tag">Healthcare</span>
-            <span class="prac-tag">Accounting</span>
-          </div>
-        </div>
-
-        <div class="prac-card">
-          <div class="prac-card-top">
-            <div class="prac-icon prac-icon--teal">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            </div>
-            <h3 class="prac-card-title">Personal and executive AI</h3>
-          </div>
-          <p class="prac-card-desc">Create daily briefings, priorities, meeting preparation, and scheduling conflict alerts.</p>
-          <div class="prac-tags">
-            <span class="prac-tag">Individuals</span>
-            <span class="prac-tag">Founders</span>
-            <span class="prac-tag">Executives</span>
-          </div>
-        </div>
-
+  <!-- GETTING STARTED: QUESTIONNAIRE + OPPORTUNITY ASSESSMENT -->
+  <section class="fx-section fx-section--blue" id="get-started">
+    <div class="fx-inner">
+      <div class="fx-head fx-head--center">
+        <p class="prac-eyebrow">Getting started</p>
+        <h2 class="prac-title">Find your starting point</h2>
       </div>
-
-      <div class="prac-footer">
-
-        <a href="solutions.html" class="prac-footer-cta">Explore all solutions →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- BOTTOM BANNER -->
-  <div class="bottom-banner">
-    <div class="bottom-banner-inner">
-      <div class="bottom-banner-col">
-        <div class="bottom-banner-icon blue">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="gs-grid">
+        <div class="gs-card">
+          <span class="gs-label">Free self-check &middot; Recommended first</span>
+          <h3 class="gs-title">Readiness Questionnaire</h3>
+          <p class="gs-desc">A quick online self-check. See how far along you already are and how prepared you are for more.</p>
+          <a href="ai-readiness.html" class="btn-primary">Take the questionnaire &rarr;</a>
         </div>
-        <div class="bottom-banner-text">We work with small and mid-size businesses across professional services, construction, manufacturing, health &amp; wellness, and more.</div>
-      </div>
-      <div class="bottom-banner-col">
-        <div class="bottom-banner-icon green">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="gs-card">
+          <span class="gs-label">Free &middot; With our team</span>
+          <h3 class="gs-title">Free Opportunity Assessment</h3>
+          <p class="gs-desc">A structured review led by our team: meetings, written due-diligence questions, research, and a categorized report with a recommended proof of concept.</p>
+          <p class="gs-note">Proof-of-concept projects start at $5K, depending on scope and the size of your business.</p>
+          <a href="assessment.html" class="btn-outline">See how the assessment works &rarr;</a>
         </div>
-        <div class="bottom-banner-text"><strong>Practical. Approachable. Measurable.</strong> AI that works for your business.</div>
       </div>
-    </div>
-  </div>
-
-  <!-- ASSESSMENT CTA BLOCK -->
-  <section id="assessment-cta" style="background:#EEF5FC; padding:48px 2rem;">
-    <div style="max-width:700px; margin:0 auto; text-align:center;">
-      <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#2563EB; margin-bottom:1.2rem;">Free Assessment</p>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:#0B2A56; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; text-wrap:balance;">Find Out Where AI Could Help Your Business Most</h2>
-      <p style="font-size:0.97rem; color:#4B5563; line-height:1.75; max-width:580px; margin:0 auto 2rem;">Not sure where to start with AI? Take our free 5-minute assessment and leave with three specific opportunity areas, a readiness score, and a recommended first step &#8212; no jargon, no sales pitch.</p>
-      <a href="/ai-readiness.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.92rem; font-weight:700; color:#FFFFFF; background:#1769E0; text-decoration:none; padding:0.9rem 2.2rem; border-radius:100px; transition:background 0.2s, transform 0.2s;" onmouseover="this.style.background='#0F56C5'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='#1769E0'; this.style.transform='translateY(0)';">Find your best starting point &rarr;</a>
     </div>
   </section>
 
-  <!-- RESEARCH BRIDGE BLOCK -->
-  <section style="background:#FDF6EE; padding:48px 2rem 56px; border-top:1px solid #EDE5D8; border-bottom:1px solid #EDE5D8;">
-    <div style="max-width:1160px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:1.5rem;">
-        <p style="font-size:1rem; font-weight:700; color:#0B2A56; letter-spacing:-0.01em; margin-bottom:0.5rem;">Here for the research?</p>
-        <p style="font-size:0.92rem; color:#4B5563; line-height:1.7; margin-bottom:1rem;">Explore original AI analysis, the AI vendor landscape, tutorials, and industry commentary.</p>
-        <a href="resources.html" style="font-size:0.88rem; font-weight:600; color:#1769E0; text-decoration:none; border-bottom:1px solid rgba(23,105,224,0.3); padding-bottom:1px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.borderColor='rgba(23,105,224,0.7)';" onmouseout="this.style.borderColor='rgba(23,105,224,0.3)';">Explore AI Guides, Research &rarr;</a>
+  <!-- CONTACT FORM -->
+  <section class="fx-section fx-section--white" id="contact">
+    <div class="fx-inner ct-grid">
+      <div>
+        <p class="prac-eyebrow">Start a conversation</p>
+        <h2 class="prac-title">A practical first step</h2>
+        <p class="prac-sub">You don't need an AI strategy before you reach out. A business problem, a process that isn't working, or a sense that your team could get more from AI is enough.</p>
       </div>
-      <!-- Research & Resources: landscape, bolt-ons, primers -->
-      <div class="res-grid">
-
-        <a href="landscape/index.html" class="res-tile">
-          <div class="res-tile-img"><img src="images/landscape-ai-thumb.png" alt="The AI Vendor Landscape" loading="lazy"></div>
-          <div class="res-tile-body">
-            <p class="res-tile-kicker">Reference Guide</p>
-            <p class="res-tile-title">The AI Vendor Landscape</p>
-            <p class="res-tile-desc">A categorized reference of AI companies, from frontier model labs to applied AI software.</p>
-            <span class="res-tile-link">Explore the landscape &rarr;</span>
-          </div>
-        </a>
-
-        <a href="landscape/ai-bolt-ons.html" class="res-tile">
-          <div class="res-tile-img"><img src="images/ai-bolt-ons-thumb.jpg" alt="AI Bolt-Ons" loading="lazy"></div>
-          <div class="res-tile-body">
-            <p class="res-tile-kicker">Reference Guide</p>
-            <p class="res-tile-title">AI Bolt-Ons</p>
-            <p class="res-tile-desc">A reference index of plugins, skills, MCP connectors, and browser agents you can add on top of your AI platform.</p>
-            <span class="res-tile-link">Browse the index &rarr;</span>
-          </div>
-        </a>
-
-        <div class="res-tile res-tile--primers">
-          <div class="res-tile-body">
-            <p class="res-tile-kicker">Primers</p>
-            <p class="res-tile-title">Start here</p>
-            <p class="res-tile-desc res-tile-desc--tight">Short, plain-language guides for business leaders.</p>
-            <ol class="res-primer-list">
-              <li><a href="primers/ai-for-executives.html"><span class="res-primer-num">01</span><span class="res-primer-name">AI for Executives: A Plain-Language Guide <span class="res-primer-time">10 min</span></span></a></li>
-              <li><a href="primers/history-of-generative-ai.html"><span class="res-primer-num">02</span><span class="res-primer-name">History of Generative AI: How LLMs Got Here <span class="res-primer-time">5 min</span></span></a></li>
-              <li><a href="primers/what-is-an-ai-agent.html"><span class="res-primer-num">03</span><span class="res-primer-name">What Is an AI Agent? <span class="res-primer-time">12 min</span></span></a></li>
-              <li><a href="primers/building-ai-agents.html"><span class="res-primer-num">04</span><span class="res-primer-name">Building AI Agents: An 8-Step Framework <span class="res-primer-time">8 min</span></span></a></li>
-            </ol>
-            <a href="primers/index.html" class="res-tile-link">All primers &rarr;</a>
-          </div>
+      <form class="ct-form" id="home-contact-form" novalidate>
+        <div class="ct-field">
+          <label for="hc-name">Name</label>
+          <input type="text" id="hc-name" name="name" autocomplete="name" required>
         </div>
+        <div class="ct-field">
+          <label for="hc-email">Work email</label>
+          <input type="email" id="hc-email" name="email" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="ct-field">
+          <label for="hc-message">What part of your business would you like to make easier?</label>
+          <textarea id="hc-message" name="message" required></textarea>
+          <span class="ct-hint">A sentence or two is plenty.</span>
+        </div>
+        <div class="ct-hp" aria-hidden="true">
+          <label for="hc-website">Website</label><input type="text" id="hc-website" name="website" tabindex="-1" autocomplete="off">
+          <label for="hc-fax">Fax</label><input type="text" id="hc-fax" name="fax" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="ct-error" id="hc-error" role="alert"></p>
+        <button type="submit" class="ct-submit" id="hc-submit">Talk through the problem</button>
+        <p class="ct-note">No newsletters, no sharing.</p>
+      </form>
+    </div>
+  </section>
 
-      </div>
-
-      <p class="res-tile-note">Guides &amp; tools: <a href="job-search-command-center.html">Job Search Command Center</a> &nbsp;&middot;&nbsp; <a href="openclaw-windows-setup.html">Windows OpenClaw Setup</a></p>
-
-      <!-- From the blog -->
-      <p style="text-align:center; margin:2.75rem 0 0.25rem; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0;">From the Blog</p>
+  <!-- RECENT POSTS AND RESEARCH -->
+  <section class="fx-section fx-section--cream" id="research">
+    <div class="fx-inner">
+      <p style="text-align:center; margin:0 0 0.25rem; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0;">From the Blog</p>
       <p style="text-align:center; margin:0 0 1.25rem; font-size:0.92rem; color:#4B5563;">Recent posts</p>
-
       <!-- Research carousel: blog posts only, cards built from blog/manifest.json -->
       <div style="position:relative; margin-top:2rem;">
 
@@ -2885,8 +3006,15 @@
 
       <!-- Dot indicators -->
       <div id="rc-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.25rem;" role="tablist" aria-label="Carousel page indicators"></div>
+      <div class="fx-links fx-links--center">
+        <a href="landscape/index.html" class="fx-link">AI Vendor Landscape</a>
+        <a href="landscape/ai-bolt-ons.html" class="fx-link">AI Bolt-Ons</a>
+        <a href="primers/index.html" class="fx-link">All primers</a>
+        <a href="resources.html" class="fx-link">Explore all guides and research &rarr;</a>
+      </div>
     </div>
   </section>
+
 
   <script>
   /* Research carousel + latest blog post loader */
@@ -3188,7 +3316,7 @@
         </div>
 
         <div class="assessment-popup-footer">
-          <p class="assessment-popup-price"><strong>Proof-of-concept implementation typically ranges from $5K to $20K.</strong>Build, implementation, training, user guides, and one year of support are included.</p>
+          <p class="assessment-popup-price"><strong>Proof-of-concept projects start at $5K, depending on scope and the size of your business.</strong> Build, implementation, training, user guides, and one year of support are included.</p>
           <a class="assessment-popup-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form">
             <img src="images/assessment-contact-qr.png" alt="QR code for the free AI assessment form">
             <span>Scan to continue on your phone</span>
@@ -3239,13 +3367,7 @@
       if (e.key === 'Escape' && assessmentPopup.classList.contains('open')) closeAssessmentPopup();
     });
 
-    if (!assessmentSeen) {
-      if (document.readyState === 'complete') {
-        setTimeout(openAssessmentPopup, 1600);
-      } else {
-        window.addEventListener('load', function () { setTimeout(openAssessmentPopup, 1600); });
-      }
-    }
+    /* Popup no longer opens on page load. Full details live on assessment.html. */
 
   })();
 
@@ -3564,6 +3686,60 @@
           d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
       })
       .catch(function () {});
+  })();
+  </script>
+  <script>
+  /* Homepage contact form: posts to /api/inquire */
+  (function () {
+    var form = document.getElementById('home-contact-form');
+    if (!form) return;
+    var errorEl = document.getElementById('hc-error');
+    var submitEl = document.getElementById('hc-submit');
+    function fail(msg, field) {
+      errorEl.textContent = msg;
+      errorEl.classList.add('show');
+      if (field) field.focus();
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      var data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+        context: 'strategy',
+        website: form.website.value,
+        fax: form.fax.value
+      };
+      if (!data.name) return fail('Please enter your name.', form.name);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return fail('Please enter a valid email address.', form.email);
+      if (data.message.length < 20) return fail('Please add a little more detail (at least 20 characters).', form.message);
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+      fetch('/api/inquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (typeof gtag === 'function') { gtag('event', 'generate_lead', { form_id: 'home-contact-form' }); }
+            form.reset();
+            window.location.href = 'thanks.html';
+            return;
+          }
+          fail((result.json && result.json.error) || 'Something went wrong. Please email strategy@futureinsites.com directly.');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Talk through the problem';
+        })
+        .catch(function () {
+          fail('Network error. Please email strategy@futureinsites.com directly.');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Talk through the problem';
+        });
+    });
   })();
   </script>
   <script src="cookie-banner.js"></script>
