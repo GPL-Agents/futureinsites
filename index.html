@@ -673,20 +673,22 @@
     .res-tile-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
     .res-tile-list a { font-size: 0.9rem; font-weight: 600; color: #0B2A56; text-decoration: none; line-height: 1.4; }
     .res-tile-list a:hover { color: #1769E0; }
-    .res-tile--primers .res-tile-body { padding-bottom: 1.5rem; }
-    .res-tile-desc--tight { flex: 0; margin-bottom: 0.9rem; }
-    .res-primer-list { list-style: none; margin: 0 0 1.25rem; padding: 0; flex: 1; display: flex; flex-direction: column; }
-    .res-primer-list li { flex: 1; border-top: 1px solid #EEF0F3; }
+    .res-tile-desc--tight { flex: 0; margin-bottom: 0.6rem; }
+    .res-primer-list { list-style: none; margin: 0 0 1rem; padding: 0; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .res-primer-list li { border-top: 1px solid #EEF0F3; }
     .res-primer-list li:last-child { border-bottom: 1px solid #EEF0F3; }
-    .res-primer-list a { display: flex; align-items: flex-start; gap: 0.85rem; height: 100%; padding: 0.75rem 0.25rem; text-decoration: none; border-radius: 6px; transition: background 0.15s; }
+    .res-primer-list a { display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0.2rem; text-decoration: none; border-radius: 6px; transition: background 0.15s; }
     .res-primer-list a:hover { background: #F5F8FE; }
-    .res-primer-num { flex-shrink: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: #EAF2FF; color: #1769E0; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .res-primer-text { display: flex; flex-direction: column; gap: 0.15rem; }
-    .res-primer-name { font-size: 0.88rem; font-weight: 600; color: #0B2A56; line-height: 1.35; }
+    .res-primer-num { flex-shrink: 0; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: #EAF2FF; color: #1769E0; font-size: 0.68rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .res-primer-name { font-size: 0.86rem; font-weight: 600; color: #0B2A56; line-height: 1.35; }
     .res-primer-list a:hover .res-primer-name { color: #1769E0; }
-    .res-primer-meta { font-size: 0.78rem; color: #6B7280; line-height: 1.4; }
-    .res-primer-side { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; width: 2.6rem; }
-    .res-primer-time { font-size: 0.66rem; font-weight: 600; color: #6B7280; white-space: nowrap; }
+    .res-primer-time { font-size: 0.72rem; font-weight: 500; color: #6B7280; white-space: nowrap; margin-left: 0.25rem; }
+    @media (min-width: 900px) {
+      .res-tile--primers { contain: size; }
+    }
+    @media (min-width: 900px) and (max-width: 1023px) {
+      .res-tile-desc--tight { display: none; }
+    }
     .res-tile-note { margin-top: 1.6rem; text-align: center; font-size: 0.88rem; color: #4B5563; }
     .res-tile-note a { color: #1769E0; font-weight: 600; text-decoration: none; }
     .bottom-banner-col {
@@ -2845,10 +2847,10 @@
             <p class="res-tile-title">Start here</p>
             <p class="res-tile-desc res-tile-desc--tight">Short, plain-language guides for business leaders.</p>
             <ol class="res-primer-list">
-              <li><a href="primers/ai-for-executives.html"><span class="res-primer-side"><span class="res-primer-num">01</span><span class="res-primer-time">10 min</span></span><span class="res-primer-text"><span class="res-primer-name">AI for Executives: A Plain-Language Guide</span><span class="res-primer-meta">What AI is and where it creates value</span></span></a></li>
-              <li><a href="primers/history-of-generative-ai.html"><span class="res-primer-side"><span class="res-primer-num">02</span><span class="res-primer-time">5 min</span></span><span class="res-primer-text"><span class="res-primer-name">History of Generative AI: How LLMs Got Here</span><span class="res-primer-meta">Six decades of advances behind today&rsquo;s LLMs</span></span></a></li>
-              <li><a href="primers/what-is-an-ai-agent.html"><span class="res-primer-side"><span class="res-primer-num">03</span><span class="res-primer-time">12 min</span></span><span class="res-primer-text"><span class="res-primer-name">What Is an AI Agent?</span><span class="res-primer-meta">How agents differ from models, chatbots, and plugins</span></span></a></li>
-              <li><a href="primers/building-ai-agents.html"><span class="res-primer-side"><span class="res-primer-num">04</span><span class="res-primer-time">8 min</span></span><span class="res-primer-text"><span class="res-primer-name">Building AI Agents: An 8-Step Framework</span><span class="res-primer-meta">The eight steps from scope to evaluation</span></span></a></li>
+              <li><a href="primers/ai-for-executives.html"><span class="res-primer-num">01</span><span class="res-primer-name">AI for Executives: A Plain-Language Guide <span class="res-primer-time">10 min</span></span></a></li>
+              <li><a href="primers/history-of-generative-ai.html"><span class="res-primer-num">02</span><span class="res-primer-name">History of Generative AI: How LLMs Got Here <span class="res-primer-time">5 min</span></span></a></li>
+              <li><a href="primers/what-is-an-ai-agent.html"><span class="res-primer-num">03</span><span class="res-primer-name">What Is an AI Agent? <span class="res-primer-time">12 min</span></span></a></li>
+              <li><a href="primers/building-ai-agents.html"><span class="res-primer-num">04</span><span class="res-primer-name">Building AI Agents: An 8-Step Framework <span class="res-primer-time">8 min</span></span></a></li>
             </ol>
             <a href="primers/index.html" class="res-tile-link">All primers &rarr;</a>
           </div>
