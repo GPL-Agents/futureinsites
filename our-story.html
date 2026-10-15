@@ -436,6 +436,27 @@
       color: var(--muted);
     }
 
+    .principle-card .principle-industry {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.5rem;
+    }
+
+    .principle-card .principle-industry + h3 + p {
+      margin-top: 0;
+    }
+
+    .principle-card--wide {
+      grid-column: 1 / -1;
+    }
+
+    .principle-card--wide p {
+      max-width: 72ch;
+    }
+
     .principle-card p + p {
       margin-top: 0.75rem;
       color: rgba(255,255,255,0.8);
@@ -1048,45 +1069,52 @@
       <div class="principles-grid">
 
         <div class="principle-card">
-          <h3>Important knowledge lives in too many places</h3>
-          <p>Policies, project history, client information, and internal expertise may be scattered across documents, inboxes, shared drives, and individual employees.</p>
-          <p>We can help organize that knowledge and create a secure AI assistant that helps employees find information, answer questions, and prepare work using approved company sources.</p>
+          <p class="principle-industry">Law office &middot; Cross-department</p>
+          <h3>Attorneys and staff are using AI without a firm policy</h3>
+          <p>Many small firms already use AI to draft documents and summarize case files, often in consumer tools, with no clear rules on which client information is off-limits.</p>
+          <p>We can write a practical AI use policy, set up a secure firm-approved assistant, and train attorneys and staff to use it well while protecting client confidentiality.</p>
         </div>
 
         <div class="principle-card">
-          <h3>Preparing routine work takes too much time</h3>
-          <p>Proposals, reports, meeting summaries, client updates, and other recurring documents may require employees to repeatedly gather the same information and rebuild similar materials.</p>
-          <p>We can design an AI-assisted workflow that collects the relevant information, prepares a first draft, and routes it to the right person for review.</p>
+          <p class="principle-industry">Accounting firm &middot; Finance</p>
+          <h3>Manual data cleanup is eating into advisory capacity</h3>
+          <p>Staff spend hours moving and reconciling client data across disconnected systems, chasing documents, and answering routine client questions, leaving less time for advisory work.</p>
+          <p>We can build AI-assisted workflows that gather and organize client data, flag exceptions for review, and draft routine client communications for staff approval.</p>
         </div>
 
         <div class="principle-card">
-          <h3>Customer and prospect follow-up is inconsistent</h3>
-          <p>Leads, inquiries, and existing customers may not always receive timely or complete follow-up because information is spread across email, notes, and business systems.</p>
-          <p>We can help create a workflow that organizes incoming information, recommends or prepares appropriate follow-up, and keeps people responsible for the final decision.</p>
+          <p class="principle-industry">Dental practice &middot; Operations</p>
+          <h3>The front desk is buried in insurance verification</h3>
+          <p>Checking eligibility and benefits before each appointment means phone calls, payer portals, and manual entry into the practice management system, often while the practice is short-staffed.</p>
+          <p>We can set up AI tools for eligibility verification, patient calls, and appointment reminders, connected to your practice management system, so staff can spend more time with patients.</p>
         </div>
 
         <div class="principle-card">
-          <h3>Experienced employees are doing too much repetitive work</h3>
-          <p>Skilled professionals may spend hours researching, sorting documents, entering information, or transferring it between systems.</p>
-          <p>We can identify which parts of the process can be automated or assisted by AI, while preserving human judgment where it matters.</p>
+          <p class="principle-industry">Roofing company &middot; Marketing</p>
+          <h3>Leads go cold while crews are on the roof</h3>
+          <p>Speed to lead wins roofing jobs, but calls get missed during the workday and follow-up depends on whoever has time.</p>
+          <p>We can configure the AI answering, lead routing, and follow-up features in your roofing CRM, or build an agent that does the same, so every inquiry gets a fast response and lands in your pipeline.</p>
         </div>
 
         <div class="principle-card">
-          <h3>The business already pays for AI features it is not using well</h3>
-          <p>Many business platforms now include assistants, automation, or AI agents, but configuring them around a real workflow can be difficult.</p>
-          <p>We can evaluate the capabilities already available in your software, configure the useful ones, and help your team adopt them effectively.</p>
+          <p class="principle-industry">Auto repair shop &middot; Operations</p>
+          <h3>Service advisors can't keep up with customer communication</h3>
+          <p>Status texts, inspection results, estimate approvals, and declined-work follow-up all compete for service advisors' time, and the shop management system and its add-ons don't always work together.</p>
+          <p>We can connect the right AI add-ons to your shop management system and design workflows that keep customers updated and follow up on declined work automatically.</p>
         </div>
 
         <div class="principle-card">
-          <h3>Employees are using AI without shared guidelines</h3>
-          <p>Team members may already be experimenting with public AI tools, creating uncertainty about sensitive information, accuracy, and appropriate use.</p>
-          <p>We can develop practical AI policies, approved workflows, and training that help employees use these tools productively and responsibly.</p>
+          <p class="principle-industry">Financial advisory firm &middot; Operations</p>
+          <h3>Client meeting notes and documents pile up</h3>
+          <p>Advisors want AI to summarize meetings and pull key details from client documents, but every output has to meet supervision and recordkeeping requirements.</p>
+          <p>We can set up a business LLM environment with approved data sources, logged prompts and outputs, and human review built in, so advisors save time and compliance keeps visibility.</p>
         </div>
 
-        <div class="principle-card">
-          <h3>There are many ideas, but no clear place to start</h3>
-          <p>Business owners often see numerous possible applications for AI but lack a reliable way to compare them.</p>
-          <p>We can assess the opportunities, estimate their likely value and complexity, and identify a focused first project that is useful, achievable, and easy for the organization to evaluate.</p>
+        <div class="principle-card principle-card--wide">
+          <p class="principle-industry">General contractor &middot; Strategy</p>
+          <h3>Project managers use AI, but there's no plan</h3>
+          <p>Many project managers already use general AI tools for reporting and documentation, and AI agents are on the horizon, but accuracy concerns and scattered tools make it hard to know where to invest.</p>
+          <p>We can assess where AI fits across estimating, reporting, document management, and contract administration, then pick a focused first project with a measurable payoff.</p>
         </div>
 
       </div>
