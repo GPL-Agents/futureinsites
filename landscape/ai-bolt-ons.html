@@ -185,6 +185,46 @@
       line-height: 1.7;
     }
 
+    /* EDITION STRIP */
+    .arch-strip {
+      background: var(--dark2);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.75rem 2rem;
+    }
+    .arch-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .arch-current {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .arch-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      flex-shrink: 0;
+    }
+    .arch-label {
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .arch-version {
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
     /* INTRO STRIP */
     .intro-strip {
       background: var(--bg-alt);
@@ -1185,6 +1225,17 @@
         <span class="submit-ai-pill-label">Tested one we missed?</span>
         <span class="submit-ai-pill-cta">Submit a Bolt-On →</span>
       </a>
+    </div>
+  </div>
+
+  <!-- EDITION STRIP -->
+  <div class="arch-strip">
+    <div class="arch-strip-inner">
+      <div class="arch-current">
+        <span class="arch-dot"></span>
+        <span class="arch-label">Current Edition</span>
+        <span class="arch-version">October 2026</span>
+      </div>
     </div>
   </div>
 
