@@ -1,11 +1,28 @@
-/* FutureInSites cookie banner + analytics consent.
-   The site uses Google Analytics, which sets cookies. GA loads ONLY after a
-   visitor accepts. Decline = GA never loads, zero cookies set. The choice is
+/* FutureInSites cookie banner + Google tag (Consent Mode v2).
+   The Google tag loads on every page with all consent signals DENIED by
+   default (cookieless pings only, no cookies set). On "Accept" we update
+   consent to GRANTED, and Google may then set Analytics + Ads cookies. On
+   "Decline" consent stays denied: no cookies are set. The choice is
    remembered in localStorage so the banner shows once, not every visit. */
 (function () {
 
   var GA_ID = 'G-H8Q5T1KH1T';
+  var ADS_ID = ''; /* Google Ads tag id, e.g. 'AW-1234567890' -- set when the Ads tag is ready */
   var CONSENT_KEY = 'fi_cookie_consent'; /* 'accepted' | 'declined' */
+
+  /* Consent Mode v2: establish the default state BEFORE any Google script runs. */
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+  gtag('set', 'url_passthrough', true);
+  gtag('set', 'ads_data_redaction', true);
 
   function getConsent() {
     try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
@@ -14,23 +31,33 @@
     try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
   }
 
-  /* ─── LOAD GOOGLE ANALYTICS (only ever called after consent) ─── */
-  function enableGA() {
-    if (window.__fiGaLoaded) return;
-    window.__fiGaLoaded = true;
+  /* ─── LOAD THE GOOGLE TAG (every page; respects the denied default above) ─── */
+  function loadTag() {
+    if (window.__fiTagLoaded) return;
+    window.__fiTagLoaded = true;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
     gtag('js', new Date());
     gtag('config', GA_ID);
+    if (ADS_ID) gtag('config', ADS_ID);
+  }
+  loadTag();
+
+  /* Consent update: called only when the visitor accepts. */
+  function grantConsent() {
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted'
+    });
   }
 
   /* ─── RETURNING VISITORS: honor the saved choice, no banner ─── */
   var saved = getConsent();
-  if (saved === 'accepted') { enableGA(); return; }
+  if (saved === 'accepted') { grantConsent(); return; }
   if (saved === 'declined') { return; }
 
   /* ─── INLINE SVG: chocolate chip cookie (golden brown, reads on dark bg) ─── */
@@ -202,7 +229,7 @@
 
     bar.querySelector('.fi-cookie-accept').addEventListener('click', function () {
       setConsent('accepted');
-      enableGA();
+      grantConsent();
       dismiss();
     });
     bar.querySelector('.fi-cookie-reject').addEventListener('click', function () {
