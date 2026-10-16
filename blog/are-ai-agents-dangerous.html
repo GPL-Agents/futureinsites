@@ -862,7 +862,15 @@
 
     <h3>What they were working toward</h3>
 
-    <p>A universal way to fool the automated scorer. The agents reverse-engineered the flag-generation secret within hours, but came to believe the scorer checked how a flag was obtained, not only whether it was correct. So they launched three workstreams: replace the target with a modified version, tamper with the transcripts and logs, and tamper with the grader itself <a href="#ref8">[8]</a>. The Hugging Face attack grew out of one of those workstreams -- extracting information about the scorer -- not out of a plan to steal answer keys <a href="#ref13">[13]</a><a href="#ref8">[8]</a>.</p>
+    <p>A universal way to fool the automated scorer. The agents reverse-engineered the flag-generation secret within hours, but came to believe the scorer checked how a flag was obtained, not only whether it was correct. So they launched three workstreams <a href="#ref8">[8]</a>:</p>
+
+    <ul>
+      <li>Replace the target with a modified version.</li>
+      <li>Tamper with the transcripts and logs.</li>
+      <li>Tamper with the grader itself.</li>
+    </ul>
+
+    <p>The Hugging Face attack grew out of one of those workstreams -- extracting information about the scorer -- not out of a plan to steal answer keys <a href="#ref13">[13]</a><a href="#ref8">[8]</a>.</p>
 
     <p>The intrusion itself involved about <strong>17,600 attacker actions</strong> across roughly 6,280 clusters between July 9 and 13 <a href="#ref13">[13]</a>, and touched only five datasets, all related to the evaluation; no other customer models, datasets, Spaces, or packages were affected <a href="#ref13">[13]</a>.</p>
 
