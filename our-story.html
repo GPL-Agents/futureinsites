@@ -264,7 +264,7 @@
     }
 
     .prose-inner {
-      max-width: 740px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
@@ -361,7 +361,7 @@
     }
 
     .principles-inner {
-      max-width: 1040px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
@@ -1127,6 +1127,19 @@
       .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
       .fis-form-grid { grid-template-columns: 1fr; }
     }
+    /* No single-word last lines */
+    h1, h2, h3, .principle-industry { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
+    /* Two-column layout: shared left edge across sections */
+    .os-split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 4rem; align-items: start; }
+    .os-split > div > :last-child { margin-bottom: 0; }
+    .os-card { background: #FFFFFF; border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem 2rem; }
+    .os-split--founder { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+    .founder-side .founder-photo-col { float: none; width: auto; margin: 0 0 1.75rem; padding-top: 0; display: flex; justify-content: center; }
+    .founder-side .pull-quote { margin: 0; }
+    @media (max-width: 820px) {
+      .os-split, .os-split--founder { grid-template-columns: 1fr; gap: 2rem; }
+    }
   </style>
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -1194,32 +1207,44 @@
   <!-- SECTION 2: Why clients call us -->
   <section class="prose-section alt">
     <div class="prose-inner">
-      <p class="section-label">Why clients call us</p>
-      <h2>Practical questions, practical answers</h2>
-      <p>Most business owners don't need another presentation on AI's potential. They need answers to questions like these:</p>
-      <ul>
-        <li>Where could AI make a real difference in our business?</li>
-        <li>Which ideas are worth pursuing, and which are distractions?</li>
-        <li>How can our people use AI productively and safely?</li>
-        <li>Can we automate a repetitive process without disrupting the business?</li>
-        <li>Are we getting the most from the AI features in tools we already pay for?</li>
-      </ul>
-      <p>We help answer those questions, then help put the answers into practice.</p>
+      <div class="os-split">
+        <div>
+        <p class="section-label">Why clients call us</p>
+        <h2>Practical questions, practical answers</h2>
+        <p>Most business owners don't need another presentation on AI's potential. They need answers to questions like these:</p>
+        <p>We help answer those questions, then help put the answers into practice.</p>
+        </div>
+        <div class="os-card">
+          <ul>
+            <li>Where could AI make a real difference in our business?</li>
+            <li>Which ideas are worth pursuing, and which are&nbsp;distractions?</li>
+            <li>How can our people use AI productively and safely?</li>
+            <li>Can we automate a repetitive process without disrupting the business?</li>
+            <li>Are we getting the most from the AI features in tools we already pay for?</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- SECTION 3: What we do -->
   <section class="prose-section">
     <div class="prose-inner">
-      <p class="section-label">What we do</p>
-      <h2>Where we help</h2>
-      <ul>
-        <li><strong>Team training:</strong> prompt writing, AI best practices, and habits that make everyday tools more useful.</li>
-        <li><strong>Governance:</strong> clear policies on how your team uses AI, what data it can touch, and who reviews the output.</li>
-        <li><strong>Business LLM setup:</strong> business versions of tools like ChatGPT, Claude, or Microsoft Copilot, configured for your data and your people.</li>
-        <li><strong>Agents and agentic workflows:</strong> automating research, reporting, customer follow-up, and other multi-step work, with people reviewing what matters.</li>
-        <li><strong>Agents in software you already use:</strong> setting up or tuning the AI built into your CRM, help desk, or other platforms.</li>
-      </ul>
+      <div class="os-split">
+        <div>
+        <p class="section-label">What we do</p>
+        <h2>Where we help</h2>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Team training:</strong> prompt writing, AI best practices, and habits that make everyday tools more useful.</li>
+            <li><strong>Governance:</strong> clear policies on how your team uses AI, what data it can touch, and who reviews the output.</li>
+            <li><strong>Business LLM setup:</strong> business versions of tools like ChatGPT, Claude, or Microsoft Copilot, configured for your data and your people.</li>
+            <li><strong>Agents and agentic workflows:</strong> automating research, reporting, customer follow-up, and other multi-step work, with people reviewing what matters.</li>
+            <li><strong>Agents in software you already use:</strong> setting up or tuning the AI built into your CRM, help desk, or other platforms.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1235,8 +1260,8 @@
         <div class="principle-card">
           <p class="principle-industry">Law office &middot; Cross-department</p>
           <h3>Attorneys and staff are using AI without a firm policy</h3>
-          <p>Many small firms already use AI to draft documents and summarize case files, often in consumer tools, with no clear rules on which client information is off-limits.</p>
-          <p>We can write a practical AI use policy, set up a secure firm-approved assistant, and train attorneys and staff to use it well while protecting client confidentiality.</p>
+          <p>Many small firms already use AI to draft documents and summarize case files, often in consumer tools, with no clear rules on which client information is&nbsp;off&#8209;limits.</p>
+          <p>We can write a practical AI use policy, set up a secure firm-approved assistant, and train attorneys and staff to use it well while protecting client&nbsp;confidentiality.</p>
         </div>
 
         <div class="principle-card">
@@ -1264,13 +1289,13 @@
           <p class="principle-industry">Auto repair shop &middot; Operations</p>
           <h3>Service advisors can't keep up with customer communication</h3>
           <p>Status texts, inspection results, estimate approvals, and declined-work follow-up all compete for service advisors' time, and the shop management system and its add-ons don't always work together.</p>
-          <p>We can connect the right AI add-ons to your shop management system and design workflows that keep customers updated and follow up on declined work automatically.</p>
+          <p>We can connect the right AI add-ons to your shop management system and design workflows that keep customers updated and follow up on declined work&nbsp;automatically.</p>
         </div>
 
         <div class="principle-card">
           <p class="principle-industry">Financial advisory firm &middot; Operations</p>
           <h3>Client meeting notes and documents pile up</h3>
-          <p>Advisors want AI to summarize meetings and pull key details from client documents, but every output has to meet supervision and recordkeeping requirements.</p>
+          <p>Advisors want AI to summarize meetings and pull key details from client documents, but every output has to meet supervision and recordkeeping&nbsp;requirements.</p>
           <p>We can set up a business LLM environment with approved data sources, logged prompts and outputs, and human review built in, so advisors save time and compliance keeps visibility.</p>
         </div>
 
@@ -1288,30 +1313,23 @@
   <!-- SECTION 5: How we work -->
   <section class="prose-section alt">
     <div class="prose-inner">
-      <p class="section-label">Our approach</p>
-      <h2>How we work</h2>
-      <p>We start by learning how the business actually runs: what takes too long, where information gets lost, and which processes depend too heavily on one person. Then we pick a focused first project with a clear benefit and a realistic path to adoption.</p>
-      <p>We don't build dependency. You'll understand what's been built and keep control of your tools, data, processes, and knowledge.</p>
+      <div class="os-split">
+        <div>
+        <p class="section-label">Our approach</p>
+        <h2>How we work</h2>
+        </div>
+        <div>
+        <p>We start by learning how the business actually runs: what takes too long, where information gets lost, and which processes depend too heavily on one person. Then we pick a focused first project with a clear benefit and a realistic path to adoption.</p>
+        <p>We don't build dependency. You'll understand what's been built and keep control of your tools, data, processes, and knowledge.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- SECTION 6: Who you'll work with -->
   <section class="prose-section">
     <div class="prose-inner">
-      <div class="founder-grid">
-        <div class="founder-photo-col">
-          <picture>
-            <source srcset="images/headshot.greg.webp" type="image/webp">
-            <img
-              src="images/headshot.greg.jpg"
-              alt="Greg Loeffelholz, Founder and Managing Principal of FutureInSites"
-              class="founder-headshot"
-              width="260"
-              height="260"
-              loading="lazy"
-            >
-          </picture>
-        </div>
+      <div class="os-split os-split--founder">
         <div class="founder-text-col">
           <p class="section-label">Who you'll work with</p>
           <h2>A small firm with enterprise experience</h2>
@@ -1325,11 +1343,24 @@
             <li>Founded a company, grew it to profitability, and sold it</li>
           </ul>
         </div>
-      </div>
-      <div class="founder-prose-full">
-        <div class="pull-quote">
-          &ldquo;I&rsquo;ve been the owner signing the checks. I know what it&rsquo;s like when the money comes out of your own budget and your team is counting on you to get it right.&rdquo;
-          <span class="pull-quote-attr">Founder, FutureInSites</span>
+        <div class="founder-side">
+          <div class="founder-photo-col">
+            <picture>
+              <source srcset="images/headshot.greg.webp" type="image/webp">
+              <img
+                src="images/headshot.greg.jpg"
+                alt="Greg Loeffelholz, Founder and Managing Principal of FutureInSites"
+                class="founder-headshot"
+                width="260"
+                height="260"
+                loading="lazy"
+              >
+            </picture>
+          </div>
+          <div class="pull-quote">
+            &ldquo;I&rsquo;ve been the owner signing the checks. I know what it&rsquo;s like when the money comes out of your own budget and your team is counting on you to get it right.&rdquo;
+            <span class="pull-quote-attr">Founder, FutureInSites</span>
+          </div>
         </div>
       </div>
     </div>
