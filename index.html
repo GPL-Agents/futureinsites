@@ -2521,7 +2521,11 @@
     .fx-section--cream { background: #FDF6EE; border-top: 1px solid #EDE5D8; border-bottom: 1px solid #EDE5D8; }
     .fx-section--blue  { background: #EEF5FC; }
     .fx-inner { max-width: 1300px; margin: 0 auto; }
-    .fx-head { max-width: 680px; margin-bottom: 2rem; }
+    .fx-head { margin-bottom: 2rem; }
+    .fx-head .prac-title, .fx-head .prac-sub { max-width: none; text-wrap: pretty; }
+    /* No single-word last lines anywhere on the homepage */
+    h1, h2, h3, .prac-title, .res-tile-title { text-wrap: balance; }
+    p, li, .res-tile-desc, .res-primer-name { text-wrap: pretty; }
     .fx-head--center { margin-left: auto; margin-right: auto; text-align: center; }
     .fx-link {
       font-size: 0.88rem; font-weight: 600; color: var(--accent);
@@ -2585,6 +2589,7 @@
       font-family: 'Manrope', system-ui, sans-serif; font-size: 1.35rem; font-weight: 800;
       color: var(--dark); letter-spacing: -0.02em; line-height: 1.2;
     }
+    @media (max-width: 900px) { .gs-title { font-size: 1.2rem; } }
     .gs-desc { font-size: 0.93rem; color: #4B5563; line-height: 1.65; flex: 1; }
     .gs-note { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
     .gs-card .btn-primary, .gs-card .btn-outline { align-self: flex-start; margin-top: 0.4rem; text-align: center; }
@@ -2808,7 +2813,7 @@
       <div>
         <p class="prac-eyebrow">Experience behind the work</p>
         <h2 class="prac-title">Enterprise-level expertise, sized for small and midsize businesses.</h2>
-        <p class="xp-intro">FutureInSites was founded by Greg Loeffelholz, who brings enterprise AI and operating experience to every engagement.</p>
+        <p class="xp-intro">FutureInSites brings enterprise AI and operating experience to every engagement.</p>
         <ul class="xp-list">
           <li>Took machine learning and generative AI products from concept through production</li>
           <li>Led an AI-driven business managing more than $100 million in monthly search spend, bringing it to sustained profitability for the first time</li>
@@ -2819,7 +2824,7 @@
       <div>
         <figure class="xp-quote">
           <blockquote>&ldquo;I&rsquo;ve been the owner signing the checks. I know what it&rsquo;s like when the money comes out of your own budget and your team is counting on you to get it right.&rdquo;</blockquote>
-          <cite>Greg Loeffelholz, Founder</cite>
+          <cite>Founder, FutureInSites</cite>
         </figure>
         <div class="fx-links">
           <a href="our-story.html" class="fx-link">Read our story &rarr;</a>
@@ -3006,12 +3011,50 @@
 
       <!-- Dot indicators -->
       <div id="rc-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.25rem;" role="tablist" aria-label="Carousel page indicators"></div>
+      <!-- Reference guides: landscape, bolt-ons, primers -->
+      <p style="text-align:center; margin:3rem 0 0.25rem; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#1769E0;">Reference Guides</p>
+      <div class="res-grid">
+
+        <a href="landscape/index.html" class="res-tile">
+          <div class="res-tile-img"><img src="images/landscape-ai-thumb.png" alt="The AI Vendor Landscape" loading="lazy"></div>
+          <div class="res-tile-body">
+            <p class="res-tile-kicker">Reference Guide</p>
+            <p class="res-tile-title">The AI Vendor Landscape</p>
+            <p class="res-tile-desc">A categorized reference of AI companies, from frontier model labs to applied AI software.</p>
+            <span class="res-tile-link">Explore the landscape &rarr;</span>
+          </div>
+        </a>
+
+        <a href="landscape/ai-bolt-ons.html" class="res-tile">
+          <div class="res-tile-img"><img src="images/ai-bolt-ons-thumb.jpg" alt="AI Bolt-Ons" loading="lazy"></div>
+          <div class="res-tile-body">
+            <p class="res-tile-kicker">Reference Guide</p>
+            <p class="res-tile-title">AI Bolt-Ons</p>
+            <p class="res-tile-desc">A reference index of plugins, skills, MCP connectors, and browser agents you can add on top of your AI platform.</p>
+            <span class="res-tile-link">Browse the index &rarr;</span>
+          </div>
+        </a>
+
+        <div class="res-tile res-tile--primers">
+          <div class="res-tile-body">
+            <p class="res-tile-kicker">Primers</p>
+            <p class="res-tile-title">Start here</p>
+            <p class="res-tile-desc res-tile-desc--tight">Short, plain-language guides for business leaders.</p>
+            <ol class="res-primer-list">
+              <li><a href="primers/ai-for-executives.html"><span class="res-primer-num">01</span><span class="res-primer-name">AI for Executives: A Plain-Language Guide <span class="res-primer-time">10 min</span></span></a></li>
+              <li><a href="primers/history-of-generative-ai.html"><span class="res-primer-num">02</span><span class="res-primer-name">History of Generative AI: How LLMs Got Here <span class="res-primer-time">5 min</span></span></a></li>
+              <li><a href="primers/what-is-an-ai-agent.html"><span class="res-primer-num">03</span><span class="res-primer-name">What Is an AI Agent? <span class="res-primer-time">12 min</span></span></a></li>
+              <li><a href="primers/building-ai-agents.html"><span class="res-primer-num">04</span><span class="res-primer-name">Building AI Agents: An 8-Step Framework <span class="res-primer-time">8 min</span></span></a></li>
+            </ol>
+            <a href="primers/index.html" class="res-tile-link">All primers &rarr;</a>
+          </div>
+        </div>
+
+      </div>
       <div class="fx-links fx-links--center">
-        <a href="landscape/index.html" class="fx-link">AI Vendor Landscape</a>
-        <a href="landscape/ai-bolt-ons.html" class="fx-link">AI Bolt-Ons</a>
-        <a href="primers/index.html" class="fx-link">All primers</a>
         <a href="resources.html" class="fx-link">Explore all guides and research &rarr;</a>
       </div>
+
     </div>
   </section>
 
