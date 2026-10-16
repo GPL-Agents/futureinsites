@@ -2785,32 +2785,33 @@
 
         <div class="prac-card">
           <div class="prac-card-top">
-            <div class="prac-icon prac-icon--blue">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <div class="prac-icon prac-icon--green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
             </div>
-            <h3 class="prac-card-title">Software you already pay for is underused</h3>
+            <h3 class="prac-card-title">Staff re-enter data across systems</h3>
           </div>
-          <p class="prac-card-desc">We put the AI features and add-ons in your current tools to work so they handle more of the routine load.</p>
+          <p class="prac-card-desc">Exporting, cleaning up spreadsheets, and re-uploading data between systems eats hours. We build workflows that move the data, reformat it, and flag anything that needs a person's review.</p>
           <div class="prac-tags">
-            <span class="prac-tag">SMBs</span>
+            <span class="prac-tag">Accounting</span>
             <span class="prac-tag">Professional offices</span>
+            <span class="prac-tag">SMBs</span>
           </div>
         </div>
 
         <div class="prac-card">
           <div class="prac-card-top">
             <div class="prac-icon prac-icon--orange">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-            <h3 class="prac-card-title">You're not sure where AI should start</h3>
+            <h3 class="prac-card-title">Schedules and priorities are hard to keep on track</h3>
           </div>
-          <p class="prac-card-desc">We review your workflows, data, and tools, then recommend one first project with a clear cost and a measurable result.</p>
-          <a href="ai-readiness.html" class="prac-card-link">Take the readiness questionnaire &rarr;</a>
+          <p class="prac-card-desc">We set up AI admin assistants that manage calendars across teams and executives, organize to-do lists, and keep priorities in front of the right people.</p>
           <div class="prac-tags">
-            <span class="prac-tag">All business clients</span>
+            <span class="prac-tag">Executives</span>
+            <span class="prac-tag">Professional offices</span>
+            <span class="prac-tag">SMBs</span>
           </div>
         </div>
-
       </div>
 
       <div class="prac-footer">
@@ -3354,7 +3355,13 @@
       if (e.key === 'Escape' && assessmentPopup.classList.contains('open')) closeAssessmentPopup();
     });
 
-    /* Popup no longer opens on page load. Full details live on assessment.html. */
+    if (!assessmentSeen) {
+      if (document.readyState === 'complete') {
+        setTimeout(openAssessmentPopup, 1600);
+      } else {
+        window.addEventListener('load', function () { setTimeout(openAssessmentPopup, 1600); });
+      }
+    }
 
   })();
 
