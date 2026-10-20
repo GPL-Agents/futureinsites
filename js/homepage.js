@@ -75,8 +75,13 @@
     const [people, minutes, rate] = fields.map(field => Number(field.value));
     const hours = people * minutes / 60 * 5;
     document.getElementById('weekly-hours').textContent = number.format(hours);
+    const highlightHours = document.getElementById('highlight-hours');
+    if (highlightHours) highlightHours.textContent = number.format(hours);
     document.getElementById('headline-hours').textContent = `${number.format(hours)} hours`;
-    document.getElementById('annual-value').textContent = money.format(hours * 50 * rate);
+    const annualValue = document.getElementById('annual-value');
+      const formattedValue = money.format(hours * 50 * rate);
+      annualValue.textContent = formattedValue;
+      annualValue.style.fontSize = formattedValue.length > 9 ? '40px' : formattedValue.length > 8 ? '52px' : '';
   };
   fields.forEach(field => field.addEventListener('input', updateROI));
   updateROI();
