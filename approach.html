@@ -286,10 +286,11 @@
 
     /* HOW WE MEASURE ROI */
     .roi-section { padding: 4rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); }
-    .roi-inputs { list-style: none; margin: 1rem 0 1.5rem; padding: 0; max-width: 720px; }
+    .roi-inputs { list-style: none; margin: 0 0 1.5rem; padding: 0; }
     .roi-inputs li { position: relative; padding-left: 1.5rem; margin-bottom: 0.55rem; color: var(--dark); line-height: 1.6; }
     .roi-inputs li::before { content: ""; position: absolute; left: 0; top: 0.55rem; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-    .roi-example { display: flow-root; margin-top: 1.5rem; }
+    .roi-section .section-intro { max-width: none; margin-bottom: 1.5rem; }
+    .roi-example { display: flow-root; }
     .roi-example h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.6rem; }
     .roi-example p { color: var(--muted); line-height: 1.7; margin-bottom: 0.9rem; }
     .roi-example .roi-note { max-width: none; }
@@ -510,15 +511,6 @@
       <h2 class="section-title">We put a number on the work before we touch it.</h2>
       <p class="section-intro">We do not ask you to take AI's value on faith. Start with one recurring workflow and write down four things:</p>
 
-      <ul class="roi-inputs">
-        <li><strong>What an hour of that work costs.</strong></li>
-        <li><strong>How long one completed pass takes.</strong></li>
-        <li><strong>How often it has to be done again.</strong></li>
-        <li><strong>How many times it runs in a month.</strong></li>
-      </ul>
-
-      <p class="roi-note" style="margin-top:0;">Those four numbers give you a baseline: hours per month times the hourly cost. That is what the work costs you today, before anyone touches AI. Then we build a small prototype and run it beside the process your team already uses, measured on the same four numbers.</p>
-
       <div class="roi-example">
         <div class="roi-table-wrap">
           <table class="roi-table">
@@ -536,6 +528,15 @@
             </tbody>
           </table>
         </div>
+      <ul class="roi-inputs">
+        <li><strong>What an hour of that work costs.</strong></li>
+        <li><strong>How long one completed pass takes.</strong></li>
+        <li><strong>How often it has to be done again.</strong></li>
+        <li><strong>How many times it runs in a month.</strong></li>
+      </ul>
+
+      <p class="roi-note" style="margin-top:0;">Those four numbers give you a baseline: hours per month times the hourly cost. That is what the work costs you today, before anyone touches AI. Then we build a small prototype and run it beside the process your team already uses, measured on the same four numbers.</p>
+
         <h3>Worked example</h3>
         <p>A two-person office reclaims three hours a week, each, on a recurring workflow. Both people earn $85,000 a year.</p>
         <p>At $85,000, an hour of their time costs about $41, based on 2,080 working hours a year.</p>
