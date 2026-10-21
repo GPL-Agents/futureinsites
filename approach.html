@@ -289,9 +289,14 @@
     .roi-inputs { list-style: none; margin: 1rem 0 1.5rem; padding: 0; max-width: 720px; }
     .roi-inputs li { position: relative; padding-left: 1.5rem; margin-bottom: 0.55rem; color: var(--dark); line-height: 1.6; }
     .roi-inputs li::before { content: ""; position: absolute; left: 0; top: 0.55rem; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-    .roi-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; margin-top: 0.5rem; }
-    @media (max-width: 820px) { .roi-split { grid-template-columns: 1fr; gap: 1.5rem; } }
-    .roi-table-wrap { overflow-x: auto; }
+    .roi-example { display: flow-root; margin-top: 1.5rem; }
+    .roi-example h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.6rem; }
+    .roi-example p { color: var(--muted); line-height: 1.7; margin-bottom: 0.9rem; }
+    .roi-example .roi-note { max-width: none; }
+    .roi-table-wrap { float: right; width: 48%; margin: 0 0 1.25rem 2.5rem; overflow-x: auto; }
+    @media (max-width: 820px) {
+      .roi-table-wrap { float: none; width: 100%; margin: 0 0 1.5rem; }
+    }
     table.roi-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
     table.roi-table th, table.roi-table td { border: 1px solid var(--border); padding: 0.65rem 0.85rem; text-align: left; }
     table.roi-table thead th { background: #1F2A44; color: #FFFFFF; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em; }
@@ -394,7 +399,7 @@
       <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
         <span class="nav-brand-name">FutureInSites</span>
-        <span class="nav-wordmark-tagline">AI for Small Business</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
       </div>
     </a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
@@ -404,11 +409,10 @@
       <li class="nav-more">
         <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="solutions.html">Solutions</a></li>
           <li><a href="approach.html">How We Work</a></li>
+          <li><a href="solutions.html">Our Solutions</a></li>
           <li><a href="ai-readiness.html">Readiness Questionnaire</a></li>
           <li><a href="assessment.html">Opportunity Assessment</a></li>
-          <li><a href="consumer.html">Consumer AI</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -515,12 +519,7 @@
 
       <p class="roi-note" style="margin-top:0;">Those four numbers give you a baseline: hours per month times the hourly cost. That is what the work costs you today, before anyone touches AI. Then we build a small prototype and run it beside the process your team already uses, measured on the same four numbers.</p>
 
-      <div class="roi-split">
-        <div>
-          <h3 style="font-size:1.05rem; font-weight:700; margin:0.5rem 0 0.6rem;">Worked example</h3>
-          <p style="color:var(--muted); line-height:1.7; margin-bottom:0.9rem;">A two-person office reclaims three hours a week, each, on a recurring workflow. Both people earn $85,000 a year.</p>
-          <p style="color:var(--muted); line-height:1.7;">At $85,000, an hour of their time costs about $41, based on 2,080 working hours a year.</p>
-        </div>
+      <div class="roi-example">
         <div class="roi-table-wrap">
           <table class="roi-table">
             <thead>
@@ -537,11 +536,14 @@
             </tbody>
           </table>
         </div>
-      </div>
+        <h3>Worked example</h3>
+        <p>A two-person office reclaims three hours a week, each, on a recurring workflow. Both people earn $85,000 a year.</p>
+        <p>At $85,000, an hour of their time costs about $41, based on 2,080 working hours a year.</p>
 
       <p class="roi-note">Scale it to your situation. At the same $41 per hour: 3 hours a week saved is about $6,400 a year; 6 hours is about $12,750; 10 hours is about $21,250. The arithmetic is simple on purpose. If the time saved does not clearly beat the baseline, we say so and stop.</p>
 
-      <p class="roi-note"><strong>What we count, and what we do not.</strong> We count the time saved, in hours and dollars, because that is what we can stand behind. We do not put a number on what that reclaimed time could earn you next. The upside is real -- time returned to billable work, to customers, to the owner's own priorities -- but it is an outcome, not a promise, so we keep it qualitative.</p>
+      <p class="roi-note"><strong>What we count, and what we do not.</strong> We count the time saved, in hours and dollars, because that is what we can stand behind. We do not put a number on what that reclaimed time could earn you next. The upside is real: time returned to billable work, to customers, to the owner's own priorities. But it is an outcome, not a promise, so we keep it qualitative.</p>
+      </div>
     </div>
   </section>
 
@@ -727,7 +729,7 @@
             <li><a href="approach.html">How We Work</a></li>
             <li><a href="solutions.html">Solutions</a></li>
             <li><a href="ai-readiness.html">Assessment</a></li>
-            <li><a href="consumer.html">Consumer AI</a></li>
+
           </ul>
         </div>
         <div class="footer-col">
