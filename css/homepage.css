@@ -100,7 +100,7 @@ main>.home-hero+.time-evidence{border-top:0}
 .closing-expertise>h4{margin:0 0 14px;font-size:28px;line-height:1.15}
 .closing-expertise>p:not(.eyebrow){margin:0 0 12px;font-size:13px;line-height:1.65}
 .closing-expertise>.closing-meeting-note{display:block;margin-top:14px;padding-top:14px}
-.closing-assessment-video{display:block;width:100%;max-width:360px;height:auto;aspect-ratio:16/9;margin:0 auto 12px;border-radius:7px;background:#0b0c10;object-fit:contain}
+.closing-assessment-video{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;margin:0 auto 12px;border-radius:7px;background:#0b0c10;object-fit:contain}
 .closing-meeting-note b{display:block;line-height:1.4}
 .closing-meeting-note p{margin:5px 0 0;line-height:1.6}
 @media(min-width:1101px){.closing-actions>.closing-expertise{contain:size}}
