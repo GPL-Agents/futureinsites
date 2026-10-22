@@ -94,7 +94,13 @@ main>section+section{border-top:1px solid #cbddeb}.revenue-evidence::before{disp
 .home-hero{border-bottom:1px solid #cbddeb}
 main>.home-hero+.time-evidence{border-top:0}
 
-/* Fit the assessment overview above the meeting details in the closing panel. */
-.closing-expertise>.closing-meeting-note{padding-top:16px;margin-top:22px}
-.closing-assessment-video{display:block;width:100%;max-width:320px;height:auto;aspect-ratio:16/9;margin:0 auto 12px;border-radius:7px;background:#0b0c10}
-@media(min-width:1101px){.closing-actions>.closing-expertise{contain:size;display:flex;flex-direction:column}.closing-expertise>.closing-meeting-note{display:flex;flex-direction:column;flex:1;min-height:0}.closing-assessment-video{min-height:0;flex-shrink:1;object-fit:contain}.closing-meeting-note>b,.closing-meeting-note>p{flex-shrink:0}}
+/* Compact closing-panel copy around an undistorted 16:9 video. */
+.closing-actions>.closing-expertise{display:block}
+.closing-expertise>.eyebrow{margin:0 0 10px}
+.closing-expertise>h4{margin:0 0 14px;font-size:28px;line-height:1.15}
+.closing-expertise>p:not(.eyebrow){margin:0 0 12px;font-size:13px;line-height:1.65}
+.closing-expertise>.closing-meeting-note{display:block;margin-top:14px;padding-top:14px}
+.closing-assessment-video{display:block;width:100%;max-width:360px;height:auto;aspect-ratio:16/9;margin:0 auto 12px;border-radius:7px;background:#0b0c10;object-fit:contain}
+.closing-meeting-note b{display:block;line-height:1.4}
+.closing-meeting-note p{margin:5px 0 0;line-height:1.6}
+@media(min-width:1101px){.closing-actions>.closing-expertise{contain:size}}
