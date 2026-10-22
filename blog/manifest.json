@@ -1,9 +1,9 @@
 [
   {
     "slug": "malicious-ai-agents-stolen-inference",
-    "title": "They Steal Your AI. It Plans the Attack. You Pay the Bill.",
+    "title": "Railway Breach: Your Keys, Their Payday",
     "date": "2026-10-22",
-    "excerpt": "Malicious agents are turning stolen inference into an operating resource. Railway's disclosure and new security research show why that matters.",
+    "excerpt": "Railway's exposed credentials and reported wallet drains show the stakes of stolen access. Separate investigations show attackers using stolen AI compute to power offensive agents.",
     "author": "Greg Loeffelholz",
     "tags": [
       "AI Security",
