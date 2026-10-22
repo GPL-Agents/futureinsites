@@ -78,8 +78,14 @@ main>section+section{border-top:1px solid #cbddeb}.revenue-evidence::before{disp
 /* Make the access gaps the focal points of the workflow. */
 .evidence-workflow{align-items:center;gap:15px;padding-top:21px;margin-top:20px}.evidence-workflow>div{gap:9px}.evidence-workflow .workflow-stat{font-family:Inter,Arial,sans-serif;font-size:64px;line-height:1;letter-spacing:-.065em;font-weight:750;color:#175ee6;display:block;margin:3px 0 0}.evidence-workflow .workflow-stat>span{font-size:36px;letter-spacing:-.04em;color:inherit}.evidence-workflow b{font-size:13px;line-height:1.4}.evidence-workflow>i{font-size:27px}.evidence-workflow .work-icon{width:43px;height:43px}.evidence-workflow>div:nth-of-type(2){flex:.85}.evidence-workflow>div:nth-of-type(2)>span{font-size:12px;line-height:1.6;max-width:150px}
 @media(max-width:560px){.evidence-workflow{gap:7px}.evidence-workflow .workflow-stat{font-size:49px}.evidence-workflow .workflow-stat>span{font-size:27px}.evidence-workflow b{font-size:11px}.evidence-workflow>div:nth-of-type(2)>span{font-size:10px}.evidence-workflow>i{font-size:20px}.evidence-workflow .work-icon{width:37px;height:37px;padding:7px}}
-/* Annual-value math line: shows the 50 weeks a year assumption inline */
-.roi-math{font-size:13px;line-height:1.6;color:#2b5686;margin-top:10px}
-.roi-math b{color:#123c80;font-weight:700}
-.roi-math span{font-variant-numeric:tabular-nums;font-weight:600;color:#123c80}
-@media(max-width:560px){.roi-math{font-size:12px}}
+/* Annual value math inside the highlight panel: makes the 50 weeks a year assumption explicit */
+.highlight-hours .highlight-math{font-size:15px;line-height:1.85;color:#dcefff;margin:0}
+.highlight-hours .highlight-math b{color:#66f0ff;font-weight:700;white-space:nowrap}
+.highlight-hours .highlight-math span{color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.highlight-hours .highlight-math{font-size:14px;line-height:1.9}}
+/* Give the annual figure more weight now that the panel is not split with a weekly number */
+.roi-highlight>strong{font-size:78px}
+.roi-highlight>h3{font-size:23px;font-weight:600}
+@media(max-width:1100px){.roi-highlight>strong{font-size:68px}}
+@media(max-width:800px){.roi-highlight>strong{font-size:74px}}
+@media(max-width:560px){.roi-highlight>strong{font-size:clamp(56px,17vw,78px)}}

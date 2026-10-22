@@ -75,19 +75,16 @@
     const [people, minutes, rate] = fields.map(field => Number(field.value));
     const hours = people * minutes / 60 * 5;
     document.getElementById('weekly-hours').textContent = number.format(hours);
-    const highlightHours = document.getElementById('highlight-hours');
-    if (highlightHours) highlightHours.textContent = number.format(hours);
+    const panelHours = document.getElementById('annual-weekly-hours');
+    if (panelHours) {
+      panelHours.textContent = number.format(hours);
+      document.getElementById('annual-rate').textContent = money.format(rate);
+    }
     document.getElementById('headline-hours').textContent = `${number.format(hours)} hours`;
     const annualValue = document.getElementById('annual-value');
       const formattedValue = money.format(hours * 50 * rate);
       annualValue.textContent = formattedValue;
       annualValue.style.fontSize = formattedValue.length > 9 ? '40px' : formattedValue.length > 8 ? '52px' : '';
-      const mathHours = document.getElementById('roi-math-hours');
-      if (mathHours) {
-        mathHours.textContent = number.format(hours);
-        document.getElementById('roi-math-rate').textContent = money.format(rate);
-        document.getElementById('roi-math-total').textContent = formattedValue;
-      }
   };
   fields.forEach(field => field.addEventListener('input', updateROI));
   updateROI();
