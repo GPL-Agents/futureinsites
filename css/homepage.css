@@ -89,3 +89,7 @@ main>section+section{border-top:1px solid #cbddeb}.revenue-evidence::before{disp
 @media(max-width:1100px){.roi-highlight>strong{font-size:68px}}
 @media(max-width:800px){.roi-highlight>strong{font-size:74px}}
 @media(max-width:560px){.roi-highlight>strong{font-size:clamp(56px,17vw,78px)}}
+
+/* Extend the divider below the hero to both viewport edges. */
+.home-hero{border-bottom:1px solid #cbddeb}
+main>.home-hero+.time-evidence{border-top:0}
