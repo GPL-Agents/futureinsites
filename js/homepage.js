@@ -82,6 +82,12 @@
       const formattedValue = money.format(hours * 50 * rate);
       annualValue.textContent = formattedValue;
       annualValue.style.fontSize = formattedValue.length > 9 ? '40px' : formattedValue.length > 8 ? '52px' : '';
+      const mathHours = document.getElementById('roi-math-hours');
+      if (mathHours) {
+        mathHours.textContent = number.format(hours);
+        document.getElementById('roi-math-rate').textContent = money.format(rate);
+        document.getElementById('roi-math-total').textContent = formattedValue;
+      }
   };
   fields.forEach(field => field.addEventListener('input', updateROI));
   updateROI();
