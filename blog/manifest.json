@@ -1,5 +1,19 @@
 [
   {
+    "slug": "malicious-ai-agents-stolen-inference",
+    "title": "They Steal Your AI. It Plans the Attack. You Pay the Bill.",
+    "date": "2026-10-22",
+    "excerpt": "Malicious agents are turning stolen inference into an operating resource. Railway's disclosure and new security research show why that matters.",
+    "author": "Greg Loeffelholz",
+    "tags": [
+      "AI Security",
+      "AI Agents",
+      "LLMjacking",
+      "Cybersecurity"
+    ],
+    "image": "malicious-ai-agents-stolen-inference.png"
+  },
+  {
     "slug": "are-ai-agents-dangerous",
     "title": "Are AI Agents Dangerous? What the Hugging Face Incident Shows",
     "date": "2026-10-13",
