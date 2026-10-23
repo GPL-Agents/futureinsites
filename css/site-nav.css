@@ -1,0 +1,51 @@
+/* Shared site header nav. Mirrors the homepage nav (css/homepage.css).
+   Loaded last on interior pages so it overrides older inline nav styles.
+   Not used on index.html or the case-study pages. */
+:root body > nav{display:flex!important;align-items:center!important;justify-content:center!important;padding:0 40px!important;background:#fff!important;border-bottom:1px solid #e4e9ef!important;box-shadow:0 3px 15px #10213905!important;font-family:Inter,Arial,sans-serif!important;line-height:1.65!important}
+:root body > nav .nav-wordmark{position:absolute!important;left:40px!important;display:flex!important;gap:7px!important;align-items:center!important;text-decoration:none!important}
+:root body > nav .nav-logo{height:38px!important;width:auto!important;object-fit:contain!important}
+:root body > nav .nav-wordmark-text{display:flex!important;flex-direction:column!important;gap:0!important}
+:root body > nav .nav-brand-name{font-family:Manrope,Arial,sans-serif!important;font-size:1.15rem!important;font-weight:800!important;letter-spacing:-.025em!important;line-height:1!important;white-space:nowrap!important;display:block!important;background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+:root body > nav .nav-wordmark-tagline{display:block!important;font-size:.65rem!important;font-weight:400!important;color:#64748b!important;line-height:1.2!important;margin-top:5px!important;letter-spacing:.02em!important;white-space:nowrap!important}
+:root body > nav .nav-links{display:flex!important;gap:32px!important;list-style:none!important;padding:0!important;margin:0!important}
+:root body > nav .nav-links a{font-family:Inter,Arial,sans-serif!important;font-size:12px!important;font-weight:600!important;letter-spacing:normal!important;text-decoration:none!important;color:#43536d!important;background:none!important;transition:none!important}
+:root body > nav .nav-more{position:relative!important}
+:root body > nav .nav-more-btn{display:inline!important;padding:0!important}
+:root body > nav .nav-more-arrow{font-size:9px!important;margin-left:4px!important}
+:root body > nav .nav-more-dropdown{position:absolute!important;top:100%!important;left:-20px!important;transform:none!important;min-width:220px!important;margin:0!important;padding:12px 0!important;list-style:none!important;border:1px solid #e2e8f0!important;border-radius:7px!important;box-shadow:0 12px 25px #10213912!important;background:#fff!important;display:none!important;z-index:300!important}
+:root body > nav .nav-more.open .nav-more-dropdown{display:block!important}
+:root body > nav .nav-more-dropdown li{margin:0!important;padding:0!important}
+:root body > nav .nav-more-dropdown a{display:block!important;padding:10px 20px!important;white-space:nowrap!important}
+:root body > nav .nav-more-dropdown a:hover{background:#eff6ff!important;color:#175ee6!important}
+:root body > nav .nav-actions{position:absolute!important;right:40px!important;display:flex!important;align-items:center!important;gap:24px!important}
+:root body > nav .nav-actions .nav-client-link{font-family:Inter,Arial,sans-serif!important;font-size:12px!important;font-weight:600!important;text-decoration:none!important;color:#175cce!important}
+:root body > nav .nav-actions .nav-cta{position:static!important;display:inline-block!important;font-family:Inter,Arial,sans-serif!important;font-size:12px!important;font-weight:600!important;letter-spacing:normal!important;line-height:1.65!important;text-decoration:none!important;background:#175ee6!important;color:#fff!important;padding:10px 22px!important;border-radius:30px!important;opacity:1!important}
+:root body > nav .nav-hamburger,:root body > nav .nav-client-menu{display:none!important}
+@media(max-width:1100px){:root body > nav .nav-actions .nav-client-link{display:none!important}:root body > nav .nav-links{gap:22px!important}}
+@media(max-width:800px){
+:root body > nav{justify-content:flex-end!important;padding:0 24px!important}
+:root body > nav .nav-wordmark{left:24px!important}
+:root body > nav .nav-logo{height:33px!important}
+:root body > nav .nav-brand-name{font-size:17px!important}
+:root body > nav .nav-actions{right:75px!important}
+:root body > nav .nav-actions .nav-cta{padding:8px 16px!important;font-size:11px!important}
+:root body > nav .nav-hamburger{display:flex!important;position:static!important;flex-direction:column!important;justify-content:center!important;gap:5px!important;width:35px!important;height:40px!important;background:transparent!important;border:0!important;padding:7px!important;cursor:pointer!important}
+:root body > nav .nav-hamburger span{width:21px!important;height:2px!important;background:#163451!important;display:block!important}
+:root body > nav .nav-links{display:none!important;position:absolute!important;top:100%!important;left:0!important;right:0!important;flex-direction:column!important;padding:18px 24px!important;box-shadow:0 12px 18px #10213910!important;background:#fff!important}
+:root body > nav .nav-links.open{display:block!important}
+:root body > nav .nav-links > li{margin:8px 0!important}
+:root body > nav .nav-links > li > a{display:block!important;padding:10px!important;font-size:14px!important}
+:root body > nav .nav-client-menu{display:block!important}
+:root body > nav .nav-more-dropdown{position:static!important;border:0!important;box-shadow:none!important;padding:0 12px!important;background:#f5f8fc!important}
+:root body > nav .nav-more-dropdown a{font-size:13px!important;padding:10px!important}
+}
+@media(max-width:560px){
+:root body > nav{padding-right:18px!important}
+:root body > nav .nav-wordmark{left:20px!important;gap:4px!important}
+:root body > nav .nav-logo{height:29px!important}
+:root body > nav .nav-brand-name{font-size:16px!important}
+:root body > nav .nav-wordmark-tagline{font-size:9px!important}
+:root body > nav .nav-actions{right:60px!important}
+:root body > nav .nav-actions .nav-cta{padding:8px 12px!important;font-size:10px!important;min-height:36px!important;display:inline-flex!important;align-items:center!important}
+:root body > nav .nav-hamburger{min-width:40px!important;min-height:44px!important}
+}

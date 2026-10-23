@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutions | FutureInSites</title>
+  <meta name="description" content="FutureInSites Solutions for personal, business, and investor audiences. AI strategy, transformation, agent setup, and market intelligence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --cyan:     #2DD4FF;
+      --bg-alt:   #F5F7FB;
+      --border:   #E5E7EB;
+      --muted:    #6B7280;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #FFFFFF;
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      overflow: visible;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-logo { height: 36px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-brand-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; white-space: nowrap; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links > li > a {
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links > li > a:hover { color: #0F172A; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1D4ED8; }
+    .nav-more { position: relative; }
+    .nav-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: #374151;
+      font-size: 0.87rem;
+      font-weight: 500;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+    .nav-more-btn:hover { color: #0F172A; }
+    .nav-more-arrow { font-size: 0.6rem; }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 0.35rem 0;
+      min-width: 170px;
+      list-style: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      z-index: 300;
+    }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover { color: #0F172A; background: #F8F9FB; }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      position: absolute;
+      right: 1.5rem;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #374151; border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: #FFFFFF;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 0.5rem 1.5rem 1.2rem;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .nav-links.open > li > a,
+      .nav-links.open .nav-more-btn { padding: 0.7rem 0; font-size: 0.9rem; }
+      .nav-more-dropdown { position: static; transform: none; box-shadow: none; border: none; background: #F8F9FB; border-radius: 6px; margin: 0.25rem 0 0.5rem; padding: 0.25rem 0; display: none; }
+      .nav-more.open .nav-more-dropdown { display: block; }
+      .nav-more-dropdown a { padding: 0.5rem 1.2rem; }
+      .nav-links.open .nav-cta-mobile { display: block; margin-top: 0.5rem; }
+    }
+    
+
+    /* ─── HERO ─── */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── SEGMENT SECTIONS ─── */
+    .segment {
+      padding: 5rem 2rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .segment + .segment {
+      border-top: 1px solid var(--border);
+    }
+    .segment-label {
+      font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .segment-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.9rem;
+    }
+    .segment-intro {
+      font-size: 1.02rem; color: var(--muted); line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── SOLUTION CARDS ─── */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    @media (max-width: 960px) { .solutions-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .solutions-grid { grid-template-columns: 1fr; } }
+
+    .solution-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.6rem 1.5rem 1.7rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .solution-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .sol-header {
+      display: flex; align-items: center; gap: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+    .sol-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      color: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s;
+    }
+    .sol-icon svg { width: 100%; height: 100%; }
+    .sol-rule {
+      flex: 1; height: 1px; background: var(--border);
+      transition: background 0.2s, height 0.2s;
+    }
+    .solution-card:hover .sol-icon { color: var(--cyan); }
+    .solution-card:hover .sol-rule { background: var(--accent); height: 1.5px; }
+    .solution-card h3 {
+      font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em;
+      line-height: 1.25; margin-bottom: 0.55rem; color: var(--dark);
+    }
+    .solution-card p {
+      font-size: 0.86rem; color: var(--muted); line-height: 1.6;
+    }
+    .solution-card .sol-meta {
+      font-size: 0.74rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-top: 0.9rem;
+    }
+    .sol-list-label {
+      margin-top: 1.15rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark);
+    }
+    .sol-list { list-style: none; margin: 0; padding: 0; }
+    .sol-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .sol-list li:last-child { margin-bottom: 0; }
+    .sol-list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.52rem;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .sol-list li strong { color: var(--dark); font-weight: 600; }
+
+    /* ─── CTA AT BOTTOM ─── */
+    .solutions-cta {
+      background: var(--bg-alt);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .solutions-cta h2 {
+      font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 0.7rem;
+    }
+    .solutions-cta p {
+      font-size: 1rem; color: var(--muted); max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+    .solutions-cta-button {
+      display: inline-block;
+      background: var(--accent); color: #FFFFFF;
+      font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em;
+      padding: 0.85rem 1.8rem; border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .solutions-cta-button:hover {
+      opacity: 0.9; transform: translateY(-1px);
+    }
+
+    /* ─── PER-SEGMENT CTA BLOCK ─── */
+    .segment-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .segment-cta-price {
+      margin: 0;
+      flex: 1 1 300px;
+      min-width: 260px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+    .segment-cta-price strong {
+      display: block;
+      color: var(--dark);
+      font-size: 0.94rem;
+      margin-bottom: 0.15rem;
+    }
+    .segment-cta-qr {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+      color: #35506F;
+      text-decoration: none;
+    }
+    .segment-cta-qr img {
+      width: 60px;
+      height: 60px;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #FFFFFF;
+    }
+    .segment-cta-qr span {
+      width: 96px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .segment-cta-qr:hover span { color: var(--accent); }
+    .segment-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .segment-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.5rem;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, border-color 0.2s, background 0.2s;
+    }
+    .segment-cta-btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      border: 1px solid var(--accent);
+    }
+    .segment-cta-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    @media (max-width: 860px) {
+      .segment-cta { flex-direction: column; align-items: flex-start; }
+      /* flex-basis is the main axis, so reset it when the row becomes a column */
+      .segment-cta-price { flex: 0 0 auto; }
+      .segment-cta-actions { width: 100%; }
+      .segment-cta-btn { flex: 1 1 auto; }
+    }
+    @media (max-width: 480px) {
+      .segment-cta-qr { display: none; }
+    }
+
+    /* ─── FOOTER ─── */
+    
+    /* ─── FOOTER ─── */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+    .footer-vert-divider { background: #DCE5F0; align-self: stretch; }
+    .footer-link-cols { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0 2rem; }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 0.72rem; color: #64748B; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; margin-bottom: 1.75rem; }
+    .footer-social a { color: #64748B; display: inline-flex; transition: color 0.2s; }
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-copy { font-size: 0.68rem; color: #64748B; line-height: 1.7; }
+    .footer-col-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1769E0; margin-bottom: 0.85rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a { color: #0B234A; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #1769E0; }
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 0; }
+      .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
+      .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+    /* ─── INQUIRY MODAL ─── */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form input:focus,
+    .fis-form textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="approach.html">How We Work</a></li>
+          <li><a href="solutions.html">Our Solutions</a></li>
+          <li><a href="ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="case-studies/index.html">Case Studies</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-header">
+    <p class="eyebrow">Solutions</p>
+    <h1>Built for how you work</h1>
+    <p>FutureInSites works with small and medium businesses, professional offices, and individuals who want AI working for them without needing a technical team to make it happen.</p>
+  </header>
+
+  <!-- ─── SMBs ─── -->
+  <section class="segment" id="smb">
+    <div class="segment-label">Small &amp; Medium Businesses</div>
+    <h2 class="segment-title">AI strategy and implementation for field-first businesses</h2>
+    <p class="segment-intro">For construction companies, MEP contractors, industrial services firms, field trades, and suppliers: businesses where worker time is the most valuable asset and a dedicated IT team is not in the budget. We bring enterprise methodology at SMB scale, with engagements that follow a Build, Customize, Train model: we build the foundation, tailor it to your operations, and train your team to own it.</p>
+    <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:2rem;">
+      <img src="images/SMBs.fis.png" alt="AI for small and medium businesses" style="width:100%; height:480px; object-fit:cover; object-position:center top; display:block;">
+    </div>
+
+    <div class="solutions-grid">
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="12"/>
+              <circle cx="16" cy="16" r="7"/>
+              <circle cx="16" cy="16" r="2.2" fill="currentColor" stroke="none"/>
+              <line x1="16" y1="2" x2="16" y2="5"/>
+              <line x1="16" y1="27" x2="16" y2="30"/>
+              <line x1="2" y1="16" x2="5" y2="16"/>
+              <line x1="27" y1="16" x2="30" y2="16"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>AI Readiness Assessment</h3>
+        <p>A structured audit of your data infrastructure, talent, culture, and existing AI investments. Outputs include a capability heatmap, gap analysis, and a clear-eyed view of where you can move now versus what needs to be built first.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 25 Q 11 22, 14 18 T 22 12 T 27 5"/>
+              <circle cx="5" cy="25" r="2.2" fill="currentColor" stroke="none"/>
+              <circle cx="14" cy="18" r="2" fill="none"/>
+              <circle cx="22" cy="12" r="2" fill="none"/>
+              <circle cx="27" cy="5" r="2.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>AI Strategy &amp; Roadmap</h3>
+        <p>A prioritized, phased AI strategy tied directly to your business objectives. Includes use case prioritization across a value vs. complexity framework, build/buy/partner decisions, governance frameworks, and investment sizing.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="21" width="24" height="6" rx="1"/>
+              <rect x="6" y="13" width="20" height="6" rx="1"/>
+              <rect x="9" y="5" width="14" height="6" rx="1"/>
+              <line x1="11" y1="24" x2="13" y2="24"/>
+              <line x1="13" y1="16" x2="15" y2="16"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>Vendor Selection &amp; Architecture</h3>
+        <p>Navigate the AI vendor landscape across model providers, infrastructure, and applied AI software. We help you select, configure, and integrate the right platforms, with reference architectures that protect optionality as the landscape keeps shifting.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 11 L16 4 L28 11"/>
+              <line x1="3" y1="11" x2="29" y2="11"/>
+              <line x1="3" y1="27" x2="29" y2="27"/>
+              <line x1="8" y1="13" x2="8" y2="25"/>
+              <line x1="16" y1="13" x2="16" y2="25"/>
+              <line x1="24" y1="13" x2="24" y2="25"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>AI Governance &amp; Ethics</h3>
+        <p>Responsible AI frameworks, stage-gate investment criteria, and Centers of Excellence that scale your AI program without unmanaged risk. Policy guardrails and model risk management that keep Board oversight honest as deployments multiply.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="13" y="13" width="6" height="6" rx="1" fill="currentColor" stroke="none"/>
+              <rect x="3" y="3" width="6" height="6" rx="1"/>
+              <rect x="23" y="3" width="6" height="6" rx="1"/>
+              <rect x="3" y="23" width="6" height="6" rx="1"/>
+              <rect x="23" y="23" width="6" height="6" rx="1"/>
+              <line x1="9" y1="9" x2="13" y2="13"/>
+              <line x1="23" y1="9" x2="19" y2="13"/>
+              <line x1="9" y1="23" x2="13" y2="19"/>
+              <line x1="23" y1="23" x2="19" y2="19"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>AI Build &amp; Integration</h3>
+        <p>Build and integrate AI capability across your business. Custom agent development for specific workflows, multi-step workflow orchestration across internal and external systems, and third-party AI platform integration (OpenAI, Anthropic, vertical SaaS).</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <!-- Gear with continuous-cycle arrow: ongoing engineering -->
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/>
+              <line x1="16" y1="9" x2="16" y2="11"/>
+              <line x1="16" y1="21" x2="16" y2="23"/>
+              <line x1="9" y1="16" x2="11" y2="16"/>
+              <line x1="21" y1="16" x2="23" y2="16"/>
+              <line x1="11" y1="11" x2="12.5" y2="12.5"/>
+              <line x1="19.5" y1="19.5" x2="21" y2="21"/>
+              <line x1="11" y1="21" x2="12.5" y2="19.5"/>
+              <line x1="19.5" y1="12.5" x2="21" y2="11"/>
+              <path d="M28 19 A13 13 0 0 1 11 28"/>
+              <path d="M11 28 L14 28 M11 28 L11 25"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>Embedded AI Engineering</h3>
+        <p>Ongoing engineering support, upgrades, and maintenance for your AI systems. A Forward Deployed Engineer working a set number of hours each week to keep your stack current as the underlying tools, integrations, and bolt-ons change. Built for organizations that need ongoing engineering capacity without standing up an internal AI team.</p>
+      </div>
+
+    </div>
+
+    <div class="segment-cta">
+      <p class="segment-cta-price"><strong>Proof-of-concept implementation typically ranges from $10K to $30K.</strong>Build, implementation, training, user guides, and one year of support are included.</p>
+      <a class="segment-cta-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form on your phone">
+        <img src="images/assessment-contact-qr.png" alt="QR code linking to the free AI assessment form">
+        <span>Scan to continue on mobile</span>
+      </a>
+      <div class="segment-cta-actions">
+        <a class="segment-cta-btn segment-cta-btn-primary" href="ai-readiness.html">Free Assessment</a>
+        <button type="button" class="segment-cta-btn segment-cta-btn-primary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── PROFESSIONAL OFFICES ─── -->
+  <section class="segment" id="professional-offices">
+    <div class="segment-label">Professional Offices</div>
+    <h2 class="segment-title">AI that reduces admin and reclaims billable time</h2>
+    <p class="segment-intro">For dental practices, law firms, chiropractic offices, accounting firms, and similar professional practices: businesses where the most valuable hours are spent with patients and clients, not on scheduling, documentation, intake, and follow-up. We tailor AI to your practice management workflows so your team spends less time on back-office drag and more time on what they were trained to do.</p>
+    <p style="font-size:1.02rem; color:var(--muted); line-height:1.65; margin:-1.2rem 0 2.5rem; padding-left:1rem; border-left:3px solid var(--accent);"><strong>Why it matters.</strong> A <a href="https://www.a16z.news/p/the-108-billion-ai-opportunity-for" target="_blank" rel="noopener" style="color:var(--accent);">2026 study of specialty medical practices</a> found that one in six calls go unanswered during office hours (81% after hours), and only 54% of patients due for a follow-up return on schedule. Missed calls and dropped follow-ups are a quiet revenue leak in any office that runs on appointments and client contact.</p>
+    <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border); margin-bottom:2rem;">
+      <img src="images/Prof.Offices.fis.png" alt="AI for professional offices" style="width:100%; height:480px; object-fit:cover; object-position:center top; display:block;">
+    </div>
+
+    <div class="solutions-grid">
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 25 Q 11 22, 14 18 T 22 12 T 27 5"/>
+              <circle cx="5" cy="25" r="2.2" fill="currentColor" stroke="none"/>
+              <circle cx="14" cy="18" r="2" fill="none"/>
+              <circle cx="22" cy="12" r="2" fill="none"/>
+              <circle cx="27" cy="5" r="2.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>Workflow Automation</h3>
+        <p>AI-powered automation for intake, scheduling, documentation, follow-up, and billing workflows. Built around your existing practice management software, not instead of it.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="13" y="13" width="6" height="6" rx="1" fill="currentColor" stroke="none"/>
+              <rect x="3" y="3" width="6" height="6" rx="1"/>
+              <rect x="23" y="3" width="6" height="6" rx="1"/>
+              <rect x="3" y="23" width="6" height="6" rx="1"/>
+              <rect x="23" y="23" width="6" height="6" rx="1"/>
+              <line x1="9" y1="9" x2="13" y2="13"/>
+              <line x1="23" y1="9" x2="19" y2="13"/>
+              <line x1="9" y1="23" x2="13" y2="19"/>
+              <line x1="23" y1="23" x2="19" y2="19"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>AI Build &amp; Integration</h3>
+        <p>Custom agent development and integration for your practice. Front-desk agents, documentation assistants, referral coordination, and client communication tools built to your specific workflows.</p>
+      </div>
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/>
+              <line x1="16" y1="9" x2="16" y2="11"/>
+              <line x1="16" y1="21" x2="16" y2="23"/>
+              <line x1="9" y1="16" x2="11" y2="16"/>
+              <line x1="21" y1="16" x2="23" y2="16"/>
+              <line x1="11" y1="11" x2="12.5" y2="12.5"/>
+              <line x1="19.5" y1="19.5" x2="21" y2="21"/>
+              <line x1="11" y1="21" x2="12.5" y2="19.5"/>
+              <line x1="19.5" y1="12.5" x2="21" y2="11"/>
+              <path d="M28 19 A13 13 0 0 1 11 28"/>
+              <path d="M11 28 L14 28 M11 28 L11 25"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>Embedded AI Engineering</h3>
+        <p>Ongoing support for practices that want to keep improving after initial setup: new integrations, staff training on new capabilities, and upgrades as the tools evolve.</p>
+      </div>
+
+    </div>
+
+    <div class="segment-cta">
+      <p class="segment-cta-price"><strong>Proof-of-concept projects start at $5K, depending on scope and the size of your business.</strong> Build, implementation, training, user guides, and one year of support are included.</p>
+      <a class="segment-cta-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form on your phone">
+        <img src="images/assessment-contact-qr.png" alt="QR code linking to the free AI assessment form">
+        <span>Scan to continue on mobile</span>
+      </a>
+      <div class="segment-cta-actions">
+        <a class="segment-cta-btn segment-cta-btn-primary" href="ai-readiness.html">Free Assessment</a>
+        <button type="button" class="segment-cta-btn segment-cta-btn-primary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── INDIVIDUALS ─── -->
+  <section class="segment" id="individuals">
+    <div class="segment-label">Individuals</div>
+    <h2 class="segment-title">A personal AI built for the life you actually run</h2>
+    <p class="segment-intro">For individuals managing multiple business interests, investment portfolios, family obligations, philanthropic commitments, and international travel, the complexity of your life doesn't fit neatly into any one app. FutureInSites builds a custom AI infrastructure that works across all of it: scheduling across time zones, briefing you before meetings, tracking commitments across your business and personal worlds, and handling the administrative layer that consumes time you cannot afford to lose. Built on hardware you own, with no dependency on a third-party platform. Think of it as a chief of staff that never sleeps and never forgets.</p>
+
+    <div class="solutions-grid">
+
+      <div class="solution-card">
+        <div class="sol-header">
+          <div class="sol-icon" aria-hidden="true">
+            <!-- Personal agent: silhouette + node -->
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="11" r="4"/>
+              <path d="M4 27 Q 4 19, 12 19 Q 20 19, 20 27"/>
+              <circle cx="24" cy="9" r="3.5" fill="currentColor" stroke="none"/>
+              <line x1="17" y1="10" x2="20.7" y2="9.5"/>
+            </svg>
+          </div>
+          <div class="sol-rule"></div>
+        </div>
+        <h3>Personal AI Agent Setup</h3>
+        <p>A fully configured personal AI agent you reach via Telegram. No app to learn, no UI to manage. Built on OpenClaw, an open architecture for personal AI assistants.</p>
+        <p class="sol-list-label">What's included</p>
+        <ul class="sol-list">
+          <li><strong>Personality and workflow tuning.</strong> Shaped around how you work, not a generic assistant.</li>
+          <li><strong>Integration setup.</strong> Your calendar and your email, whichever providers you already use.</li>
+          <li><strong>Reach it from anywhere.</strong> Private encrypted access, with nothing exposed to the internet.</li>
+          <li><strong>Runs on hardware you own.</strong> Windows or Mac.</li>
+          <li><strong>Training session.</strong> Learn to extend it yourself.</li>
+          <li><strong>Support after launch.</strong> Seven days, then monthly.</li>
+          <li><strong>You own the result.</strong> No lock-in to us.</li>
+        </ul>
+      </div>
+
+      <div class="personal-feature-image" style="grid-column: span 2; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-alt); display: flex; align-items: center; justify-content: center;">
+        <img src="images/personal.agent.setup.png" alt="Personal AI Agent setup: chat via Telegram, integrated with Gmail and Google Calendar." style="width: 100%; height: auto; display: block;">
+      </div>
+
+    </div>
+
+    <div class="segment-cta">
+      <p class="segment-cta-price"><strong>Personal AI agent setup from $2,500.</strong>Agent personality tuning, integration setup, and a training session are included.</p>
+      <a class="segment-cta-qr" href="contact.html?inquiry=assessment" aria-label="Open the free AI assessment form on your phone">
+        <img src="images/assessment-contact-qr.png" alt="QR code linking to the free AI assessment form">
+        <span>Scan to continue on mobile</span>
+      </a>
+      <div class="segment-cta-actions">
+        <a class="segment-cta-btn segment-cta-btn-primary" href="ai-readiness.html">Free Assessment</a>
+        <button type="button" class="segment-cta-btn segment-cta-btn-primary" data-open-inquiry data-inquiry-context="strategy">Get in Touch</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="solutions-cta">
+    <h2>Not sure where you fit?</h2>
+    <p>Get in touch and we will help you scope the right engagement, whether that is a single conversation, a productized setup, or a multi-month transformation.</p>
+    <a href="contact.html" class="solutions-cta-button">Get in touch →</a>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <!-- FOOTER -->
+  <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
+  <link rel="stylesheet" href="css/footer.css">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="approach.html">How We Work</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="ai-readiness.html">Assessment</a></li>
+
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Research</p>
+          <ul>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="case-studies/index.html">Case Studies</a></li>
+            <li><a href="landscape/index.html">AI Landscape</a></li>
+            <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <script>
+  /* Hamburger toggle */
+  (function () {
+    var btn  = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      menu.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+      });
+    });
+  })();
+  /* Dropdown toggles */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
+
+  <div class="fis-modal" id="fis-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="fis-inquiry-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
+
+      <div id="fis-inquiry-header">
+        <div class="fis-modal-eyebrow" id="fis-inquiry-eyebrow">AI Transformation Session</div>
+        <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
+        <p class="fis-modal-lead" id="fis-inquiry-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
+      </div>
+
+      <form class="fis-form" id="fis-inquiry-form" novalidate>
+        <div class="fis-form-grid">
+          <div>
+            <label for="fis-name">Name <span class="req">*</span></label>
+            <input type="text" id="fis-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="fis-email">Email <span class="req">*</span></label>
+            <input type="email" id="fis-email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fis-company">Company</label>
+            <input type="text" id="fis-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="fis-role">Role / Title</label>
+            <input type="text" id="fis-role" name="role" autocomplete="organization-title">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-phone">Phone (optional)</label>
+            <input type="tel" id="fis-phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-message">What would you like to discuss?</label>
+            <textarea id="fis-message" name="message" placeholder="A quick note on your team, where AI fits, and any timing you have in mind."></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot — hidden from humans, often filled by bots -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send inquiry</button>
+          <p class="fis-form-note">No newsletters, no sharing.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title" id="fis-inquiry-success-title">Thanks, your inquiry is in.</div>
+        <div class="fis-form-success-body" id="fis-inquiry-success-body">We'll be in touch as soon as possible at the email you provided.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Inquiry modal — open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-inquiry-modal');
+    var form     = document.getElementById('fis-inquiry-form');
+    var success  = document.getElementById('fis-inquiry-success');
+    var header   = document.getElementById('fis-inquiry-header');
+    var eyebrowEl     = document.getElementById('fis-inquiry-eyebrow');
+    var titleEl       = document.getElementById('fis-inquiry-title');
+    var leadEl        = document.getElementById('fis-inquiry-lead');
+    var successTitleEl = document.getElementById('fis-inquiry-success-title');
+    var successBodyEl  = document.getElementById('fis-inquiry-success-body');
+
+    /* Per-context modal copy. Keyed by data-inquiry-context attr on the open button. */
+    var CONTEXTS = {
+      session: {
+        eyebrow: 'AI Transformation Session',
+        title: 'Tell us about your team.',
+        lead: "A few details so we can come prepared. We'll respond as soon as possible.",
+        successTitle: 'Thanks, your inquiry is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      strategy: {
+        eyebrow: "Let's Talk",
+        title: 'Tell us about your AI work.',
+        lead: "Whether you're starting from zero or scaling an existing program, share a few details and we'll respond as soon as possible.",
+        successTitle: 'Thanks, your note is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      assessment: {
+        eyebrow: 'Free AI Assessment',
+        title: 'Tell us about your business.',
+        lead: "A few details will help us prepare for the assessment. We'll follow up to schedule a virtual meeting or an in-person meeting around Boston or New York City.",
+        successTitle: 'Thanks, your assessment request is in.',
+        successBody: "We'll be in touch as soon as possible to schedule your free AI assessment."
+      }
+    };
+    var currentContext = 'session';
+    var errorEl  = document.getElementById('fis-inquiry-error');
+    var submitEl = document.getElementById('fis-inquiry-submit');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function applyContext(ctx) {
+      var c = CONTEXTS[ctx] || CONTEXTS.session;
+      currentContext = CONTEXTS[ctx] ? ctx : 'session';
+      if (eyebrowEl)      eyebrowEl.textContent      = c.eyebrow;
+      if (titleEl)        titleEl.textContent        = c.title;
+      if (leadEl)         leadEl.textContent         = c.lead;
+      if (successTitleEl) successTitleEl.textContent = c.successTitle;
+      if (successBodyEl)  successBodyEl.textContent  = c.successBody;
+    }
+
+    function openModal(ctx) {
+      lastFocus = document.activeElement;
+      applyContext(ctx || 'session');
+      // Reset state every open
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Send inquiry';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-name');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var ctx = el.getAttribute('data-inquiry-context') || 'session';
+        openModal(ctx);
+      });
+    });
+
+    // Direct links and QR codes can open the same form in a specific context.
+    var linkedContext = new URLSearchParams(window.location.search).get('inquiry');
+    if (linkedContext && CONTEXTS[linkedContext]) {
+      openModal(linkedContext);
+    }
+
+    // Close triggers — × button, backdrop click, Escape key
+    modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Submit handler
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        name:    form.name.value.trim(),
+        email:   form.email.value.trim(),
+        company: form.company.value.trim(),
+        role:    form.role.value.trim(),
+        phone:   form.phone.value.trim(),
+        message: form.message.value.trim(),
+        context: currentContext,
+        website: form.website.value, // honeypot
+        fax:     form.fax.value,     // honeypot
+      };
+
+      if (!data.name) {
+        errorEl.textContent = 'Please enter your name.';
+        errorEl.classList.add('show');
+        form.name.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/inquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (typeof gtag === 'function') {
+              gtag('event', 'generate_lead', { form_id: 'fis-inquiry-form' });
+            }
+            form.reset();
+            window.location.href = 'thanks.html';
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please email strategy@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please email strategy@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        });
+    });
+  })();
+  </script>
+
+  <script src="cookie-banner.js"></script>
+</body>
+</html>

@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact FutureInSites | AI for Small Business</title>
+  <meta name="description" content="Contact FutureInSites to discuss AI strategy, automation, and implementation for your business. We work with SMBs, professional offices, field services, healthcare, legal, construction, and more." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark:     #0B0C10;
+      --cyan:     #2DD4FF;
+      --accent:   #2563EB;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--dark); font-family: var(--font); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+    /* NAV (base — overridden below) */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      overflow: visible;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-logo { height: 36px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-brand-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; white-space: nowrap; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links > li > a {
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links > li > a:hover { color: #0F172A; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1D4ED8; }
+    .nav-more { position: relative; }
+    .nav-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: #374151;
+      font-size: 0.87rem;
+      font-weight: 500;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+    .nav-more-btn:hover { color: #0F172A; }
+    .nav-more-arrow { font-size: 0.6rem; }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 0.35rem 0;
+      min-width: 170px;
+      list-style: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      z-index: 300;
+    }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover { color: #0F172A; background: #F8F9FB; }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      position: absolute;
+      right: 1.5rem;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #374151; border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: #FFFFFF;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 0.5rem 1.5rem 1.2rem;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .nav-links.open > li > a,
+      .nav-links.open .nav-more-btn { padding: 0.7rem 0; font-size: 0.9rem; }
+      .nav-more-dropdown { position: static; transform: none; box-shadow: none; border: none; background: #F8F9FB; border-radius: 6px; margin: 0.25rem 0 0.5rem; padding: 0.25rem 0; display: none; }
+      .nav-more.open .nav-more-dropdown { display: block; }
+      .nav-more-dropdown a { padding: 0.5rem 1.2rem; }
+      .nav-links.open .nav-cta-mobile { display: block; margin-top: 0.5rem; }
+    }
+    
+
+    /* ── WHITE NAV OVERRIDE ── */
+
+    /* ── NEW WHITE NAV OVERRIDE ── */
+    nav {
+      background: #FFFFFF !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+      backdrop-filter: none !important;
+    }
+    .nav-wordmark-name, .nav-brand-name {
+      background: linear-gradient(90deg, #00c6d4 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    .nav-wordmark-tagline { color: #64748B !important; }
+    .nav-links li a, .nav-more-btn { color: #1E293B !important; }
+    .nav-more-dropdown { background: #FFFFFF !important; border: 1px solid #E2E8F0 !important; }
+    .nav-more-dropdown a { color: #1E293B !important; }
+    .nav-more-dropdown a:hover { color: #2563EB !important; background: #F1F5F9 !important; }
+    .nav-hamburger span { background: #1E293B !important; }
+    .nav-cta {
+      background: #1769E0 !important;
+      color: #FFFFFF !important;
+      border-radius: 100px !important;
+      padding: 0.45rem 1.2rem !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: #0F56C5 !important; }
+
+
+    /* ── FOOTER ── */
+
+    footer { background: #FFFFFF; border-top: 1px solid #DCE5F0; padding: 56px 5% 24px; text-align: left; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 220px 1px 1fr; gap: 0 3rem; align-items: start; }
+    .footer-vert-divider { background: #DCE5F0; align-self: stretch; }
+    .footer-link-cols { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0 2rem; }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+      margin-bottom: 0.35rem; display: inline-block; text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 0.72rem; color: #64748B; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; margin-bottom: 1.75rem; }
+    .footer-social a { color: #64748B; display: inline-flex; transition: color 0.2s; }
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-copy { font-size: 0.68rem; color: #64748B; line-height: 1.7; }
+    .footer-col-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1769E0; margin-bottom: 0.85rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a { color: #0B234A; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #1769E0; }
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 0; }
+      .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
+      .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+
+
+    /* ── PAGE LAYOUT ── */
+    .page-body { padding-top: 64px; }
+
+    /* ── CONTACT HERO ── */
+    .contact-hero {
+      background: #FFFFFF;
+      padding: 60px 24px 48px;
+    }
+    .contact-card {
+      background: #F8FBFF;
+      border: 1px solid #D7E3F1;
+      border-radius: 20px;
+      padding: 56px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+      box-shadow: 0 8px 24px rgba(11,42,86,0.08);
+    }
+    .contact-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #2563EB; margin-bottom: 1rem;
+    }
+    .contact-card h1 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+      color: #0B2A56; letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 1rem; text-wrap: balance;
+    }
+    .contact-card p {
+      font-size: 0.95rem; color: #4B5563; line-height: 1.75; margin-bottom: 2rem;
+    }
+    .contact-options {
+      margin-top: 0.25rem; margin-bottom: 1.5rem !important;
+      font-size: 0.92rem !important; color: #4B5563 !important;
+    }
+    .contact-inline-email {
+      color: #1769E0; text-decoration: none; font-weight: 600;
+      border-bottom: 1px solid rgba(23,105,224,0.3);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .contact-inline-email:hover { color: #0F56C5; border-color: rgba(15,86,197,0.6); }
+    .contact-btn {
+      font-size: 1rem; font-weight: 600; color: #FFFFFF; border: none;
+      background: #1769E0; padding: 0.75rem 2rem; border-radius: 100px;
+      display: inline-block; cursor: pointer; font-family: inherit;
+      transition: background 0.2s; text-decoration: none;
+    }
+    .contact-btn:hover { background: #0F56C5; }
+
+    /* ── WHO WE SERVE ── */
+    .serve-section {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 64px 5%;
+    }
+    .serve-inner { max-width: 1100px; margin: 0 auto; }
+    .serve-eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #2563EB; margin-bottom: 0.75rem;
+    }
+    .serve-section h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700;
+      color: #0B2A56; letter-spacing: -0.03em; margin-bottom: 0.6rem;
+    }
+    .serve-section > .serve-inner > p {
+      font-size: 0.95rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 640px;
+    }
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 2.5rem;
+    }
+    @media (max-width: 800px) { .serve-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .serve-grid { grid-template-columns: 1fr; } }
+    .serve-group h3 {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #1769E0; margin-bottom: 0.6rem;
+      padding-bottom: 0.4rem; border-bottom: 1px solid #DCE5F0;
+    }
+    .serve-group ul { list-style: none; }
+    .serve-group ul li {
+      font-size: 0.875rem; color: #334155; padding: 0.2rem 0;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .serve-group ul li:last-child { border-bottom: none; }
+
+    /* ── USE CASES ── */
+    .usecases-section {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border);
+      padding: 64px 5%;
+    }
+    .usecases-inner { max-width: 1100px; margin: 0 auto; }
+    .usecases-eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #2563EB; margin-bottom: 0.75rem;
+    }
+    .usecases-section h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700;
+      color: #0B2A56; letter-spacing: -0.03em; margin-bottom: 0.6rem;
+    }
+    .usecases-section > .usecases-inner > p {
+      font-size: 0.95rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 640px;
+    }
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 3rem;
+    }
+    @media (max-width: 640px) { .usecases-grid { grid-template-columns: 1fr; } }
+    .usecase-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.7rem 0; border-bottom: 1px solid #F1F5F9;
+    }
+    .usecase-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #2563EB; flex-shrink: 0; margin-top: 0.45rem;
+    }
+    .usecase-text { font-size: 0.88rem; color: #334155; line-height: 1.5; }
+    .usecase-text strong { font-weight: 600; color: #0B2A56; }
+  
+    /* ─── INQUIRY MODAL ─── */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form input:focus,
+    .fis-form textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }</style>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="approach.html">How We Work</a></li>
+          <li><a href="solutions.html">Our Solutions</a></li>
+          <li><a href="ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="case-studies/index.html">Case Studies</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-body">
+
+    <!-- CONTACT CARD -->
+    <section class="contact-hero">
+      <div class="contact-card">
+        <p class="contact-eyebrow">Contact Us</p>
+        <h1>Not sure where to start? That&#8217;s exactly what we&#8217;re here for.</h1>
+        <p>Tell us what is taking too much time, where work is getting stuck, or what you would like your business to do better. You do not need to know which technology or AI tool you need before reaching out.</p>
+        <p class="contact-options">To contact us, email <a href="mailto:strategy@futureinsites.com" class="contact-inline-email">strategy@futureinsites.com</a> or use the form below.</p>
+        <button type="button" class="contact-btn" data-open-inquiry data-inquiry-context="strategy">Send us a Message</button>
+      </div>
+    </section>
+
+    <!-- WHO WE SERVE -->
+    <section class="serve-section">
+      <div class="serve-inner">
+        <p class="serve-eyebrow">Who We Serve</p>
+        <h2>Industries and business types we work with</h2>
+        <p>We work across a wide range of industries and business types, from field-first SMBs to professional practices to individual executives. If your business runs on people and information, we can help.</p>
+        <div class="serve-grid">
+
+          <div class="serve-group">
+            <h3>Field &amp; Trade Services</h3>
+            <ul>
+              <li>Construction companies</li>
+              <li>MEP contractors (mechanical, electrical, plumbing)</li>
+              <li>HVAC and refrigeration services</li>
+              <li>Electrical contractors</li>
+              <li>Plumbing companies</li>
+              <li>General contractors</li>
+              <li>Industrial services firms</li>
+              <li>Equipment suppliers and distributors</li>
+              <li>Field inspection services</li>
+              <li>Facilities management companies</li>
+              <li>Pest control services</li>
+              <li>Commercial cleaning and janitorial services</li>
+              <li>Security systems and monitoring companies</li>
+              <li>Landscaping and grounds maintenance</li>
+              <li>Landscape construction and hardscaping</li>
+              <li>Home service providers (movers, junk removal, carpet cleaning, window cleaning, pressure washing)</li>
+            </ul>
+          </div>
+
+          <div class="serve-group">
+            <h3>Professional Offices</h3>
+            <ul>
+              <li>Law firms and solo practitioners</li>
+              <li>Dental practices</li>
+              <li>Chiropractic and physical therapy offices</li>
+              <li>Accounting and CPA firms</li>
+              <li>Financial advisory practices</li>
+              <li>Insurance agencies</li>
+              <li>Real estate brokerages</li>
+              <li>Architecture and engineering firms</li>
+              <li>HR and recruiting firms</li>
+              <li>Consulting practices</li>
+              <li>Veterinary practices</li>
+            </ul>
+          </div>
+
+          <div class="serve-group">
+            <h3>Healthcare</h3>
+            <ul>
+              <li>Medical practices and clinics</li>
+              <li>Specialty care offices</li>
+              <li>Behavioral health providers</li>
+              <li>Home health agencies</li>
+              <li>Urgent care centers</li>
+              <li>Medical billing and coding firms</li>
+              <li>Healthcare staffing agencies</li>
+              <li>Optometry and vision centers</li>
+              <li>Physical and occupational therapy providers</li>
+              <li>Orthopedic practices and clinics</li>
+              <li>Senior care and assisted living facilities</li>
+              <li>Dental labs and specialty practices</li>
+              <li>Telehealth and virtual care providers</li>
+              <li>Substance abuse and behavioral health treatment centers</li>
+            </ul>
+          </div>
+
+          <div class="serve-group">
+            <h3>Small &amp; Medium Businesses</h3>
+            <ul>
+              <li>Family-owned businesses</li>
+              <li>Regional service businesses</li>
+              <li>Logistics and transportation companies</li>
+              <li>Wholesale distributors</li>
+              <li>Light manufacturing</li>
+              <li>Staffing and workforce companies</li>
+              <li>Property management firms</li>
+              <li>Restaurants and food service businesses</li>
+              <li>Hospitality and hotel operations</li>
+              <li>Auto dealerships and repair shops</li>
+              <li>Fitness and wellness centers</li>
+              <li>Personal care services (salons, barbershops, spas, massage)</li>
+              <li>Childcare centers and daycares</li>
+            </ul>
+          </div>
+
+          <div class="serve-group">
+            <h3>Individuals &amp; Executives</h3>
+            <ul>
+              <li>Business founders and CEOs</li>
+              <li>C-suite and senior executives</li>
+              <li>Investors and family offices</li>
+              <li>Entrepreneurs managing multiple ventures</li>
+              <li>High-net-worth individuals</li>
+              <li>Board members and advisors</li>
+              <li>Solo consultants and independent advisors</li>
+              <li>Professional speakers, coaches, and authors</li>
+              <li>Real estate investors and property owners</li>
+            </ul>
+          </div>
+
+          <div class="serve-group">
+            <h3>Other Industries</h3>
+            <ul>
+              <li>Non-profit organizations</li>
+              <li>Educational institutions</li>
+              <li>Retail and e-commerce businesses</li>
+              <li>Marketing and creative agencies</li>
+              <li>Technology companies</li>
+              <li>Media and publishing</li>
+              <li>Government contractors</li>
+              <li>Manufacturing and fabrication companies</li>
+              <li>Automotive and transportation industry</li>
+
+              <li>Food and beverage producers</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="usecases-section">
+      <div class="usecases-inner">
+        <p class="usecases-eyebrow">What We Can Help With</p>
+        <h2>AI use cases across operations, admin, and growth</h2>
+        <p>We help businesses identify, build, and deploy AI that fits the way their teams already work. These are some of the most common areas where we help.</p>
+        <div class="usecases-grid">
+
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Document automation</strong> &mdash; Turn notes and activity into chart notes, work orders, billing forms, and status reports.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Intake and communication</strong> &mdash; Check incoming information, identify missing items, route requests, and prepare updates.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Knowledge assistants</strong> &mdash; Give your team instant access to internal manuals, policies, past work, and product information.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Operational analysis</strong> &mdash; Identify workload patterns, billing exceptions, appointment trends, and emerging problems.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Personal and executive AI</strong> &mdash; Create daily briefings, manage priorities, prepare for meetings, and flag scheduling conflicts.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Business AI setup</strong> &mdash; Design and deploy an AI foundation sized to your business, built on tools your team can own and operate.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Team AI training</strong> &mdash; Teach your team how to use AI tools effectively so adoption sticks and results compound.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>AI readiness assessment</strong> &mdash; Identify where AI can deliver the highest value in your business before you build anything.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Workflow automation</strong> &mdash; Reduce manual hand-offs, approvals, and status updates across your core business processes.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Client and patient communication</strong> &mdash; Automate follow-ups, reminders, and status messages without losing the personal touch.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Scheduling and dispatch support</strong> &mdash; Optimize field team scheduling, flag conflicts, and keep dispatchers focused on decisions, not data entry.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Billing and claims preparation</strong> &mdash; Pre-check submissions, surface coding issues, and accelerate revenue cycle steps that slow cash flow.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Proposal and contract drafting</strong> &mdash; Generate first drafts of proposals, scopes of work, and client-facing documents from structured inputs.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Research and competitive intelligence</strong> &mdash; Monitor markets, summarize industry news, and surface signals relevant to your business strategy.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>Custom AI agent development</strong> &mdash; Build agents that run multi-step tasks, integrate with your existing tools, and work without a human in the loop.</div></div>
+          <div class="usecase-item"><div class="usecase-dot"></div><div class="usecase-text"><strong>AI strategy and roadmap</strong> &mdash; Get a prioritized, phased plan tied to your business goals before you invest in tools or vendors.</div></div>
+
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end .page-body -->
+
+  <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
+  <link rel="stylesheet" href="css/footer.css">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="approach.html">How We Work</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="ai-readiness.html">Assessment</a></li>
+
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Research</p>
+          <ul>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="case-studies/index.html">Case Studies</a></li>
+            <li><a href="landscape/index.html">AI Landscape</a></li>
+            <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <script src="cookie-banner.js"></script>
+
+  <script>
+    (function () {
+      var allMore = document.querySelectorAll('.nav-more');
+      if (!allMore.length) return;
+      allMore.forEach(function (more) {
+        var btn = more.querySelector('.nav-more-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = more.classList.contains('open');
+          allMore.forEach(function (m) { m.classList.remove('open'); });
+          if (!isOpen) more.classList.add('open');
+        });
+      });
+      document.addEventListener('click', function () {
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+      });
+      var hamburger = document.getElementById('nav-hamburger');
+      var menu = document.getElementById('nav-links-menu');
+      if (hamburger && menu) {
+        hamburger.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = menu.classList.toggle('open');
+          hamburger.setAttribute('aria-expanded', open);
+        });
+      }
+    })();
+  </script>
+
+
+  <div class="fis-modal" id="fis-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="fis-inquiry-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
+
+      <div id="fis-inquiry-header">
+        <div class="fis-modal-eyebrow" id="fis-inquiry-eyebrow">AI Transformation Session</div>
+        <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
+        <p class="fis-modal-lead" id="fis-inquiry-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
+      </div>
+
+      <form class="fis-form" id="fis-inquiry-form" novalidate>
+        <div class="fis-form-grid">
+          <div>
+            <label for="fis-name">Name <span class="req">*</span></label>
+            <input type="text" id="fis-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="fis-email">Email <span class="req">*</span></label>
+            <input type="email" id="fis-email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fis-company">Company</label>
+            <input type="text" id="fis-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="fis-role">Role / Title</label>
+            <input type="text" id="fis-role" name="role" autocomplete="organization-title">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-phone">Phone (optional)</label>
+            <input type="tel" id="fis-phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-message">What would you like to discuss?</label>
+            <textarea id="fis-message" name="message" placeholder="A quick note on your team, where AI fits, and any timing you have in mind."></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot — hidden from humans, often filled by bots -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send inquiry</button>
+          <p class="fis-form-note">No newsletters, no sharing.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title" id="fis-inquiry-success-title">Thanks, your inquiry is in.</div>
+        <div class="fis-form-success-body" id="fis-inquiry-success-body">We'll be in touch as soon as possible at the email you provided.</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+  /* Inquiry modal — open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-inquiry-modal');
+    var form     = document.getElementById('fis-inquiry-form');
+    var success  = document.getElementById('fis-inquiry-success');
+    var header   = document.getElementById('fis-inquiry-header');
+    var eyebrowEl     = document.getElementById('fis-inquiry-eyebrow');
+    var titleEl       = document.getElementById('fis-inquiry-title');
+    var leadEl        = document.getElementById('fis-inquiry-lead');
+    var successTitleEl = document.getElementById('fis-inquiry-success-title');
+    var successBodyEl  = document.getElementById('fis-inquiry-success-body');
+
+    /* Per-context modal copy. Keyed by data-inquiry-context attr on the open button. */
+    var CONTEXTS = {
+      session: {
+        eyebrow: 'AI Transformation Session',
+        title: 'Tell us about your team.',
+        lead: "A few details so we can come prepared. We'll respond as soon as possible.",
+        successTitle: 'Thanks, your inquiry is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      strategy: {
+        eyebrow: "Let's Talk",
+        title: 'Tell us about your AI work.',
+        lead: "Whether you're starting from zero or scaling an existing program, share a few details and we'll respond as soon as possible.",
+        successTitle: 'Thanks, your note is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      assessment: {
+        eyebrow: 'Free AI Assessment',
+        title: 'Tell us about your business.',
+        lead: "A few details will help us prepare for the assessment. We'll follow up to schedule a virtual meeting or an in-person meeting around Boston or New York City.",
+        successTitle: 'Thanks, your assessment request is in.',
+        successBody: "We'll be in touch as soon as possible to schedule your free AI assessment."
+      }
+    };
+    var currentContext = 'session';
+    var errorEl  = document.getElementById('fis-inquiry-error');
+    var submitEl = document.getElementById('fis-inquiry-submit');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function applyContext(ctx) {
+      var c = CONTEXTS[ctx] || CONTEXTS.session;
+      currentContext = CONTEXTS[ctx] ? ctx : 'session';
+      if (eyebrowEl)      eyebrowEl.textContent      = c.eyebrow;
+      if (titleEl)        titleEl.textContent        = c.title;
+      if (leadEl)         leadEl.textContent         = c.lead;
+      if (successTitleEl) successTitleEl.textContent = c.successTitle;
+      if (successBodyEl)  successBodyEl.textContent  = c.successBody;
+    }
+
+    function openModal(ctx) {
+      lastFocus = document.activeElement;
+      applyContext(ctx || 'session');
+      // Reset state every open
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Send inquiry';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-name');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var ctx = el.getAttribute('data-inquiry-context') || 'session';
+        openModal(ctx);
+      });
+    });
+
+    // Direct links and QR codes can open the same form in a specific context.
+    var linkedContext = new URLSearchParams(window.location.search).get('inquiry');
+    if (linkedContext && CONTEXTS[linkedContext]) {
+      openModal(linkedContext);
+    }
+
+    // Close triggers — × button, backdrop click, Escape key
+    modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Submit handler
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        name:    form.name.value.trim(),
+        email:   form.email.value.trim(),
+        company: form.company.value.trim(),
+        role:    form.role.value.trim(),
+        phone:   form.phone.value.trim(),
+        message: form.message.value.trim(),
+        context: currentContext,
+        website: form.website.value, // honeypot
+        fax:     form.fax.value,     // honeypot
+      };
+
+      if (!data.name) {
+        errorEl.textContent = 'Please enter your name.';
+        errorEl.classList.add('show');
+        form.name.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/inquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (typeof gtag === 'function') {
+              gtag('event', 'generate_lead', { form_id: 'fis-inquiry-form' });
+            }
+            form.reset();
+            window.location.href = 'thanks.html';
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please email strategy@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please email strategy@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        });
+    });
+  })();
+  </script>
+</body>
+</html>

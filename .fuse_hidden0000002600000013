@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story | FutureInSites</title>
+  <meta name="description" content="FutureInSites brings enterprise-level AI experience to small and midsize businesses and professional offices. Our story, our approach, and the principles behind the work." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(11,12,16,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo { width: 50px; height: 50px; flex-shrink: 0; }
+
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; }
+
+    .nav-wordmark-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .nav-wordmark-name .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 640px) {
+      .nav-wordmark-name { font-size: 1.25rem; }
+    }
+
+    .nav-wordmark-tagline {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      letter-spacing: 0.005em;
+      line-height: 1.2;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) { .nav-wordmark-tagline { display: none; } }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #FFFFFF; }
+
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* MORE DROPDOWN */
+    .nav-more { position: relative; }
+    .nav-more-btn { cursor: pointer; user-select: none; }
+    .nav-more-btn .nav-more-arrow { font-size: 0.6rem; margin-left: 2px; display: inline-block; transition: transform 0.2s; }
+    .nav-more.open .nav-more-btn .nav-more-arrow { transform: rotate(180deg); }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #12141A;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 150px;
+      list-style: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 300;
+      margin-top: 2px;
+    }
+    .nav-more-dropdown li { margin: 0; padding: 0; }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    @media (max-width: 640px) {
+      .nav-more-dropdown {
+        position: static;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 0 1rem;
+        min-width: auto;
+        margin-top: 0;
+      }
+      .nav-more-dropdown a {
+        padding: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    /* PROSE SECTIONS */
+    .prose-section {
+      padding: 3.5rem 2rem;
+    }
+
+    .prose-section.alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prose-section.dark {
+      background: var(--dark);
+      color: #FFFFFF;
+    }
+
+    .prose-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .prose-inner .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .prose-section.dark .prose-inner .section-label {
+      color: var(--cyan);
+    }
+
+    .prose-inner h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1.6rem;
+    }
+
+    .prose-section.dark .prose-inner h2 {
+      color: #FFFFFF;
+    }
+
+    .prose-inner p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .prose-inner p:last-child { margin-bottom: 0; }
+
+    .prose-section.dark .prose-inner p {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .pull-quote-attr {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--cyan);
+      padding: 0.8rem 0 0.8rem 1.6rem;
+      margin: 2.4rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .prose-section.dark .pull-quote {
+      color: rgba(255,255,255,0.85);
+      border-left-color: var(--accent);
+    }
+
+    /* CAREER TIMELINE */
+    .career-block {
+      margin-bottom: 2.4rem;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .career-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .career-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* PRINCIPLES GRID */
+    .principles-section {
+      padding: 3.5rem 2rem 4rem;
+      background: var(--dark);
+    }
+
+    .principles-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .principles-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .principles-title {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .principles-sub {
+      font-size: 0.96rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 860px) {
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .principles-grid { grid-template-columns: 1fr; }
+    }
+
+    .principle-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.8rem 1.6rem;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .principle-card:hover {
+      border-color: rgba(45,212,255,0.25);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .principle-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.01em;
+    }
+
+    .principle-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    .prose-inner ul {
+      margin: 0 0 1.2rem 1.25rem;
+    }
+
+    .prose-inner li {
+      margin-bottom: 0.6rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .principle-card .principle-industry {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.5rem;
+    }
+
+    .principle-card .principle-industry + h3 + p {
+      margin-top: 0;
+    }
+
+    .principle-card--wide {
+      grid-column: 1 / -1;
+    }
+
+    .principle-card--wide p {
+      max-width: 72ch;
+    }
+
+    .principle-card p + p {
+      margin-top: 0.75rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+      margin-top: 2.4rem;
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    .projects-grid {
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem 1.6rem;
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(37,99,235,0.08);
+    }
+
+    .project-card-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-section h2 {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: opacity 0.2s, transform 0.2s;
+      margin-right: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border: 1.5px solid var(--border);
+      color: var(--dark);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* RESPONSIVE NAV */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+    }
+
+    /* FOUNDER LAYOUT */
+    .founder-grid {
+      display: flow-root;
+    }
+
+    .founder-photo-col {
+      float: right;
+      width: 260px;
+      margin: 0 0 1.5rem 2.5rem;
+    }
+
+    @media (max-width: 720px) {
+      .founder-photo-col {
+        float: none;
+        width: auto;
+        margin: 0 0 2rem;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .founder-headshot {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* Photo column nudged down to align with heading */
+    .founder-photo-col { padding-top: 1.75rem; }
+
+    /* Full-width prose below the 2-col intro grid */
+    .founder-prose-full {
+      margin-top: 1.75rem;
+    }
+    .founder-prose-full p { margin-bottom: 1rem; }
+
+    @media (max-width: 720px) {
+      .founder-photo-col { padding-top: 0; }
+    }
+
+    /* FAMILY PHOTO */
+    .family-photo-wrap {
+      float: right;
+      margin: 0 0 1.5rem 2rem;
+      width: 220px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .family-photo-wrap {
+        float: none;
+        margin: 0 0 1.5rem 0;
+        width: 100%;
+      }
+    }
+
+    .family-photo {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+    }
+
+    .family-photo-caption {
+      font-size: 0.66rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+  
+    /* ΓöÇΓöÇΓöÇ NAV OVERRIDE ΓöÇΓöÇΓöÇ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      overflow: visible;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-logo { height: 36px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-brand-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; white-space: nowrap; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links > li > a {
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links > li > a:hover { color: #0F172A; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1D4ED8; }
+    .nav-more { position: relative; }
+    .nav-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: #374151;
+      font-size: 0.87rem;
+      font-weight: 500;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+    .nav-more-btn:hover { color: #0F172A; }
+    .nav-more-arrow { font-size: 0.6rem; }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 0.35rem 0;
+      min-width: 170px;
+      list-style: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      z-index: 300;
+    }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover { color: #0F172A; background: #F8F9FB; }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      position: absolute;
+      right: 1.5rem;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #374151; border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      nav { padding: 0 1rem; justify-content: space-between; }
+      .nav-wordmark { position: static; }
+      .nav-links { display: none; }
+      .nav-cta { position: static; padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+      .nav-hamburger { display: flex; position: static; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: #FFFFFF;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 0.5rem 1.5rem 1.2rem;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .nav-links.open > li > a,
+      .nav-links.open .nav-more-btn { padding: 0.7rem 0; font-size: 0.9rem; }
+      .nav-more-dropdown { position: static; transform: none; box-shadow: none; border: none; background: #F8F9FB; border-radius: 6px; margin: 0.25rem 0 0.5rem; padding: 0.25rem 0; display: none; }
+      .nav-more.open .nav-more-dropdown { display: block; }
+      .nav-more-dropdown a { padding: 0.5rem 1.2rem; }
+    }
+
+    /* ΓöÇΓöÇΓöÇ FOOTER OVERRIDE ΓöÇΓöÇΓöÇ */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+      text-align: left;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+    .footer-vert-divider { background: #DCE5F0; align-self: stretch; }
+    .footer-link-cols { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0 2rem; }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 0.72rem; color: #64748B; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; margin-bottom: 1.75rem; }
+    .footer-social a { color: #64748B; display: inline-flex; transition: color 0.2s; }
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-copy { font-size: 0.68rem; color: #64748B; line-height: 1.7; }
+    .footer-col-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1769E0; margin-bottom: 0.85rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a { color: #0B234A; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #1769E0; }
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 0; }
+      .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
+      .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }
+    /* ─── INQUIRY MODAL ─── */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form input:focus,
+    .fis-form textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
+    /* No single-word last lines */
+    h1, h2, h3, .principle-industry { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
+    /* Two-column layout: shared left edge across sections */
+    .os-split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 4rem; align-items: start; }
+    .os-split > div > :last-child { margin-bottom: 0; }
+    .os-card { background: #FFFFFF; border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem 2rem; }
+    .os-split--founder { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+    .founder-side .founder-photo-col { float: none; width: auto; margin: 0 0 1.75rem; padding-top: 0; display: flex; justify-content: center; }
+    .founder-side .pull-quote { margin: 0; }
+    @media (max-width: 820px) {
+      .os-split, .os-split--founder { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="approach.html">How We Work</a></li>
+          <li><a href="solutions.html">Our Solutions</a></li>
+          <li><a href="ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="case-studies/index.html">Case Studies</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow">ABOUT</p>
+      <h1>Our Story</h1>
+      <p>We help small and midsize businesses use AI to save time, make better decisions, and take repetitive work off their teams' plates.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Why clients call us -->
+  <section class="prose-section alt">
+    <div class="prose-inner">
+      <div class="os-split">
+        <div>
+        <p class="section-label">Why clients call us</p>
+        <h2>Practical questions, practical answers</h2>
+        <p>Most business owners don't need another presentation on AI's potential. They need answers to questions like these:</p>
+        <p>We help answer those questions, then help put the answers into practice.</p>
+        </div>
+        <div class="os-card">
+          <ul>
+            <li>Where could AI make a real difference in our business?</li>
+            <li>Which ideas are worth pursuing, and which are&nbsp;distractions?</li>
+            <li>How can our people use AI productively and safely?</li>
+            <li>Can we automate a repetitive process without disrupting the business?</li>
+            <li>Are we getting the most from the AI features in tools we already pay for?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: What we do -->
+  <section class="prose-section">
+    <div class="prose-inner">
+      <div class="os-split">
+        <div>
+        <p class="section-label">What we do</p>
+        <h2>Where we help</h2>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Team training:</strong> prompt writing, AI best practices, and habits that make everyday tools more useful.</li>
+            <li><strong>Governance:</strong> clear policies on how your team uses AI, what data it can touch, and who reviews the output.</li>
+            <li><strong>Business LLM setup:</strong> business versions of tools like ChatGPT, Claude, or Microsoft Copilot, configured for your data and your people.</li>
+            <li><strong>Agents and agentic workflows:</strong> automating research, reporting, customer follow-up, and other multi-step work, with people reviewing what matters.</li>
+            <li><strong>Agents in software you already use:</strong> setting up or tuning the AI built into your CRM, help desk, or other platforms.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: How we work -->
+  <section class="prose-section alt">
+    <div class="prose-inner">
+      <div class="os-split">
+        <div>
+        <p class="section-label">Our approach</p>
+        <h2>How we work</h2>
+        </div>
+        <div>
+        <p>We start by learning how the business actually runs: what takes too long, where information gets lost, and which processes depend too heavily on one person. Then we pick a focused first project with a clear benefit and a realistic path to adoption.</p>
+        <p>We don't build dependency. You'll understand what's been built and keep control of your tools, data, processes, and knowledge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Who you'll work with -->
+  <section class="prose-section">
+    <div class="prose-inner">
+      <div class="os-split os-split--founder">
+        <div class="founder-text-col">
+          <p class="section-label">Who you'll work with</p>
+          <h2>Applied AI experience, working for your business</h2>
+          <p>Greg Loeffelholz founded FutureInSites to bring years of applied AI and machine learning experience to smaller businesses.</p>
+          <p>His work includes AI and data platforms used by companies such as CarGurus and Rocket Mortgage, supporting more than $100 million in monthly advertising spend, and machine learning systems making bidding decisions across more than 40 billion daily advertising events.</p>
+          <p>Today, he applies that experience to a practical goal: helping businesses automate repetitive work, improve productivity, and measure the return.</p>
+          <p>Greg lives with his family in Hanover, Massachusetts. Outside work, he enjoys skiing, tennis, and coaching youth sports.</p>
+        </div>
+        <div class="founder-side">
+          <div class="founder-photo-col">
+            <picture>
+              <source srcset="images/headshot.greg.webp" type="image/webp">
+              <img
+                src="images/headshot.greg.jpg"
+                alt="Greg Loeffelholz, Founder and Managing Principal of FutureInSites"
+                class="founder-headshot"
+                width="260"
+                height="260"
+                loading="lazy"
+              >
+            </picture>
+          </div>
+          <div class="pull-quote">
+            &ldquo;Making AI do something impressive is one thing. Making it useful in your business takes a deeper understanding of the technology, the work, and how to measure the return.&rdquo;
+            <span class="pull-quote-attr">Founder, FutureInSites</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" style="background:var(--bg-alt);border-top:1px solid var(--border);">
+    <div class="cta-inner">
+      <p class="cta-label">Start a conversation</p>
+      <h2>A practical first step</h2>
+      <p>You don't need an AI strategy before you call. A business problem, a process that isn't working, or a sense that your team could get more from AI is enough.</p>
+      <p>The first conversation is about understanding your situation and whether there's a useful, right-sized next step. If there isn't, we'll tell you.</p>
+      <a href="contact.html" class="btn-primary" data-open-inquiry data-inquiry-context="strategy">Talk through a business problem</a>
+      <a href="ai-readiness.html" class="btn-outline">See where AI could help</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
+  <link rel="stylesheet" href="css/footer.css">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="approach.html">How We Work</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="ai-readiness.html">Assessment</a></li>
+
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Research</p>
+          <ul>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="case-studies/index.html">Case Studies</a></li>
+            <li><a href="landscape/index.html">AI Landscape</a></li>
+            <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <script src="cookie-banner.js"></script>
+
+  <script>
+    /* Dropdown toggles (handles multiple .nav-more elements) */
+    (function () {
+      var allMore = document.querySelectorAll('.nav-more');
+      if (!allMore.length) return;
+      allMore.forEach(function (more) {
+        var btn = more.querySelector('.nav-more-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var isOpen = more.classList.contains('open');
+          allMore.forEach(function (m) { m.classList.remove('open'); });
+          if (!isOpen) { more.classList.add('open'); }
+        });
+        more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            more.classList.remove('open');
+          });
+        });
+      });
+      document.addEventListener('click', function (e) {
+        var inAny = false;
+        allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+        if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+      });
+    })();
+  </script>
+
+
+  <div class="fis-modal" id="fis-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="fis-inquiry-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
+
+      <div id="fis-inquiry-header">
+        <div class="fis-modal-eyebrow" id="fis-inquiry-eyebrow">AI Transformation Session</div>
+        <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
+        <p class="fis-modal-lead" id="fis-inquiry-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
+      </div>
+
+      <form class="fis-form" id="fis-inquiry-form" novalidate>
+        <div class="fis-form-grid">
+          <div>
+            <label for="fis-name">Name <span class="req">*</span></label>
+            <input type="text" id="fis-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="fis-email">Email <span class="req">*</span></label>
+            <input type="email" id="fis-email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fis-company">Company</label>
+            <input type="text" id="fis-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="fis-role">Role / Title</label>
+            <input type="text" id="fis-role" name="role" autocomplete="organization-title">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-phone">Phone (optional)</label>
+            <input type="tel" id="fis-phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-message">What would you like to discuss?</label>
+            <textarea id="fis-message" name="message" placeholder="A quick note on your team, where AI fits, and any timing you have in mind."></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot — hidden from humans, often filled by bots -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send inquiry</button>
+          <p class="fis-form-note">No newsletters, no sharing.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title" id="fis-inquiry-success-title">Thanks, your inquiry is in.</div>
+        <div class="fis-form-success-body" id="fis-inquiry-success-body">We'll be in touch as soon as possible at the email you provided.</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+  /* Inquiry modal — open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-inquiry-modal');
+    var form     = document.getElementById('fis-inquiry-form');
+    var success  = document.getElementById('fis-inquiry-success');
+    var header   = document.getElementById('fis-inquiry-header');
+    var eyebrowEl     = document.getElementById('fis-inquiry-eyebrow');
+    var titleEl       = document.getElementById('fis-inquiry-title');
+    var leadEl        = document.getElementById('fis-inquiry-lead');
+    var successTitleEl = document.getElementById('fis-inquiry-success-title');
+    var successBodyEl  = document.getElementById('fis-inquiry-success-body');
+
+    /* Per-context modal copy. Keyed by data-inquiry-context attr on the open button. */
+    var CONTEXTS = {
+      session: {
+        eyebrow: 'AI Transformation Session',
+        title: 'Tell us about your team.',
+        lead: "A few details so we can come prepared. We'll respond as soon as possible.",
+        successTitle: 'Thanks, your inquiry is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      strategy: {
+        eyebrow: "Let's Talk",
+        title: 'Tell us about your AI work.',
+        lead: "Whether you're starting from zero or scaling an existing program, share a few details and we'll respond as soon as possible.",
+        successTitle: 'Thanks, your note is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      assessment: {
+        eyebrow: 'Free AI Assessment',
+        title: 'Tell us about your business.',
+        lead: "A few details will help us prepare for the assessment. We'll follow up to schedule a virtual meeting or an in-person meeting around Boston or New York City.",
+        successTitle: 'Thanks, your assessment request is in.',
+        successBody: "We'll be in touch as soon as possible to schedule your free AI assessment."
+      }
+    };
+    var currentContext = 'session';
+    var errorEl  = document.getElementById('fis-inquiry-error');
+    var submitEl = document.getElementById('fis-inquiry-submit');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function applyContext(ctx) {
+      var c = CONTEXTS[ctx] || CONTEXTS.session;
+      currentContext = CONTEXTS[ctx] ? ctx : 'session';
+      if (eyebrowEl)      eyebrowEl.textContent      = c.eyebrow;
+      if (titleEl)        titleEl.textContent        = c.title;
+      if (leadEl)         leadEl.textContent         = c.lead;
+      if (successTitleEl) successTitleEl.textContent = c.successTitle;
+      if (successBodyEl)  successBodyEl.textContent  = c.successBody;
+    }
+
+    function openModal(ctx) {
+      lastFocus = document.activeElement;
+      applyContext(ctx || 'session');
+      // Reset state every open
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Send inquiry';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-name');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var ctx = el.getAttribute('data-inquiry-context') || 'session';
+        openModal(ctx);
+      });
+    });
+
+    // Direct links and QR codes can open the same form in a specific context.
+    var linkedContext = new URLSearchParams(window.location.search).get('inquiry');
+    if (linkedContext && CONTEXTS[linkedContext]) {
+      openModal(linkedContext);
+    }
+
+    // Close triggers — × button, backdrop click, Escape key
+    modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Submit handler
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        name:    form.name.value.trim(),
+        email:   form.email.value.trim(),
+        company: form.company.value.trim(),
+        role:    form.role.value.trim(),
+        phone:   form.phone.value.trim(),
+        message: form.message.value.trim(),
+        context: currentContext,
+        website: form.website.value, // honeypot
+        fax:     form.fax.value,     // honeypot
+      };
+
+      if (!data.name) {
+        errorEl.textContent = 'Please enter your name.';
+        errorEl.classList.add('show');
+        form.name.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/inquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (typeof gtag === 'function') {
+              gtag('event', 'generate_lead', { form_id: 'fis-inquiry-form' });
+            }
+            form.reset();
+            window.location.href = 'thanks.html';
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please email strategy@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please email strategy@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        });
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FutureInSites client portals bring engagement progress, deliverables, documents, and shared knowledge into one organized workspace." />
+  <title>Client Portal | FutureInSites</title>
+  <link rel="canonical" href="https://www.futureinsites.com/client-login" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0F172A;
+      --dark: #0B0C10;
+      --accent: #2563EB;
+      --accent-dark: #1D4ED8;
+      --cyan: #2DD4FF;
+      --muted: #64748B;
+      --soft: #F6F8FC;
+      --border: #E2E8F0;
+      --white: #FFFFFF;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --display: 'Manrope', var(--font);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { color: var(--ink); background: var(--white); font-family: var(--font); line-height: 1.6; }
+    a { color: inherit; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      height: 64px;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .nav-wordmark {
+      position: absolute;
+      left: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none;
+    }
+    .nav-logo { width: auto; height: 36px; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-brand-name {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+      background: linear-gradient(90deg, #00DAE7 0%, #1C52E8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline {
+      display: block;
+      width: 100%;
+      margin-top: 2px;
+      color: #64748B;
+      font-size: 0.7rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links > li { position: relative; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-links a.active { font-weight: 700; }
+    .nav-more-arrow { margin-left: 0.2rem; font-size: 0.65rem; }
+    .nav-more-dropdown {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      min-width: 190px;
+      padding: 0.55rem;
+      list-style: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.14);
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, -4px);
+      transition: 0.18s ease;
+    }
+    .nav-more:hover .nav-more-dropdown, .nav-more:focus-within .nav-more-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+    .nav-more-dropdown a { display: block; padding: 0.55rem 0.7rem; border-radius: 7px; white-space: nowrap; }
+    .nav-more-dropdown a:hover { background: var(--soft); }
+
+    .nav-actions {
+      position: absolute;
+      right: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+    }
+    .nav-client-link {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-client-link:hover { color: var(--accent-dark); }
+    .nav-client-menu { display: none; }
+    .nav-cta {
+      padding: 0.5rem 1.3rem;
+      color: var(--white);
+      background: var(--accent);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-hamburger {
+      display: none;
+      width: 30px;
+      height: 30px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .nav-hamburger span { width: 21px; height: 2px; background: #475569; border-radius: 2px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 5.5rem 2rem 6.5rem;
+      background:
+        radial-gradient(760px 430px at 88% 8%, rgba(45,212,255,0.16), transparent 66%),
+        radial-gradient(660px 420px at 4% 94%, rgba(37,99,235,0.10), transparent 68%),
+        linear-gradient(180deg, #FBFDFF 0%, #F6F8FC 100%);
+    }
+    .hero-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.83fr) minmax(520px, 1.17fr);
+      align-items: end;
+      gap: 4rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ''; width: 26px; height: 2px; background: linear-gradient(90deg, var(--cyan), var(--accent)); }
+    h1 {
+      max-width: 560px;
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: clamp(2.6rem, 5vw, 4.45rem);
+      font-weight: 800;
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
+    .hero-copy { max-width: 545px; color: #526176; font-size: 1.08rem; line-height: 1.75; }
+
+    .access-card {
+      max-width: 520px;
+      margin-top: 2rem;
+      padding: 1.15rem;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(203,213,225,0.9);
+      border-radius: 16px;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.09);
+    }
+    .access-heading { display: block; margin-bottom: 0.75rem; color: #334155; font-size: 0.78rem; font-weight: 700; }
+    .access-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .access-field { display: grid; gap: 0.35rem; color: #475569; font-size: 0.69rem; font-weight: 700; }
+    .access-field input {
+      min-width: 0;
+      width: 100%;
+      padding: 0.78rem 0.9rem;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid #CBD5E1;
+      border-radius: 9px;
+      font: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .access-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+    .access-button {
+      grid-column: 1 / -1;
+      padding: 0.78rem 1.15rem;
+      border: 0;
+      border-radius: 9px;
+      color: var(--white);
+      background: var(--accent);
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .access-button:hover { background: var(--accent-dark); }
+    .access-button:disabled { cursor: wait; opacity: 0.72; }
+    .access-help { margin-top: 0.62rem; color: var(--muted); font-size: 0.75rem; line-height: 1.5; }
+    .form-message { display: none; margin-top: 0.55rem; color: #B42318; font-size: 0.78rem; }
+    .form-message.show { display: block; }
+    .form-message.notice { color: #166534; }
+
+    .portal-window {
+      position: relative;
+      overflow: hidden;
+      background: #F8FAFC;
+      border: 1px solid rgba(148,163,184,0.42);
+      border-radius: 18px;
+      box-shadow: 0 30px 70px rgba(15,23,42,0.19), 0 4px 16px rgba(15,23,42,0.08);
+      transform: perspective(1200px) rotateY(-2deg) rotateX(1deg);
+    }
+    .portal-topbar {
+      height: 47px;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--white);
+      background: #0B1220;
+    }
+    .portal-brand { display: flex; align-items: center; gap: 0.55rem; font-family: var(--display); font-size: 0.72rem; font-weight: 700; }
+    .portal-mark { width: 22px; height: 22px; display: grid; place-items: center; color: var(--white); background: linear-gradient(135deg, var(--cyan), var(--accent)); border-radius: 6px; font-size: 0.67rem; }
+    .portal-label { color: #94A3B8; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .portal-body { min-height: 462px; display: grid; grid-template-columns: 176px 1fr; }
+    .portal-sidebar { padding: 1rem 0.9rem; color: #CBD5E1; background: #111B2E; }
+    .client-name { margin-bottom: 0.8rem; color: var(--white); font-size: 0.76rem; font-weight: 700; }
+    .status-line { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.9rem; color: #8EE5B7; font-size: 0.6rem; font-weight: 700; }
+    .status-dot { width: 6px; height: 6px; background: #3FD58A; border-radius: 50%; box-shadow: 0 0 0 3px rgba(63,213,138,0.12); }
+    .phase-pill { display: inline-block; margin-bottom: 1rem; padding: 0.3rem 0.48rem; color: #BFDBFE; background: rgba(37,99,235,0.2); border: 1px solid rgba(96,165,250,0.22); border-radius: 999px; font-size: 0.55rem; }
+    .side-heading { margin: 0.95rem 0 0.55rem; color: #F8FAFC; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; }
+    .side-meta { display: grid; gap: 0.53rem; }
+    .side-meta div { display: grid; gap: 0.08rem; }
+    .side-meta span { color: #7F8CA2; font-size: 0.5rem; text-transform: uppercase; }
+    .side-meta strong { color: #DCE5F3; font-size: 0.58rem; font-weight: 600; }
+    .side-list { display: grid; gap: 0.4rem; list-style: none; }
+    .side-list li { position: relative; padding-left: 0.72rem; color: #AEBBD0; font-size: 0.54rem; line-height: 1.35; }
+    .side-list li::before { content: ''; position: absolute; left: 0; top: 0.34rem; width: 4px; height: 4px; background: #4F8FFF; border-radius: 50%; }
+    .portal-main { padding: 1.15rem; background: #F8FAFC; }
+    .portal-main h2 { margin-bottom: 0.18rem; font-family: var(--display); font-size: 1rem; letter-spacing: -0.025em; }
+    .portal-main > p { margin-bottom: 0.9rem; color: var(--muted); font-size: 0.58rem; }
+    .knowledge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .knowledge-card { min-height: 150px; padding: 0.8rem; background: var(--white); border: 1px solid var(--border); border-radius: 10px; }
+    .knowledge-icon { width: 25px; height: 25px; margin-bottom: 0.55rem; display: grid; place-items: center; color: var(--accent); background: #EFF6FF; border-radius: 7px; }
+    .knowledge-card h3 { margin-bottom: 0.42rem; font-size: 0.66rem; }
+    .knowledge-card ul { display: grid; gap: 0.3rem; list-style: none; }
+    .knowledge-card li { display: flex; align-items: center; justify-content: space-between; color: #56657A; font-size: 0.53rem; }
+    .knowledge-card li::after { content: '›'; color: #94A3B8; font-size: 0.72rem; }
+    .preview-badge {
+      position: absolute;
+      right: -0.6rem;
+      bottom: -0.7rem;
+      padding: 0.55rem 0.75rem;
+      color: #334155;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.12);
+      font-size: 0.66rem;
+      font-weight: 600;
+    }
+
+    .expect { padding: 5.5rem 2rem; background: var(--white); }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+    .section-heading { max-width: 680px; margin: 0 auto 3rem; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    .section-heading h2 { margin-bottom: 0.8rem; font-family: var(--display); font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.12; letter-spacing: -0.04em; }
+    .section-heading p { color: var(--muted); font-size: 1rem; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .feature-card { padding: 1.45rem; background: var(--soft); border: 1px solid #E9EDF4; border-radius: 14px; }
+    .feature-number { margin-bottom: 1.2rem; color: var(--accent); font-family: var(--display); font-size: 0.72rem; font-weight: 800; }
+    .feature-card h3 { margin-bottom: 0.55rem; font-family: var(--display); font-size: 1rem; line-height: 1.25; }
+    .feature-card p { color: var(--muted); font-size: 0.84rem; line-height: 1.65; }
+
+    .access-note { padding: 0 2rem 5.5rem; }
+    .access-note-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.3rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      color: var(--white);
+      background: linear-gradient(115deg, #0C172A 0%, #12294A 66%, #17468F 100%);
+      border-radius: 18px;
+    }
+    .access-note h2 { margin-bottom: 0.45rem; font-family: var(--display); font-size: 1.45rem; letter-spacing: -0.025em; }
+    .access-note p { max-width: 700px; color: #C7D2E4; font-size: 0.9rem; }
+    .help-link { flex: 0 0 auto; padding: 0.65rem 1rem; color: var(--white); border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; text-decoration: none; font-size: 0.82rem; font-weight: 700; }
+    .help-link:hover { background: rgba(255,255,255,0.08); }
+
+    footer { padding: 56px 5% 24px; background: #FFFFFF; border-top: 1px solid #DCE5F0; }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+    .footer-vert-divider { background: #DCE5F0; align-self: stretch; }
+    .footer-link-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 2rem; }
+    .footer-wordmark {
+      display: inline-block;
+      margin-bottom: 0.35rem;
+      color: transparent;
+      background: linear-gradient(90deg, #00DAE7 0%, #1C52E8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: var(--display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      text-decoration: none;
+    }
+    .footer-tagline { margin-bottom: 1.5rem; color: #64748B; font-size: 0.72rem; letter-spacing: 0.06em; }
+    .footer-social { display: flex; align-items: center; justify-content: flex-start; gap: 1rem; margin-bottom: 1.75rem; padding-left: 0; }
+    .footer-social a { display: inline-flex; color: #64748B; transition: color 0.2s; }
+    .footer-social a:hover { color: #1769E0; }
+    .footer-social svg { display: block; width: 18px; height: 18px; fill: currentColor; }
+    .footer-brand { text-align: left; }
+    .footer-brand > * { margin-left: 0; text-indent: 0; }
+    .footer-copy { color: #64748B; font-size: 0.68rem; line-height: 1.7; }
+    .footer-col-label { margin-bottom: 0.85rem; color: #1769E0; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a { color: #0B234A; font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #1769E0; }
+
+    @media (max-width: 1080px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-copy, .access-card { max-width: 620px; }
+      .portal-window { max-width: 720px; margin: 0 auto; transform: none; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.76rem; }
+    }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 1.25rem; justify-content: flex-start; }
+      .nav-wordmark { position: static; }
+      .nav-hamburger { display: flex; margin-left: 1rem; }
+      .nav-actions { position: static; margin-left: auto; }
+      .nav-client-link { display: none; }
+      .nav-client-menu { display: block; }
+      .nav-client-menu > a { color: var(--accent); font-weight: 700; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.55rem 1.3rem 1rem;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+      }
+      .nav-links > li > a { display: block; padding: 0.72rem 0; border-bottom: 1px solid #F1F5F9; }
+      .nav-more-dropdown { display: none; }
+      .hero { padding-top: 5.5rem; }
+      .portal-window { max-width: 650px; }
+      .access-note-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-logo { height: 30px; }
+      .nav-wordmark-text { width: 168px; }
+      .nav-wordmark-tagline { font-size: 0.6rem; }
+      .nav-cta { padding: 0.46rem 0.82rem; font-size: 0.74rem; }
+      .hero { padding: 5.25rem 1rem 4.5rem; }
+      .hero-inner { gap: 2.5rem; }
+      h1 { font-size: clamp(2.45rem, 13vw, 3.55rem); }
+      .access-row { grid-template-columns: 1fr; }
+      .access-button { grid-column: auto; }
+      .portal-body { min-height: auto; grid-template-columns: 118px 1fr; }
+      .portal-sidebar { padding: 0.8rem 0.65rem; }
+      .portal-main { padding: 0.8rem; }
+      .knowledge-grid { grid-template-columns: 1fr; }
+      .knowledge-card { min-height: 0; }
+      .knowledge-card:nth-child(n+3) { display: none; }
+      .preview-badge { right: 0.45rem; bottom: 0.45rem; }
+      .expect { padding: 4.2rem 1rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .access-note { padding: 0 1rem 4rem; }
+      .access-note-inner { padding: 1.6rem; }
+    }
+
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 0; }
+      .footer-vert-divider { height: 1px; margin: 1.75rem 0; align-self: auto; }
+      .footer-link-cols { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .footer-link-cols { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary navigation">
+    <a href="/" class="nav-wordmark" aria-label="FutureInSites home">
+      <img src="/images/fis-logo-f-only.png" class="nav-logo" alt="" />
+      <span class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
+      </span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="/solutions.html">Business <span class="nav-more-arrow">▾</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="/approach.html">How We Work</a></li>
+          <li><a href="/solutions.html">Our Solutions</a></li>
+          <li><a href="/ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="/assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="/resources.html">Research <span class="nav-more-arrow">▾</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="/resources.html">Resources</a></li>
+          <li><a href="/landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="/landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="/case-studies/index.html">Case Studies</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="/our-story.html">About <span class="nav-more-arrow">▾</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="/our-story.html">Our Story</a></li>
+          <li><a href="/careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li class="nav-client-menu"><a href="/client-login" aria-current="page">Client Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link" aria-current="page">Client Portal</a>
+      <a href="/contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Client Portal</div>
+          <h1>Your engagement, all in one place.</h1>
+          <p class="hero-copy">Follow progress, find deliverables, review key documents, and keep the knowledge created during our work together organized and accessible.</p>
+
+          <form class="access-card" id="portal-form" novalidate>
+            <div class="access-heading">Sign in to your client portal</div>
+            <div class="access-row">
+              <label class="access-field" for="workspace">
+                <span>Workspace</span>
+                <input id="workspace" name="workspace" type="text" inputmode="text" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Your workspace" aria-describedby="access-help form-message" required />
+              </label>
+              <label class="access-field" for="password">
+                <span>Password</span>
+                <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" aria-describedby="access-help form-message" required />
+              </label>
+              <button class="access-button" id="submit-button" type="submit">Sign in</button>
+            </div>
+            <p class="access-help" id="access-help">Use the workspace name and password included in your welcome email.</p>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="portal-window" aria-label="Example FutureInSites client portal">
+          <div class="portal-topbar">
+            <div class="portal-brand"><span class="portal-mark">F</span>FutureInSites</div>
+            <div class="portal-label">Client Portal</div>
+          </div>
+          <div class="portal-body">
+            <aside class="portal-sidebar">
+              <div class="client-name">Your Organization</div>
+              <div class="status-line"><span class="status-dot"></span>Active engagement</div>
+              <div class="phase-pill">Phase: Discovery</div>
+              <div class="side-heading">Current Engagement</div>
+              <div class="side-meta">
+                <div><span>Status</span><strong>In progress</strong></div>
+                <div><span>Next milestone</span><strong>Recommendations review</strong></div>
+                <div><span>Target</span><strong>Upcoming</strong></div>
+              </div>
+              <div class="side-heading">Deliverables</div>
+              <ul class="side-list">
+                <li>Discovery findings</li>
+                <li>Recommendations</li>
+                <li>Roadmap</li>
+                <li>Team workshop</li>
+              </ul>
+              <div class="side-heading">Key Documents</div>
+              <ul class="side-list">
+                <li>Meeting notes</li>
+                <li>Working documents</li>
+              </ul>
+            </aside>
+            <section class="portal-main">
+              <h2>Knowledge Base</h2>
+              <p>Everything created through your engagement, organized by workstream.</p>
+              <div class="knowledge-grid">
+                <article class="knowledge-card">
+                  <div class="knowledge-icon" aria-hidden="true">◇</div>
+                  <h3>Strategy</h3>
+                  <ul><li>Discovery</li><li>Current state</li><li>Opportunity assessment</li><li>AI roadmap</li></ul>
+                </article>
+                <article class="knowledge-card">
+                  <div class="knowledge-icon" aria-hidden="true">⌘</div>
+                  <h3>Engineering</h3>
+                  <ul><li>Architecture</li><li>Technical specs</li><li>Integrations</li><li>Testing</li></ul>
+                </article>
+                <article class="knowledge-card">
+                  <div class="knowledge-icon" aria-hidden="true">△</div>
+                  <h3>Adoption</h3>
+                  <ul><li>Training</li><li>User guides</li><li>Governance</li><li>Operating procedures</li></ul>
+                </article>
+                <article class="knowledge-card">
+                  <div class="knowledge-icon" aria-hidden="true">□</div>
+                  <h3>Project</h3>
+                  <ul><li>Meeting notes</li><li>Decision log</li><li>Timeline</li><li>Project documents</li></ul>
+                </article>
+              </div>
+            </section>
+          </div>
+          <div class="preview-badge">Example portal view</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="expect">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="eyebrow">What to expect</div>
+          <h2>A clear view of the work we are doing together.</h2>
+          <p>Your portal grows with the engagement, giving you a practical place to return to during the project and after it is complete.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-number">01</div><h3>Progress and next steps</h3><p>See the current phase, upcoming milestones, target dates, and what is moving forward.</p></article>
+          <article class="feature-card"><div class="feature-number">02</div><h3>Deliverables and documents</h3><p>Find presentations, working documents, notes, and final deliverables without searching through email.</p></article>
+          <article class="feature-card"><div class="feature-number">03</div><h3>Shared knowledge base</h3><p>Keep strategy, engineering, adoption, and project materials organized by workstream.</p></article>
+          <article class="feature-card"><div class="feature-number">04</div><h3>A lasting project record</h3><p>Return to recommendations, decisions, training materials, and operating guidance when you need them.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="access-note">
+      <div class="access-note-inner">
+        <div><h2>Need help accessing your portal?</h2><p>Each client receives a dedicated workspace and password. If you cannot find yours or need access restored, we can help.</p></div>
+        <a class="help-link" href="mailto:help@futureinsites.com">Email support</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
+  <link rel="stylesheet" href="css/footer.css">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="approach.html">How We Work</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="ai-readiness.html">Assessment</a></li>
+
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Research</p>
+          <ul>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="case-studies/index.html">Case Studies</a></li>
+            <li><a href="landscape/index.html">AI Landscape</a></li>
+            <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <script>
+    const menuButton = document.getElementById('nav-hamburger');
+    const menu = document.getElementById('nav-links-menu');
+    menuButton.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    const portalForm = document.getElementById('portal-form');
+    const workspaceInput = document.getElementById('workspace');
+    const passwordInput = document.getElementById('password');
+    const submitButton = document.getElementById('submit-button');
+    const formMessage = document.getElementById('form-message');
+    const query = new URLSearchParams(window.location.search);
+    const requestedWorkspace = (query.get('workspace') || '').trim().toLowerCase();
+    const requestedNext = query.get('next') || '';
+
+    function showMessage(message, type = 'error') {
+      formMessage.textContent = message;
+      formMessage.classList.toggle('notice', type === 'notice');
+      formMessage.classList.toggle('show', Boolean(message));
+    }
+
+    if (/^[a-z0-9][a-z0-9-]{1,62}$/.test(requestedWorkspace)) {
+      workspaceInput.value = requestedWorkspace;
+      passwordInput.focus();
+    }
+
+    if (query.get('reason') === 'expired') {
+      showMessage('Your session has expired. Please sign in again.', 'notice');
+    } else if (query.get('logged_out') === '1') {
+      showMessage('You have signed out.', 'notice');
+    }
+
+    portalForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const workspace = workspaceInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
+      const validWorkspace = /^[a-z0-9][a-z0-9-]{1,62}$/.test(workspace);
+
+      workspaceInput.setAttribute('aria-invalid', String(!validWorkspace));
+      passwordInput.setAttribute('aria-invalid', String(!password));
+      if (!validWorkspace || !password) {
+        showMessage('Enter your workspace and password.');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Signing in...';
+      showMessage('');
+
+      try {
+        const response = await fetch('/api/client-login', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ workspace, password, next: requestedNext }),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          passwordInput.value = '';
+          passwordInput.focus();
+          showMessage(result.error || 'Unable to sign in. Please try again.');
+          return;
+        }
+
+        window.location.assign(result.redirect || `/clients/${encodeURIComponent(workspace)}/`);
+      } catch {
+        showMessage('Unable to reach the sign-in service. Please try again.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Sign in';
+      }
+    });
+  </script>
+</body>
+</html>

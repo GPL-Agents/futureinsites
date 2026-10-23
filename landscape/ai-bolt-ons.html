@@ -1152,7 +1152,8 @@
       .nav-links { gap: 0.65rem; }
       .nav-links a { font-size: 0.69rem; }
       .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
-    }</style></head>
+    }</style>  <link rel="stylesheet" href="../css/site-nav.css">
+</head>
 <body>
 
   <!-- NAV -->
@@ -1180,11 +1181,11 @@
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="../blog/index.html">Blog</a></li>
           <li><a href="../resources.html">Resources</a></li>
-          <li><a href="index.html">AI Vendor Landscape</a></li>
-          <li><a href="ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="../landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="../case-studies/index.html">Case Studies</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -1194,9 +1195,12 @@
           <li><a href="../careers.html">Careers</a></li>
         </ul>
       </li>
-      <li><a href="/client-login">Client Portal</a></li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
     </ul>
-    <a href="../contact.html" class="nav-cta">Contact</a>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="../contact.html" class="nav-cta">Contact</a>
+    </div>
   </nav>
 
   <!-- PAGE HEADER -->

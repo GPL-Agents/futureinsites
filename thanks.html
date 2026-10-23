@@ -352,6 +352,7 @@
       .nav-links a { font-size: 0.69rem; }
       .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
     }</style>
+  <link rel="stylesheet" href="css/site-nav.css">
 </head>
 <body>
 
@@ -394,9 +395,12 @@
           <li><a href="careers.html">Careers</a></li>
         </ul>
       </li>
-      <li><a href="/client-login">Client Portal</a></li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Contact</a>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
   </nav>
 
   <header class="page-header">

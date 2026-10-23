@@ -517,26 +517,39 @@
       .nav-links a { font-size: 0.69rem; }
       .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
     }</style>
+  <link rel="stylesheet" href="../css/site-nav.css">
 </head>
 <body>
 
   <nav>
     <a href="../index.html" class="nav-wordmark">
-      <img src="../images/fis-logo-160.png" class="nav-logo" alt="">
+      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
       <div class="nav-wordmark-text">
-        <span class="nav-wordmark-name">Future<span class="wm-gradient">InSites</span></span>
+        <span class="nav-brand-name">FutureInSites</span>
         <span class="nav-wordmark-tagline">Save time. Get more done.</span>
       </div>
     </a>
-        <ul class="nav-links" id="nav-links-menu">
-      <li><a href="../solutions.html">For Businesses</a></li>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../approach.html">How We Work</a></li>
+          <li><a href="../solutions.html">Our Solutions</a></li>
+          <li><a href="../ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="../assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
       <li class="nav-more">
         <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
         <ul class="nav-more-dropdown">
-          <li><a href="index.html">Blog</a></li>
+          <li><a href="../resources.html">Resources</a></li>
           <li><a href="../landscape/index.html">AI Vendor Landscape</a></li>
           <li><a href="../landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
           <li><a href="../case-studies/index.html">Case Studies</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
         </ul>
       </li>
       <li class="nav-more">
@@ -546,10 +559,12 @@
           <li><a href="../careers.html">Careers</a></li>
         </ul>
       </li>
-      <li><a href="../index.html#contact">Contact</a></li>
-      <li><a href="/client-login">Client Portal</a></li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
     </ul>
-    <a href="../index.html#contact" class="nav-cta">Get In Touch</a>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="../contact.html" class="nav-cta">Contact</a>
+    </div>
   </nav>
 
   <article>
@@ -893,5 +908,6 @@ discount = model.predict(customer_features, context_features)</code></pre>
   })();
   </script>
   <script src="../cookie-banner.js"></script>
+<script src="../js/site-nav.js" data-dropdowns="off"></script>
 </body>
 </html>

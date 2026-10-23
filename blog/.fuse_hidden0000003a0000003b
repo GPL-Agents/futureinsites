@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Railway Breach: Your Keys, Their Payday | FutureInSites</title>
+  <meta name="description" content="Railway's exposed credentials and reported wallet drains show the stakes of stolen access. Separate investigations show attackers using stolen AI compute to power offensive agents." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --accent-lt:#EFF6FF;
+      --cyan:     #2DD4FF;
+      --bg:       #FFFFFF;
+      --bg-alt:   #F8F9FB;
+      --border:   #E4E7EE;
+      --muted:    #64748B;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* --- NAV --- */
+    
+    /* --- NAV --- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      overflow: visible;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-logo { height: 36px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-brand-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; white-space: nowrap; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links > li > a {
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links > li > a:hover { color: #0F172A; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1D4ED8; }
+    .nav-more { position: relative; }
+    .nav-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: #374151;
+      font-size: 0.87rem;
+      font-weight: 500;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+    .nav-more-btn:hover { color: #0F172A; }
+    .nav-more-arrow { font-size: 0.6rem; }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 0.35rem 0;
+      min-width: 170px;
+      list-style: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      z-index: 300;
+    }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover { color: #0F172A; background: #F8F9FB; }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      position: absolute;
+      right: 1.5rem;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #374151; border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: #FFFFFF;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 0.5rem 1.5rem 1.2rem;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .nav-links.open > li > a,
+      .nav-links.open .nav-more-btn { padding: 0.7rem 0; font-size: 0.9rem; }
+      .nav-more-dropdown { position: static; transform: none; box-shadow: none; border: none; background: #F8F9FB; border-radius: 6px; margin: 0.25rem 0 0.5rem; padding: 0.25rem 0; display: none; }
+      .nav-more.open .nav-more-dropdown { display: block; }
+      .nav-more-dropdown a { padding: 0.5rem 1.2rem; }
+      .nav-links.open .nav-cta-mobile { display: block; margin-top: 0.5rem; }
+    }
+    
+
+    /* --- ARTICLE HEADER --- */
+    .article-header {
+      padding: 9rem 0 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .article-header::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(45,212,255,0.12) 0%, rgba(37,99,235,0.06) 50%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .article-header-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: left;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      margin-bottom: 1.8rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--cyan); }
+
+    .article-eyebrow {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .article-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .article-deck {
+      font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 760px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      flex-wrap: wrap;
+    }
+
+    .article-meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* --- ARTICLE BODY --- */
+    .article-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 5rem;
+    }
+
+    .article-body p {
+      font-size: 1.06rem;
+      color: var(--dark);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body p.lede {
+      font-size: 1.18rem;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 1.8rem;
+    }
+
+    .article-body p.lede strong { font-weight: 700; }
+
+    .article-body strong { font-weight: 700; }
+    .article-body em { font-style: italic; }
+    .article-body ul { margin: 0 0 1.5rem 1.6rem; }
+    .article-body li { font-size: 1.06rem; color: var(--dark); line-height: 1.85; margin-bottom: 0.4rem; }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 2.6rem 0;
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-lt);
+      border-radius: 0 8px 8px 0;
+      font-size: 1.18rem;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+
+    .pull-quote::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    /* Section heading inside article */
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin: 2.6rem 0 1rem;
+      line-height: 1.3;
+    }
+
+    .article-body h2 .step-num {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 30px;
+      margin-right: 0.7rem;
+      vertical-align: 2px;
+      letter-spacing: 0;
+    }
+
+    /* --- ARTICLE FIGURE / IMAGES & SVG DIAGRAMS --- */
+    .article-figure {
+      margin: 2.6rem 0;
+    }
+
+    .article-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      cursor: zoom-in;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .article-figure img:hover {
+      box-shadow: 0 14px 40px rgba(11,12,16,0.12);
+      transform: translateY(-2px);
+    }
+
+    .article-figure .agent-diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      padding: 1rem;
+    }
+
+    .article-figure figcaption {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* --- LIGHTBOX --- */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,12,16,0.94);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      cursor: zoom-out;
+      animation: lb-fade-in 0.2s ease-out;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: calc(100vh - 5rem);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    body.lb-open { overflow: hidden; }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* --- ARTICLE FOOTER (inside content) --- */
+    .article-
+    /* --- FOOTER --- */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+    .footer-vert-divider { background: #DCE5F0; align-self: stretch; }
+    .footer-link-cols { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0 2rem; }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 0.72rem; color: #64748B; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; margin-bottom: 1.75rem; }
+    .footer-social a { color: #64748B; display: inline-flex; transition: color 0.2s; }
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-copy { font-size: 0.68rem; color: #64748B; line-height: 1.7; }
+    .footer-col-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1769E0; margin-bottom: 0.85rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a { color: #0B234A; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #1769E0; }
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 0; }
+      .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
+      .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+    
+
+    .article-footer .author {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .article-footer .author strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .article-footer-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .article-footer-link:hover { text-decoration: underline; }
+
+    /* --- CTA BLOCK --- */
+    .article-cta {
+      max-width: 960px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .article-cta-inner {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 2.6rem 2.4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(45,212,255,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .article-cta-inner > * { position: relative; z-index: 1; }
+
+    .article-cta-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-cta-inner p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .article-cta-link {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 0.7rem 1.7rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+
+    .article-cta-link:hover { opacity: 0.88; }
+
+    /* --- FOOTER --- */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF;
+      display: inline-block;
+    }
+
+    .footer-wordmark .wm-gradient {
+      background: linear-gradient(90deg, #2DD4FF 0%, #2563EB 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.55); }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .article-header { padding: 7.5rem 0 3rem; }
+      .article-header-inner { padding: 0 1.5rem; }
+      .article-body { padding: 3rem 1.5rem 4rem; }
+      .article-cta { padding: 0 1.5rem; }
+    }</style>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style id="fis-global-header-v2">
+    nav { position:fixed!important; top:0!important; left:0!important; right:0!important; z-index:200!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:0 3rem!important; height:64px!important; overflow:visible!important; background:#fff!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 1px 4px rgba(0,0,0,.05)!important; }
+    .nav-wordmark { text-decoration:none!important; display:flex!important; align-items:center!important; gap:.3rem!important; position:absolute!important; left:3rem!important; }
+    .nav-logo { height:36px!important; width:auto!important; flex-shrink:0!important; object-fit:contain!important; }
+    .nav-wordmark-text { display:flex!important; flex-direction:column!important; gap:0!important; overflow:visible!important; }
+    .nav-brand-name { font-family:'Manrope',system-ui,sans-serif!important; font-size:1.15rem!important; font-weight:800!important; letter-spacing:-.025em!important; line-height:1!important; white-space:nowrap!important; display:block!important; background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important; background-clip:text!important; -webkit-background-clip:text!important; color:transparent!important; -webkit-text-fill-color:transparent!important; }
+    .nav-wordmark-tagline { font-size:.7rem!important; font-weight:400!important; color:#64748b!important; line-height:1.2!important; margin-top:2px!important; display:block!important; width:100%!important; white-space:nowrap!important; letter-spacing:.04em!important; }
+    .nav-links { display:flex!important; gap:2rem!important; list-style:none!important; margin:0!important; padding:0!important; }
+    .nav-links a { color:#64748b!important; text-decoration:none!important; font-size:.82rem!important; font-weight:500!important; letter-spacing:.01em!important; transition:color .2s!important; }
+    .nav-links a:hover,.nav-links a.active { color:#0f172a!important; }
+    .nav-cta { position:absolute!important; right:3rem!important; font-size:.8rem!important; font-weight:600!important; color:#fff!important; background:#2563eb!important; text-decoration:none!important; padding:.5rem 1.3rem!important; border-radius:100px!important; }
+    .nav-hamburger { display:none!important; position:absolute!important; right:1.5rem!important; background:none!important; border:0!important; cursor:pointer!important; padding:.4rem!important; flex-direction:column!important; gap:5px!important; }
+    .nav-hamburger span { display:block!important; width:22px!important; height:2px!important; background:#475569!important; border-radius:2px!important; }
+    .nav-more { position:relative!important; }
+    .nav-more-btn { cursor:pointer!important; user-select:none!important; }
+    .nav-more-dropdown { display:none!important; position:absolute!important; top:calc(100% + 6px)!important; left:50%!important; transform:translateX(-50%)!important; background:#fff!important; border:1px solid #e2e8f0!important; border-radius:8px!important; padding:.35rem 0!important; min-width:170px!important; list-style:none!important; box-shadow:0 8px 24px rgba(0,0,0,.10)!important; z-index:300!important; }
+    .nav-more-dropdown li { margin:0!important; padding:0!important; }
+    .nav-more-dropdown a { display:block!important; padding:.55rem 1.2rem!important; color:#374151!important; font-size:.82rem!important; white-space:nowrap!important; }
+    .nav-more-dropdown a:hover { color:#0f172a!important; background:#f8f9fb!important; }
+    .nav-more.open .nav-more-dropdown { display:block!important; }
+    @media (max-width:640px) {
+      nav { padding:0 1.5rem!important; }
+      .nav-wordmark { left:1.5rem!important; }
+      .nav-logo { height:30px!important; }
+      .nav-wordmark-tagline { font-size:.6rem!important; }
+      .nav-cta { display:none!important; }
+      .nav-hamburger { display:flex!important; }
+      .nav-links { display:none!important; }
+      .nav-links.open { display:flex!important; flex-direction:column!important; position:absolute!important; top:64px!important; left:0!important; right:0!important; background:#fff!important; padding:.5rem 1.5rem 1.2rem!important; gap:0!important; border-bottom:1px solid #e2e8f0!important; box-shadow:0 4px 12px rgba(0,0,0,.06)!important; z-index:199!important; }
+      .nav-links.open li { width:100%!important; }
+      .nav-links.open a { display:block!important; padding:.7rem 0!important; border-bottom:1px solid #f1f5f9!important; font-size:.88rem!important; color:#334155!important; }
+      .nav-more-dropdown { position:static!important; transform:none!important; background:transparent!important; border:0!important; box-shadow:none!important; padding:0 0 0 1rem!important; min-width:auto!important; }
+      .nav-more-dropdown a { padding:.5rem 0!important; font-size:.85rem!important; }
+    }
+  
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }</style>  <style id="fis-article-v2-extras">
+    /* Comparison table (Greg's required artifact) */
+    .article-body a { color: var(--accent); text-decoration: none; }
+    .article-body a:hover { text-decoration: underline; }
+    .table-wrap { margin: 1.6rem 0 0.5rem; overflow-x: auto; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: 0.86rem; line-height: 1.45; }
+    table.cmp th, table.cmp td { border: 1px solid var(--border); padding: 0.6rem 0.7rem; text-align: left; vertical-align: top; }
+    table.cmp thead th { background: #1F2A44; color: #FFFFFF; font-family: 'Manrope', system-ui, sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.01em; }
+    table.cmp tbody tr:nth-child(odd) { background: var(--bg-alt); }
+    table.cmp tbody tr:nth-child(10), table.cmp tbody tr:nth-child(11) { background: var(--accent-lt); }
+    table.cmp td:first-child { font-weight: 600; color: var(--dark); }
+    .table-caption { font-size: 0.82rem; color: var(--muted); line-height: 1.55; text-align: center; margin-top: 1rem; letter-spacing: 0.01em; }
+    @media (max-width: 760px) { table.cmp { font-size: 0.78rem; } }
+    /* References */
+    .refs-heading { font-size: 1.5rem; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; margin: 2.6rem 0 1rem; line-height: 1.3; }
+    .refs { font-size: 0.92rem; line-height: 1.6; margin: 0 0 1.5rem 1.6rem; }
+    .refs li { margin-bottom: 0.5rem; color: var(--dark); }
+    .refs li:target { background: var(--accent-lt); }
+    .refs a { color: var(--accent); text-decoration: none; }
+    .refs a:hover { text-decoration: underline; }
+    /* H3 subsections inside the article */
+    .article-body h3 { font-size: 1.15rem; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; margin: 2rem 0 0.75rem; line-height: 1.35; }
+  </style>
+<style>
+  /* TL;DR box (article top) */
+  .tldr { background:#F7FAFA; border:1px solid #1F2A44; border-radius:10px; padding:1.5rem 1.7rem 1.2rem; margin:0 0 2.6rem; }
+  .tldr-label { font-size:0.95rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#187B71; margin:0 0 1rem; }
+  .tldr ul { margin:0; padding-left:1.35rem; }
+  .tldr li { font-size:1.04rem; line-height:1.75; color:#0B0C10; margin-bottom:0.85rem; }
+  .tldr li:last-child { margin-bottom:0.2rem; }
+  .tldr li strong { color:#1F2A44; font-weight:700; }
+</style>
+
+<style>
+  /* Numbered lists get the same treatment as bulleted lists (indented). */
+  .article-body ol:not(.refs) { margin: 0 0 1.5rem 1.6rem; }
+</style>
+<link rel="canonical" href="https://www.futureinsites.com/blog/malicious-ai-agents-stolen-inference" />
+<meta property="og:title" content="Railway Breach: Your Keys, Their Payday" />
+<meta property="og:description" content="Railway's exposed credentials and reported wallet drains show the stakes of stolen access. Separate investigations show attackers using stolen AI compute to power offensive agents." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.futureinsites.com/blog/malicious-ai-agents-stolen-inference" />
+<meta property="og:image" content="https://www.futureinsites.com/blog/malicious-ai-agents-stolen-inference.png" />
+<meta property="og:image:alt" content="Railway breach: Your keys. Their payday. Illustrated Old West train robbery with masked outlaws, money, keys and a bot wanted poster." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.futureinsites.com/blog/malicious-ai-agents-stolen-inference.png" />
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-wordmark">
+      <img src="../images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="../solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../approach.html">How We Work</a></li>
+          <li><a href="../solutions.html">Our Solutions</a></li>
+          <li><a href="../ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="../assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="../landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="../case-studies/index.html">Case Studies</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="../our-story.html">Our Story</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </nav>
+
+<main><div class="article-header"><div class="article-header-inner"><a href="/blog" class="back-link">&larr; Back to Blog</a><span class="article-eyebrow">AI Security</span><h1>Railway Breach: Your Keys, Their Payday</h1><p class="article-deck">Railway's exposed credentials and reported wallet drains show the stakes of stolen access. Separate investigations show attackers using stolen AI compute to power offensive agents.</p><div class="article-meta"><span>Greg Loeffelholz</span><span class="dot"></span><time datetime="2026-10-22">October 22, 2026</time><span class="dot"></span><span>11 min read</span></div></div></div><article class="article-body"><figure class="article-figure"><img src="malicious-ai-agents-stolen-inference.png" alt="Railway breach: Your keys. Their payday. Illustrated Old West train robbery with masked outlaws, money, keys and a bot wanted poster." width="1536" height="1024" fetchpriority="high" /><figcaption>Editorial illustration: an Old West train robbery as a metaphor for stolen credentials and compute.</figcaption></figure><p>Railway's security incident is about more than an outage or the possibility of someone running up an AI bill. The Hacker News reports that cryptocurrency wallets were drained after private keys stored on the platform were compromised, citing security researcher Taylor Monahan. Her initial estimate was approximately $371,000. <a href="https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html">[6]</a> <a href="https://x.com/tayvano_/status/2113056813646238196">[7]</a></p>
+<p>The Hacker News places Railway's disclosure in a broader context of stolen AI access, hijacked cloud spending and offensive agents. Other investigations help explain why this incident matters beyond Railway's customers. <a href="https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html">[6]</a></p>
+<p>The most consequential development is that stolen AI access can help an attacker decide what to do next.</p>
+<p>That changes the business question. Alongside asking whether your own agent can be trusted, ask whether someone else can turn your AI access into their attack infrastructure.</p>
+<h2>Railway: exposed secrets and reported financial losses</h2>
+<p>On October 21, Railway said an unauthorized party may have accessed encrypted customer environment variables and obtained some decrypted values. Those settings can contain API keys and database or registry credentials. Railway believes the incident belongs to a broader series of attacks aimed at compromising AI inference providers. It urged all customers to rotate stored secrets and review logs. <a href="https://blog.railway.com/p/security-disclosure-wednesday-october-21st">[2]</a></p>
+<h3>The wallet drains are a material part of this story</h3>
+<p>In her original post, Monahan linked the drains to cryptocurrency private keys stored in Railway. She identified the suspected attacker address as <a href="https://www.blockchain.com/explorer/addresses/eth/0xd9773325282874d18cb83f1fe50f14c39750b2ee">0xd9773325282874d18cb83f1fe50f14c39750b2ee</a> and reported approximately $371,000, more than 500 transactions, over 200 distinct addresses and at least 19 EVM compatible chains. She characterized the activity as consistent with an existing wallet sweeper rather than software built specifically for this operation. These figures are her reported findings, not an independently audited loss total. <a href="https://x.com/tayvano_/status/2113056813646238196">[7]</a></p>
+<p>For readers outside crypto, the key distinction is simple. A private key controls an externally owned Ethereum account and authorizes its transactions. Possession can therefore mean the ability to move assets, rather than merely view information. <a href="https://ethereum.org/en/developers/docs/accounts/">[11]</a> That makes a leaked signing key materially different from a leaked configuration preference.</p>
+<p>The operational implication is that replacing a value in a hosting dashboard is not a complete answer to every kind of exposed secret. An API credential may be revocable at its issuer. A blockchain signing key requires a response appropriate to the wallet and signing arrangement. Teams need to distinguish those cases before an incident, rather than put every secret into one generic rotation checklist.</p>
+<p>The reported wallet drains involved compromised keys and a sweeper. The cited reporting does not identify an AI agent as the tool used to steal the funds. <a href="https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html">[6]</a> <a href="https://x.com/tayvano_/status/2113056813646238196">[7]</a></p>
+<h3>What the timing establishes</h3>
+<p>Monahan places the first known theft at <strong>19:36 UTC on October 21</strong> and Railway's public security announcement at <strong>21:51 UTC</strong>, a gap of two hours and 15 minutes. The Hacker News likewise reports that the first known theft preceded disclosure by at least two hours. Railway's own status history records its security-notice update at <strong>21:59 UTC</strong>. These are different publication records; they should not be collapsed into one timestamp. <a href="https://x.com/tayvano_/status/2113081753036636427">[8]</a> <a href="https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html">[6]</a> <a href="https://status.railway.com/incident/QH8L8B3E">[9]</a></p>
+<p>The public record supports this sequence, with all times in UTC:</p>
+<ul><li><strong>October 21, 07:24:</strong> Railway's status history begins investigating the incident.</li><li><strong>09:28:</strong> Railway reports its dashboard, API and CLI unavailable, with builds paused across regions. <a href="https://status.railway.com/incident/QH8L8B3E">[9]</a></li><li><strong>19:36:</strong> First known crypto theft transaction, according to Monahan. <a href="https://x.com/tayvano_/status/2113056813646238196">[7]</a></li><li><strong>21:51:</strong> Public security announcement, according to Monahan's timeline. <a href="https://x.com/tayvano_/status/2113081753036636427">[8]</a></li><li><strong>21:59:</strong> Railway's status page links the security notice and recommends revoking stored secrets. <a href="https://status.railway.com/incident/QH8L8B3E">[9]</a></li></ul>
+<p>That chronology raises a serious question about the interval in which customers could protect themselves. It does not establish when Railway knew that wallet keys had been stolen, what investigators knew at each point, or the time of initial compromise. A first known theft is an observed event, not the beginning of every part of an intrusion.</p>
+<h3>What the status page showed over two days</h3>
+<p>The screenshots below were captured on October 20 and 21. The first showed a pause in new builds while already deployed services continued running. The following day's notice described a wider disruption involving the dashboard, API, CLI and support platform, alongside continued build restrictions. They preserve what Railway was telling customers at those points in time.</p>
+<figure class="article-figure"><img src="railway-status-2026-10-20.png" alt="Railway status notice with October 20 updates at 17:03 and 17:18 UTC, reporting paused new builds while already deployed services were unaffected." loading="lazy" style="width:100%;height:auto" /><figcaption>Figure 1. October 20, 2026: Railway's notice said new builds were paused for all workspaces. Its 17:18 UTC update said already running services were unaffected. Screenshot captured by the author; times are those displayed in the notice.</figcaption></figure>
+<figure class="article-figure"><img src="railway-status-2026-10-21.png" alt="Railway status notice with October 21 updates from 07:24 through 13:40 UTC, reporting dashboard and API disruption, paused builds and support platform problems." loading="lazy" style="width:100%;height:auto" /><figcaption>Figure 2. October 21, 2026: the notice described broader platform disruption. By 13:40 UTC, it still reported paused builds, unavailable API features and a support platform outage. Screenshot captured by the author.</figcaption></figure>
+<p>These screenshots document customer impact. They do not establish the intrusion's start time or whether the October 20 build outage had the same cause as the October 21 security incident.</p>
+<p>Railway illustrates why a hosting platform's stored secrets can have consequences beyond the applications it hosts. A stolen AI key can give an intruder access to compute billed to another organization. That category of abuse is known as LLMjacking. <a href="https://sysdig.com/learn-cloud-native/what-is-llmjacking/">[3]</a></p>
+<h2>A broader pattern: stolen AI access and offensive agents</h2>
+<p>Separate investigations by Wiz, Symantec and Sysdig document different parts of this developing threat. Wiz shows the financial impact of stolen inference. Symantec and Sysdig show how someone else's model access can power offensive tooling. Together, they provide supporting evidence of a broader issue: AI access is becoming both something attackers steal and a resource they use in their operations. <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">[10]</a> <a href="https://www.security.com/threat-intelligence/ai-llmjacking-skynet">[1]</a> <a href="https://www.sysdig.com/blog/llmjacking-evolved-attackers-are-using-stolen-ai-compute-to-build-offensive-agentic-tools">[4]</a></p>
+<h3>Wiz: making someone else's cloud account pay</h3>
+<p>The separate Wiz investigation cited by The Hacker News makes the financial mechanism concrete. Wiz describes phishing through sponsored Google Search ads, followed by theft of privileged GCP credentials and MFA codes. Attackers then linked projects they controlled to victims' cloud billing accounts. Wiz observed unauthorized Gemini API charges reaching tens to hundreds of thousands of dollars within 24 to 48 hours. <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">[10]</a></p>
+<p>The workloads ran in external projects. The victim incurred the charges while its internal logs did not reveal the prompts or outputs. Wiz also documented changes to organization policies and billing permissions, including demotion of legitimate billing administrators. Its research does not establish what the stolen inference was used to produce. <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">[10]</a></p>
+<p>This is a separate investigation, not a disclosed account of how Railway was breached. It expands the question a business needs to ask. Where can someone exercise spending authority, even if the machines performing the work are outside the environment your security team normally watches?</p>
+<p>A model account is both a technical resource and a financial permission. An agent connected to it can spend through an API call without ever opening a purchasing screen. That makes responsibility for AI credentials a concern for security, engineering and finance together.</p>
+<h3>Symantec: stolen models directing an offensive agent</h3>
+<p>Symantec's researchers used an AI honeypot, a service designed to look like an exposed model endpoint, to capture an offensive agent's instructions. The request contained roughly 74 offensive tool definitions and layered jailbreak instructions. Its toolkit targeted VS Code, Django, Jupyter, Laravel, Supabase, Next.js and Flask/Werkzeug deployments. The operators' &quot;Skynet mode&quot; directed scanning, infection, hidden mining and reinfection, with permission for up to 100,000 unattended steps. <a href="https://www.security.com/threat-intelligence/ai-llmjacking-skynet">[1]</a></p>
+<p>The crucial qualification: the honeypot executed none of its tool calls. The step count describes an instruction, not a demonstrated successful campaign. A separately captured mining payload was also not executed. <a href="https://www.security.com/threat-intelligence/ai-llmjacking-skynet">[1]</a></p>
+<p>The intended architecture is nevertheless clear: a stolen model directs the operation, while external tools do the scanning and exploitation. Model access shifts cost to the owner and helps obscure the operator. <a href="https://www.security.com/threat-intelligence/ai-llmjacking-skynet">[1]</a></p>
+<p>&quot;Free inference&quot; is free only to the attacker.</p>
+<p>The significance is in the arrangement of capabilities. In a basic AI assisted workflow, a person asks for an output, reviews it and decides what to do. In the offensive-agent design, the software loop can send an observation back to the model, request the next action, execute a tool and continue. The model contributes adaptive decisions; the surrounding software provides access and execution.</p>
+<p>That architecture does not require a new exploit for every step. Its value to an operator can come from coordinating familiar tools, following up on results and continuing through repetitive work. &quot;Skynet&quot; is a dramatic name for the operating mode. The more useful issue is which decisions have been delegated and what resources the loop can reach.</p>
+<p>It also helps separate three financial harms that are easy to conflate. A wallet drain transfers existing assets. Cryptocurrency mining consumes a victim's hardware to earn assets for the operator. Stolen inference consumes model capacity or creates charges on someone else's account. An investigation may encounter more than one, but evidence of one does not prove the others happened in the same campaign.</p>
+<h3>Sysdig: offensive tooling developed on stolen inference</h3>
+<p>There is independent evidence of the same architectural direction. Sysdig reported observing an actor on June 12 using a misconfigured Ollama server as the reasoning engine for a multi-stage offensive tool. The pipeline used the model to guide scanning, vulnerability matching and exploit development. All observed targets were private practice systems. Sysdig says the tool's ultimate purpose was unclear and could be legitimate, while the compute was being taken without authorization. That distinction matters when assessing demonstrated harm. <a href="https://www.sysdig.com/blog/llmjacking-evolved-attackers-are-using-stolen-ai-compute-to-build-offensive-agentic-tools">[4]</a></p>
+<p>These reports show a progression from stealing model capacity to using that capacity in systems that help decide what to do next. They provide concrete examples of the trend, although they do not measure how prevalent autonomous attacks have become.</p>
+<h3>Why more attempts are likely</h3>
+<p>There is a strong economic reason to expect more attempts of this kind. If an operator can shift the bill, automate repeated decisions and reuse the same toolset, the cost of trying another target falls. This is an assessment of the incentives, rather than a measured forecast of attack volume or success.</p>
+<p>The potential for a reinforcing cycle is concerning: stolen access pays for reasoning, reasoning helps choose further actions, and those actions may expose more useful access. This is an inference about how the incentives fit together.</p>
+<p>The cases illustrate several ways credentials can be monetized or reused: direct asset theft, unauthorized cloud spending and access to models that support offensive tooling. <a href="https://x.com/tayvano_/status/2113056813646238196">[7]</a> <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">[10]</a> <a href="https://www.sysdig.com/blog/llmjacking-evolved-attackers-are-using-stolen-ai-compute-to-build-offensive-agentic-tools">[4]</a></p>
+<h2>From unintended harm to a malicious assignment</h2>
+<p>The earlier FutureInSites article, <a href="https://www.futureinsites.com/blog/are-ai-agents-dangerous.html">Are AI Agents Dangerous? What the Hugging Face Incident Shows</a>, examined agents crossing boundaries during an evaluation. OpenAI describes actions misaligned with their assigned tasks under reduced safeguards. The intrusion was not the intended purpose of the evaluation. <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">[5]</a></p>
+<p>The Symantec instructions make the operator's malicious purpose explicit. <a href="https://www.security.com/threat-intelligence/ai-llmjacking-skynet">[1]</a> The distinction is human intent, not a claim that a model has developed an evil personality.</p>
+<p>An agent does not need to hate anyone to pursue a harmful objective. Give it an objective, tools and sufficient access, and the security question becomes what actions the surrounding system permits.</p>
+<p>A quieter attack can still cause substantial harm. From the victim's perspective, unauthorized use of compute is already a loss. A system can remain online while someone else consumes its resources. Availability alone is a poor measure of whether it is secure.</p>
+<p>The reported wallet drains make that point even sharper. An attack does not have to destroy a database to cause an immediate financial loss. A malicious end can be theft, unauthorized spending or the use of someone else's infrastructure as an operating base. <a href="https://x.com/tayvano_/status/2113056813646238196">[7]</a> <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">[10]</a></p>
+<h2>What businesses should check</h2>
+<p>These are practical governance recommendations drawn from the risk, rather than findings about any particular victim:</p>
+<ul><li><strong>Know where AI access lives.</strong> Keep an inventory of model accounts, gateways, credentials and owners. Include development tools and hosting platforms.</li><li><strong>Separate spending authority.</strong> Give each workload its own appropriately limited credentials. Establish usage alerts and enforceable limits where available.</li><li><strong>Bound what agents can reach.</strong> Decide which systems and destinations an agent needs. Enforce those boundaries outside its instructions.</li><li><strong>Practice revocation.</strong> Know who can disable a key, replace it and restore the application. A response plan should account for dependencies across vendors.</li><li><strong>Review use, not just uptime.</strong> Make usage by credential, model choice, token volume and spending part of your routine review. Decide in advance what change would trigger an investigation.</li><li><strong>Review who can attach charges.</strong> Check billing administrators, external identities and project associations. Wiz's cases show why reviewing only the servers you own can miss the work you are paying for. <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">[10]</a></li><li><strong>Separate wallet signing authority.</strong> Identify any deployment setting that can authorize asset transfers. Have a wallet-specific containment plan, with qualified security support, rather than assuming an application redeploy resolves it.</li></ul>
+<p>Railway's response also illustrates a recovery dependency worth planning for. Its status history says deployments were paused when customers were being asked to replace credentials; some response steps required waiting for builds to return. Railway subsequently rotated bucket credentials and invalidated its API tokens. By October 22, builds had resumed for Pro and Enterprise workspaces while other tiers were still being restored. Those are time-bound status observations, not a guarantee of current availability. <a href="https://status.railway.com/incident/QH8L8B3E">[9]</a></p>
+<p>For a business, the lesson is to rehearse containment separately from application recovery. Who can revoke access directly at a provider? Which systems will stop working? Which replacement steps depend on the hosting platform being available? Those questions deserve answers before the person on call is trying to interpret an outage notice and a security advisory at the same time.</p>
+<p>For an affected Railway customer, the company's incident guidance should drive the immediate response. <a href="https://blog.railway.com/p/security-disclosure-wednesday-october-21st">[2]</a> For everyone else, the question is worth putting to your team now:</p>
+<p><strong>Would your business notice if its AI account became someone else's attack budget?</strong></p>
+<h2>References</h2>
+<ol class="refs"><li>Symantec / Broadcom. <a href="https://www.security.com/threat-intelligence/ai-llmjacking-skynet">Autonomous LLMjacking: ‘Skynet’ Agent Hijacks Exposed AI Models to Run Attacks</a>. October 21, 2026.</li><li>Railway. <a href="https://blog.railway.com/p/security-disclosure-wednesday-october-21st">Security Disclosure: Wednesday October 21st</a>. October 21, 2026.</li><li>Sysdig. <a href="https://sysdig.com/learn-cloud-native/what-is-llmjacking/">What is LLMjacking?</a>. Background on stolen access to model services.</li><li>Sysdig Threat Research Team. <a href="https://www.sysdig.com/blog/llmjacking-evolved-attackers-are-using-stolen-ai-compute-to-build-offensive-agentic-tools">LLMjacking evolved: Attackers are using stolen AI compute to build offensive agentic tools</a>. June 17, 2026.</li><li>OpenAI. <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">The Hugging Face incident and the road ahead</a>. August 26, 2026.</li><li>Ravie Lakshmanan, The Hacker News. <a href="https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html">Railway Says Intruder May Have Accessed Customer Secrets, Urges Credential Rotation</a>. October 22, 2026. The reporting that prompted this article.</li><li>Taylor Monahan (@tayvano_). <a href="https://x.com/tayvano_/status/2113056813646238196">Original wallet drain assessment</a>. Reports the suspected attacker address, approximate losses, transaction count and cross-chain activity. Original post inspected directly.</li><li>Taylor Monahan (@tayvano_). <a href="https://x.com/tayvano_/status/2113081753036636427">Theft and disclosure timeline</a>. Original post inspected directly; timestamps attributed to the researcher.</li><li>Railway. <a href="https://status.railway.com/incident/QH8L8B3E">Railway Platform Outage, incident QH8L8B3E</a>. Status history covering October 21 and 22, 2026, including credential resets and phased restoration.</li><li>Shira Ayal and Andre Maccarone, Wiz. <a href="https://www.wiz.io/blog/from-phishing-to-llmjacking">From Phishing to LLMjacking: Threat Actors Targeting Cloud Billing Accounts for LLM Usage</a>. October 20, 2026.</li><li>Ethereum.org. <a href="https://ethereum.org/en/developers/docs/accounts/">Ethereum accounts</a>. Technical reference on private keys and control of externally owned accounts.</li></ol>
+<p>Related FutureInSites analysis: <a href="https://www.futureinsites.com/blog/are-ai-agents-dangerous.html">Are AI Agents Dangerous? What the Hugging Face Incident Shows</a>, October 13, 2026.</p>
+<p>Reporting checked October 22, 2026. Incident findings may change as investigations continue.</p>
+    <div class="article-footer">
+      <div class="author">Published by <strong>FutureInSites</strong></div>
+      <a href="../resources.html" class="article-footer-link">More resources &rarr;</a>
+    </div>
+  </article></main>
+
+<!-- CTA -->
+  <div class="article-cta">
+    <div class="article-cta-inner">
+      <div class="article-cta-eyebrow">Work with us</div>
+      <h3>Putting an agent to work in your business?</h3>
+      <p>FutureInSites designs and builds bounded AI agents: a clear goal, the right tools, and guardrails you can see. Before you deploy one, we help you bound what it can reach.</p>
+      <a href="../contact.html" class="article-cta-link">Get in touch &rarr;</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <!-- FOOTER -->
+
+  <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
+  <link rel="stylesheet" href="../css/footer.css">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="../approach.html">How We Work</a></li>
+            <li><a href="../solutions.html">Solutions</a></li>
+            <li><a href="../ai-readiness.html">Assessment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="../our-story.html">Our Story</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+            <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Research</p>
+          <ul>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../case-studies/index.html">Case Studies</a></li>
+            <li><a href="../landscape/index.html">AI Landscape</a></li>
+            <li><a href="../landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    (function () {
+      var figs = document.querySelectorAll('.article-figure img');
+      if (!figs.length) return;
+
+      function openLightbox(src, alt) {
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Image viewer');
+
+        var closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close image viewer');
+        closeBtn.innerHTML = '&times;';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(img);
+
+        function close() {
+          overlay.remove();
+          document.body.classList.remove('lb-open');
+          document.removeEventListener('keydown', onKey);
+        }
+
+        function onKey(e) { if (e.key === 'Escape') close(); }
+
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target === closeBtn) close();
+        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('lb-open');
+        document.addEventListener('keydown', onKey);
+      }
+
+      figs.forEach(function (img) {
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+  /* Hamburger toggle */
+  (function () {
+    var btn  = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      menu.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+      });
+    });
+  })();
+  /* Dropdown toggles */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
+  <script src="../cookie-banner.js"></script>
+  <script id="fis-global-header-v2-script">
+  (function () {
+    var existingNav = document.querySelector('nav');
+    if (existingNav) {
+      var cleanNav = existingNav.cloneNode(true);
+      existingNav.parentNode.replaceChild(cleanNav, existingNav);
+    }
+    var btn = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () { menu.classList.toggle('open'); });
+      document.addEventListener('click', function (event) {
+        if (!btn.contains(event.target) && !menu.contains(event.target)) menu.classList.remove('open');
+      });
+    }
+    var groups = document.querySelectorAll('.nav-more');
+    groups.forEach(function (group) {
+      var trigger = group.querySelector('.nav-more-btn');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        var opening = !group.classList.contains('open');
+        groups.forEach(function (item) { item.classList.remove('open'); });
+        if (opening) group.classList.add('open');
+      });
+    });
+    document.addEventListener('click', function (event) {
+      var inside = false;
+      groups.forEach(function (group) { if (group.contains(event.target)) inside = true; });
+      if (!inside) groups.forEach(function (group) { group.classList.remove('open'); });
+    });
+  })();
+  </script></body>
+</html>
