@@ -567,3 +567,11 @@
 .assessment-popup .left-training{border-top:1px solid #d4e5f8;margin-top:14px;padding-top:13px}
 .assessment-popup .left-training ul{grid-template-columns:1fr 1fr;font-size:10px}
 @media(max-width:820px){.assessment-popup .left-training ul{grid-template-columns:1fr}}
+
+/* Mobile order (2026-10-24): the 10-point assessment and its video lead; the free team training follows it. */
+@media(max-width:820px){
+.assessment-popup-columns{display:flex;flex-direction:column;gap:1.25rem}
+.assessment-popup-columns>div:first-child{display:contents}
+.assessment-popup-columns>.compact-training{order:2}
+.assessment-popup-columns>aside.assessment-review{order:1}
+}
