@@ -10,7 +10,7 @@
      'region'     = analytics + ads granted for traffic in GRANTED regions and
                     denied everywhere else. Gives GA4 page views, landing pages
                     and Google Ads session attribution for US traffic. */
-  var CONSENT_MODE = 'denied-all';
+  var CONSENT_MODE = 'region';
   var GRANTED_REGIONS = ['US'];
   var DENIED_REGIONS = [
     'GB','DE','FR','ES','IT','NL','IE','BE','AT','PL','SE','DK','FI','NO','PT','GR',

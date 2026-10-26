@@ -14,6 +14,8 @@ const escapeHtml = (str) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
+const { sendServerEvent, clientIdFrom } = require('./_ga4');
+
 const isEmail = (v) => typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
 // Simple in-memory rate limiter (per serverless instance). Stops bursts; not a
@@ -52,6 +54,12 @@ module.exports = async function handler(req, res) {
 
   // Honeypot: bots fill hidden fields. If filled, pretend success and drop.
   if (body.website || body.fax) {
+    await sendServerEvent('lead_form_submit', {
+      form_id: 'fis-inquiry-form',
+      form_context: context,
+      method: 'server',
+    }, clientIdFrom(req));
+
     return res.status(200).json({ ok: true });
   }
 
