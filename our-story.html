@@ -1148,6 +1148,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="css/site-nav.css">
+<script src="cookie-banner.js"></script>
 </head>
 <body>
 
@@ -1371,7 +1372,6 @@
   </footer>
   <!-- FOOTER:END -->
 
-  <script src="cookie-banner.js"></script>
 
   <script>
     /* Dropdown toggles (handles multiple .nav-more elements) */
@@ -1614,8 +1614,11 @@
         })
         .then(function (result) {
           if (result.ok && result.json && result.json.ok) {
-            if (typeof gtag === 'function') {
-              gtag('event', 'generate_lead', { form_id: 'fis-inquiry-form' });
+            if (window.fiTrack) {
+              window.fiTrack('lead_form_submit', {
+                form_id: 'fis-inquiry-form',
+                form_context: currentContext
+              });
             }
             form.reset();
             window.location.href = 'thanks.html';
