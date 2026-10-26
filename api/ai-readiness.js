@@ -7,6 +7,7 @@
 //   AI_READINESS_TO       gregl@futureinsites.com,randalk@futureinsites.com,jeffh@futureinsites.com
 
 const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
+const { sendServerEvent, clientIdFrom } = require('./_ga4');
 // Using native fetch available in Node 18+
 
 // ─── Scoring Engine ───────────────────────────────────────────────────────────
@@ -730,6 +731,12 @@ module.exports = async function handler(req, res) {
   if (!fisResult.ok) {
     console.error('ai-readiness: FIS team email failed but user email sent');
   }
+
+  await sendServerEvent('assessment_complete', {
+    score: overall,
+    tier: tier && tier.label,
+    method: 'server',
+  }, clientIdFrom(req));
 
   // Return score + tier so the page can show results inline without a redirect
   return res.status(200).json({

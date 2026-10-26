@@ -1,28 +1,67 @@
-/* FutureInSites cookie banner + Google tag (Consent Mode v2).
-   The Google tag loads on every page with all consent signals DENIED by
-   default (cookieless pings only, no cookies set). On "Accept" we update
-   consent to GRANTED, and Google may then set Analytics + Ads cookies. On
-   "Decline" consent stays denied: no cookies are set. The choice is
-   remembered in localStorage so the banner shows once, not every visit. */
 (function () {
 
   var GA_ID = 'G-H8Q5T1KH1T';
-  var ADS_ID = ''; /* Google Ads tag id, e.g. 'AW-1234567890' -- set when the Ads tag is ready */
-  var CONSENT_KEY = 'fi_cookie_consent'; /* 'accepted' | 'declined' */
+  var ADS_ID = 'AW-18232122820'; /* Google Ads tag (FutureInSites, verified 2026-10-26) */
+  var CONSENT_KEY = 'fi_consent_v1'; /* 'accepted' | 'declined' */
 
-  /* Consent Mode v2: establish the default state BEFORE any Google script runs. */
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  window.gtag = window.gtag || gtag;
-  gtag('consent', 'default', {
+  /* CONSENT DEFAULT MODE
+     'denied-all' = today's behaviour: GA4 gets no users or sessions until the
+                    visitor clicks Accept, so paid clicks are invisible in GA4.
+     'region'     = analytics + ads granted for traffic in GRANTED regions and
+                    denied everywhere else. Gives GA4 page views, landing pages
+                    and Google Ads session attribution for US traffic. */
+  var CONSENT_MODE = 'region';
+  var GRANTED_REGIONS = ['US'];
+  var DENIED_REGIONS = [
+    'GB','DE','FR','ES','IT','NL','IE','BE','AT','PL','SE','DK','FI','NO','PT','GR',
+    'CZ','RO','HU','SK','SI','HR','BG','EE','LV','LT','LU','MT','CY','IS','LI','CH'
+  ];
+
+  var DENIED = {
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
     analytics_storage: 'denied',
     wait_for_update: 500
-  });
+  };
+  var GRANTED = {
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+    analytics_storage: 'granted'
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  /* Consent Mode v2: establish the default state BEFORE any Google script runs. */
+  if (CONSENT_MODE === 'region') {
+    var deniedByRegion = {};
+    var grantedByRegion = {};
+    for (var k in DENIED) deniedByRegion[k] = DENIED[k];
+    for (var g in GRANTED) grantedByRegion[g] = GRANTED[g];
+    deniedByRegion.region = DENIED_REGIONS;
+    grantedByRegion.region = GRANTED_REGIONS;
+    gtag('consent', 'default', deniedByRegion);
+    gtag('consent', 'default', grantedByRegion);
+  } else {
+    gtag('consent', 'default', DENIED);
+  }
   gtag('set', 'url_passthrough', true);
   gtag('set', 'ads_data_redaction', true);
+
+  /* Page-level event helper. Safe to call before gtag.js loads: commands queue
+     in dataLayer. transport_type beacon keeps the hit alive through a redirect. */
+  window.fiTrack = function (name, params) {
+    var payload = { transport_type: 'beacon' };
+    if (params) {
+      for (var key in params) {
+        if (Object.prototype.hasOwnProperty.call(params, key)) payload[key] = params[key];
+      }
+    }
+    window.dataLayer.push(['event', name, payload]);
+  };
 
   function getConsent() {
     try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
@@ -31,7 +70,7 @@
     try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
   }
 
-  /* ─── LOAD THE GOOGLE TAG (every page; respects the denied default above) ─── */
+  /* ------ LOAD THE GOOGLE TAG (every page; respects the default above) ------ */
   function loadTag() {
     if (window.__fiTagLoaded) return;
     window.__fiTagLoaded = true;
@@ -47,20 +86,17 @@
 
   /* Consent update: called only when the visitor accepts. */
   function grantConsent() {
-    gtag('consent', 'update', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      analytics_storage: 'granted'
-    });
+    gtag('consent', 'update', GRANTED);
+  }
+  function denyConsent() {
+    gtag('consent', 'update', DENIED);
   }
 
-  /* ─── RETURNING VISITORS: honor the saved choice, no banner ─── */
+  /* ------ RETURNING VISITORS: honor the saved choice, no banner ------ */
   var saved = getConsent();
   if (saved === 'accepted') { grantConsent(); return; }
-  if (saved === 'declined') { return; }
+  if (saved === 'declined') { denyConsent(); return; }
 
-  /* ─── INLINE SVG: chocolate chip cookie (golden brown, reads on dark bg) ─── */
   var COOKIE_SVG = [
     '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
       /* Subtle drop shadow under the cookie */

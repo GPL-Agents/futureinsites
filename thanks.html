@@ -353,6 +353,7 @@
       .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
     }</style>
   <link rel="stylesheet" href="css/site-nav.css">
+<script src="cookie-banner.js"></script>
 </head>
 <body>
 
@@ -551,6 +552,9 @@
     });
   })();
   </script>
-  <script src="cookie-banner.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(['event', 'thanks_view', { transport_type: 'beacon', page: '/thanks' }]);
+</script>
 </body>
 </html>

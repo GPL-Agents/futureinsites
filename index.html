@@ -16,6 +16,7 @@
   <meta property="og:description" content="Practical automation and AI workflows with measurable business value. Start with an assessment and team training, at no cost.">
   <meta property="og:image" content="https://www.futureinsites.com/images/homepage-office.webp">
   <link rel="stylesheet" href="css/homepage-assessment.css">
+<script src="cookie-banner.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -564,8 +565,11 @@
         })
         .then(function (result) {
           if (result.ok && result.json && result.json.ok) {
-            if (typeof gtag === 'function') {
-              gtag('event', 'generate_lead', { form_id: 'fis-inquiry-form' });
+            if (window.fiTrack) {
+              window.fiTrack('lead_form_submit', {
+                form_id: 'fis-inquiry-form',
+                form_context: currentContext
+              });
             }
             form.reset();
             window.location.href = 'thanks.html';
@@ -587,6 +591,5 @@
     });
   })();
   </script>
-<script src="cookie-banner.js"></script>
 </body>
 </html>
