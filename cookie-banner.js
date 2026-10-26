@@ -1,7 +1,7 @@
 (function () {
 
   var GA_ID = 'G-H8Q5T1KH1T';
-  var ADS_ID = ''; /* Google Ads tag id, e.g. 'AW-1234567890' -- set when the Ads tag is ready */
+  var ADS_ID = 'AW-18232122820'; /* Google Ads tag (FutureInSites, verified 2026-10-26) */
   var CONSENT_KEY = 'fi_consent_v1'; /* 'accepted' | 'declined' */
 
   /* CONSENT DEFAULT MODE
