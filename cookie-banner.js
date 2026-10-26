@@ -53,6 +53,12 @@
 
   /* Page-level event helper. Safe to call before gtag.js loads: commands queue
      in dataLayer. transport_type beacon keeps the hit alive through a redirect. */
+  /* Legacy event aliases. The Google Ads conversion actions were created against
+     GA4 events that predate the current names. Firing the old name alongside the
+     new one means a conversion action keyed to either one still registers. Remove
+     an entry once the matching Ads action is deleted or rebuilt on the new name. */
+  var LEGACY_EVENT_ALIASES = { lead_form_submit: 'generate_lead' };
+
   window.fiTrack = function (name, params) {
     var payload = { transport_type: 'beacon' };
     if (params) {
@@ -61,6 +67,9 @@
       }
     }
     window.dataLayer.push(['event', name, payload]);
+    if (LEGACY_EVENT_ALIASES[name]) {
+      window.dataLayer.push(['event', LEGACY_EVENT_ALIASES[name], payload]);
+    }
   };
 
   function getConsent() {
