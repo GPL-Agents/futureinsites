@@ -104,3 +104,4 @@ main>.home-hero+.time-evidence{border-top:0}
 .closing-meeting-note b{display:block;line-height:1.4}
 .closing-meeting-note p{margin:5px 0 0;line-height:1.6}
 @media(min-width:1101px){.closing-actions>.closing-expertise{contain:size}}
+.blog-date{display:block;font-size:12px;font-weight:600;letter-spacing:.02em;color:#59728f;margin:0 0 8px}
