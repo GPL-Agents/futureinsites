@@ -36,6 +36,26 @@
   ],
   "redirects": [
     {
+      "source": "/about",
+      "destination": "/our-story",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/our-story",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
       "source": "/ai-for-executives",
       "destination": "/primers/ai-for-executives",
       "permanent": true
