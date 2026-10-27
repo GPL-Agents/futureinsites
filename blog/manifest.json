@@ -17,7 +17,7 @@
     "slug": "are-ai-agents-dangerous",
     "title": "Are AI Agents Dangerous? What the Hugging Face Incident Shows",
     "date": "2026-10-13",
-    "excerpt": "Are AI agents dangerous? Not on their own. Using the July 2026 Hugging Face incident, this post shows what actually makes goal-seeking agents a risk, and where the controls belong.",
+    "excerpt": "Are AI agents dangerous? Using the July 2026 Hugging Face incident, this post shows what makes goal-seeking agents a risk, who answers for the damage, and where the controls belong.",
     "author": "Greg Loeffelholz",
     "tags": [
       "AI Agents",
@@ -26,7 +26,7 @@
       "Hugging Face",
       "AI Governance"
     ],
-    "image": "incident-timeline.png"
+    "image": "ai-agents-break-out.png"
   },
   {
     "slug": "ai-model-bake-off",
