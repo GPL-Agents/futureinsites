@@ -345,18 +345,28 @@
   /* WORK */
   .work-section { background: var(--dark3); border-top: 1px solid var(--border); padding-bottom: 24px; }
   .work-section .sec-sub { max-width: 980px; }
-  .work-timeline { position: relative; display: grid; gap: 18px; margin-top: 8px; }
-  .work-timeline::before { content: ''; position: absolute; inset: 0 auto 0 50%; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, var(--cyan), rgba(37,99,235,0.18)); }
+  .work-timeline { position: relative; display: grid; gap: 6px; margin-top: 8px; }
+  .work-timeline::before {
+    content: ''; position: absolute; inset: 0 auto 0 50%; width: 1px; transform: translateX(-50%);
+    background: repeating-linear-gradient(to bottom, rgba(45,212,255,0.58) 0 8px, rgba(37,99,235,0.10) 8px 17px);
+  }
   .timeline-item { position: relative; width: calc(50% - 34px); }
   .timeline-item:nth-child(odd) { justify-self: start; }
   .timeline-item:nth-child(even) { justify-self: end; }
   .timeline-item::before { content: ''; position: absolute; top: 28px; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); border: 3px solid var(--dark3); box-shadow: 0 0 0 2px rgba(45,212,255,0.34); }
   .timeline-item:nth-child(odd)::before { right: -41px; }
   .timeline-item:nth-child(even)::before { left: -41px; }
+  .timeline-item::after { content: ''; position: absolute; top: 34px; width: 28px; height: 1px; background: rgba(45,212,255,0.38); }
+  .timeline-item:nth-child(odd)::after { right: -28px; }
+  .timeline-item:nth-child(even)::after { left: -28px; }
+  .timeline-item:nth-child(4n + 1) .work-card,
+  .timeline-item:nth-child(4n + 4) .work-card { width: 94%; }
+  .timeline-item:nth-child(4n + 1) .work-card { margin-left: auto; }
+  .timeline-item:nth-child(4n + 4) .work-card { margin-right: auto; }
   .work-card {
     background: var(--dark2); border: 1px solid var(--border);
-    border-radius: 10px; padding: 22px 20px; transition: border-color 0.2s;
-    min-height: 220px; display: flex; flex-direction: column;
+    border-radius: 10px; padding: 18px 18px 16px; transition: border-color 0.2s;
+    min-height: 0; display: flex; flex-direction: column; position: relative;
   }
   .work-card:hover { border-color: rgba(37,99,235,0.4); }
   .work-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
@@ -368,6 +378,13 @@
     border: 1px solid rgba(37,99,235,0.28);
   }
   .work-year { font-size: 11px; color: var(--muted); }
+  .work-meta .work-year { display: none; }
+  .timeline-date {
+    position: absolute; top: 16px; color: var(--cyan); font: 800 clamp(14px, 1.45vw, 19px) 'Manrope', sans-serif;
+    letter-spacing: 0.045em; white-space: nowrap;
+  }
+  .timeline-item:nth-child(odd) > .timeline-date { left: calc(100% + 62px); }
+  .timeline-item:nth-child(even) > .timeline-date { right: calc(100% + 62px); }
   .work-category { font-size: 10px; color: var(--cyan); letter-spacing: 0.04em; text-transform: uppercase; }
   .work-title {
     font-family: 'Manrope', sans-serif;
@@ -385,7 +402,17 @@
   .work-body strong { color: var(--text); font-weight: 600; }
   .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .work-body a:hover { text-decoration: underline; }
-  .work-image { width: 100%; height: 128px; object-fit: cover; border-radius: 7px; margin: 4px 0 12px; }
+  .work-media { display: flex; align-items: center; gap: 7px; margin-top: 10px; min-height: 42px; }
+  .work-image, .work-thumb {
+    width: 58px; height: 42px; flex: 0 0 auto; object-fit: cover; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04);
+  }
+  .work-thumb-text {
+    width: auto; min-width: 58px; max-width: 94px; padding: 0 9px; display: inline-flex;
+    align-items: center; justify-content: center; color: rgba(255,255,255,0.76);
+    font: 700 9px/1.15 'Manrope', sans-serif; letter-spacing: 0.03em; text-align: center;
+  }
+  .work-media .work-image:first-child:last-child { width: 74px; }
   .work-badge.independent {
     background: rgba(45,212,255,0.10); color: var(--cyan);
     border-color: rgba(45,212,255,0.30);
@@ -524,6 +551,12 @@
     .work-timeline::before { left: 6px; }
     .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { width: calc(100% - 34px); justify-self: end; }
     .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { left: -34px; right: auto; }
+    .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after { left: -22px; right: auto; width: 22px; }
+    .timeline-item:nth-child(4n + 1) .work-card,
+    .timeline-item:nth-child(4n + 4) .work-card { width: 100%; margin: 0; }
+    .timeline-date { display: none; }
+    .work-meta .work-year { display: inline; color: var(--cyan); font-weight: 700; }
+    .work-image, .work-thumb { width: 52px; height: 38px; }
     .diff-card.wide { grid-column: auto; }
     .fw-grid { grid-template-columns: 1fr 1fr; }
     .stats-inner { grid-template-columns: repeat(3, 1fr); }
@@ -1200,6 +1233,51 @@
 
   var category = '';
   var entries = [];
+  var mediaByTitle = {
+    'AI Knowledge Assistant for a Commercial Construction Firm': [
+      { src: '../images/futureinsites-logo.png', alt: 'FutureInSites logo' }
+    ],
+    'Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand': [
+      { src: '../LinkedIn/linkedin_lululemon_cover.png', alt: 'Lululemon AI strategy case study cover' },
+      { src: '../LinkedIn/linkedin_lululemon_table_1.png', alt: 'Lululemon case study analysis table' },
+      { src: '../LinkedIn/linkedin_lululemon_table_2.png', alt: 'Lululemon case study roadmap table' }
+    ],
+    'Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough': [
+      { src: '../LinkedIn/linkedin_alphabet_cover.png', alt: 'Alphabet AI investment analysis cover' },
+      { src: '../LinkedIn/linkedin_alphabet_table_1.png', alt: 'Alphabet investment analysis table' },
+      { src: '../images/Boston-College-Emblem-card.png', alt: 'Boston College emblem' }
+    ],
+    'Production Agentic System Supporting $100M+ in Monthly Client Spend': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'Eliminated Roughly $50K/Month in Avoidable AWS Spend': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'SOC 2 and Responsible AI Built as Production Infrastructure': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'Managed Services to First Profitability in Company History': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'Post-Acquisition Integration into Retail Media': [
+      { label: 'ownerIQ' }, { label: 'Inmar' }
+    ],
+    '200MM+ Identity Graph That Helped Drive an Acquisition': [
+      { label: 'ownerIQ' }, { label: 'Inmar' }
+    ],
+    'Retailer CRM and ERP Integrations for Closed-Loop Attribution': [
+      { label: 'ownerIQ' }, { label: 'Inmar' }
+    ],
+    'GM of a $35MM Business and a 50+ Person Organization': [
+      { label: 'Nelnet' }
+    ],
+    'Platform Growth Through a $36.5MM Sale': [
+      { label: 'Innovation Ads' }, { label: 'Seaport Capital' }
+    ],
+    'Founded, Scaled to $4MM, and Acquired': [
+      { label: 'Free Scholarship Guide' }, { label: 'Innovation Ads' }
+    ]
+  };
   Array.from(timeline.children).forEach(function (element, index) {
     if (element.classList.contains('work-group')) {
       category = element.textContent.trim();
@@ -1227,6 +1305,34 @@
       body.parentNode.insertBefore(summary, body);
     }
 
+    var title = element.querySelector('.work-title').textContent.trim();
+    var media = document.createElement('div');
+    media.className = 'work-media';
+    var existingImage = element.querySelector('.work-image');
+    if (existingImage) media.appendChild(existingImage);
+    (mediaByTitle[title] || []).forEach(function (asset) {
+      if (asset.src) {
+        var image = document.createElement('img');
+        image.className = 'work-image';
+        image.src = asset.src;
+        image.alt = asset.alt;
+        image.loading = 'lazy';
+        media.appendChild(image);
+      } else {
+        var thumb = document.createElement('span');
+        thumb.className = 'work-thumb work-thumb-text';
+        thumb.textContent = asset.label;
+        media.appendChild(thumb);
+      }
+    });
+    if (!media.children.length) {
+      var fallbackThumb = document.createElement('span');
+      fallbackThumb.className = 'work-thumb work-thumb-text';
+      fallbackThumb.textContent = element.querySelector('.work-badge').textContent.trim();
+      media.appendChild(fallbackThumb);
+    }
+    body.parentNode.insertBefore(media, body);
+
     var details = document.createElement('div');
     details.className = 'work-details';
     var button = document.createElement('button');
@@ -1243,7 +1349,7 @@
     element.classList.remove('wide');
 
     var match = year.textContent.match(/(\d{4})(?!.*\d{4})/);
-    entries.push({ card: element, year: match ? Number(match[1]) : 0, index: index });
+    entries.push({ card: element, year: match ? Number(match[1]) : 0, yearText: year.textContent.trim(), index: index });
   });
 
   entries.sort(function (a, b) { return b.year - a.year || a.index - b.index; });
@@ -1252,6 +1358,10 @@
     var item = document.createElement('div');
     item.className = 'timeline-item';
     item.appendChild(entry.card);
+    var date = document.createElement('span');
+    date.className = 'timeline-date';
+    date.textContent = entry.yearText;
+    item.appendChild(date);
     timeline.appendChild(item);
   });
 
