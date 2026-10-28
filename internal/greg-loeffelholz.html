@@ -345,13 +345,21 @@
   /* WORK */
   .work-section { background: var(--dark3); border-top: 1px solid var(--border); padding-bottom: 24px; }
   .work-section .sec-sub { max-width: 980px; }
-  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .work-timeline { position: relative; display: grid; gap: 18px; margin-top: 8px; }
+  .work-timeline::before { content: ''; position: absolute; inset: 0 auto 0 50%; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, var(--cyan), rgba(37,99,235,0.18)); }
+  .timeline-item { position: relative; width: calc(50% - 34px); }
+  .timeline-item:nth-child(odd) { justify-self: start; }
+  .timeline-item:nth-child(even) { justify-self: end; }
+  .timeline-item::before { content: ''; position: absolute; top: 28px; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); border: 3px solid var(--dark3); box-shadow: 0 0 0 2px rgba(45,212,255,0.34); }
+  .timeline-item:nth-child(odd)::before { right: -41px; }
+  .timeline-item:nth-child(even)::before { left: -41px; }
   .work-card {
     background: var(--dark2); border: 1px solid var(--border);
     border-radius: 10px; padding: 22px 20px; transition: border-color 0.2s;
+    min-height: 220px; display: flex; flex-direction: column;
   }
   .work-card:hover { border-color: rgba(37,99,235,0.4); }
-  .work-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .work-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
   .work-badge {
     font-size: 9.5px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.06em;
@@ -360,24 +368,24 @@
     border: 1px solid rgba(37,99,235,0.28);
   }
   .work-year { font-size: 11px; color: var(--muted); }
+  .work-category { font-size: 10px; color: var(--cyan); letter-spacing: 0.04em; text-transform: uppercase; }
   .work-title {
     font-family: 'Manrope', sans-serif;
     font-size: 14.5px; font-weight: 700;
     color: #fff; margin-bottom: 8px; line-height: 1.3;
   }
-  .work-body { font-size: 14.5px; color: rgba(255,255,255,0.62); line-height: 1.65; }
+  .work-summary { font-size: 14.5px; color: rgba(255,255,255,0.62); line-height: 1.65; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+  .work-details { margin-top: auto; }
+  .work-toggle { margin-top: 14px; padding: 0; border: 0; background: transparent; color: var(--cyan); font: 700 12px 'Manrope', sans-serif; cursor: pointer; text-align: left; }
+  .work-toggle:hover, .work-toggle:focus-visible { color: #fff; text-decoration: underline; }
+  .work-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 2px; }
+  .work-body { display: none; padding-top: 14px; font-size: 14.5px; color: rgba(255,255,255,0.62); line-height: 1.65; }
+  .work-card.is-expanded .work-summary { display: none; }
+  .work-card.is-expanded .work-body { display: block; }
   .work-body strong { color: var(--text); font-weight: 600; }
   .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .work-body a:hover { text-decoration: underline; }
-  .work-card.wide { grid-column: 1 / -1; }
-  .work-group {
-    grid-column: 1 / -1;
-    font-family: 'Manrope', sans-serif;
-    font-size: 12px; font-weight: 800;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--cyan); margin: 14px 0 0;
-  }
-  .work-group:first-child { margin-top: 0; }
+  .work-image { width: 100%; height: 128px; object-fit: cover; border-radius: 7px; margin: 4px 0 12px; }
   .work-badge.independent {
     background: rgba(45,212,255,0.10); color: var(--cyan);
     border-color: rgba(45,212,255,0.30);
@@ -512,7 +520,10 @@
   @media (max-width: 760px) {
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
-    .diff-grid, .work-grid, .engage-grid { grid-template-columns: 1fr; }
+    .diff-grid, .engage-grid { grid-template-columns: 1fr; }
+    .work-timeline::before { left: 6px; }
+    .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { width: calc(100% - 34px); justify-self: end; }
+    .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { left: -34px; right: auto; }
     .diff-card.wide { grid-column: auto; }
     .fw-grid { grid-template-columns: 1fr 1fr; }
     .stats-inner { grid-template-columns: repeat(3, 1fr); }
@@ -755,9 +766,23 @@
   <div class="section-inner">
     <div class="sec-eyebrow"><span class="sec-eyebrow-text">Selected Work</span></div>
     <h2 class="sec-heading">Production systems, operating leadership, and independent analysis.</h2>
-    <p class="sec-sub">Grouped by the kind of evidence each provides. The production work ran with infrastructure costs and revenue on the line, and the independent analyses are linked in full.</p>
+    <p class="sec-sub">A chronological view of production systems, operating leadership, governance, and independent analysis. Select any entry for the full case detail.</p>
 
-    <div class="work-grid">
+    <div class="work-timeline">
+      <div class="work-card" data-category="Products and Platforms" data-sort-year="2026">
+        <div class="work-meta">
+          <span class="work-badge">Spirantix.ai</span>
+          <span class="work-year">2026</span>
+          <span class="work-category">Products and Platforms</span>
+        </div>
+        <div class="work-title">Multi-Agent AI Application and Integration Platform</div>
+        <img class="work-image" src="../images/spirantix-ai-companion-platform.png" alt="Spirantix.ai brand artwork: Your life, your memories, your legacy. Kept safe.">
+        <p class="work-summary">Architected a multi-agent AI platform for older adults, integrating conversational interfaces, persistent personal context, secure tool orchestration, and cross-channel services through a unified application and MCP architecture.</p>
+        <div class="work-body">
+          Founded Spirantix AI and led the architecture and development of a multi-agent platform delivering personalized AI assistance through a unified web application and integrations with ChatGPT and Claude. Designed a modular backend built around MCP-based tool orchestration, persistent data services, authenticated integrations, and contextual retrieval across personal information, calendars, contacts, and events.<br><br>
+          The architecture incorporates OAuth authorization, LLM providers, grounded web search, and communication services supporting voice and SMS. A centralized concierge routes requests to specialized agents for memory assistance, family storytelling, digital provenance, and asset documentation. Designed agent workflows for personalized assistance, with OAuth authorization, voice and SMS capabilities, and granular, user-controlled permissions that allow older adults to delegate specific access to trusted family members, caregivers, and helpers.
+        </div>
+      </div>
       <div class="work-group">Products and Platforms</div>
       <div class="work-card">
         <div class="work-meta">
@@ -1169,6 +1194,78 @@
 </div>
 
 <script>
+(function () {
+  var timeline = document.querySelector('.work-timeline');
+  if (!timeline) return;
+
+  var category = '';
+  var entries = [];
+  Array.from(timeline.children).forEach(function (element, index) {
+    if (element.classList.contains('work-group')) {
+      category = element.textContent.trim();
+      return;
+    }
+    if (!element.classList.contains('work-card')) return;
+
+    var cardCategory = element.getAttribute('data-category') || category;
+    var meta = element.querySelector('.work-meta');
+    var year = element.querySelector('.work-year');
+    var body = element.querySelector('.work-body');
+    if (!meta || !year || !body) return;
+
+    if (!meta.querySelector('.work-category')) {
+      var categoryLabel = document.createElement('span');
+      categoryLabel.className = 'work-category';
+      categoryLabel.textContent = cardCategory;
+      meta.appendChild(categoryLabel);
+    }
+
+    if (!element.querySelector('.work-summary')) {
+      var summary = document.createElement('p');
+      summary.className = 'work-summary';
+      summary.textContent = body.textContent.replace(/\s+/g, ' ').trim();
+      body.parentNode.insertBefore(summary, body);
+    }
+
+    var details = document.createElement('div');
+    details.className = 'work-details';
+    var button = document.createElement('button');
+    var bodyId = 'work-detail-' + (index + 1);
+    button.className = 'work-toggle';
+    button.type = 'button';
+    button.textContent = 'Read full case';
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', bodyId);
+    body.id = bodyId;
+    body.parentNode.insertBefore(details, body);
+    details.appendChild(button);
+    details.appendChild(body);
+    element.classList.remove('wide');
+
+    var match = year.textContent.match(/(\d{4})(?!.*\d{4})/);
+    entries.push({ card: element, year: match ? Number(match[1]) : 0, index: index });
+  });
+
+  entries.sort(function (a, b) { return b.year - a.year || a.index - b.index; });
+  timeline.textContent = '';
+  entries.forEach(function (entry) {
+    var item = document.createElement('div');
+    item.className = 'timeline-item';
+    item.appendChild(entry.card);
+    timeline.appendChild(item);
+  });
+
+  timeline.addEventListener('click', function (event) {
+    var button = event.target.closest('.work-toggle');
+    if (!button) return;
+    var card = button.closest('.work-card');
+    var expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
+    button.textContent = expanded ? 'Read full case' : 'Collapse case';
+    card.classList.toggle('is-expanded', !expanded);
+  });
+})();
+
 (function () {
   var modal   = document.getElementById('fis-inquiry-modal');
   var form    = document.getElementById('fis-inquiry-form');
