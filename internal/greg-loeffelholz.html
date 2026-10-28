@@ -345,30 +345,24 @@
   /* WORK */
   .work-section { background: var(--dark3); border-top: 1px solid var(--border); padding-bottom: 24px; }
   .work-section .sec-sub { max-width: 980px; }
-  .work-timeline { position: relative; display: grid; gap: 6px; margin-top: 8px; }
-  .work-timeline::before {
-    content: ''; position: absolute; inset: 0 auto 0 50%; width: 1px; transform: translateX(-50%);
-    background: repeating-linear-gradient(to bottom, rgba(45,212,255,0.58) 0 8px, rgba(37,99,235,0.10) 8px 17px);
+  .work-timeline {
+    position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 30px 24px; margin-top: 18px; align-items: start;
   }
-  .timeline-item { position: relative; width: calc(50% - 34px); }
-  .timeline-item:nth-child(odd) { justify-self: start; }
-  .timeline-item:nth-child(even) { justify-self: end; }
-  .timeline-item::before { content: ''; position: absolute; top: 28px; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); border: 3px solid var(--dark3); box-shadow: 0 0 0 2px rgba(45,212,255,0.34); }
-  .timeline-item:nth-child(odd)::before { right: -41px; }
-  .timeline-item:nth-child(even)::before { left: -41px; }
-  .timeline-item::after { content: ''; position: absolute; top: 34px; width: 28px; height: 1px; background: rgba(45,212,255,0.38); }
-  .timeline-item:nth-child(odd)::after { right: -28px; }
-  .timeline-item:nth-child(even)::after { left: -28px; }
-  .timeline-item:nth-child(4n + 1) .work-card,
-  .timeline-item:nth-child(4n + 4) .work-card { width: 94%; }
-  .timeline-item:nth-child(4n + 1) .work-card { margin-left: auto; }
-  .timeline-item:nth-child(4n + 4) .work-card { margin-right: auto; }
+  .timeline-item { position: relative; width: auto; grid-column: 1 / 7; }
+  .timeline-item:nth-child(4n + 1) { grid-column: 5 / 12; }
+  .timeline-item:nth-child(4n + 2) { grid-column: 1 / 8; }
+  .timeline-item:nth-child(4n + 3) { grid-column: 6 / 13; }
+  .timeline-item:nth-child(4n) { grid-column: 2 / 8; }
+  .timeline-item::before, .timeline-item::after { content: ''; position: absolute; z-index: 2; pointer-events: none; }
+  .timeline-item::before { top: -1px; left: -1px; width: 72px; height: 34px; border-top: 1px solid rgba(45,212,255,0.62); border-left: 1px solid rgba(45,212,255,0.62); }
+  .timeline-item::after { right: -1px; bottom: -1px; width: 64px; height: 28px; border-right: 1px solid rgba(37,99,235,0.56); border-bottom: 1px solid rgba(37,99,235,0.56); }
   .work-card {
-    background: var(--dark2); border: 1px solid var(--border);
-    border-radius: 10px; padding: 18px 18px 16px; transition: border-color 0.2s;
+    background: linear-gradient(145deg, rgba(18,20,26,0.98), rgba(18,20,26,0.82)); border: 1px solid rgba(255,255,255,0.055);
+    border-radius: 3px; padding: 34px 20px 18px; transition: border-color 0.2s, transform 0.2s;
     min-height: 0; display: flex; flex-direction: column; position: relative;
   }
-  .work-card:hover { border-color: rgba(37,99,235,0.4); }
+  .work-card:hover { border-color: rgba(45,212,255,0.24); transform: translateY(-2px); }
   .work-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
   .work-badge {
     font-size: 9.5px; font-weight: 700;
@@ -380,11 +374,10 @@
   .work-year { font-size: 11px; color: var(--muted); }
   .work-meta .work-year { display: none; }
   .timeline-date {
-    position: absolute; top: 16px; color: var(--cyan); font: 800 clamp(14px, 1.45vw, 19px) 'Manrope', sans-serif;
-    letter-spacing: 0.045em; white-space: nowrap;
+    position: absolute; z-index: 4; top: -17px; left: 18px; padding: 0 9px;
+    background: var(--dark3); color: var(--cyan); font: 800 clamp(18px, 2vw, 26px) 'Manrope', sans-serif;
+    letter-spacing: 0.08em; white-space: nowrap;
   }
-  .timeline-item:nth-child(odd) > .timeline-date { left: calc(100% + 62px); }
-  .timeline-item:nth-child(even) > .timeline-date { right: calc(100% + 62px); }
   .work-category { font-size: 10px; color: var(--cyan); letter-spacing: 0.04em; text-transform: uppercase; }
   .work-title {
     font-family: 'Manrope', sans-serif;
@@ -573,14 +566,11 @@
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
     .diff-grid, .engage-grid { grid-template-columns: 1fr; }
-    .work-timeline::before { left: 6px; }
-    .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { width: calc(100% - 34px); justify-self: end; }
-    .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { left: -34px; right: auto; }
-    .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after { left: -22px; right: auto; width: 22px; }
-    .timeline-item:nth-child(4n + 1) .work-card,
-    .timeline-item:nth-child(4n + 4) .work-card { width: 100%; margin: 0; }
-    .timeline-date { display: none; }
-    .work-meta .work-year { display: inline; color: var(--cyan); font-weight: 700; }
+    .work-timeline { grid-template-columns: 1fr; gap: 28px; }
+    .timeline-item, .timeline-item:nth-child(4n + 1), .timeline-item:nth-child(4n + 2),
+    .timeline-item:nth-child(4n + 3), .timeline-item:nth-child(4n) { grid-column: 1; }
+    .timeline-date { display: block; font-size: 18px; }
+    .work-meta .work-year { display: none; }
     .work-image-button, .work-image, .work-thumb { width: 58px; height: 42px; }
     .work-lightbox { padding: 58px 14px 80px; }
     .work-lightbox-nav { top: auto; bottom: 14px; transform: none; }
@@ -1274,7 +1264,7 @@
   var entries = [];
   var mediaByTitle = {
     'AI Knowledge Assistant for a Commercial Construction Firm': [
-      { src: '../images/futureinsites-logo.png', alt: 'FutureInSites logo' }
+      { src: '../images/fis.logo.full.051526.png', alt: 'FutureInSites approved full logo' }
     ],
     'Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand': [
       { src: '../LinkedIn/linkedin_lululemon_cover.png', alt: 'Lululemon AI strategy case study cover' },
@@ -1284,31 +1274,35 @@
     'Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough': [
       { src: '../LinkedIn/linkedin_alphabet_cover.png', alt: 'Alphabet AI investment analysis cover' },
       { src: '../LinkedIn/linkedin_alphabet_table_1.png', alt: 'Alphabet investment analysis table' },
-      { src: '../images/Boston-College-Emblem-card.png', alt: 'Boston College emblem' }
+      { src: '../images/vendor-logos/Google.png', alt: 'Google logo' }
     ],
     'Production Agentic System Supporting $100M+ in Monthly Client Spend': [
-      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+      { label: 'MotiveMetrics' },
+      { src: '../images/vendor-logos/openai.png', alt: 'OpenAI logo' },
+      { src: '../images/vendor-logos/anthropic.png', alt: 'Anthropic logo' },
+      { src: '../images/vendor-logos/aws-bedrock-amp-sagemaker.png', alt: 'AWS Bedrock and SageMaker logo' }
     ],
     'Eliminated Roughly $50K/Month in Avoidable AWS Spend': [
-      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+      { label: 'MotiveMetrics' },
+      { src: '../images/vendor-logos/aws-bedrock-amp-sagemaker.png', alt: 'AWS Bedrock and SageMaker logo' }
     ],
     'SOC 2 and Responsible AI Built as Production Infrastructure': [
-      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+      { label: 'MotiveMetrics' }
     ],
     'Managed Services to First Profitability in Company History': [
-      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+      { label: 'MotiveMetrics' }
     ],
     'Post-Acquisition Integration into Retail Media': [
-      { label: 'ownerIQ' }, { label: 'Inmar' }
+      { label: 'ownerIQ' }, { src: '../images/inmar-intelligence-logo.png', alt: 'Inmar Intelligence logo' }
     ],
     '200MM+ Identity Graph That Helped Drive an Acquisition': [
-      { label: 'ownerIQ' }, { label: 'Inmar' }
+      { label: 'ownerIQ' }, { src: '../images/inmar-intelligence-logo.png', alt: 'Inmar Intelligence logo' }
     ],
     'Retailer CRM and ERP Integrations for Closed-Loop Attribution': [
-      { label: 'ownerIQ' }, { label: 'Inmar' }
+      { label: 'ownerIQ' }, { src: '../images/inmar-intelligence-logo.png', alt: 'Inmar Intelligence logo' }
     ],
     'GM of a $35MM Business and a 50+ Person Organization': [
-      { label: 'Nelnet' }
+      { src: '../images/nelnet-logo.png', alt: 'Nelnet logo' }
     ],
     'Platform Growth Through a $36.5MM Sale': [
       { label: 'Innovation Ads' }, { label: 'Seaport Capital' }
@@ -1316,6 +1310,16 @@
     'Founded, Scaled to $4MM, and Acquired': [
       { label: 'Free Scholarship Guide' }, { label: 'Innovation Ads' }
     ]
+  };
+  var sortPriorityByTitle = {
+    'Multi-Agent AI Application and Integration Platform': 0,
+    'Production Agentic System Supporting $100M+ in Monthly Client Spend': 10,
+    'Eliminated Roughly $50K/Month in Avoidable AWS Spend': 20,
+    'SOC 2 and Responsible AI Built as Production Infrastructure': 30,
+    'Managed Services to First Profitability in Company History': 40,
+    'AI Knowledge Assistant for a Commercial Construction Firm': 50,
+    'Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand': 60,
+    'Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough': 70
   };
   Array.from(timeline.children).forEach(function (element, index) {
     if (element.classList.contains('work-group')) {
@@ -1398,10 +1402,16 @@
     element.classList.remove('wide');
 
     var match = year.textContent.match(/(\d{4})(?!.*\d{4})/);
-    entries.push({ card: element, year: match ? Number(match[1]) : 0, yearText: year.textContent.trim(), index: index });
+    entries.push({
+      card: element,
+      year: match ? Number(match[1]) : 0,
+      yearText: year.textContent.trim(),
+      priority: sortPriorityByTitle[title] == null ? 100 : sortPriorityByTitle[title],
+      index: index
+    });
   });
 
-  entries.sort(function (a, b) { return b.year - a.year || a.index - b.index; });
+  entries.sort(function (a, b) { return b.year - a.year || a.priority - b.priority || a.index - b.index; });
   timeline.textContent = '';
   entries.forEach(function (entry) {
     var item = document.createElement('div');
