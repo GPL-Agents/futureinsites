@@ -402,12 +402,17 @@
   .work-body strong { color: var(--text); font-weight: 600; }
   .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .work-body a:hover { text-decoration: underline; }
-  .work-image {
-    position: absolute; top: 18px; right: 18px; width: 112px; height: 60px;
-    object-fit: cover; border-radius: 7px; margin: 0; border: 1px solid rgba(255,255,255,0.12);
+  .work-media { display: flex; align-items: center; gap: 7px; margin-top: 10px; min-height: 42px; }
+  .work-image, .work-thumb {
+    width: 58px; height: 42px; flex: 0 0 auto; object-fit: cover; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04);
   }
-  .work-card:has(.work-image) .work-meta,
-  .work-card:has(.work-image) .work-title { padding-right: 126px; }
+  .work-thumb-text {
+    width: auto; min-width: 58px; max-width: 94px; padding: 0 9px; display: inline-flex;
+    align-items: center; justify-content: center; color: rgba(255,255,255,0.76);
+    font: 700 9px/1.15 'Manrope', sans-serif; letter-spacing: 0.03em; text-align: center;
+  }
+  .work-media .work-image:first-child:last-child { width: 74px; }
   .work-badge.independent {
     background: rgba(45,212,255,0.10); color: var(--cyan);
     border-color: rgba(45,212,255,0.30);
@@ -551,9 +556,7 @@
     .timeline-item:nth-child(4n + 4) .work-card { width: 100%; margin: 0; }
     .timeline-date { display: none; }
     .work-meta .work-year { display: inline; color: var(--cyan); font-weight: 700; }
-    .work-image { width: 94px; height: 50px; }
-    .work-card:has(.work-image) .work-meta,
-    .work-card:has(.work-image) .work-title { padding-right: 106px; }
+    .work-image, .work-thumb { width: 52px; height: 38px; }
     .diff-card.wide { grid-column: auto; }
     .fw-grid { grid-template-columns: 1fr 1fr; }
     .stats-inner { grid-template-columns: repeat(3, 1fr); }
@@ -1230,6 +1233,51 @@
 
   var category = '';
   var entries = [];
+  var mediaByTitle = {
+    'AI Knowledge Assistant for a Commercial Construction Firm': [
+      { src: '../images/futureinsites-logo.png', alt: 'FutureInSites logo' }
+    ],
+    'Independent AI Strategy Case Study: Lululemon Athletica, a $10B+ Brand': [
+      { src: '../LinkedIn/linkedin_lululemon_cover.png', alt: 'Lululemon AI strategy case study cover' },
+      { src: '../LinkedIn/linkedin_lululemon_table_1.png', alt: 'Lululemon case study analysis table' },
+      { src: '../LinkedIn/linkedin_lululemon_table_2.png', alt: 'Lululemon case study roadmap table' }
+    ],
+    'Independent AI Investment Analysis: Alphabet Through the 2026 CapEx Trough': [
+      { src: '../LinkedIn/linkedin_alphabet_cover.png', alt: 'Alphabet AI investment analysis cover' },
+      { src: '../LinkedIn/linkedin_alphabet_table_1.png', alt: 'Alphabet investment analysis table' },
+      { src: '../images/Boston-College-Emblem-card.png', alt: 'Boston College emblem' }
+    ],
+    'Production Agentic System Supporting $100M+ in Monthly Client Spend': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'Eliminated Roughly $50K/Month in Avoidable AWS Spend': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'SOC 2 and Responsible AI Built as Production Infrastructure': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'Managed Services to First Profitability in Company History': [
+      { src: '../images/vendor-logos/motivemetrics.png', alt: 'MotiveMetrics logo' }
+    ],
+    'Post-Acquisition Integration into Retail Media': [
+      { label: 'ownerIQ' }, { label: 'Inmar' }
+    ],
+    '200MM+ Identity Graph That Helped Drive an Acquisition': [
+      { label: 'ownerIQ' }, { label: 'Inmar' }
+    ],
+    'Retailer CRM and ERP Integrations for Closed-Loop Attribution': [
+      { label: 'ownerIQ' }, { label: 'Inmar' }
+    ],
+    'GM of a $35MM Business and a 50+ Person Organization': [
+      { label: 'Nelnet' }
+    ],
+    'Platform Growth Through a $36.5MM Sale': [
+      { label: 'Innovation Ads' }, { label: 'Seaport Capital' }
+    ],
+    'Founded, Scaled to $4MM, and Acquired': [
+      { label: 'Free Scholarship Guide' }, { label: 'Innovation Ads' }
+    ]
+  };
   Array.from(timeline.children).forEach(function (element, index) {
     if (element.classList.contains('work-group')) {
       category = element.textContent.trim();
@@ -1256,6 +1304,34 @@
       summary.textContent = body.textContent.replace(/\s+/g, ' ').trim();
       body.parentNode.insertBefore(summary, body);
     }
+
+    var title = element.querySelector('.work-title').textContent.trim();
+    var media = document.createElement('div');
+    media.className = 'work-media';
+    var existingImage = element.querySelector('.work-image');
+    if (existingImage) media.appendChild(existingImage);
+    (mediaByTitle[title] || []).forEach(function (asset) {
+      if (asset.src) {
+        var image = document.createElement('img');
+        image.className = 'work-image';
+        image.src = asset.src;
+        image.alt = asset.alt;
+        image.loading = 'lazy';
+        media.appendChild(image);
+      } else {
+        var thumb = document.createElement('span');
+        thumb.className = 'work-thumb work-thumb-text';
+        thumb.textContent = asset.label;
+        media.appendChild(thumb);
+      }
+    });
+    if (!media.children.length) {
+      var fallbackThumb = document.createElement('span');
+      fallbackThumb.className = 'work-thumb work-thumb-text';
+      fallbackThumb.textContent = element.querySelector('.work-badge').textContent.trim();
+      media.appendChild(fallbackThumb);
+    }
+    body.parentNode.insertBefore(media, body);
 
     var details = document.createElement('div');
     details.className = 'work-details';
