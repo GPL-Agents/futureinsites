@@ -402,17 +402,42 @@
   .work-body strong { color: var(--text); font-weight: 600; }
   .work-body a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .work-body a:hover { text-decoration: underline; }
-  .work-media { display: flex; align-items: center; gap: 7px; margin-top: 10px; min-height: 42px; }
+  .work-media { display: flex; align-items: center; gap: 7px; margin-top: 10px; min-height: 48px; }
+  .work-image-button {
+    width: 66px; height: 48px; flex: 0 0 auto; padding: 0; border: 0; border-radius: 6px;
+    background: transparent; cursor: zoom-in; overflow: hidden;
+  }
+  .work-image-button:hover, .work-image-button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
   .work-image, .work-thumb {
-    width: 58px; height: 42px; flex: 0 0 auto; object-fit: cover; border-radius: 6px;
+    width: 66px; height: 48px; flex: 0 0 auto; object-fit: cover; border-radius: 6px;
     border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04);
   }
+  .work-image-button .work-image { width: 100%; height: 100%; display: block; }
+  .work-image-button.contain .work-image { object-fit: contain; padding: 3px; background: #fff; }
   .work-thumb-text {
     width: auto; min-width: 58px; max-width: 94px; padding: 0 9px; display: inline-flex;
     align-items: center; justify-content: center; color: rgba(255,255,255,0.76);
     font: 700 9px/1.15 'Manrope', sans-serif; letter-spacing: 0.03em; text-align: center;
   }
-  .work-media .work-image:first-child:last-child { width: 74px; }
+  .work-lightbox {
+    position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center;
+    padding: 42px 70px; background: rgba(5,7,12,0.94); backdrop-filter: blur(10px);
+  }
+  .work-lightbox.open { display: flex; }
+  .work-lightbox-frame { max-width: min(1200px, 92vw); max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .work-lightbox-image { display: block; max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 8px; background: #fff; box-shadow: 0 20px 70px rgba(0,0,0,0.5); }
+  .work-lightbox-caption { color: rgba(255,255,255,0.76); font-size: 13px; text-align: center; }
+  .work-lightbox-close, .work-lightbox-nav {
+    position: absolute; border: 1px solid rgba(255,255,255,0.25); background: rgba(18,20,26,0.92);
+    color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .work-lightbox-close { top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; font-size: 24px; }
+  .work-lightbox-nav { top: 50%; width: 44px; height: 56px; border-radius: 8px; transform: translateY(-50%); font-size: 28px; }
+  .work-lightbox-prev { left: 16px; }
+  .work-lightbox-next { right: 16px; }
+  .work-lightbox-close:hover, .work-lightbox-nav:hover,
+  .work-lightbox-close:focus-visible, .work-lightbox-nav:focus-visible { border-color: var(--cyan); color: var(--cyan); }
+  .work-lightbox-nav[hidden] { display: none; }
   .work-badge.independent {
     background: rgba(45,212,255,0.10); color: var(--cyan);
     border-color: rgba(45,212,255,0.30);
@@ -556,7 +581,11 @@
     .timeline-item:nth-child(4n + 4) .work-card { width: 100%; margin: 0; }
     .timeline-date { display: none; }
     .work-meta .work-year { display: inline; color: var(--cyan); font-weight: 700; }
-    .work-image, .work-thumb { width: 52px; height: 38px; }
+    .work-image-button, .work-image, .work-thumb { width: 58px; height: 42px; }
+    .work-lightbox { padding: 58px 14px 80px; }
+    .work-lightbox-nav { top: auto; bottom: 14px; transform: none; }
+    .work-lightbox-prev { left: calc(50% - 54px); }
+    .work-lightbox-next { right: calc(50% - 54px); }
     .diff-card.wide { grid-column: auto; }
     .fw-grid { grid-template-columns: 1fr 1fr; }
     .stats-inner { grid-template-columns: repeat(3, 1fr); }
@@ -1226,6 +1255,16 @@
   </div>
 </div>
 
+<div class="work-lightbox" id="work-lightbox" role="dialog" aria-modal="true" aria-label="Selected work image viewer" aria-hidden="true">
+  <button class="work-lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+  <button class="work-lightbox-nav work-lightbox-prev" type="button" aria-label="Previous image">&#8249;</button>
+  <div class="work-lightbox-frame">
+    <img class="work-lightbox-image" src="" alt="">
+    <p class="work-lightbox-caption" aria-live="polite"></p>
+  </div>
+  <button class="work-lightbox-nav work-lightbox-next" type="button" aria-label="Next image">&#8250;</button>
+</div>
+
 <script>
 (function () {
   var timeline = document.querySelector('.work-timeline');
@@ -1308,8 +1347,18 @@
     var title = element.querySelector('.work-title').textContent.trim();
     var media = document.createElement('div');
     media.className = 'work-media';
+    function appendImage(image, caption) {
+      var imageButton = document.createElement('button');
+      imageButton.className = 'work-image-button contain';
+      imageButton.type = 'button';
+      imageButton.setAttribute('aria-label', 'Open full-size image: ' + caption);
+      imageButton.dataset.fullSrc = image.src;
+      imageButton.dataset.caption = caption;
+      imageButton.appendChild(image);
+      media.appendChild(imageButton);
+    }
     var existingImage = element.querySelector('.work-image');
-    if (existingImage) media.appendChild(existingImage);
+    if (existingImage) appendImage(existingImage, existingImage.alt);
     (mediaByTitle[title] || []).forEach(function (asset) {
       if (asset.src) {
         var image = document.createElement('img');
@@ -1317,7 +1366,7 @@
         image.src = asset.src;
         image.alt = asset.alt;
         image.loading = 'lazy';
-        media.appendChild(image);
+        appendImage(image, asset.alt);
       } else {
         var thumb = document.createElement('span');
         thumb.className = 'work-thumb work-thumb-text';
@@ -1373,6 +1422,69 @@
     button.setAttribute('aria-expanded', String(!expanded));
     button.textContent = expanded ? 'Read full case' : 'Collapse case';
     card.classList.toggle('is-expanded', !expanded);
+  });
+})();
+
+(function () {
+  var lightbox = document.getElementById('work-lightbox');
+  if (!lightbox) return;
+
+  var image = lightbox.querySelector('.work-lightbox-image');
+  var caption = lightbox.querySelector('.work-lightbox-caption');
+  var closeButton = lightbox.querySelector('.work-lightbox-close');
+  var previousButton = lightbox.querySelector('.work-lightbox-prev');
+  var nextButton = lightbox.querySelector('.work-lightbox-next');
+  var gallery = [];
+  var currentIndex = 0;
+  var lastFocus = null;
+
+  function renderImage() {
+    var source = gallery[currentIndex];
+    if (!source) return;
+    image.src = source.dataset.fullSrc;
+    image.alt = source.dataset.caption;
+    caption.textContent = source.dataset.caption + (gallery.length > 1 ? ' · ' + (currentIndex + 1) + ' of ' + gallery.length : '');
+    previousButton.hidden = gallery.length < 2;
+    nextButton.hidden = gallery.length < 2;
+  }
+
+  function openLightbox(button) {
+    lastFocus = button;
+    gallery = Array.from(button.closest('.work-media').querySelectorAll('.work-image-button'));
+    currentIndex = gallery.indexOf(button);
+    renderImage();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    image.src = '';
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function move(direction) {
+    currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
+    renderImage();
+  }
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.work-image-button');
+    if (button) openLightbox(button);
+  });
+  closeButton.addEventListener('click', closeLightbox);
+  previousButton.addEventListener('click', function () { move(-1); });
+  nextButton.addEventListener('click', function () { move(1); });
+  lightbox.addEventListener('click', function (event) { if (event.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (event) {
+    if (!lightbox.classList.contains('open')) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft' && gallery.length > 1) move(-1);
+    if (event.key === 'ArrowRight' && gallery.length > 1) move(1);
   });
 })();
 
