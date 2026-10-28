@@ -148,6 +148,9 @@
     margin-bottom: 1.4rem;
     font-weight: 500;
   }
+  ul.hero-sub { list-style: none; padding: 0; }
+  ul.hero-sub li { position: relative; padding-left: 1.1rem; margin-bottom: .35rem; }
+  ul.hero-sub li::before { content: ""; position: absolute; left: 0; top: .65em; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); }
 
   /* Quick-facts grid in hero */
   .hero-facts {
@@ -319,12 +322,12 @@
   .fw-n {
     font-family: 'Manrope', sans-serif;
     font-size: 32px; font-weight: 800;
-    color: rgba(45,212,255,0.22);
+    color: var(--cyan);
     line-height: 1; margin-bottom: 10px; letter-spacing: -0.04em;
   }
   .fw-title {
     font-family: 'Manrope', sans-serif;
-    font-size: 12.5px; font-weight: 700;
+    font-size: 17px; font-weight: 700;
     color: #fff; margin-bottom: 10px; line-height: 1.3;
   }
   .fw-pts { list-style: none; }
@@ -742,9 +745,13 @@
       <h1 class="hero-name">Greg Loeffelholz</h1>
       <p class="hero-eyebrow">AI Product &amp; Platform Leader | Applied AI &amp; Agentic Systems</p>
       <p class="hero-headline">A product and platform leader who sets strategy, owns the P&amp;L, builds the team, and delivers measurable outcomes.</p>
-      <p class="hero-sub">
-        For 20+ years I have built and operated technology-enabled businesses across digital product strategy, enterprise platforms, data and identity infrastructure, and large-scale commercial operations. That includes running a $35MM business and a 50+ person organization as GM, driving a previously unprofitable business to sustained profitability, and operating platforms supporting $100M+ in monthly media spend. For the last four years that work has included production GenAI, LLM, RAG, and agentic systems with direct P&amp;L responsibility, backed by formal graduate study in AI and machine learning.
-      </p>
+      <ul class="hero-sub">
+        <li>Built and operated businesses across digital product, enterprise platforms, data and identity infrastructure</li>
+        <li>Ran a $35MM business and a 50+ person organization as GM</li>
+        <li>Turned a previously unprofitable business into a sustainably profitable one</li>
+        <li>Operated platforms supporting $100M+ in monthly media spend</li>
+        <li>Four years of production GenAI, LLM, RAG, and agentic systems with direct P&amp;L ownership</li>
+      </ul>
 
       <div class="hero-facts">
         <div class="hero-fact">

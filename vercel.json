@@ -2,6 +2,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/greg",
+      "destination": "/internal/greg-loeffelholz.html"
+    },
+    {
       "source": "/deepseek-cheap-again",
       "destination": "/blog/deepseek-cheap-again.html"
     },
@@ -35,6 +39,16 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/internal/greg-loeffelholz",
+      "destination": "/greg",
+      "permanent": true
+    },
+    {
+      "source": "/internal/greg-loeffelholz.html",
+      "destination": "/greg",
+      "permanent": true
+    },
     {
       "source": "/about",
       "destination": "/our-story",
@@ -97,22 +111,22 @@
     },
     {
       "source": "/head-of-ai",
-      "destination": "/internal/greg-loeffelholz",
+      "destination": "/greg",
       "permanent": true
     },
     {
       "source": "/head-of-ai.html",
-      "destination": "/internal/greg-loeffelholz",
+      "destination": "/greg",
       "permanent": true
     },
     {
       "source": "/hire-greg",
-      "destination": "/internal/greg-loeffelholz",
+      "destination": "/greg",
       "permanent": true
     },
     {
       "source": "/hire-greg.html",
-      "destination": "/internal/greg-loeffelholz",
+      "destination": "/greg",
       "permanent": true
     },
     {
@@ -227,12 +241,12 @@
     },
     {
       "source": "/greg-loeffelholz",
-      "destination": "/internal/greg-loeffelholz",
+      "destination": "/greg",
       "permanent": true
     },
     {
       "source": "/greg-loeffelholz.html",
-      "destination": "/internal/greg-loeffelholz",
+      "destination": "/greg",
       "permanent": true
     },
     {
