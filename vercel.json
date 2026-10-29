@@ -2,10 +2,6 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/greg",
-      "destination": "/internal/greg-loeffelholz.html"
-    },
-    {
       "source": "/deepseek-cheap-again",
       "destination": "/blog/deepseek-cheap-again.html"
     },

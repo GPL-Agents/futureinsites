@@ -21,7 +21,7 @@ const EXCLUDE = new Set([
   'case-studies/lululemon.html', 'case-studies/tesla.html', 'case-studies/oracle.html',
   'case-studies/alphabet.html', 'case-studies/bibliography.html',
   // Unlisted personal pages ("Shared by direct link only")
-  'internal/greg-loeffelholz.html', 'hire-greg.html',
+  'greg.html', 'hire-greg.html',
 ]);
 
 const args = new Set(process.argv.slice(2));
