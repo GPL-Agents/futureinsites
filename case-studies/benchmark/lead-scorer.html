@@ -7,7 +7,7 @@
   <title>Benchmark Lead Scorer Demo | FutureInSites</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     body { margin:0; background:#f5f2ec; color:#15342f; font-family:"DM Sans",Arial,sans-serif; line-height:1.5; }
@@ -68,11 +68,13 @@
     @media (max-width:1000px) { .predictions { grid-template-columns:repeat(3,1fr); } .workspace { grid-template-columns:1fr; } }
     @media (max-width:650px) { .topbar,.hero { padding-left:1rem; padding-right:1rem; } .hero > div { display:block; } .heroactions { margin-top:1.4rem; } main { padding-left:1rem; padding-right:1rem; } .predictions { grid-template-columns:1fr 1fr; } .fieldrow { grid-template-columns:1fr; } .source { width:max-content; } }
   </style>
+  <link rel="stylesheet" href="benchmark-theme.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="../../index.html">FutureInSites</a>
-    <nav class="nav"><a href="ai-guided-inquiry.html">Overview</a><a class="active" href="lead-scorer.html">Lead Scorer</a><a href="model-controls.html">Model Controls</a></nav>
+  <header class="topbar benchmark-header">
+    <a class="futureinsites-mark" href="../../index.html">FutureInSites<span>Strategy case study</span></a>
+    <a class="benchmark-logo" href="https://www.benchmarkseniorliving.com/" target="_blank" rel="noopener" aria-label="Benchmark Senior Living website"><img src="assets/benchmark-logo.png" alt="Benchmark Senior Living"></a>
+    <nav class="nav benchmark-nav"><a href="ai-guided-inquiry.html">Overview</a><a class="active" href="lead-scorer.html">Lead Scorer</a><a href="model-controls.html">Model Controls</a></nav>
   </header>
   <section class="hero"><div><div><p class="eyebrow">Benchmark model demonstration</p><h1>Lead Scorer</h1><p>Complete the inquiry on the left. Watch form, behavioral, and manually collected values populate one CRM-ready profile while all five predictions update in real time.</p></div><div class="heroactions"><button class="button" id="downloadButton" type="button">Download lead data</button><button class="button secondary" id="resetButton" type="button">Reset demo</button></div></div></section>
   <main>

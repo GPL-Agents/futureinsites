@@ -7,7 +7,7 @@
   <title>Benchmark Model Controls | FutureInSites</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing:border-box; }
     body { margin:0; background:#f5f2ec; color:#15342f; font-family:"DM Sans",Arial,sans-serif; line-height:1.5; }
@@ -56,9 +56,10 @@
     @media(max-width:800px){ .hero > div { display:block; } .actions { margin-top:1.4rem; } .settingsgrid { grid-template-columns:1fr 1fr; } .howgrid,.bucketgrid { grid-template-columns:1fr; } }
     @media(max-width:520px){ .topbar,.hero { padding-left:1rem; padding-right:1rem; } main { padding-left:1rem; padding-right:1rem; } .settingsgrid { grid-template-columns:1fr; } .savebar { align-items:flex-start; flex-direction:column; } }
   </style>
+  <link rel="stylesheet" href="benchmark-theme.css">
 </head>
 <body>
-  <header class="topbar"><a class="brand" href="../../index.html">FutureInSites</a><nav class="nav"><a href="ai-guided-inquiry.html">Overview</a><a href="lead-scorer.html">Lead Scorer</a><a class="active" href="model-controls.html">Model Controls</a></nav></header>
+  <header class="topbar benchmark-header"><a class="futureinsites-mark" href="../../index.html">FutureInSites<span>Strategy case study</span></a><a class="benchmark-logo" href="https://www.benchmarkseniorliving.com/" target="_blank" rel="noopener" aria-label="Benchmark Senior Living website"><img src="assets/benchmark-logo.png" alt="Benchmark Senior Living"></a><nav class="nav benchmark-nav"><a href="ai-guided-inquiry.html">Overview</a><a href="lead-scorer.html">Lead Scorer</a><a class="active" href="model-controls.html">Model Controls</a></nav></header>
   <section class="hero"><div><div><p class="eyebrow">Benchmark scoring workbook</p><h1>Model Controls</h1><p>Edit the assumptions behind the demonstration. Sections mirror the workbook's How to Edit, Settings, weight table, and Answer Library tabs, but collapse to keep the page manageable.</p></div><div class="actions"><button class="button" id="saveButton" type="button">Save controls</button><button class="button secondary" id="resetButton" type="button">Restore defaults</button></div></div></section>
   <main>
     <div class="savebar"><span>Controls are stored only in this browser. Open Lead Scorer after saving to see the updated model.</span><span class="status" id="status">Using workbook defaults</span></div>
