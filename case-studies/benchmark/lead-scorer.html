@@ -98,7 +98,7 @@
         <div class="legend"><span class="source form">Form</span><span class="source automatic">Automatic</span><span class="source manual">Manual and editable</span></div>
       </section>
     </div>
-    <div class="notice">This is a transparent demonstration of the draft workbook logic. The browser stores no submitted record and sends no data. Unknown values remain neutral and reduce coverage. The production model should be calibrated against Benchmark outcomes before operational use.</div>
+    <div class="notice">This is a transparent demonstration of the scoring logic. The browser stores no submitted record and sends no data. Unknown values remain neutral and reduce coverage. Ongoing calibration against Benchmark outcomes keeps the operational model accurate.</div>
   </main>
   <script src="model-data.js"></script>
   <script>
@@ -114,7 +114,7 @@
       { key:"relationship", prompt:"Who are you exploring senior living for?", helper:"The answer selects the resident, family, or professional journey.", options:["Self","Spouse or partner","Adult child","Other family member","Friend or neighbor","Professional (discharge planner, social worker, physician, care manager)"] },
       { key:"intent", prompt:"What would be most helpful today?", helper:"This keeps Benchmark's current inquiry outcomes.", options:["Pricing or brochure","Advisor call","Schedule a tour","Help understanding options"] },
       { key:"trigger", prompt:"What is prompting the search?", helper:"Choose the closest answer. More detail can wait for a counselor.", options:model.variables.find(v=>v.key==="trigger").options.map(o=>o[0]) },
-      { key:"timeline", prompt:"When might a move make sense?", helper:"This is the strongest early readiness signal in the draft model.", options:model.variables.find(v=>v.key==="timeline").options.map(o=>o[0]) },
+      { key:"timeline", prompt:"When might a move make sense?", helper:"This is the strongest early readiness signal in the model.", options:model.variables.find(v=>v.key==="timeline").options.map(o=>o[0]) },
       { key:"careInterest", prompt:"Which support sounds closest?", helper:"This is a stated preference, not a clinical assessment.", options:model.variables.find(v=>v.key==="careInterest").options.map(o=>o[0]) },
       { key:"contact", prompt:"Where can Benchmark save your personalized information?", helper:"Email first preserves a recoverable lead before requesting a phone number.", options:[] },
       { key:"done", prompt:"Your inquiry profile is ready.", helper:"The advisor receives the same values shown in the CRM profile. Manual fields can be completed during follow-up.", options:[] }

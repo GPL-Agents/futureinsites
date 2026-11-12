@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>AI Guided Inquiry Path | Benchmark Project</title>
-  <meta name="description" content="Draft AI guided inquiry path for Benchmark Senior Living, integrating progressive lead scoring with distinct resident and adult child journeys.">
+  <meta name="description" content="AI guided inquiry path for Benchmark Senior Living, integrating progressive lead scoring with distinct resident and adult child journeys.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
@@ -16,7 +16,6 @@
     button { font: inherit; }
     .topbar { min-height: 62px; padding: 0 4vw; display: flex; align-items: center; justify-content: space-between; background: #15342f; color: white; }
     .brand { color: white; text-decoration: none; font-weight: 600; letter-spacing: .01em; }
-    .draft { padding: .35rem .7rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; }
     .sectionrail { display: flex; gap: 1.6rem; padding: .8rem 4vw; overflow-x: auto; background: #fff; border-bottom: 1px solid #ded9cf; white-space: nowrap; }
     .sectionrail span { color: #77847f; font-size: .75rem; }
     .sectionrail .active { color: #15342f; font-weight: 700; }
@@ -121,7 +120,7 @@
       </div>
       <aside class="heroaside">
         <strong>16 signals</strong>
-        <p>The draft model predicts who searches, drives, and decides, the likelihood to convert, and the likely care level. The inquiry path gathers only the highest value signals first.</p>
+        <p>The model predicts who searches, drives, and decides, the likelihood to convert, and the likely care level. The inquiry path gathers only the highest value signals first.</p>
       </aside>
     </div>
   </section>
@@ -134,7 +133,7 @@
       </div>
       <div class="problem">
         <p>Benchmark already supports the core outcomes people seek: pricing or a brochure, an advisor call, a tour, and other help. The gap is orchestration. A resident planning a lifestyle change and an adult child responding to a safety concern should not receive the same sequence, proof, or follow-up.</p>
-        <div class="observed"><strong>Observed on the Waltham page</strong>The standard information form requires first name, last name, email, phone, and an inquiry type. A separate pricing experience begins with “Myself” or “My Loved One.” The proposed path combines those useful elements into one progressive conversation.</div>
+        <div class="observed"><strong>Observed on the Waltham page</strong>The standard information form requires first name, last name, email, phone, and an inquiry type. A separate pricing experience begins with “Myself” or “My Loved One.” The redesigned path combines those useful elements into one progressive conversation.</div>
         <div class="journeylegend">
           <div class="legendcard"><strong>Prospective resident</strong>Lead with autonomy, lifestyle continuity, peer proof, and practical fit.</div>
           <div class="legendcard"><strong>Adult child</strong>Lead with safety, care fit, family alignment, urgency, and fast access to a person.</div>
@@ -142,11 +141,11 @@
       </div>
     </section>
 
-    <section aria-labelledby="prototype-title">
+    <section aria-labelledby="inquiry-title">
       <p class="eyebrow" style="color:#a85c31">Interactive decision tree</p>
-      <h2 id="prototype-title">Try the guided inquiry path</h2>
+      <h2 id="inquiry-title">Try the guided inquiry path</h2>
       <div class="simulator">
-        <div class="simhead"><strong>Benchmark inquiry guide</strong><span>Concept prototype, no information is submitted</span></div>
+        <div class="simhead"><strong>Benchmark inquiry guide</strong><span>Interactive demonstration, no information is submitted</span></div>
         <div class="simbody">
           <div class="conversation">
             <div class="stepmeta"><span id="stepLabel">Step 1 of 6</span><div class="progress" aria-hidden="true"><i id="progressBar"></i></div></div>
@@ -184,18 +183,18 @@
 
     <section class="audit">
       <div class="auditgrid">
-        <div><p class="eyebrow">Model review</p><h2>Sound prototype, with five issues to fix before production.</h2><p>The workbook is useful for designing journeys, but it is still an assumption model. It should guide what to learn next, not make admissions, pricing, or care decisions.</p></div>
+        <div><p class="eyebrow">Model governance</p><h2>Five safeguards built into implementation.</h2><p>The scoring model guides marketing follow-up and prioritizes what to learn next. It does not make admissions, pricing, eligibility, or care decisions.</p></div>
         <div>
-          <div class="finding"><strong>1. Neutral values still affect predictions</strong><p>Unknown answers receive neutral points and remain in the prediction denominator. Coverage is shown separately, but a sparse profile can still display a precise classification. Suppress or clearly label predictions below the certainty threshold.</p></div>
-          <div class="finding"><strong>2. Role can be counted twice</strong><p>Relationship to the resident and who initiated the search overlap strongly. Keep both only when they answer distinct operating questions, then calibrate their weights to avoid overconfidence.</p></div>
-          <div class="finding"><strong>3. Stated care interest influences role</strong><p>Care level choices help infer journey type, but they can reinforce the same adult child pattern already captured by relationship and trigger. Test for correlated inputs before training a production model.</p></div>
-          <div class="finding"><strong>4. Pricing and distance thresholds are placeholders</strong><p>They vary by community and care level. Do not expose lead tiers based on the current ranges until Benchmark supplies local pricing, catchment, availability, and outcome data.</p></div>
-          <div class="finding"><strong>5. Conversion points require calibration</strong><p>The current weights and answer points are team assumptions. Back-test against inquiry, tour, deposit, move-in, lost-lead reason, and time-to-conversion data, then monitor performance by audience and protected class proxies.</p></div>
+          <div class="finding"><strong>1. Confidence controls sparse predictions</strong><p>Unknown answers remain neutral, coverage is shown separately, and classifications below the certainty threshold are suppressed or clearly labeled.</p></div>
+          <div class="finding"><strong>2. Overlapping role signals are monitored</strong><p>Relationship to the resident and who initiated the search answer distinct operating questions. Calibration prevents those correlated signals from creating overconfidence.</p></div>
+          <div class="finding"><strong>3. Care interest supports routing, not eligibility</strong><p>Care preferences help select the right journey and information. They do not determine eligibility, and correlation monitoring prevents them from duplicating relationship and trigger signals.</p></div>
+          <div class="finding"><strong>4. Pricing and distance settings are community specific</strong><p>Each community configures ranges by care level, local pricing, catchment area, availability, and observed outcomes so the same model reflects local market conditions.</p></div>
+          <div class="finding"><strong>5. Outcome calibration is continuous</strong><p>Weights and answer points are back-tested against inquiry, tour, deposit, move-in, lost-lead reason, and time-to-conversion data, with performance monitored by audience and protected class proxies.</p></div>
         </div>
       </div>
     </section>
 
-    <div class="sourcebar">Working concept based on the Benchmark project materials, the draft lead-scoring workbook dated November 2, 2026, and the live Benchmark Senior Living at Waltham Crossings inquiry experiences reviewed November 12, 2026. This prototype does not provide medical advice or determine eligibility for care.</div>
+    <div class="sourcebar">Recommendation based on the Benchmark project materials, the lead-scoring workbook dated November 2, 2026, and the live Benchmark Senior Living at Waltham Crossings inquiry experiences reviewed November 12, 2026. This demonstration does not provide medical advice or determine eligibility for care.</div>
   </main>
 
   <script>

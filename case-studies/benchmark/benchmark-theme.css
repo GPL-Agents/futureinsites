@@ -94,11 +94,6 @@ body {
   border-bottom-color: #a4d65e;
 }
 
-.benchmark-nav .draft {
-  color: #007672 !important;
-  border-color: #007672 !important;
-}
-
 .hero {
   background: linear-gradient(120deg, #004d7c 0%, #006d82 54%, #007672 100%) !important;
 }
