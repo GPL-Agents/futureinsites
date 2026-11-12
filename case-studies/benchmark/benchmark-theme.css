@@ -167,7 +167,10 @@ h2,
 }
 
 .bc-band {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .9rem;
   padding: .8rem 4vw;
   color: white;
   background: #8a1538;
@@ -179,6 +182,7 @@ h2,
 
 .bc-band strong { color: #f2c75c; }
 .bc-band:hover strong { text-decoration: underline; }
+.bc-band img { display: block; width: 132px; height: 34px; object-fit: contain; }
 
 .card-grid {
   display: grid;
