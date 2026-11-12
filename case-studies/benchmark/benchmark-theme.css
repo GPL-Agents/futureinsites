@@ -172,15 +172,18 @@ h2,
 }
 
 .bc-band {
+  display: block;
   padding: .8rem 4vw;
   color: white;
   background: #8a1538;
   font-size: .74rem;
   letter-spacing: .04em;
   text-align: center;
+  text-decoration: none;
 }
 
 .bc-band strong { color: #f2c75c; }
+.bc-band:hover strong { text-decoration: underline; }
 
 .card-grid {
   display: grid;
