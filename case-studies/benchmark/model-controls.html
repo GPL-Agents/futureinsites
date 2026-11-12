@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Benchmark Model Controls | FutureInSites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f5f2ec; color:#15342f; font-family:"DM Sans",Arial,sans-serif; line-height:1.5; }
+    button,input { font:inherit; }
+    .topbar { min-height:62px; padding:0 4vw; display:flex; align-items:center; justify-content:space-between; background:#15342f; color:white; }
+    .brand { color:white; text-decoration:none; font-weight:600; }
+    .nav { display:flex; gap:1rem; }
+    .nav a { color:#cfe1dc; text-decoration:none; font-size:.78rem; }
+    .nav .active { color:white; font-weight:700; }
+    .hero { padding:3.8rem 4vw 3rem; background:#214d44; color:white; }
+    .hero > div { max-width:1160px; margin:auto; display:flex; justify-content:space-between; gap:2rem; align-items:end; }
+    .eyebrow { margin:0 0 .7rem; color:#a8d8cc; text-transform:uppercase; letter-spacing:.16em; font-size:.68rem; font-weight:700; }
+    h1 { margin:.2rem 0 .6rem; font:600 clamp(2.5rem,5vw,4.8rem)/1 "Newsreader",Georgia,serif; letter-spacing:-.03em; }
+    .hero p:last-child { max-width:700px; margin:0; color:#d4e7e2; }
+    .actions { display:flex; gap:.6rem; }
+    .button { padding:.7rem .9rem; border:1px solid #d5824b; border-radius:8px; color:white; background:#d5824b; cursor:pointer; text-decoration:none; font-weight:600; }
+    .button.secondary { color:#d7ebe6; background:transparent; border-color:#7da098; }
+    main { max-width:1160px; margin:auto; padding:2.5rem 4vw 6rem; }
+    .savebar { margin-bottom:1rem; padding:1rem 1.2rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; border-radius:12px; background:#ebe6dc; color:#5a6a65; font-size:.78rem; }
+    details { margin-bottom:.8rem; overflow:hidden; border:1px solid #d9d2c7; border-radius:14px; background:white; }
+    summary { padding:1.2rem 1.4rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; font-weight:700; }
+    summary::-webkit-details-marker { display:none; }
+    summary:after { content:"+"; color:#d5824b; font-size:1.3rem; }
+    details[open] summary:after { content:"−"; }
+    .content { padding:0 1.4rem 1.5rem; border-top:1px solid #ece6dc; }
+    .content p,.content li { color:#5f6f6a; font-size:.84rem; }
+    .howgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem; margin-top:1.2rem; }
+    .howcard { padding:1rem; border-radius:10px; background:#f5f2ec; }
+    .howcard strong { display:block; margin-bottom:.3rem; }
+    .settingsgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:1.2rem; }
+    .setting { padding:.9rem; background:#f8f6f2; border-radius:10px; }
+    .setting label { display:block; min-height:34px; color:#5f6f6a; font-size:.7rem; }
+    .setting input { width:100%; padding:.55rem; border:1px solid #d6d0c6; border-radius:7px; }
+    .tablewrap { overflow:auto; margin-top:1rem; }
+    table { width:100%; border-collapse:collapse; font-size:.72rem; }
+    th { position:sticky; top:0; padding:.65rem; text-align:left; color:white; background:#214d44; white-space:nowrap; }
+    td { padding:.55rem .65rem; border-bottom:1px solid #ece7df; vertical-align:top; }
+    tbody tr:hover { background:#f7f4ef; }
+    td input { width:54px; padding:.35rem; border:1px solid #d6d0c6; border-radius:5px; }
+    .group { background:#eef3f1; font-weight:700; }
+    .note { color:#788681; font-size:.68rem; }
+    .bucketgrid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+    .bucket { padding:1rem; border-radius:10px; background:#f8f6f2; }
+    .bucket h3 { margin-top:0; font-size:.9rem; }
+    .status { color:#176254; font-weight:700; }
+    @media(max-width:800px){ .hero > div { display:block; } .actions { margin-top:1.4rem; } .settingsgrid { grid-template-columns:1fr 1fr; } .howgrid,.bucketgrid { grid-template-columns:1fr; } }
+    @media(max-width:520px){ .topbar,.hero { padding-left:1rem; padding-right:1rem; } main { padding-left:1rem; padding-right:1rem; } .settingsgrid { grid-template-columns:1fr; } .savebar { align-items:flex-start; flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../../index.html">FutureInSites</a><nav class="nav"><a href="ai-guided-inquiry.html">Overview</a><a href="lead-scorer.html">Lead Scorer</a><a class="active" href="model-controls.html">Model Controls</a></nav></header>
+  <section class="hero"><div><div><p class="eyebrow">Benchmark scoring workbook</p><h1>Model Controls</h1><p>Edit the assumptions behind the demonstration. Sections mirror the workbook's How to Edit, Settings, weight table, and Answer Library tabs, but collapse to keep the page manageable.</p></div><div class="actions"><button class="button" id="saveButton" type="button">Save controls</button><button class="button secondary" id="resetButton" type="button">Restore defaults</button></div></div></section>
+  <main>
+    <div class="savebar"><span>Controls are stored only in this browser. Open Lead Scorer after saving to see the updated model.</span><span class="status" id="status">Using workbook defaults</span></div>
+
+    <details open><summary>How to edit and use the model</summary><div class="content"><div class="howgrid">
+      <div class="howcard"><strong>Score a lead</strong><span>Use Lead Scorer to answer inquiry questions. Unknown values remain neutral. Predictions, coverage, and margins update immediately.</span></div>
+      <div class="howcard"><strong>Change weights</strong><span>Use values from 0 to 10. Zero removes that variable from a prediction. Each prediction normalizes its own weights.</span></div>
+      <div class="howcard"><strong>Interpret certainty</strong><span>Coverage measures how much weighted evidence is known. Margin measures the gap between the top two classes.</span></div>
+      <div class="howcard"><strong>Use care variables carefully</strong><span>Daily living, memory, and medical needs affect care-level fit only. They do not raise or lower conversion priority.</span></div>
+    </div><p>The draft workbook is an assumption model. Calibrate answer points and weights against closed-won and lost leads before moving the logic into production CRM automation.</p></div></details>
+
+    <details><summary>Settings and thresholds</summary><div class="content"><div class="settingsgrid">
+      <div class="setting"><label>Unknown neutral conversion score</label><input data-setting="neutralConversion" type="number" min="0" max="100"></div>
+      <div class="setting"><label>Hot tier minimum score</label><input data-setting="hot" type="number" min="0" max="100"></div>
+      <div class="setting"><label>Warm tier minimum score</label><input data-setting="warm" type="number" min="0" max="100"></div>
+      <div class="setting"><label>High certainty minimum coverage</label><input data-setting="highCoverage" type="number" min="0" max="1" step=".05"></div>
+      <div class="setting"><label>High certainty minimum margin</label><input data-setting="highMargin" type="number" min="0" max="100"></div>
+      <div class="setting"><label>Low certainty coverage below</label><input data-setting="lowCoverage" type="number" min="0" max="1" step=".05"></div>
+      <div class="setting"><label>Low certainty margin below</label><input data-setting="lowMargin" type="number" min="0" max="100"></div>
+    </div><div class="bucketgrid"><div class="bucket"><h3>Distance score buckets</h3><div id="distanceBuckets"></div></div><div class="bucket"><h3>Monthly budget score buckets</h3><div id="budgetBuckets"></div></div></div></div></details>
+
+    <details><summary>Variable weights</summary><div class="content"><p>Weights are relative within each prediction. The five columns correspond to the workbook's Searching, Driving, Deciding, Convert, and Care Level weights.</p><div class="tablewrap"><table><thead><tr><th>Variable</th><th>Searching</th><th>Driving</th><th>Deciding</th><th>Convert</th><th>Care level</th></tr></thead><tbody id="weightRows"></tbody></table></div></div></details>
+
+    <details><summary>Answer Library</summary><div class="content"><p>Each answer distributes role points across Senior, Adult Child, and Caregiver / Other, assigns a conversion score, and distributes care points across four care levels. Unknown answers use the neutral settings.</p><div class="tablewrap"><table><thead><tr><th>Variable</th><th>Answer</th><th>Senior</th><th>Adult child</th><th>Other</th><th>Convert</th><th>IL</th><th>AL</th><th>MC</th><th>SN</th></tr></thead><tbody id="answerRows"></tbody></table></div></div></details>
+  </main>
+  <script src="model-data.js"></script>
+  <script>
+    const model=window.BenchmarkModel;
+    let saved={}; try{saved=JSON.parse(localStorage.getItem("benchmarkModelControls")||"{}");}catch(e){}
+    const settings=Object.assign({},model.defaults,saved.settings||{});
+    document.querySelectorAll("[data-setting]").forEach(input=>input.value=settings[input.dataset.setting]);
+
+    function bucketText(buckets,prefix){ return `<table><thead><tr><th>Minimum</th><th>Maximum</th><th>Score</th></tr></thead><tbody>${buckets.map((b,i)=>`<tr><td><input data-bucket="${prefix}" data-row="${i}" data-col="0" type="number" value="${b[0]}"></td><td><input data-bucket="${prefix}" data-row="${i}" data-col="1" type="number" value="${b[1]===null?"":b[1]}" placeholder="No limit"></td><td><input data-bucket="${prefix}" data-row="${i}" data-col="2" type="number" min="1" max="5" value="${b[2]}"></td></tr>`).join("")}</tbody></table>`; }
+    document.getElementById("distanceBuckets").innerHTML=bucketText(settings.distanceBuckets,"distanceBuckets");
+    document.getElementById("budgetBuckets").innerHTML=bucketText(settings.budgetBuckets,"budgetBuckets");
+
+    document.getElementById("weightRows").innerHTML=model.variables.map(v=>{const w=(saved.weights&&saved.weights[v.key])||v.weights;return `<tr><td>${v.label}</td>${w.map((n,i)=>`<td><input data-weight="${v.key}" data-index="${i}" type="number" min="0" max="10" value="${n}"></td>`).join("")}</tr>`;}).join("");
+    const rows=[]; model.variables.forEach(v=>{ if(v.options){ v.options.forEach((o,i)=>rows.push(`<tr${i===0?` class="group"`:""}><td>${i===0?v.label:""}</td><td>${o[0]}</td>${o.slice(1).map(n=>`<td>${Number(n).toFixed(Number(n)%1?1:0)}</td>`).join("")}</tr>`)); rows.push(`<tr><td></td><td>Unknown</td><td colspan="8" class="note">Neutral values from Settings</td></tr>`); }}); document.getElementById("answerRows").innerHTML=rows.join("");
+
+    function collect(){ const next={settings:{},weights:{}}; document.querySelectorAll("[data-setting]").forEach(i=>next.settings[i.dataset.setting]=Number(i.value)); next.settings.distanceBuckets=settings.distanceBuckets.map(b=>b.slice()); next.settings.budgetBuckets=settings.budgetBuckets.map(b=>b.slice()); document.querySelectorAll("[data-bucket]").forEach(i=>{const value=i.value===""?null:Number(i.value);next.settings[i.dataset.bucket][Number(i.dataset.row)][Number(i.dataset.col)]=value;}); document.querySelectorAll("[data-weight]").forEach(i=>{if(!next.weights[i.dataset.weight])next.weights[i.dataset.weight]=[0,0,0,0,0];next.weights[i.dataset.weight][Number(i.dataset.index)]=Number(i.value);}); return next; }
+    document.getElementById("saveButton").onclick=()=>{localStorage.setItem("benchmarkModelControls",JSON.stringify(collect()));document.getElementById("status").textContent="Controls saved";};
+    document.getElementById("resetButton").onclick=()=>{localStorage.removeItem("benchmarkModelControls");location.reload();};
+    if(saved.settings||saved.weights)document.getElementById("status").textContent="Using saved browser controls";
+  </script>
+</body>
+</html>

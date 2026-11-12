@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Benchmark Lead Scorer Demo | FutureInSites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin:0; background:#f5f2ec; color:#15342f; font-family:"DM Sans",Arial,sans-serif; line-height:1.5; }
+    button,input,select { font:inherit; }
+    .topbar { min-height:62px; padding:0 4vw; display:flex; align-items:center; justify-content:space-between; background:#15342f; color:white; }
+    .brand { color:white; text-decoration:none; font-weight:600; }
+    .nav { display:flex; gap:1rem; align-items:center; }
+    .nav a { color:#cfe1dc; text-decoration:none; font-size:.78rem; }
+    .nav .active { color:white; font-weight:700; }
+    .hero { padding:3.6rem 4vw 2.4rem; background:#214d44; color:white; }
+    .hero > div { max-width:1240px; margin:auto; display:flex; justify-content:space-between; gap:2rem; align-items:end; }
+    .eyebrow { margin:0 0 .7rem; color:#a8d8cc; text-transform:uppercase; letter-spacing:.16em; font-size:.68rem; font-weight:700; }
+    h1,h2,h3 { margin-top:0; }
+    h1 { margin-bottom:.5rem; font:600 clamp(2.4rem,5vw,4.6rem)/1 "Newsreader",Georgia,serif; letter-spacing:-.03em; }
+    .hero p:last-child { max-width:720px; margin:0; color:#d4e7e2; }
+    .heroactions { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .button { padding:.75rem 1rem; border:1px solid #d5824b; border-radius:9px; color:white; background:#d5824b; text-decoration:none; cursor:pointer; font-weight:600; }
+    .button.secondary { color:#d7ebe6; background:transparent; border-color:#7da098; }
+    main { max-width:1240px; margin:auto; padding:2.2rem 4vw 6rem; }
+    .predictions { display:grid; grid-template-columns:repeat(5,1fr); gap:.75rem; margin-bottom:2rem; }
+    .prediction { min-height:150px; padding:1.1rem; background:white; border:1px solid #ddd6ca; border-radius:14px; }
+    .prediction .label { min-height:34px; color:#6b7975; text-transform:uppercase; letter-spacing:.08em; font-size:.62rem; font-weight:700; }
+    .prediction .value { display:block; margin:.7rem 0 .35rem; font:600 1.45rem/1.05 "Newsreader",Georgia,serif; }
+    .prediction .detail { color:#687873; font-size:.72rem; }
+    .prediction.hot { border-top:4px solid #d5824b; }
+    .workspace { display:grid; grid-template-columns:minmax(330px,.82fr) minmax(520px,1.18fr); gap:1rem; align-items:start; }
+    .panel { background:white; border:1px solid #ddd6ca; border-radius:17px; overflow:hidden; }
+    .panelhead { padding:1.1rem 1.3rem; display:flex; justify-content:space-between; gap:1rem; align-items:center; border-bottom:1px solid #e5ded3; }
+    .panelhead h2 { margin:0; font-size:1rem; }
+    .panelhead span { color:#788681; font-size:.7rem; }
+    .inquiry { padding:1.5rem; min-height:550px; }
+    .progress { height:6px; margin-bottom:1.7rem; overflow:hidden; border-radius:99px; background:#e7e2da; }
+    .progress i { display:block; height:100%; width:12%; background:#d5824b; transition:width .2s; }
+    .question { font:600 1.8rem/1.08 "Newsreader",Georgia,serif; }
+    .helper { margin-top:-.5rem; color:#6b7975; font-size:.82rem; }
+    .choices { display:grid; gap:.65rem; margin-top:1.2rem; }
+    .choice { padding:.85rem 1rem; text-align:left; color:#15342f; background:#f8f6f2; border:1px solid #ded8cd; border-radius:10px; cursor:pointer; }
+    .choice:hover { background:#edf6f3; border-color:#4d887d; }
+    .contactgrid { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+    .contactgrid label { color:#60706b; font-size:.72rem; }
+    .contactgrid input { width:100%; margin-top:.25rem; padding:.75rem; border:1px solid #d4cec4; border-radius:8px; }
+    .wide { grid-column:1/-1; }
+    .inquirynav { margin-top:1.2rem; display:flex; gap:.6rem; }
+    .smallbutton { padding:.55rem .8rem; border:1px solid #bdb7ad; border-radius:8px; background:white; cursor:pointer; }
+    .smallbutton.primary { color:white; background:#15342f; border-color:#15342f; }
+    .fields { padding:0; }
+    .groupbar { padding:.75rem 1.2rem; display:flex; justify-content:space-between; background:#eef3f1; color:#52645e; font-size:.72rem; font-weight:700; }
+    .fieldrow { display:grid; grid-template-columns:1.2fr .9fr 90px; gap:.75rem; align-items:center; padding:.7rem 1.2rem; border-top:1px solid #eee9e0; }
+    .fieldrow label { font-size:.76rem; }
+    .fieldrow select,.fieldrow input { width:100%; min-width:0; padding:.5rem; border:1px solid #d8d2c8; border-radius:7px; background:white; font-size:.74rem; }
+    .source { padding:.25rem .45rem; border-radius:99px; text-align:center; font-size:.58rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
+    .source.form { color:#176254; background:#dcefe9; }
+    .source.manual { color:#8b4c22; background:#fae7d8; }
+    .source.automatic { color:#435c7b; background:#e3ebf5; }
+    .changed { background:#fffaf1; }
+    .legend { display:flex; gap:.5rem; padding:1rem 1.2rem; flex-wrap:wrap; border-top:1px solid #e5ded3; }
+    .notice { margin-top:1rem; padding:1rem 1.2rem; border-radius:12px; color:#5f6f6a; background:#ebe6dc; font-size:.76rem; }
+    @media (max-width:1000px) { .predictions { grid-template-columns:repeat(3,1fr); } .workspace { grid-template-columns:1fr; } }
+    @media (max-width:650px) { .topbar,.hero { padding-left:1rem; padding-right:1rem; } .hero > div { display:block; } .heroactions { margin-top:1.4rem; } main { padding-left:1rem; padding-right:1rem; } .predictions { grid-template-columns:1fr 1fr; } .fieldrow { grid-template-columns:1fr; } .source { width:max-content; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">FutureInSites</a>
+    <nav class="nav"><a href="ai-guided-inquiry.html">Overview</a><a class="active" href="lead-scorer.html">Lead Scorer</a><a href="model-controls.html">Model Controls</a></nav>
+  </header>
+  <section class="hero"><div><div><p class="eyebrow">Benchmark model demonstration</p><h1>Lead Scorer</h1><p>Complete the inquiry on the left. Watch form, behavioral, and manually collected values populate one CRM-ready profile while all five predictions update in real time.</p></div><div class="heroactions"><button class="button" id="downloadButton" type="button">Download lead data</button><button class="button secondary" id="resetButton" type="button">Reset demo</button></div></div></section>
+  <main>
+    <section class="predictions" aria-label="Live predictions">
+      <article class="prediction"><div class="label">Who is searching</div><span class="value" id="searchingValue">Unknown</span><div class="detail" id="searchingDetail">0% coverage</div></article>
+      <article class="prediction"><div class="label">Who is driving</div><span class="value" id="drivingValue">Unknown</span><div class="detail" id="drivingDetail">0% coverage</div></article>
+      <article class="prediction"><div class="label">Who decides</div><span class="value" id="decidingValue">Unknown</span><div class="detail" id="decidingDetail">0% coverage</div></article>
+      <article class="prediction hot"><div class="label">Likelihood to convert</div><span class="value" id="conversionValue">50, Warm</span><div class="detail" id="conversionDetail">0% coverage</div></article>
+      <article class="prediction"><div class="label">Likely care level</div><span class="value" id="careValue">Unknown</span><div class="detail" id="careDetail">0% coverage</div></article>
+    </section>
+
+    <div class="workspace">
+      <section class="panel">
+        <div class="panelhead"><h2>Prospect inquiry</h2><span id="stepLabel">Step 1 of 7</span></div>
+        <div class="inquiry"><div class="progress"><i id="progressBar"></i></div><div id="questionArea"></div><div class="inquirynav"><button class="smallbutton" id="backButton" type="button" hidden>Back</button></div></div>
+      </section>
+      <section class="panel">
+        <div class="panelhead"><h2>CRM lead profile</h2><span id="completionValue">0 of 16 model fields known</span></div>
+        <div class="fields" id="fieldList"></div>
+        <div class="legend"><span class="source form">Form</span><span class="source automatic">Automatic</span><span class="source manual">Manual and editable</span></div>
+      </section>
+    </div>
+    <div class="notice">This is a transparent demonstration of the draft workbook logic. The browser stores no submitted record and sends no data. Unknown values remain neutral and reduce coverage. The production model should be calibrated against Benchmark outcomes before operational use.</div>
+  </main>
+  <script src="model-data.js"></script>
+  <script>
+    const model = window.BenchmarkModel;
+    const values = {};
+    model.variables.forEach(v => values[v.key] = "Unknown");
+    values.referral = "Online search";
+    values.entryPage = "Pricing or cost page";
+    values.engagement = "Submitted a form only";
+    const contact = { firstName:"", lastName:"", email:"", phone:"", intent:"" };
+    let step = 0;
+    const steps = [
+      { key:"relationship", prompt:"Who are you exploring senior living for?", helper:"The answer selects the resident, family, or professional journey.", options:["Self","Spouse or partner","Adult child","Other family member","Friend or neighbor","Professional (discharge planner, social worker, physician, care manager)"] },
+      { key:"intent", prompt:"What would be most helpful today?", helper:"This keeps Benchmark's current inquiry outcomes.", options:["Pricing or brochure","Advisor call","Schedule a tour","Help understanding options"] },
+      { key:"trigger", prompt:"What is prompting the search?", helper:"Choose the closest answer. More detail can wait for a counselor.", options:model.variables.find(v=>v.key==="trigger").options.map(o=>o[0]) },
+      { key:"timeline", prompt:"When might a move make sense?", helper:"This is the strongest early readiness signal in the draft model.", options:model.variables.find(v=>v.key==="timeline").options.map(o=>o[0]) },
+      { key:"careInterest", prompt:"Which support sounds closest?", helper:"This is a stated preference, not a clinical assessment.", options:model.variables.find(v=>v.key==="careInterest").options.map(o=>o[0]) },
+      { key:"contact", prompt:"Where can Benchmark save your personalized information?", helper:"Email first preserves a recoverable lead before requesting a phone number.", options:[] },
+      { key:"done", prompt:"Your inquiry profile is ready.", helper:"The advisor receives the same values shown in the CRM profile. Manual fields can be completed during follow-up.", options:[] }
+    ];
+
+    function deriveRelationship(value) {
+      values.relationship = value;
+      if (value === "Self" || value === "Spouse or partner") values.initiated = "Future resident";
+      else if (value === "Adult child") values.initiated = "Adult child";
+      else if (value.includes("Professional")) values.initiated = "Professional or physician";
+      else values.initiated = "Other family member";
+    }
+
+    function choose(key,value) {
+      if (key === "relationship") deriveRelationship(value); else if (key === "intent") { contact.intent=value; values.engagement = value === "Schedule a tour" ? "Requested a tour" : value === "Advisor call" ? "Called the community" : value === "Pricing or brochure" ? "Downloaded a guide" : "Submitted a form only"; } else values[key]=value;
+      step += 1; renderInquiry(); updateAll();
+    }
+
+    function renderInquiry() {
+      const s = steps[step];
+      document.getElementById("stepLabel").textContent = `Step ${step+1} of ${steps.length}`;
+      document.getElementById("progressBar").style.width = `${((step+1)/steps.length)*100}%`;
+      document.getElementById("backButton").hidden = step === 0 || step === steps.length-1;
+      const area = document.getElementById("questionArea");
+      if (s.key === "contact") {
+        area.innerHTML = `<h3 class="question">${s.prompt}</h3><p class="helper">${s.helper}</p><div class="contactgrid"><label>First name<input id="firstName" value="${contact.firstName}"></label><label>Last name<input id="lastName" value="${contact.lastName}"></label><label class="wide">Email<input type="email" id="email" value="${contact.email}"></label><label class="wide">Phone, optional<input id="phone" value="${contact.phone}"></label></div><div class="inquirynav"><button class="smallbutton primary" id="saveContact" type="button">Save and continue</button></div>`;
+        document.getElementById("saveContact").onclick = () => { ["firstName","lastName","email","phone"].forEach(k=>contact[k]=document.getElementById(k).value); step+=1; values.engagement="Submitted a form only"; renderInquiry(); updateAll(); };
+      } else if (s.key === "done") {
+        area.innerHTML = `<h3 class="question">${s.prompt}</h3><p class="helper">${s.helper}</p><div class="choices"><button class="choice" id="downloadInside" type="button">Download CRM-ready text record</button><a class="choice" style="text-decoration:none" href="model-controls.html">Open model controls</a></div>`;
+        document.getElementById("downloadInside").onclick = download;
+      } else {
+        area.innerHTML = `<h3 class="question">${s.prompt}</h3><p class="helper">${s.helper}</p><div class="choices">${s.options.map(o=>`<button class="choice" type="button" data-value="${o.replace(/"/g,"&quot;")}">${o}</button>`).join("")}</div>`;
+        area.querySelectorAll(".choice").forEach(b=>b.onclick=()=>choose(s.key,b.dataset.value));
+      }
+    }
+
+    function fieldControl(v) {
+      const current = values[v.key];
+      if (v.type === "number") return `<input data-key="${v.key}" type="number" min="0" value="${current === "Unknown" ? "" : current}" placeholder="Unknown">`;
+      return `<select data-key="${v.key}"><option>Unknown</option>${v.options.map(o=>`<option${o[0]===current?" selected":""}>${o[0]}</option>`).join("")}</select>`;
+    }
+
+    function renderFields() {
+      const list = document.getElementById("fieldList");
+      list.innerHTML = `<div class="groupbar"><span>Variables powering predictions</span><span>Live source</span></div>` + model.variables.map(v=>`<div class="fieldrow ${values[v.key]!=="Unknown"?"changed":""}"><label>${v.label}</label>${fieldControl(v)}<span class="source ${v.source}">${v.source}</span></div>`).join("");
+      list.querySelectorAll("select,input").forEach(el=>el.onchange=()=>{ values[el.dataset.key]=el.value===""?"Unknown":el.value; updateAll(); });
+    }
+
+    function pct(n) { return `${Math.round(n*100)}% coverage`; }
+    function updatePredictions() {
+      const r = model.calculate(values);
+      [["searching",r.searching],["driving",r.driving],["deciding",r.deciding]].forEach(([id,x])=>{ document.getElementById(id+"Value").textContent=x.coverage ? x.label : "Unknown"; document.getElementById(id+"Detail").textContent=`${pct(x.coverage)}, ${x.margin.toFixed(1)} point margin`; });
+      document.getElementById("conversionValue").textContent=`${Math.round(r.conversion.score)}, ${r.conversion.tier}`;
+      document.getElementById("conversionDetail").textContent=`${pct(r.conversion.coverage)}${r.conversion.capped?", capped by fit":""}`;
+      document.getElementById("careValue").textContent=r.care.coverage ? r.care.label : "Unknown";
+      document.getElementById("careDetail").textContent=`${pct(r.care.coverage)}, ${r.care.margin.toFixed(1)} point margin`;
+      const known=model.variables.filter(v=>values[v.key]!=="Unknown"&&values[v.key]!=="").length;
+      document.getElementById("completionValue").textContent=`${known} of ${model.variables.length} model fields known`;
+    }
+
+    function updateAll() { renderFields(); updatePredictions(); }
+
+    function download() {
+      const r=model.calculate(values);
+      const lines=["Benchmark Lead Scorer Demo","Generated: "+new Date().toLocaleString(),"","CONTACT",...Object.entries(contact).map(([k,v])=>`${k}: ${v||"Unknown"}`),"","PREDICTIONS",`Who is searching: ${r.searching.label}`,`Who is driving: ${r.driving.label}`,`Who decides: ${r.deciding.label}`,`Conversion: ${Math.round(r.conversion.score)} (${r.conversion.tier})`,`Care level: ${r.care.label}`,"","CRM FIELDS",...model.variables.map(v=>`${v.label}: ${values[v.key]||"Unknown"} [${v.source}]`)];
+      const blob=new Blob([lines.join("\n")],{type:"text/plain"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="benchmark-lead-profile.txt"; a.click(); URL.revokeObjectURL(a.href);
+    }
+
+    document.getElementById("backButton").onclick=()=>{ if(step>0){ step-=1; renderInquiry(); } };
+    document.getElementById("downloadButton").onclick=download;
+    document.getElementById("resetButton").onclick=()=>{ model.variables.forEach(v=>values[v.key]="Unknown"); values.referral="Online search"; values.entryPage="Pricing or cost page"; values.engagement="Submitted a form only"; Object.keys(contact).forEach(k=>contact[k]=""); step=0; renderInquiry(); updateAll(); };
+    renderInquiry(); updateAll();
+  </script>
+</body>
+</html>
