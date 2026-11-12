@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Benchmark AI Guided Inquiry Path | FutureInSites</title>
+  <meta name="description" content="Draft AI guided inquiry path for Benchmark Senior Living, integrating progressive lead scoring with distinct resident and adult child journeys.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f5f2ec; color: #15342f; font-family: "DM Sans", Arial, sans-serif; line-height: 1.55; }
+    button { font: inherit; }
+    .topbar { min-height: 62px; padding: 0 4vw; display: flex; align-items: center; justify-content: space-between; background: #15342f; color: white; }
+    .brand { color: white; text-decoration: none; font-weight: 600; letter-spacing: .01em; }
+    .draft { padding: .35rem .7rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; }
+    .sectionrail { display: flex; gap: 1.6rem; padding: .8rem 4vw; overflow-x: auto; background: #fff; border-bottom: 1px solid #ded9cf; white-space: nowrap; }
+    .sectionrail span { color: #77847f; font-size: .75rem; }
+    .sectionrail .active { color: #15342f; font-weight: 700; }
+    .hero { padding: clamp(4rem, 8vw, 7.5rem) 4vw 4.5rem; background: linear-gradient(135deg, #15342f 0%, #214d44 65%, #297064 100%); color: white; }
+    .heroinner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.2fr .8fr; gap: 5rem; align-items: end; }
+    .eyebrow { margin: 0 0 1rem; color: #a8d8cc; text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 700; }
+    h1, h2, h3 { margin-top: 0; }
+    h1 { max-width: 780px; margin-bottom: 1.3rem; font-family: "Newsreader", Georgia, serif; font-size: clamp(3rem, 6.6vw, 6.5rem); line-height: .95; font-weight: 500; letter-spacing: -.035em; }
+    .lede { max-width: 760px; margin: 0; color: #d5e8e3; font-size: clamp(1rem, 1.6vw, 1.25rem); }
+    .heroaside { border-left: 1px solid rgba(255,255,255,.3); padding-left: 2rem; }
+    .heroaside strong { display: block; margin-bottom: .45rem; color: #f5bd67; font-size: 2rem; }
+    .heroaside p { margin: 0; color: #d5e8e3; font-size: .92rem; }
+    main { max-width: 1180px; margin: auto; padding: 5rem 4vw 7rem; }
+    .introgrid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 5rem; margin-bottom: 5rem; }
+    h2 { font-family: "Newsreader", Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.05; font-weight: 600; letter-spacing: -.025em; }
+    .problem p { margin: 0 0 1rem; color: #50615c; }
+    .observed { padding: 1.2rem 1.4rem; background: #fff; border: 1px solid #ded9cf; border-left: 4px solid #d5824b; }
+    .observed strong { display: block; margin-bottom: .35rem; color: #15342f; }
+    .journeylegend { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
+    .legendcard { padding: 1.25rem; border-radius: 14px; background: #ebe6dc; }
+    .legendcard strong { display: block; margin-bottom: .25rem; }
+    .simulator { overflow: hidden; border: 1px solid #d7d0c4; border-radius: 22px; background: #fff; box-shadow: 0 25px 70px rgba(21,52,47,.12); }
+    .simhead { padding: 1.1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; background: #15342f; color: white; }
+    .simhead strong { font-size: .9rem; }
+    .simhead span { color: #b8cec8; font-size: .75rem; }
+    .simbody { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(260px, .75fr); min-height: 610px; }
+    .conversation { padding: clamp(1.5rem, 4vw, 3.5rem); }
+    .stepmeta { display: flex; justify-content: space-between; margin-bottom: 2rem; color: #6b7b76; font-size: .75rem; }
+    .progress { width: 120px; height: 6px; overflow: hidden; border-radius: 999px; background: #e7e2da; }
+    .progress i { display: block; width: 17%; height: 100%; background: #d5824b; transition: width .25s ease; }
+    .prompt { max-width: 650px; margin-bottom: 1.8rem; font-family: "Newsreader", Georgia, serif; font-size: clamp(1.8rem, 3.4vw, 2.8rem); line-height: 1.08; }
+    .helper { max-width: 620px; margin: -.7rem 0 1.6rem; color: #687873; font-size: .88rem; }
+    .options { display: grid; gap: .75rem; max-width: 680px; }
+    .option { width: 100%; padding: 1rem 1.1rem; display: flex; align-items: center; justify-content: space-between; text-align: left; color: #15342f; background: #f8f6f2; border: 1px solid #ded9cf; border-radius: 12px; cursor: pointer; transition: transform .15s, border-color .15s, background .15s; }
+    .option:hover, .option:focus-visible { transform: translateY(-2px); outline: none; border-color: #297064; background: #edf6f3; }
+    .option small { color: #7c8985; }
+    .back { margin-top: 1.5rem; padding: 0; color: #687873; background: none; border: 0; cursor: pointer; text-decoration: underline; }
+    .scorepanel { padding: 2rem 1.5rem; background: #eef3f1; border-left: 1px solid #d7dfdc; }
+    .scorelabel { margin-bottom: 1.2rem; color: #60716c; text-transform: uppercase; letter-spacing: .12em; font-size: .65rem; font-weight: 700; }
+    .signal { margin-bottom: 1.25rem; }
+    .signalhead { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .35rem; font-size: .78rem; }
+    .signalhead span:last-child { color: #566762; font-weight: 600; }
+    .meter { height: 7px; overflow: hidden; border-radius: 999px; background: #d7e0dd; }
+    .meter i { display: block; height: 100%; width: 0; background: #297064; transition: width .25s ease; }
+    .scoretext { min-height: 84px; margin: 1.5rem 0; padding: 1rem; border-radius: 10px; background: #fff; color: #52645e; font-size: .8rem; }
+    .capturetitle { margin: 1.4rem 0 .6rem; font-size: .78rem; }
+    .capturelist { margin: 0; padding: 0; list-style: none; color: #667671; font-size: .76rem; }
+    .capturelist li { padding: .38rem 0; border-bottom: 1px solid #d8e0dd; }
+    .capturelist b { color: #297064; }
+    .finalcard { padding: 1.5rem; border-radius: 14px; background: #edf6f3; border: 1px solid #bed8d1; }
+    .finalcard h3 { margin-bottom: .6rem; font-family: "Newsreader", Georgia, serif; font-size: 1.7rem; }
+    .finalcard p { color: #52645e; }
+    .restart { padding: .7rem 1rem; border: 0; border-radius: 9px; color: white; background: #15342f; cursor: pointer; }
+    .architecture { margin-top: 6rem; }
+    .architecture > p { max-width: 720px; color: #5d6d68; }
+    .stagelist { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2rem; }
+    .stage { min-height: 250px; padding: 1.5rem; border: 1px solid #d7d0c4; border-radius: 16px; background: #fff; }
+    .stage .num { display: block; margin-bottom: 1.2rem; color: #d5824b; font-size: .72rem; font-weight: 700; letter-spacing: .12em; }
+    .stage h3 { margin-bottom: .65rem; font-size: 1.02rem; }
+    .stage p, .stage li { color: #667671; font-size: .82rem; }
+    .stage ul { padding-left: 1.1rem; }
+    .audit { margin-top: 6rem; padding: clamp(2rem, 5vw, 4rem); color: white; background: #15342f; border-radius: 22px; }
+    .auditgrid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 4rem; }
+    .audit h2 { margin-bottom: 1rem; }
+    .audit p { color: #c5d8d3; }
+    .finding { padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.16); }
+    .finding strong { display: block; margin-bottom: .25rem; color: #f5bd67; }
+    .finding p { margin: 0; font-size: .88rem; }
+    .sourcebar { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid #d7d0c4; color: #697873; font-size: .72rem; }
+    @media (max-width: 850px) {
+      .heroinner, .introgrid, .auditgrid { grid-template-columns: 1fr; gap: 2rem; }
+      .heroaside { border-left: 0; border-top: 1px solid rgba(255,255,255,.3); padding: 1.5rem 0 0; }
+      .simbody { grid-template-columns: 1fr; }
+      .scorepanel { border-left: 0; border-top: 1px solid #d7dfdc; }
+      .stagelist { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .topbar { padding: 0 1rem; }
+      .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
+      main { padding-left: 1rem; padding-right: 1rem; }
+      .journeylegend { grid-template-columns: 1fr; }
+      .conversation { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">FutureInSites</a>
+    <span class="draft">Working case study</span>
+  </header>
+  <div class="sectionrail" aria-label="Case study sections">
+    <span>Executive summary</span><span>Research</span><span>Audience journey</span><span>Messaging</span><span>Channel plan</span><span>Creative</span><span class="active">AI guided inquiry</span><span>Measurement</span>
+  </div>
+  <section class="hero">
+    <div class="heroinner">
+      <div>
+        <p class="eyebrow">Benchmark Senior Living, AI marketing recommendation</p>
+        <h1>One inquiry. Two very different decisions.</h1>
+        <p class="lede">A progressive inquiry path that begins with who is searching, adapts the conversation to the resident or adult child, and steadily improves lead scoring without turning the first visit into an intake interview.</p>
+      </div>
+      <aside class="heroaside">
+        <strong>16 signals</strong>
+        <p>The draft model predicts who searches, drives, and decides, the likelihood to convert, and the likely care level. The inquiry path gathers only the highest value signals first.</p>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section class="introgrid">
+      <div>
+        <p class="eyebrow" style="color:#a85c31">The design question</p>
+        <h2>Ask less now. Learn more over time.</h2>
+      </div>
+      <div class="problem">
+        <p>Benchmark already supports the core outcomes people seek: pricing or a brochure, an advisor call, a tour, and other help. The gap is orchestration. A resident planning a lifestyle change and an adult child responding to a safety concern should not receive the same sequence, proof, or follow-up.</p>
+        <div class="observed"><strong>Observed on the Waltham page</strong>The standard information form requires first name, last name, email, phone, and an inquiry type. A separate pricing experience begins with “Myself” or “My Loved One.” The proposed path combines those useful elements into one progressive conversation.</div>
+        <div class="journeylegend">
+          <div class="legendcard"><strong>Prospective resident</strong>Lead with autonomy, lifestyle continuity, peer proof, and practical fit.</div>
+          <div class="legendcard"><strong>Adult child</strong>Lead with safety, care fit, family alignment, urgency, and fast access to a person.</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="prototype-title">
+      <p class="eyebrow" style="color:#a85c31">Interactive decision tree</p>
+      <h2 id="prototype-title">Try the guided inquiry path</h2>
+      <div class="simulator">
+        <div class="simhead"><strong>Benchmark inquiry guide</strong><span>Concept prototype, no information is submitted</span></div>
+        <div class="simbody">
+          <div class="conversation">
+            <div class="stepmeta"><span id="stepLabel">Step 1 of 6</span><div class="progress" aria-hidden="true"><i id="progressBar"></i></div></div>
+            <div id="questionArea"></div>
+            <button class="back" id="backButton" type="button" hidden>Back</button>
+          </div>
+          <aside class="scorepanel">
+            <div class="scorelabel">Model confidence grows as signals arrive</div>
+            <div class="signal"><div class="signalhead"><span>Journey role</span><span id="roleValue">Unknown</span></div><div class="meter"><i id="roleMeter"></i></div></div>
+            <div class="signal"><div class="signalhead"><span>Move readiness</span><span id="readyValue">Neutral</span></div><div class="meter"><i id="readyMeter"></i></div></div>
+            <div class="signal"><div class="signalhead"><span>Care fit</span><span id="careValue">Unknown</span></div><div class="meter"><i id="careMeter"></i></div></div>
+            <div class="signal"><div class="signalhead"><span>Data coverage</span><span id="coverValue">0%</span></div><div class="meter"><i id="coverMeter"></i></div></div>
+            <div class="scoretext" id="scoreText">The model begins neutral. Missing information lowers certainty rather than counting against the lead.</div>
+            <div class="capturetitle">Signal capture plan</div>
+            <ul class="capturelist">
+              <li><b>Now</b> role, intent, trigger, timeline</li>
+              <li><b>Next</b> email, community, preferred follow-up</li>
+              <li><b>Later</b> budget, family alignment, care detail</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="architecture">
+      <p class="eyebrow" style="color:#a85c31">Synchronized data strategy</p>
+      <h2>One profile, enriched across every touchpoint</h2>
+      <p>Each answer becomes a timestamped signal on one lead record. The scoring service recalculates after the web inquiry, advisor call, tour, and follow-up email, while preserving the source of each answer and the model’s confidence.</p>
+      <div class="stagelist">
+        <article class="stage"><span class="num">01, ONLINE</span><h3>Earn the next interaction</h3><p>Collect four strong signals before contact details, then ask for email so the conversation can be saved.</p><ul><li>Relationship to resident</li><li>What help is wanted</li><li>Primary trigger</li><li>Move timeline</li></ul></article>
+        <article class="stage"><span class="num">02, HUMAN FOLLOW-UP</span><h3>Resolve sensitive ambiguity</h3><p>A counselor confirms needs instead of asking the visitor to diagnose a care level.</p><ul><li>Decision participants and approval</li><li>Family agreement</li><li>Budget and location fit</li><li>Daily living and memory needs</li></ul></article>
+        <article class="stage"><span class="num">03, BEHAVIOR</span><h3>Let actions update readiness</h3><p>Observed engagement is often more reliable than another form field.</p><ul><li>Guide downloaded</li><li>Call completed</li><li>Tour requested or completed</li><li>Email response and stated changes</li></ul></article>
+      </div>
+    </section>
+
+    <section class="audit">
+      <div class="auditgrid">
+        <div><p class="eyebrow">Model review</p><h2>Sound prototype, with five issues to fix before production.</h2><p>The workbook is useful for designing journeys, but it is still an assumption model. It should guide what to learn next, not make admissions, pricing, or care decisions.</p></div>
+        <div>
+          <div class="finding"><strong>1. Neutral values still affect predictions</strong><p>Unknown answers receive neutral points and remain in the prediction denominator. Coverage is shown separately, but a sparse profile can still display a precise classification. Suppress or clearly label predictions below the certainty threshold.</p></div>
+          <div class="finding"><strong>2. Role can be counted twice</strong><p>Relationship to the resident and who initiated the search overlap strongly. Keep both only when they answer distinct operating questions, then calibrate their weights to avoid overconfidence.</p></div>
+          <div class="finding"><strong>3. Stated care interest influences role</strong><p>Care level choices help infer journey type, but they can reinforce the same adult child pattern already captured by relationship and trigger. Test for correlated inputs before training a production model.</p></div>
+          <div class="finding"><strong>4. Pricing and distance thresholds are placeholders</strong><p>They vary by community and care level. Do not expose lead tiers based on the current ranges until Benchmark supplies local pricing, catchment, availability, and outcome data.</p></div>
+          <div class="finding"><strong>5. Conversion points require calibration</strong><p>The current weights and answer points are team assumptions. Back-test against inquiry, tour, deposit, move-in, lost-lead reason, and time-to-conversion data, then monitor performance by audience and protected class proxies.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sourcebar">Working concept based on the Benchmark project materials, the draft lead-scoring workbook dated November 2, 2026, and the live Benchmark Senior Living at Waltham Crossings inquiry experiences reviewed November 12, 2026. This prototype does not provide medical advice or determine eligibility for care.</div>
+  </main>
+
+  <script>
+    const state = { step: 0, answers: {} };
+    const questions = [
+      {
+        key: "role",
+        prompt: "Who are you exploring senior living for?",
+        helper: "This first answer changes the language, proof, and follow-up path.",
+        options: [
+          ["myself", "Myself", "Prospective resident path"],
+          ["child", "My parent or loved one", "Adult child path"],
+          ["other", "Someone I support professionally", "Referral path"]
+        ]
+      },
+      {
+        key: "intent",
+        prompt: "What would be most helpful today?",
+        helper: "These choices preserve Benchmark's current inquiry outcomes.",
+        options: [
+          ["pricing", "See pricing and availability", "Personalized information"],
+          ["advisor", "Talk with an advisor", "Ask questions first"],
+          ["tour", "Schedule a tour", "Visit the community"],
+          ["brochure", "Get a brochure or guide", "Explore at my pace"],
+          ["unsure", "Help me understand the options", "Guided education"]
+        ]
+      },
+      {
+        key: "trigger",
+        prompt: "What is prompting the search?",
+        helper: "Choose the closest answer. A counselor can add detail later.",
+        options: []
+      },
+      {
+        key: "timeline",
+        prompt: "When might a move make sense?",
+        helper: "This helps Benchmark respond at the right pace.",
+        options: [
+          ["30", "Within 30 days", "Immediate planning"],
+          ["90", "One to three months", "Active planning"],
+          ["180", "Three to six months", "Comparing options"],
+          ["later", "More than six months", "Early research"],
+          ["unknown", "I am not sure yet", "Keep exploring"]
+        ]
+      },
+      {
+        key: "care",
+        prompt: "Which kind of support sounds closest?",
+        helper: "This is a preference, not a clinical assessment.",
+        options: [
+          ["independent", "A more social, maintenance free lifestyle", "Independent living"],
+          ["assisted", "Some help with daily routines", "Assisted living"],
+          ["memory", "Support for memory changes", "Mind & Memory Care"],
+          ["respite", "A short stay or caregiver break", "Respite care"],
+          ["unsure", "I would like help deciding", "Advisor guidance"]
+        ]
+      },
+      { key: "result", prompt: "", helper: "", options: [] }
+    ];
+
+    const triggerSets = {
+      myself: [
+        ["connection", "More connection, activities, or purpose", "Lifestyle"],
+        ["maintenance", "Home upkeep is becoming a burden", "Convenience"],
+        ["future", "I want a plan for future support", "Planning"],
+        ["health", "A recent health change", "Care need"],
+        ["unsure", "I am simply exploring", "Early research"]
+      ],
+      child: [
+        ["safety", "A safety or caregiving concern", "Family concern"],
+        ["health", "A fall, hospital stay, or rehab discharge", "Health event"],
+        ["memory", "Memory or cognitive changes", "Memory concern"],
+        ["isolation", "Isolation or loss of a spouse", "Social need"],
+        ["planning", "We are planning before it becomes urgent", "Planning"]
+      ],
+      other: [
+        ["referral", "I am making a professional referral", "Referral"],
+        ["discharge", "A discharge or transition is approaching", "Time sensitive"],
+        ["information", "I need community information", "Research"],
+        ["other", "Something else", "Advisor help"]
+      ]
+    };
+
+    const area = document.getElementById("questionArea");
+    const back = document.getElementById("backButton");
+
+    function choose(key, value) {
+      state.answers[key] = value;
+      state.step += 1;
+      render();
+    }
+
+    function labelFor(key, value) {
+      const q = questions.find(item => item.key === key);
+      let choices = q ? q.options : [];
+      if (key === "trigger") choices = triggerSets[state.answers.role] || triggerSets.other;
+      const match = choices.find(item => item[0] === value);
+      return match ? match[1] : value;
+    }
+
+    function readiness() {
+      const t = state.answers.timeline;
+      if (t === "30") return [92, "Hot"];
+      if (t === "90") return [76, "Warm"];
+      if (t === "180") return [60, "Warm"];
+      if (t === "later") return [38, "Nurture"];
+      return [50, "Neutral"];
+    }
+
+    function updateScore() {
+      const count = Object.keys(state.answers).length;
+      const coverage = Math.min(100, count * 17);
+      const role = state.answers.role;
+      const care = state.answers.care;
+      const ready = readiness();
+      document.getElementById("roleValue").textContent = role ? (role === "myself" ? "Resident" : role === "child" ? "Adult child" : "Referral") : "Unknown";
+      document.getElementById("roleMeter").style.width = role ? "88%" : "0%";
+      document.getElementById("readyValue").textContent = ready[1];
+      document.getElementById("readyMeter").style.width = state.answers.timeline ? ready[0] + "%" : "0%";
+      document.getElementById("careValue").textContent = care ? labelFor("care", care).replace("A more social, maintenance free lifestyle", "Independent living").replace("Some help with daily routines", "Assisted living").replace("Support for memory changes", "Memory care").replace("A short stay or caregiver break", "Respite") : "Unknown";
+      document.getElementById("careMeter").style.width = care ? (care === "unsure" ? "45%" : "82%") : "0%";
+      document.getElementById("coverValue").textContent = coverage + "%";
+      document.getElementById("coverMeter").style.width = coverage + "%";
+      const text = document.getElementById("scoreText");
+      if (!count) text.textContent = "The model begins neutral. Missing information lowers certainty rather than counting against the lead.";
+      else if (count < 3) text.textContent = "The journey is personalized, but the score remains provisional. The next question should reduce the largest uncertainty.";
+      else if (count < 5) text.textContent = "There is enough information to choose a response pace and recommended content. Sensitive details can wait for a person.";
+      else text.textContent = "The digital profile is ready for handoff. New call, tour, and email signals should update the same record rather than restart intake.";
+    }
+
+    function renderResult() {
+      const role = state.answers.role;
+      const ready = readiness()[1];
+      const roleText = role === "myself" ? "resident centered" : role === "child" ? "adult child" : "professional referral";
+      const next = state.answers.intent === "tour" ? "Offer tour times without asking the same questions again." : state.answers.intent === "advisor" ? "Offer a fast advisor callback and pass the context forward." : "Offer the requested information, then let the visitor choose email or an advisor conversation.";
+      area.innerHTML = `<div class="finalcard"><p class="eyebrow" style="color:#a85c31">Recommended handoff</p><h3>${roleText} path, ${ready.toLowerCase()} follow-up</h3><p>${next}</p><p><strong>CRM context:</strong> ${labelFor("intent", state.answers.intent)}, prompted by ${labelFor("trigger", state.answers.trigger).toLowerCase()}, timeline ${labelFor("timeline", state.answers.timeline).toLowerCase()}, stated fit ${labelFor("care", state.answers.care).toLowerCase()}.</p><button class="restart" type="button" id="restartButton">Try another path</button></div>`;
+      document.getElementById("restartButton").addEventListener("click", () => { state.step = 0; state.answers = {}; render(); });
+    }
+
+    function render() {
+      const q = questions[state.step];
+      document.getElementById("stepLabel").textContent = `Step ${Math.min(state.step + 1, 6)} of 6`;
+      document.getElementById("progressBar").style.width = `${Math.min(100, (state.step + 1) * 17)}%`;
+      back.hidden = state.step === 0 || state.step === 5;
+      if (state.step === 5) {
+        renderResult();
+        updateScore();
+        return;
+      }
+      let options = q.options;
+      if (q.key === "trigger") options = triggerSets[state.answers.role] || triggerSets.other;
+      area.innerHTML = `<h3 class="prompt">${q.prompt}</h3><p class="helper">${q.helper}</p><div class="options">${options.map(item => `<button type="button" class="option" data-value="${item[0]}"><span>${item[1]}</span><small>${item[2]}</small></button>`).join("")}</div>`;
+      area.querySelectorAll(".option").forEach(button => button.addEventListener("click", () => choose(q.key, button.dataset.value)));
+      updateScore();
+    }
+
+    back.addEventListener("click", () => {
+      const currentKey = questions[state.step - 1].key;
+      delete state.answers[currentKey];
+      state.step -= 1;
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
