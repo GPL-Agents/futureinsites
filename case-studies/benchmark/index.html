@@ -29,6 +29,11 @@
     .workstream b { display: block; margin-bottom: 1rem; color: #cde89d; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; }
     .workstream h3 { font-family: Merriweather,Georgia,serif; font-size: 1.6rem; }
     .workstream p { color: rgba(255,255,255,.84); }
+    .workstream-photo { margin:1.4rem 0 0; overflow:hidden; border-radius:11px; background:rgba(255,255,255,.12); }
+    .workstream-photo img { display:block; width:100%; aspect-ratio:16/8; object-fit:cover; }
+    .workstream-photo figcaption { padding:.75rem .9rem; color:rgba(255,255,255,.78); font-size:.72rem; }
+    .workstream-list { margin:1.4rem 0 0; padding:1rem 1rem 1rem 2rem; color:rgba(255,255,255,.82); background:rgba(255,255,255,.1); border-radius:11px; font-size:.86rem; }
+    .workstream-list li + li { margin-top:.45rem; }
     .project-map { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
     .map-card { display: block; min-height: 220px; padding: 1.5rem; color: inherit; text-decoration: none; background: white; border: 1px solid #dbe2df; border-radius: 14px; transition: transform .18s,border-color .18s; }
     .map-card:hover { transform: translateY(-4px); border-color: #007672; }
@@ -56,8 +61,8 @@
 
     <h2 class="section-heading">Two workstreams reinforce one another</h2>
     <section class="workstreams">
-      <article class="workstream"><b>Marketing about AI</b><h3>Connected with Confidence</h3><p>A local education program that helps older adults and families use technology with confidence, recognize scams, and discover practical tools through trusted community events.</p></article>
-      <article class="workstream"><b>Marketing with AI</b><h3>More relevant inquiry and follow-up</h3><p>Audience insight, conversational inquiry paths, live lead scoring, personalized content, and better measurement from inquiry through tour and move-in.</p></article>
+      <article class="workstream"><b>Recommendation 01, Marketing about AI</b><h3>Connected with Confidence</h3><p>In-person AI and technology safety training helps older adults and families use digital tools with confidence, recognize scams, and experience Benchmark as a trusted local resource.</p><figure class="workstream-photo"><img src="/case-studies/benchmark/assets/community-ai-class.jpg" alt="Older adults attending an in-person technology training session"><figcaption>A teaching session demonstrates how the program can create a useful, low-pressure reason to visit a Benchmark community.</figcaption></figure></article>
+      <article class="workstream"><b>Recommendation 02, Marketing with AI</b><h3>More relevant inquiry and follow-up</h3><p>Audience insight, conversational inquiry paths, live lead scoring, personalized content, and better measurement from inquiry through tour and move-in.</p><ul class="workstream-list"><li>Distinct resident and adult child paths</li><li>Progressive questions that protect completion</li><li>Scores that update as new signals arrive</li><li>One CRM-ready profile across channels</li></ul></article>
     </section>
 
     <h2 class="section-heading">Explore the campaign recommendation</h2>
