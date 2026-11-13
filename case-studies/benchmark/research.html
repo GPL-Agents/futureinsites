@@ -12,7 +12,9 @@
   <style>
     * { box-sizing:border-box; } body { margin:0; line-height:1.55; }
     .research-hero { padding:3.5rem 4vw; color:white; background:linear-gradient(120deg,#004d7c,#007672); }
-    .research-hero div { max-width:1180px; margin:auto; }
+    .research-hero .hero-layout { max-width:1180px; margin:auto; display:grid; grid-template-columns:1.08fr .92fr; gap:3rem; align-items:center; }
+    .research-hero figure { margin:0; overflow:hidden; border-radius:18px; box-shadow:0 20px 45px rgba(0,31,50,.22); }
+    .research-hero img { display:block; width:100%; height:430px; object-fit:cover; }
     .research-hero h1 { max-width:850px; margin:.5rem 0 1rem; font-family:Merriweather,Georgia,serif; font-size:clamp(2.8rem,5.5vw,5.4rem); line-height:1.02; }
     .research-hero p { max-width:780px; color:#e3f0ed; font-size:1.12rem; }
     .finding-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
@@ -24,7 +26,7 @@
     .role { padding:1rem; text-align:center; background:#eff6f4; border-radius:12px; }
     .role i { display:grid; place-items:center; width:48px; height:48px; margin:0 auto .8rem; color:white; background:#007672; border-radius:50%; font-style:normal; font-weight:800; }
     .evidence-note { margin-top:3rem; padding:1.5rem; background:#fff8e7; border-left:4px solid #d7a928; }
-    @media(max-width:850px){.finding-grid{grid-template-columns:1fr}.decision-network{grid-template-columns:1fr 1fr}.stat-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:850px){.research-hero .hero-layout{grid-template-columns:1fr}.research-hero img{height:auto;aspect-ratio:16/9}.finding-grid{grid-template-columns:1fr}.decision-network{grid-template-columns:1fr 1fr}.stat-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:480px){.decision-network,.stat-grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -34,8 +36,8 @@
     <a class="project-credit" href="team-references.html"><strong>Boston College</strong><span>Carroll School of Management</span></a>
 <nav class="benchmark-nav" aria-label="Project navigation"><a href="index.html">Overview</a><a class="active" href="research.html">Research</a><a href="journeys.html">Journeys</a><a href="connected-with-confidence.html">Campaign</a><a href="ai-guided-inquiry.html">AI Inquiry</a><a href="implementation.html">Implementation</a><a href="team-references.html">Appendix</a><a class="more-link" href="team-references.html">More</a></nav>
   </header>
-  <nav class="sectionrail" aria-label="Research sections"><a href="#market-pressure">Market Pressure</a><a href="#decision-network">Decision Network</a><a href="#campaign-findings">Campaign Findings</a></nav>
-  <section class="research-hero"><div><p class="project-kicker" style="color:#cde89d">Market and decision research</p><h1>Senior living is chosen by a network, not one buyer.</h1><p>Practical fit creates the shortlist. People, place, and lived experience determine which viable option feels right.</p></div></section>
+  <nav class="sectionrail" aria-label="Research sections"><a href="#market-pressure">Market Pressure</a><a href="#decision-network">Decision Network</a><a href="#price-gate">Price Gate</a><a href="#campaign-findings">Campaign Findings</a></nav>
+  <section class="research-hero"><div class="hero-layout"><div><p class="project-kicker" style="color:#cde89d">Market and decision research</p><h1>Senior living is chosen by a network, not one buyer.</h1><p>Practical fit creates the shortlist. People, place, and lived experience determine which viable option feels right.</p></div><figure><img src="assets/seniors-community-tour.webp" alt="An older couple and a family member touring a senior living community"></figure></div></section>
   <main class="project-shell">
     <section class="stat-grid">
       <article class="stat-card"><strong>32,200</strong>U.S. residential care communities in 2022<a class="citation" href="team-references.html#ref-31">31</a></article>
@@ -62,10 +64,17 @@
     </section>
     <p>The resident, researcher, influencer, payer, and final approver may be the same person or several people. Leadership shifts with care level, cognition, urgency, and family circumstances.</p>
 
+    <h2 class="section-heading" id="price-gate">After location, price is the second practical gate</h2>
+    <section class="finding-grid">
+      <article class="finding-card"><b>QUALIFICATION</b><h3>Financial fit determines whether the journey can continue</h3><p>Once a viable location is established, families need a credible monthly comparison before a community can remain on the shortlist.</p></article>
+      <article class="finding-card"><b>DECISION ROLE</b><h3>The adult child often organizes the financial question</h3><p>Cost research can bring an adult child into the process as researcher, coordinator, payer, or decision driver while the resident remains central to the choice.</p></article>
+      <article class="finding-card"><b>ACQUISITION</b><h3>A useful tool can create first-party demand</h3><p>An interactive cost comparison can answer a high-intent question directly, earn search visibility, and capture leads before an aggregator owns the relationship. <a href="cost-comparison.html">View the recommendation.</a></p></article>
+    </section>
+
     <h2 class="section-heading" id="campaign-findings">Six findings shape the campaign</h2>
     <section class="finding-grid">
       <article class="finding-card"><b>01</b><h3>Resident leadership is strongest in planned moves</h3><p>About 80% of users of an independent living oriented downsizing tool were older adults, while about 90% of users of a memory care tool were family or others. These are platform patterns, not population estimates.<a class="citation" href="team-references.html#ref-22">22</a></p></article>
-      <article class="finding-card"><b>02</b><h3>Practical fit is the first gate</h3><p>Price, location, availability, and care level determine which communities remain viable. Experience differentiates the options that pass.<a class="citation" href="team-references.html#ref-3">3</a><a class="citation" href="team-references.html#ref-4">4</a></p></article>
+      <article class="finding-card"><b>02</b><h3>Practical fit has a clear sequence</h3><p>Location establishes viability first. Price and financial fit are the second gate, followed by availability and care fit. Experience differentiates the options that pass.<a class="citation" href="team-references.html#ref-3">3</a><a class="citation" href="team-references.html#ref-4">4</a></p></article>
       <article class="finding-card"><b>03</b><h3>People are the proof</h3><p>Among adults ages 60 to 90 who would consider senior living, 54% said knowing a resident shaped their views, and 43% said private access to residents or families would increase trust.<a class="citation" href="team-references.html#ref-8">8</a></p></article>
       <article class="finding-card"><b>04</b><h3>The tour converts claims into evidence</h3><p>Prospects observe staff behavior, meals, activities, apartments, and everyday community life. One qualitative study found families narrowed the field to about three communities and toured each.<a class="citation" href="team-references.html#ref-3">3</a><a class="citation" href="team-references.html#ref-7">7</a></p></article>
       <article class="finding-card"><b>05</b><h3>Local intent dominates search</h3><p>Ten of the top 15 terms in the team keyword sample included “near me.” Cost queries were lower volume but cheaper and likely closer to active consideration.</p></article>
