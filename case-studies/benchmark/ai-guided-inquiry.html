@@ -31,6 +31,9 @@
     .heroaside { padding:1.2rem 1.35rem; border:1px solid rgba(255,255,255,.22); border-radius:14px; background:rgba(255,255,255,.08); }
     .heroaside strong { display: block; margin-bottom: .45rem; color: #f5bd67; font-size: 2rem; }
     .heroaside p { margin: 0; color: #d5e8e3; font-size: .92rem; }
+    .formintro { display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; margin:.3rem 0 1rem; padding:.85rem 1rem; color:#15342f; background:#e8f1ee; border-left:4px solid #297064; border-radius:0 10px 10px 0; }
+    .formintro strong { color:#a85c31; font-size:1.25rem; white-space:nowrap; }
+    .formintro p { margin:0; color:#52645e; font-size:.88rem; }
     main { width:min(92%,1180px); margin: auto; padding: 1.75rem 0 3rem; }
     .introgrid { margin-bottom: 3.5rem; }
     .introheading { max-width: 780px; margin-bottom: 2rem; }
@@ -107,7 +110,7 @@
       .conversation { padding: 1.25rem; }
     }
   </style>
-  <link rel="stylesheet" href="benchmark-theme.css?v=compact-heroes">
+  <link rel="stylesheet" href="benchmark-theme.css?v=signals-by-form">
 </head>
 <body>
   <header class="topbar benchmark-header">
@@ -125,7 +128,7 @@
         <h1>One inquiry. Two very different decisions.</h1>
         <p class="lede">A progressive inquiry path that begins with who is searching, adapts the conversation to the resident or adult child, and steadily improves lead scoring without turning the first visit into an intake interview.</p>
       </div>
-      <div class="heromedia"><figure class="heroimage"><img src="assets/senior-using-mobile.jpg" alt="An older woman using a mobile phone at home"></figure><aside class="heroaside"><strong>16 signals</strong><p>The model predicts who searches, drives, and decides, the likelihood to convert, and the likely care level. The inquiry path gathers only the highest value signals first.</p></aside></div>
+      <div class="heromedia"><figure class="heroimage"><img src="assets/senior-using-mobile.jpg" alt="An older woman using a mobile phone at home"></figure></div>
     </div>
   </section>
 
@@ -133,6 +136,7 @@
     <section aria-labelledby="inquiry-title">
       <p class="eyebrow" style="color:#a85c31">Interactive decision tree</p>
       <h2 id="inquiry-title">Try the guided inquiry path</h2>
+      <div class="formintro"><strong>16 signals</strong><p>The inquiry gathers the highest-value signals first, then updates predictions for who searches, drives, and decides, likelihood to convert, and likely care level.</p></div>
       <div class="simulator">
         <div class="simhead"><strong>Benchmark inquiry guide</strong><span>Interactive demonstration, no information is submitted</span></div>
         <div class="simbody">
