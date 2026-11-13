@@ -209,16 +209,16 @@ h2,
 
 .project-hero .hero-photo img,
 .campaign-hero .hero-photo img {
-  height: 250px !important;
+  height: 310px !important;
   aspect-ratio: auto !important;
   object-fit: cover !important;
 }
 
-.research-hero img { height: 250px !important; }
-.journey-hero figure img { height: 230px !important; }
+.research-hero img { height: 310px !important; }
+.journey-hero figure img { height: 280px !important; }
 .hero .heroimage { margin-bottom: .65rem !important; }
 .hero .heroimage img {
-  height: 290px !important;
+  height: 300px !important;
   aspect-ratio: auto !important;
   object-fit: cover !important;
 }
