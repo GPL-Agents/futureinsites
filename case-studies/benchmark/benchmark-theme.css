@@ -346,7 +346,7 @@ summary:after,
   background: #eef4e5 !important;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1280px) {
   .benchmark-header {
     grid-template-columns: 1fr auto !important;
     padding: .9rem 1rem !important;
@@ -362,6 +362,9 @@ summary:after,
     justify-content: center;
     padding-top: .7rem;
   }
+}
+
+@media (max-width: 760px) {
   .card-grid, .stat-grid { grid-template-columns: 1fr 1fr; }
 }
 
