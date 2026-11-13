@@ -20,30 +20,30 @@
     .sectionrail span { color: #77847f; font-size: .75rem; }
     .sectionrail .active { color: #15342f; font-weight: 700; }
     .hero { padding: clamp(4rem, 8vw, 7.5rem) 4vw 4.5rem; background: linear-gradient(135deg, #15342f 0%, #214d44 65%, #297064 100%); color: white; }
-    .heroinner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.2fr .8fr; gap: 5rem; align-items: end; }
+    .heroinner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: minmax(0,1.05fr) minmax(360px,.95fr); gap: clamp(2.5rem,5vw,5rem); align-items: center; }
     .eyebrow { margin: 0 0 1rem; color: #a8d8cc; text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 700; }
     h1, h2, h3 { margin-top: 0; }
-    h1 { max-width: 780px; margin-bottom: 1.3rem; font-family: "Newsreader", Georgia, serif; font-size: clamp(3rem, 6.6vw, 6.5rem); line-height: .95; font-weight: 500; letter-spacing: -.035em; }
+    h1 { max-width: 720px; margin-bottom: 1.3rem; font-family: "Newsreader", Georgia, serif; font-size: clamp(3rem, 5vw, 5.5rem); line-height: .98; font-weight: 500; letter-spacing: -.035em; }
     .lede { max-width: 760px; margin: 0; color: #d5e8e3; font-size: clamp(1rem, 1.6vw, 1.25rem); }
-    .heroaside { border-left: 1px solid rgba(255,255,255,.3); padding-left: 2rem; }
+    .heromedia { min-width:0; }
+    .heroimage { margin:0 0 1.2rem; overflow:hidden; border-radius:18px; box-shadow:0 22px 55px rgba(8,35,31,.28); }
+    .heroimage img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center 42%; }
+    .heroaside { padding:1.2rem 1.35rem; border:1px solid rgba(255,255,255,.22); border-radius:14px; background:rgba(255,255,255,.08); }
     .heroaside strong { display: block; margin-bottom: .45rem; color: #f5bd67; font-size: 2rem; }
     .heroaside p { margin: 0; color: #d5e8e3; font-size: .92rem; }
     main { max-width: 1180px; margin: auto; padding: 5rem 4vw 7rem; }
     .introgrid { margin-bottom: 5rem; }
     .introheading { max-width: 780px; margin-bottom: 2rem; }
     h2 { font-family: "Newsreader", Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.05; font-weight: 600; letter-spacing: -.025em; }
-    .problem { display:grid; grid-template-columns:minmax(0,1fr) minmax(360px,.9fr); gap:1.5rem; align-items:stretch; }
+    .problem { display:block; }
     .problem p { margin: 0 0 1rem; color: #50615c; }
-    .problem > p { grid-column:1 / -1; max-width:900px; font-size:1.05rem; }
-    .introdetails { display:flex; flex-direction:column; gap:1rem; }
+    .problem > p { max-width:900px; font-size:1.05rem; }
+    .introdetails { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:1rem; align-items:stretch; }
     .observed { padding: 1.2rem 1.4rem; background: #fff; border: 1px solid #ded9cf; border-left: 4px solid #d5824b; }
     .observed strong { display: block; margin-bottom: .35rem; color: #15342f; }
     .journeylegend { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
     .legendcard { padding: 1.25rem; border-radius: 14px; background: #ebe6dc; }
     .legendcard strong { display: block; margin-bottom: .25rem; }
-    .context-photo { margin:0; overflow:hidden; display:flex; flex-direction:column; border-radius:14px; background:#fff; border:1px solid #ded9cf; }
-    .context-photo img { display:block; width:100%; min-height:0; flex:1; object-fit:cover; object-position:center; }
-    .context-photo figcaption { padding:.8rem 1rem; color:#52645e; font-size:.76rem; }
     .simulator { overflow: hidden; border: 1px solid #d7d0c4; border-radius: 22px; background: #fff; box-shadow: 0 25px 70px rgba(21,52,47,.12); }
     .simhead { padding: 1.1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; background: #15342f; color: white; }
     .simhead strong { font-size: .9rem; }
@@ -94,10 +94,7 @@
     .sourcebar { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid #d7d0c4; color: #697873; font-size: .72rem; }
     @media (max-width: 850px) {
       .heroinner, .auditgrid { grid-template-columns: 1fr; gap: 2rem; }
-      .problem { grid-template-columns:1fr; }
-      .problem > p { grid-column:auto; }
-      .context-photo img { aspect-ratio:16/10; }
-      .heroaside { border-left: 0; border-top: 1px solid rgba(255,255,255,.3); padding: 1.5rem 0 0; }
+      .introdetails { grid-template-columns:1fr; }
       .simbody { grid-template-columns: 1fr; }
       .scorepanel { border-left: 0; border-top: 1px solid #d7dfdc; }
       .stagelist { grid-template-columns: 1fr; }
@@ -128,10 +125,7 @@
         <h1>One inquiry. Two very different decisions.</h1>
         <p class="lede">A progressive inquiry path that begins with who is searching, adapts the conversation to the resident or adult child, and steadily improves lead scoring without turning the first visit into an intake interview.</p>
       </div>
-      <aside class="heroaside">
-        <strong>16 signals</strong>
-        <p>The model predicts who searches, drives, and decides, the likelihood to convert, and the likely care level. The inquiry path gathers only the highest value signals first.</p>
-      </aside>
+      <div class="heromedia"><figure class="heroimage"><img src="assets/senior-using-mobile.jpg" alt="An older woman using a mobile phone at home"></figure><aside class="heroaside"><strong>16 signals</strong><p>The model predicts who searches, drives, and decides, the likelihood to convert, and the likely care level. The inquiry path gathers only the highest value signals first.</p></aside></div>
     </div>
   </section>
 
@@ -150,7 +144,6 @@
             <div class="legendcard"><strong>Adult child</strong>Lead with safety, care fit, family alignment, urgency, and fast access to a person.</div>
           </div>
         </div>
-        <figure class="context-photo"><img src="assets/senior-using-mobile.jpg" alt="An older woman using a mobile phone at home"><figcaption>The guided inquiry should feel natural on the device a prospective resident or family member already uses.</figcaption></figure>
       </div>
     </section>
 
