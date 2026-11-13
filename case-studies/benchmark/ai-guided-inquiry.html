@@ -19,7 +19,7 @@
     .sectionrail { display: flex; gap: 1.6rem; padding: .8rem max(4vw, calc((100vw - 1180px) / 2)); overflow-x: auto; background: #fff; border-bottom: 1px solid #ded9cf; white-space: nowrap; }
     .sectionrail span { color: #77847f; font-size: .75rem; }
     .sectionrail .active { color: #15342f; font-weight: 700; }
-    .hero { padding: clamp(2.5rem, 4vw, 4rem) 4vw 3.5rem; background: linear-gradient(135deg, #15342f 0%, #214d44 65%, #297064 100%); color: white; }
+    .hero { padding: 1.5rem 4vw; background: linear-gradient(135deg, #15342f 0%, #214d44 65%, #297064 100%); color: white; }
     .heroinner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: minmax(0,1.05fr) minmax(360px,.95fr); gap: clamp(2.5rem,5vw,5rem); align-items: center; }
     .eyebrow { margin: 0 0 1rem; color: #a8d8cc; text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 700; }
     h1, h2, h3 { margin-top: 0; }
@@ -27,11 +27,11 @@
     .lede { max-width: 760px; margin: 0; color: #d5e8e3; font-size: clamp(1rem, 1.6vw, 1.25rem); }
     .heromedia { min-width:0; }
     .heroimage { margin:0 0 1.2rem; overflow:hidden; border-radius:18px; box-shadow:0 22px 55px rgba(8,35,31,.28); }
-    .heroimage img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center 42%; }
+    .heroimage img { display:block; width:100%; height:210px; object-fit:cover; object-position:center 42%; }
     .heroaside { padding:1.2rem 1.35rem; border:1px solid rgba(255,255,255,.22); border-radius:14px; background:rgba(255,255,255,.08); }
     .heroaside strong { display: block; margin-bottom: .45rem; color: #f5bd67; font-size: 2rem; }
     .heroaside p { margin: 0; color: #d5e8e3; font-size: .92rem; }
-    main { width:min(92%,1180px); margin: auto; padding: 3.5rem 0 4.5rem; }
+    main { width:min(92%,1180px); margin: auto; padding: 1.75rem 0 3rem; }
     .introgrid { margin-bottom: 3.5rem; }
     .introheading { max-width: 780px; margin-bottom: 2rem; }
     h2 { font-family: "Newsreader", Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.05; font-weight: 600; letter-spacing: -.025em; }
@@ -107,7 +107,7 @@
       .conversation { padding: 1.25rem; }
     }
   </style>
-  <link rel="stylesheet" href="benchmark-theme.css?v=presentation-pages">
+  <link rel="stylesheet" href="benchmark-theme.css?v=compact-heroes">
 </head>
 <body>
   <header class="topbar benchmark-header">
@@ -164,9 +164,9 @@
       <h2>One profile, enriched across every touchpoint</h2>
       <p>Each answer becomes a timestamped signal on one lead record. The scoring service recalculates after the web inquiry, advisor call, tour, and follow-up email, while preserving the source of each answer and the model’s confidence.</p>
       <div class="stagelist">
-        <article class="stage"><span class="num">01, ONLINE</span><h3>Earn the next interaction</h3><p>Collect four strong signals before contact details, then ask for email so the conversation can be saved.</p><ul><li>Relationship to resident</li><li>What help is wanted</li><li>Primary trigger</li><li>Move timeline</li></ul></article>
-        <article class="stage"><span class="num">02, HUMAN FOLLOW-UP</span><h3>Resolve sensitive ambiguity</h3><p>A counselor confirms needs instead of asking the visitor to diagnose a care level.</p><ul><li>Decision participants and approval</li><li>Family agreement</li><li>Budget and location fit</li><li>Daily living and memory needs</li></ul></article>
-        <article class="stage"><span class="num">03, BEHAVIOR</span><h3>Let actions update readiness</h3><p>Observed engagement is often more reliable than another form field.</p><ul><li>Guide downloaded</li><li>Call completed</li><li>Tour requested or completed</li><li>Email response and stated changes</li></ul></article>
+        <article class="stage"><span class="num">01 · ONLINE</span><h3>Earn the next interaction</h3><p>Collect four strong signals before contact details, then ask for email so the conversation can be saved.</p><ul><li>Relationship to resident</li><li>What help is wanted</li><li>Primary trigger</li><li>Move timeline</li></ul></article>
+        <article class="stage"><span class="num">02 · HUMAN FOLLOW-UP</span><h3>Resolve sensitive ambiguity</h3><p>A counselor confirms needs instead of asking the visitor to diagnose a care level.</p><ul><li>Decision participants and approval</li><li>Family agreement</li><li>Budget and location fit</li><li>Daily living and memory needs</li></ul></article>
+        <article class="stage"><span class="num">03 · BEHAVIOR</span><h3>Let actions update readiness</h3><p>Observed engagement is often more reliable than another form field.</p><ul><li>Guide downloaded</li><li>Call completed</li><li>Tour requested or completed</li><li>Email response and stated changes</li></ul></article>
       </div>
     </section>
 

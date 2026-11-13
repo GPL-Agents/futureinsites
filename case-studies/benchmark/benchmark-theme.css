@@ -155,7 +155,7 @@ h2,
   width: min(1180px, 92vw);
   max-width: none;
   margin: auto;
-  padding: 3rem 0 4.5rem;
+  padding: 2rem 0 3.25rem;
 }
 
 /* Presentation pages use one shared content edge and compact heroes. */
@@ -165,7 +165,9 @@ h2,
 .research-hero > div,
 .research-hero .hero-layout,
 .project-hero .hero-inner,
-.hero .heroinner {
+.hero .heroinner,
+.campaign-hero > div,
+.presentation-hero > div {
   width: min(1180px, 92vw) !important;
   max-width: none !important;
   margin-left: auto !important;
@@ -177,9 +179,11 @@ h2,
 .appendix-hero,
 .research-hero,
 .project-hero,
-.hero {
-  padding-top: 2.1rem !important;
-  padding-bottom: 2.1rem !important;
+.hero,
+.campaign-hero,
+.presentation-hero {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
 }
 
 .campaign-page-hero h1,
@@ -187,9 +191,41 @@ h2,
 .appendix-hero h1,
 .research-hero h1,
 .project-hero h1,
-.hero h1 {
-  font-size: clamp(2.5rem, 4.3vw, 4.25rem) !important;
+.hero h1,
+.campaign-hero h1,
+.presentation-hero h1 {
+  font-size: clamp(2.25rem, 3.7vw, 3.65rem) !important;
   line-height: 1.02 !important;
+}
+
+/* Compact presentation heroes reveal the page content in the first viewport. */
+.project-hero .hero-inner,
+.research-hero .hero-layout,
+.journey-hero .hero-grid,
+.campaign-hero > div,
+.hero .heroinner {
+  gap: 2rem !important;
+}
+
+.project-hero .hero-photo img,
+.campaign-hero .hero-photo img {
+  height: 250px !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+}
+
+.research-hero img { height: 250px !important; }
+.journey-hero figure img { height: 230px !important; }
+.hero .heroimage { margin-bottom: .65rem !important; }
+.hero .heroimage img {
+  height: 210px !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+}
+.hero .heroaside { padding: .8rem 1rem !important; }
+.hero .heroaside strong {
+  margin-bottom: .2rem !important;
+  font-size: 1.45rem !important;
 }
 
 .project-kicker {
