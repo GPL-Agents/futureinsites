@@ -31,7 +31,7 @@
     .heroaside { padding:1.2rem 1.35rem; border:1px solid rgba(255,255,255,.22); border-radius:14px; background:rgba(255,255,255,.08); }
     .heroaside strong { display: block; margin-bottom: .45rem; color: #f5bd67; font-size: 2rem; }
     .heroaside p { margin: 0; color: #d5e8e3; font-size: .92rem; }
-    main { max-width: 1180px; margin: auto; padding: 3.5rem 4vw 4.5rem; }
+    main { width:min(92%,1180px); margin: auto; padding: 3.5rem 0 4.5rem; }
     .introgrid { margin-bottom: 3.5rem; }
     .introheading { max-width: 780px; margin-bottom: 2rem; }
     h2 { font-family: "Newsreader", Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.05; font-weight: 600; letter-spacing: -.025em; }
@@ -102,7 +102,7 @@
     @media (max-width: 560px) {
       .topbar { padding: 0 1rem; }
       .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
-      main { padding-left: 1rem; padding-right: 1rem; }
+      main { width:calc(100% - 2rem); }
       .journeylegend { grid-template-columns: 1fr; }
       .conversation { padding: 1.25rem; }
     }

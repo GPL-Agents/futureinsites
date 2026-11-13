@@ -17,15 +17,15 @@
     .nav { display:flex; gap:1rem; }
     .nav a { color:#cfe1dc; text-decoration:none; font-size:.78rem; }
     .nav .active { color:white; font-weight:700; }
-    .hero { padding:2.6rem 4vw 2.2rem; background:#214d44; color:white; }
-    .hero > div { max-width:1160px; margin:auto; display:flex; justify-content:space-between; gap:2rem; align-items:end; }
+    .hero { padding:2.6rem 0 2.2rem; background:#214d44; color:white; }
+    .hero > div { width:min(92%,1180px); margin:auto; display:flex; justify-content:space-between; gap:2rem; align-items:end; }
     .eyebrow { margin:0 0 .7rem; color:#a8d8cc; text-transform:uppercase; letter-spacing:.16em; font-size:.68rem; font-weight:700; }
     h1 { margin:.2rem 0 .6rem; font:600 clamp(2.5rem,5vw,4.8rem)/1 "Newsreader",Georgia,serif; letter-spacing:-.03em; }
     .hero p:last-child { max-width:700px; margin:0; color:#d4e7e2; }
     .actions { display:flex; gap:.6rem; }
     .button { padding:.7rem .9rem; border:1px solid #d5824b; border-radius:8px; color:white; background:#d5824b; cursor:pointer; text-decoration:none; font-weight:600; }
     .button.secondary { color:#d7ebe6; background:transparent; border-color:#7da098; }
-    main { max-width:1160px; margin:auto; padding:2rem 4vw 4rem; }
+    main { width:min(92%,1180px); margin:auto; padding:2rem 0 4rem; }
     .savebar { margin-bottom:1rem; padding:1rem 1.2rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; border-radius:12px; background:#ebe6dc; color:#5a6a65; font-size:.78rem; }
     details { margin-bottom:.8rem; overflow:hidden; border:1px solid #d9d2c7; border-radius:14px; background:white; }
     summary { padding:1.2rem 1.4rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; font-weight:700; }
@@ -54,7 +54,7 @@
     .bucket h3 { margin-top:0; font-size:.9rem; }
     .status { color:#176254; font-weight:700; }
     @media(max-width:800px){ .hero > div { display:block; } .actions { margin-top:1.4rem; } .settingsgrid { grid-template-columns:1fr 1fr; } .howgrid,.bucketgrid { grid-template-columns:1fr; } }
-    @media(max-width:520px){ .topbar,.hero { padding-left:1rem; padding-right:1rem; } main { padding-left:1rem; padding-right:1rem; } .settingsgrid { grid-template-columns:1fr; } .savebar { align-items:flex-start; flex-direction:column; } }
+    @media(max-width:520px){ .topbar { padding-left:1rem; padding-right:1rem; } .hero > div,main { width:calc(100% - 2rem); } .settingsgrid { grid-template-columns:1fr; } .savebar { align-items:flex-start; flex-direction:column; } }
   </style>
   <link rel="stylesheet" href="benchmark-theme.css">
 </head>
