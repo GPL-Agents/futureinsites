@@ -198,9 +198,12 @@
         prompt: "Who are you exploring senior living for?",
         helper: "This first answer changes the language, proof, and follow-up path.",
         options: [
-          ["myself", "Myself", "Prospective resident path"],
-          ["child", "My parent or loved one", "Adult child path"],
-          ["other", "Someone I support professionally", "Referral path"]
+          ["self", "Self", "Prospective resident path"],
+          ["spouse", "Spouse or partner", "Prospective resident path"],
+          ["adultchild", "Adult child", "Adult child path"],
+          ["family", "Other family member", "Adult child path"],
+          ["friend", "Friend or neighbor", "Adult child path"],
+          ["professional", "Professional (discharge planner, social worker, physician, care manager)", "Referral path"]
         ]
       },
       {
@@ -274,6 +277,9 @@
     const area = document.getElementById("questionArea");
     const back = document.getElementById("backButton");
 
+    const rolePaths = { self: "myself", spouse: "myself", adultchild: "child", family: "child", friend: "child", professional: "other" };
+    function pathOf(role) { return role ? rolePaths[role] : role; }
+
     function choose(key, value) {
       state.answers[key] = value;
       state.step += 1;
@@ -283,7 +289,7 @@
     function labelFor(key, value) {
       const q = questions.find(item => item.key === key);
       let choices = q ? q.options : [];
-      if (key === "trigger") choices = triggerSets[state.answers.role] || triggerSets.other;
+      if (key === "trigger") choices = triggerSets[pathOf(state.answers.role)] || triggerSets.other;
       const match = choices.find(item => item[0] === value);
       return match ? match[1] : value;
     }
@@ -300,7 +306,7 @@
     function updateScore() {
       const count = Object.keys(state.answers).length;
       const coverage = Math.min(100, count * 17);
-      const role = state.answers.role;
+      const role = pathOf(state.answers.role);
       const care = state.answers.care;
       const ready = readiness();
       document.getElementById("roleValue").textContent = role ? (role === "myself" ? "Resident" : role === "child" ? "Adult child" : "Referral") : "Unknown";
@@ -319,7 +325,7 @@
     }
 
     function renderResult() {
-      const role = state.answers.role;
+      const role = pathOf(state.answers.role);
       const ready = readiness()[1];
       const roleText = role === "myself" ? "resident centered" : role === "child" ? "adult child" : "professional referral";
       const next = state.answers.intent === "tour" ? "Offer tour times without asking the same questions again." : state.answers.intent === "advisor" ? "Offer a fast advisor callback and pass the context forward." : "Offer the requested information, then let the visitor choose email or an advisor conversation.";
@@ -338,7 +344,7 @@
         return;
       }
       let options = q.options;
-      if (q.key === "trigger") options = triggerSets[state.answers.role] || triggerSets.other;
+      if (q.key === "trigger") options = triggerSets[pathOf(state.answers.role)] || triggerSets.other;
       area.innerHTML = `<h3 class="prompt">${q.prompt}</h3><p class="helper">${q.helper}</p><div class="options">${options.map(item => `<button type="button" class="option" data-value="${item[0]}"><span>${item[1]}</span><small>${item[2]}</small></button>`).join("")}</div>`;
       area.querySelectorAll(".option").forEach(button => button.addEventListener("click", () => choose(q.key, button.dataset.value)));
       updateScore();
