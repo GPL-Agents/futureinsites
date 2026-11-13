@@ -206,7 +206,7 @@ h2,
 }
 
 .content-card {
-  padding: 1.6rem;
+  padding: 1.35rem;
   background: white;
   border: 1px solid #dbe2df;
   border-radius: 14px;
@@ -222,7 +222,7 @@ h2,
 }
 
 .stat-card {
-  padding: 1.4rem;
+  padding: 1.2rem;
   background: #eff6f4;
   border-top: 4px solid #007672;
 }
