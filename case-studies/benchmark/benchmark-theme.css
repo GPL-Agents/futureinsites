@@ -51,24 +51,6 @@ body {
   text-transform: uppercase;
 }
 
-.futureinsites-mark {
-  color: #004d7c !important;
-  text-decoration: none !important;
-  font-size: .78rem !important;
-  font-weight: 700 !important;
-  letter-spacing: .04em !important;
-}
-
-.futureinsites-mark span {
-  display: block;
-  margin-top: .18rem;
-  color: #627574;
-  font-size: .56rem;
-  font-weight: 600;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
 .benchmark-logo {
   display: block;
   width: 220px;
