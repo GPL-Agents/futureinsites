@@ -154,7 +154,7 @@ h2,
 .project-shell {
   max-width: 1180px;
   margin: auto;
-  padding: 4.5rem 4vw 7rem;
+  padding: 3rem 4vw 4.5rem;
 }
 
 .project-kicker {
@@ -235,7 +235,7 @@ h2,
 }
 
 .section-heading {
-  margin: 5rem 0 1.6rem;
+  margin: 3.5rem 0 1.35rem;
   color: #004d7c;
   font-family: Merriweather, Georgia, serif;
   font-size: clamp(2rem, 3.5vw, 3.3rem);
