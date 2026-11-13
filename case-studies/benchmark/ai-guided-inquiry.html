@@ -190,7 +190,9 @@
     <div class="sourcebar">Recommendation based on the Benchmark project materials, the lead-scoring workbook dated November 2, 2026, and the live Benchmark Senior Living at Waltham Crossings inquiry experiences reviewed November 12, 2026. This demonstration does not provide medical advice or determine eligibility for care.</div>
   </main>
 
+  <script src="model-data.js"></script>
   <script>
+    const model = window.BenchmarkModel;
     const state = { step: 0, answers: {} };
     const questions = [
       {
@@ -198,12 +200,12 @@
         prompt: "Who are you exploring senior living for?",
         helper: "This first answer changes the language, proof, and follow-up path.",
         options: [
-          ["self", "Self", "Prospective resident path"],
-          ["spouse", "Spouse or partner", "Prospective resident path"],
-          ["adultchild", "Adult child", "Adult child path"],
-          ["family", "Other family member", "Adult child path"],
-          ["friend", "Friend or neighbor", "Adult child path"],
-          ["professional", "Professional (discharge planner, social worker, physician, care manager)", "Referral path"]
+          ["Self", "Self", "Prospective resident path"],
+          ["Spouse or partner", "Spouse or partner", "Prospective resident path"],
+          ["Adult child", "Adult child", "Adult child path"],
+          ["Other family member", "Other family member", "Adult child path"],
+          ["Friend or neighbor", "Friend or neighbor", "Adult child path"],
+          ["Professional (discharge planner, social worker, physician, care manager)", "Professional (discharge planner, social worker, physician, care manager)", "Referral path"]
         ]
       },
       {
@@ -211,11 +213,10 @@
         prompt: "What would be most helpful today?",
         helper: "These choices preserve Benchmark's current inquiry outcomes.",
         options: [
-          ["pricing", "See pricing and availability", "Personalized information"],
-          ["advisor", "Talk with an advisor", "Ask questions first"],
-          ["tour", "Schedule a tour", "Visit the community"],
-          ["brochure", "Get a brochure or guide", "Explore at my pace"],
-          ["unsure", "Help me understand the options", "Guided education"]
+          ["Pricing or brochure", "See pricing or get a brochure", "Personalized information"],
+          ["Advisor call", "Talk with an advisor", "Ask questions first"],
+          ["Schedule a tour", "Schedule a tour", "Visit the community"],
+          ["Help understanding options", "Help me understand the options", "Guided education"]
         ]
       },
       {
@@ -229,11 +230,11 @@
         prompt: "When might a move make sense?",
         helper: "This helps Benchmark respond at the right pace.",
         options: [
-          ["30", "Within 30 days", "Immediate planning"],
-          ["90", "One to three months", "Active planning"],
-          ["180", "Three to six months", "Comparing options"],
-          ["later", "More than six months", "Early research"],
-          ["unknown", "I am not sure yet", "Keep exploring"]
+          ["Within 30 days", "Within 30 days", "Immediate planning"],
+          ["1 to 3 months", "One to three months", "Active planning"],
+          ["3 to 6 months", "Three to six months", "Comparing options"],
+          ["6 to 12 months", "Six to twelve months", "Early planning"],
+          ["Just researching", "I am just researching", "Keep exploring"]
         ]
       },
       {
@@ -241,44 +242,52 @@
         prompt: "Which kind of support sounds closest?",
         helper: "This is a preference, not a clinical assessment.",
         options: [
-          ["independent", "A more social, maintenance free lifestyle", "Independent living"],
-          ["assisted", "Some help with daily routines", "Assisted living"],
-          ["memory", "Support for memory changes", "Mind & Memory Care"],
-          ["respite", "A short stay or caregiver break", "Respite care"],
-          ["unsure", "I would like help deciding", "Advisor guidance"]
+          ["Independent living", "A more social, maintenance free lifestyle", "Independent living"],
+          ["Assisted living", "Some help with daily routines", "Assisted living"],
+          ["Memory care", "Support for memory changes", "Mind & Memory Care"],
+          ["Skilled nursing or rehab", "Nursing care or rehab after a hospital stay", "Skilled nursing"],
+          ["Respite or short stay", "A short stay or caregiver break", "Respite care"],
+          ["Not sure yet", "I would like help deciding", "Advisor guidance"]
         ]
       },
       { key: "result", prompt: "", helper: "", options: [] }
     ];
 
+    // Visitor wording differs by path; every value is a workbook answer ("Unknown" stays neutral).
     const triggerSets = {
       myself: [
-        ["connection", "More connection, activities, or purpose", "Lifestyle"],
-        ["maintenance", "Home upkeep is becoming a burden", "Convenience"],
-        ["future", "I want a plan for future support", "Planning"],
-        ["health", "A recent health change", "Care need"],
-        ["unsure", "I am simply exploring", "Early research"]
+        ["Convenience, connection or purpose", "More connection, activities, or purpose", "Lifestyle"],
+        ["Home maintenance challenges", "Home upkeep is becoming a burden", "Convenience"],
+        ["Isolation or loss of a spouse", "Feeling isolated, or the loss of a spouse", "Social need"],
+        ["Fall, hospitalization or rehab stay", "A fall, hospital stay, or rehab", "Health event"],
+        ["Unknown", "I am simply exploring", "Early research"]
       ],
       child: [
-        ["safety", "A safety or caregiving concern", "Family concern"],
-        ["health", "A fall, hospital stay, or rehab discharge", "Health event"],
-        ["memory", "Memory or cognitive changes", "Memory concern"],
-        ["isolation", "Isolation or loss of a spouse", "Social need"],
-        ["planning", "We are planning before it becomes urgent", "Planning"]
+        ["Caregiver burnout or safety concern", "A safety or caregiving concern", "Family concern"],
+        ["Fall, hospitalization or rehab stay", "A fall, hospital stay, or rehab discharge", "Health event"],
+        ["Cognitive change or dementia diagnosis", "Memory or cognitive changes", "Memory concern"],
+        ["Isolation or loss of a spouse", "Isolation or loss of a spouse", "Social need"],
+        ["Home maintenance challenges", "Home upkeep is becoming too much", "Convenience"],
+        ["Unknown", "Something else", "Advisor help"]
       ],
       other: [
-        ["referral", "I am making a professional referral", "Referral"],
-        ["discharge", "A discharge or transition is approaching", "Time sensitive"],
-        ["information", "I need community information", "Research"],
-        ["other", "Something else", "Advisor help"]
+        ["Fall, hospitalization or rehab stay", "A fall, hospitalization, or rehab discharge", "Time sensitive"],
+        ["Cognitive change or dementia diagnosis", "Cognitive change or dementia diagnosis", "Memory concern"],
+        ["Caregiver burnout or safety concern", "Caregiver burnout or a safety concern", "Family concern"],
+        ["Isolation or loss of a spouse", "Isolation or loss of a spouse", "Social need"],
+        ["Unknown", "Something else", "Advisor help"]
       ]
     };
 
     const area = document.getElementById("questionArea");
     const back = document.getElementById("backButton");
 
-    const rolePaths = { self: "myself", spouse: "myself", adultchild: "child", family: "child", friend: "child", professional: "other" };
-    function pathOf(role) { return role ? rolePaths[role] : role; }
+    function pathOf(role) {
+      if (!role) return role;
+      if (role === "Self" || role === "Spouse or partner") return "myself";
+      if (role.startsWith("Professional")) return "other";
+      return "child";
+    }
 
     function choose(key, value) {
       state.answers[key] = value;
@@ -294,29 +303,39 @@
       return match ? match[1] : value;
     }
 
-    function readiness() {
-      const t = state.answers.timeline;
-      if (t === "30") return [92, "Hot"];
-      if (t === "90") return [76, "Warm"];
-      if (t === "180") return [60, "Warm"];
-      if (t === "later") return [38, "Nurture"];
-      return [50, "Neutral"];
+    // Same inputs and automatic defaults as the Lead Scorer, so both pages score identically.
+    function modelValues() {
+      const a = state.answers;
+      const v = {};
+      model.variables.forEach(x => v[x.key] = "Unknown");
+      v.referral = "Online search";
+      v.entryPage = "Pricing or cost page";
+      v.engagement = "Submitted a form only";
+      if (a.role) {
+        v.relationship = a.role;
+        v.initiated = (a.role === "Self" || a.role === "Spouse or partner") ? "Future resident" : a.role === "Adult child" ? "Adult child" : a.role.startsWith("Professional") ? "Professional or physician" : "Other family member";
+      }
+      if (a.intent) v.engagement = a.intent === "Schedule a tour" ? "Requested a tour" : a.intent === "Advisor call" ? "Called the community" : a.intent === "Pricing or brochure" ? "Downloaded a guide" : "Submitted a form only";
+      if (a.trigger) v.trigger = a.trigger;
+      if (a.timeline) v.timeline = a.timeline;
+      if (a.care) v.careInterest = a.care;
+      return v;
     }
 
     function updateScore() {
       const count = Object.keys(state.answers).length;
-      const coverage = Math.min(100, count * 17);
-      const role = pathOf(state.answers.role);
-      const care = state.answers.care;
-      const ready = readiness();
-      document.getElementById("roleValue").textContent = role ? (role === "myself" ? "Resident" : role === "child" ? "Adult child" : "Referral") : "Unknown";
-      document.getElementById("roleMeter").style.width = role ? "88%" : "0%";
-      document.getElementById("readyValue").textContent = ready[1];
-      document.getElementById("readyMeter").style.width = state.answers.timeline ? ready[0] + "%" : "0%";
-      document.getElementById("careValue").textContent = care ? labelFor("care", care).replace("A more social, maintenance free lifestyle", "Independent living").replace("Some help with daily routines", "Assisted living").replace("Support for memory changes", "Memory care").replace("A short stay or caregiver break", "Respite") : "Unknown";
-      document.getElementById("careMeter").style.width = care ? (care === "unsure" ? "45%" : "82%") : "0%";
-      document.getElementById("coverValue").textContent = coverage + "%";
-      document.getElementById("coverMeter").style.width = coverage + "%";
+      const r = model.calculate(modelValues());
+      const pct = n => Math.round(n * 100) + "%";
+      const roleKnown = r.searching.coverage > 0 && state.answers.role;
+      document.getElementById("roleValue").textContent = roleKnown ? r.searching.label : "Unknown";
+      document.getElementById("roleMeter").style.width = roleKnown ? pct(r.searching.coverage) : "0%";
+      document.getElementById("readyValue").textContent = Math.round(r.conversion.score) + ", " + r.conversion.tier;
+      document.getElementById("readyMeter").style.width = Math.round(r.conversion.score) + "%";
+      const careKnown = r.care.coverage > 0 && (state.answers.care || state.answers.trigger);
+      document.getElementById("careValue").textContent = careKnown ? r.care.label : "Unknown";
+      document.getElementById("careMeter").style.width = careKnown ? pct(r.care.coverage) : "0%";
+      document.getElementById("coverValue").textContent = pct(r.completion);
+      document.getElementById("coverMeter").style.width = pct(r.completion);
       const text = document.getElementById("scoreText");
       if (!count) text.textContent = "The model begins neutral. Missing information lowers certainty rather than counting against the lead.";
       else if (count < 3) text.textContent = "The journey is personalized, but the score remains provisional. The next question should reduce the largest uncertainty.";
@@ -326,10 +345,11 @@
 
     function renderResult() {
       const role = pathOf(state.answers.role);
-      const ready = readiness()[1];
+      const ready = model.calculate(modelValues()).conversion.tier;
       const roleText = role === "myself" ? "resident centered" : role === "child" ? "adult child" : "professional referral";
-      const next = state.answers.intent === "tour" ? "Offer tour times without asking the same questions again." : state.answers.intent === "advisor" ? "Offer a fast advisor callback and pass the context forward." : "Offer the requested information, then let the visitor choose email or an advisor conversation.";
-      area.innerHTML = `<div class="finalcard"><p class="eyebrow" style="color:#a85c31">Recommended handoff</p><h3>${roleText} path, ${ready.toLowerCase()} follow-up</h3><p>${next}</p><p><strong>CRM context:</strong> ${labelFor("intent", state.answers.intent)}, prompted by ${labelFor("trigger", state.answers.trigger).toLowerCase()}, timeline ${labelFor("timeline", state.answers.timeline).toLowerCase()}, stated fit ${labelFor("care", state.answers.care).toLowerCase()}.</p><button class="restart" type="button" id="restartButton">Try another path</button></div>`;
+      const next = state.answers.intent === "Schedule a tour" ? "Offer tour times without asking the same questions again." : state.answers.intent === "Advisor call" ? "Offer a fast advisor callback and pass the context forward." : "Offer the requested information, then let the visitor choose email or an advisor conversation.";
+      const v = modelValues();
+      area.innerHTML = `<div class="finalcard"><p class="eyebrow" style="color:#a85c31">Recommended handoff</p><h3>${roleText} path, ${ready.toLowerCase()} follow-up</h3><p>${next}</p><p><strong>CRM context:</strong> ${v.relationship}; ${state.answers.intent}; trigger: ${v.trigger}; timeline: ${v.timeline}; care interest: ${v.careInterest}.</p><button class="restart" type="button" id="restartButton">Try another path</button></div>`;
       document.getElementById("restartButton").addEventListener("click", () => { state.step = 0; state.answers = {}; render(); });
     }
 
@@ -345,7 +365,7 @@
       }
       let options = q.options;
       if (q.key === "trigger") options = triggerSets[pathOf(state.answers.role)] || triggerSets.other;
-      area.innerHTML = `<h3 class="prompt">${q.prompt}</h3><p class="helper">${q.helper}</p><div class="options">${options.map(item => `<button type="button" class="option" data-value="${item[0]}"><span>${item[1]}</span><small>${item[2]}</small></button>`).join("")}</div>`;
+      area.innerHTML = `<h3 class="prompt">${q.prompt}</h3><p class="helper">${q.helper}</p><div class="options">${options.map(item => `<button type="button" class="option" data-value="${item[0].replace(/"/g,"&quot;")}"><span>${item[1]}</span><small>${item[2]}</small></button>`).join("")}</div>`;
       area.querySelectorAll(".option").forEach(button => button.addEventListener("click", () => choose(q.key, button.dataset.value)));
       updateScore();
     }
