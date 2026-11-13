@@ -16,11 +16,26 @@ body {
 }
 
 .project-credit {
+  position: relative;
+  display: block;
+  min-height: 36px;
+  padding-left: 43px;
   color: #8a1538;
   text-decoration: none;
   font-family: Merriweather, Georgia, serif;
   font-size: .78rem;
   line-height: 1.25;
+}
+
+.project-credit::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  background: url("/images/Boston_College_seal.svg") center / contain no-repeat;
+  transform: translateY(-50%);
 }
 
 .project-credit strong,
