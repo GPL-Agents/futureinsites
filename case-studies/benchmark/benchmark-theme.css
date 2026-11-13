@@ -152,9 +152,44 @@ h2,
 }
 
 .project-shell {
-  max-width: 1180px;
+  width: min(1180px, 92vw);
+  max-width: none;
   margin: auto;
-  padding: 3rem 4vw 4.5rem;
+  padding: 3rem 0 4.5rem;
+}
+
+/* Presentation pages use one shared content edge and compact heroes. */
+.campaign-page-hero > div,
+.journey-hero > div,
+.appendix-hero > div,
+.research-hero > div,
+.research-hero .hero-layout,
+.project-hero .hero-inner,
+.hero .heroinner {
+  width: min(1180px, 92vw) !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.campaign-page-hero,
+.journey-hero,
+.appendix-hero,
+.research-hero,
+.project-hero,
+.hero {
+  padding-top: 2.1rem !important;
+  padding-bottom: 2.1rem !important;
+}
+
+.campaign-page-hero h1,
+.journey-hero h1,
+.appendix-hero h1,
+.research-hero h1,
+.project-hero h1,
+.hero h1 {
+  font-size: clamp(2.5rem, 4.3vw, 4.25rem) !important;
+  line-height: 1.02 !important;
 }
 
 .project-kicker {
