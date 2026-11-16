@@ -49,3 +49,12 @@
 :root body > nav .nav-actions .nav-cta{padding:8px 12px!important;font-size:10px!important;min-height:36px!important;display:inline-flex!important;align-items:center!important}
 :root body > nav .nav-hamburger{min-width:40px!important;min-height:44px!important}
 }
+
+/* Mobile tap targets for the secondary nav: 48px rows, full-width parent. */
+@media (max-width:800px){
+  body > nav .nav-links > li > .nav-more-btn{min-height:48px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;padding:12px 10px!important;font-size:15px!important;touch-action:manipulation!important}
+  body > nav .nav-links > li > a{min-height:48px!important;display:flex!important;align-items:center!important;padding:12px 10px!important;font-size:15px!important;touch-action:manipulation!important}
+  body > nav .nav-more-dropdown a{min-height:48px!important;display:flex!important;align-items:center!important;padding:12px 16px!important;font-size:15px!important;touch-action:manipulation!important}
+  body > nav .nav-more-btn .nav-more-arrow{font-size:12px!important;margin-left:8px!important}
+  body > nav .nav-more.open > .nav-more-btn .nav-more-arrow{transform:rotate(180deg)!important}
+}
