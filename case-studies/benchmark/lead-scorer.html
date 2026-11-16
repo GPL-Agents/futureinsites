@@ -64,6 +64,11 @@
     .source.automatic { color:#435c7b; background:#e3ebf5; }
     .changed { background:#fffaf1; }
     .legend { display:flex; gap:.5rem; padding:1rem 1.2rem; flex-wrap:wrap; border-top:1px solid #e5ded3; }
+    .sourcedefs { margin:0 1.2rem 1.1rem; padding:0; color:#5f6f6a; font-size:.72rem; }
+    .sourcedefs div + div { margin-top:.35rem; }
+    .sourcedefs dt { display:inline; font-weight:700; color:#263f59; }
+    .sourcedefs dd { display:inline; margin:0; }
+    .sourcedefs dd::before { content:"  "; }
     .notice { margin-top:1rem; padding:1rem 1.2rem; border-radius:12px; color:#5f6f6a; background:#ebe6dc; font-size:.76rem; }
     @media (max-width:1000px) { .predictions { grid-template-columns:repeat(3,1fr); } .workspace { grid-template-columns:1fr; } }
     @media (max-width:650px) { .topbar { padding-left:1rem; padding-right:1rem; } .hero > div,main { width:calc(100% - 2rem); } .hero > div { display:block; } .heroactions { margin-top:1.4rem; } .predictions { grid-template-columns:1fr 1fr; } .fieldrow { grid-template-columns:1fr; } .source { width:max-content; } }
@@ -96,6 +101,7 @@
         <div class="panelhead"><h2>CRM lead profile</h2><span id="completionValue">0 of 16 model fields known</span></div>
         <div class="fields" id="fieldList"></div>
         <div class="legend"><span class="source form">Form</span><span class="source automatic">Automatic</span><span class="source manual">Manual and editable</span></div>
+        <dl class="sourcedefs"><div><dt>Form</dt><dd>Answered in the inquiry by the prospect or a family member.</dd></div><div><dt>Automatic</dt><dd>Captured by the website and analytics, with no one typing it: referral source, the page they entered on, and the highest engagement so far (form, guide download, call, tour request, event).</dd></div><div><dt>Manual</dt><dd>Added by an advisor during follow-up: payer, final approval, budget, distance, family agreement, and care needs.</dd></div></dl>
       </section>
     </div>
     <div class="notice">This is a transparent demonstration of the scoring logic. The browser stores no submitted record and sends no data. Unknown values remain neutral and reduce coverage. Ongoing calibration against Benchmark outcomes keeps the operational model accurate.</div>
