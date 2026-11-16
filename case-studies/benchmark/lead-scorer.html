@@ -185,7 +185,7 @@
 
     document.getElementById("backButton").onclick=()=>{ if(step>0){ step-=1; renderInquiry(); } };
     document.getElementById("downloadButton").onclick=download;
-    document.getElementById("resetButton").onclick=()=>{ model.variables.forEach(v=>values[v.key]="Unknown"); values.referral="Online search"; values.entryPage="Pricing or cost page"; values.engagement="Submitted a form only"; Object.keys(contact).forEach(k=>contact[k]=""); step=0; renderInquiry(); updateAll(); };
+    document.getElementById("resetButton").onclick=()=>{ model.variables.forEach(v=>values[v.key]="Unknown"); Object.keys(contact).forEach(k=>contact[k]=""); step=0; renderInquiry(); updateAll(); };
     renderInquiry(); updateAll();
   </script>
   <footer class="page-footer">Boston College Carroll School of Management student project for Benchmark Senior Living.</footer>
