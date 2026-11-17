@@ -1643,7 +1643,7 @@
   var pointer = { x: 0, y: 0, targetX: 0, targetY: 0, strength: 0, active: false };
   function rnd(a) { return (Math.random() * 2 - 1) * a; }
   for (var i = 0; i < N; i++) {
-    stars.push({ x: rnd(1), y: rnd(1), z: rnd(1), vx: rnd(0.00004), vy: rnd(0.00004), vz: rnd(0.00004), tw: Math.random() * 6.283 });
+    stars.push({ x: rnd(1), y: rnd(1), z: rnd(1), vx: rnd(0.00004), vy: rnd(0.00004), vz: rnd(0.00004), ox: 0, oy: 0, tw: Math.random() * 6.283 });
   }
   function resize() {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1667,13 +1667,14 @@
       var y2 = s.y * cx - z1 * sx, z2 = s.y * sx + z1 * cx + fov;
       if (z2 < 0.3) continue;
       var px = w / 2 + (x1 / z2) * scale, py = h / 2 + (y2 / z2) * scale;
+      var followRate = dt ? 1 - Math.pow(0.975, dt / 16) : 0;
+      var targetOx = pointer.strength * (pointer.x - px);
+      var targetOy = pointer.strength * (pointer.y - py);
+      s.ox += (targetOx - s.ox) * followRate;
+      s.oy += (targetOy - s.oy) * followRate;
+      px += s.ox;
+      py += s.oy;
       if (px < -10 || px > w + 10 || py < -10 || py > h + 10) continue;
-      if (pointer.strength > 0.01) {
-        var dx = pointer.x - px, dy = pointer.y - py;
-        var influence = Math.exp(-(dx * dx + dy * dy) / 90000) * pointer.strength;
-        px += dx * influence * 0.34;
-        py += dy * influence * 0.34;
-      }
       var d = Math.max(0, Math.min(1, 1 - (z2 - 1.2) / 2.8));
       var tw = reduce ? 1 : 0.7 + 0.3 * Math.sin(t * 0.0015 + s.tw);
       var r = 0.4 + d * 1.8, a = (0.12 + d * 0.7) * tw;
