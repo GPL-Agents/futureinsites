@@ -207,18 +207,45 @@
   var lbPrev = document.getElementById("crLbPrev");
   var lbNext = document.getElementById("crLbNext");
 
-  stage.innerHTML = '<div class="cr-track">' + ASSETS.map(function (a, i) {
-    return '<figure class="cr-slide' + (i === 0 ? ' is-active' : '') + '">' +
-      '<button class="cr-open" type="button" data-open="' + i + '" aria-label="Open creative ' + esc(a.id) + ' full size">' +
-      '<img src="assets/creative/' + a.file + '" width="' + a.w + '" height="' + a.h + '" alt="' + esc(a.alt) + '"' +
-      (i === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">' +
-      '<span class="cr-zoom">Open full size</span>' +
-      '</button></figure>';
-  }).join('') + '</div>';
+  var FILTERS = [
+    { id: "all", label: "All", name: "All creatives" },
+    { id: "A", label: "Series A", name: "Senior resident" },
+    { id: "B", label: "Series B", name: "Adult child" },
+    { id: "C", label: "Series C", name: "Scam lead" }
+  ];
 
-  dotsEl.innerHTML = ASSETS.map(function (a, i) {
-    return '<button class="cr-dot" type="button" data-go="' + i + '" aria-label="Show creative ' + esc(a.id) + '"><span></span></button>';
+  var filtersEl = document.getElementById("crFilters");
+  var view = ASSETS.slice();
+  var viewIndex = 0;
+  var activeFilter = "all";
+
+  function countFor(id) {
+    return id === "all" ? ASSETS.length : ASSETS.filter(function (a) { return a.series === id; }).length;
+  }
+
+  filtersEl.innerHTML = FILTERS.map(function (f) {
+    return '<button class="cr-filter' + (f.id === "all" ? " is-active" : "") + '" type="button" data-filter="' + f.id + '" aria-pressed="' + (f.id === "all" ? "true" : "false") + '">' +
+      '<b>' + esc(f.label) + '</b><span>' + esc(f.name) + '</span><i>' + countFor(f.id) + '</i></button>';
   }).join("");
+
+  function render() {
+    stage.innerHTML = '<div class="cr-track">' + view.map(function (a, i) {
+      var g = ASSETS.indexOf(a);
+      return '<figure class="cr-slide' + (i === viewIndex ? ' is-active' : '') + '">' +
+        '<button class="cr-open" type="button" data-open="' + g + '" aria-label="Open creative ' + esc(a.id) + ' full size">' +
+        '<img src="assets/creative/' + a.file + '" width="' + a.w + '" height="' + a.h + '" alt="' + esc(a.alt) + '"' +
+        (i === viewIndex ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">' +
+        '<span class="cr-zoom">Open full size</span>' +
+        '</button></figure>';
+    }).join('') + '</div>';
+
+    dotsEl.innerHTML = view.map(function (a, i) {
+      return '<button class="cr-dot' + (i === viewIndex ? ' is-active' : '') + '" type="button" data-go="' + i + '" aria-label="Show creative ' + esc(a.id) + '"><span></span></button>';
+    }).join("");
+
+    slides = Array.prototype.slice.call(stage.querySelectorAll(".cr-slide"));
+    paint();
+  }
 
   function thumb(a) {
     var i = ASSETS.indexOf(a);
@@ -237,26 +264,25 @@
       '</article>';
   }).join("");
 
-  var slides = Array.prototype.slice.call(stage.querySelectorAll(".cr-slide"));
-  var dotButtons = Array.prototype.slice.call(dotsEl.querySelectorAll(".cr-dot"));
-  var index = 0;
+  var slides = [];
   var timer = null;
   var running = false;
   var manuallyPaused = false;
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function paint() {
-    slides.forEach(function (s, i) { s.classList.toggle("is-active", i === index); });
-    dotButtons.forEach(function (d, i) {
-      d.classList.toggle("is-active", i === index);
-      d.setAttribute("aria-current", i === index ? "true" : "false");
+    var a = view[viewIndex];
+    if (!a) return;
+    slides.forEach(function (s, i) { s.classList.toggle("is-active", i === viewIndex); });
+    Array.prototype.slice.call(dotsEl.querySelectorAll(".cr-dot")).forEach(function (d, i) {
+      d.classList.toggle("is-active", i === viewIndex);
+      d.setAttribute("aria-current", i === viewIndex ? "true" : "false");
     });
-    var a = ASSETS[index];
-    countEl.textContent = (index + 1) + " / " + ASSETS.length;
+    countEl.textContent = (viewIndex + 1) + " / " + view.length;
     metaEl.innerHTML = '<strong>Series ' + esc(a.series) + ' - ' + esc(a.format) + '</strong>' +
       '<span>' + esc(a.audience) + '</span>' +
       '<span class="cr-meta-cta">' + esc(a.headline) + '</span>';
-    liveEl.textContent = "Creative " + (index + 1) + " of " + ASSETS.length + ": series " + a.series + ", " + a.audience + ". " + a.headline;
+    liveEl.textContent = "Creative " + (viewIndex + 1) + " of " + view.length + ": series " + a.series + ", " + a.audience + ". " + a.headline;
   }
 
   function paintToggle() {
@@ -289,7 +315,7 @@
     if (running || reduced) return;
     running = true;
     if (timer) clearInterval(timer);
-    timer = setInterval(function () { show(index + 1); }, INTERVAL);
+    timer = setInterval(function () { show(viewIndex + 1); }, INTERVAL);
     restartBar();
     paintToggle();
   }
@@ -302,11 +328,28 @@
   }
 
   function show(i) {
-    index = (i + ASSETS.length) % ASSETS.length;
+    viewIndex = (i + view.length) % view.length;
     paint();
     if (running) {
       if (timer) clearInterval(timer);
-      timer = setInterval(function () { show(index + 1); }, INTERVAL);
+      timer = setInterval(function () { show(viewIndex + 1); }, INTERVAL);
+    }
+    restartBar();
+  }
+
+  function applyFilter(id) {
+    activeFilter = id;
+    view = id === "all" ? ASSETS.slice() : ASSETS.filter(function (a) { return a.series === id; });
+    viewIndex = 0;
+    Array.prototype.slice.call(filtersEl.querySelectorAll(".cr-filter")).forEach(function (b) {
+      var on = b.getAttribute("data-filter") === id;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    render();
+    if (running) {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(viewIndex + 1); }, INTERVAL);
     }
     restartBar();
   }
@@ -317,12 +360,17 @@
   toggleEl.addEventListener("click", function () {
     if (running) { pauseForUser(); } else { resumeForUser(); }
   });
-  prevEl.addEventListener("click", function () { show(index - 1); if (running) restartBar(); });
-  nextEl.addEventListener("click", function () { show(index + 1); if (running) restartBar(); });
+  prevEl.addEventListener("click", function () { show(viewIndex - 1); });
+  nextEl.addEventListener("click", function () { show(viewIndex + 1); });
   dotsEl.addEventListener("click", function (e) {
     var b = e.target.closest(".cr-dot");
     if (!b) return;
     show(parseInt(b.getAttribute("data-go"), 10));
+  });
+  filtersEl.addEventListener("click", function (e) {
+    var b = e.target.closest(".cr-filter");
+    if (!b) return;
+    applyFilter(b.getAttribute("data-filter"));
   });
 
   var carousel = document.getElementById("creativeCarousel");
@@ -340,8 +388,8 @@
       return;
     }
     if (!carousel.contains(document.activeElement)) return;
-    if (e.key === "ArrowLeft") { e.preventDefault(); show(index - 1); }
-    if (e.key === "ArrowRight") { e.preventDefault(); show(index + 1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); show(viewIndex - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); show(viewIndex + 1); }
   });
 
   var lbIndex = 0;
@@ -400,7 +448,7 @@
     if (e.target.hasAttribute("data-close")) closeLb();
   });
 
-  paint();
+  render();
   paintToggle();
   if (!reduced) start();
 })();

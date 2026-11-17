@@ -2,6 +2,17 @@
 .creative-feature{margin:0 0 2.5rem}
 .creative-lede{max-width:780px;margin:.4rem 0 1.3rem;color:#5b6a66}
 .cr{position:relative;padding:1.15rem;border:1px solid #d8e1de;border-radius:18px;background:linear-gradient(180deg,#f8fbfa,#eef4f2)}
+.cr-filters{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem}
+.cr-filter{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .8rem;border:1px solid #b9cbc7;border-radius:999px;background:#fff;color:#004d7c;font:inherit;font-size:.78rem;cursor:pointer}
+.cr-filter b{font-weight:700}
+.cr-filter span{color:#5b6a66}
+.cr-filter i{font-style:normal;font-size:.7rem;color:#8a9a96}
+.cr-filter:hover{border-color:#007672}
+.cr-filter.is-active{background:#004d7c;border-color:#004d7c}
+.cr-filter.is-active b{color:#fff}
+.cr-filter.is-active span{color:#d8e8f2}
+.cr-filter.is-active i{color:#a9c3d6}
+.cr-filter:focus-visible{outline:3px solid #007672;outline-offset:2px}
 .cr-stage{position:relative}
 .cr-track{position:relative;height:clamp(320px,52vw,560px)}
 .cr-slide{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .45s ease}
