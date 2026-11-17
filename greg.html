@@ -1640,6 +1640,7 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var N = window.innerWidth < 700 ? 140 : 260, stars = [];
   var w = 0, h = 0, ay = 0, last = 0, raf = 0, visible = true;
+  var pointer = { x: 0, y: 0, targetX: 0, targetY: 0, strength: 0, active: false };
   function rnd(a) { return (Math.random() * 2 - 1) * a; }
   for (var i = 0; i < N; i++) {
     stars.push({ x: rnd(1), y: rnd(1), z: rnd(1), vx: rnd(0.00004), vy: rnd(0.00004), vz: rnd(0.00004), tw: Math.random() * 6.283 });
@@ -1653,6 +1654,9 @@
   function wrap(v) { return v > 1 ? v - 2 : (v < -1 ? v + 2 : v); }
   function draw(t, dt) {
     ctx.clearRect(0, 0, w, h);
+    pointer.x += (pointer.targetX - pointer.x) * 0.14;
+    pointer.y += (pointer.targetY - pointer.y) * 0.14;
+    pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * 0.08;
     var ax = Math.sin(t * 0.00005) * 0.3;
     var cy = Math.cos(ay), sy = Math.sin(ay), cx = Math.cos(ax), sx = Math.sin(ax);
     var scale = Math.max(w, h) * 0.75, fov = 2.6;
@@ -1664,6 +1668,12 @@
       if (z2 < 0.3) continue;
       var px = w / 2 + (x1 / z2) * scale, py = h / 2 + (y2 / z2) * scale;
       if (px < -10 || px > w + 10 || py < -10 || py > h + 10) continue;
+      if (pointer.strength > 0.01) {
+        var dx = pointer.x - px, dy = pointer.y - py;
+        var influence = Math.exp(-(dx * dx + dy * dy) / 90000) * pointer.strength;
+        px += dx * influence * 0.34;
+        py += dy * influence * 0.34;
+      }
       var d = Math.max(0, Math.min(1, 1 - (z2 - 1.2) / 2.8));
       var tw = reduce ? 1 : 0.7 + 0.3 * Math.sin(t * 0.0015 + s.tw);
       var r = 0.4 + d * 1.8, a = (0.12 + d * 0.7) * tw;
@@ -1684,6 +1694,17 @@
   function start() { if (!raf && !reduce) { last = 0; raf = requestAnimationFrame(frame); } }
   resize();
   if (reduce) { draw(0, 0); } else { start(); }
+  if (!reduce) {
+    hero.addEventListener("pointermove", function (e) {
+      var rect = hero.getBoundingClientRect();
+      pointer.targetX = e.clientX - rect.left;
+      pointer.targetY = e.clientY - rect.top;
+      if (!pointer.active) { pointer.x = pointer.targetX; pointer.y = pointer.targetY; }
+      pointer.active = true;
+    }, { passive: true });
+    hero.addEventListener("pointerleave", function () { pointer.active = false; });
+    hero.addEventListener("pointercancel", function () { pointer.active = false; });
+  }
   window.addEventListener("resize", function () { resize(); if (reduce) draw(0, 0); });
   document.addEventListener("visibilitychange", function () { if (!document.hidden && visible) start(); });
   if ("IntersectionObserver" in window) {
