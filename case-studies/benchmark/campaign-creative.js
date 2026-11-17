@@ -175,7 +175,7 @@
     { id: "06", title: "Participant materials", copy: "What people take home: a checklist, a family conversation guide, and a scam-response plan that names where to report a loss." }
   ];
 
-  var INTERVAL = 6500;
+  var INTERVAL = 4000;
 
   function esc(t) {
     return String(t).replace(/[&<>"]/g, function (c) {
@@ -326,15 +326,6 @@
   });
 
   var carousel = document.getElementById("creativeCarousel");
-  carousel.addEventListener("pointerenter", function () { if (running) stop(); });
-  carousel.addEventListener("pointerleave", function () {
-    if (!manuallyPaused && !reduced && lb.hidden) start();
-  });
-  carousel.addEventListener("focusin", function () { if (running) stop(); });
-  carousel.addEventListener("focusout", function (e) {
-    if (carousel.contains(e.relatedTarget)) return;
-    if (!manuallyPaused && !reduced && lb.hidden) start();
-  });
 
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) { stop(); }
