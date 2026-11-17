@@ -304,6 +304,10 @@
   function show(i) {
     index = (i + ASSETS.length) % ASSETS.length;
     paint();
+    if (running) {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(index + 1); }, INTERVAL);
+    }
     restartBar();
   }
 
