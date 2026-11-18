@@ -1,7 +1,7 @@
 /* Creative gallery for the Benchmark campaign page. */
-.creative-feature{margin:0 0 2.5rem}
+.creative-feature{margin:0 0 1.4rem}
 .creative-lede{max-width:780px;margin:.4rem 0 1.3rem;color:#5b6a66}
-.cr{position:relative;padding:1.15rem;border:1px solid #d8e1de;border-radius:18px;background:linear-gradient(180deg,#f8fbfa,#eef4f2)}
+.cr{position:relative;padding:.65rem;border:1px solid #d8e1de;border-radius:18px;background:linear-gradient(180deg,#f8fbfa,#eef4f2)}
 .cr-filters{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem}
 .cr-filter{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .8rem;border:1px solid #b9cbc7;border-radius:999px;background:#fff;color:#004d7c;font:inherit;font-size:.78rem;cursor:pointer}
 .cr-filter b{font-weight:700}
@@ -18,7 +18,7 @@
 .cr-slide{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .45s ease}
 .cr-slide.is-active{opacity:1;visibility:visible}
 .cr-open{position:relative;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:0;border:0;background:transparent;border-radius:10px;cursor:zoom-in}
-.cr-slide img{max-height:min(50vh,470px);max-width:100%;width:auto;height:auto;border-radius:8px;background:#fff;box-shadow:0 12px 34px rgba(0,36,56,.18)}
+.cr-slide img{max-height:clamp(320px,52vw,560px);max-width:100%;width:auto;height:auto;border-radius:8px;background:#fff;box-shadow:0 12px 34px rgba(0,36,56,.18)}
 .cr-zoom{position:absolute;right:.55rem;bottom:.55rem;padding:.32rem .6rem;border-radius:999px;background:rgba(0,45,70,.84);color:#fff;font-size:.72rem;letter-spacing:.02em;opacity:0;transition:opacity .2s ease}
 .cr-open:hover .cr-zoom,.cr-open:focus-visible .cr-zoom{opacity:1}
 .cr-open:focus-visible{outline:3px solid #007672;outline-offset:4px}
