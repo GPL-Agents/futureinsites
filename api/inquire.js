@@ -97,6 +97,7 @@ module.exports = async function handler(req, res) {
   const SUBJECTS = {
     session:  `AI Transformation Session inquiry from ${name}${company ? ` (${company})` : ''}`,
     strategy: `AI strategy inquiry from ${name}${company ? ` (${company})` : ''}`,
+    websites: `Website inquiry from ${name}${company ? ` (${company})` : ''}`,
   };
   const subject = SUBJECTS[context] || SUBJECTS.session;
   const lines = [
