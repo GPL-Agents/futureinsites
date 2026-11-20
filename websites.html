@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Websites | FutureInSites</title>
+  <meta name="description" content="FutureInSites Solutions for personal, business, and investor audiences. AI strategy, transformation, agent setup, and market intelligence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fis-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fis-favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:     #0B0C10;
+      --dark2:    #12141A;
+      --accent:   #2563EB;
+      --cyan:     #2DD4FF;
+      --bg-alt:   #F5F7FB;
+      --border:   #E5E7EB;
+      --muted:    #6B7280;
+      --font:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #FFFFFF;
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3rem;
+      height: 64px;
+      overflow: visible;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      left: 3rem;
+    }
+    .nav-logo { height: 36px; width: auto; flex-shrink: 0; object-fit: contain; }
+    .nav-wordmark-text { display: flex; flex-direction: column; gap: 0; overflow: visible; }
+    .nav-brand-name {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-wordmark-tagline { font-size: 0.7rem; font-weight: 400; color: #64748B; line-height: 1.2; margin-top: 2px; display: block; white-space: nowrap; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links > li > a {
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links > li > a:hover { color: #0F172A; }
+    .nav-cta {
+      position: absolute;
+      right: 3rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1D4ED8; }
+    .nav-more { position: relative; }
+    .nav-more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: #374151;
+      font-size: 0.87rem;
+      font-weight: 500;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+    .nav-more-btn:hover { color: #0F172A; }
+    .nav-more-arrow { font-size: 0.6rem; }
+    .nav-more-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 0.35rem 0;
+      min-width: 170px;
+      list-style: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      z-index: 300;
+    }
+    .nav-more-dropdown a {
+      display: block;
+      padding: 0.55rem 1.2rem;
+      color: #374151;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.15s;
+    }
+    .nav-more-dropdown a:hover { color: #0F172A; background: #F8F9FB; }
+    .nav-more.open .nav-more-dropdown { display: block; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      position: absolute;
+      right: 1.5rem;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #374151; border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: #FFFFFF;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 0.5rem 1.5rem 1.2rem;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .nav-links.open > li > a,
+      .nav-links.open .nav-more-btn { padding: 0.7rem 0; font-size: 0.9rem; }
+      .nav-more-dropdown { position: static; transform: none; box-shadow: none; border: none; background: #F8F9FB; border-radius: 6px; margin: 0.25rem 0 0.5rem; padding: 0.25rem 0; display: none; }
+      .nav-more.open .nav-more-dropdown { display: block; }
+      .nav-more-dropdown a { padding: 0.5rem 1.2rem; }
+      .nav-links.open .nav-cta-mobile { display: block; margin-top: 0.5rem; }
+    }
+    
+
+    /* ─── HERO ─── */
+    .page-header {
+      padding: 9rem 2rem 5rem;
+      background: var(--dark);
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .page-header .eyebrow {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── SEGMENT SECTIONS ─── */
+    .segment {
+      padding: 5rem 2rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .segment + .segment {
+      border-top: 1px solid var(--border);
+    }
+    .segment-label {
+      font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .segment-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.9rem;
+    }
+    .segment-intro {
+      font-size: 1.02rem; color: var(--muted); line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── SOLUTION CARDS ─── */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    @media (max-width: 960px) { .solutions-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .solutions-grid { grid-template-columns: 1fr; } }
+
+    .solution-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.6rem 1.5rem 1.7rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .solution-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .sol-header {
+      display: flex; align-items: center; gap: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+    .sol-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      color: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s;
+    }
+    .sol-icon svg { width: 100%; height: 100%; }
+    .sol-rule {
+      flex: 1; height: 1px; background: var(--border);
+      transition: background 0.2s, height 0.2s;
+    }
+    .solution-card:hover .sol-icon { color: var(--cyan); }
+    .solution-card:hover .sol-rule { background: var(--accent); height: 1.5px; }
+    .solution-card h3 {
+      font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em;
+      line-height: 1.25; margin-bottom: 0.55rem; color: var(--dark);
+    }
+    .solution-card p {
+      font-size: 0.86rem; color: var(--muted); line-height: 1.6;
+    }
+    .solution-card .sol-meta {
+      font-size: 0.74rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-top: 0.9rem;
+    }
+    .sol-list-label {
+      margin-top: 1.15rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark);
+    }
+    .sol-list { list-style: none; margin: 0; padding: 0; }
+    .sol-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .sol-list li:last-child { margin-bottom: 0; }
+    .sol-list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.52rem;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .sol-list li strong { color: var(--dark); font-weight: 600; }
+
+    /* ─── CTA AT BOTTOM ─── */
+    .solutions-cta {
+      background: var(--bg-alt);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .solutions-cta h2 {
+      font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 0.7rem;
+    }
+    .solutions-cta p {
+      font-size: 1rem; color: var(--muted); max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+    .solutions-cta-button {
+      display: inline-block;
+      background: var(--accent); color: #FFFFFF;
+      font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em;
+      padding: 0.85rem 1.8rem; border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .solutions-cta-button:hover {
+      opacity: 0.9; transform: translateY(-1px);
+    }
+
+    /* ─── PER-SEGMENT CTA BLOCK ─── */
+    .segment-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .segment-cta-price {
+      margin: 0;
+      flex: 1 1 300px;
+      min-width: 260px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+    .segment-cta-price strong {
+      display: block;
+      color: var(--dark);
+      font-size: 0.94rem;
+      margin-bottom: 0.15rem;
+    }
+    .segment-cta-qr {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+      color: #35506F;
+      text-decoration: none;
+    }
+    .segment-cta-qr img {
+      width: 60px;
+      height: 60px;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #FFFFFF;
+    }
+    .segment-cta-qr span {
+      width: 96px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .segment-cta-qr:hover span { color: var(--accent); }
+    .segment-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .segment-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.5rem;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, border-color 0.2s, background 0.2s;
+    }
+    .segment-cta-btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      border: 1px solid var(--accent);
+    }
+    .segment-cta-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    @media (max-width: 860px) {
+      .segment-cta { flex-direction: column; align-items: flex-start; }
+      /* flex-basis is the main axis, so reset it when the row becomes a column */
+      .segment-cta-price { flex: 0 0 auto; }
+      .segment-cta-actions { width: 100%; }
+      .segment-cta-btn { flex: 1 1 auto; }
+    }
+    @media (max-width: 480px) {
+      .segment-cta-qr { display: none; }
+    }
+
+    /* ─── FOOTER ─── */
+    
+    /* ─── FOOTER ─── */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #DCE5F0;
+      padding: 56px 5% 24px;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+    .footer-vert-divider { background: #DCE5F0; align-self: stretch; }
+    .footer-link-cols { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0 2rem; }
+    .footer-wordmark {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00dae7 0%, #1c52e8 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 0.72rem; color: #64748B; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; margin-bottom: 1.75rem; }
+    .footer-social a { color: #64748B; display: inline-flex; transition: color 0.2s; }
+    .footer-social a:hover { color: #1769E0; }
+
+    /* Footer brand column: keep every child flush to the same left edge */
+    .footer-brand { text-align: left; }
+    .footer-brand > * { text-indent: 0; margin-left: 0; }
+    .footer-social { justify-content: flex-start; align-items: center; padding-left: 0; }
+
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+    .footer-copy { font-size: 0.68rem; color: #64748B; line-height: 1.7; }
+    .footer-col-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1769E0; margin-bottom: 0.85rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a { color: #0B234A; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #1769E0; }
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 0; }
+      .footer-vert-divider { height: 1px; align-self: auto; margin: 1.75rem 0; }
+      .footer-link-cols { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .footer-link-cols { grid-template-columns: 1fr 1fr; } }
+    /* ─── INQUIRY MODAL ─── */
+    .fis-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(11, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .fis-modal.open { display: flex; }
+    .fis-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      background: #12141A;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      animation: fisModalIn 0.18s ease-out;
+    }
+    @keyframes fisModalIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .fis-modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .fis-modal-close:hover { background: rgba(255,255,255,0.12); color: #FFFFFF; }
+    .fis-modal-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .fis-modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem 0;
+      color: #FFFFFF;
+    }
+    .fis-modal-lead {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.55;
+    }
+    .fis-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .fis-form-field-full { grid-column: 1 / -1; }
+    .fis-form label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.35rem;
+    }
+    .fis-form label .req { color: var(--cyan); margin-left: 2px; }
+    .fis-form input,
+    .fis-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fis-form input:focus,
+    .fis-form textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(255,255,255,0.07);
+    }
+    .fis-form textarea { min-height: 110px; resize: vertical; }
+    .fis-form-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .fis-form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .fis-form-submit {
+      background: var(--cyan);
+      color: var(--dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .fis-form-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .fis-form-submit:disabled { opacity: 0.55; cursor: progress; }
+    .fis-form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .fis-form-error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 6px;
+      color: #FCA5A5;
+      font-size: 0.85rem;
+    }
+    .fis-form-error.show { display: block; }
+    .fis-form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+    }
+    .fis-form-success.show { display: block; }
+    .fis-form-success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: rgba(45, 212, 255, 0.12);
+      border: 1px solid rgba(45, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .fis-form-success-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+    .fis-form-success-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 560px) {
+      .fis-modal-card { padding: 1.5rem 1.25rem 1.25rem; }
+      .fis-form-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* Client Portal responsive nav fit */
+    @media (max-width: 900px) and (min-width: 641px) {
+      nav { padding-left: 1rem; padding-right: 1rem; }
+      .nav-wordmark { left: 1rem; gap: 0.4rem; }
+      .nav-logo { width: 27px; height: 27px; }
+      .nav-brand-name { font-size: 0.96rem; }
+      .nav-wordmark-tagline { display: none; }
+      .nav-links { gap: 0.65rem; }
+      .nav-links a { font-size: 0.69rem; }
+      .nav-cta { right: 1rem; padding: 0.45rem 0.82rem; font-size: 0.72rem; }
+    }</style>
+  <link rel="stylesheet" href="css/site-nav.css">
+<script src="cookie-banner.js"></script>
+<style id="websites-page">#websites-page{}
+.wx-main{padding-top:64px}
+.wx-inner{max-width:1180px;margin:0 auto;padding:0 3rem}
+.wx-hero{padding:96px 0 72px;background:linear-gradient(180deg,#F5F7FB 0%,#FFFFFF 100%)}
+.wx-hero .section-label,.wx-section .section-label,.wx-cta .section-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2563EB;margin-bottom:16px}
+.wx-hero h1{font-family:'Manrope',system-ui,sans-serif;font-size:clamp(2.3rem,4.6vw,4rem);line-height:1.05;letter-spacing:-.035em;color:#0B0C10;margin-bottom:24px;max-width:900px}
+.wx-lede{font-size:1.15rem;line-height:1.6;color:#43536d;max-width:720px;margin-bottom:32px}
+.wx-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:8px;background:#175ee6;color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+.wx-btn:hover{background:#0f4bc4}
+.wx-section{padding:80px 0}
+.wx-section.wx-alt{background:#F5F7FB}
+.wx-section h2,.wx-cta h2{font-family:'Manrope',system-ui,sans-serif;font-size:clamp(1.7rem,2.6vw,2.4rem);line-height:1.15;letter-spacing:-.02em;color:#0B0C10;margin-bottom:16px}
+.wx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:36px}
+.wx-card{background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:26px}
+.wx-card h3,.wx-package h3,.wx-example h3{font-family:'Manrope',system-ui,sans-serif;font-size:1.12rem;color:#0B0C10;margin-bottom:8px}
+.wx-card p,.wx-package p,.wx-example p{color:#43536d;font-size:.98rem;line-height:1.55;margin:0}
+.wx-two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.wx-two p{color:#43536d;line-height:1.6}
+.wx-packages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:36px}
+.wx-package{background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.wx-price{font-family:'Manrope',system-ui,sans-serif;font-size:1.5rem;font-weight:800;color:#0B0C10;margin:0}
+.wx-note{margin-top:22px;color:#6B7280;font-size:.9rem;line-height:1.5}
+.wx-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:36px}
+.wx-example{display:block;background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:24px;text-decoration:none;color:inherit}
+.wx-example:hover{border-color:#2563EB}
+.wx-example span{display:inline-block;margin-top:14px;color:#175ee6;font-weight:600;font-size:.92rem}
+.wx-cta{padding:80px 0;background:#0B0C10;color:#fff;text-align:center}
+.wx-cta h2{color:#fff}
+.wx-cta p{color:#c3c9d4;max-width:640px;margin:0 auto 26px}
+.wx-cta .wx-btn{background:#2DD4FF;color:#0B0C10}
+.wx-cta .wx-btn:hover{background:#7ae4ff}
+@media(max-width:900px){.wx-two,.wx-grid,.wx-examples{grid-template-columns:1fr}.wx-packages{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.wx-inner{padding:0 1.25rem}.wx-hero{padding:72px 0 56px}.wx-section{padding:56px 0}.wx-packages{grid-template-columns:1fr}}</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-wordmark">
+      <img src="images/fis-logo-f-only.png" class="nav-logo" alt="">
+      <div class="nav-wordmark-text">
+        <span class="nav-brand-name">FutureInSites</span>
+        <span class="nav-wordmark-tagline">Save time. Get more done.</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links-menu">
+      <li class="nav-more">
+        <a href="solutions.html" class="nav-more-btn">Business <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="approach.html">How We Work</a></li>
+          <li><a href="solutions.html">Our Solutions</a></li>
+          <li><a href="websites.html">Websites</a></li>
+          <li><a href="ai-readiness.html">Readiness Questionnaire</a></li>
+          <li><a href="assessment.html">Opportunity Assessment</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">Research <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="landscape/index.html">AI Vendor Landscape</a></li>
+          <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          <li><a href="case-studies/index.html">Case Studies</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+        </ul>
+      </li>
+      <li class="nav-more">
+        <a href="#" class="nav-more-btn">About <span class="nav-more-arrow">&#9662;</span></a>
+        <ul class="nav-more-dropdown">
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </li>
+      <li class="nav-client-menu"><a href="/client-login">Client Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/client-login" class="nav-client-link">Client Portal</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav><main class="wx-main">
+  <section class="wx-hero">
+    <div class="wx-inner">
+      <p class="section-label">Websites</p>
+      <h1>Anyone can put up a website.<br>We build the business into it.</h1>
+      <p class="wx-lede">The site gets you found. What sits behind it — booking, intake, follow-up, and the tools you already run — is where the hours come back.</p>
+      <a class="wx-btn" href="contact.html?inquiry=websites">Talk about a website &rarr;</a>
+    </div>
+  </section>
+
+  <section class="wx-section">
+    <div class="wx-inner">
+      <p class="section-label">What we build in</p>
+      <h2>More than pages.</h2>
+      <div class="wx-grid">
+        <article class="wx-card">
+          <h3>Custom appointment booking &amp; scheduling</h3>
+          <p>Real availability, not a contact form: services, staff, buffers, deposits, reminders, calendar sync. The customer books in 30 seconds; you see it on your phone.</p>
+        </article>
+        <article class="wx-card">
+          <h3>Intake that routes itself</h3>
+          <p>Forms that create the right record in the right system, and flag what is missing.</p>
+        </article>
+        <article class="wx-card">
+          <h3>Client portal &amp; documents</h3>
+          <p>Files, approvals, e-signatures and status in one place.</p>
+        </article>
+        <article class="wx-card">
+          <h3>A phone-sized back office</h3>
+          <p>Schedules, quotes and follow-ups from the owner's phone, not a desktop.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="wx-section wx-alt">
+    <div class="wx-inner wx-two">
+      <div>
+        <p class="section-label">It fits what you already use</p>
+        <h2>We connect. We don't replace.</h2>
+        <p>Google and Outlook calendars, QuickBooks, CRMs, practice software, spreadsheets, email. We connect to them rather than asking a small business to rip them out.</p>
+      </div>
+      <div>
+        <p class="section-label">Mobile for both sides</p>
+        <h2>Few taps for them. One hand for you.</h2>
+        <p>The customer side is a few taps. The management side is built for a phone, because that's where the owner actually is.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wx-section" id="packages">
+    <div class="wx-inner">
+      <p class="section-label">Packages</p>
+      <h2>Fixed scope. Clear price.</h2>
+      <div class="wx-packages">
+        <article class="wx-package">
+          <h3>Launch</h3>
+          <p class="wx-price">$3.5&ndash;5k</p>
+          <p>Site, copy cleanup, SEO basics, analytics, accessibility.</p>
+        </article>
+        <article class="wx-package">
+          <h3>Built-in</h3>
+          <p class="wx-price">$7&ndash;12k</p>
+          <p>Launch plus custom booking or intake wired into their tools.</p>
+        </article>
+        <article class="wx-package">
+          <h3>Custom platform</h3>
+          <p class="wx-price">$15k+</p>
+          <p>Portal, documents, dashboards, deeper integrations.</p>
+        </article>
+        <article class="wx-package">
+          <h3>Care</h3>
+          <p class="wx-price">$95&ndash;195/mo</p>
+          <p>Hosting, updates, backups, monitoring, small changes.</p>
+        </article>
+      </div>
+      <p class="wx-note">Every site is designed and written, mobile, fast, findable and accessible. Prices are starting points; the scope decides the final number.</p>
+    </div>
+  </section>
+
+  <section class="wx-section wx-alt">
+    <div class="wx-inner">
+      <p class="section-label">Examples</p>
+      <h2>Built for real businesses.</h2>
+      <div class="wx-examples">
+        <a class="wx-example" href="https://derekthedogguy.com" target="_blank" rel="noopener">
+          <h3>Derek the Dog Guy</h3>
+          <p>Dog training, walking and sitting on the South Shore. A small-business promotional site.</p>
+          <span>derekthedogguy.com &nearr;</span>
+        </a>
+        <a class="wx-example" href="https://hideahawk.com" target="_blank" rel="noopener">
+          <h3>Hide-a-Hawk</h3>
+          <p>The Hanover holiday hunt: find a hawk, collect a sticker, support local businesses.</p>
+          <span>hideahawk.com &nearr;</span>
+        </a>
+        <a class="wx-example" href="https://nycwine.com" target="_blank" rel="noopener">
+          <h3>NYC Wine</h3>
+          <p>A business site with a live catalog.</p>
+          <span>nycwine.com &nearr;</span>
+        </a>
+        <a class="wx-example" href="https://spirantix.ai" target="_blank" rel="noopener">
+          <h3>Spirantix</h3>
+          <p>AI-native product site.</p>
+          <span>spirantix.ai &nearr;</span>
+        </a>
+      </div>
+      <p class="wx-note">Derek the Dog Guy and Hide-a-Hawk are Launch-class sites. NYC Wine is a business site. Spirantix is AI-native.</p>
+    </div>
+  </section>
+
+  <section class="wx-cta">
+    <div class="wx-inner">
+      <h2>Start with a website assessment.</h2>
+      <p>Thirty minutes on your current site: speed, mobile, findability, lead capture, accessibility — and what a rebuild would include.</p>
+      <a class="wx-btn" href="contact.html?inquiry=websites">Ask for a website assessment &rarr;</a>
+    </div>
+  </section>
+</main><!-- ─── FOOTER ─── -->
+  <!-- FOOTER -->
+  <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
+  <link rel="stylesheet" href="css/footer.css">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-wordmark">FutureInSites</a>
+        <div class="footer-tagline">AI for Small Business</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+      </div>
+      <div class="footer-vert-divider"></div>
+      <div class="footer-link-cols">
+        <div class="footer-col">
+          <p class="footer-col-label">Business</p>
+          <ul>
+            <li><a href="approach.html">How We Work</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="ai-readiness.html">Assessment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Company</p>
+          <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Research</p>
+          <ul>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="case-studies/index.html">Case Studies</a></li>
+            <li><a href="landscape/index.html">AI Landscape</a></li>
+            <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-label">Connect</p>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <script>
+  /* Hamburger toggle */
+  (function () {
+    var btn  = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('nav-links-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      menu.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+      });
+    });
+  })();
+  /* Dropdown toggles */
+  (function () {
+    var allMore = document.querySelectorAll('.nav-more');
+    if (!allMore.length) return;
+    allMore.forEach(function (more) {
+      var btn = more.querySelector('.nav-more-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = more.classList.contains('open');
+        allMore.forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) { more.classList.add('open'); }
+      });
+      more.querySelectorAll('.nav-more-dropdown a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          more.classList.remove('open');
+        });
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var inAny = false;
+      allMore.forEach(function (m) { if (m.contains(e.target)) inAny = true; });
+      if (!inAny) { allMore.forEach(function (m) { m.classList.remove('open'); }); }
+    });
+  })();
+  </script>
+
+  <div class="fis-modal" id="fis-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="fis-inquiry-title" aria-hidden="true">
+    <div class="fis-modal-card" role="document">
+      <button type="button" class="fis-modal-close" aria-label="Close inquiry form" data-close-inquiry>×</button>
+
+      <div id="fis-inquiry-header">
+        <div class="fis-modal-eyebrow" id="fis-inquiry-eyebrow">AI Transformation Session</div>
+        <h3 class="fis-modal-title" id="fis-inquiry-title">Tell us about your team.</h3>
+        <p class="fis-modal-lead" id="fis-inquiry-lead">A few details so we can come prepared. We'll respond as soon as possible.</p>
+      </div>
+
+      <form class="fis-form" id="fis-inquiry-form" novalidate>
+        <div class="fis-form-grid">
+          <div>
+            <label for="fis-name">Name <span class="req">*</span></label>
+            <input type="text" id="fis-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="fis-email">Email <span class="req">*</span></label>
+            <input type="email" id="fis-email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fis-company">Company</label>
+            <input type="text" id="fis-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="fis-role">Role / Title</label>
+            <input type="text" id="fis-role" name="role" autocomplete="organization-title">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-phone">Phone (optional)</label>
+            <input type="tel" id="fis-phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="fis-form-field-full">
+            <label for="fis-message">What would you like to discuss?</label>
+            <textarea id="fis-message" name="message" placeholder="A quick note on your team, where AI fits, and any timing you have in mind."></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot — hidden from humans, often filled by bots -->
+        <div class="fis-form-honeypot" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="fis-form-actions">
+          <button type="submit" class="fis-form-submit" id="fis-inquiry-submit">Send inquiry</button>
+          <p class="fis-form-note">No newsletters, no sharing.</p>
+        </div>
+
+        <div class="fis-form-error" id="fis-inquiry-error" role="alert"></div>
+      </form>
+
+      <div class="fis-form-success" id="fis-inquiry-success" role="status" aria-live="polite">
+        <div class="fis-form-success-icon">✓</div>
+        <div class="fis-form-success-title" id="fis-inquiry-success-title">Thanks, your inquiry is in.</div>
+        <div class="fis-form-success-body" id="fis-inquiry-success-body">We'll be in touch as soon as possible at the email you provided.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Inquiry modal — open/close + submit handler */
+  (function () {
+    var modal    = document.getElementById('fis-inquiry-modal');
+    var form     = document.getElementById('fis-inquiry-form');
+    var success  = document.getElementById('fis-inquiry-success');
+    var header   = document.getElementById('fis-inquiry-header');
+    var eyebrowEl     = document.getElementById('fis-inquiry-eyebrow');
+    var titleEl       = document.getElementById('fis-inquiry-title');
+    var leadEl        = document.getElementById('fis-inquiry-lead');
+    var successTitleEl = document.getElementById('fis-inquiry-success-title');
+    var successBodyEl  = document.getElementById('fis-inquiry-success-body');
+
+    /* Per-context modal copy. Keyed by data-inquiry-context attr on the open button. */
+    var CONTEXTS = {
+      session: {
+        eyebrow: 'AI Transformation Session',
+        title: 'Tell us about your team.',
+        lead: "A few details so we can come prepared. We'll respond as soon as possible.",
+        successTitle: 'Thanks, your inquiry is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      strategy: {
+        eyebrow: "Let's Talk",
+        title: 'Tell us about your AI work.',
+        lead: "Whether you're starting from zero or scaling an existing program, share a few details and we'll respond as soon as possible.",
+        successTitle: 'Thanks, your note is in.',
+        successBody: "We'll be in touch as soon as possible at the email you provided."
+      },
+      assessment: {
+        eyebrow: 'Free AI Assessment',
+        title: 'Tell us about your business.',
+        lead: "A few details will help us prepare for the assessment. We'll follow up to schedule a virtual meeting or an in-person meeting around Boston or New York City.",
+        successTitle: 'Thanks, your assessment request is in.',
+        successBody: "We'll be in touch as soon as possible to schedule your free AI assessment."
+      }
+    };
+    var currentContext = 'session';
+    var errorEl  = document.getElementById('fis-inquiry-error');
+    var submitEl = document.getElementById('fis-inquiry-submit');
+    if (!modal || !form) return;
+
+    var lastFocus = null;
+
+    function applyContext(ctx) {
+      var c = CONTEXTS[ctx] || CONTEXTS.session;
+      currentContext = CONTEXTS[ctx] ? ctx : 'session';
+      if (eyebrowEl)      eyebrowEl.textContent      = c.eyebrow;
+      if (titleEl)        titleEl.textContent        = c.title;
+      if (leadEl)         leadEl.textContent         = c.lead;
+      if (successTitleEl) successTitleEl.textContent = c.successTitle;
+      if (successBodyEl)  successBodyEl.textContent  = c.successBody;
+    }
+
+    function openModal(ctx) {
+      lastFocus = document.activeElement;
+      applyContext(ctx || 'session');
+      // Reset state every open
+      if (header) header.style.display = '';
+      form.style.display = '';
+      success.classList.remove('show');
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Send inquiry';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var first = document.getElementById('fis-name');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-inquiry]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var ctx = el.getAttribute('data-inquiry-context') || 'session';
+        openModal(ctx);
+      });
+    });
+
+    // Direct links and QR codes can open the same form in a specific context.
+    var linkedContext = new URLSearchParams(window.location.search).get('inquiry');
+    if (linkedContext && CONTEXTS[linkedContext]) {
+      openModal(linkedContext);
+    }
+
+    // Close triggers — × button, backdrop click, Escape key
+    modal.querySelectorAll('[data-close-inquiry]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Submit handler
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      errorEl.textContent = '';
+
+      var data = {
+        name:    form.name.value.trim(),
+        email:   form.email.value.trim(),
+        company: form.company.value.trim(),
+        role:    form.role.value.trim(),
+        phone:   form.phone.value.trim(),
+        message: form.message.value.trim(),
+        context: currentContext,
+        website: form.website.value, // honeypot
+        fax:     form.fax.value,     // honeypot
+      };
+
+      if (!data.name) {
+        errorEl.textContent = 'Please enter your name.';
+        errorEl.classList.add('show');
+        form.name.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.add('show');
+        form.email.focus();
+        return;
+      }
+
+      submitEl.disabled = true;
+      submitEl.textContent = 'Sending…';
+
+      fetch('/api/inquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+        })
+        .then(function (result) {
+          if (result.ok && result.json && result.json.ok) {
+            if (window.fiTrack) {
+              window.fiTrack('lead_form_submit', {
+                form_id: 'fis-inquiry-form',
+                form_context: currentContext
+              });
+            }
+            form.reset();
+            window.location.href = 'thanks.html';
+            return;
+          }
+          var msg = (result.json && result.json.error)
+            || 'Something went wrong. Please email strategy@futureinsites.com directly.';
+          errorEl.textContent = msg;
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Network error. Please email strategy@futureinsites.com directly.';
+          errorEl.classList.add('show');
+          submitEl.disabled = false;
+          submitEl.textContent = 'Send inquiry';
+        });
+    });
+  })();
+  </script>
+
+</body>
+</html>
