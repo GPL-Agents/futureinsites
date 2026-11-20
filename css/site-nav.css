@@ -8,7 +8,7 @@
 :root body > nav .nav-brand-name{font-family:Manrope,Arial,sans-serif!important;font-size:1.15rem!important;font-weight:800!important;letter-spacing:-.025em!important;line-height:1!important;white-space:nowrap!important;display:block!important;background:linear-gradient(90deg,#00dae7 0%,#1c52e8 100%)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
 :root body > nav .nav-wordmark-tagline{display:block!important;font-size:.65rem!important;font-weight:400!important;color:#64748b!important;line-height:1.2!important;margin-top:5px!important;letter-spacing:.02em!important;white-space:nowrap!important}
 :root body > nav .nav-links{display:flex!important;gap:32px!important;list-style:none!important;padding:0!important;margin:0!important}
-:root body > nav .nav-links a{font-family:Inter,Arial,sans-serif!important;font-size:12px!important;font-weight:600!important;letter-spacing:normal!important;text-decoration:none!important;color:#43536d!important;background:none!important;transition:none!important}
+:root body > nav .nav-links a{font-family:Inter,Arial,sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:normal!important;text-decoration:none!important;color:#43536d!important;background:none!important;transition:none!important}
 :root body > nav .nav-more{position:relative!important}
 :root body > nav .nav-more-btn{display:inline!important;padding:0!important}
 :root body > nav .nav-more-arrow{font-size:9px!important;margin-left:4px!important}
