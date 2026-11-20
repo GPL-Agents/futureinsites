@@ -730,6 +730,17 @@
 .wx-example-body{padding:20px 22px 22px}
 .wx-intro{max-width:760px;color:#43536d;font-size:1.02rem;line-height:1.6;margin:0 0 4px}
 @media(max-width:900px){.wx-hero-grid{grid-template-columns:1fr;gap:28px}}
+.wx-carousel{background:#fff}
+.wx-slides{position:relative;aspect-ratio:16/10;background:#F5F7FB;overflow:hidden}
+.wx-hero-art .wx-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .8s ease}
+.wx-hero-art .wx-slide.is-active{opacity:1}
+.wx-carousel-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #E5E7EB}
+.wx-carousel-name{font-family:'Manrope',system-ui,sans-serif;font-weight:700;font-size:.92rem;color:#0B0C10;text-decoration:none}
+.wx-carousel-name:hover{color:#2563EB}
+.wx-dots{display:flex;gap:8px}
+.wx-dots button{width:9px;height:9px;border-radius:50%;border:0;padding:0;background:#CBD5E1;cursor:pointer}
+.wx-dots button[aria-current="true"]{background:#2563EB}
+@media(prefers-reduced-motion:reduce){.wx-hero-art .wx-slide{transition:none}}
 </style>
 </head>
 <body>
@@ -790,7 +801,18 @@
         <p class="wx-lede">We build great websites and promotional pages — quickly, and at a high standard. Custom graphics made from whatever you already have. Optimized for mobile, SEO and AI search. Even the simplest website, done right, with a clean look that fits your brand, has a high value.</p>
         <a class="wx-btn" href="contact.html?inquiry=websites">Talk about a website &rarr;</a>
       </div>
-      <figure class="wx-hero-art"><img src="images/websites/collage.webp" alt="Homepages for Derek the Dog Guy, Hide-a-Hawk, NYC Wine and Spirantix" width="1440" height="900"></figure>
+      <figure class="wx-hero-art wx-carousel" aria-roledescription="carousel" aria-label="Websites we have built">
+        <div class="wx-slides">
+          <img class="wx-slide is-active" src="images/websites/nycwine.webp" alt="NYC Wine homepage" width="1440" height="900" data-name="NYC Wine" data-url="https://nycwine.com">
+          <img class="wx-slide" src="images/websites/spirantix.webp" alt="Spirantix homepage" width="900" height="563" data-name="Spirantix" data-url="https://spirantix.ai">
+          <img class="wx-slide" src="images/websites/derekthedogguy.webp" alt="Derek the Dog Guy homepage" width="900" height="563" data-name="Derek the Dog Guy" data-url="https://derekthedogguy.com">
+          <img class="wx-slide" src="images/websites/hideahawk.webp" alt="Hide-a-Hawk homepage" width="900" height="563" data-name="Hide-a-Hawk" data-url="https://hideahawk.com">
+        </div>
+        <figcaption class="wx-carousel-bar">
+          <a class="wx-carousel-name" href="https://nycwine.com" target="_blank" rel="noopener" aria-live="polite">NYC Wine &nearr;</a>
+          <span class="wx-dots"></span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -874,7 +896,7 @@
           <img class="wx-shot" src="images/websites/derekthedogguy.webp" alt="Derek the Dog Guy homepage" width="900" height="563" loading="lazy">
           <div class="wx-example-body">
             <h3>Derek the Dog Guy</h3>
-            <p>Dog training, walking and sitting on the South Shore. A small-business promotional site.</p>
+            <p>Custom booking engine, in development: online scheduling by service, plus an owner dashboard for availability, services, pricing, confirmations and rescheduling.</p>
             <span>derekthedogguy.com &nearr;</span>
           </div>
         </a>
@@ -882,15 +904,15 @@
           <img class="wx-shot" src="images/websites/hideahawk.webp" alt="Hide-a-Hawk homepage" width="900" height="563" loading="lazy">
           <div class="wx-example-body">
             <h3>Hide-a-Hawk</h3>
-            <p>The Hanover holiday hunt: find a hawk, collect a sticker, support local businesses.</p>
+            <p>Campaign strategy and creative: custom illustrated artwork, poster and passport design, a four-step game flow, a participating-business directory and embedded social video.</p>
             <span>hideahawk.com &nearr;</span>
           </div>
         </a>
         <a class="wx-example" href="https://nycwine.com" target="_blank" rel="noopener">
-          <img class="wx-shot" src="images/websites/nycwine.webp" alt="NYC Wine homepage" width="900" height="563" loading="lazy">
+          <img class="wx-shot" src="images/websites/nycwine.webp" alt="NYC Wine homepage" width="1440" height="900" loading="lazy">
           <div class="wx-example-body">
             <h3>NYC Wine</h3>
-            <p>A business site with a live catalog.</p>
+            <p>AI-managed ad placements and online payments, an automated event-submission pipeline, social media integrations, a concierge chatbot, and a working map with location search.</p>
             <span>nycwine.com &nearr;</span>
           </div>
         </a>
@@ -898,12 +920,11 @@
           <img class="wx-shot" src="images/websites/spirantix.webp" alt="Spirantix homepage" width="900" height="563" loading="lazy">
           <div class="wx-example-body">
             <h3>Spirantix</h3>
-            <p>AI-native product site.</p>
+            <p>A website and AI app: an assistant that answers from each person's own information, a safe search engine that screens out bad results, hands-free voice, private accounts with sharing controls, password-free sign-in, Google Calendar sync, and ChatGPT and Claude plugins.</p>
             <span>spirantix.ai &nearr;</span>
           </div>
         </a>
       </div>
-      <p class="wx-note">Derek the Dog Guy and Hide-a-Hawk are Launch-class sites. NYC Wine is a business site. Spirantix is AI-native.</p>
     </div>
   </section>
 
@@ -918,56 +939,107 @@
   <!-- FOOTER -->
   <!-- FOOTER:START generated from partials/footer.html; edit that file, then run pnpm build:footer -->
   <link rel="stylesheet" href="css/footer.css">
+
   <footer>
+
     <div class="footer-inner">
+
       <div class="footer-brand">
+
         <a href="index.html" class="footer-wordmark">FutureInSites</a>
+
         <div class="footer-tagline">AI for Small Business</div>
+
         <div class="footer-social">
+
           <a href="https://www.linkedin.com/company/futureinsites/" target="_blank" rel="noopener" aria-label="FutureInSites on LinkedIn" title="Follow FutureInSites on LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+
           <a href="https://x.com/FutureInSites" target="_blank" rel="noopener" aria-label="FutureInSites on X" title="Follow FutureInSites on X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+
           <a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener" aria-label="FutureInSites on Substack" title="Read FutureInSites on Substack"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h20v3.2H2V2zm0 5.4h20v3.2H2V7.4zM2 12.8h20V22l-10-5.2L2 22v-9.2z"/></svg></a>
+
         </div>
+
         <p class="footer-copy">&copy; 2026 FutureInSites LLC<br>New York, NY &nbsp;&middot;&nbsp; Boston, MA</p>
+
       </div>
+
       <div class="footer-vert-divider"></div>
+
       <div class="footer-link-cols">
+
         <div class="footer-col">
+
           <p class="footer-col-label">Business</p>
+
           <ul>
+
             <li><a href="approach.html">How We Work</a></li>
+
             <li><a href="solutions.html">Solutions</a></li>
+
             <li><a href="ai-readiness.html">Assessment</a></li>
+
           </ul>
+
         </div>
+
         <div class="footer-col">
+
           <p class="footer-col-label">Company</p>
+
           <ul>
+
             <li><a href="our-story.html">Our Story</a></li>
+
             <li><a href="blog/index.html">Blog</a></li>
+
             <li><a href="https://aigriftreport.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+
           </ul>
+
         </div>
+
         <div class="footer-col">
+
           <p class="footer-col-label">Research</p>
+
           <ul>
+
             <li><a href="resources.html">Resources</a></li>
+
             <li><a href="case-studies/index.html">Case Studies</a></li>
+
             <li><a href="landscape/index.html">AI Landscape</a></li>
+
             <li><a href="landscape/ai-bolt-ons.html">AI Bolt-Ons</a></li>
+
           </ul>
+
         </div>
+
         <div class="footer-col">
+
           <p class="footer-col-label">Connect</p>
+
           <ul>
+
             <li><a href="contact.html">Contact</a></li>
+
             <li><a href="faq.html">FAQ</a></li>
+
             <li><a href="privacy.html">Privacy</a></li>
+
             <li><a href="careers.html">Careers</a></li>
+
           </ul>
+
         </div>
+
       </div>
+
     </div>
+
   </footer>
   <!-- FOOTER:END -->
 
@@ -1256,5 +1328,30 @@
   })();
   </script>
 
+<script>
+(function(){
+  var fig=document.querySelector('.wx-carousel'); if(!fig) return;
+  var slides=fig.querySelectorAll('.wx-slide'), dots=fig.querySelector('.wx-dots'), name=fig.querySelector('.wx-carousel-name');
+  var i=0, timer=null, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(function(s,n){
+    var b=document.createElement('button'); b.type='button';
+    b.setAttribute('aria-label','Show '+s.dataset.name);
+    b.addEventListener('click',function(){show(n);restart();});
+    dots.appendChild(b);
+  });
+  function show(n){
+    slides[i].classList.remove('is-active'); dots.children[i].removeAttribute('aria-current');
+    i=n; slides[i].classList.add('is-active'); dots.children[i].setAttribute('aria-current','true');
+    name.href=slides[i].dataset.url; name.innerHTML=slides[i].dataset.name+' &nearr;';
+  }
+  function start(){ if(!reduce && !timer) timer=setInterval(function(){show((i+1)%slides.length);},4500); }
+  function stop(){ clearInterval(timer); timer=null; }
+  function restart(){ stop(); start(); }
+  dots.children[0].setAttribute('aria-current','true');
+  fig.addEventListener('mouseenter',stop); fig.addEventListener('mouseleave',start);
+  fig.addEventListener('focusin',stop); fig.addEventListener('focusout',start);
+  start();
+})();
+</script>
 </body>
 </html>
