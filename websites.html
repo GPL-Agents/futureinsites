@@ -810,13 +810,13 @@
       </div>
       <figure class="wx-hero-art wx-carousel" aria-roledescription="carousel" aria-label="Websites we have built">
         <div class="wx-slides">
-          <img class="wx-slide is-active" src="images/websites/nycwine.webp" alt="NYC Wine homepage" width="1440" height="900" data-name="NYC Wine" data-url="https://nycwine.com">
-          <img class="wx-slide" src="images/websites/spirantix.webp" alt="Spirantix homepage" width="900" height="563" data-name="Spirantix" data-url="https://spirantix.ai">
-          <img class="wx-slide" src="images/websites/derekthedogguy.webp" alt="Derek the Dog Guy homepage" width="900" height="563" data-name="Derek the Dog Guy" data-url="https://derekthedogguy.com">
-          <img class="wx-slide" src="images/websites/hideahawk.webp" alt="Hide-a-Hawk homepage" width="900" height="563" data-name="Hide-a-Hawk" data-url="https://hideahawk.com">
+          <img class="wx-slide is-active" src="images/websites/nycwine.webp" alt="NYC Wine homepage" width="1440" height="900" data-name="NYC Wine" data-label="Event and directory website" data-url="https://nycwine.com">
+          <img class="wx-slide" src="images/websites/spirantix.webp" alt="Spirantix homepage" width="900" height="563" data-name="Spirantix" data-label="AI consulting and research website" data-url="https://spirantix.ai">
+          <img class="wx-slide" src="images/websites/derekthedogguy.webp" alt="Derek the Dog Guy homepage" width="900" height="563" data-name="Derek the Dog Guy" data-label="Local service business website" data-url="https://derekthedogguy.com">
+          <img class="wx-slide" src="images/websites/hideahawk.webp" alt="Hide-a-Hawk homepage" width="900" height="563" data-name="Hide-a-Hawk" data-label="Promotional site for a chamber of commerce" data-url="https://hideahawk.com">
         </div>
         <figcaption class="wx-carousel-bar">
-          <a class="wx-carousel-name" href="https://nycwine.com" target="_blank" rel="noopener" aria-live="polite">NYC Wine</a>
+          <a class="wx-carousel-name" href="https://nycwine.com" target="_blank" rel="noopener" aria-live="polite" aria-label="Open the NYC Wine event and directory website example">Event and directory website</a>
           <span class="wx-dots"></span>
         </figcaption>
       </figure>
@@ -1346,14 +1346,16 @@
   var i=0, timer=null, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   slides.forEach(function(s,n){
     var b=document.createElement('button'); b.type='button';
-    b.setAttribute('aria-label','Show '+s.dataset.name);
+    b.setAttribute('aria-label','Show '+s.dataset.label+' example');
     b.addEventListener('click',function(){show(n);restart();});
     dots.appendChild(b);
   });
   function show(n){
     slides[i].classList.remove('is-active'); dots.children[i].removeAttribute('aria-current');
     i=n; slides[i].classList.add('is-active'); dots.children[i].setAttribute('aria-current','true');
-    name.href=slides[i].dataset.url; name.textContent=slides[i].dataset.name;
+    name.href=slides[i].dataset.url;
+    name.textContent=slides[i].dataset.label;
+    name.setAttribute('aria-label','Open the '+slides[i].dataset.name+' '+slides[i].dataset.label.toLowerCase()+' example');
   }
   function start(){ if(!reduce && !timer) timer=setInterval(function(){show((i+1)%slides.length);},4500); }
   function stop(){ clearInterval(timer); timer=null; }
