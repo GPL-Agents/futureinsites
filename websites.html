@@ -717,6 +717,19 @@
 .wx-cta .wx-btn:hover{background:#7ae4ff}
 @media(max-width:900px){.wx-two,.wx-grid,.wx-examples{grid-template-columns:1fr}.wx-packages{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.wx-inner{padding:0 1.25rem}.wx-hero{padding:72px 0 56px}.wx-section{padding:56px 0}.wx-packages{grid-template-columns:1fr}}</style>
+<style id="wx-visuals">
+.wx-hero{padding:64px 0 56px}
+.wx-section{padding:64px 0}
+.wx-cta{padding:64px 0}
+.wx-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center}
+.wx-hero-art{margin:0;border-radius:16px;overflow:hidden;border:1px solid #E5E7EB;box-shadow:0 18px 40px rgba(11,12,16,.12)}
+.wx-hero-art img{display:block;width:100%;height:auto}
+.wx-examples{gap:22px}
+.wx-example{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.wx-example .wx-shot{display:block;width:100%;height:auto;border-bottom:1px solid #E5E7EB;background:#F5F7FB}
+.wx-example-body{padding:20px 22px 22px}
+@media(max-width:900px){.wx-hero-grid{grid-template-columns:1fr;gap:28px}}
+</style>
 </head>
 <body>
 
@@ -769,11 +782,14 @@
     </div>
   </nav><main class="wx-main">
   <section class="wx-hero">
-    <div class="wx-inner">
-      <p class="section-label">Websites &amp; Apps</p>
-      <h1>Anyone can put up a website.<br>We build the business into it.</h1>
-      <p class="wx-lede">The site gets you found. What sits behind it — booking, intake, follow-up, and the tools you already run — is where the hours come back.</p>
-      <a class="wx-btn" href="contact.html?inquiry=websites">Talk about a website &rarr;</a>
+    <div class="wx-inner wx-hero-grid">
+      <div class="wx-hero-copy">
+        <p class="section-label">Websites &amp; Apps</p>
+        <h1>Great websites,<br>built quickly.</h1>
+        <p class="wx-lede">We build great websites and promotional pages — quickly, and at a high standard. Custom graphics made from whatever you already have. Optimized for mobile, SEO and AI search. Even the simplest website, done right, with a clean look that fits your brand, has a high value.</p>
+        <a class="wx-btn" href="contact.html?inquiry=websites">Talk about a website &rarr;</a>
+      </div>
+      <figure class="wx-hero-art"><img src="images/websites/collage.webp" alt="Homepages for Derek the Dog Guy, Hide-a-Hawk, NYC Wine and Spirantix" width="1440" height="900"></figure>
     </div>
   </section>
 
@@ -853,24 +869,36 @@
       <h2>Built for real businesses.</h2>
       <div class="wx-examples">
         <a class="wx-example" href="https://derekthedogguy.com" target="_blank" rel="noopener">
-          <h3>Derek the Dog Guy</h3>
-          <p>Dog training, walking and sitting on the South Shore. A small-business promotional site.</p>
-          <span>derekthedogguy.com &nearr;</span>
+          <img class="wx-shot" src="images/websites/derekthedogguy.webp" alt="Derek the Dog Guy homepage" width="900" height="563" loading="lazy">
+          <div class="wx-example-body">
+            <h3>Derek the Dog Guy</h3>
+            <p>Dog training, walking and sitting on the South Shore. A small-business promotional site.</p>
+            <span>derekthedogguy.com &nearr;</span>
+          </div>
         </a>
         <a class="wx-example" href="https://hideahawk.com" target="_blank" rel="noopener">
-          <h3>Hide-a-Hawk</h3>
-          <p>The Hanover holiday hunt: find a hawk, collect a sticker, support local businesses.</p>
-          <span>hideahawk.com &nearr;</span>
+          <img class="wx-shot" src="images/websites/hideahawk.webp" alt="Hide-a-Hawk homepage" width="900" height="563" loading="lazy">
+          <div class="wx-example-body">
+            <h3>Hide-a-Hawk</h3>
+            <p>The Hanover holiday hunt: find a hawk, collect a sticker, support local businesses.</p>
+            <span>hideahawk.com &nearr;</span>
+          </div>
         </a>
         <a class="wx-example" href="https://nycwine.com" target="_blank" rel="noopener">
-          <h3>NYC Wine</h3>
-          <p>A business site with a live catalog.</p>
-          <span>nycwine.com &nearr;</span>
+          <img class="wx-shot" src="images/websites/nycwine.webp" alt="NYC Wine homepage" width="900" height="563" loading="lazy">
+          <div class="wx-example-body">
+            <h3>NYC Wine</h3>
+            <p>A business site with a live catalog.</p>
+            <span>nycwine.com &nearr;</span>
+          </div>
         </a>
         <a class="wx-example" href="https://spirantix.ai" target="_blank" rel="noopener">
-          <h3>Spirantix</h3>
-          <p>AI-native product site.</p>
-          <span>spirantix.ai &nearr;</span>
+          <img class="wx-shot" src="images/websites/spirantix.webp" alt="Spirantix homepage" width="900" height="563" loading="lazy">
+          <div class="wx-example-body">
+            <h3>Spirantix</h3>
+            <p>AI-native product site.</p>
+            <span>spirantix.ai &nearr;</span>
+          </div>
         </a>
       </div>
       <p class="wx-note">Derek the Dog Guy and Hide-a-Hawk are Launch-class sites. NYC Wine is a business site. Spirantix is AI-native.</p>
