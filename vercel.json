@@ -8,6 +8,14 @@
     {
       "source": "/client-login",
       "destination": "/client-login.html"
+    },
+    {
+      "source": "/lakevillepilates/",
+      "destination": "https://lakevillepilates-site.vercel.app/"
+    },
+    {
+      "source": "/lakevillepilates/:path*",
+      "destination": "https://lakevillepilates-site.vercel.app/:path*"
     }
   ],
   "headers": [
@@ -35,6 +43,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/lakevillepilates",
+      "destination": "/lakevillepilates/",
+      "permanent": false
+    },
     {
       "source": "/internal/greg-loeffelholz",
       "destination": "/greg",
